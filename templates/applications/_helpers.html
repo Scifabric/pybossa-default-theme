@@ -126,7 +126,7 @@
 
 
 {% macro show_app(data, category, current_user) -%}
-<div class="row-fluid {{class}} well">
+<div class="project-item row-fluid {{class}} well">
     <h2><a href="{{ url_for('app.details', short_name = data.app.short_name) }}">{{ data.app.name }}</a></h2>
     <div class="row-fluid">
         <div class="span3">
@@ -138,11 +138,12 @@
         </div> <!-- End of span3 -->
         <div id="data" class="span9">
             <p style="margin:0"><strong><i class="icon-info-sign"></i> {{ _('Description') }}</strong>: {{ data.app.description }}</p>
-            <p style="margin:0"><strong><i class="icon-ok"></i> {{ _('Creation Date') }}</strong>: {{ data.app.created[0:10] }}</p>
-            {% if data.app.last_activity != None %}
+            <p style="margin:0"><strong><i class="icon-ok"></i> {{ _('Creation Date') }}</strong>: <span class="date">{{ data.app.created[0:10] }}</span></p>
+            {% if data.app.last_activity_raw != None %}
             <p style="margin:0"><strong><i class="icon-time"></i> {{ _('Last Activity') }}</strong>: {{ data.last_activity}}</p>
+            <span class="activity" style="display:none;">{{data.last_activity_raw}}</span>
             {% endif %}
-            <p style="margin:0"><strong><i class="icon-cogs"></i> {{ _('Overall progress') }}</strong>: {{ data.overall_progress | round | int }}% completed</p>
+            <p style="margin:0"><strong><i class="icon-cogs"></i> {{ _('Overall progress') }}</strong>: <span class="progress">{{ data.overall_progress | round | int }}</span>% completed</p>
             {% if data.app.owner_id == current_user.id %}
             <p style="margin:0"><strong><i class="icon-user"></i> {{ _('Created by') }}</strong>: {{ _('Me') }}</p>
             {% else %}
