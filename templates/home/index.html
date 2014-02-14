@@ -10,11 +10,11 @@
           <div class="span8">
             <ul class="featured">
                 {% for f in featured %}
-                <li><a href={{ url_for('app.details', short_name=f.short_name)}}>
+                <li><a href="{{ url_for('app.details', short_name=f.short_name)}}">
                     {% if f.info.thumbnail %}
                     <img src="{{f.info.thumbnail}}">
                     {% else %}
-                    <img src="{{url_for('static', filename="img/placeholder.dark.png")}}">
+                    <img src="{{url_for('static', filename='img/placeholder.dark.png')}}">
                     {% endif %}
                     <h3>{{f.name}}</h3>
                     <span class="label label-info">{{ _('Info') }}</span>
