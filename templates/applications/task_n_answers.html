@@ -11,7 +11,7 @@
                 {{ helper.render_app_local_nav(app, 'tasks', current_user) }}
             </div>
             <div class="span9">
-                {{ helper.render_app_title(app, subtitle=_('Task Redundancy'))}}
+                {{ helper.render_app_title(app, subtitle=_('Task Redundancy')) }}
                 <form id="task_redundancy" class="form-horizontal" method="post" action="{{ url_for('app.task_n_answers', short_name=app.short_name) }}">
                     {{ form.hidden_tag() }}
                     <fieldset>
