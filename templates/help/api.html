@@ -14,21 +14,21 @@
         <ul>
             <li><a href="{{url_for('api.index')}}">{{url_for('api.index', _external=True)}}</a></li>
         </ul>
-        <p>We recommend the employment of the <a href="http://pybossajs.readthedocs.org/en/latest/">PyBossa.JS</a> library to develop applications, as it abstracts the 
-        low level API calls, providing a more simple and easy to use API. PyBossa.JS is available at the server for every application, but if you prefer to download it 
+        <p>We recommend the employment of the <a href="http://pybossajs.readthedocs.org/en/latest/">PyBossa.JS</a> library to develop applications, as it abstracts the
+        low level API calls, providing a more simple and easy to use API. PyBossa.JS is available at the server for every application, but if you prefer to download it
         you can do it from its official <a href="http://github.com/PyBossa/pybossa.js">repository</a>.</p>
         <hr>
         <h2>Applications API end point</h2>
         <p>
-        For example, if you want to <strong>get a list of available applications</strong> in the server, 
+        For example, if you want to <strong>get a list of available applications</strong> on this server,
         you can obtain them by opening the following URL:
         </p>
         <ul>
             <li><a href="{{url_for('api.api_app')}}">{{url_for('api.api_app', _external=True)}}</a></li>
         </ul>
         <p>
-        <span class="label labe-warning"><i class="icon-bullhorn"></i> Note</span> 
-        GET actions are limited to only 20 items by default, 
+        <span class="label labe-warning"><i class="icon-bullhorn"></i> Note</span>
+        GET actions are limited to only 20 items by default,
         you can use <em>limit</em> and <em>offset</em> to tune the number of results.
         For further information read the <a href="http://docs.pybossa.com/en/latest/api.html">documentation</a>.
         </p>
@@ -42,15 +42,15 @@
         <hr>
         <h2>Tasks API end point</h2>
         <p>
-        You can <strong>get a list of available tasks</strong> from the server 
+        You can <strong>get a list of available tasks</strong> from the server
         opening the following URL:
         </p>
         <ul>
             <li><a href="{{url_for('api.api_task')}}">{{url_for('api.api_task', _external=True)}}</a></li>
         </ul>
         <p>
-        <span class="label labe-warning"><i class="icon-bullhorn"></i> Note</span> 
-        GET actions are limited to only 20 items by default, 
+        <span class="label labe-warning"><i class="icon-bullhorn"></i> Note</span>
+        GET actions are limited to only 20 items by default,
         you can use <em>limit</em> and <em>offset</em> to tune the number of results.
         For further information read the <a href="http://docs.pybossa.com/en/latest/api.html">documentation</a>.
         </p>
@@ -59,7 +59,7 @@
             <li><a href="{{url_for('api.api_task', app_id=app_id)}}">{{url_for('api.api_task', app_id=app_id, _external=True)}}</a></li>
         </ul>
         <p>
-        Or for example <strong>get a list of completed tasks for a given application</strong> (i.e it could return an empty list because there are no task completed yet):
+        Or for example <strong>get a list of completed tasks for a given application</strong> (i.e it could return an empty list because there are no tasks completed yet):
         </p>
         <ul>
             <li><a href="{{url_for('api.api_task', app_id=app_id, state='completed')}}">{{url_for('api.api_task', app_id=app_id,  state='completed', _external=True)}}</a></li>
@@ -70,15 +70,15 @@
         <hr>
         <h2>Task Runs API end point</h2>
         <p>
-        You can <strong>get a list of available task runs</strong> from the server 
+        You can <strong>get a list of available task runs</strong> from the server
         opening the following URL:
         </p>
         <ul>
             <li><a href="{{url_for('api.api_taskrun')}}">{{url_for('api.api_taskrun', _external=True)}}</a></li>
         </ul>
         <p>
-        <span class="label labe-warning"><i class="icon-bullhorn"></i> Note</span> 
-        GET actions are limited to only 20 items by default, 
+        <span class="label labe-warning"><i class="icon-bullhorn"></i> Note</span>
+        GET actions are limited to only 20 items by default,
         you can use <em>limit</em> and <em>offset</em> to tune the number of results.
         For further information read the <a href="http://docs.pybossa.com/en/latest/api.html">documentation</a>.
         </p>
