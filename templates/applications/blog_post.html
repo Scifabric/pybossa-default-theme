@@ -10,7 +10,7 @@
         <hr>
             <article>
                 <header>{{ blogpost.title }}</header>
-                <body>{{ blogpost.body }}</body>
+                <body>{{ blogpost.body | e | markdown }}</body>
             </article>
         <hr>
         {% if current_user.is_authenticated() and current_user.id == app.owner_id or current_user.admin %}
