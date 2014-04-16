@@ -1,0 +1,32 @@
+{% extends "/base.html" %}
+{% set active_page = "applications" %}
+{% set active_app  = "all" %}
+{% import "applications/_helpers.html" as helper %}
+
+{% block content %}
+{% from "_formhelpers.html" import render_field %}
+<div id="app-form" class="row"> 
+    <div class="span3">
+        {{ helper.render_app_local_nav(app, 'blog', current_user) }}
+    </div>
+    <div class="span9">
+        {{ helper.render_app_title(app) }}
+        <h2>{{ _('Edit the blog post') }}</h2>
+        <form class="form-horizontal" method="post" action="{{ url_for('app.update_blogpost',
+                                                        short_name=app.short_name,
+                                                        id=blogpost.id) }}">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                {{ render_field(form.title, class_="span4", placeholder= _('The title of your post')) }}
+                {{ render_field(form.body, class_="span4", placeholder= _('Write your post here. You can use Markdown!')) }}
+                <div class="form-actions">
+                    <input type="submit" value={{_('Update')}} class="btn btn-primary" />
+                    <a href="{{url_for('app.settings', short_name=app.short_name)}}" class="btn">{{_('Cancel')}}</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{{ helper.broken_image() }}
+{{ helper.knob() }}
+{% endblock %}

@@ -18,13 +18,14 @@
             <a class="btn" href="{{ url_for('app.update', short_name = app.short_name) }}"><i class="icon-edit icon-white"></i> {{ _('Edit the application details') }}</a>
             <a class="btn" href="{{ url_for('app.task_settings', short_name = app.short_name) }}"><i class="icon-wrench icon-white"></i> {{ _('Task Settings') }}</a>
             <a class="btn" href="{{ url_for('app.delete', short_name = app.short_name) }}"><i class="icon-trash icon-white"></i> {{ _('Delete the application') }}</a>
+            <a class="btn" href="{{ url_for('app.new_blogpost', short_name = app.short_name) }}"><i class="icon-pencil icon-white"></i> {{ _('Write a blog post') }}</a>
         </div>
     </div>
     {% else %}
     <div class="page-header">
         <h1>{{ _('Sorry! This app does not exists.') }}</h1>
     </div>
-{% endif %}
+    {% endif %}
 </div>
 {{ helper.broken_image() }}
 {% endblock %}
