@@ -12,7 +12,7 @@
         {% else %}
         <section id="user-data">
             <h1><strong>{{user.fullname}}</strong></h1>
-            {{ helper.render_user_profile(user, settings=False, private=False) }}
+            {{ helper.render_user_profile(user, upload_method, settings=False, private=False) }}
         </section>
         {% if apps_created %}
         <section id="created-apps" style="margin-top:10px;">
