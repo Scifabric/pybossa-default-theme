@@ -9,8 +9,19 @@
     <div class="span9" style="min-height:400px">
         <hr>
             <article>
-                <header>{{ blogpost.title }}</header>
-                <body>{{ blogpost.body | e | markdown }}</body>
+                <header>
+                    <h2>{{ blogpost.title }}</h2>
+                    <p>
+                        {{ _('Author: ') }} {{ blogpost.owner.name }}
+                        </br>
+                        {{ _('Written: ') }} {{ blogpost.created[0:10] }}
+                    </p>
+                </header>
+                <hr>
+                <hr>
+                <body>
+                    <p>{{ blogpost.body | e | markdown }}</p>
+                </body>
             </article>
         <hr>
         {% if current_user.is_authenticated() and current_user.id == app.owner_id or current_user.admin %}
