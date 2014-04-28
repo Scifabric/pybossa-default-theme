@@ -17,10 +17,14 @@
         <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile') }}" enctype="multipart/form-data">
             <fieldset>
                 <div class="span2 img-polaroid">
-                {% if upload_method == 'rackspace' %}
-                    <img src="{{url_for('rackspace', filename=current_user.info.avatar, container=current_user.info.container)}}">
+                {% if current_user.info.avatar %}
+                    {% if upload_method == 'rackspace' %}
+                        <img src="{{url_for('rackspace', filename=current_user.info.avatar, container=current_user.info.container)}}">
+                    {% else %}
+                        <img src="{{url_for('uploads.uploaded_file', filename=(current_user.info.container + '/' + current_user.info.avatar))}}">
+                    {% endif %}
                 {% else %}
-                    <img src="{{url_for('uploads.uploaded_file', filename=(current_user.info.container + '/' + current_user.info.avatar))}}">
+                    <img class="img-polaroid" src="{{ url_for('static', filename='img/placeholder.png')}}">
                 {% endif %}
                 </div>
             {{ render_field(upload_form.avatar, onchange="previewImage()") }}
