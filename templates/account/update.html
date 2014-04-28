@@ -18,9 +18,9 @@
             <fieldset>
                 <div class="span2 img-polaroid">
                 {% if upload_method == 'rackspace' %}
-                    <img src="{{url_for('rackspace', filename=(current_user.info.container + '/' + current_user.info.avatar))}}">
+                    <img src="{{url_for('rackspace', filename=current_user.info.avatar, container=current_user.info.container)}}">
                 {% else %}
-                    <img src="{{url_for('uploads.uploaded_file', filename=current_user.info.avatar)}}">
+                    <img src="{{url_for('uploads.uploaded_file', filename=(current_user.info.container + '/' + current_user.info.avatar))}}">
                 {% endif %}
                 </div>
             {{ render_field(upload_form.avatar, onchange="previewImage()") }}
