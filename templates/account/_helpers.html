@@ -33,7 +33,7 @@
 {% macro render_user_profile(user, upload_method, settings, private=True) %}
 <div class="row-fluid">
     <div class="span3">
-        {% if current_user.info.avatar %}
+        {% if user.info.avatar %}
             {% if upload_method == 'rackspace'%}
             <img class="img-polaroid" src="{{ url_for('rackspace', filename=user.info.avatar, container=user.info.container)}}">
             {% else %}
