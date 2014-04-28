@@ -24,7 +24,7 @@
                         <img src="{{url_for('uploads.uploaded_file', filename=(current_user.info.container + '/' + current_user.info.avatar))}}">
                     {% endif %}
                 {% else %}
-                    <img class="img-polaroid" src="{{ url_for('static', filename='img/placeholder.png')}}">
+                    <img src="{{ url_for('static', filename='img/placeholder.png')}}">
                 {% endif %}
                 </div>
             {{ render_field(upload_form.avatar, onchange="previewImage()") }}
