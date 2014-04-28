@@ -36,7 +36,7 @@
         {% if upload_method == 'rackspace' %}
         <img class="img-polaroid" src="{{ url_for('rackspace', filename=user.info.avatar, container=user.info.container)}}">
         {% else %}
-        <img class="img-polaroid" src="{{ url_for('uploads.uploaded_file', filename=user.info.avatar)}}">
+        <img class="img-polaroid" src="{{ url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}">
         {% endif %}
         
     </div>
