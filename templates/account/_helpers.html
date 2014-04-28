@@ -40,7 +40,7 @@
             <img class="img-polaroid" src="{{ url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}">
             {% endif %}
         {% else %}
-            <img class="img-polaroid" src="{{ url_for('static', filename='/img/placeholder.png')}}">
+            <img class="img-polaroid" src="{{ url_for('static', filename='img/placeholder.png')}}">
         {% endif %}
     </div>
     <div class="span9">
