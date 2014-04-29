@@ -32,7 +32,7 @@
             {{ upload_form.y1 }}
             {{ upload_form.x2 }}
             {{ upload_form.y2 }}
-            <img id="uploadPreview" width="100%">
+            <img id="uploadPreview">
             <div class="form-actions">
               <input type="submit" name='btn' value="{{ _('Upload') }}" class="btn btn-primary btn-large" />
             </div>
@@ -52,7 +52,6 @@
             {{ render_field(form.ckan_api) }}
             <div>
                 <img src="{{ current_user.email_addr | gravatar(size=25)}}">
-                <!--<img id="target" src="{{url_for('uploads.uploaded_file', filename=current_user.info.avatar)}}">-->
                 <a href="http://www.gravatar.com">{{ _('Change your avatar at Gravatar.com') }}</a>. {{ _('We are using') }} {{current_user.email_addr}}
                 <hr>
                 <span class="label label-warning"><i class="icon icon-white icon-star"></i> {{ _('Note') }}</span> {{ _('If you change your') }} <strong>{{ _('user name') }}</strong> {{ _('you will be asked to sign in again.') }}
@@ -96,7 +95,9 @@
                                     0, 
                                     (width / 2), 
                                     (height/ 2)],
-                    aspectRatio: 1
+                    aspectRatio: 1,
+					boxWidth: 450
+
                 });
             });
 
@@ -105,10 +106,10 @@
     }
 
     function updateCoords(c){
-        $("#x1").val(c.x);
-        $("#y1").val(c.y);
-        $("#x2").val(c.x2);
-        $("#y2").val(c.y2);
+        $("#x1").val(Math.floor(c.x));
+        $("#y1").val(Math.floor(c.y));
+        $("#x2").val(Math.floor(c.x2));
+        $("#y2").val(Math.floor(c.y2));
     }
 
 </script>
