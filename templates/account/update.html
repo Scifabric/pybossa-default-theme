@@ -17,6 +17,7 @@
         <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile') }}" enctype="multipart/form-data">
             <fieldset>
                 <div class="span2 img-polaroid">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                 {% if current_user.info.avatar %}
                     {% if upload_method == 'rackspace' %}
                         <img src="{{url_for('rackspace', filename=current_user.info.avatar, container=current_user.info.container)}}">
