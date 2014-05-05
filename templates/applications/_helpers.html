@@ -262,3 +262,17 @@ function imgError(image) {
 <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.png')}}" style="{{style}}">
 {% endif %}
 {% endmacro %}
+
+{% macro render_url_thumbnail(app, upload_method) %}
+{% if app.info.container %}
+    {% if upload_method == 'rackspace'%}
+    {{ url_for('rackspace', filename=app.info.thumbnail, container=app.info.container)}}"
+    {% else %}
+    {{ url_for('uploads.uploaded_file', filename=(app.info.container + '/' + app.info.thumbnail))}}
+    {% endif %}
+{% elif app.info.thumbnail %}
+    {{app.info.thumbnail}}"
+{% else %}
+{{url_for('static', filename='img/placeholder.png')}}"
+{% endif %}
+{% endmacro %}
