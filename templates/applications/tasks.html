@@ -10,7 +10,7 @@
                 {{ helper.render_app_local_nav(app, 'tasks', current_user) }}
             </div>
             <div class="span9">
-                {{ helper.render_app_title(app, subtitle=_('Tasks'))}}
+                {{ helper.render_app_title(app, upload_method, subtitle=_('Tasks'))}}
                 <hr>
                 {{ helper.render_overall_progress(app, n_tasks, overall_progress, show_contribute_btn=False, show_n_tasks=True) }}
                 <hr>
