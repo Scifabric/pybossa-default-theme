@@ -44,14 +44,10 @@
 </ul>
 {% endmacro %}
 
-{% macro render_app_summary(app, n_tasks, overall_progress, last_activity, current_user) -%}
+{% macro render_app_summary(app, n_tasks, overall_progress, last_activity, current_user, upload_method) -%}
 <div class="row-fluid">
     <div class="span2">
-        {% if app.info.thumbnail %}
-        <img class="img-polaroid" src="{{app.info.thumbnail}}" onerror="imgError(this);"/>
-        {% else %}
-        <img class="img-polaroid" src="{{url_for('static', filename='img/placeholder.png')}}"/>
-        {% endif %}
+        {{ render_app_thumbnail(app, upload_method, 'img-polaroid') }}
     </div>
     <div class="span8">
       <ul style="list-style-type: none; font-size: 16px;">
@@ -190,13 +186,9 @@ function imgError(image) {
 </script>
 {% endmacro %}
 
-{% macro render_app_title(app, subtitle=None) %}
+{% macro render_app_title(app, upload_method, subtitle=None) %}
 <h1>
-    {% if app.info.thumbnail %}
-    <img class="img-polaroid" src="{{app.info.thumbnail}}" style="max-width:60px;" onerror="imgError(this);">
-    {% else %}
-    <img class="img-polaroid" src="{{url_for('static', filename='img/placeholder.png')}}" style="max-width:60px;" onerror="imgError(this);">
-    {% endif %}
+    {{ render_app_thumbnail(app, upload_method, "img-polaroid", style="max-width:60px") }}
     {% if subtitle %}
     <strong>{{ app.name }}</strong>: {{subtitle}}</h1>
     {% else %}
@@ -255,4 +247,18 @@ function imgError(image) {
         </div>
     </div>
 </div>
+{% endmacro %}
+
+{% macro render_app_thumbnail(app, upload_method, class, style) %}
+{% if app.info.container %}
+    {% if upload_method == 'rackspace'%}
+    <img class="{{class}}" width="{{width}}" src="{{ url_for('rackspace', filename=app.info.thumbnail, container=app.info.container)}}" style="{{style}}">
+    {% else %}
+    <img class="{{class}}" width="{{width}}" src="{{ url_for('uploads.uploaded_file', filename=(app.info.container + '/' + app.info.thumbnail))}}" style="{{style}}">
+    {% endif %}
+{% elif app.info.thumbnail %}
+    <img class="{{class}}" width="{{width}}" src="{{app.info.thumbnail}}" style="{{style}}">
+{% else %}
+<img class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.png')}}" style="{{style}}">
+{% endif %}
 {% endmacro %}

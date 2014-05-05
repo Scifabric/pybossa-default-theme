@@ -15,7 +15,6 @@
         <h1><strong>{{ _('Application') }}</strong>: {{ _('Create a new application') }}</h1>
         <form class="form-horizontal" method="post" action="{{ url_for('app.new')}}" enctype="multipart/form-data"}}>
         {{ form.hidden_tag() }}
-        {{ form.id }}
         <fieldset>
             {{ render_field(form.name, class_="span4", placeholder= _('The name of the application')) }}
             {{ render_field(form.short_name, class_="span4", placeholder=_('Short name or slug for the application')) }}
