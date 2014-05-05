@@ -11,17 +11,26 @@
     </div>
     <div class="span9">
         <h1><strong>{{ _('Application') }}</strong>: {{ _('Create a new application') }}</h1>
-    <form class="form-horizontal" method="post" action="{{ url_for('app.new') }}">
+    <form class="form-horizontal" method="post" action="{{ url_for('app.new') enctype="multipart/form-data"}}">
         {{ form.hidden_tag() }}
         <fieldset>
             {{ render_field(form.name, class_="span4", placeholder= _('The name of the application')) }}
             {{ render_field(form.short_name, class_="span4", placeholder=_('Short name or slug for the application')) }}
             {{ render_field(form.description, class_="span4", placeholder=_('Give some details about the application')) }}
-            {{ render_field(form.thumbnail, class_="span4", placeholder=_('Paste the direct link to your app icon')) }}
             {{ render_field(form.allow_anonymous_contributors, class_="span4") }}
             {{ render_field(form.category_id, class_="span4") }}
             {{ render_field(form.long_description, class_="span4", placeholder=_('Explain the application (you can use Markdown!)')) }}
             {{ render_field(form.hidden, tooltip=_('Do you want to hide your app?')) }}
+
+            {{ render_field(form.thumbnail, class_="span4", placeholder=_('Paste the direct link to your app icon')) }}
+
+            <img id="uploadPreview" src="{{ url_for('static', filename='img/placeholder.png')}}">
+            {{ render_field(form.avatar, onchange="previewImage()") }}
+            {{ form.x1 }}
+            {{ form.y1 }}
+            {{ form.x2 }}
+            {{ form.y2 }}
+
             <div class="form-actions">
                 <input type="submit" value={{_('Create the application')}} class="btn btn-primary" />
                 <a href="{{url_for('account.profile')}}" class="btn">{{_('Cancel')}}</a>
@@ -34,4 +43,54 @@
     $("span[rel='tooltip']").tooltip();
     $("i[rel='tooltip']").tooltip();
 </script>
+<script language="Javascript">
+
+    // Preview image before uploading
+    function previewImage(){
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("avatar").files[0]);
+        
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+            var img = document.getElementById('uploadPreview'); 
+            //or however you get a handle to the IMG
+            var width = img.clientWidth;
+            var height = img.clientHeight;
+            if (width > height) {
+                width = height - 100;
+            }
+            else {
+                height = width - 100;
+            }
+
+            jQuery(function($) {
+                $('#uploadPreview').Jcrop({
+                    onSelect:    updateCoords,
+                    onChange:    updateCoords,
+                    bgColor:     'black',
+                    bgOpacity:   .4,
+                    minSize: [100, 100],
+                    setSelect:   [  0, 
+                                    0, 
+                                    (width / 2), 
+                                    (height/ 2)],
+                    aspectRatio: 1,
+                    boxWidth: 450
+
+                });
+            });
+
+
+        };
+    }
+
+    function updateCoords(c){
+        $("#x1").val(Math.floor(c.x));
+        $("#y1").val(Math.floor(c.y));
+        $("#x2").val(Math.floor(c.x2));
+        $("#y2").val(Math.floor(c.y2));
+    }
+
+</script>
+
 {% endblock %}
