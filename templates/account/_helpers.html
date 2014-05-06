@@ -1,6 +1,6 @@
 {% macro render_account_local_nav(current_user, active_link) -%}
 <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
-    <li {% if active_link=="profile"%}class="active"{% endif %}><a href="{{url_for('account.new_profile', name=current_user.name)}}"><i class="icon-chevron-right"></i> {{ _('My Profile') }}</a></li>
+    <li {% if active_link=="profile"%}class="active"{% endif %}><a href="{{url_for('account.profile', name=current_user.name)}}"><i class="icon-chevron-right"></i> {{ _('My Profile') }}</a></li>
     <li {% if active_link=="applications"%}class="active"{% endif %}><a href="{{url_for('account.applications', name=current_user.name)}}"><i class="icon-chevron-right"></i> {{ _('My Applications') }}</a></li>
     {% if current_user.admin %}
     <li {% if active_link=="admin"%}class="active"{% endif %}><a href="{{url_for('admin.index')}}"><i class="icon-chevron-right"></i> {{ _('Admin Site') }}</a></li>
