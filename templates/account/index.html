@@ -15,7 +15,7 @@
       <ul class="thumbnails">
       {% for account in accounts %}
       <li> 
-      <a href="{{url_for('account.public_profile', name=account.name)}}" class="thumbnail" rel='popover' title="<strong>{{account['fullname']}}</strong>" data-content="
+      <a href="{{url_for('account.profile', name=account.name)}}" class="thumbnail" rel='popover' title="<strong>{{account['fullname']}}</strong>" data-content="
               <ul style='list-style-type:none; margin-left:0px;'>
                 <li><strong><i class='icon-calendar'></i> Joined</strong> {{account['created'][0:10]}}</li>
                 <li><strong><i class='icon-tasks'></i> Contributed Tasks</strong> {{ account.task_runs }}</li>

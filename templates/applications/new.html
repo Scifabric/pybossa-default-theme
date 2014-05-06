@@ -35,7 +35,7 @@
 
             <div class="form-actions">
                 <input type="submit" value={{_('Create the application')}} class="btn btn-primary" />
-                <a href="{{url_for('account.profile')}}" class="btn">{{_('Cancel')}}</a>
+                <a href="{{url_for('account.profile', name=current_user.name)}}" class="btn">{{_('Cancel')}}</a>
             </div>
         </fieldset>
     </form>

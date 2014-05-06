@@ -1,11 +1,11 @@
 {% macro render_account_local_nav(current_user, active_link) -%}
 <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
-    <li {% if active_link=="profile"%}class="active"{% endif %}><a href="{{url_for('account.profile')}}"><i class="icon-chevron-right"></i> {{ _('My Profile') }}</a></li>
-    <li {% if active_link=="applications"%}class="active"{% endif %}><a href="{{url_for('account.applications')}}"><i class="icon-chevron-right"></i> {{ _('My Applications') }}</a></li>
+    <li {% if active_link=="profile"%}class="active"{% endif %}><a href="{{url_for('account.profile', name=current_user.name)}}"><i class="icon-chevron-right"></i> {{ _('My Profile') }}</a></li>
+    <li {% if active_link=="applications"%}class="active"{% endif %}><a href="{{url_for('account.applications', name=current_user.name)}}"><i class="icon-chevron-right"></i> {{ _('My Applications') }}</a></li>
     {% if current_user.admin %}
     <li {% if active_link=="admin"%}class="active"{% endif %}><a href="{{url_for('admin.index')}}"><i class="icon-chevron-right"></i> {{ _('Admin Site') }}</a></li>
     {% endif %}
-    <li {% if active_link=="settings"%}class="active"{% endif %}><a href="{{url_for('account.settings')}}"><i class="icon-chevron-right"></i> {{ _('My Settings') }}</a></li>
+    <li {% if active_link=="settings"%}class="active"{% endif %}><a href="{{url_for('account.settings', name=current_user.name)}}"><i class="icon-chevron-right"></i> {{ _('My Settings') }}</a></li>
 </ul>
 {% endmacro %}
 
@@ -71,8 +71,7 @@
         <h2><i class="icon-key"></i> {{ _('API key') }}: <small>{{ user.api_key }}</small></h2>
         {% endif %}
         {% if private and not settings%}
-        <a href="{{ url_for('account.public_profile', name=user.name) }}" class="btn btn-inverse"><i class="icon icon-globe"></i> {{ _('See your public profile') }}</a>
-        <a href="{{ url_for('account.settings') }}" class="btn btn-primary"><i class="icon icon-user"></i> {{ _('Edit your profile') }}</a>
+        <a href="{{ url_for('account.settings', name=user.name) }}" class="btn btn-primary"><i class="icon icon-user"></i> {{ _('Edit your profile') }}</a>
         {% endif %}
     </div>
 </div>
