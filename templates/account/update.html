@@ -14,7 +14,7 @@
     </div>
     <div class="span9">
         <h1><strong>{{current_user.fullname}}</strong>: {{ _('Update your profile') }}</h1>
-        <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile') }}" enctype="multipart/form-data">
+        <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile', name=current_user.name) }}" enctype="multipart/form-data">
             <fieldset>
                 <div class="span2 img-polaroid">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
@@ -39,7 +39,7 @@
             </div>
             </fieldset>
         </form>
-        <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile') }}">
+        <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile', name=current_user.name) }}">
             <fieldset>
             {{ form.id }}
             {{ form.hidden_tag() }}
@@ -59,7 +59,7 @@
             </div>
             <div class="form-actions">
               <input type="submit" name='btn' value="{{ _('Save the changes') }}" class="btn btn-primary btn-large" />
-              <a href="{{ url_for('account.settings') }}" class="btn">{{ _('Cancel') }}</a>
+              <a href="{{ url_for('account.settings', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
             </div>
             </fieldset>
         </form>
