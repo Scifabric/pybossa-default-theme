@@ -20,7 +20,12 @@
             {{ render_field(form.thumbnail, class_="span4", placeholder=_('Paste the direct link to your app icon')) }}
             {{ render_field(form.allow_anonymous_contributors, class_="span4") }}
             {{ render_field(form.category_id, class_="span4") }}
-            {{ render_field(form.long_description, class_="span4", placeholder=_('Explain the application (you can use Markdown!)')) }}
+            {{ render_field(form.long_description, class_="span4", placeholder=_('Explain your application
+                · Why? Why you are creating this project, what you want to achieve with it
+                · How? How does your project work
+                · How you can help: Explain to the volunteers how they can help and contribute to the goal of your project
+                · Will you help make a difference? Explain to the volunteers why their contribution is essential and how the result of your project can help change things!
+            (you can use Markdown to give format to your description!)')) }}
             {{ render_field(form.hidden, tooltip=_('Do you want to hide your app?')) }}
             <div class="form-actions">
                 <input type="submit" value={{_('Create the application')}} class="btn btn-primary" />
