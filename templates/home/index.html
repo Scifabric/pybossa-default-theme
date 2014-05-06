@@ -73,7 +73,7 @@
         <ul class="users">
             {% for user in top_users %}
           <li>
-          <a href="{{url_for('account.public_profile', name=user.name)}}" data-content="
+          <a href="{{url_for('account.new_profile', name=user.name)}}" data-content="
                 <strong>{{_('Joined')}}:</strong> {{user.created[0:10]}} 
                 <br/>
                 <strong>{{_('Submitted Tasks')}}:</strong> {{user.task_runs}}
