@@ -4,12 +4,33 @@
 
 {% block content %}
 {% from "_formhelpers.html" import render_field %}
+<script src="{{url_for('static', filename='js/vendor/jquery.Jcrop.min.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='css/jquery.Jcrop.min.css')}}" type="text/css" />
 <div class="row">
     <div class="span3">
         {{ helper.render_app_local_nav(app, 'settings', current_user) }}
     </div>
   <div class="span9">
       <legend><strong>{{app.name}}</strong>: Update the application</legend>
+      <!-- Update form for application thumbnail -->
+      <form method="post" class="form-horizontal" action="{{ url_for('app.update', short_name=app.short_name) }}" enctype="multipart/form-data">
+          <fieldset>
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+              <div>
+              {{ helper.render_app_thumbnail(app, upload_method, id="uploadPreview") }}
+              </div>
+              {{ render_field(upload_form.avatar, onchange="previewImage()") }}
+              {{ upload_form.x1 }}
+              {{ upload_form.y1 }}
+              {{ upload_form.x2 }}
+              {{ upload_form.y2 }}
+          <div class="form-actions">
+            <input type="submit" name='btn' value="{{ _('Upload') }}" class="btn btn-primary btn-large" />
+          </div>
+          </fieldset>
+      </form>
+
+      <!-- Update form for application data-->
     <form class="form-horizontal" method="post" action="{{ url_for('app.update', short_name = app.short_name) }}">
       <fieldset>
         {{form.id}}
@@ -17,11 +38,11 @@
         {{ render_field(form.name, class_="input-xlarge", placeholder="The name of the application") }}
         {{ render_field(form.short_name, class_="input-xlarge", placeholder="Short name or slug for the application") }}
         {{ render_field(form.description, class_="input-xlarge", placeholder="Give some details about the application") }}
-        {{ render_field(form.thumbnail, class_="input-xlarge", placeholder="Paste the direct link to your app icon") }}
         {{ render_field(form.allow_anonymous_contributors) }}
         {{ render_field(form.category_id) }}
         {{ render_field(form.long_description, class_="input-xlarge", placeholder="Explain the application (use Markdown!)") }}
         {{ render_field(form.hidden, tooltip="Do you want to hide your app?") }}
+
         <div class="form-actions">
           <input type="submit" value="Save the changes" class="btn btn-primary" />
           <a href="{{url_for('app.settings', short_name=app.short_name)}}" class="btn">Cancel</a>
@@ -32,5 +53,54 @@
 </div>
 <script>
     $("i[rel='tooltip']").tooltip();
+</script>
+<script language="Javascript">
+
+    // Preview image before uploading
+    function previewImage(){
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("avatar").files[0]);
+        
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+            var img = document.getElementById('uploadPreview'); 
+            //or however you get a handle to the IMG
+            var width = img.clientWidth;
+            var height = img.clientHeight;
+            if (width > height) {
+                width = height - 100;
+            }
+            else {
+                height = width - 100;
+            }
+
+            jQuery(function($) {
+                $('#uploadPreview').Jcrop({
+                    onSelect:    updateCoords,
+                    onChange:    updateCoords,
+                    bgColor:     'black',
+                    bgOpacity:   .4,
+                    minSize: [100, 100],
+                    setSelect:   [  0, 
+                                    0, 
+                                    (width / 2), 
+                                    (height/ 2)],
+                    aspectRatio: 1,
+                    boxWidth: 450
+
+                });
+            });
+
+
+        };
+    }
+
+    function updateCoords(c){
+        $("#x1").val(Math.floor(c.x));
+        $("#y1").val(Math.floor(c.y));
+        $("#x2").val(Math.floor(c.x2));
+        $("#y2").val(Math.floor(c.y2));
+    }
+
 </script>
 {% endblock %}
