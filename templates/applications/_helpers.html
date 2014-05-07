@@ -127,7 +127,7 @@
     <h2><a href="{{ url_for('app.details', short_name = data.app.short_name) }}">{{ data.app.name }}</a></h2>
     <div class="row-fluid">
         <div class="span3">
-            {{ render_app_thumbnail(data.app, upload_method) }}
+            {{ render_app_thumbnail(data.app, upload_method, class='thumbnail', style='max-width:100px; max-height:100px;') }}
         </div> <!-- End of span3 -->
         <div id="data" class="span9">
             <p style="margin:0"><strong><i class="icon-info-sign"></i> {{ _('Description') }}</strong>: {{ data.app.description }}</p>
