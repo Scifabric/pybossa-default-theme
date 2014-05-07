@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "applications/_helpers.html" as helper %}
 
 {% block content %}
       <div class="banner">
@@ -11,11 +12,7 @@
             <ul class="featured">
                 {% for f in featured %}
                 <li><a href={{ url_for('app.details', short_name=f.short_name)}}>
-                    {% if f.info.thumbnail %}
-                    <img src="{{f.info.thumbnail}}">
-                    {% else %}
-                    <img src="{{url_for('static', filename="img/placeholder.dark.png")}}">
-                    {% endif %}
+                    {{ helper.render_app_thumbnail(f, upload_method) }}
                     <h3>{{f.name}}</h3>
                     <span class="label label-info">{{ _('Info') }}</span>
                     </a>
@@ -47,7 +44,7 @@
           <div class="span3">
             <div class="app box">
                 {% if app.info.thumbnail %}
-                <a href="{{url_for('app.details', short_name=app.short_name)}}" class="image" style="background-image:url({{app.info.thumbnail}})"></a>
+                <a href="{{url_for('app.details', short_name=app.short_name)}}" class="image" style="background-image:url({{helper.render_url_thumbnail(app, upload_method)}})"></a>
                 {% else %}
                 <a href="{{url_for('app.details', short_name=app.short_name)}}" class="image" style="background-image:url({{url_for('static',filename='placeholder.png')}})"></a>
                 {% endif %}
@@ -76,7 +73,7 @@
         <ul class="users">
             {% for user in top_users %}
           <li>
-          <a href="{{url_for('account.public_profile', name=user.name)}}" data-content="
+          <a href="{{url_for('account.profile', name=user.name)}}" data-content="
                 <strong>{{_('Joined')}}:</strong> {{user.created[0:10]}} 
                 <br/>
                 <strong>{{_('Submitted Tasks')}}:</strong> {{user.task_runs}}

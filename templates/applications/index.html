@@ -46,7 +46,7 @@
 
             <div class="projects">
             {% for app in apps %}
-            {{ helper.show_app(app, category, current_user) }}
+            {{ helper.show_app(app, category, current_user, upload_method) }}
             {% endfor %}
             </div>
             {% if pagination.pages > 1 %}

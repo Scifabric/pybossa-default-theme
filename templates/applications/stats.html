@@ -29,13 +29,7 @@
         {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
         {{ privacy.render_lock_page() }}
         {% else %}
-        <h1>
-        {% if app.info.thumbnail %}
-            <img class="img-polaroid" src="{{app.info.thumbnail}}" style="max-width:60px;" onerror="imgError(this);"> 
-        {% else %}
-            <img class="img-polaroid" src="{{url_for('static', filename='img/placeholder.png')}}" style="max-width:60px;" onerror="imgError(this);"> 
-        {% endif %}
-        <strong>{{ app.name }}</strong>: {{_('Statistics')}}</h1>
+        {{ helper.render_app_title(app, upload_method, subtitle='Statistics')}}
         <br/>
 
             {% if private %}
@@ -376,7 +370,7 @@
                             {% for u in userStats.authenticated.top5 %}
                                 <tr>
                                     <th>{{loop.index}}</th>
-                                    <th><a href="{{url_for('account.public_profile', name=u.name)}}">{{u.fullname}}</a></th>
+                                    <th><a href="{{url_for('account.profile', name=u.name)}}">{{u.fullname}}</a></th>
                                     <th>{{u.tasks}}</th>
                                 </tr>
                             {% endfor %}

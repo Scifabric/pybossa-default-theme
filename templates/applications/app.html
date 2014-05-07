@@ -11,7 +11,7 @@
     </div>
     <!-- Application -->
     <div class="span9" style="min-height:400px">
-        {{ helper.render_app_title(app) }}
+        {{ helper.render_app_title(app, upload_method) }}
         <hr>
         {{ helper.render_overall_progress(app, n_tasks, overall_progress) }}
         {% if app.long_description %}
