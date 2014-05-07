@@ -216,11 +216,7 @@ function imgError(image) {
               <ul class="featured">
                   {% for app in apps %}
                   <li><a href={{ url_for('app.details', short_name=app.short_name)}}>
-                      {% if app.info.thumbnail %}
-                      <img src="{{app.info.thumbnail}}" style="min-height:100px; min-width:100px;">
-                      {% else %}
-                      <img src="{{url_for('static', filename="img/placeholder.dark.png")}}">
-                      {% endif %}
+                      {{ render_app_thumbnail(app, upload_method, style="min-height:100px; min-width:100px;")}}
                       <h3>{{app.name}}</h3>
                       <span class="label label-info">{{ _('Info') }}</span>
                       </a>
