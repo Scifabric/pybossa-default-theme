@@ -122,16 +122,12 @@
 {% endmacro %}
 
 
-{% macro show_app(data, category, current_user) -%}
+{% macro show_app(data, category, current_user, upload_method) -%}
 <div class="project-item row-fluid {{class}} well">
     <h2><a href="{{ url_for('app.details', short_name = data.app.short_name) }}">{{ data.app.name }}</a></h2>
     <div class="row-fluid">
         <div class="span3">
-            {% if data.app.info.thumbnail %}
-            <img class="thumbnail" src="{{ data.app.info.thumbnail }}" style="max-width:100px; max-height:100px" onerror="imgError(this);">
-            {% else %}
-            <img class="thumbnail" src="{{url_for('static', filename='img/placeholder.png')}}" style="max-width:100px;">
-            {% endif %}
+            {{ render_url_thumbail(app, upload_method) }}
         </div> <!-- End of span3 -->
         <div id="data" class="span9">
             <p style="margin:0"><strong><i class="icon-info-sign"></i> {{ _('Description') }}</strong>: {{ data.app.description }}</p>
