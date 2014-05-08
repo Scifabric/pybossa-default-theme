@@ -33,7 +33,7 @@
 {% macro render_user_profile(user, upload_method, settings, private=True) %}
 <div class="row-fluid">
     <div class="span3">
-        {{ render_user_thumbnail(user,upload_method) }}
+        {{ render_user_thumbnail(user, upload_method, class="img-polaroid") }}
     </div>
     <div class="span9">
         <h2><i class="icon-user"></i> {{ _('Nick')}}: <small>{{ user.name }}</small></h2>
@@ -69,15 +69,15 @@
 </div>
 {% endmacro %}
 
-{% macro render_user_thumbnail(user, upload_method) %}
+{% macro render_user_thumbnail(user, upload_method, id, class, style) %}
     {% if user.info.avatar %}
         {% if upload_method == 'rackspace'%}
-        <img class="img-polaroid" src="{{ url_for('rackspace', filename=user.info.avatar, container=user.info.container)}}">
+        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('rackspace', filename=user.info.avatar, container=user.info.container)}}">
         {% else %}
-        <img class="img-polaroid" src="{{ url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}">
+        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}">
         {% endif %}
     {% else %}
-        <img class="img-polaroid" src="{{ url_for('static', filename='img/placeholder.png')}}">
+        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('static', filename='img/placeholder.png')}}">
     {% endif %}
 {% endmacro %}
 
