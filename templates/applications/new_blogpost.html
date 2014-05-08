@@ -11,8 +11,9 @@
     </div>
     <div class="span9">
         {{ helper.render_app_title(app) }}
-        <h2>{{ _('Write a new blog post for ') }} {{ app.name }}</h2>
+        <h2>{{ _('Write a new blog post for ad') }} {{ app.name }}</h2>
     <form class="form-horizontal" method="post" action="{{ url_for('app.new_blogpost', short_name=app.short_name) }}">
+        {{ form.csrf_token }}
         {{ form.hidden_tag() }}
         <fieldset>
             {{ render_field(form.title, class_="span4", placeholder= _('The title of your post')) }}
