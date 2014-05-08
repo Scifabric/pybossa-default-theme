@@ -251,7 +251,7 @@ function imgError(image) {
 {% elif app.info.thumbnail %}
     <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{app.info.thumbnail}}" style="{{style}}">
 {% else %}
-<img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.png')}}" style="{{style}}">
+    <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.png')}}" style="{{style}}">
 {% endif %}
 {% endmacro %}
 
