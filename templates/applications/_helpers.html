@@ -206,7 +206,7 @@ function imgError(image) {
 </div>
 {% endmacro %}
 
-{% macro render_grid_apps(apps, title) %}
+{% macro render_grid_apps(apps, title, upload_method) %}
     <div class="banner">
         <div class="row-fluid">
             <div class="span4">
@@ -216,7 +216,7 @@ function imgError(image) {
               <ul class="featured">
                   {% for app in apps %}
                   <li><a href={{ url_for('app.details', short_name=app.short_name)}}>
-                      {{ render_app_thumbnail(app, upload_method, style="min-height:100px; min-width:100px;")}}
+                      {{ render_app_thumbnail(app, upload_method, class='img-polaroid', style="min-height:100px; min-width:100px;")}}
                       <h3>{{app.name}}</h3>
                       <span class="label label-info">{{ _('Info') }}</span>
                       </a>
@@ -251,7 +251,7 @@ function imgError(image) {
 {% elif app.info.thumbnail %}
     <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{app.info.thumbnail}}" style="{{style}}">
 {% else %}
-<img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.png')}}" style="{{style}}">
+    <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.png')}}" style="{{style}}">
 {% endif %}
 {% endmacro %}
 

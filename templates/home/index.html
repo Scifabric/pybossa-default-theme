@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% import "applications/_helpers.html" as helper %}
+{% import "account/_helpers.html" as account_helper %}
 
 {% block content %}
       <div class="banner">
@@ -78,7 +79,7 @@
                 <br/>
                 <strong>{{_('Submitted Tasks')}}:</strong> {{user.task_runs}}
                 " rel="popover" data-original-title="<strong>{{user.fullname}}</strong>">
-                <img src="{{user.email_addr|gravatar(size=90)}}">
+                {{ account_helper.render_user_thumbnail(user, upload_method, style="height:90px; width:90px;") }}
            </a>
            <span class="label label-success">{{user.task_runs}}</span> <small>{{_('Tasks')}}</small>
           </li>
