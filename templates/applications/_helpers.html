@@ -122,7 +122,7 @@
 {% endmacro %}
 
 
-{% macro show_app(data, category, current_user, upload_method) -%}
+{% macro show_app(data, category, current_user, upload_method) %}
 <div class="project-item row-fluid {{class}} well">
     <h2><a href="{{ url_for('app.details', short_name = data.app.short_name) }}">{{ data.app.name }}</a></h2>
     <div class="row-fluid">
@@ -137,7 +137,7 @@
             <span class="activity" style="display:none;">{{data.last_activity_raw}}</span>
             {% endif %}
             <p style="margin:0"><strong><i class="icon-cogs"></i> {{ _('Overall progress') }}</strong>: <span class="progress">{{ data.overall_progress | round | int }}</span>% completed</p>
-            {% if data.app.owner_id == current_user.id %}
+            {% if data.app.owner == current_user.fullname %}
             <p style="margin:0"><strong><i class="icon-user"></i> {{ _('Created by') }}</strong>: {{ _('Me') }}</p>
             {% else %}
             <p style="margin:0"><strong><i class="icon-user"></i> {{ _('Created by') }}</strong>: {{ data.app.owner }}</p>
