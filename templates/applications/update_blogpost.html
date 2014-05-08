@@ -17,7 +17,6 @@
                                                         id=blogpost.id) }}">
             {{ form.hidden_tag() }}
             <fieldset>
-                {{form.id}}
                 {{ render_field(form.title, class_="span4", placeholder= _('The title of your post')) }}
                 {{ render_field(form.body, class_="span4", placeholder= _('Write your post here. You can use Markdown!')) }}
                 <div class="form-actions">
