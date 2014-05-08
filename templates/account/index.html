@@ -30,7 +30,7 @@
                         {% endif %}
                       </ul>
                       ">
-                    <img src="{{account['email_addr'] | gravatar(size=90)}}">
+                    {{ helper.render_user_thumbnail(account, upload_method, style="height:90px; width:90px;") }}
             </a>
           </li>
           {% endfor %}
