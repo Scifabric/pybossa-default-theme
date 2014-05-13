@@ -24,10 +24,6 @@
 
             <img id="uploadPreview" src="{{ url_for('static', filename='img/placeholder.png')}}">
             {{ render_field(form.avatar, onchange="previewImage()") }}
-            {{ form.x1 }}
-            {{ form.y1 }}
-            {{ form.x2 }}
-            {{ form.y2 }}
 
             <div class="form-actions">
                 <input type="submit" value={{_('Create the application')}} class="btn btn-primary" />
