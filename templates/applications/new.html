@@ -5,8 +5,6 @@
 
 {% block content %}
 {% from "_formhelpers.html" import render_field %}
-<script src="{{url_for('static', filename='js/vendor/jquery.Jcrop.min.js')}}"></script>
-<link rel="stylesheet" href="{{url_for('static', filename='css/jquery.Jcrop.min.css')}}" type="text/css" />
 <div id="app-form" class="row"> 
     <div class="span3">
         {{ helper.render_account_local_nav(current_user, active_link) }}
