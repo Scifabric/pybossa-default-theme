@@ -21,10 +21,6 @@
             {{ render_field(form.description, class_="span4", placeholder=_('Give some details about the application')) }}
             {{ render_field(form.allow_anonymous_contributors, class_="span4") }}
             {{ render_field(form.category_id, class_="span4") }}
-            {{ render_field(form.long_description, class_="span4", placeholder=_('Explain the application (you can use Markdown!)')) }}
-            {{ render_field(form.hidden, tooltip=_('Do you want to hide your app?')) }}
-
-            {{ render_field(form.thumbnail, class_="span4", placeholder=_('Paste the direct link to your app icon')) }}
 
             <img id="uploadPreview" src="{{ url_for('static', filename='img/placeholder.png')}}">
             {{ render_field(form.avatar, onchange="previewImage()") }}
