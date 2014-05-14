@@ -54,7 +54,7 @@
                 </small>
         </h2>
         {% else %}
-        <h2><i class="icon-trophy"></i> {{ _('Rank') }}: <small>{{ _('The user has not contributed a task yet') }}</small></h2>
+        <h2><i class="icon-trophy"></i> {{ _('Rank') }}: <small>{{ _('The user has not contributed to any tasks yet') }}</small></h2>
         {% endif %}
         {% if not private %}
         <h2><i class="icon-time"></i> {{ _('Joined') }}: <small>{{ user.created[0:10]}}</small></h2>
