@@ -31,7 +31,16 @@
     $("i[rel='tooltip']").tooltip();
 </script>
 <script type="text/javascript">
-    
+    var name = $('#name');
+    var short_name = $('#short_name');
+
+    name.on('keyup', function(){
+        short_name.val(makeUrlFromName(name.val()));
+    });
+
+    function makeUrlFromName(name){
+        return name.toLowerCase().trim().replace(/(\W+)/g, "-");
+    }
 </script>
 
 {% endblock %}
