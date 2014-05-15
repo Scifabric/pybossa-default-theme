@@ -12,16 +12,16 @@
         {{ helper.render_account_local_nav(current_user, active_link) }}
     </div>
     <div class="span9">
-        <h1><strong>{{ _('Application') }}</strong>: {{ _('Create a new application') }}</h1>
+        <h1><strong>{{ _('Application') }}</strong>: {{ _('Create a new project') }}</h1>
         <form class="form-horizontal" method="post" action="{{ url_for('app.new')}}" enctype="multipart/form-data"}}>
         {{ form.hidden_tag() }}
         <fieldset>
-            {{ render_field(form.name, class_="span4", placeholder= _('The name of the application')) }}
-            {{ render_field(form.short_name, class_="span4", placeholder=_('Short name or slug for the application')) }}
-            {{ render_field(form.description, class_="span4", placeholder=_('Give some details about the application')) }}
+            {{ render_field(form.name, class_="span4", placeholder= _('The name of the project')) }}
+            {{ render_field(form.short_name, class_="span4", placeholder=_('Short name or slug for the project')) }}
+            {{ render_field(form.description, class_="span4", placeholder=_('Give some details about the project')) }}
             {{ render_field(form.allow_anonymous_contributors, class_="span4") }}
             {{ render_field(form.category_id, class_="span4") }}
-            {{ render_field(form.long_description, class_="span4", rows="13", placeholder=_('Explain your application                                                             
+            {{ render_field(form.long_description, class_="span4", rows="13", placeholder=_('Explain your project                                                             
                 · Why? Why you are creating this project, what you want to achieve with it                                                             
                 · How? Explain how your project works                                                             
                 · How you can help: Explain to the volunteers how they can help and contribute to the goal of your project                                                             
@@ -39,7 +39,7 @@
             {{ form.y2 }}
 
             <div class="form-actions">
-                <input type="submit" value={{_('Create the application')}} class="btn btn-primary" />
+                <input type="submit" value={{_('Create the project')}} class="btn btn-primary" />
                 <a href="{{url_for('account.profile', name=current_user.name)}}" class="btn">{{_('Cancel')}}</a>
             </div>
         </fieldset>

@@ -15,7 +15,7 @@
                 <form id="task_redundancy" class="form-horizontal" method="post" action="{{ url_for('app.task_n_answers', short_name=app.short_name) }}">
                     {{ form.hidden_tag() }}
                     <fieldset>
-                        {{ render_field(form.n_answers, class_="input-block-level", placeholder= _('The number of answers per tasks that you want for the application')) }}
+                        {{ render_field(form.n_answers, class_="input-block-level", placeholder= _('The number of answers per tasks that you want for the project')) }}
                         <div class="form-actions">
                             <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
                             <a href="{{url_for('app.tasks', short_name=app.short_name)}}" class="btn">{{_('Cancel')}}</a>
