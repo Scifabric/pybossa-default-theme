@@ -34,14 +34,13 @@
     <form class="form-horizontal" method="post" action="{{ url_for('app.update', short_name = app.short_name) }}">
       <fieldset>
         {{ form.hidden_tag() }}
-        {{ render_field(form.name, class_="input-xlarge", placeholder="The name of the application") }}
-        {{ render_field(form.short_name, class_="input-xlarge", placeholder="Short name or slug for the application") }}
-        {{ render_field(form.description, class_="input-xlarge", placeholder="Give some details about the application") }}
+        {{ render_field(form.name, class_="input-xlarge", placeholder=_('The name of the application')) }}
+        {{ render_field(form.short_name, class_="input-xlarge", placeholder=_('Short name or slug for the application'), label_text=_('Application slug:')) }}
+        {{ render_field(form.description, class_="input-xlarge", placeholder=_('Give some details about the application')) }}
         {{ render_field(form.allow_anonymous_contributors) }}
         {{ render_field(form.category_id) }}
-        {{ render_field(form.long_description, class_="input-xlarge", placeholder="Explain the application (use Markdown!)") }}
-        {{ render_field(form.hidden, tooltip="Do you want to hide your app?") }}
-
+        {{ render_field(form.long_description, class_="input-xlarge", placeholder=_('Explain the application (use Markdown!)')) }}
+        {{ render_field(form.hidden, tooltip=_('Do you want to hide your app?')) }}
         <div class="form-actions">
           <input type="submit" value="Save the changes" class="btn btn-primary" />
           <a href="{{url_for('app.settings', short_name=app.short_name)}}" class="btn">Cancel</a>

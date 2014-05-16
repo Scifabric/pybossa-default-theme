@@ -14,8 +14,8 @@
         <form class="form-horizontal" method="post" action="{{ url_for('app.new')}}" enctype="multipart/form-data"}}>
         {{ form.hidden_tag() }}
         <fieldset>
-            {{ render_field(form.name, class_="span4", placeholder= _('The name of the application')) }}
-            {{ render_field(form.short_name, class_="span4", placeholder=_('Short name or slug for the application')) }}
+            {{ render_field(form.name, class_="span4", placeholder=_('The name of the application')) }}
+            {{ render_field(form.short_name, class_="span4", placeholder=_('Short name or slug for the application'), label_text=_('Application slug:')) }}
             {{ render_field(form.long_description, class_="span4", placeholder=_('Explain the application (you can use Markdown!)')) }}
             {{ render_field(form.description, class_="span4", placeholder=_('Give some details about the application')) }}
             <div class="form-actions">
