@@ -3,10 +3,11 @@
     var short_name = document.getElementById('short_name');
 
     name.addEventListener('keyup', function(){
-        short_name.value = shortnameFromName(name.value);
+        short_name.value = makeSlugFromName(name.value);
     });
 
-    function shortnameFromName(name){
-        return name.toLowerCase().trim().replace(/(\W+)/g, "-");
+    function makeSlugFromName(name){
+        return name.toLowerCase().trim().replace(/([$#&\/|]+)/g, "").replace(/( )+/g, "-");
     }
+
 }());
