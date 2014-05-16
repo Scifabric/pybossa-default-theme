@@ -16,7 +16,12 @@
         <fieldset>
             {{ render_field(form.name, class_="span4", placeholder=_('The name of the application')) }}
             {{ render_field(form.short_name, class_="span4", placeholder=_('Short name or slug for the application'), label_text=_('Application slug:')) }}
-            {{ render_field(form.long_description, class_="span4", placeholder=_('Explain the application (you can use Markdown!)')) }}
+            {{ render_field(form.long_description, class_="span4", rows="13", placeholder=_('Explain your application                                                             
+                · Why? Why you are creating this project, what you want to achieve with it                                                             
+                · How? Explain how your project works                                                             
+                · How you can help: Explain to the volunteers how they can help and contribute to the goal of your project                                                             
+                · Will you help make a difference? Explain to the volunteers why their contribution is essential and how the result of your project can help change things!                                                             
+            (you can use Markdown to give format to your description!)')) }}
             {{ render_field(form.description, class_="span4", placeholder=_('Give some details about the application')) }}
             <div class="form-actions">
                 <input type="submit" value={{_('Create the application')}} class="btn btn-primary" />
