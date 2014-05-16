@@ -3,10 +3,10 @@
     var short_name = document.getElementById('short_name');
 
     name.addEventListener('keyup', function(){
-        short_name.value = makeUrlFromName(name.value);
+        short_name.value = shortnameFromName(name.value);
     });
 
-    function makeUrlFromName(name){
+    function shortnameFromName(name){
         return name.toLowerCase().trim().replace(/(\W+)/g, "-");
     }
 }());
