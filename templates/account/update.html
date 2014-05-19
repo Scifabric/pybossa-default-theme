@@ -55,6 +55,22 @@
             </div>
             </fieldset>
         </form>
+
+        <h2>{{ _('Change your Password') }}</h2>
+        <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile', name=current_user.name) }}">
+            <fieldset>
+                {{ password_form.id }}
+                {{ password_form.hidden_tag() }}
+                {{ render_field(password_form.current_password) }}
+                {{ render_field(password_form.new_password) }}
+                {{ render_field(password_form.confirm) }}
+                <div class="form-actions">
+                    <button type="submit" name="btn" value="Password" class="btn btn-primary btn-large">{{ _('Save the Changes')}}</button>
+                    <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
+                </div>
+            </fieldset>
+        </form>
+
         <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile', name=current_user.name) }}">
             <hr>
             <h2>External Services</h2>
@@ -112,7 +128,7 @@
                                     (width / 2), 
                                     (height/ 2)],
                     aspectRatio: 1,
-					boxWidth: 450
+                    boxWidth: 450
 
                 });
             });
