@@ -41,7 +41,7 @@
         </form>
         <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile', name=current_user.name) }}">
             <fieldset>
-                <h2>Your profile</h2>
+                <h2 {% if form.errors %}name="profile"{%endif%}>Your profile</h2>
             {{ form.id }}
             {{ form.hidden_tag() }}
             {{ render_field(form.fullname, placeholder= _('my full name') ) }}
@@ -56,7 +56,7 @@
             </fieldset>
         </form>
 
-        <h2>{{ _('Change your Password') }}</h2>
+        <h2 {% if password_form.errors %} name="password" {%endif%}>{{ _('Change your Password') }}</h2>
         <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile', name=current_user.name) }}">
             <fieldset>
                 {{ password_form.id }}
@@ -143,6 +143,22 @@
         $("#x2").val(Math.floor(c.x2));
         $("#y2").val(Math.floor(c.y2));
     }
+
+</script>
+<script>
+function scrollToAnchor(aid){
+    var aTag = $("h2[name='"+ aid +"']");
+    $('html,body').animate({scrollTop: aTag.offset().top - 100},'slow');
+}
+
+
+if ($("h2[name='profile']").length != 0) {
+    scrollToAnchor('profile');
+}
+
+if ($("h2[name='password']").length != 0) {
+    scrollToAnchor('password');
+}
 
 </script>
 {% endblock %}
