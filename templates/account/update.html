@@ -35,12 +35,13 @@
             {{ upload_form.y2 }}
             <img id="uploadPreview">
             <div class="form-actions">
-                <button type="submit" name='btn' value="Upload" class="btn btn-primary btn-large" />{{ _('Save Changes') }}</button>
+                <button type="submit" name='btn' value="Upload" class="btn btn-primary btn-large" />{{ _('Upload') }}</button>
             </div>
             </fieldset>
         </form>
         <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile', name=current_user.name) }}">
             <fieldset>
+                <h2>Your profile</h2>
             {{ form.id }}
             {{ form.hidden_tag() }}
             {{ render_field(form.fullname, placeholder= _('my full name') ) }}
@@ -48,15 +49,35 @@
             {{ render_field(form.email_addr, placeholder= _('hello@mywebsite.org') ) }}
             {{ render_field(form.locale) }}
             {{ render_field(form.privacy_mode) }}
-            <hr>
-            <h2>External Services</h2>
-            {{ render_field(form.ckan_api) }}
             <div class="form-actions">
                 <button type="submit" name='btn' value="Profile" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
               <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
             </div>
             </fieldset>
         </form>
+        <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile', name=current_user.name) }}">
+            <hr>
+            <h2>External Services</h2>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            {{ render_field(external_form.ckan_api) }}
+            <div class="form-actions">
+                <button type="submit" name='btn' value="External" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
+              <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
+            </div>
+            </fieldset>
+        </form>
+        <hr>
+        <form class="form-horizontal" method="post" action="{{ url_for('account.reset_api_key', name=current_user.name)}}">
+        <fieldset>
+        <h3><strong>{{ _('Do you want to reset your personal API Key?') }}</strong></h3>
+            <div class="form-actions">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+              <button type="submit" class="btn btn-small" value="Reset">Reset</button>
+              <a href="{{ url_for('account.profile', name=current_user.name) }}" class="btn btn-large btn-primary">{{ _('No, do not reset the API key!') }}</a>
+            </div>
+        </fieldset>
+        </form>
+        <hr>
     </div>
 </div>
 <script language="Javascript">
