@@ -35,7 +35,7 @@
             {{ upload_form.y2 }}
             <img id="uploadPreview">
             <div class="form-actions">
-              <input type="submit" name='btn' value="{{ _('Upload') }}" class="btn btn-primary btn-large" />
+                <button type="submit" name='btn' value="Upload" class="btn btn-primary btn-large" />{{ _('Save Changes') }}</button>
             </div>
             </fieldset>
         </form>
@@ -51,15 +51,9 @@
             <hr>
             <h2>External Services</h2>
             {{ render_field(form.ckan_api) }}
-            <div>
-                <img src="{{ current_user.email_addr | gravatar(size=25)}}">
-                <a href="http://www.gravatar.com">{{ _('Change your avatar at Gravatar.com') }}</a>. {{ _('We are using') }} {{current_user.email_addr}}
-                <hr>
-                <span class="label label-warning"><i class="icon icon-white icon-star"></i> {{ _('Note') }}</span> {{ _('If you change your') }} <strong>{{ _('user name') }}</strong> {{ _('you will be asked to sign in again.') }}
-            </div>
             <div class="form-actions">
-              <input type="submit" name='btn' value="{{ _('Save the changes') }}" class="btn btn-primary btn-large" />
-              <a href="{{ url_for('account.settings', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
+                <button type="submit" name='btn' value="Profile" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
+              <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
             </div>
             </fieldset>
         </form>
