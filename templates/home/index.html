@@ -34,7 +34,7 @@
             <p>{{ _('It\'s really simple to start contributing.') }}</p>
           </div>
           <div class="span8">
-              <a href="{{url_for('app.index')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a> <a href="{{url_for('app.new')}}" class="btn btn-primary btn-large"><i class="icon-plus-sign"></i> {{ _('Create an App') }}</a>
+              <a href="{{url_for('app.index')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a> <a href="{{url_for('app.new')}}" class="btn btn-primary btn-large"><i class="icon-plus-sign"></i> {{ _('Create a Project') }}</a>
           </div>
       </section>
       
@@ -61,7 +61,7 @@
                 <a href="#" class="image" style="background-image:url({{url_for('static',filename='img/placeholder.png')}})"></a>
                 <h3>{{ _('Your application') }}</h3>
                 <p>{{ _('could be here!') }}</p>
-                <p><a href="{{url_for('app.new')}}" class="btn btn-mini btn-primary">{{ _('Create an app') }}</a></p>
+                <p><a href="{{url_for('app.new')}}" class="btn btn-mini btn-primary">{{ _('Create a project') }}</a></p>
             </div>
           </div>
           {% endfor %}
