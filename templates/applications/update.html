@@ -20,10 +20,10 @@
               {{ helper.render_app_thumbnail(app, upload_method, id="uploadPreview") }}
               </div>
               {{ render_field(upload_form.avatar, onchange="previewImage()") }}
-              {{ form.x1 }}
-              {{ form.y1 }}
-              {{ form.x2 }}
-              {{ form.y2 }}
+              {{ upload_form.x1 }}
+              {{ upload_form.y1 }}
+              {{ upload_form.x2 }}
+              {{ upload_form.y2 }}
           <div class="form-actions">
             <input type="submit" name='btn' value="{{ _('Upload') }}" class="btn btn-primary btn-large" />
           </div>
