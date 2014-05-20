@@ -21,7 +21,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="{{ url_for('account.profile', name=current_user.name) }}"><i class="icon icon-user"></i> {{ _('My Profile') }}</a></li>
                     <li><a href="{{ url_for('account.applications', name=current_user.name) }}"><i class="icon icon-th-large"></i> {{ _('My Applications') }}</a></li>
-                    <li><a href="{{ url_for('account.settings', name=current_user.name) }}"><i class="icon icon-cog"></i> {{ _('My Settings') }}</a></li>
+                    <li><a href="{{ url_for('account.update_profile', name=current_user.name) }}"><i class="icon icon-cog"></i> {{ _('My Settings') }}</a></li>
                     {% if current_user.admin == 1 %}
                     <li class="divider"></li>
                     <li><a href="{{ url_for('admin.index') }}"><i class="icon icon-cog"></i> {{ _('Admin Site') }}</a></li>

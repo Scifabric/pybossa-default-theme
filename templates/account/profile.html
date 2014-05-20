@@ -13,7 +13,7 @@
     <div class="span9">
         <h1><strong>{{current_user.fullname}}</strong></h1>
         <h2>{{ _('Your Profile') }}</h2>
-        {{ helper.render_user_profile(current_user, upload_method) }} 
+        {{ helper.render_user_profile(current_user, upload_method, "settings") }} 
         <hr>
         <h2>{{ _('Your Contributions') }}</h2>
         {% for app in apps_contrib %}
