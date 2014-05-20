@@ -19,7 +19,7 @@
               <div>
               {{ helper.render_app_thumbnail(app, upload_method, id="uploadPreview") }}
               </div>
-              {{ render_field(form.avatar, onchange="previewImage()") }}
+              {{ render_field(upload_form.avatar, onchange="previewImage()") }}
               {{ form.x1 }}
               {{ form.y1 }}
               {{ form.x2 }}
