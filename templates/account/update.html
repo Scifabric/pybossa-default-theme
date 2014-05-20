@@ -59,6 +59,7 @@
         <h2 {% if password_form.errors %} name="password" {%endif%}>{{ _('Change your Password') }}</h2>
         <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile', name=current_user.name) }}">
             <fieldset>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                 {{ password_form.id }}
                 {{ password_form.hidden_tag() }}
                 {{ render_field(password_form.current_password) }}
