@@ -10,7 +10,7 @@
         {{ helper.render_account_local_nav(current_user, active_link) }}
     </div>
     <div class="span9" style="min-height:400px">
-        <h1><strong>{{ current_user.fullname }}'s</strong>: {{ _('Applications') }}</h1>
+        <h1><strong>{{ current_user.fullname }}'s</strong>: {{ _('Projects') }}</h1>
         {% if apps_published or apps_draft %}
             {% if apps_published %}
             <h2>{{ _('Published') }}</h2>
