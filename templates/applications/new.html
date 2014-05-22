@@ -5,8 +5,6 @@
 
 {% block content %}
 {% from "_formhelpers.html" import render_field %}
-<script src="{{url_for('static', filename='js/vendor/jquery.Jcrop.min.js')}}"></script>
-<link rel="stylesheet" href="{{url_for('static', filename='css/jquery.Jcrop.min.css')}}" type="text/css" />
 <div id="app-form" class="row"> 
     <div class="span3">
         {{ helper.render_account_local_nav(current_user, active_link) }}
@@ -16,28 +14,14 @@
         <form class="form-horizontal" method="post" action="{{ url_for('app.new')}}" enctype="multipart/form-data"}}>
         {{ form.hidden_tag() }}
         <fieldset>
-            {{ render_field(form.name, class_="span4", placeholder= _('The name of the application')) }}
-            {{ render_field(form.short_name, class_="span4", placeholder=_('Short name or slug for the application')) }}
-            {{ render_field(form.description, class_="span4", placeholder=_('Give some details about the application')) }}
-            {{ render_field(form.allow_anonymous_contributors, class_="span4") }}
-            {{ render_field(form.category_id, class_="span4") }}
+            {{ render_field(form.name, class_="span4", placeholder=_('The name of the application')) }}
+            {{ render_field(form.short_name, class_="span4", placeholder=_('Short name or slug for the application'), label_text=_('Application slug:')) }}
             {{ render_field(form.long_description, class_="span4", rows="13", placeholder=_('Explain your application                                                             
                 · Why? Why you are creating this project, what you want to achieve with it                                                             
                 · How? Explain how your project works                                                             
                 · How you can help: Explain to the volunteers how they can help and contribute to the goal of your project                                                             
                 · Will you help make a difference? Explain to the volunteers why their contribution is essential and how the result of your project can help change things!                                                             
             (you can use Markdown to give format to your description!)')) }}
-            {{ render_field(form.hidden, tooltip=_('Do you want to hide your app?')) }}
-
-            {{ render_field(form.thumbnail, class_="span4", placeholder=_('Paste the direct link to your app icon')) }}
-
-            <img id="uploadPreview" src="{{ url_for('static', filename='img/placeholder.png')}}">
-            {{ render_field(form.avatar, onchange="previewImage()") }}
-            {{ form.x1 }}
-            {{ form.y1 }}
-            {{ form.x2 }}
-            {{ form.y2 }}
-
             <div class="form-actions">
                 <input type="submit" value={{_('Create the application')}} class="btn btn-primary" />
                 <a href="{{url_for('account.profile', name=current_user.name)}}" class="btn">{{_('Cancel')}}</a>
@@ -50,54 +34,5 @@
     $("span[rel='tooltip']").tooltip();
     $("i[rel='tooltip']").tooltip();
 </script>
-<script language="Javascript">
-
-    // Preview image before uploading
-    function previewImage(){
-        var oFReader = new FileReader();
-        oFReader.readAsDataURL(document.getElementById("avatar").files[0]);
-        
-        oFReader.onload = function (oFREvent) {
-            document.getElementById("uploadPreview").src = oFREvent.target.result;
-            var img = document.getElementById('uploadPreview'); 
-            //or however you get a handle to the IMG
-            var width = img.clientWidth;
-            var height = img.clientHeight;
-            if (width > height) {
-                width = height - 100;
-            }
-            else {
-                height = width - 100;
-            }
-
-            jQuery(function($) {
-                $('#uploadPreview').Jcrop({
-                    onSelect:    updateCoords,
-                    onChange:    updateCoords,
-                    bgColor:     'black',
-                    bgOpacity:   .4,
-                    minSize: [100, 100],
-                    setSelect:   [  0, 
-                                    0, 
-                                    (width / 2), 
-                                    (height/ 2)],
-                    aspectRatio: 1,
-                    boxWidth: 450
-
-                });
-            });
-
-
-        };
-    }
-
-    function updateCoords(c){
-        $("#x1").val(Math.floor(c.x));
-        $("#y1").val(Math.floor(c.y));
-        $("#x2").val(Math.floor(c.x2));
-        $("#y2").val(Math.floor(c.y2));
-    }
-
-</script>
-
+<script src="{{url_for('static', filename='js/forms.js')}}" type="text/javascript"></script>
 {% endblock %}
