@@ -114,7 +114,7 @@
 {% endmacro %}
 
 
-{% macro show_app(data, category, current_user, upload_method) %}
+{% macro show_app(data, active_cat, current_user, upload_method) %}
 <div class="project-item row-fluid {{class}} well">
     <h2><a href="{{ url_for('app.details', short_name = data.app.short_name) }}">{{ data.app.name }}</a></h2>
     <div class="row-fluid">
@@ -134,7 +134,7 @@
             {% else %}
             <p style="margin:0"><strong><i class="icon-user"></i> {{ _('Created by') }}</strong>: {{ data.app.owner }}</p>
             {% endif %}
-            {% if class != "app-draft" %}
+            {% if active_cat != "draft" %}
             <p style="margin:0"><a class="btn btn-primary" href="{{ url_for('app.presenter', short_name = data.app.short_name) }}"><i class="icon icon-white icon-ok"></i> {{ _('Try it!') }}</a></p>
             {% endif %}
         </div> <!-- end of id=data class=span8 -->
