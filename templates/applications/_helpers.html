@@ -244,14 +244,14 @@ function imgError(image) {
 {% macro render_app_thumbnail(app, upload_method, id, class, style) %}
 {% if app.info.container %}
     {% if upload_method == 'rackspace'%}
-    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{ url_for('rackspace', filename=app.info.thumbnail, container=app.info.container)}}" style="{{style}}">
+    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{ url_for('rackspace', filename=app.info.thumbnail, container=app.info.container)}}" style="{{style}}" onerror="imgError(this);">
     {% else %}
-    <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{ url_for('uploads.uploaded_file', filename=(app.info.container + '/' + app.info.thumbnail))}}" style="{{style}}">
+    <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{ url_for('uploads.uploaded_file', filename=(app.info.container + '/' + app.info.thumbnail))}}" style="{{style}}" onerror="imgError(this);">
     {% endif %}
 {% elif app.info.thumbnail %}
-    <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{app.info.thumbnail}}" style="{{style}}">
+    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{app.info.thumbnail}}" style="{{style}}" onerror="imgError(this);">
 {% else %}
-    <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.png')}}" style="{{style}}">
+    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.png')}}" style="{{style}}">
 {% endif %}
 {% endmacro %}
 
