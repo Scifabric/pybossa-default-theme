@@ -23,7 +23,7 @@
             {% for c in categories %}
             <div {% if loop.first %}class="tab-pane active" {% else %} class="tab-pane" {% endif %} id="{{c.short_name}}">
                 {% for app in apps[c.short_name] %}
-                {{ render_app_admin_featured(app, current_user) }}
+                {{ render_app_admin_featured(app, upload_method) }}
                 {% endfor %}
             </div>
             {% endfor %}

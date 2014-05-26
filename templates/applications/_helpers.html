@@ -88,11 +88,7 @@
 {% macro render_app_admin_featured(app, upload_method) -%}
 <div class="row-fluid well well-small">
     <div class="span3">
-        {% if app.info.thumbnail %}
-        <img class="img-polaroid" src="{{app.info.thumbnail}}" onerror="imgError(this);" style="max-width:100px"/>
-        {% else %}
-        <img class="img-polaroid" src="{{url_for('static', filename='img/placeholder.png')}}" style="max-width:100px"/>
-        {% endif %}
+        {{ render_app_thumbnail(app, upload_method, class="img-polaroid", style="max-width:100px") }}
     </div>
     <div class="span9">
         <h2><a href="{{url_for('app.settings', short_name=app.short_name)}}">{{app.name}}</a></h2>
