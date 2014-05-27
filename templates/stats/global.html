@@ -83,18 +83,18 @@ h3 > small {
             </div>
             <!-- END Users Stats CARD -->
 
-            <!-- Apps Stats CARD -->
+            <!-- Project Stats CARD -->
             <div id="card" class="row-fluid">
                 <div id="appStats" class="span12 well">
                     <h2>{{ _('Applications') }}</h2>
                     <div class="row-fluid">
                         <div class="span6">
-                            <h3>{{ _('Published Applications') }}: <small>{{stats.n_published_apps}}</small></h3>
-                            <h3>{{ _('Draft Applications') }}: <small>{{stats.n_draft_apps}}</small></h3>
+                            <h3>{{ _('Published Projects') }}: <small>{{stats.n_published_apps}}</small></h3>
+                            <h3>{{ _('Draft Projects') }}: <small>{{stats.n_draft_apps}}</small></h3>
                             <h3>{{ _('Total') }}: {{stats.n_total_apps}}</h3>
                             {% if top5_apps_24_hours %}
                             <hr>
-                            <h4><i class="icon-th-large"></i> {{ _('Top 5 applications in the last 24 hours') }}</h4>
+                            <h4><i class="icon-th-large"></i> {{ _('Top 5 projects in the last 24 hours') }}</h4>
                                 <ol>
                                 {% for app in top5_apps_24_hours %}
                                 <li><a href="{{url_for('app.details', short_name=app.short_name)}}">{{app.name}}</a></li>
@@ -102,7 +102,7 @@ h3 > small {
                                 </ol>
                             {% else %}
                             <hr>
-                            <h4>{{ _('No active application in the last 24 hours') }}</h4>
+                            <h4>{{ _('No active project in the last 24 hours') }}</h4>
                             {% endif %}
                         </div>
                         <div id="apps" class="span6" style="height:400px;"></div>
@@ -129,7 +129,7 @@ h3 > small {
             </div>
             <!-- END Users Stats CARD -->
 
-            <!-- Apps Task and TaskRuns CARD -->
+            <!-- Projects Task and TaskRuns CARD -->
             <div id="card" class="row-fluid">
                 <div id="taskStats" class="span12 well">
                     <h2>{{ _('Tasks and Answers') }}</h2>

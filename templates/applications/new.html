@@ -12,7 +12,7 @@
         {{ helper.render_account_local_nav(current_user, active_link) }}
     </div>
     <div class="span9">
-        <h1><strong>{{ _('Application') }}</strong>: {{ _('Create a new project') }}</h1>
+        <h1><strong>{{ _('Project') }}</strong>: {{ _('Create a new project') }}</h1>
         <form class="form-horizontal" method="post" action="{{ url_for('app.new')}}" enctype="multipart/form-data"}}>
         {{ form.hidden_tag() }}
         <fieldset>
@@ -27,9 +27,9 @@
                 · How you can help: Explain to the volunteers how they can help and contribute to the goal of your project                                                             
                 · Will you help make a difference? Explain to the volunteers why their contribution is essential and how the result of your project can help change things!                                                             
             (you can use Markdown to give format to your description!)')) }}
-            {{ render_field(form.hidden, tooltip=_('Do you want to hide your app?')) }}
+            {{ render_field(form.hidden, tooltip=_('Do you want to hide your project?')) }}
 
-            {{ render_field(form.thumbnail, class_="span4", placeholder=_('Paste the direct link to your app icon')) }}
+            {{ render_field(form.thumbnail, class_="span4", placeholder=_('Paste the direct link to your project icon')) }}
 
             <img id="uploadPreview" src="{{ url_for('static', filename='img/placeholder.png')}}">
             {{ render_field(form.avatar, onchange="previewImage()") }}
