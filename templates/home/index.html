@@ -47,7 +47,7 @@
                 {% if app.info.thumbnail %}
                 <a href="{{url_for('app.details', short_name=app.short_name)}}" class="image" style="background-image:url({{helper.render_url_thumbnail(app, upload_method)}})"></a>
                 {% else %}
-                <a href="{{url_for('app.details', short_name=app.short_name)}}" class="image" style="background-image:url({{url_for('static',filename='placeholder.png')}})"></a>
+                <a href="{{url_for('app.details', short_name=app.short_name)}}" class="image" style="background-image:url({{url_for('static',filename='placeholder.project.png')}})"></a>
                 {% endif %}
                 <h3>{{app.name | truncate(20, true)}}</h3>
                 <p>{{app.description | truncate(32, true)}}</p>
@@ -58,7 +58,7 @@
           {% for i in range(4-top_apps|count)%}
           <div class="span3">
             <div class="app box">
-                <a href="#" class="image" style="background-image:url({{url_for('static',filename='img/placeholder.png')}})"></a>
+                <a href="#" class="image" style="background-image:url({{url_for('static',filename='img/placeholder.project.png')}})"></a>
                 <h3>{{ _('Your project') }}</h3>
                 <p>{{ _('could be here!') }}</p>
                 <p><a href="{{url_for('app.new')}}" class="btn btn-mini btn-primary">{{ _('Create a project') }}</a></p>
