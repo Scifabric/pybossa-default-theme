@@ -72,9 +72,9 @@
 {% macro render_user_thumbnail(user, upload_method, id, class, style) %}
     {% if user.info.avatar %}
         {% if upload_method == 'rackspace'%}
-        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('rackspace', filename=user.info.avatar, container=user.info.container)}}">
+        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('rackspace', filename=user.info.avatar, container=user.info.container)}}" onerror="imgError(this);">
         {% else %}
-        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}">
+        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}" onerror="imgError(this);">
         {% endif %}
     {% else %}
         <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('static', filename='img/placeholder.png')}}">
