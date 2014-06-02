@@ -147,6 +147,9 @@
 function imgError(image) {
     image.onerror = "";
     image.src = "{{url_for('static', filename='img/placeholder.png')}}";
+    if (arguments[1] === 'user') {
+        image.src = "{{url_for('static', filename='img/placeholder.dark.png')}}";
+    }
     return true;
 }
 </script>
