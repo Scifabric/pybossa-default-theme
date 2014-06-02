@@ -2,6 +2,7 @@
 {% set active_page = "community"  %}
 {% import "privacy/locked.html" as privacy %}
 {% import "account/_helpers.html" as helper %}
+{% from "applications/_helpers.html" import broken_image %}
 
 {% block content %}
 
@@ -54,4 +55,5 @@ $("a[rel=popover]").popover({
                 });
 
 </script>
+{{ broken_image() }}
 {% endblock %}
