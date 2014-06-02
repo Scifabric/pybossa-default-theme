@@ -12,7 +12,7 @@
     <div class="span9">
         <h1><strong>{{ _('Admin Site') }}:</strong> {{title}}</h1>
         <div class="alert alert-danger">
-            <strong>{{ _('Danger Zone!') }}</strong> {{ _('Deleting the category will remove it from all the applications! This operation cannot be undone!') }}
+            <strong>{{ _('Danger Zone!') }}</strong> {{ _('Deleting the category will remove it from all the projects! This operation cannot be undone!') }}
         </div>
         <h2>{{_('Delete Category')}}: {{category.name}}?</h2>
         <form method="post" action="{{url_for('admin.del_category', id=category.id)}}">

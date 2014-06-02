@@ -8,18 +8,18 @@
 
 <div class="row">
     <div class="span12">
-        <h1>Applications</h1>
+        <h1>Projects</h1>
     </div>
     <br/>
     <div class="span12" style="font-size:16px">
-        <p>Here you can find a list of all registered applications in {{brand}}.</p>
-        <p>The applications can be sorted in three categories:</p>
+        <p>Here you can find a list of all registered projects in {{brand}}.</p>
+        <p>The projects can be sorted in three categories:</p>
         <ul style="list-style:none">
-            <li><strong><i class="icon-star"></i> Featured:</strong> a special selection of the most interesting applications.</li>
-            <li><strong><i class="icon-th"></i> Published:</strong> all available applications.</li>
-            <li><strong><i class="icon-wrench"></i> Draft:</strong> the only applications where you <i>cannot contribute for the moment</i> (the owners have not published them yet).</li>
+            <li><strong><i class="icon-star"></i> Featured:</strong> a special selection of the most interesting projects.</li>
+            <li><strong><i class="icon-th"></i> Published:</strong> all available projects.</li>
+            <li><strong><i class="icon-wrench"></i> Draft:</strong> the only projects where you <i>cannot contribute for the moment</i> (the owners have not published them yet).</li>
         </ul>
-        <p>Therefore, pick up a published or featured application and help the project!</p>
+        <p>Therefore, pick up a published or featured project and help the project!</p>
     </div>
 </div>
 
@@ -37,7 +37,7 @@
 
 <div class="row">
     <div class="span9 offset2" style="text-align:center">
-        <a class="btn btn-small" href="{{url_for('app.index')}}"><i class="icon-th"></i> Check also the published applications</a>
+        <a class="btn btn-small" href="{{url_for('app.index')}}"><i class="icon-th"></i> Check also the published projects</a>
     </div>
     <div class="span9 offset2">
         {{ helper.render_pagination(pagination) }}
@@ -47,7 +47,7 @@
 
 <div class="row">
     <div class="span12 well" style="text-align:center">
-        <a href="{{ url_for('app.new')}}" class="btn btn-large btn-inverse"><i class="icon-white icon-plus"></i> Create an application!</a>
+        <a href="{{ url_for('app.new')}}" class="btn btn-large btn-inverse"><i class="icon-white icon-plus"></i> Create a project!</a>
     </div>
 </div>
 {% endblock %}

@@ -12,10 +12,10 @@
             <div class="span9">
                 {{ helper.render_app_title(app, subtitle='Browse Tasks') }}
                 <hr>
-                <p>{{_('This page shows all the available tasks for this application')}}.</p> 
+                <p>{{_('This page shows all the available tasks for this project')}}.</p> 
                 <p>{{_('For each task, you can find the following information')}}:
                   <ul>
-                      <li><strong>{{_('Task')}} </strong><span class="label label-info">#0000</span> {{_('This number identifies the task for the application and it is unique')}}</li>
+                      <li><strong>{{_('Task')}} </strong><span class="label label-info">#0000</span> {{_('This number identifies the task for the project and it is unique')}}</li>
                       <li><strong>0 of 30</strong>: {{_('The first number shows how many answers have been submitted for the task and the')}} <a data-placement="top" rel="tooltip" href="#" data-original-title="{{_('This redundancy method will help to detect errors, typos, data forging, etc. when the task has been completed')}}">{{_('second number')}}</a> {{_('how many need to be obtained to mark the task as')}} <strong>{{_('completed')}}</strong>. </li>
                       <li><strong>{{_('Progress Bar')}}</strong>: {{_('The progress bar will the percentage that has been completed for the task')}}.</li>
                   </ul>
@@ -66,7 +66,7 @@
                 {{ helper.render_pagination(pagination, _('Tasks')) }}
 {% else %}
   <div class="page-header">
-      <h1>{{_('Sorry! This app does not exist.')}}.</h1>
+      <h1>{{_('Sorry! This project does not exist.')}}.</h1>
   </div>
 {% endif %}
 <script>

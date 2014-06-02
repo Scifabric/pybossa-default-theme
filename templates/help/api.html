@@ -8,19 +8,19 @@
 <div class="row">
     <div class="span12">
         <h1><strong>{{brand}}</strong>: API Help</h1>
-        <p>{{brand}} has a <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">RESTful API</a> that can be used for creating new applications,
+        <p>{{brand}} has a <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">RESTful API</a> that can be used for creating new projects,
         getting tasks, submitting answers, etc. The API end point is available at:
         </p>
         <ul>
             <li><a href="{{url_for('api.index')}}">{{url_for('api.index', _external=True)}}</a></li>
         </ul>
-        <p>We recommend the employment of the <a href="http://pybossajs.readthedocs.org/en/latest/">PyBossa.JS</a> library to develop applications, as it abstracts the
-        low level API calls, providing a more simple and easy to use API. PyBossa.JS is available at the server for every application, but if you prefer to download it
+        <p>We recommend the employment of the <a href="http://pybossajs.readthedocs.org/en/latest/">PyBossa.JS</a> library to develop projects, as it abstracts the
+        low level API calls, providing a more simple and easy to use API. PyBossa.JS is available at the server for every project, but if you prefer to download it
         you can do it from its official <a href="http://github.com/PyBossa/pybossa.js">repository</a>.</p>
         <hr>
-        <h2>Applications API end point</h2>
+        <h2>Projects API end point</h2>
         <p>
-        For example, if you want to <strong>get a list of available applications</strong> on this server,
+        For example, if you want to <strong>get a list of available projects</strong> on this server,
         you can obtain them by opening the following URL:
         </p>
         <ul>
@@ -32,7 +32,7 @@
         you can use <em>limit</em> and <em>offset</em> to tune the number of results.
         For further information read the <a href="http://docs.pybossa.com/en/latest/api.html">documentation</a>.
         </p>
-        <p>You can also do <strong>queries using the API</strong>. For example, search for a specific application:</p>
+        <p>You can also do <strong>queries using the API</strong>. For example, search for a specific project:</p>
         <ul>
             <li><a href="{{url_for('api.api_app', short_name='flickrperson')}}">{{url_for('api.api_app', short_name='flickrperson', _external=True)}}</a></li>
         </ul>
@@ -54,12 +54,12 @@
         you can use <em>limit</em> and <em>offset</em> to tune the number of results.
         For further information read the <a href="http://docs.pybossa.com/en/latest/api.html">documentation</a>.
         </p>
-        <p>You can also do <strong>queries using the API</strong>. For example, get the tasks for a given application using the application id:</p>
+        <p>You can also do <strong>queries using the API</strong>. For example, get the tasks for a given project using the project id:</p>
         <ul>
             <li><a href="{{url_for('api.api_task', app_id=app_id)}}">{{url_for('api.api_task', app_id=app_id, _external=True)}}</a></li>
         </ul>
         <p>
-        Or for example <strong>get a list of completed tasks for a given application</strong> (i.e it could return an empty list because there are no tasks completed yet):
+        Or for example <strong>get a list of completed tasks for a given project</strong> (i.e it could return an empty list because there are no tasks completed yet):
         </p>
         <ul>
             <li><a href="{{url_for('api.api_task', app_id=app_id, state='completed')}}">{{url_for('api.api_task', app_id=app_id,  state='completed', _external=True)}}</a></li>
@@ -82,7 +82,7 @@
         you can use <em>limit</em> and <em>offset</em> to tune the number of results.
         For further information read the <a href="http://docs.pybossa.com/en/latest/api.html">documentation</a>.
         </p>
-        <p>You can also do <strong>queries using the API</strong>. For example, get the task runs -in other words the answers for a given task- for a given application using the application id:</p>
+        <p>You can also do <strong>queries using the API</strong>. For example, get the task runs -in other words the answers for a given task- for a given project using the project id:</p>
         <ul>
             <li><a href="{{url_for('api.api_taskrun', app_id=app_id)}}">{{url_for('api.api_taskrun', app_id=app_id, _external=True)}}</a></li>
         </ul>
