@@ -25,9 +25,7 @@
             </article>
         <hr>
         {% if current_user.is_authenticated() and current_user.id == app.owner_id or current_user.admin %}
-        <form class="form-horizontal" method="post" action="{{ url_for('app.delete_blogpost',
-                                                        short_name=app.short_name,
-                                                        id=blogpost.id) }}">
+        <form class="form-horizontal" method="post" action="{{ url_for('app.delete_blogpost', short_name=app.short_name, id=blogpost.id) }}" onsubmit="return confirm('Do you really want to delete the blog post?');">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <div class="form-actions">
                 <input type="submit" value={{_('Delete')}} class="btn btn-danger" />
