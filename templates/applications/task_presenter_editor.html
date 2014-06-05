@@ -25,7 +25,7 @@
     </div>
     <div class="col-md-9">
         <!-- Task Presenter Editor -->
-        <h1><strong>{{app.name}}</strong>: {{ _('Task Presenter Editor') }} <a class="btn btn-large pull-right" href="http://docs.pybossa.com/en/latest/overview.html#task-presenter"><i class="icon-book"></i> {{ _('Help') }}</a></h1>
+        <h1><strong>{{app.name}}</strong>: {{ _('Task Presenter Editor') }} <a class="btn btn-lg pull-right" href="http://docs.pybossa.com/en/latest/overview.html#task-presenter"><i class="icon-book"></i> {{ _('Help') }}</a></h1>
         <form class="form-inline" method="post" action="{{ url_for('app.task_presenter_editor', short_name=app.short_name) }}">
             {{ form.hidden_tag() }}
             <fieldset>

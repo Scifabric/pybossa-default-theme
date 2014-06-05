@@ -18,7 +18,7 @@
         <div class="form-actions">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
           <input type="submit" class="btn btn-sm" value="Yes"/>
-          <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn btn-large btn-primary">{{ _('No, do not reset the API key!') }}</a>
+          <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn btn-lg btn-primary">{{ _('No, do not reset the API key!') }}</a>
         </div>
     </div>
 </div>

@@ -46,7 +46,7 @@ h3 > small {
                             <h3>{{ _('Anonymous users') }}: <small>{{stats.n_anon}}</small></h3>
                             <h3>{{ _('Authenticated users') }}: <small>{{stats.n_auth}}</small></h3>
                             <h3>{{ _('Total') }}: {{stats.n_total_users}}</h3>
-                            <a class="btn btn-primary btn-large" href="{{url_for('leaderboard.index')}}"><i class="icon-trophy" style="color:white"></i> {{ _('Leaderboard') }}</a>
+                            <a class="btn btn-primary btn-lg" href="{{url_for('leaderboard.index')}}"><i class="icon-trophy" style="color:white"></i> {{ _('Leaderboard') }}</a>
                             {% if top5_users_24_hours %}
                             <hr>
                             <h4><i class="icon-group"></i> {{ _('Top 5 Users in the last 24 hours') }}</h4>
