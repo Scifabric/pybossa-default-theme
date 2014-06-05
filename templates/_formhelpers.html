@@ -5,11 +5,11 @@
             {% if addon %}
             <div class="{% if prepend %}input-group{%else%}input-group{%endif%}">
                 {% if prepend %}
-                <span class="add-on">{{addon|safe}}</span>
+                <span class="input-group-addon">{{addon|safe}}</span>
                 {{field(**kwargs)}}
                 {% else %}
                 {{field(**kwargs)}}
-                <span class="add-on">{{addon|safe}}</span>
+                <span class="input-group-addon">{{addon|safe}}</span>
                 {% endif %}
             </div>
             {% else %}
