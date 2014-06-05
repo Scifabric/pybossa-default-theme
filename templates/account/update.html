@@ -84,7 +84,7 @@
         <h3><strong>{{ _('Do you want to reset your personal API Key?') }}</strong></h3>
             <div class="form-actions">
               <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-              <button type="submit" class="btn btn-small" value="Reset">Reset</button>
+              <button type="submit" class="btn btn-sm" value="Reset">Reset</button>
               <a href="{{ url_for('account.profile', name=current_user.name) }}" class="btn btn-large btn-primary">{{ _('No, do not reset the API key!') }}</a>
             </div>
         </fieldset>
