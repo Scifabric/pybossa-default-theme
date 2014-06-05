@@ -1,13 +1,13 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
           <a class="navbar-brand" href="{{ url_for('home.home') }}"><img src="{{url_for('static',filename='img/' + logo)}}" alt="{{brand}}"></a>
-          <div class="nav-collapse collapse">
+          <div class="navbar-collapse collapse">
             <ul class="nav">
               <li {% if active_page == 'community' %} class="active" {% endif %}><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
               <li {% if active_page == 'applications' %} class="active" {% endif %}><a href="{{ url_for('app.index') }}">{{ _('Projects') }}</a></li>
@@ -38,7 +38,7 @@
               <li><a href="{{ url_for('account.signin') }}"><i class="icon icon-white icon-signin"></i> {{ _('Sign in') }}</a></li>
             </ul>
             {% endif %}
-          </div><!--/.nav-collapse -->
+          </div><!--/.navbar-collapse -->
         </div>
       </div>
     </div>
