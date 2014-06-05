@@ -112,7 +112,7 @@ pybossa.taskLoaded(function(task, deferred) {
             deferred.resolve(task);
         });
         img.attr('src', task.info.url_b).css('height', 460);
-        img.addClass('img-polaroid');
+        img.addClass('img-thumbnail');
         task.info.image = img;
     }
     else {

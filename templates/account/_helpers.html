@@ -33,7 +33,7 @@
 {% macro render_user_profile(user, upload_method, settings, private=True) %}
 <div class="row">
     <div class="col-md-3">
-        {{ render_user_thumbnail(user, upload_method, class="img-polaroid") }}
+        {{ render_user_thumbnail(user, upload_method, class="img-thumbnail") }}
     </div>
     <div class="col-md-9">
         <h2><i class="icon-user"></i> {{ _('Nick')}}: <small>{{ user.name }}</small></h2>
