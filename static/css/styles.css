@@ -43,7 +43,7 @@ h6 [class^="icon-"] {
 a[rel="popover"] {
   cursor: pointer;
 }
-.btn-mini {
+.btn-xs {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
@@ -145,7 +145,7 @@ body {
   color: #FFF;
   font-size: 14px;
 }
-.navbar .brand {
+.navbar .navbar-brand {
   padding: 20px 20px 0px 0px;
   margin: 0px;
   color: #FFF;
@@ -186,7 +186,7 @@ body {
   font-size: 22px;
   vertical-align: top;
 }
-.navbar .btn-navbar {
+.navbar .navbar-btn {
   background-color: #8bbf36;
   background-image: none;
   filter: none;
@@ -194,14 +194,14 @@ body {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
-.navbar .btn-navbar:hover,
-.navbar .btn-navbar:active,
-.navbar .btn-navbar.active,
-.navbar .btn-navbar.disabled,
-.navbar .btn-navbar[disabled] {
+.navbar .navbar-btn:hover,
+.navbar .navbar-btn:active,
+.navbar .navbar-btn.active,
+.navbar .navbar-btn.disabled,
+.navbar .navbar-btn[disabled] {
   background-color: #a2d058;
 }
-.navbar .btn-navbar .icon-bar {
+.navbar .navbar-btn .icon-bar {
   background-color: #6e972b;
 }
 .navbar .navbar-form.form-search .search-query {
@@ -325,11 +325,11 @@ body > footer .container {
 }
 /* Home Page */
 /* ========= */
-.banner > .row .span4 {
+.banner > .row .col-md-4 {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.banner > .row .span4 > * {
+.banner > .row .col-md-4 > * {
   padding-left: 10px;
 }
 .banner .featured {
@@ -382,10 +382,10 @@ body > footer .container {
     min-width: 100px;
     min-height: 100px;
 }
-.get-started .span4 p:first-of-type {
+.get-started .col-md-4 p:first-of-type {
   margin-top: -10px;
 }
-.get-started .span8 .btn {
+.get-started .col-md-8 .btn {
   margin: 18px 0px 18px 10px;
 }
 ul.users {
@@ -432,10 +432,10 @@ ul.users li a {
   .navbar .container {
     width: 724px !important;
   }
-  .navbar .brand {
+  .navbar .navbar-brand {
     padding: 0px;
   }
-  .navbar .brand img {
+  .navbar .navbar-brand img {
     max-height: 40px;
   }
   .navbar .nav > li > a {
@@ -492,7 +492,7 @@ ul.users li a {
     padding-left: 20px;
     padding-right: 20px;
   }
-  .get-started .span8 .btn {
+  .get-started .col-md-8 .btn {
     margin: 10px 18px 18px 0px;
   }
 }
