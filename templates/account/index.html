@@ -7,7 +7,7 @@
 {% block content %}
 
 <div class="row">
-  <div class="span9 offset2">
+  <div class="col-md-9 offset2">
       {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
         {{ privacy.render_lock_page() }}
       {% else %}
@@ -37,7 +37,7 @@
           {% endfor %}
       </ul>
     {% endif %}
-    <div class="span9">
+    <div class="col-md-9">
         {% if pagination.pages > 1 %}
             {{ helper.render_pagination(pagination) }}
         {% endif %}

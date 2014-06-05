@@ -1,14 +1,14 @@
 <div class="row-fluid">
-    <div class="span12">
+    <div class="col-md-12">
         <p class="lead">Use one of the following available <strong>templates</strong> to import tasks</p>
     </div>
 </div>
 {% for left_tmpl, right_tmpl in importer_variants %}
 <div class="row-fluid">
-    <div class="span6">
+    <div class="col-md-6">
       {% include left_tmpl %}
     </div>
-    <div class="span6">
+    <div class="col-md-6">
 	  {% include right_tmpl %}
     </div>
 </div>

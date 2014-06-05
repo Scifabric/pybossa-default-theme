@@ -7,11 +7,11 @@
 {% block content %}
 
 <div class="row">
-    <div class="span12">
+    <div class="col-md-12">
         <h1>Projects</h1>
     </div>
     <br/>
-    <div class="span12" style="font-size:16px">
+    <div class="col-md-12" style="font-size:16px">
         <p>Here you can find a list of all registered projects in {{brand}}.</p>
         <p>The projects can be sorted in three categories:</p>
         <ul style="list-style:none">
@@ -25,7 +25,7 @@
 
 {% if apps %}
 <div class="row app-draft">
-    <div class="span12">
+    <div class="col-md-12">
         <h2><i class="icon-wrench"></i> Draft: <small>{{pagination.total_count}} apps in this category</small></h2>
     </div>
 </div>
@@ -36,17 +36,17 @@
 {% endfor %}
 
 <div class="row">
-    <div class="span9 offset2" style="text-align:center">
+    <div class="col-md-9 offset2" style="text-align:center">
         <a class="btn btn-small" href="{{url_for('app.index')}}"><i class="icon-th"></i> Check also the published projects</a>
     </div>
-    <div class="span9 offset2">
+    <div class="col-md-9 offset2">
         {{ helper.render_pagination(pagination) }}
     </div>
 </div>
 
 
 <div class="row">
-    <div class="span12 well" style="text-align:center">
+    <div class="col-md-12 well" style="text-align:center">
         <a href="{{ url_for('app.new')}}" class="btn btn-large btn-inverse"><i class="icon-white icon-plus"></i> Create a project!</a>
     </div>
 </div>

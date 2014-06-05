@@ -5,10 +5,10 @@
 {% block content %}
 {% if app %}
   <div class="row">
-      <div class="span3">
+      <div class="col-md-3">
           {{ helper.render_app_local_nav(app, 'settings', current_user) }}
       </div>
-    <div class="span9">
+    <div class="col-md-9">
         <h1><strong>{{app.name}}</strong>: Delete project</h1>
         <div class="alert alert-danger">
             <strong>{{ _('Danger Zone!') }}</strong> {{ _('If you delete the project and its tasks, it will be gone forever!') }}

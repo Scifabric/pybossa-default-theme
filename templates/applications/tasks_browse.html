@@ -6,10 +6,10 @@
 {% block content %}
 {% if app %}
         <div class="row">
-            <div class="span3">
+            <div class="col-md-3">
                 {{ helper.render_app_local_nav(app, 'tasks', current_user) }}
             </div>
-            <div class="span9">
+            <div class="col-md-9">
                 {{ helper.render_app_title(app, upload_method, subtitle='Browse Tasks') }}
                 <hr>
                 <p>{{_('This page shows all the available tasks for this project')}}.</p> 
@@ -24,7 +24,7 @@
                 {% for t in tasks %}
                 {% set task_pct = t.pct_status()*100 %}
                 <div class="row-fluid">
-                        <div class="span3">
+                        <div class="col-md-3">
                             {% if task_pct >= 100 %}
                             {{_('Task')}} <span class="label label-success">#{{ t.id }}</span>
                             {% else %}
@@ -37,15 +37,15 @@
                             {% endif %}
                         </div>
                         {% if task_pct >= 100 %}
-                        <div class="progress progress-success progress-striped span5"> 
+                        <div class="progress progress-success progress-striped col-md-5"> 
                                 <div class="bar" style="width:{{ task_pct }}%;"></div>
                         </div>
                         {% else %}
-                        <div class="progress progress-info progress-striped span5"> 
+                        <div class="progress progress-info progress-striped col-md-5"> 
                                 <div class="bar" style="width:{{ task_pct }}%;"></div>
                         </div>
                         {% endif %}
-                        <div class="span4">
+                        <div class="col-md-4">
                         {% if task_pct >= 100 %}
                             <a id="fulldownload" class="btn btn-success" href="{{ url_for('app.export', 
                                 short_name=app.short_name,
@@ -61,7 +61,7 @@
                         </div>
                 </div>
                 {% endfor %}
-            </div><!-- span9 -->
+            </div><!-- col-md-9 -->
         </div>
                 {{ helper.render_pagination(pagination, _('Tasks')) }}
 {% else %}

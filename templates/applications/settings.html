@@ -6,11 +6,11 @@
 {% block content %}
 <div class="row">
     {% if app %}
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_app_local_nav(app, 'settings', current_user) }}
     </div>
     <!-- Project -->
-    <div class="span9">
+    <div class="col-md-9">
         <h1><strong>{{ app.name }}</strong>: {{ _('Settings') }}</h1>
         {{ helper.render_app_summary(app, n_tasks, overall_progress, last_activity, current_user, upload_method) }}
         <h2>{{ _('Project Settings') }}</h2>

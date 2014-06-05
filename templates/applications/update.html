@@ -7,10 +7,10 @@
 <script src="{{url_for('static', filename='js/vendor/jquery.Jcrop.min.js')}}"></script>
 <link rel="stylesheet" href="{{url_for('static', filename='css/jquery.Jcrop.min.css')}}" type="text/css" />
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_app_local_nav(app, 'settings', current_user) }}
     </div>
-  <div class="span9">
+  <div class="col-md-9">
       <legend><strong>{{app.name}}</strong>: Update the project</legend>
       <!-- Update form for project thumbnail -->
       <form method="post" class="form-horizontal" action="{{ url_for('app.update', short_name=app.short_name) }}" enctype="multipart/form-data">

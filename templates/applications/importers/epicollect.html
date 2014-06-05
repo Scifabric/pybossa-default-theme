@@ -7,10 +7,10 @@
 {% from "_formhelpers.html" import render_field %}
 {{ helper.render_loading(loading_text) }}
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_app_local_nav(app, 'tasks', current_user)}}
     </div>
-    <div class="span9">
+    <div class="col-md-9">
         <h1><strong>{{app.name}}</strong>: {{_('Import tasks')}}</h1>
       {% if epiform %}
       <h2>{{_('From an EpiCollect Plus project')}}</h2>

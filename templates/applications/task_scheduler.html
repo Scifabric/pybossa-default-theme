@@ -7,10 +7,10 @@
 {% block content %}
 {% if app %}
         <div class="row">
-            <div class="span3">
+            <div class="col-md-3">
                 {{ helper.render_app_local_nav(app, 'tasks', current_user) }}
             </div>
-            <div class="span9">
+            <div class="col-md-9">
                 {{ helper.render_app_title(app, subtitle=_('Task Scheduler'))}}
                 <p>You can choose from the following schedulers:</p>
                 <ul>
@@ -22,14 +22,14 @@
                 <form id="task_scheduler" class="form-horizontal" method="post" action="{{ url_for('app.task_scheduler', short_name=app.short_name) }}">
                     {{ form.hidden_tag() }}
                     <fieldset>
-                        {{ render_field(form.sched, class_="span4", placeholder="Task scheduler for your app")}}
+                        {{ render_field(form.sched, class_="col-md-4", placeholder="Task scheduler for your app")}}
                         <div class="form-actions">
                             <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
                             <a href="{{url_for('app.tasks', short_name=app.short_name)}}" class="btn">{{_('Cancel')}}</a>
                         </div>
                     </fieldset>
                 </form>
-            </div><!-- span9 -->
+            </div><!-- col-md-9 -->
         </div>
 {% else %}
   <div class="page-header">

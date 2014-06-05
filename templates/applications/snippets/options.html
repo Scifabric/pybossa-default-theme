@@ -1,5 +1,5 @@
 <div class="row-fluid">
-    <div class="span12">
+    <div class="col-md-12">
         <h1><strong>{{app.name}}</strong>: Task Presenter Editor</h1>
         <p class="lead">Use one of the following available <strong>templates</strong> for your project
     </div>
@@ -7,7 +7,7 @@
 {% for column in presenters | slice(3)%}
 <div class="row-fluid">
     {% for presenter_tmpl in column %}
-    <div class="span6">
+    <div class="col-md-6">
       {% include presenter_tmpl %}
     </div>
     {% endfor %}

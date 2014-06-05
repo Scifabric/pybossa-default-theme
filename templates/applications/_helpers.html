@@ -46,10 +46,10 @@
 
 {% macro render_app_summary(app, n_tasks, overall_progress, last_activity, current_user, upload_method) -%}
 <div class="row-fluid">
-    <div class="span2">
+    <div class="col-md-2">
         {{ render_app_thumbnail(app, upload_method, class='img-polaroid') }}
     </div>
-    <div class="span8">
+    <div class="col-md-8">
       <ul style="list-style-type: none; font-size: 16px;">
         {% if current_user.id == app.owner_id %}
         <li><strong><i class="icon-cog"></i> {{ _('ID') }}</strong>: {{ app.id }}</li>
@@ -74,10 +74,10 @@
 
 {% macro render_app_short_summary(app, upload_method) -%}
 <div class="row-fluid well well-small">
-    <div class="span3">
+    <div class="col-md-3">
         {{ render_app_thumbnail(app, upload_method, class="img-polaroid", style="max-width:100px") }}
     </div>
-    <div class="span9">
+    <div class="col-md-9">
         <h2><a href="{{url_for('app.settings', short_name=app.short_name)}}">{{app.name}}</a></h2>
         <p>{{ app['description'] }}</p>
         <a class="btn btn-inverse" href="{{url_for('app.settings', short_name=app.short_name)}}"><i class="icon-wrench"></i> {{ _('Settings') }}</a>
@@ -87,10 +87,10 @@
 
 {% macro render_app_admin_featured(app, upload_method) -%}
 <div class="row-fluid well well-small">
-    <div class="span3">
+    <div class="col-md-3">
         {{ render_app_thumbnail(app, upload_method, class="img-polaroid", style="max-width:100px") }}
     </div>
-    <div class="span9">
+    <div class="col-md-9">
         <h2><a href="{{url_for('app.settings', short_name=app.short_name)}}">{{app.name}}</a></h2>
         <p>{{ app['description'] }}</p>
         <a class="btn btn-inverse" href="{{url_for('app.settings', short_name=app.short_name)}}"><i class="icon-wrench"></i> {{ _('Settings') }}</a>
@@ -118,10 +118,10 @@
 <div class="project-item row-fluid {{class}} well">
     <h2><a href="{{ url_for('app.details', short_name = data.app.short_name) }}">{{ data.app.name }}</a></h2>
     <div class="row-fluid">
-        <div class="span3">
+        <div class="col-md-3">
             {{ render_app_thumbnail(data.app, upload_method, class='thumbnail', style='max-width:100px; max-height:100px;') }}
-        </div> <!-- End of span3 -->
-        <div id="data" class="span9">
+        </div> <!-- End of col-md-3 -->
+        <div id="data" class="col-md-9">
             <p style="margin:0"><strong><i class="icon-info-sign"></i> {{ _('Description') }}</strong>: {{ data.app.description }}</p>
             <p style="margin:0"><strong><i class="icon-ok"></i> {{ _('Creation Date') }}</strong>: <span class="date">{{ data.app.created[0:10] }}</span></p>
             {% if data.app.last_activity_raw != None %}
@@ -137,7 +137,7 @@
             {% if active_cat != "draft" %}
             <p style="margin:0"><a class="btn btn-primary" href="{{ url_for('app.presenter', short_name = data.app.short_name) }}"><i class="icon icon-white icon-ok"></i> {{ _('Try it!') }}</a></p>
             {% endif %}
-        </div> <!-- end of id=data class=span8 -->
+        </div> <!-- end of id=data class=col-md-8 -->
     </div> <!--end of class=row -->
 </div><!-- end of class=row -->
 {%- endmacro %}
@@ -189,7 +189,7 @@ function imgError(image) {
 
 {% macro render_overall_progress(app, n_tasks, overall_progress, show_contribute_btn=True, show_n_tasks=False) %}
 <div class="row-fluid">
-    <div class="span1"><input type="text" value="{{overall_progress | round |int}}" class="dial"></div>
+    <div class="col-md-1"><input type="text" value="{{overall_progress | round |int}}" class="dial"></div>
     <h2><strong> {{_('Overall progress')}}</strong>: {{ overall_progress | round | int }}% {{_('completed')}}
         {% if show_contribute_btn %}
         <a href="{{ url_for('app.presenter', short_name=app.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Start Contributing Now!') }}</a>
@@ -204,10 +204,10 @@ function imgError(image) {
 {% macro render_grid_apps(apps, title, upload_method) %}
     <div class="banner">
         <div class="row-fluid">
-            <div class="span4">
+            <div class="col-md-4">
                 <h1>{{title}}</h1>
             </div>
-            <div class="span8">
+            <div class="col-md-8">
               <ul class="featured">
                   {% for app in apps %}
                   <li><a href={{ url_for('app.details', short_name=app.short_name)}}>
@@ -228,7 +228,7 @@ function imgError(image) {
 
 {% macro render_loading(text) %}
 <div class="row">
-    <div class="span12">
+    <div class="col-md-12">
         <div id="loading" class="alert alert-info" style="display:none;">
             <img src="{{url_for('static', filename='img/loading.gif')}}"/> {{text}}
         </div>

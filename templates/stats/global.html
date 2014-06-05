@@ -31,7 +31,7 @@ h3 > small {
 </style>
 
 <div class="row-fluid">
-    <div class="span12">
+    <div class="col-md-12">
         {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
         {{ privacy.render_lock_page() }}
         {% else %}
@@ -39,10 +39,10 @@ h3 > small {
         <br/>
             <!-- Users Stats CARD -->
             <div id="card" class="row-fluid">
-                <div id="userStats" class="span12 well">
+                <div id="userStats" class="col-md-12 well">
                     <h2>Users</h2>
                     <div class="row-fluid">
-                        <div class="span6">
+                        <div class="col-md-6">
                             <h3>{{ _('Anonymous users') }}: <small>{{stats.n_anon}}</small></h3>
                             <h3>{{ _('Authenticated users') }}: <small>{{stats.n_auth}}</small></h3>
                             <h3>{{ _('Total') }}: {{stats.n_total_users}}</h3>
@@ -60,7 +60,7 @@ h3 > small {
                             <h4>{{ _('No active users in the last 24 hours') }}</h4>
                             {% endif %}
                         </div>
-                        <div id="users" class="span6" style="height:400px;"></div>
+                        <div id="users" class="col-md-6" style="height:400px;"></div>
                         <script>
                         (function(){
                             var data = {{users|safe}};
@@ -85,10 +85,10 @@ h3 > small {
 
             <!-- Project Stats CARD -->
             <div id="card" class="row-fluid">
-                <div id="appStats" class="span12 well">
+                <div id="appStats" class="col-md-12 well">
                     <h2>{{ _('Projects') }}</h2>
                     <div class="row-fluid">
-                        <div class="span6">
+                        <div class="col-md-6">
                             <h3>{{ _('Published Projects') }}: <small>{{stats.n_published_apps}}</small></h3>
                             <h3>{{ _('Draft Projects') }}: <small>{{stats.n_draft_apps}}</small></h3>
                             <h3>{{ _('Total') }}: {{stats.n_total_apps}}</h3>
@@ -105,7 +105,7 @@ h3 > small {
                             <h4>{{ _('No active project in the last 24 hours') }}</h4>
                             {% endif %}
                         </div>
-                        <div id="apps" class="span6" style="height:400px;"></div>
+                        <div id="apps" class="col-md-6" style="height:400px;"></div>
                      <script>
                         (function(){
                             var data = {{apps|safe}};
@@ -131,14 +131,14 @@ h3 > small {
 
             <!-- Projects Task and TaskRuns CARD -->
             <div id="card" class="row-fluid">
-                <div id="taskStats" class="span12 well">
+                <div id="taskStats" class="col-md-12 well">
                     <h2>{{ _('Tasks and Answers') }}</h2>
                     <div class="row-fluid">
-                        <div class="span6">
+                        <div class="col-md-6">
                             <h3>{{ _('Number of Tasks') }}: <small>{{stats.n_tasks}}</small></h3>
                             <h3>{{ _('Number of Task Runs') }}: <small>{{stats.n_task_runs}}</small></h3>
                         </div>
-                        <div id="tasks" class="span6" style="height:400px;"></div>
+                        <div id="tasks" class="col-md-6" style="height:400px;"></div>
                      <script>
                         (function(){
                             var data = {{tasks|safe}};
@@ -163,7 +163,7 @@ h3 > small {
             <!-- START Anonymous Users Map CARD -->
             {% if show_locs %}
             <div id="card" class="row-fluid">
-                <div class="span12 well">
+                <div class="col-md-12 well">
                     <h2>{{ _('Anonymous Volunteers') }}</h2>
                     <div id="map" style="height:250px;"></div>
                     <p class="note">{{_('This page includes GeoLite data created by MaxMind, available from')}}

@@ -5,10 +5,10 @@
 
 {% block content %}
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_app_local_nav(app, active_link, current_user) }}
     </div>
-    <div class="span9">
+    <div class="col-md-9">
         <h1><strong>{{app.name}}</strong>: Delete all Tasks and Task Runs</h1>
         <div class="alert alert-danger">
             <strong>Danger Zone!</strong> If you delete all the tasks and task runs they will be gone forever!<br/><strong>You cannot undo this action!</strong>
