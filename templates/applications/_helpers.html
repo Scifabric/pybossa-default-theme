@@ -45,7 +45,7 @@
 {% endmacro %}
 
 {% macro render_app_summary(app, n_tasks, overall_progress, last_activity, current_user, upload_method) -%}
-<div class="row-fluid">
+<div class="row">
     <div class="col-md-2">
         {{ render_app_thumbnail(app, upload_method, class='img-polaroid') }}
     </div>
@@ -73,7 +73,7 @@
 {% endmacro %}
 
 {% macro render_app_short_summary(app, upload_method) -%}
-<div class="row-fluid well well-small">
+<div class="row well well-small">
     <div class="col-md-3">
         {{ render_app_thumbnail(app, upload_method, class="img-polaroid", style="max-width:100px") }}
     </div>
@@ -86,7 +86,7 @@
 {% endmacro %}
 
 {% macro render_app_admin_featured(app, upload_method) -%}
-<div class="row-fluid well well-small">
+<div class="row well well-small">
     <div class="col-md-3">
         {{ render_app_thumbnail(app, upload_method, class="img-polaroid", style="max-width:100px") }}
     </div>
@@ -115,9 +115,9 @@
 
 
 {% macro show_app(data, active_cat, current_user, upload_method) %}
-<div class="project-item row-fluid {{class}} well">
+<div class="project-item row {{class}} well">
     <h2><a href="{{ url_for('app.details', short_name = data.app.short_name) }}">{{ data.app.name }}</a></h2>
-    <div class="row-fluid">
+    <div class="row">
         <div class="col-md-3">
             {{ render_app_thumbnail(data.app, upload_method, class='thumbnail', style='max-width:100px; max-height:100px;') }}
         </div> <!-- End of col-md-3 -->
@@ -188,7 +188,7 @@ function imgError(image) {
 {% endmacro %}
 
 {% macro render_overall_progress(app, n_tasks, overall_progress, show_contribute_btn=True, show_n_tasks=False) %}
-<div class="row-fluid">
+<div class="row">
     <div class="col-md-1"><input type="text" value="{{overall_progress | round |int}}" class="dial"></div>
     <h2><strong> {{_('Overall progress')}}</strong>: {{ overall_progress | round | int }}% {{_('completed')}}
         {% if show_contribute_btn %}
@@ -203,7 +203,7 @@ function imgError(image) {
 
 {% macro render_grid_apps(apps, title, upload_method) %}
     <div class="banner">
-        <div class="row-fluid">
+        <div class="row">
             <div class="col-md-4">
                 <h1>{{title}}</h1>
             </div>

@@ -30,7 +30,7 @@ h3 > small {
 }
 </style>
 
-<div class="row-fluid">
+<div class="row">
     <div class="col-md-12">
         {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
         {{ privacy.render_lock_page() }}
@@ -38,10 +38,10 @@ h3 > small {
         <h1><strong>{{brand}}</strong>: {{ _('General Statistics') }}</h1>
         <br/>
             <!-- Users Stats CARD -->
-            <div id="card" class="row-fluid">
+            <div id="card" class="row">
                 <div id="userStats" class="col-md-12 well">
                     <h2>Users</h2>
-                    <div class="row-fluid">
+                    <div class="row">
                         <div class="col-md-6">
                             <h3>{{ _('Anonymous users') }}: <small>{{stats.n_anon}}</small></h3>
                             <h3>{{ _('Authenticated users') }}: <small>{{stats.n_auth}}</small></h3>
@@ -84,10 +84,10 @@ h3 > small {
             <!-- END Users Stats CARD -->
 
             <!-- Project Stats CARD -->
-            <div id="card" class="row-fluid">
+            <div id="card" class="row">
                 <div id="appStats" class="col-md-12 well">
                     <h2>{{ _('Projects') }}</h2>
-                    <div class="row-fluid">
+                    <div class="row">
                         <div class="col-md-6">
                             <h3>{{ _('Published Projects') }}: <small>{{stats.n_published_apps}}</small></h3>
                             <h3>{{ _('Draft Projects') }}: <small>{{stats.n_draft_apps}}</small></h3>
@@ -130,10 +130,10 @@ h3 > small {
             <!-- END Users Stats CARD -->
 
             <!-- Projects Task and TaskRuns CARD -->
-            <div id="card" class="row-fluid">
+            <div id="card" class="row">
                 <div id="taskStats" class="col-md-12 well">
                     <h2>{{ _('Tasks and Answers') }}</h2>
-                    <div class="row-fluid">
+                    <div class="row">
                         <div class="col-md-6">
                             <h3>{{ _('Number of Tasks') }}: <small>{{stats.n_tasks}}</small></h3>
                             <h3>{{ _('Number of Task Runs') }}: <small>{{stats.n_task_runs}}</small></h3>
@@ -162,7 +162,7 @@ h3 > small {
             <!-- END Users Stats CARD -->
             <!-- START Anonymous Users Map CARD -->
             {% if show_locs %}
-            <div id="card" class="row-fluid">
+            <div id="card" class="row">
                 <div class="col-md-12 well">
                     <h2>{{ _('Anonymous Volunteers') }}</h2>
                     <div id="map" style="height:250px;"></div>

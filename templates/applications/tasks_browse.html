@@ -23,7 +23,7 @@
                 <hr>
                 {% for t in tasks %}
                 {% set task_pct = t.pct_status()*100 %}
-                <div class="row-fluid">
+                <div class="row">
                         <div class="col-md-3">
                             {% if task_pct >= 100 %}
                             {{_('Task')}} <span class="label label-success">#{{ t.id }}</span>

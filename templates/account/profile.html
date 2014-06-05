@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<div class="row-fluid">
+<div class="row">
     <div class="col-md-3">
         {{ helper.render_account_local_nav(current_user, active_link) }}
     </div>
@@ -17,7 +17,7 @@
         <hr>
         <h2>{{ _('Your Contributions') }}</h2>
         {% for app in apps_contrib %}
-        <div class="row-fluid well well-small">
+        <div class="row well well-small">
             <div class="col-md-3">
                 {{ app_helper.render_app_thumbnail(app, upload_method, class='img-polaroid', style='max-width:100px; max-height:100px;') }}
             </div>
@@ -26,7 +26,7 @@
                   <p><i class="icon-tasks"></i> {{ _('You have contributed to') }} <strong>{{app.n_task_runs}}</strong> {{ _('tasks') }}</p>
                   <a class="btn btn-primary" href="{{url_for('app.presenter', short_name=app.short_name)}}"><i class="icon-thumbs-up"></i> {{ _('Contribute!') }}</a>
             </div>
-        </div><!-- end row-fluid -->
+        </div><!-- end row -->
         {% endfor %}
     </div><!-- end col-md-9 -->
 </div>

@@ -15,7 +15,7 @@
                 {{ helper.render_overall_progress(app, n_tasks, overall_progress, show_contribute_btn=False, show_n_tasks=True) }}
                 <hr>
                 {% if app.owner_id == current_user.id or (current_user.is_authenticated() and current_user.admin)%}
-                <div class="row-fluid">
+                <div class="row">
                     <div id="import_tasks" class="col-md-6 well">
                         <h2><i class="icon-upload"></i> {{_('Import Tasks')}}</h2>
                         <p>{{_('Import tasks from templates, GDrive, or CSV')}}</p>
@@ -27,7 +27,7 @@
                         <a href="{{url_for('app.export_to', short_name=app.short_name)}}" class="btn btn-primary">{{_('Export')}} <i class="icon-chevron-right"></i></a>
                     </div>
                 </div>
-                <div class="row-fluid">
+                <div class="row">
                     <div id="task_presenter" class="col-md-6 well">
                         <h2><i class="icon-edit"></i> {{_('Task Presenter')}}</h2>
                         <p>{{_('Edit the task presenter')}}</p>
@@ -39,7 +39,7 @@
                         <a href="{{url_for('app.task_settings', short_name=app.short_name)}}" class="btn btn-primary">Settings <i class="icon-chevron-right"></i></a>
                     </div>
                 </div>
-                <div class="row-fluid">
+                <div class="row">
                     <div id="task_browse" class="col-md-6 well">
                         <h2><i class="icon-road"></i> {{_('Browse')}}</h2>
                         <p>{{_('Check the status of the tasks')}}</p>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 {% else %}
-                <div class="row-fluid">
+                <div class="row">
                     <div id="task_browse" class="col-md-6 well">
                         <h2><i class="icon-road"></i> {{_('Browse')}}</h2>
                         <p>{{_('Check the status of the tasks')}}</p>

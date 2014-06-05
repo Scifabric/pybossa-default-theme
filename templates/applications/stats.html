@@ -33,7 +33,7 @@
         <br/>
 
             {% if private %}
-            <div class="row-fluid">
+            <div class="row">
                 <div class="alert alert-info">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>{{_('Important')}}:</strong> {{_('Data have been')}} <strong>{{_('anonymized')}}!</strong>
@@ -42,7 +42,7 @@
             {% endif %}
 
             <!-- Hour Stats CARD -->
-            <div id="card" class="row-fluid">
+            <div id="card" class="row">
                 <div class="col-md-12  well">
                     <h2>{{_('Distribution of Answers per Hour')}}</h2>
                     <div id="hourStats" style="margin:0;height:500px;">
@@ -72,7 +72,7 @@
             <!-- END Hour Stats CARD -->
 
             <!-- Day Stats Total CARD -->
-            <div id="card" class="row-fluid">
+            <div id="card" class="row">
                 <div  class="col-md-12  well">
                     <h2>{{_('Total Answers per day')}} <small> {{_('select an area to zoom, click to reset the chart')}}</small></h2>
                     <div id="dayStatsTotal" style="margin:0;height:500px;"></div>
@@ -143,7 +143,7 @@
 
 
             <!-- Day Stats CARD -->
-            <div id="card" class="row-fluid">
+            <div id="card" class="row">
                 <div  class="col-md-12  well">
                     <h2>{{_('Answers per day')}} <small> {{_('select an area to zoom, click to reset the chart')}}</small></h2>
                     <div id="dayStats" style="margin:0;height:500px;"></div>
@@ -213,10 +213,10 @@
 
 
             <!-- Number of answers CARD -->
-            <div id="card" class="row-fluid">
+            <div id="card" class="row">
                 <div id="dist-answers" class="col-md-12  well">
                     <h2>{{_('Distribution of Answers')}}</h2>
-                    <div class="row-fluid">
+                    <div class="row">
                         <div class="col-md-6">
                             <table class="table table-hover table-bordered table-striped">
                                 <thead>
@@ -260,10 +260,10 @@
             <!-- END Number of Answers Stats CARD -->
 
             <!-- Anon User Stats CARD -->
-            <div id="card" class="row-fluid">
+            <div id="card" class="row">
                 <div id="dist-anon" class="col-md-12  well">
                     <h2>{{_('Details about Anonymous Users')}}</h2>
-                    <div class="row-fluid">
+                    <div class="row">
                         <div class="col-md-12">
                             <p><i class="icon-group"></i> <strong>{{userStats.anonymous.users}} </strong> {{_('anonymous users have')}} <strong>{{_('participated')}}</strong></p>
                             {% if userStats.anonymous.top5 and userStats.geo %}
@@ -311,7 +311,7 @@
                         </script>
                     </div>
                     {% if userStats.geo %}
-                    <div class="row-fluid">
+                    <div class="row">
                         <div class="col-md-12">
                             <div id="map" style="height:250px;"></div>
                             <p class="note">{{_('This page includes GeoLite data created by MaxMind, available from')}}
@@ -351,10 +351,10 @@
             <!-- END Anon User Stats CARD -->
 
             <!-- Auth User Stats CARD -->
-            <div id="card" class="row-fluid">
+            <div id="card" class="row">
                 <div id="dist-auth" class="col-md-12  well">
                     <h2>{{_('Details about Authenticated Users')}}</h2>
-                    <div class="row-fluid">
+                    <div class="row">
                         <div class="col-md-12">
                             <p><i class="icon-group"></i> <strong>{{userStats.authenticated.users}}</strong> {{_('authenticated users have')}} <strong>{{_('participated')}}</strong>.</p>
                             {% if userStats.authenticated.top5 %}

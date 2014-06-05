@@ -11,7 +11,7 @@
     </div>
     <div id="categories" class="col-md-9">
         <h1><strong>{{ _('Admin Site') }}:</strong> {{ _('Manage Categories') }}</h1>
-        <div class="row-fluid">
+        <div class="row">
             <div id="add" class="col-md-12">
                 {% from "_formhelpers.html" import render_field %}
                 <form class="form-horizontal" method="POST" action="{{url_for('admin.categories')}}">
@@ -30,7 +30,7 @@
         <h1>{{_('List of Available Categories')}}</h1>
         <hr>
         {% for c in categories %}
-        <div class="row-fluid">
+        <div class="row">
             <div class="col-md-5">
                 <h2>{{c.name}} <small>({{ n_apps_per_category[c.short_name]}} apps)</small></h2>
             </div>
