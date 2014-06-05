@@ -43,7 +43,7 @@
         {{ render_field(form.hidden, tooltip=_('Do you want to hide your project?')) }}
         <div class="form-actions">
           <input type="submit" value="Save the changes" class="btn btn-primary" />
-          <a href="{{url_for('app.settings', short_name=app.short_name)}}" class="btn">Cancel</a>
+          <a href="{{url_for('app.settings', short_name=app.short_name)}}" class="btn btn-default">Cancel</a>
         </div>
       </fieldset>
     </form>

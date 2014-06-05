@@ -22,7 +22,7 @@
           {{ render_field(epiform.epicollect_form, class_="input-block-level", placeholder="The name of the project's form") }}
           <div class="form-actions">
             <input type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-            <a href="{{ url_for('app.settings', short_name=app.short_name) }}" class="btn">{{_('Cancel')}}</a>
+            <a href="{{ url_for('app.settings', short_name=app.short_name) }}" class="btn btn-default">{{_('Cancel')}}</a>
           </div>
         </fieldset>
       </form>

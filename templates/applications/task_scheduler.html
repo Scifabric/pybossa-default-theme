@@ -25,7 +25,7 @@
                         {{ render_field(form.sched, class_="col-md-4", placeholder="Task scheduler for your app")}}
                         <div class="form-actions">
                             <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
-                            <a href="{{url_for('app.tasks', short_name=app.short_name)}}" class="btn">{{_('Cancel')}}</a>
+                            <a href="{{url_for('app.tasks', short_name=app.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
                         </div>
                     </fieldset>
                 </form>
