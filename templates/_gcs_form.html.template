@@ -2,7 +2,7 @@
       <input type="hidden" name="cx" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:YYYYYYYYYYY"/>
       <input type="hidden" name="cof" value="FORID:10" />
       <input type="hidden" name="ie" value="ISO-8859-1" />
-      <div class="input-append">
+      <div class="input-group">
       <input type="text" name="q" class="col-md-2 search-query" placeholder="{{_('Search')}}"  />
       <button class="btn btn-default" type="submit"><i class="icon-search"></i></button>
       </div>

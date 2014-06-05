@@ -3,7 +3,7 @@
         {{ render_label(field, tooltip, label_text) }}
         <div class="controls">
             {% if addon %}
-            <div class="{% if prepend %}input-prepend{%else%}input-append{%endif%}">
+            <div class="{% if prepend %}input-group{%else%}input-group{%endif%}">
                 {% if prepend %}
                 <span class="add-on">{{addon|safe}}</span>
                 {{field(**kwargs)}}
