@@ -36,10 +36,10 @@
 {% endfor %}
 
 <div class="row">
-    <div class="col-md-9 offset2" style="text-align:center">
+    <div class="col-md-9 col-md-offset-2" style="text-align:center">
         <a class="btn btn-small" href="{{url_for('app.index')}}"><i class="icon-th"></i> Check also the published projects</a>
     </div>
-    <div class="col-md-9 offset2">
+    <div class="col-md-9 col-md-offset-2">
         {{ helper.render_pagination(pagination) }}
     </div>
 </div>
