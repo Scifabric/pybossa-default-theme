@@ -134,8 +134,7 @@ body {
 
   font-size: 13px;
 }
-.navbar-fixed-top .navbar-inner,
-.navbar-inner {
+.navbar-fixed-top {
   background: #8bbf36;
   filter: none;
   border: none;
@@ -145,9 +144,9 @@ body {
   color: #FFF;
   font-size: 14px;
 }
-.navbar .navbar-brand {
+.navbar > .container .navbar-brand {
   padding: 20px 20px 0px 0px;
-  margin: 0px;
+  margin: 0px 20px 0px 0px;
   color: #FFF;
   text-shadow: none;
 }
@@ -178,6 +177,14 @@ body {
 .nav .dropdown-toggle:hover .caret {
   border-bottom-color: #FFF;
   border-top-color: #FFF;
+}
+.navbar-toggle {
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid;
+  color: #DDD;
+  padding: 4px 6px;
+  margin-top: 16px;
 }
 .dropdown-menu {
 	top:54px;
@@ -562,99 +569,7 @@ ul.users li a {
   top: auto;
   bottom: 270px;
 }
-/* Desktop large
-------------------------- */
-@media (min-width: 1200px) {
-  .bs-docs-sidenav {
-    width: 220px;
-  }
-  .bs-docs-sidenav.affix {
-    top: auto;
-  }
-  .big-modal {
-      width: 1000px;
-      margin-left:-500px;
-  }
-}
 
-/* Desktop
-------------------------- */
-@media (max-width: 980px) {
-  /* Unfloat brand */
-  /* When affixed, space properly */
-  .bs-docs-sidenav {
-    top: 0;
-    width: 220px;
-    margin-top: 0px;
-    margin-right: 0;
-  }
-  .bs-docs-sidenav.affix {
-    top: auto;
-  }
-  .big-modal {
-      width: 800px;
-      margin-left:-400px;
-      margin-top: -60%;
-  }
-}
-
-/* Tablet to desktop
-------------------------- */
-@media (min-width: 768px) and (max-width: 979px) {
-  /* Adjust sidenav width */
-  .bs-docs-sidenav {
-    width: 166px;
-    margin-top: 0px;
-  }
-  .bs-docs-sidenav.affix {
-    top: auto;
-  }
-  .big-modal {
-      width: 600px;
-      margin-left:-300px;
-      margin-top: -60%;
-  }
-}
-
-/* Tablet
-------------------------- */
-@media (max-width: 767px) {
-  /* Sidenav */
-  .bs-docs-sidenav {
-    width: auto;
-    margin-bottom: 20px;
-  }
-  .bs-docs-sidenav.affix {
-    position: static;
-    width: auto;
-    top: auto;
-  }
-}
-
-/* Phone 
--------------------------*/
-@media (max-width: 480px) {
-    #cookies_warning {
-        padding: 2px 10px 2px;
-    }
-}
-
-body > footer {
-    margin-top: 10px;
-}
-
-body > footer ul {
-    color: rgb(205, 205, 205);
-    list-style: none;
-}
-
-body > footer li > a {
-    color: rgb(205, 205, 205);
-}
-
-body > footer li > a:hover {
-    color: rgb(205, 205, 205);
-}
 
 .form-actions{padding:19px 20px 20px;margin-top:20px;margin-bottom:20px;background-color:#f5f5f5;border-top:1px solid #e5e5e5;*zoom:1;}.form-actions:before,.form-actions:after{display:table;content:"";line-height:0;}
 .form-actions:after{clear:both;}
