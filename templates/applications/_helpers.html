@@ -206,6 +206,7 @@ function imgError(image) {
         <div class="row">
             <div class="col-md-4">
                 <h1>{{title}}</h1>
+                {% include ['custom/front_page_text.html', 'home/_pybossa_text.html'] ignore missing %}
             </div>
             <div class="col-md-8">
               <ul class="featured">
