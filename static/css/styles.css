@@ -395,14 +395,23 @@ body > footer .container {
 .get-started .col-md-8 .btn {
   margin: 18px 0px 18px 10px;
 }
-ul.users, ul.users-comm {
+ul.users, ul.users-community {
   margin: 0px 0px 10px -3px;
   height: 128px;
   overflow: hidden;
+  padding-left: 3px;
 }
-ul.users li, ul.users-comm li {
+ul.users li, ul.users-community li {
   display: inline-block;
-  margin: 0px 0px 5px 3px;
+}
+ul.users-community li {
+  margin: 0px 10px 0px 0px;
+}
+ul.users-community li a:hover {
+  border-color: #8bbf36;
+}
+ul.users li {
+  margin: 0px 5px 0px 0px;
 }
 ul.users li a {
   display: block;
