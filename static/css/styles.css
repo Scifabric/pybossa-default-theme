@@ -29,12 +29,12 @@ h3 {
   font-size: 15px;
   line-height: normal;
 }
-h1 [class^="icon-"],
-h2 [class^="icon-"],
-h3 [class^="icon-"],
-h4 [class^="icon-"],
-h5 [class^="icon-"],
-h6 [class^="icon-"] {
+h1 .fa,
+h2 .fa,
+h3 .fa,
+h4 .fa,
+h5 .fa,
+h6 .fa {
   color: #8bbf36;
   font-size: 1.5em;
   vertical-align: middle;
@@ -329,6 +329,12 @@ body > footer .container {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.thumbnails {
+  list-style: none;
+  display: inline-block;
+}
+
 /* Home Page */
 /* ========= */
 .banner > .row .col-md-4 {
@@ -429,6 +435,72 @@ ul.users li a {
     margin-top: 8px;
 }
 
+/* Sidebar nav */
+.bs-docs-sidenav {
+  padding: 0;
+  width: 220px;
+  background-color: #fff;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+          box-shadow: 0 1px 4px rgba(0,0,0,.065);
+}
+.bs-docs-sidenav > li > a {
+  display: block;
+  width: 190px \9;
+  margin: 0 0 -1px;
+  padding: 8px 14px;
+  border: 1px solid #e5e5e5;
+}
+.bs-docs-sidenav > li:first-child > a {
+  -webkit-border-radius: 6px 6px 0 0;
+     -moz-border-radius: 6px 6px 0 0;
+          border-radius: 6px 6px 0 0;
+}
+.bs-docs-sidenav > li:last-child > a {
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
+}
+.bs-docs-sidenav > .active > a {
+  position: relative;
+  z-index: 2;
+  padding: 9px 15px;
+  border: 0;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+          box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+}
+/* Chevrons */
+.bs-docs-sidenav .fa-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+.bs-docs-sidenav > li > a:hover {
+  background-color: #f5f5f5;
+}
+.bs-docs-sidenav a:hover .fa-chevron-right {
+  opacity: .5;
+}
+.bs-docs-sidenav .active .fa-chevron-right,
+.bs-docs-sidenav .active a:hover .fa-chevron-right {
+    font-size:18px;
+  opacity: 1;
+}
+.bs-docs-sidenav.affix {
+  top: auto;
+}
+.bs-docs-sidenav.affix-bottom {
+  position: absolute;
+  top: auto;
+  bottom: 270px;
+}
+
 /* Media Queries */
 /* ============= */
 @media (max-width: 979px) {
@@ -503,71 +575,6 @@ ul.users li a {
   }
 }
 
-/* Sidebar nav */
-.bs-docs-sidenav {
-  padding: 0;
-  width: 220px;
-  background-color: #fff;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-          box-shadow: 0 1px 4px rgba(0,0,0,.065);
-}
-.bs-docs-sidenav > li > a {
-  display: block;
-  width: 190px \9;
-  margin: 0 0 -1px;
-  padding: 8px 14px;
-  border: 1px solid #e5e5e5;
-}
-.bs-docs-sidenav > li:first-child > a {
-  -webkit-border-radius: 6px 6px 0 0;
-     -moz-border-radius: 6px 6px 0 0;
-          border-radius: 6px 6px 0 0;
-}
-.bs-docs-sidenav > li:last-child > a {
-  -webkit-border-radius: 0 0 6px 6px;
-     -moz-border-radius: 0 0 6px 6px;
-          border-radius: 0 0 6px 6px;
-}
-.bs-docs-sidenav > .active > a {
-  position: relative;
-  z-index: 2;
-  padding: 9px 15px;
-  border: 0;
-  text-shadow: 0 1px 0 rgba(0,0,0,.15);
-  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
-     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
-          box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
-}
-/* Chevrons */
-.bs-docs-sidenav .fa-chevron-right {
-  float: right;
-  margin-top: 2px;
-  margin-right: -6px;
-  opacity: .25;
-}
-.bs-docs-sidenav > li > a:hover {
-  background-color: #f5f5f5;
-}
-.bs-docs-sidenav a:hover .fa-chevron-right {
-  opacity: .5;
-}
-.bs-docs-sidenav .active .fa-chevron-right,
-.bs-docs-sidenav .active a:hover .fa-chevron-right {
-    font-size:18px;
-  opacity: 1;
-}
-.bs-docs-sidenav.affix {
-  top: auto;
-}
-.bs-docs-sidenav.affix-bottom {
-  position: absolute;
-  top: auto;
-  bottom: 270px;
-}
 /* Desktop large
 ------------------------- */
 @media (min-width: 1200px) {
@@ -662,6 +669,7 @@ body > footer li > a:hover {
     color: rgb(205, 205, 205);
 }
 
+/* Legacy Bootstrap 2 classes */
 .form-actions{padding:19px 20px 20px;margin-top:20px;margin-bottom:20px;background-color:#f5f5f5;border-top:1px solid #e5e5e5;*zoom:1;}.form-actions:before,.form-actions:after{display:table;content:"";line-height:0;}
 .form-actions:after{clear:both;}
 
