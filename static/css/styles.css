@@ -330,11 +330,6 @@ body > footer .container {
   padding-bottom: 20px;
 }
 
-.thumbnails {
-  list-style: none;
-  display: inline-block;
-}
-
 /* Home Page */
 /* ========= */
 .banner > .row .col-md-4 {
