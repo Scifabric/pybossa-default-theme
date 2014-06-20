@@ -11,20 +11,20 @@
       {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
         {{ privacy.render_lock_page() }}
       {% else %}
-      <h1>{{ _('Community') }} <small>{{total}} {{ _('registered users') }}</small><a class="pull-right btn btn-primary" href="{{url_for('leaderboard.index')}}"><i class="icon-trophy" style="color:white"></i> {{ _('Leaderboard') }}</a></h1>
+      <h1>{{ _('Community') }} <small>{{total}} {{ _('registered users') }}</small><a class="pull-right btn btn-primary" href="{{url_for('leaderboard.index')}}"><i class="fa fa-trophy" style="color:white"></i> {{ _('Leaderboard') }}</a></h1>
       {% if accounts %}
       <ul class="thumbnails">
       {% for account in accounts %}
           <li>
               <a href="{{url_for('account.profile', name=account.name)}}" class="thumbnail" rel='popover' title="<strong>{{account['fullname']}}</strong>" data-content="
                       <ul style='list-style-type:none; margin-left:0px;'>
-                        <li><strong><i class='icon-calendar'></i> Joined</strong> {{account['created'][0:10]}}</li>
-                        <li><strong><i class='icon-tasks'></i> Contributed Tasks</strong> {{ account.task_runs }}</li>
+                        <li><strong><i class='fa fa-calendar'></i> Joined</strong> {{account['created'][0:10]}}</li>
+                        <li><strong><i class='fa fa-tasks'></i> Contributed Tasks</strong> {{ account.task_runs }}</li>
                         {% if account.apps %}
-                        <li><strong><i class='icon-certificate'></i> Owner of</strong>
+                        <li><strong><i class='fa fa-certificate'></i> Owner of</strong>
                           <ul style='list-style-type:none'>
                               {% for app in account.apps %}
-                              <li><i class='icon-chevron-right'></i> {{ app.name | truncate(18, true)}}</li>
+                              <li><i class='fa fa-chevron-right'></i> {{ app.name | truncate(18, true)}}</li>
                               {% endfor %}
                           </ul>
                         </li>
