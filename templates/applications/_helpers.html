@@ -72,14 +72,10 @@
 </div>
 {% endmacro %}
 
-{% macro render_app_short_summary(app, current_user) -%}
+{% macro render_app_short_summary(app, upload_method) -%}
 <div class="row-fluid well well-small">
     <div class="span3">
-        {% if app.info.thumbnail %}
-        <img class="img-polaroid" src="{{app.info.thumbnail}}" onerror="imgError(this);" style="max-width:100px"/>
-        {% else %}
-        <img class="img-polaroid" src="{{url_for('static', filename='img/placeholder.png')}}" style="max-width:100px"/>
-        {% endif %}
+        {{ render_app_thumbnail(app, upload_method, class="img-polaroid", style="max-width:100px") }}
     </div>
     <div class="span9">
         <h2><a href="{{url_for('app.settings', short_name=app.short_name)}}">{{app.name}}</a></h2>
@@ -89,14 +85,10 @@
 </div>
 {% endmacro %}
 
-{% macro render_app_admin_featured(app, current_user) -%}
+{% macro render_app_admin_featured(app, upload_method) -%}
 <div class="row-fluid well well-small">
     <div class="span3">
-        {% if app.info.thumbnail %}
-        <img class="img-polaroid" src="{{app.info.thumbnail}}" onerror="imgError(this);" style="max-width:100px"/>
-        {% else %}
-        <img class="img-polaroid" src="{{url_for('static', filename='img/placeholder.png')}}" style="max-width:100px"/>
-        {% endif %}
+        {{ render_app_thumbnail(app, upload_method, class="img-polaroid", style="max-width:100px") }}
     </div>
     <div class="span9">
         <h2><a href="{{url_for('app.settings', short_name=app.short_name)}}">{{app.name}}</a></h2>
@@ -122,7 +114,7 @@
 {% endmacro %}
 
 
-{% macro show_app(data, category, current_user, upload_method) %}
+{% macro show_app(data, active_cat, current_user, upload_method) %}
 <div class="project-item row-fluid {{class}} well">
     <h2><a href="{{ url_for('app.details', short_name = data.app.short_name) }}">{{ data.app.name }}</a></h2>
     <div class="row-fluid">
@@ -142,7 +134,7 @@
             {% else %}
             <p style="margin:0"><strong><i class="icon-user"></i> {{ _('Created by') }}</strong>: {{ data.app.owner }}</p>
             {% endif %}
-            {% if class != "app-draft" %}
+            {% if active_cat != "draft" %}
             <p style="margin:0"><a class="btn btn-primary" href="{{ url_for('app.presenter', short_name = data.app.short_name) }}"><i class="icon icon-white icon-ok"></i> {{ _('Try it!') }}</a></p>
             {% endif %}
         </div> <!-- end of id=data class=span8 -->
@@ -154,7 +146,10 @@
 <script>
 function imgError(image) {
     image.onerror = "";
-    image.src = "{{url_for('static', filename='img/placeholder.png')}}";
+    image.src = "{{url_for('static', filename='img/placeholder.project.png')}}";
+    if (arguments[1] === 'user') {
+        image.src = "{{url_for('static', filename='img/placeholder.user.png')}}";
+    }
     return true;
 }
 </script>
@@ -244,14 +239,14 @@ function imgError(image) {
 {% macro render_app_thumbnail(app, upload_method, id, class, style) %}
 {% if app.info.container %}
     {% if upload_method == 'rackspace'%}
-    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{ url_for('rackspace', filename=app.info.thumbnail, container=app.info.container)}}" style="{{style}}">
+    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{ url_for('rackspace', filename=app.info.thumbnail, container=app.info.container)}}" style="{{style}}" onerror="imgError(this);">
     {% else %}
-    <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{ url_for('uploads.uploaded_file', filename=(app.info.container + '/' + app.info.thumbnail))}}" style="{{style}}">
+    <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{ url_for('uploads.uploaded_file', filename=(app.info.container + '/' + app.info.thumbnail))}}" style="{{style}}" onerror="imgError(this);">
     {% endif %}
 {% elif app.info.thumbnail %}
-    <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{app.info.thumbnail}}" style="{{style}}">
+    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{app.info.thumbnail}}" style="{{style}}" onerror="imgError(this);">
 {% else %}
-    <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.png')}}" style="{{style}}">
+    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.project.png')}}" style="{{style}}">
 {% endif %}
 {% endmacro %}
 
@@ -265,6 +260,6 @@ function imgError(image) {
 {% elif app.info.thumbnail %}
     {{app.info.thumbnail}}"
 {% else %}
-{{url_for('static', filename='img/placeholder.png')}}"
+{{url_for('static', filename='img/placeholder.project.png')}}"
 {% endif %}
 {% endmacro %}

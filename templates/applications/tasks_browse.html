@@ -10,7 +10,7 @@
                 {{ helper.render_app_local_nav(app, 'tasks', current_user) }}
             </div>
             <div class="span9">
-                {{ helper.render_app_title(app, subtitle='Browse Tasks') }}
+                {{ helper.render_app_title(app, upload_method, subtitle='Browse Tasks') }}
                 <hr>
                 <p>{{_('This page shows all the available tasks for this project')}}.</p> 
                 <p>{{_('For each task, you can find the following information')}}:
