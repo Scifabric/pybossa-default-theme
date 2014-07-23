@@ -3749,7 +3749,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-size: 18px;
   line-height: 20px;
   height: 50px;
-  background:transparent url('../img/sprite.png') no-repeat 0px 12px;
 }
 .navbar-brand span {
 	display:none;
