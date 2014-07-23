@@ -188,7 +188,7 @@ body {
   margin-top: 16px;
 }
 .dropdown-menu {
-	top:54px;
+  top:54px;
 }
 .navbar .nav > li > a .fa {
   font-size: 22px;
@@ -405,7 +405,7 @@ ul.users li, ul.users-community li {
   display: inline-block;
 }
 ul.users-community li {
-  margin: 0px 10px 0px 0px;
+  margin: 18px 10px 0px 0px;
 }
 ul.users-community li a:hover {
   border-color: #8bbf36;
