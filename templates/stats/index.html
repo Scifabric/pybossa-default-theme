@@ -10,7 +10,7 @@
         {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
         {{ privacy.render_lock_page() }}
         {% else %}
-        <h1><i class="icon-trophy"></i> <strong>Community Leaderboard</strong></h1>
+        <h1><i class="fa fa-trophy"></i> <strong>Community Leaderboard</strong></h1>
         <table class="table table-striped table-bordered table-hover table-condensed">
             <thead>
                 <tr>
