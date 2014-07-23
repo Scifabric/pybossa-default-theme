@@ -25,7 +25,7 @@
                 {% if app.info.thumbnail %}
                 <a href="{{url_for('app.details', short_name=app.short_name)}}" class="image" style="background-image:url({{helper.render_url_thumbnail(app, upload_method)}})"></a>
                 {% else %}
-                <a href="{{url_for('app.details', short_name=app.short_name)}}" class="image" style="background-image:url({{url_for('static',filename='placeholder.project.png')}})"></a>
+                <a href="{{url_for('app.details', short_name=app.short_name)}}" class="image" style="background-image:url({{url_for('static',filename='img/placeholder.project.png')}})"></a>
                 {% endif %}
                 <h3>{{app.name | truncate(20, true)}}</h3>
                 <p>{{app.description | truncate(32, true)}}</p>
