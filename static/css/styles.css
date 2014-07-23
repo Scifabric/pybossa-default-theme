@@ -43,6 +43,9 @@ h6 .fa {
 a[rel="popover"] {
   cursor: pointer;
 }
+td a {
+  color: #8bbf36;
+}
 .btn-xs {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
