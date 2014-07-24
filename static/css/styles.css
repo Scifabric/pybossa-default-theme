@@ -46,6 +46,14 @@ a[rel="popover"] {
 td a {
   color: #8bbf36;
 }
+.btn {
+  font-weight: normal;
+  text-transform: none;
+}
+.btn-default {
+  color: black;
+  border: 1px solid #e3e3e3;
+}
 .btn-xs {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
