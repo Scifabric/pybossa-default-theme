@@ -181,7 +181,6 @@ pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         loadUserProgress();
         i18n_translate();
-        $("#error").hide();
         $('#photo-link').html('').append(task.info.image);
         $("#photo-link").attr("href", task.info.link);
         $('#task-id').html(task.id);
