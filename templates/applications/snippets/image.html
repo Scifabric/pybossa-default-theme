@@ -183,12 +183,10 @@ pybossa.presentTask(function(task, deferred) {
         i18n_translate();
         $('#photo-link').html('').append(task.info.image);
         $("#photo-link").attr("href", task.info.link);
-        //$("#question").html(task.info.question);
         $('#task-id').html(task.id);
         $('.btn-answer').off('click').on('click', function(evt) {
-            var answer = $(evt.target).attr("value");
+            var answer = $(evt.target).attr("value") || $(evt.target).parent().attr("value");
             if (typeof answer != 'undefined') {
-                //console.log(answer);
                 pybossa.saveTask(task.id, answer).done(function() {
                     deferred.resolve();
                 });
