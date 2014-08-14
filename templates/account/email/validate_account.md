@@ -1,6 +1,6 @@
 Hello {{ user.fullname }},
 
-Thank you for creating a {{ config.BRAND }} account.
+Thank you for creating an account in {{ config.BRAND }}.
 
 Just one more step!
 
