@@ -1,4 +1,4 @@
-Hello {{ user.fullname }},
+Hello {{ user['fullname'] }},
 
 Thank you for creating an account in {{ config.BRAND }}.
 
