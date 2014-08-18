@@ -22,7 +22,7 @@
                 </p>
                 <hr>
                 {% for t in tasks %}
-                {% set task_pct = t.pct_status()*100 %}
+                {% set task_pct = t.pct_status*100 %}
                 <div class="row-fluid">
                         <div class="span3">
                             {% if task_pct >= 100 %}
