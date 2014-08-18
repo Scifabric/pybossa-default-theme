@@ -30,7 +30,7 @@
                             {% else %}
                             {{_('Task')}} <span class="label label-info">#{{ t.id }}</span>
                             {% endif %}
-                            {{ t.task_runs | count }} {{_('of')}} {{ t.n_answers }}
+                            {{ t.task_runs }} {{_('of')}} {{ t.n_answers }}
                         </div>
                         {% if task_pct >= 100 %}
                         <div class="progress progress-success progress-striped span5"> 
