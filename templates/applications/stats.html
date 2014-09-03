@@ -74,7 +74,7 @@
             <!-- Day Stats Total CARD -->
             <div id="card" class="row-fluid">
                 <div  class="span12  well">
-                    <h2>{{_('Total Answers per day')}} <small> {{_('select an area to zoom, click to reset the chart')}}</small></h2>
+                    <h2>{{_('Tasks Completed last 15 days')}} <small> {{_('select an area to zoom, click to reset the chart')}}</small></h2>
                     <div id="dayStatsTotal" style="margin:0;height:500px;"></div>
                     <script>
                     (function(){
@@ -86,11 +86,11 @@
                         return(year + "-" + month + '-' + day)
                     }
                     function answersPerDay(obj) {
-                        return ("Total answers: " + parseInt(obj.y));
+                        return ("Tasks: " + parseInt(obj.y));
                     }
                     var options = {
                         xaxis   : {mode:'time'},
-                        yaxis   : {max: appStats.dayStats[4]['values'][0][1] + 100},
+                        yaxis   : {max: appStats.dayStats[4]['values'][0][1] + 1},
                         mouse   : {track: true, trackFormatter: answersPerDay},
                         HtmlText: false,
                         legend  : {postion: 'nw'},
