@@ -187,7 +187,6 @@ pybossa.presentTask(function(task, deferred) {
         $('.btn-answer').off('click').on('click', function(evt) {
             var $btn = $(this);
             var answer = $btn.attr("value");
->>>>>>> master
             if (typeof answer != 'undefined') {
                 pybossa.saveTask(task.id, answer).done(function() {
                     deferred.resolve();
