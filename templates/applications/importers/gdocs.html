@@ -12,13 +12,13 @@
     </div>
     <div class="span9">
         <h1><strong>{{app.name}}</strong>: {{_('Import tasks')}}</h1>
-        {% if gdform %}
+        {% if form %}
         <h2>{{_('From a Google Docs Spreadsheet')}}</h2>
       <form class="form-horizontal" method="post" action="{{ url_for('app.import_task', short_name=app.short_name) }}">
         <fieldset>
-        {{ gdform.hidden_tag() }}
+        {{ form.hidden_tag() }}
         <span class="help-inline"> {{ _('Please provide a URL to a Google Drive Spreadsheet with data for') }} {{ active_app }}. <br/> {{ _('For more information, please look at') }} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-via-the-built-in-csv-task-creator" target="_blank">{{ _('the documentation') }}.</a></span>
-          {{ render_field(gdform.googledocs_url, class_="input-block-level", placeholder="The URL of the Google Docs Spreadsheet") }}
+          {{ render_field(form.googledocs_url, class_="input-block-level", placeholder="The URL of the Google Docs Spreadsheet") }}
           <div class="form-actions">
               <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
               <a href="{{ url_for('app.settings', short_name=app.short_name) }}" class="btn">{{_('Cancel')}}</a>

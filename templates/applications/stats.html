@@ -74,7 +74,7 @@
             <!-- Day Stats Total CARD -->
             <div id="card" class="row-fluid">
                 <div  class="span12  well">
-                    <h2>{{_('Total Answers per day')}} <small> {{_('select an area to zoom, click to reset the chart')}}</small></h2>
+                    <h2>{{_('Completed Tasks in the last 15 days')}} <small> {{_('select an area to zoom, click to reset the chart')}}</small></h2>
                     <div id="dayStatsTotal" style="margin:0;height:500px;"></div>
                     <script>
                     (function(){
@@ -86,11 +86,11 @@
                         return(year + "-" + month + '-' + day)
                     }
                     function answersPerDay(obj) {
-                        return ("Total answers: " + parseInt(obj.y));
+                        return ("Tasks: " + parseInt(obj.y));
                     }
                     var options = {
                         xaxis   : {mode:'time'},
-                        yaxis   : {max: appStats.dayStats[4]['values'][0][1] + 100},
+                        yaxis   : {max: appStats.dayStats[4]['values'][0][1] + 1},
                         mouse   : {track: true, trackFormatter: answersPerDay},
                         HtmlText: false,
                         legend  : {postion: 'nw'},
@@ -108,7 +108,7 @@
                         
                         // Return a new graph.
                         return Flotr.draw(
-                        dayStatsTotalContainer, [{ data:appStats.dayStats[3]['values'],label:appStats.dayStats[3]['label']}, { data:appStats.dayStats[4]['values'],label:appStats.dayStats[4]['label']} , { data:appStats.dayStats[5]['values'],label:appStats.dayStats[5]['label']}], o);
+                        dayStatsTotalContainer, [{ data:appStats.dayStats[3]['values'],label:appStats.dayStats[3]['label']}, { data:appStats.dayStats[4]['values'],label:appStats.dayStats[4]['label']} , ], o);
                     }
                         
                         // Actually draw the graph.
