@@ -11,7 +11,7 @@
           </div>
           <div class="span8">
             <ul class="featured">
-                {% for f in featured %}
+                {% for f in categories_apps['featured'] %}
                 <li><a href={{ url_for('app.details', short_name=f.short_name)}}>
                     {{ helper.render_app_thumbnail(f, upload_method) }}
                     <h3>{{f.name}}</h3>
@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 {% endfor %}
-                {% for number in range(18 - featured|count) %}
+                {% for number in range(18 - categories_apps['featured']|count) %}
                 <li></li>
                 {% endfor %}
             </ul>

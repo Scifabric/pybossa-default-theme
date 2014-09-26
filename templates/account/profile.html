@@ -23,7 +23,6 @@
             </div>
             <div class="span9">
                 <h2><a href="{{url_for('app.details', short_name=app.short_name)}}">{{app.name}}</a></h2>
-                  <p><i class="icon-tasks"></i> {{ _('You have contributed to') }} <strong>{{app.n_task_runs}}</strong> {{ _('tasks') }}</p>
                   <a class="btn btn-primary" href="{{url_for('app.presenter', short_name=app.short_name)}}"><i class="icon-thumbs-up"></i> {{ _('Contribute!') }}</a>
             </div>
         </div><!-- end row-fluid -->
