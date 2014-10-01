@@ -52,7 +52,8 @@
                     <div id="task_browse" class="span6 well">
                         <h2><i class="icon-road"></i> {{_('Browse')}}</h2>
                         <p>{{_('Check the status of the tasks')}}</p>
-                        <a href="{{url_for('app.tasks_browse', short_name=app.short_name)}}" class="btn btn-primary">Browse <i class="icon-chevron-right"></i></a>
+                        <a href="{{url_for('app.tasks_browse',
+                            short_name=app.short_name)}}" class="btn btn-primary">{{_('Browse')}} <i class="icon-chevron-right"></i></a>
                     </div>
                     <div id="export_tasks" class="span6 well">
                         <h2><i class="icon-download"></i> {{_('Export Tasks')}}</h2>
