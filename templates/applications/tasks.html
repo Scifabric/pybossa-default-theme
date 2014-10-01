@@ -36,7 +36,9 @@
                     <div id="task_settings" class="span6 well">
                         <h2><i class="icon-cog"></i> {{_('Settings')}}</h2>
                         <p>{{_('Configure the task scheduler, redundancy, etc.')}}</p>
-                        <a href="{{url_for('app.task_settings', short_name=app.short_name)}}" class="btn btn-primary">Settings <i class="icon-chevron-right"></i></a>
+                        <a href="{{url_for('app.task_settings',
+                            short_name=app.short_name)}}" class="btn
+                            btn-primary">{{_('Settings')}} <i class="icon-chevron-right"></i></a>
                     </div>
                 </div>
                 <div class="row-fluid">
