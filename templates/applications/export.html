@@ -14,12 +14,12 @@
         <p>{{ _('You can export and download') }} <strong>{{ _('all the available') }}</strong> {{ _('Tasks and Task Runs (the submitted answers by the users) in CSV or JSON formats.') }}</p>
         <div class="row-fluid">
             <div id="csv" class="span6 well">
-                <h2>Export in CSV format</h2>
+                <h2>{{_('Export in CSV format')}}</h2>
                 <a href={{url_for('app.export_to', short_name=app.short_name, type='task', format='csv')}} rel="nofollow" class="btn btn-large">{{ _('Tasks') }}</a>
                 <a href={{url_for('app.export_to', short_name=app.short_name, type='task_run', format='csv')}} rel="nofollow" class="btn btn-large">{{ _('Task Runs') }}</a>
             </div>
             <div id="json" class="span6 well">
-                <h2>Export in JSON format</h2>
+                <h2>{{_('Export in JSON format')}}</h2>
                 <a href={{url_for('app.export_to', short_name=app.short_name, type='task', format='json')}} rel="nofollow" class="btn btn-large">{{ _('Tasks') }}</a>
                 <a href={{url_for('app.export_to', short_name=app.short_name, type='task_run', format='json')}} rel="nofollow" class="btn btn-large">{{ _('Task Runs') }}</a>
 
