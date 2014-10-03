@@ -1,7 +1,8 @@
 <div class="row-fluid">
     <div class="span12">
         <h1><strong>{{app.name}}</strong>: Task Presenter Editor</h1>
-        <p class="lead">Use one of the following available <strong>templates</strong> for your project
+        <p class="lead">{{_('Use one of the following available')}}
+        <strong>{{_('templates')}}</strong> {{_('for your project')}}
     </div>
 </div>
 {% for column in presenters | slice(3)%}
