@@ -18,8 +18,9 @@
         <fieldset>
         {{ form.hidden_tag() }}
         <span class="help-inline">{{_('Please provide an EpiCollect Plus project name to import its data for')}} {{ active_app }}.<br/> {{_('For more information, please look at')}} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-via-the-built-in-csv-task-creator" target="_blank">{{_('the documentation')}}.</a></span>
-          {{ render_field(form.epicollect_project, class_="input-block-level", placeholder="The name of the public EpiCollect Plus project") }}
-          {{ render_field(form.epicollect_form, class_="input-block-level", placeholder="The name of the project's form") }}
+          {{ render_field(form.epicollect_project, class_="input-block-level",
+          placeholder=_('The name of the public EpiCollect Plus project')) }}
+          {{ render_field(form.epicollect_form, class_="input-block-level", placeholder=_('The name of the project\'s form')) }}
           <div class="form-actions">
             <input type="submit" value="{{_('Import')}}" class="btn btn-primary" />
             <a href="{{ url_for('app.settings', short_name=app.short_name) }}" class="btn">{{_('Cancel')}}</a>
