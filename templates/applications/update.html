@@ -11,7 +11,7 @@
         {{ helper.render_app_local_nav(app, 'settings', current_user) }}
     </div>
   <div class="span9">
-      <legend><strong>{{app.name}}</strong>: Update the project</legend>
+      <legend><strong>{{app.name}}</strong>: {{_('Update the project')}}</legend>
       <!-- Update form for project thumbnail -->
       <form method="post" class="form-horizontal" action="{{ url_for('app.update', short_name=app.short_name) }}" enctype="multipart/form-data">
           <fieldset>
