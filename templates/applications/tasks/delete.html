@@ -20,7 +20,8 @@
             <h3><strong>{{_('Are you sure you want to delete ALL the project tasks and associated task runs?')}}</strong></h3>
         <div class="form-actions">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-          <input type="submit" class="btn btn-small" value="Yes"/>
+          <button type="submit" name='btn' class="btn btn-small"
+              value="Yes">{{_('Yes')}}</button>
           <a href="{{ url_for('app.settings', short_name = app.short_name) }}"
               class="btn btn-large btn-primary">{{_('No, do not delete
               anything!')}}</a>
