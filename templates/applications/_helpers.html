@@ -94,7 +94,7 @@
         <h2><a href="{{url_for('app.settings', short_name=app.short_name)}}">{{app.name}}</a></h2>
         <p>{{ app['description'] }}</p>
         <a class="btn btn-inverse" href="{{url_for('app.settings', short_name=app.short_name)}}"><i class="icon-wrench"></i> {{ _('Settings') }}</a>
-        {% if app.featured == app.id %}
+        {% if app.featured %}
         <button id="appBtnDel{{app.id}}" class="btn btn-danger" onclick="del({{app.id}})">
                 <i id="app{{app.id}}" class="icon-remove"></i> {{ _('Remove from Featured!') }}
         </button>
