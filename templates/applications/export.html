@@ -15,13 +15,13 @@
         <div class="row-fluid">
             <div id="csv" class="span6 well">
                 <h2>{{_('Export in CSV format')}}</h2>
-                <a href={{url_for('app.export_to', short_name=app.short_name, type='task', format='csv')}} rel="nofollow" class="btn btn-large">{{ _('Tasks') }}</a>
-                <a href={{url_for('app.export_to', short_name=app.short_name, type='task_run', format='csv')}} rel="nofollow" class="btn btn-large">{{ _('Task Runs') }}</a>
+                <a href={{url_for('app.export_to', short_name=app.short_name, type='task', format='csv')}} rel="nofollow" class="btn btn-large" download>{{ _('Tasks') }}</a>
+                <a href={{url_for('app.export_to', short_name=app.short_name, type='task_run', format='csv')}} rel="nofollow" class="btn btn-large" download>{{ _('Task Runs') }}</a>
             </div>
             <div id="json" class="span6 well">
                 <h2>{{_('Export in JSON format')}}</h2>
-                <a href={{url_for('app.export_to', short_name=app.short_name, type='task', format='json')}} rel="nofollow" class="btn btn-large">{{ _('Tasks') }}</a>
-                <a href={{url_for('app.export_to', short_name=app.short_name, type='task_run', format='json')}} rel="nofollow" class="btn btn-large">{{ _('Task Runs') }}</a>
+                <a href={{url_for('app.export_to', short_name=app.short_name, type='task', format='json')}} rel="nofollow" class="btn btn-large" download>{{ _('Tasks') }}</a>
+                <a href={{url_for('app.export_to', short_name=app.short_name, type='task_run', format='json')}} rel="nofollow" class="btn btn-large" download>{{ _('Task Runs') }}</a>
 
             </div>
         </div>
