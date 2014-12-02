@@ -41,6 +41,9 @@
     <li {% if active_link=="settings"%}class="active"{% endif %}><a href="{{url_for('app.settings', short_name=app.short_name)}}"><i class="icon-chevron-right"></i> {{_('Settings')}}</a></li>
     {% endif %}
     <li {% if active_link=="blog"%}class="active"{% endif %}><a href="{{url_for('app.show_blogposts', short_name=app.short_name)}}"><i class="icon-chevron-right"></i> {{_('Blog')}}</a></li>
+    <li {% if active_link=="auditlog"%}class="active"{% endif %}><a
+        href="{{url_for('app.auditlog', short_name=app.short_name)}}"><i
+    class="icon-chevron-right"></i> {{_('Audit Logs')}}</a></li>
 </ul>
 {% endmacro %}
 
