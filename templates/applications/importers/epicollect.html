@@ -14,7 +14,7 @@
         <h1><strong>{{app.name}}</strong>: {{_('Import tasks')}}</h1>
       {% if form %}
       <h2>{{_('From an EpiCollect Plus project')}}</h2>
-      <form class="form-horizontal" method="post" action="{{ form_action }}">
+      <form class="form-horizontal" method="post" action="{{ url_for(target, short_name=app.short_name) }}">
         <fieldset>
         {{ form.hidden_tag() }}
         <span class="help-inline">{{_('Please provide an EpiCollect Plus project name to import its data for')}} {{ active_app }}.<br/> {{_('For more information, please look at')}} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-via-the-built-in-csv-task-creator" target="_blank">{{_('the documentation')}}.</a></span>
