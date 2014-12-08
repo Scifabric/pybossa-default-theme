@@ -14,19 +14,24 @@
         <div class="row-fluid">
             <div class="span12">
                 <p class="lead">{{_('Use one of the following available')}}
-                <strong>{{_('importers')}}</strong> {{_('to import tasks')}}</p>
+                <strong>{{_('importers')}}</strong> {{_('to setup as the autoimporter')}}</p>
             </div>
         </div>
-        {% for left_tmpl, right_tmpl in importer_variants %}
         <div class="row-fluid">
             <div class="span6">
-              {% include left_tmpl %}
+              {% include 'applications/tasks/csv_auto.html' %}
             </div>
             <div class="span6">
-              {% include right_tmpl %}
+              {% include 'applications/tasks/gdocs-spreadsheet_auto.html' %}
             </div>
         </div>
-        {% endfor %}
+        <div class="row-fluid">
+            <div class="span6">
+              {% include 'applications/tasks/epicollect_auto.html' %}
+            </div>
+            <div class="span6">
+            </div>
+        </div>
 
     </div>
 </div>
