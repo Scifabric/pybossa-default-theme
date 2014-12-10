@@ -29,8 +29,8 @@
                 <td>{{log.caller}}</td>
                 <td>{{log.action}}</td>
                 <td>{{log.attribute}}</td>
-                <td>{{log.old_value or "None"|truncate(30)}}</td>
-                <td>{{log.new_value or "None"|truncate(30)}}</td>
+                <td>{{(log.old_value or "Nothing")|truncate(30)}}</td>
+                <td>{{(log.new_value or "Nothing")|truncate(30)}}</td>
             </tr>
 
         {% endfor %}
