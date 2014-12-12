@@ -23,7 +23,15 @@
                 <p class="lead">{{_('... or import a set of') }} <strong>{{_('template tasks')}}</strong> {{ ('for any of the template projects.')}}</p>
             </div>
         </div>
-        {% include 'applications/tasks/template_options.html' %}
+        {% for column in task_tmpls | slice(3)%}
+        <div class="row-fluid">
+            {% for task_tmpl in column %}
+            <div class="span6">
+              {% include task_tmpl %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
