@@ -23,9 +23,9 @@
                 <p class="lead">{{_('... or import a set of') }} <strong>{{_('template tasks')}}</strong> {{ ('for any of the template projects.')}}</p>
             </div>
         </div>
-        {% for column in task_tmpls | slice(3)%}
+        {% for row in task_tmpls|batch(2) %}
         <div class="row-fluid">
-            {% for task_tmpl in column %}
+            {% for task_tmpl in row %}
             <div class="span6">
               {% include task_tmpl %}
             </div>
