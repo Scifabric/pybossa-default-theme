@@ -1,0 +1,22 @@
+{% extends "/base.html" %}
+{% set active_page = "create" %}
+{% set body_class="account" %}
+
+{% block content %}
+
+<div class="row">
+
+	<div id="newsletter" class="span9">
+		<h1>{{ _('Newsletter') }}</h1>
+        <p class="lead">{{_('If you want to be updated with our new features, projects, and
+        scientific projects, subscribe to our newsletter.')}}</p>
+        <a id="signmeup" class="btn btn-primary"
+            href="{{url_for('account.newsletter_subscribe', subscribe=True,
+            next=next)}}">{{_('Sign me up!')}}</a>
+        <a id="notinterested" class="btn btn-default" 
+            href="{{url_for('account.newsletter_subscribe', subscribe=False,
+            next=next)}}">{{_('Not interested')}}</a>
+	</div>
+	
+</div>
+{% endblock %}
