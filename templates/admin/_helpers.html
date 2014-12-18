@@ -1,7 +1,9 @@
+{% import "account/_helpers.html" as helper %}
+
 {% macro render_admin_user(user) %}
 <div class="row-fluid well well-small">
     <div class="span2">
-        <img class="img-polaroid" src="{{user.email_addr | gravatar(size=100)}}">
+        {{ helper.render_avatar(account, upload_method, class='img-polaroid', width='100px')}}
     </div>
     <div class="span10">
         <h2>{{user.fullname}} <small>(nick: {{user.name}})</small></h2>
