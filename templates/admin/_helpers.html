@@ -3,7 +3,7 @@
 {% macro render_admin_user(user) %}
 <div class="row-fluid well well-small">
     <div class="span2">
-        {{ helper.render_avatar(account, upload_method, class='img-polaroid', width='100px')}}
+        {{ helper.render_user_thumbnail(user, upload_method, style="height:100px; width:100px;")}}
     </div>
     <div class="span10">
         <h2>{{user.fullname}} <small>(nick: {{user.name}})</small></h2>
