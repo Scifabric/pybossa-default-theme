@@ -13,12 +13,12 @@
     <div class="span9">
         <h1><strong>{{app.name}}</strong>: {{_('Import tasks')}}</h1>
         {% if form %}
-        <h2>{{_('From a Flickr album')}}</h2>
+        <h2>{{_('From a Flickr set')}}</h2>
       <form class="form-horizontal" method="post" action="{{ url_for(target, short_name=app.short_name) }}">
         <fieldset>
         {{ form.hidden_tag() }}
-        <span class="help-inline"> {{ _('Please provide the ID of a Flickr album') }} {{ active_app }}. <br/> {{ _('For more information, please look at') }} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-via-the-built-in-csv-task-creator" target="_blank">{{ _('the documentation') }}.</a></span>
-          {{ render_field(form.album_id, class_="input-block-level", placeholder="The ID of the Flickr album") }}
+        <span class="help-inline"> {{ _('Please provide the ID of a Flickr set with images for') }} {{ active_app }}. <br/> {{ _('For more information, please look at') }} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-via-the-built-in-csv-task-creator" target="_blank">{{ _('the documentation') }}.</a></span>
+          {{ render_field(form.album_id, class_="input-block-level", placeholder="The ID of the Flickr set") }}
           <div class="form-actions">
               <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
               <a href="{{ url_for('app.settings', short_name=app.short_name) }}" class="btn">{{_('Cancel')}}</a>
