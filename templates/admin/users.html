@@ -21,7 +21,7 @@
         </div>
         </form>
         {% if found %}
-        <h2>Found Users</h2>
+        <h2>{{ _('Found Users') }}</h2>
         {% for user in found %}
         {{ render_admin_user(user) }}
         {% endfor %}
