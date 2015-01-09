@@ -5,7 +5,7 @@
         <strong>{{_('templates')}}</strong> {{_('for your project')}}
     </div>
 </div>
-{% for column in presenters | slice(3)%}
+{% for column in presenters|batch(2)%}
 <div class="row-fluid">
     {% for presenter_tmpl in column %}
     <div class="span6">
