@@ -17,7 +17,15 @@
                 <strong>{{_('importers')}}</strong> {{_('to import tasks...')}}</p>
             </div>
         </div>
-        {% include 'applications/tasks/all_importers.html' %}
+            {% for row in available_importers|batch(2) %}
+            <div class="row-fluid">
+                {% for importer in row %}
+                <div class="span6">
+                    {% include importer %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
         <div class="row-fluid">
             <div class="span12">
                 <p class="lead">{{_('... or import a set of') }} <strong>{{_('template tasks')}}</strong> {{ ('for any of the template projects.')}}</p>
