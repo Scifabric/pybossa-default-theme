@@ -17,7 +17,15 @@
                 <strong>{{_('importers')}}</strong> {{_('to setup as the autoimporter')}}</p>
             </div>
         </div>
-        {% include 'applications/tasks/all_importers.html' %}
+        {% for row in available_importers|batch(2) %}
+        <div class="row-fluid">
+            {% for importer in row %}
+            <div class="span6">
+                {% include importer %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
