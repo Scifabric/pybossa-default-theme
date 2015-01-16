@@ -51,4 +51,11 @@
         $("#loading").show();
     });
 </script>
+<script type="text/javascript">
+    $(".btn-album").each(function(){
+        $(this).off('click').on('click', function(){
+            document.getElementById('album_id').value = $(this).attr('id');
+        });
+    });
+</script>
 {% endblock %}
