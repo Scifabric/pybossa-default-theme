@@ -38,7 +38,17 @@
     <div class="span9">
         <h2><i class="icon-user"></i> {{ _('Nick')}}: <small>{{ user.name }}</small></h2>
         {% if private %}
-        <h2><i class="icon-envelope"></i> {{_('E-mail')}}: <small>{{ user.email_addr }}</small></h2>
+        <h2><i class="icon-envelope"></i> {{_('E-mail')}}: <small>{{
+                user.email_addr }}</small> 
+            {% if (user.valid_email == False) %}
+              {% if (user.confirmation_email_sent == False) %}
+              <a href="{{ url_for('account.confirm_email')}}" class="btn btn-small">Validate email</a>
+              {% else %}
+              <a href="#" class="btn btn-small disabled">Email sent for
+                  validation</a>
+              {% endif %}
+            {% endif %}
+        </h2>
         {% endif %}
         {% if user.rank %}
         <h2><i class="icon-trophy"></i> {{ _('Rank')}}: <small>
