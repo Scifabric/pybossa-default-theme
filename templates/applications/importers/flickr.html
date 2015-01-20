@@ -10,25 +10,34 @@
     <div class="span3">
         {{ helper.render_app_local_nav(app, 'tasks', current_user)}}
     </div>
-    <div class="span9">
-        <h1><strong>{{app.name}}</strong>: {{_('Import tasks')}}</h1>
-        <h2>{{_('From a Flickr set')}}</h2>
-        {% if not albums %}
-            {{ _('Grant Crowdcrafting access to your Flickr albums to select one...') }}
-        <a href="{{ url_for('flickr.login', next=url_for(target, short_name=app.short_name, type='flickr')) }}" class="btn btn-secondary">{{ _('Log in Flickr') }}</a>
-        {% else %}
-            {{ _('Select one of your albums:') }}
-            <ul>
-            {% for album in albums %}
-                <li>
-                    <h5>{{ album['title'] }}</h5>
-                    <p>{{ album['photos'] }} {{ _('photos') }}</p>
-                    <img src="{{ album['thumbnail_url'] }}">
-                    <button id="{{ album['id'] }}" class="btn btn-default btn-album">{{ _('Select') }}</button>
-                </li>
-            {% endfor %}
-            </ul>
-            <a href="{{ url_for('flickr.logout', next=url_for(target, short_name=app.short_name, type='flickr')) }}" class="btn btn-secondary">{{ _('Revoke access') }}</a>
+
+
+   <div class="span9">
+       <h1><strong>{{app.name}}</strong>: {{_('Import tasks')}}</h1>
+       <h2>{{_('From a Flickr Album')}}
+           {% if albums %}
+           <a href="{{ url_for('flickr.logout', next=url_for(target, short_name=app.short_name, type='flickr')) }}" class="btn btn-secondary pull-right">{{ _('Revoke access') }}</a>
+           {% endif %}
+       </h2>
+       {% if not albums %}
+          <p> {{ _('Grant Crowdcrafting access to your Flickr albums to select one...') }}</p></br>
+
+       <p><a href="{{ url_for('flickr.login', next=url_for(target, short_name=app.short_name, type='flickr')) }}" class="btn btn-secondary">{{ _('Log in Flickr') }}</a></p>
+       {% else %}
+           {{ _('Select one of your albums:') }}
+           <div class="row">
+           <ul>
+           {% for album in albums %}
+               <li class="span4">
+                   <h3>{{ album['title'] }}</h3>
+                   <img src="{{ album['thumbnail_url'] }}">
+                   <p class="small">{{ album['photos'] }} {{ _('photos') }}</p>
+                   <button id="{{ album['id'] }}" class="btn btn-default btn-album">{{ _('Select') }}</button>
+               </li>
+           {% endfor %}
+           </ul>
+       </div>
+      </br>
         {% endif %}
         <br>
         {% if form %}
