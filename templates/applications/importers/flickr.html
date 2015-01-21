@@ -64,6 +64,7 @@
     $(".btn-album").each(function(){
         $(this).off('click').on('click', function(){
             document.getElementById('album_id').value = $(this).attr('id');
+            document.location.href = "#album_id";
         });
     });
 </script>
