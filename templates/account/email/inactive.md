@@ -7,3 +7,6 @@ In any case, thank you for your contribution so far.
 Cheers!
 
 {{ config.BRAND }} Team
+
+***
+Follow us: [Twitter](http://twitter.com/pybossa), [Google+](https://plus.google.com/115359083217638640334/posts)
