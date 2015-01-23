@@ -1,7 +1,7 @@
-Hello {{ user['fullname'] }},
+Hi, {{ user['fullname'] }}!
 
-Help us in {{ config.BRAND}}
+We notice you signed up for {{config.BRAND}} some time ago, but never contributed. We would like to encourage you to visit our project again and start collaborating with us. We hope not to bother you with this email- we’re just trying to make you give us a hand!
 
-Regards,
+Cheers!
 
 {{ config.BRAND }} Team
