@@ -41,8 +41,8 @@
     });
 </script>
 <script type="text/javascript">
-    options = {
-
+(function() {
+    var options = {
         // Required. Called when a user selects an item in the Chooser.
         success: function(files) {
             list = document.getElementById("files");
@@ -74,5 +74,6 @@
     };
     var button = Dropbox.createChooseButton(options);
     document.getElementById("dropbox-chooser").appendChild(button);
+})();
 </script>
 {% endblock %}
