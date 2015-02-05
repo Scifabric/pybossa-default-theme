@@ -58,7 +58,8 @@
                 element.appendChild(content);
                 list.appendChild(element);
             });
-            document.getElementById('numFiles').textContent = files.length;
+            totalFilesToImport = list.childElementCount;
+            document.getElementById('numFiles').textContent = totalFilesToImport;
             document.getElementById('message').style.display = "";
         },
 
