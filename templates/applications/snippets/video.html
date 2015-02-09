@@ -115,19 +115,18 @@ pybossa.taskLoaded(function(task, deferred) {
 pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         loadUserProgress();
-        if ((task.info.oembed == undefined) && (task.info.video_url)) {
-            var oembed = $("<iframe/>");
+        if ((task.info.oembed === undefined) && (task.info.video_url)) {
+            var oembed = $("<video>");
             oembed.attr("src", task.info.video_url);
             oembed.attr("width", 512);
-            oembed.attr("height", 512);
-            oembed.attr("frameborder", 0);
+            oembed.prop('controls', true);
             task.info.oembed = oembed;
         }
         $('#video-clip').html('').append(task.info.oembed);
         $('#task-id').html(task.id);
 
         $('.btn-answer').off('click').on('click', function(evt) {
-            var answer = {'answer': $(evt.target).attr("value") || $(evt.target).parent().attr("value")};
+            var answer = {'answer': $(this).attr("value")};
             if (typeof answer != 'undefined') {
                 pybossa.saveTask(task.id, answer).done(function() {
                     deferred.resolve();
