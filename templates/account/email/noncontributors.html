@@ -1,0 +1,13 @@
+<p>Hi, {{ user['fullname'] }}!
+</p>
+<p>We notice you signed up for {{config.BRAND}} some time ago, but never contributed. We would like to encourage you to visit our project again and start collaborating with us. We hope not to bother you with this email- we’re just trying to make you give us a hand!
+</p>
+<p>Cheers!
+</p>
+<p>{{ config.BRAND }} Team
+</p>
+<hr>
+<p><a href="{{url_for('account.update_profile', name=user['name'], _external=True)}}">Update your notifications preferences</a></p>
+<p>Powered by <a href="http://pybossa.com">PyBossa</a></p>
+<p>Follow us: <a href="http://twitter.com/pybossa">Twitter</a>, <a
+    href="https://plus.google.com/115359083217638640334/posts">Google+</a></p>

@@ -1,0 +1,16 @@
+<p>Hello {{ user['fullname'] }},
+</p>
+<p>You have updated your email's account in {{ config.BRAND }}.
+</p>
+<p>To verify that you are the owner of this e-mail address, please visit the URL below:
+</p>
+<p><a href="{{ confirm_url }}">{{ confirm_url }}</a>
+</p>
+<p>Regards,
+</p>
+<p>{{ config.BRAND }} Team
+</p>
+<hr>
+<p>Powered by <a href="http://pybossa.com">PyBossa</a></p>
+<p>Follow us: <a href="http://twitter.com/pybossa">Twitter</a>, <a
+    href="https://plus.google.com/115359083217638640334/posts">Google+</a></p>
