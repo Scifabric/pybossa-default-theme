@@ -1,4 +1,3 @@
-<script src="https://w.soundcloud.com/player/api.js"></script>
 <div class="row">
     <!-- Success and Error Messages for the user --> 
     <div class="span6 offset2" style="height:50px">
@@ -105,19 +104,25 @@ function loadUserProgress() {
 
 pybossa.taskLoaded(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
+        // keep this  if block for backwards compatibility...
         // load image from soundcloud
         if (task.info.song) {
-            var iframe = $('<iframe />');
-            iframe.css('width', '100%');
-            iframe.css('height', 166);
-            iframe.attr('scrolling', 'no');
-            iframe.attr('frameborder', 'no');
-            iframe.attr('src', task.info.song);
+            var embed = $('<iframe />');
+            embed.css('width', '100%');
+            embed.css('height', 166);
+            embed.attr('scrolling', 'no');
+            embed.attr('frameborder', 'no');
+            embed.attr('src', task.info.song);
+            task.info.embed = embed;
         }
-        else {
-            var iframe = task.info.embed;
+
+        if ((task.info.embed === undefined) && (task.info.audio_url)) {
+            var embed = $("<audio>");
+            embed.attr("src", task.info.audio_url);
+            embed.attr("width", '100%');
+            embed.prop('controls', true);
+            task.info.embed = embed;
         }
-        task.info.iframe = iframe;
         deferred.resolve(task);
     }
     else {
@@ -128,15 +133,13 @@ pybossa.taskLoaded(function(task, deferred) {
 pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         loadUserProgress();
-        console.log(task.info.iframe);
-        $('#sound-clip').html('').append(task.info.iframe);
+        $('#sound-clip').html('').append(task.info.embed);
         $('#question').html(task.info.question);
         $('#task-id').html(task.id);
 
         $('.btn-answer').off('click').on('click', function(evt) {
-            var answer = {'answer': $(evt.target).attr("value") || $(evt.target).parent().attr("value")};
+            var answer = {'answer': $(this).attr("value")};
             if (typeof answer != 'undefined') {
-                //console.log(answer);
                 pybossa.saveTask(task.id, answer).done(function() {
                     deferred.resolve();
                 });

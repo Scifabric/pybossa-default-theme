@@ -21,7 +21,7 @@
           {{ render_field(form.googledocs_url, class_="input-block-level", placeholder="The URL of the Google Docs Spreadsheet") }}
           <div class="form-actions">
               <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-              <a href="{{ url_for('app.settings', short_name=app.short_name) }}" class="btn">{{_('Cancel')}}</a>
+              <a href="{{ url_for('app.tasks', short_name=app.short_name) }}" class="btn">{{_('Cancel')}}</a>
           </div>
         </fieldset>
       </form>
