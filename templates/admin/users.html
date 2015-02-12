@@ -23,14 +23,14 @@
         {% if found %}
         <h2>{{ _('Found Users') }}</h2>
         {% for user in found %}
-        {{ render_admin_user(user) }}
+        {{ render_admin_user(user, upload_method) }}
         {% endfor %}
         {% endif %}
 
         {% if users %}
         <h1>{{ _('Current Users with Admin privileges') }}</h1>
         {% for user in users %}
-        {{ render_admin_user(user) }}
+        {{ render_admin_user(user, upload_method) }}
         {% endfor %}
         {% endif %}
     </div>
