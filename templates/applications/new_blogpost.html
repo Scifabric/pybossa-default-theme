@@ -15,8 +15,8 @@
     <form class="form-horizontal" method="post" action="{{ url_for('app.new_blogpost', short_name=app.short_name) }}">
         {{ form.hidden_tag() }}
         <fieldset>
-            {{ render_field(form.title, class_="span4", placeholder= _('The title of your post')) }}
-            {{ render_field(form.body, class_="span4", placeholder= _('Write your post here. You can use Markdown!')) }}
+            {{ render_field(form.title, class_="span9", placeholder= _('The title of your post')) }}
+            {{ render_field(form.body, class_="span9", placeholder= _('Write your post here. You can use Markdown!')) }}
             <div class="form-actions">
                 <input type="submit" value={{_('Create')}} class="btn btn-primary" />
                 <a href="{{url_for('app.settings', short_name=app.short_name)}}" class="btn">{{_('Cancel')}}</a>
