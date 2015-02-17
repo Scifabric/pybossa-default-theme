@@ -29,16 +29,16 @@
             {% if current_user.is_authenticated() and app.owner_id == current_user.id %}
             <div id="ckan" class="span6 well">
                 {% if ckan_name %}
-                <h2>Export to the {{ckan_name}}</h2>
+                <h2>{{ _('Export to the') }} {{ckan_name}}</h2>
                 {% else %}
-                <h2>Export to a CKAN server</h2>
+                <h2>{{ _('Export to a CKAN server') }}</h2>
                 {% endif %}
-                <p><span class="label label-danger"><i class="icon-bullhorn"></i> IMPORTANT</span> This export option stills in beta mode and may fail in the CKAN server. If you get an error, please send an e-mail to info@pybossa.com</p>
+                <p><span class="label label-danger"><i class="icon-bullhorn"></i> {{ _('IMPORTANT') }}</span> {{ _('This export option stills in beta mode and may fail in the CKAN server. If you get an error, please send an e-mail to info@pybossa.com') }}</p>
                 {% if current_user.ckan_api %}
                 <a id="ckan_task" href="{{url_for('app.export_to', short_name=app.short_name, type='task', format='ckan')}}" rel="nofollow" class="btn btn-large">{{_('Tasks')}}</a>
                 <a id="ckan_task_run" href="{{url_for('app.export_to', short_name=app.short_name, type='task_run', format='ckan')}}" rel="nofollow" class="btn btn-large">{{_('Task Runs')}}</a>
                 {% else %}
-                <p id="ckan_warning">You don't have a Datahub.io API key in your {{BRAND}} account. Please,  <a href="http://datahub.io/user/register">create an account</a> and copy/paste the API key in your profile in order to use this exporter.</p>
+                <p id="ckan_warning">{{ _("You don't have a Datahub.io API key in your") }} {{BRAND}} {{ _('account. Please,') }} <a href="http://datahub.io/user/register">{{ _('create an account') }}</a> {{ _('and copy/paste the API key in your profile in order to use this exporter') }}.</p>
                 {% endif %}
             </div>
             {% endif %}
