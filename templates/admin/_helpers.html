@@ -6,8 +6,8 @@
         {{ helper.render_user_thumbnail(user, upload_method, style="height:100px; width:100px;")}}
     </div>
     <div class="span10">
-        <h2>{{user.fullname}} <small>(nick: {{user.name}})</small></h2>
-        <h3>Member since: {{user.created[0:10]}}</h3>
+        <h2>{{user.fullname}} <small>({{ _('nick') }}: {{user.name}})</small></h2>
+        <h3>{{ _('Member since') }}: {{user.created[0:10]}}</h3>
         {% if user.admin %}
         <a href="{{url_for('admin.del_admin', user_id=user.id)}}" class="btn btn-danger">
             <i class="icon-remove"></i>

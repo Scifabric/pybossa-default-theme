@@ -14,18 +14,18 @@
         {% if logs %}
         <table class="table">
             <tr>
-                <td>When</td>
-                <td>Who</td>
-                <td>Source</td>
-                <td>Action</td>
-                <td>Attribute</td>
-                <td>Old Value</td>
-                <td>New Value</td>
+                <td>{{ _('When') }}</td>
+                <td>{{ _('Who') }}</td>
+                <td>{{ _('Source') }}</td>
+                <td>{{ _('Action') }}</td>
+                <td>{{ _('Attribute') }}</td>
+                <td>{{ _('Old Value') }}</td>
+                <td>{{ _('New Value') }}</td>
             </tr>
         {% for log in logs | sort(reverse=True, attribute='created') %}
             <tr>
                 <td>{{log.created}}</td>
-                <td>{% if current_user.name == log.user_name%}You{%else%}{{log.user_name}}{%endif%}</td>
+                <td>{% if current_user.name == log.user_name%}{{ _('You') }}{%else%}{{log.user_name}}{%endif%}</td>
                 <td>{{log.caller}}</td>
                 <td>{{log.action}}</td>
                 <td>{{log.attribute}}</td>
