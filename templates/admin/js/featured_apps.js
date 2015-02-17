@@ -8,7 +8,7 @@
         }
     }
   });
-  
+
   $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
   function add(app_id) {
       var url = $SCRIPT_ROOT + "/admin/featured/" + app_id;
@@ -36,4 +36,3 @@
       });
   }
 </script>
-
