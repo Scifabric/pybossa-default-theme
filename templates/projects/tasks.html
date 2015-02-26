@@ -1,18 +1,18 @@
 {% extends "/base.html" %}
-{% set active_page = "applications" %}
+{% set active_page = "projects" %}
 {% set active_link  = "tasks" %}
 {% import "projects/_helpers.html" as helper %}
 
 {% block content %}
-{% if app %}
+{% if project %}
         <div class="row">
             <div class="span3">
-                {{ helper.render_app_local_nav(app, 'tasks', current_user) }}
+                {{ helper.render_project_local_nav(project, 'tasks', current_user) }}
             </div>
             <div class="span9">
-                {{ helper.render_app_title(app, upload_method, subtitle=_('Tasks'))}}
+                {{ helper.render_project_title(project, upload_method, subtitle=_('Tasks'))}}
                 <hr>
-                {{ helper.render_overall_progress(app, n_tasks, overall_progress, show_contribute_btn=False, show_n_tasks=True) }}
+                {{ helper.render_overall_progress(project, n_tasks, overall_progress, show_contribute_btn=False, show_n_tasks=True) }}
                 <hr>
                 {% if project.owner_id == current_user.id or (current_user.is_authenticated() and current_user.admin)%}
                 <div class="row-fluid">

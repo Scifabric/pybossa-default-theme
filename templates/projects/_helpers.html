@@ -31,7 +31,7 @@
   </div>
 {% endmacro %}
 
-{% macro render_app_local_nav(project, active_link, current_user) -%}
+{% macro render_project_local_nav(project, active_link, current_user) -%}
 <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
     <li {% if active_link=="info"%}class="active"{% endif %}><a href="{{url_for('project.details', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Info')}}</a></li>
     <li {% if active_link=="contribute"%}class="active"{% endif %}><a href="{{url_for('project.presenter', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Contribute')}}</a></li>

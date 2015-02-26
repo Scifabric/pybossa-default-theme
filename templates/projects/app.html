@@ -1,19 +1,19 @@
 {% extends "/base.html" %}
-{% set active_page = "applications" %}
-{% set active_app  = "all" %}
-{% import "projects/_helpers.html.html" as helper %}
+{% set active_page = "projects" %}
+{% set active_project  = "all" %}
+{% import "projects/_helpers.html" as helper %}
 
 {% block content %}
 <div class="row">
-    {% if app %}
+    {% if project %}
     <div class="span3">
-        {{ helper.render_app_local_nav(app, 'info', current_user) }}
+        {{ helper.render_project_local_nav(project, 'info', current_user) }}
     </div>
     <!-- Project -->
     <div class="span9" style="min-height:400px">
-        {{ helper.render_app_title(app, upload_method) }}
+        {{ helper.render_project_title(project, upload_method) }}
         <hr>
-        {{ helper.render_overall_progress(app, n_tasks, overall_progress) }}
+        {{ helper.render_overall_progress(project, n_tasks, overall_progress) }}
         {% if project.long_description %}
         <hr>
             {{ project.long_description | e | markdown }}
