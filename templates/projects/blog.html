@@ -1,7 +1,7 @@
 {% extends "/base.html" %}
 {% set active_page = "applications" %}
 {% set active_app  = "all" %}
-{% import "applications/_helpers.html" as helper %}
+{% import "projects/_helpers.html" as helper %}
 
 {% block content %}
 <div class="row">
@@ -18,7 +18,7 @@
                 {% for blogpost in blogposts %}
                     <li>
                         <div>
-                            <a href="{{url_for('app.show_blogpost', short_name=app.short_name, id=blogpost.id)}}">{{ blogpost.title }}</a>
+                            <a href="{{url_for('project.show_blogpost', short_name=project.short_name, id=blogpost.id)}}">{{ blogpost.title }}</a>
                         </div>
                     </li>
                 {% endfor %}

@@ -2,7 +2,7 @@
 {% set active_page = "profile" %}
 {% set active_link = "applications" %}
 {% import "account/_helpers.html" as helper %}
-{% import "projects/_helpers.html" as app_helper %}
+{% import "projects/_helpers.html.html" as app_helper %}
 
 {% block content %}
 <div class="row">
@@ -26,7 +26,7 @@
             {% endif %}
         {% else %}
             <h2>{{ _('You have not created a project') }}</h2>
-            <a href="{{url_for('app.new')}}" class="btn btn-primary">{{ _('Create a Project') }}</a>
+            <a href="{{url_for('project.new')}}" class="btn btn-primary">{{ _('Create a Project') }}</a>
         {% endif %}
     </div>
 </div>

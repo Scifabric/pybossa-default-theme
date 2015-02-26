@@ -1,7 +1,7 @@
 {% extends "/base.html" %}
 {% set active_page = "applications" %}
 {% set active_app  = "all" %}
-{% import "applications/_helpers.html" as helper %}
+{% import "projects/_helpers.html" as helper %}
 
 {% block content %}
 {% if app %}
@@ -43,12 +43,12 @@
                         {% endif %}
                         <div class="span4">
                         {% if task_pct >= 100 %}
-                            <a id="fulldownload" class="btn btn-success" href="{{ url_for('app.export', 
-                                short_name=app.short_name,
+                            <a id="fulldownload" class="btn btn-success" href="{{ url_for('project.export', 
+                                short_name=project.short_name,
                                 task_id=t.id) }}"><i class="icon-cloud-download"></i> {{_('Download Task Results')}}</a>
                         {% elif task_pct > 0 and task_pct < 100 %}
-                            <a id="partialdownload" class="btn btn-info" href="{{ url_for('app.export', 
-                                short_name=app.short_name,
+                            <a id="partialdownload" class="btn btn-info" href="{{ url_for('project.export', 
+                                short_name=project.short_name,
                                 task_id=t.id) }}"><i class="icon-cloud-download"></i> {{_('Download Partial results')}}</a>
 
                          {% else %}

@@ -2,7 +2,7 @@
 {% set active_page = "profile" %}
 {% set active_link = "profile" %}
 {% import "account/_helpers.html" as helper %}
-{% import "projects/_helpers.html" as app_helper %}
+{% import "projects/_helpers.html.html" as app_helper %}
 
 {% block content %}
 
@@ -22,8 +22,8 @@
                 {{ app_helper.render_app_thumbnail(app, upload_method, class='img-polaroid', style='max-width:100px; max-height:100px;') }}
             </div>
             <div class="span9">
-                <h2><a href="{{url_for('app.details', short_name=app.short_name)}}">{{app.name}}</a></h2>
-                  <a class="btn btn-primary" href="{{url_for('app.presenter', short_name=app.short_name)}}"><i class="icon-thumbs-up"></i> {{ _('Contribute!') }}</a>
+                <h2><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.name}}</a></h2>
+                  <a class="btn btn-primary" href="{{url_for('project.presenter', short_name=project.short_name)}}"><i class="icon-thumbs-up"></i> {{ _('Contribute!') }}</a>
             </div>
         </div><!-- end row-fluid -->
         {% endfor %}

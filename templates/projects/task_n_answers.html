@@ -1,7 +1,7 @@
 {% extends "/base.html" %}
 {% set active_page = "applications" %}
 {% set active_link  = "tasks" %}
-{% import "applications/_helpers.html" as helper %}
+{% import "projects/_helpers.html" as helper %}
 {% from "_formhelpers.html" import render_field %}
 
 {% block content %}
@@ -12,13 +12,13 @@
             </div>
             <div class="span9">
                 {{ helper.render_app_title(app, subtitle=_('Task Redundancy')) }}
-                <form id="task_redundancy" class="form-horizontal" method="post" action="{{ url_for('app.task_n_answers', short_name=app.short_name) }}">
+                <form id="task_redundancy" class="form-horizontal" method="post" action="{{ url_for('project.task_n_answers', short_name=project.short_name) }}">
                     {{ form.hidden_tag() }}
                     <fieldset>
                         {{ render_field(form.n_answers, class_="input-block-level", placeholder= _('The number of answers per tasks that you want for the project')) }}
                         <div class="form-actions">
                             <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
-                            <a href="{{url_for('app.tasks', short_name=app.short_name)}}" class="btn">{{_('Cancel')}}</a>
+                            <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn">{{_('Cancel')}}</a>
                         </div>
                     </fieldset>
                 </form>

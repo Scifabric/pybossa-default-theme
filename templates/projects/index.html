@@ -1,7 +1,7 @@
 {% extends "/base.html" %}
 {% set active_page = "applications" %}
 
-{% import "applications/_helpers.html" as helper %}
+{% import "projects/_helpers.html" as helper %}
 
 {% block content %}
 <script src="{{url_for('static', filename='js/vendor/isotope.pkgd.min.js')}}"></script>
@@ -9,10 +9,10 @@
     <div class="span3">
             <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
                 {% for c in categories %}
-                <li {% if active_cat.short_name==c.short_name%}class="active"{% endif %}><a href="{{url_for('app.app_cat_index', category=c.short_name)}}"><i class="icon-chevron-right"></i> {{ c.name }}</a></li>
+                <li {% if active_cat.short_name==c.short_name%}class="active"{% endif %}><a href="{{url_for('project.app_cat_index', category=c.short_name)}}"><i class="icon-chevron-right"></i> {{ c.name }}</a></li>
                 {% endfor %}
                 {% if current_user.is_authenticated() and current_user.admin %}
-                <li {% if active_cat.short_name=="draft"%}class="active"{% endif %}><a href="{{url_for('app.draft')}}"><i class="icon-chevron-right"></i> {{ _('Draft') }}</a></li>
+                <li {% if active_cat.short_name=="draft"%}class="active"{% endif %}><a href="{{url_for('project.draft')}}"><i class="icon-chevron-right"></i> {{ _('Draft') }}</a></li>
                 {% endif %}
             </ul>
     </div>
@@ -46,7 +46,7 @@
 
             <div class="projects">
             {% for app in apps %}
-            {{ helper.show_app(app, active_cat.short_name, current_user, upload_method) }}
+            {{ helper.show_project(app, active_cat.short_name, current_user, upload_method) }}
             {% endfor %}
             </div>
             {% if pagination.pages > 1 %}

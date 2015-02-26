@@ -1,7 +1,7 @@
 {% extends "/base.html" %}
 {% set active_page = "applications" %}
 {% set active_link  = "tasks" %}
-{% import "applications/_helpers.html" as helper %}
+{% import "projects/_helpers.html" as helper %}
 {% from "_formhelpers.html" import render_field %}
 
 {% block content %}
@@ -20,7 +20,7 @@
                 <p><span class="label label-info"><i class="icon-bullhorn"></i>
                     {{_('Important')}}</span> {{_('The priority value is only
                 respected by the')}} <strong>{{_('default scheduler')}}</strong>.</p>
-                <form id="task_priority" class="form-horizontal" method="post" action="{{ url_for('app.task_priority', short_name=app.short_name) }}">
+                <form id="task_priority" class="form-horizontal" method="post" action="{{ url_for('project.task_priority', short_name=project.short_name) }}">
                     {{ form.hidden_tag() }}
                     <fieldset>
                         {{ render_field(form.task_ids, class_="span4",
@@ -28,7 +28,7 @@
                         {{ render_field(form.priority_0, class_="span4", placeholder=_('Priority value between 0.0 and 1.0'))}}
                         <div class="form-actions">
                             <input type="submit" value={{_('Change Priority')}} class="btn btn-primary" />
-                            <a href="{{url_for('app.tasks', short_name=app.short_name)}}" class="btn">{{_('Cancel')}}</a>
+                            <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn">{{_('Cancel')}}</a>
                         </div>
                     </fieldset>
                 </form>

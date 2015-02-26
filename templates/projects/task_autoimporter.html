@@ -1,7 +1,7 @@
 {% extends "/base.html" %}
 {% set active_page = "applications" %}
-{% set active_app  = app.short_name %}
-{% import "applications/_helpers.html" as helper %}
+{% set active_app  = project.short_name %}
+{% import "projects/_helpers.html" as helper %}
 
 {% block content %}
 {% from "_formhelpers.html" import render_field %}
@@ -11,7 +11,7 @@
         {{ helper.render_app_local_nav(app, 'tasks', current_user)}}
     </div>
     <div class="span9">
-        <h1><strong>{{app.name}}</strong>: {{_('Currently configured autoimport')}}</h1>
+        <h1><strong>{{project.name}}</strong>: {{_('Currently configured autoimport')}}</h1>
         <h2>{{_('You currently have the following autoimporter configured')}}</h2>
         {% if importer['type']=='epicollect' %}
         <p><strong>Type: </strong>Epicollect</p>
@@ -28,12 +28,12 @@
         <p><strong>Flickr album ID: </strong>{{ importer['album_id'] }}</p>
         {% endif %}
 
-      <form class="form-horizontal" method="post" action="{{ url_for('app.delete_autoimporter', short_name=app.short_name) }}">
+      <form class="form-horizontal" method="post" action="{{ url_for('project.delete_autoimporter', short_name=project.short_name) }}">
         <fieldset>
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
           <div class="form-actions">
             <input id="submit" type="submit" value="{{_('Delete')}}" class="btn btn-primary" />
-            <a href="{{ url_for('app.tasks', short_name=app.short_name) }}" class="btn">{{_('Back')}}</a>
+            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Back')}}</a>
           </div>
         </fieldset>
       </form>
