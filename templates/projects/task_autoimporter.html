@@ -8,7 +8,7 @@
 {{ helper.render_loading(loading_text) }}
 <div class="row">
     <div class="span3">
-        {{ helper.render_app_local_nav(app, 'tasks', current_user)}}
+        {{ helper.render_project_local_nav(app, 'tasks', current_user)}}
     </div>
     <div class="span9">
         <h1><strong>{{project.name}}</strong>: {{_('Currently configured autoimport')}}</h1>

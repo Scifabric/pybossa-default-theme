@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="{{url_for('static', filename='css/jquery.Jcrop.min.css')}}" type="text/css" />
 <div class="row">
     <div class="span3">
-        {{ helper.render_app_local_nav(app, 'settings', current_user) }}
+        {{ helper.render_project_local_nav(app, 'settings', current_user) }}
     </div>
   <div class="span9">
       <legend><strong>{{project.name}}</strong>: {{_('Update the project')}}</legend>
@@ -17,7 +17,7 @@
           <fieldset>
               <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
               <div>
-              {{ helper.render_app_thumbnail(app, upload_method, id="uploadPreview") }}
+              {{ helper.render_project_thumbnail(app, upload_method, id="uploadPreview") }}
               </div>
               {{ render_field(upload_form.avatar, onchange="previewImage()") }}
               {{ upload_form.x1 }}

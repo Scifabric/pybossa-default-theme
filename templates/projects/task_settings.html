@@ -7,10 +7,10 @@
 {% if app %}
         <div class="row">
             <div class="span3">
-                {{ helper.render_app_local_nav(app, 'tasks', current_user) }}
+                {{ helper.render_project_local_nav(app, 'tasks', current_user) }}
             </div>
             <div class="span9">
-                {{ helper.render_app_title(app, subtitle=_('Task Settings'))}}
+                {{ helper.render_project_title(app, subtitle=_('Task Settings'))}}
                 <hr>
                 <div class="row-fluid">
                     <div id="task_scheduler" class="span6 well">

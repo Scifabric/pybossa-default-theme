@@ -7,10 +7,10 @@
 <div class="row">
     {% if app %}
     <div class="span3">
-        {{ helper.render_app_local_nav(app, 'auditlog', current_user) }}
+        {{ helper.render_project_local_nav(app, 'auditlog', current_user) }}
     </div>
     <div class="span9" style="min-height:400px">
-        {{ helper.render_app_title(app, upload_method) }}
+        {{ helper.render_project_title(app, upload_method) }}
         {% if logs %}
         <table class="table">
             <tr>

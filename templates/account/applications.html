@@ -15,13 +15,13 @@
             {% if apps_published %}
             <h2>{{ _('Published') }}</h2>
             {% for app in apps_published %}
-            {{ app_helper.render_app_short_summary(app, upload_method) }}
+            {{ app_helper.render_project_short_summary(app, upload_method) }}
             {% endfor %}
             {% endif %}
             {% if apps_draft %}
             <h2>{{ _('Draft') }}</h2>
             {% for app in apps_draft %}
-            {{ app_helper.render_app_short_summary(app, upload_method) }}
+            {{ app_helper.render_project_short_summary(app, upload_method) }}
             {% endfor %}
             {% endif %}
         {% else %}

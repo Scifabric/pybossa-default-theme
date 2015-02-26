@@ -7,10 +7,10 @@
 {% from "_formhelpers.html" import render_field %}
 <div id="app-form" class="row"> 
     <div class="span3">
-        {{ helper.render_app_local_nav(app, 'blog', current_user) }}
+        {{ helper.render_project_local_nav(app, 'blog', current_user) }}
     </div>
     <div class="span9">
-        {{ helper.render_app_title(app) }}
+        {{ helper.render_project_title(app) }}
         <h2>{{ _('Edit the blog post') }}</h2>
         <form class="form-horizontal" method="post" action="{{ url_for('project.update_blogpost',
                                                         short_name=project.short_name,

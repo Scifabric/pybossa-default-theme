@@ -50,10 +50,10 @@
 </ul>
 {% endmacro %}
 
-{% macro render_app_summary(project, n_tasks, overall_progress, last_activity, current_user, upload_method) -%}
+{% macro render_project_summary(project, n_tasks, overall_progress, last_activity, current_user, upload_method) -%}
 <div class="row-fluid">
     <div class="span2">
-        {{ render_app_thumbnail(project, upload_method, class='img-polaroid') }}
+        {{ render_project_thumbnail(project, upload_method, class='img-polaroid') }}
     </div>
     <div class="span8">
       <ul style="list-style-type: none; font-size: 16px;">
