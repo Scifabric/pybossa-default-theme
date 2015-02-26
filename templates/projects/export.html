@@ -1,5 +1,5 @@
 {% extends "/base.html" %}
-{% set active_page = "applications" %}
+{% set active_page = "projects" %}
 {% set active_app  = "all" %}
 {% import "projects/_helpers.html" as helper %}
 
@@ -7,10 +7,10 @@
 {{ helper.render_loading(text=loading_text) }}
 <div class="row">
     <div class="span3" style="padding: 8px 0;">
-        {{ helper.render_project_local_nav(app, "tasks", current_user) }}
+        {{ helper.render_project_local_nav(project, "tasks", current_user) }}
     </div>
     <div id="body" class="span9" style="min-height:400px;">
-        {{ helper.render_project_title(app, upload_method, subtitle=_('Export All Tasks and Task Runs'))}}
+        {{ helper.render_project_title(project, upload_method, subtitle=_('Export All Tasks and Task Runs'))}}
         <p>{{ _('You can export and download') }} <strong>{{ _('all the available') }}</strong> {{ _('Tasks and Task Runs (the submitted answers by the users) in CSV or JSON formats.') }}</p>
         <div class="row-fluid">
             <div id="csv" class="span6 well">
