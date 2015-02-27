@@ -16,6 +16,5 @@ All the best,
 {{ BRAND }} team
 
 ***
-[UNSUBSCRIBE]({{ url_for('account.update_profile', name=project.owner.name, _external=True)}})
 Powered by [PyBossa](http://pybossa.com)
 Follow us: [Twitter](http://twitter.com/pybossa), [Google+](https://plus.google.com/115359083217638640334/posts)
