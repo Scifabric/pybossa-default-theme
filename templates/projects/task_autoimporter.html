@@ -1,6 +1,6 @@
 {% extends "/base.html" %}
-{% set active_page = "applications" %}
-{% set active_app  = project.short_name %}
+{% set active_page = "projects" %}
+{% set active_project  = project.short_name %}
 {% import "projects/_helpers.html" as helper %}
 
 {% block content %}
@@ -8,7 +8,7 @@
 {{ helper.render_loading(loading_text) }}
 <div class="row">
     <div class="span3">
-        {{ helper.render_project_local_nav(app, 'tasks', current_user)}}
+        {{ helper.render_project_local_nav(project, 'tasks', current_user)}}
     </div>
     <div class="span9">
         <h1><strong>{{project.name}}</strong>: {{_('Currently configured autoimport')}}</h1>
