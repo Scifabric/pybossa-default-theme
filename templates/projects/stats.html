@@ -23,13 +23,13 @@
 </script>
 <div class="row">
     <div class="span3">
-        {{helper.render_project_local_nav(app, 'stats', current_user)}}
+        {{helper.render_project_local_nav(project, 'stats', current_user)}}
     </div>
     <div class="span9">
         {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
         {{ privacy.render_lock_page() }}
         {% else %}
-        {{ helper.render_project_title(app, upload_method, subtitle=_('Statistics'))}}
+        {{ helper.render_project_title(project, upload_method, subtitle=_('Statistics'))}}
         <br/>
 
             {% if private %}
