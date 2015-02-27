@@ -2,7 +2,7 @@
 {% set active_page = "profile" %}
 {% set active_link = "profile" %}
 {% import "account/_helpers.html" as helper %}
-{% import "projects/_helpers.html" as app_helper %}
+{% import "projects/_helpers.html" as project_helper %}
 
 {% block content %}
 
@@ -16,10 +16,10 @@
         {{ helper.render_user_profile(current_user, upload_method, "settings") }} 
         <hr>
         <h2>{{ _('Your Contributions') }}</h2>
-        {% for app in apps_contrib %}
+        {% for project in projects_contrib %}
         <div class="row-fluid well well-small">
             <div class="span3">
-                {{ app_helper.render_project_thumbnail(app, upload_method, class='img-polaroid', style='max-width:100px; max-height:100px;') }}
+                {{ project_helper.render_project_thumbnail(project, upload_method, class='img-polaroid', style='max-width:100px; max-height:100px;') }}
             </div>
             <div class="span9">
                 <h2><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.name}}</a></h2>
@@ -29,5 +29,5 @@
         {% endfor %}
     </div><!-- end span9 -->
 </div>
-{{ app_helper.broken_image() }}
+{{ project_helper.broken_image() }}
 {% endblock %}
