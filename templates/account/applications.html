@@ -11,16 +11,16 @@
     </div>
     <div class="span9" style="min-height:400px">
         <h1><strong>{{ current_user.fullname }}'s</strong>: {{ _('Projects') }}</h1>
-        {% if apps_published or apps_draft %}
-            {% if apps_published %}
+        {% if projects_published or projects_draft %}
+            {% if projects_published %}
             <h2>{{ _('Published') }}</h2>
-            {% for app in apps_published %}
+            {% for app in projects_published %}
             {{ app_helper.render_project_short_summary(app, upload_method) }}
             {% endfor %}
             {% endif %}
-            {% if apps_draft %}
+            {% if projects_draft %}
             <h2>{{ _('Draft') }}</h2>
-            {% for app in apps_draft %}
+            {% for app in projects_draft %}
             {{ app_helper.render_project_short_summary(app, upload_method) }}
             {% endfor %}
             {% endif %}

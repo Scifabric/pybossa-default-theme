@@ -20,10 +20,10 @@
                       <ul style='list-style-type:none; margin-left:0px;'>
                         <li><strong><i class='icon-calendar'></i> Joined</strong> {{account['created'][0:10]}}</li>
                         <li><strong><i class='icon-tasks'></i> Contributed Tasks</strong> {{ account.task_runs }}</li>
-                        {% if account.apps %}
+                        {% if account.projects %}
                         <li><strong><i class='icon-certificate'></i> Owner of</strong>
                           <ul style='list-style-type:none'>
-                              {% for app in account.apps %}
+                              {% for app in account.projects %}
                               <li><i class='icon-chevron-right'></i> {{ project.name | truncate(18, true)}}</li>
                               {% endfor %}
                           </ul>
