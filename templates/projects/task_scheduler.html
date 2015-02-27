@@ -1,17 +1,17 @@
 {% extends "/base.html" %}
-{% set active_page = "applications" %}
+{% set active_page = "projects" %}
 {% set active_link  = "tasks" %}
 {% import "projects/_helpers.html" as helper %}
 {% from "_formhelpers.html" import render_field %}
 
 {% block content %}
-{% if app %}
+{% if project %}
         <div class="row">
             <div class="span3">
-                {{ helper.render_project_local_nav(app, 'tasks', current_user) }}
+                {{ helper.render_project_local_nav(project, 'tasks', current_user) }}
             </div>
             <div class="span9">
-                {{ helper.render_project_title(app, subtitle=_('Task Scheduler'))}}
+                {{ helper.render_project_title(project, subtitle=_('Task Scheduler'))}}
                 <p>{{_('You can choose from the following schedulers')}}:</p>
                 <ul>
                     <li><strong>{{_('Default')}}</strong> {{_('or')}}
@@ -29,7 +29,8 @@
                 <form id="task_scheduler" class="form-horizontal" method="post" action="{{ url_for('project.task_scheduler', short_name=project.short_name) }}">
                     {{ form.hidden_tag() }}
                     <fieldset>
-                        {{ render_field(form.sched, class_="span4", placeholder="Task scheduler for your app")}}
+                        {{ render_field(form.sched, class_="span4", 
+                        placeholder="Task scheduler for your rpoject")}}
                         <div class="form-actions">
                             <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
                             <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn">{{_('Cancel')}}</a>
