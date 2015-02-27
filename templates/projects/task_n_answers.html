@@ -1,17 +1,17 @@
 {% extends "/base.html" %}
-{% set active_page = "applications" %}
+{% set active_page = "projects" %}
 {% set active_link  = "tasks" %}
 {% import "projects/_helpers.html" as helper %}
 {% from "_formhelpers.html" import render_field %}
 
 {% block content %}
-{% if app %}
+{% if project %}
         <div class="row">
             <div class="span3">
-                {{ helper.render_project_local_nav(app, 'tasks', current_user) }}
+                {{ helper.render_project_local_nav(project, 'tasks', current_user) }}
             </div>
             <div class="span9">
-                {{ helper.render_project_title(app, subtitle=_('Task Redundancy')) }}
+                {{ helper.render_project_title(project, subtitle=_('Task Redundancy')) }}
                 <form id="task_redundancy" class="form-horizontal" method="post" action="{{ url_for('project.task_n_answers', short_name=project.short_name) }}">
                     {{ form.hidden_tag() }}
                     <fieldset>
