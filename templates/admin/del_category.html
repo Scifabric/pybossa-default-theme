@@ -16,6 +16,7 @@
         </div>
         <h2>{{_('Delete Category')}}: {{category.name}}?</h2>
         <form method="post" action="{{url_for('admin.del_category', id=category.id)}}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
             <input class="btn btn-small" type="submit" value="Yes"></input>
             <a class="btn btn-large" href="{{url_for('admin.categories')}}">{{ _('No, do not delete it') }}</a>
         </form>
