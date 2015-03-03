@@ -27,7 +27,7 @@
             </ul>
             </div>
 
-        {% if apps %}
+        {% if projects %}
             {% if active_cat.short_name=="featured"%} 
             <h1>
                 <i class="icon-star"></i> {{pagination.total_count}} {{ _('Featured Projects') }}
@@ -45,7 +45,7 @@
 
 
             <div class="projects">
-            {% for app in apps %}
+            {% for app in projects %}
             {{ helper.show_project(app, active_cat.short_name, current_user, upload_method) }}
             {% endfor %}
             </div>
