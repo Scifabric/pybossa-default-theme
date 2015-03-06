@@ -10,7 +10,7 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li {% if active_page == 'community' %} class="active" {% endif %}><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
-              <li {% if active_page == 'applications' %} class="active" {% endif %}><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
+              <li {% if active_page == 'projects' %} class="active" {% endif %}><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
               <li {% if active_page == 'create' %} class="active" {% endif %}><a href="{{ url_for('project.new') }}">{{ _('Create') }}</a></li>
               <li {% if active_page == 'about' %} class="active" {% endif %}><a href="{{ url_for('home.about')}}">{{ _('About') }}</a></li>
             </ul>
@@ -20,7 +20,7 @@
               <li {% if active_page == 'profile' %} class="active" {% endif %}><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon icon-user"></i> {{ current_user.name | truncate(6,true) }} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ url_for('account.profile', name=current_user.name) }}"><i class="icon icon-user"></i> {{ _('My Profile') }}</a></li>
-                    <li><a href="{{ url_for('account.applications', name=current_user.name) }}"><i class="icon icon-th-large"></i> {{ _('My Projects') }}</a></li>
+                    <li><a href="{{ url_for('account.projects', name=current_user.name) }}"><i class="icon icon-th-large"></i> {{ _('My Projects') }}</a></li>
                     <li><a href="{{ url_for('account.update_profile', name=current_user.name) }}"><i class="icon icon-cog"></i> {{ _('My Settings') }}</a></li>
                     {% if current_user.admin == 1 %}
                     <li class="divider"></li>
