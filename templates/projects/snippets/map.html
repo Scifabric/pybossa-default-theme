@@ -33,7 +33,7 @@
             <br/>
             <div class="alert-actions">
                 <a class="btn small" href="/">Go back</a>
-                <a class="btn small" href="/app">or, Check other projects</a>
+                <a class="btn small" href="/project">or, Check other projects</a>
             </div>
         </div>
         <!-- Error alert box -->
@@ -46,7 +46,7 @@
             <a class="close">×</a>
             <p><strong>Sorry!</strong> Your web browser does not support the project.<p>
             <div class="alert-actions">
-<a c    lass="btn small" href="/app">Please, try with another project</a>
+<a c    lass="btn small" href="/project">Please, try with another project</a>
             </div>
         </div>
     </div><!-- End of span8 offset2-->
@@ -345,6 +345,6 @@ pybossa.presentTask(function(task, deferred){
     }
 });
 
-pybossa.run('{{app.short_name}}');
+pybossa.run('{{project.short_name}}');
 </script>
 

@@ -24,7 +24,7 @@
 <br/>
 <div class="alert-actions">
     <a class="btn small" href="/">Go back</a>
-    <a class="btn small" href="/app">or, Check other projects</a>
+    <a class="btn small" href="/project">or, Check other projects</a>
 </div>
     </div>
     <div id="error" class="alert alert-error" style="display:none;">
@@ -174,7 +174,7 @@ function goNext(task) {
 }
 
 function loadUserProgress() {
-    pybossa.userProgress('{{app.short_name}}').done(function(data){
+    pybossa.userProgress('{{project.short_name}}').done(function(data){
         var pct = Math.round((data.done*100)/data.total);
         $("#progress").css("width", pct.toString() +"%");
         $("#progress").attr("title", pct.toString() + "% completed!");
@@ -276,5 +276,5 @@ pybossa.presentTask(function(task, deferred){
     }
 });
 
-pybossa.run('{{app.short_name}}');
+pybossa.run('{{project.short_name}}');
 </script>

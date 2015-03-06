@@ -1,6 +1,6 @@
 {% extends "/base.html" %}
-{% set active_page = "applications" %}
-{% set active_app  = project.short_name %}
+{% set active_page = "projects" %}
+{% set active_project  = project.short_name %}
 {% import "projects/_helpers.html" as helper %}
 
 {% block content %}
@@ -17,7 +17,7 @@
       <form class="form-horizontal" method="post" action="{{ url_for(target, short_name=project.short_name) }}">
         <fieldset>
         {{ form.hidden_tag() }}
-        <span class="help-inline"> {{ _('Please provide a URL to a Google Drive Spreadsheet with data for') }} {{ active_app }}. <br/> {{ _('For more information, please look at') }} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-via-the-built-in-csv-task-creator" target="_blank">{{ _('the documentation') }}.</a></span>
+        <span class="help-inline"> {{ _('Please provide a URL to a Google Drive Spreadsheet with data for') }} {{ active_project }}. <br/> {{ _('For more information, please look at') }} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-via-the-built-in-csv-task-creator" target="_blank">{{ _('the documentation') }}.</a></span>
           {{ render_field(form.googledocs_url, class_="input-block-level", placeholder=_('The URL of the Google Docs Spreadsheet')) }}
           <div class="form-actions">
               <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
