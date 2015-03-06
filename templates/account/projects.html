@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% set active_page = "profile" %}
-{% set active_link = "applications" %}
+{% set active_link = "projects" %}
 {% import "account/_helpers.html" as helper %}
-{% import "projects/_helpers.html" as app_helper %}
+{% import "projects/_helpers.html" as project_helper %}
 
 {% block content %}
 <div class="row">
@@ -14,14 +14,14 @@
         {% if projects_published or projects_draft %}
             {% if projects_published %}
             <h2>{{ _('Published') }}</h2>
-            {% for app in projects_published %}
-            {{ app_helper.render_project_short_summary(app, upload_method) }}
+            {% for project in projects_published %}
+            {{ project_helper.render_project_short_summary(project, upload_method) }}
             {% endfor %}
             {% endif %}
             {% if projects_draft %}
             <h2>{{ _('Draft') }}</h2>
-            {% for app in projects_draft %}
-            {{ app_helper.render_project_short_summary(app, upload_method) }}
+            {% for project in projects_draft %}
+            {{ project_helper.render_project_short_summary(project, upload_method) }}
             {% endfor %}
             {% endif %}
         {% else %}
@@ -30,5 +30,5 @@
         {% endif %}
     </div>
 </div>
-{{ app_helper.broken_image() }}
+{{ project_helper.broken_image() }}
 {% endblock %}
