@@ -12,7 +12,7 @@
           <div class="span8">
             <ul class="featured">
                 {% for f in categories_projects['featured'] %}
-                <li><a href={{ url_for('project.details', short_name=f.short_name)}}>
+                <li><a href="{{ url_for('project.details', short_name=f.short_name)}}">
                     {{ helper.render_project_thumbnail(f, upload_method) }}
                     <h3>{{f.name}}</h3>
                     <span class="label label-info">{{ _('Info') }}</span>
