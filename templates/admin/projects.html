@@ -11,7 +11,7 @@
     </div>
     <div class="span9">
         <h1><strong>{{ _('Admin Site') }} :</strong> {{ _('Manage featured projects') }}</h1>
-    {% include "admin/js/featured_projects.js" %}
+        {% include "admin/js/featured_projects.js" %}
         <ul class="nav nav-tabs">
             {% for c in categories %}
             <li {% if loop.first %}class="active"{% endif %}>

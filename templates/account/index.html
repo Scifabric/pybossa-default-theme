@@ -23,7 +23,7 @@
                         {% if account.projects %}
                         <li><strong><i class='icon-certificate'></i> Owner of</strong>
                           <ul style='list-style-type:none'>
-                              {% for app in account.projects %}
+                              {% for project in account.projects %}
                               <li><i class='icon-chevron-right'></i> {{ project.name | truncate(18, true)}}</li>
                               {% endfor %}
                           </ul>
