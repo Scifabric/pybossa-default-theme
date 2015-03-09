@@ -18,8 +18,8 @@
           dataType: 'json',
       });
       xhr.done(function(){
-          $("#appBtnDel" + project_id).show();
-          $("#appBtnAdd" + project_id).hide();
+          $("#projectBtnDel" + project_id).show();
+          $("#projectBtnAdd" + project_id).hide();
       });
   }
   function del(project_id) {
@@ -30,8 +30,8 @@
           dataType: 'json',
       });
       xhr.done(function(){
-          $("#appBtnDel" + project_id).hide();
-          $("#appBtnAdd" + project_id).show();
+          $("#projectBtnDel" + project_id).hide();
+          $("#projectBtnAdd" + project_id).show();
 
       });
   }
