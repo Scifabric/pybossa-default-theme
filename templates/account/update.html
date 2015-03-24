@@ -42,6 +42,7 @@
             {{ render_field(form.email_addr, placeholder= _('hello@mywebsite.org') ) }}
             {{ render_field(form.locale) }}
             {{ render_field(form.privacy_mode) }}
+            {{ render_field(form.subscribed) }}
             <div class="form-actions">
                 <button type="submit" name='btn' value="Profile" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
               <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
@@ -71,7 +72,7 @@
             <hr>
             <h2>External Services</h2>
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-            {{ render_field(external_form.ckan_api) }}
+            {{ render_field(form.ckan_api) }}
             <div class="form-actions">
                 <button type="submit" name='btn' value="External" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
               <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
