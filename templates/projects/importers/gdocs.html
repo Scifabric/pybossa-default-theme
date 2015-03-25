@@ -1,0 +1,36 @@
+{% extends "/base.html" %}
+{% set active_page = "projects" %}
+{% set active_project  = project.short_name %}
+{% import "projects/_helpers.html" as helper %}
+
+{% block content %}
+{% from "_formhelpers.html" import render_field %}
+{{ helper.render_loading(loading_text) }}
+<div class="row">
+    <div class="span3">
+        {{ helper.render_project_local_nav(project, 'tasks', current_user)}}
+    </div>
+    <div class="span9">
+        <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
+        {% if form %}
+        <h2>{{_('From a Google Docs Spreadsheet')}}</h2>
+      <form class="form-horizontal" method="post" action="{{ url_for(target, short_name=project.short_name) }}">
+        <fieldset>
+        {{ form.hidden_tag() }}
+        <span class="help-inline"> {{ _('Please provide a URL to a Google Drive Spreadsheet with data for') }} {{ active_project }}. <br/> {{ _('For more information, please look at') }} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-via-the-built-in-csv-task-creator" target="_blank">{{ _('the documentation') }}.</a></span>
+          {{ render_field(form.googledocs_url, class_="input-block-level", placeholder=_('The URL of the Google Docs Spreadsheet')) }}
+          <div class="form-actions">
+              <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
+              <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
+          </div>
+        </fieldset>
+      </form>
+      {% endif %}
+    </div>
+</div>
+<script>
+    $("#submit").off('click').on('click', function(){
+        $("#loading").show();
+    });
+</script>
+{% endblock %}

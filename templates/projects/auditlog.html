@@ -1,0 +1,51 @@
+{% extends "/base.html" %}
+{% set active_page = "projects" %}
+{% set active_project  = "all" %}
+{% import "projects/_helpers.html" as helper %}
+
+{% block content %}
+<div class="row">
+    {% if project %}
+    <div class="span3">
+        {{ helper.render_project_local_nav(project, 'auditlog', current_user) }}
+    </div>
+    <div class="span9" style="min-height:400px">
+        {{ helper.render_project_title(project, upload_method) }}
+        {% if logs %}
+        <table class="table">
+            <tr>
+                <td>{{ _('When') }}</td>
+                <td>{{ _('Who') }}</td>
+                <td>{{ _('Source') }}</td>
+                <td>{{ _('Action') }}</td>
+                <td>{{ _('Attribute') }}</td>
+                <td>{{ _('Old Value') }}</td>
+                <td>{{ _('New Value') }}</td>
+            </tr>
+        {% for log in logs | sort(reverse=True, attribute='created') %}
+            <tr>
+                <td>{{log.created}}</td>
+                <td>{% if current_user.name == log.user_name%}{{ _('You') }}{%else%}{{log.user_name}}{%endif%}</td>
+                <td>{{log.caller}}</td>
+                <td>{{log.action}}</td>
+                <td>{{log.attribute}}</td>
+                <td>{{(log.old_value or "Nothing")|truncate(30)}}</td>
+                <td>{{(log.new_value or "Nothing")|truncate(30)}}</td>
+            </tr>
+
+        {% endfor %}
+        </table>
+        {% else %}
+            <h1>{{ _('Sorry! No logs so far.') }}</h1>
+        {% endif %}
+        <hr>
+    </div>
+    {% else %}
+    <div class="page-header">
+        <h1>{{ _('Sorry! This project does not exist.') }}</h1>
+    </div>
+    {% endif %}
+</div>
+{{ helper.broken_image() }}
+{{ helper.knob() }}
+{% endblock %}

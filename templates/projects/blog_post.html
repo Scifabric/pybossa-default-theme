@@ -1,0 +1,47 @@
+{% extends "/base.html" %}
+{% set active_page = "projects" %}
+{% set active_project  = "all" %}
+{% import "projects/_helpers.html" as helper %}
+
+{% block content %}
+<div class="row">
+    {% if blogpost %}
+    <div class="span9" style="min-height:400px">
+        <hr>
+            <article>
+                <header>
+                    <h2>{{ blogpost.title }}</h2>
+                    <p>
+                        {{ _('Author: ') }} {{ blogpost.owner.name }}
+                        </br>
+                        {{ _('Written: ') }} {{ blogpost.created[0:10] }}
+                    </p>
+                </header>
+                <hr>
+                <hr>
+                <body>
+                    <p>{{ blogpost.body | e | markdown }}</p>
+                </body>
+            </article>
+        <hr>
+        {% if current_user.is_authenticated() and current_user.id == project.owner_id or current_user.admin %}
+        <form class="form-horizontal" method="post" action="{{ url_for('project.delete_blogpost', short_name=project.short_name, id=blogpost.id) }}" onsubmit="return confirm('Do you really want to delete the blog post?');">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <div class="form-actions">
+                <input type="submit" value={{_('Delete')}} class="btn btn-danger" />
+                <a href="{{url_for('project.update_blogpost', short_name=project.short_name, id=blogpost.id)}}" class="btn">{{_('Edit')}}</a>
+            </div>
+        </form>
+        {% endif %}
+        <a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}" class="btn">{{_('Back')}}</a>
+    </div>
+    {% else %}
+    <div class="page-header">
+        <h1>{{ _('Sorry! This blogpost does not exist.') }}</h1>
+        <a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}" class="btn">{{_('Back')}}</a>
+    </div>
+    {% endif %}
+</div>
+{{ helper.broken_image() }}
+{{ helper.knob() }}
+{% endblock %}
