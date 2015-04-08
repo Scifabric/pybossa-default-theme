@@ -1,0 +1,103 @@
+{% extends "/base.html" %}
+{% set active_page = "projects" %}
+
+{% import "projects/_helpers.html" as helper %}
+
+{% block content %}
+<script src="{{url_for('static', filename='js/vendor/isotope.pkgd.min.js')}}"></script>
+<div class="row">
+    <div class="span3">
+            <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
+                {% for c in categories %}
+                <li {% if active_cat.short_name==c.short_name%}class="active"{% endif %}><a href="{{url_for('project.project_cat_index', category=c.short_name)}}"><i class="icon-chevron-right"></i> {{ c.name }}</a></li>
+                {% endfor %}
+                {% if current_user.is_authenticated() and current_user.admin %}
+                <li {% if active_cat.short_name=="draft"%}class="active"{% endif %}><a href="{{url_for('project.draft')}}"><i class="icon-chevron-right"></i> {{ _('Draft') }}</a></li>
+                {% endif %}
+            </ul>
+    </div>
+    <div class="span9">
+            <div id="sorts" class="btn-group pull-right" style="margin-top:12px;">
+                <button class="btn dropdown-toggle" data-toggle="dropdown" data-sort-value="original-order">Order by <span id="order">name</span> <span class="caret"></span></button>
+              <ul class="dropdown-menu" style="top:35px;">
+                  <li><a href="#" data-sort-value="original-order">name</a></li>
+                  <li><a href="#" data-sort-value="date">date</a></li>
+                  <li><a href="#" data-sort-value="activity">activity</a></li>
+                  <li><a href="#" data-sort-value="progress">progress</a></li>
+            </ul>
+            </div>
+
+        {% if projects %}
+            {% if active_cat.short_name=="featured"%} 
+            <h1>
+                <i class="icon-star"></i> {{pagination.total_count}} {{ _('Featured Projects') }}
+            </h1>
+            <h2>{{ _('A special selection of the most interesting projects') }}</h2>
+            {% elif active_cat.short_name=='draft' %}
+            <h1>
+                <i class="icon-wrench"></i> {{pagination.total_count}} {{ _('Draft Projects')}}</h1>
+            <h2>{{ _('Work in progress projects') }}</h2>
+            {% else %}
+            <h1>
+                <i class="icon-th"></i> {{pagination.total_count}} {{ active_cat.name }} Projects</h1>
+            <h2>{{ active_cat.description }}</h2>
+            {% endif %}
+
+
+            <div class="projects">
+            {% for project in projects %}
+            {{ helper.show_project(project, active_cat.short_name, current_user, upload_method) }}
+            {% endfor %}
+            </div>
+            {% if pagination.pages > 1 %}
+                {{ helper.render_pagination(pagination) }}
+            {% endif %}
+        {% else %}
+            <h1>
+                <i class="icon-th"></i> {{pagination.total_count}} {{ active_cat.name }} Projects</h1>
+            <h2>{{_('Sorry, there are no published projects for this category yet')}}</h2>
+        {% endif %}
+    </div>
+</div>
+{{ helper.broken_image() }}
+<script>
+$( function() {
+  // init Isotope
+  var $container = $('.projects').isotope({
+    itemSelector: '.project-item',
+    layoutMode: 'fitRows',
+    getSortData: {
+      date: '.date',
+      activity: '.activity',
+      progress: '.progress parseInt',
+    },
+    sortAscending: {
+        progress: false,
+        activity: false,
+    }
+  });
+
+  // bind sort button click
+  $('#sorts').on( 'click', 'a', function() {
+    var sortValue = $(this).attr('data-sort-value');
+    $container.isotope({ sortBy: sortValue });
+    if (sortValue == 'original-order') {
+        $("#order").text('name');
+    }
+    else {
+        $("#order").text(sortValue);
+    }
+  });
+
+  // change is-checked class on buttons
+  $('.dropdown-toggle').each( function( i, buttonGroup ) {
+    var $buttonGroup = $( buttonGroup );
+    $buttonGroup.on( 'click', 'button', function() {
+      $buttonGroup.find('.is-checked').removeClass('is-checked');
+      $( this ).addClass('is-checked');
+    });
+  });
+
+});
+</script>
+{% endblock %}

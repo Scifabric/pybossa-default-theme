@@ -1,7 +1,7 @@
 {% macro render_account_local_nav(current_user, active_link) -%}
 <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
     <li {% if active_link=="profile"%}class="active"{% endif %}><a href="{{url_for('account.profile', name=current_user.name)}}"><i class="icon-chevron-right"></i> {{ _('My Profile') }}</a></li>
-    <li {% if active_link=="applications"%}class="active"{% endif %}><a href="{{url_for('account.applications', name=current_user.name)}}"><i class="icon-chevron-right"></i> {{ _('My Projects') }}</a></li>
+    <li {% if active_link=="projects"%}class="active"{% endif %}><a href="{{url_for('account.projects', name=current_user.name)}}"><i class="icon-chevron-right"></i> {{ _('My Projects') }}</a></li>
     {% if current_user.admin %}
     <li {% if active_link=="admin"%}class="active"{% endif %}><a href="{{url_for('admin.index')}}"><i class="icon-chevron-right"></i> {{ _('Admin Site') }}</a></li>
     {% endif %}
@@ -9,21 +9,21 @@
 </ul>
 {% endmacro %}
 
-{% macro render_twitter_btn(app) %}
+{% macro render_twitter_btn(project) %}
 <a href="https://twitter.com/share" class="twitter-share-button"
-    data-text="{{ _('I\'ve done') }} {{app.c}} {{ _('tasks for the @PyBossa project:') }} {{app.name}}. {{ _('Do you want to help?') }} {{url_for('app.details',short_name=app.short_name,_external=True)}}"
+    data-text="{{ _('I\'ve done') }} {{project.c}} {{ _('tasks for the @PyBossa project:') }} {{project.name}}. {{ _('Do you want to help?') }} {{url_for('project.details',short_name=project.short_name,_external=True)}}"
     data-count="none">{{ _('Tweet') }}</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 {% endmacro %}
 
-{% macro render_googlePlus_btn(app) %}
+{% macro render_googlePlus_btn(project) %}
 <!-- Place this tag in your head or just before your close body tag. -->
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
   {parsetags: 'explicit'}
 </script>
 
 <!-- Place this tag where you want the +1 button to render. -->
-<div class="g-plusone" data-size="medium" data-annotation="none" data-href="{{url_for('app.details',short_name=app.short_name,_external=True)}}"></div>
+<div class="g-plusone" data-size="medium" data-annotation="none" data-href="{{url_for('project.details',short_name=project.short_name,_external=True)}}"></div>
 
 <!-- Place this render call where appropriate. -->
 <script type="text/javascript">gapi.plusone.go();</script>

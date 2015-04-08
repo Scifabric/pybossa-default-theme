@@ -1,0 +1,9 @@
+{% extends "/base.html" %}
+{% set active_page = "projects"  %}
+{% set active_project = project.short_name  %}
+
+{% block content %}
+
+{{ project.info.task_result|safe}}
+
+{% endblock %}

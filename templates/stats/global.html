@@ -1,6 +1,6 @@
 {% extends "/base.html" %}
 {% set active_page = "leaderboard" %}
-{% set active_app  = "all" %}
+{% set active_project  = "all" %}
 {% import "privacy/locked.html" as privacy %}
 
 {% block content %}
@@ -85,19 +85,19 @@ h3 > small {
 
             <!-- Project Stats CARD -->
             <div id="card" class="row-fluid">
-                <div id="appStats" class="span12 well">
+                <div id="projectStats" class="span12 well">
                     <h2>{{ _('Projects') }}</h2>
                     <div class="row-fluid">
                         <div class="span6">
-                            <h3>{{ _('Published Projects') }}: <small>{{stats.n_published_apps}}</small></h3>
-                            <h3>{{ _('Draft Projects') }}: <small>{{stats.n_draft_apps}}</small></h3>
-                            <h3>{{ _('Total') }}: {{stats.n_total_apps}}</h3>
-                            {% if top5_apps_24_hours %}
+                            <h3>{{ _('Published Projects') }}: <small>{{stats.n_published_projects}}</small></h3>
+                            <h3>{{ _('Draft Projects') }}: <small>{{stats.n_draft_projects}}</small></h3>
+                            <h3>{{ _('Total') }}: {{stats.n_total_projects}}</h3>
+                            {% if top5_projects_24_hours %}
                             <hr>
                             <h4><i class="icon-th-large"></i> {{ _('Top 5 projects in the last 24 hours') }}</h4>
                                 <ol>
-                                {% for app in top5_apps_24_hours %}
-                                <li><a href="{{url_for('app.details', short_name=app.short_name)}}">{{app.name}}</a></li>
+                                {% for project in top5_projects_24_hours %}
+                                <li><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.name}}</a></li>
                                 {% endfor %}
                                 </ol>
                             {% else %}
@@ -105,11 +105,11 @@ h3 > small {
                             <h4>{{ _('No active project in the last 24 hours') }}</h4>
                             {% endif %}
                         </div>
-                        <div id="apps" class="span6" style="height:400px;"></div>
+                        <div id="projects" class="span6" style="height:400px;"></div>
                      <script>
                         (function(){
-                            var data = {{apps|safe}};
-                            var container = document.getElementById('apps');
+                            var data = {{projects|safe}};
+                            var container = document.getElementById('projects');
                             var graph = Flotr.draw(container, [
                                 {data:[data['values'][0]['value']], label:data['values'][0]['label']},
                                 {data:[data['values'][1]['value']],  label:data['values'][1]['label']}], 
