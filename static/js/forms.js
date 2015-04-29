@@ -7,14 +7,15 @@
     }
 
     if ( resource === 'project' ) {
-        $("#name").bind('textchange', function (event, previousText) {
+        $("#name").on('keyup', function () {
+          var text = $(this).val();
           $('#short_name').val(makeSlug($(this).val()));
         });
-
     }
 
     if ( resource === 'account' ) {
-        $("#fullname").bind('textchange', function (event, previousText) {
+        $("#fullname").on('keyup', function () {
+          var text = $(this).val();
           $('#name').val(makeSlug($(this).val()));
         });
     }
