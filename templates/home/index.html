@@ -10,7 +10,8 @@
               {% include ['custom/front_page_text.html', 'home/_pybossa_text.html'] ignore missing %}
           </div>
           <div class="span8">
-            <ul class="featured">
+          <iframe src="/static/galeria/index.html" width="610" height="315" frameborder="0" scrolling="no"></iframe>
+            <!--<ul class="featured">
                 {% for f in categories_projects['featured'] %}
                 <li><a href="{{ url_for('project.details', short_name=f.short_name)}}">
                     {{ helper.render_project_thumbnail(f, upload_method) }}
@@ -22,12 +23,12 @@
                 {% for number in range(18 - categories_projects['featured']|count) %}
                 <li></li>
                 {% endfor %}
-            </ul>
+            </ul>-->
           </div>
         </div>
       </div>
 
-      <section class="grey get-started">
+     <!-- <section class="grey get-started">
         <div class="row">
           <div class="span4">
               <h2><i class="icon-play-circle"></i> {{ _('Get Started') }}</h2>
@@ -36,10 +37,11 @@
           <div class="span8">
               <a href="{{url_for('project.index')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a> <a href="{{url_for('project.new')}}" class="btn btn-primary btn-large"><i class="icon-plus-sign"></i> {{ _('Create a Project') }}</a>
           </div>
-      </section>
+      </section>-->
       
       <section>
-        <h2><i class="icon-th"></i>{{ _('Most Active Projects') }}</h2>
+      
+       <!-- <h2><i class="icon-th"></i>{{ _('Most Active Projects') }}</h2>
         <div class="row">
           {% for project in top_projects %}
           <div class="span3">
@@ -65,7 +67,7 @@
             </div>
           </div>
           {% endfor %}
-        </div>
+        </div>-->
       </section>
       
       {% if top_users %}

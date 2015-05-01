@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jFlow Plus v2</title>
+<link href='...http://fonts.googleapis.com/css?family=Rokkitt:700' rel='stylesheet' type='text/css'>
+<link href="...styles/style.css" type="text/css" rel="stylesheet"/>
+<!--
+*********************************
+Start of necessary jFlow scripts: 
+*********************************
+-->
+
+<link href="styles/jflow.style.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="scripts/jflow.plus.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+
+	    $("#myController").jFlow({
+
+			controller: ".jFlowControl", // must be class, use . sign
+
+			slideWrapper : "#jFlowSlider", // must be id, use # sign
+
+			slides: "#mySlides",  // the div where all your sliding divs are nested in
+
+			selectedWrapper: "jFlowSelected",  // just pure text, no sign
+			
+			effect: "flow", //this is the slide effect (rewind or flow)
+
+			width: "603px",  // this is the width for the content-slider
+
+			height: "305px",  // this is the height for the content-slider
+
+			duration: 400,  // time in milliseconds to transition one slide
+			
+			pause: 5000, //time between transitions
+
+			prev: ".jFlowPrev", // must be class, use . sign
+
+			next: ".jFlowNext", // must be class, use . sign
+
+			auto: true	
+
+    });
+
+});
+
+</script>
+</head>
+
+<body>
+
+
+  <!--
+  **********************************************
+  Start of jFlow DOM
+  **********************************************
+  -->
+  <div id="sliderContainer">
+    <div id="mySlides">
+      <div id="slide1" class="slide"> <img src="images/jflow-sample-slide1.jpg" alt="Slide 1 jFlow Plus" />
+        <div class="slideContent">
+          <h3>You Asked, jFlow Delivered</h3>
+          <p>It's all about the Community and giving back.  To keep with this tradition, jFlow Plus now has more of the features you want.</p>
+        </div>
+      </div>
+      <div id="slide2" class="slide"> <img src="images/jflow-sample-slide2.jpg" alt="Slide 2 jFlow Plus" />
+        <div class="slideContent">
+          <h3>W3C Valid</h3>
+          <p>Are you a stickler for writing valid code?  So is jFlow.  Run this puppy through W3C's validator to see it pass the test!</p>
+        </div>
+      </div>
+      <div id="slide3" class="slide"> <img src="images/jflow-sample-slide3.jpg" alt="Slide 3 jFlow Plus" />
+        <div class="slideContent">
+          <h3>Frequent Code Updates</h3>
+          <p>This slider is actively developed and used by thousands of websites.  More features coming soon including more effects and options.</p>
+        </div>
+      </div>
+      <div id="slide4" class="slide"> <img src="images/jflow-sample-slide4.jpg" alt="Slide 3 jFlow Plus" />
+        <div class="slideContent">
+          <h3>Notice the Slide Navigation?</h3>
+          <p>That's a new feature.  Click on the paging buttons in the top-right to quickly jump to any jFlow slide number.</p>
+        </div>
+      </div>
+    </div>
+    <div id="myController"> 
+        <span class="jFlowControl"></span> 
+        <span class="jFlowControl"></span> 
+        <span class="jFlowControl"></span> 
+        <span class="jFlowControl"></span> 
+    </div>
+    <div class="jFlowPrev"></div>
+    <div class="jFlowNext"></div>
+  </div>
+  <!--end: jFlow DOM --> 
+
+  <!--end: content --> 
+  
+
+<!--end: container -->
+
+</body>
+</html>
