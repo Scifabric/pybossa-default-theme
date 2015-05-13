@@ -10,7 +10,26 @@
               {% include ['custom/front_page_text.html', 'home/_pybossa_text.html'] ignore missing %}
           </div>
           <div class="span8">
-          <iframe src="/static/galeria/index.html" width="610" height="315" frameborder="0" scrolling="no"></iframe>
+          <div id="wrapper">
+    <!-- Slideshow 4 -->
+    <div class="callbacks_container">
+      <ul class="rslides" id="slider4">
+        <li>
+          <a href="http://chilecientifico.cl/participar.html"><img src="/static/img/4.jpg" alt="Te presentamos la Ciencia Ciudadana en Chile ¡Conoce los proyectos!."></a>
+         <!-- <p class="caption">This is a caption</p>-->
+        </li>
+        <li>
+          <a href="http://chilecientifico.pybossa.com/app/proyectocancer/"><img src="/static/img/3.jpg" alt="Colabora en la investigación de un nuevo tratamiento contra el cáncer. Ayuda a los científicos a contar células. Y vive la ciencia ciudadana."></a>
+         <!-- <p class="caption">This is a caption</p>-->
+        </li>
+        <li>
+          <img src="/static/img/1.jpg" alt="Bienvenido a Chile Científico.">
+        <!--  <p class="caption">This is another caption</p>-->
+        </li>
+      </ul>
+    </div>
+    <!-- This is here just to demonstrate the callbacks -->
+</div>
             <!--<ul class="featured">
                 {% for f in categories_apps['featured'] %}
                 <li><a href={{ url_for('app.details', short_name=f.short_name)}}>
