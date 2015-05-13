@@ -1,0 +1,68 @@
+{% extends "/base.html" %}
+{% set active_page = "projects" %}
+{% set active_project  = "all" %}
+{% import "projects/_helpers.html" as helper %}
+
+{% block content %}
+{{ helper.render_loading(text=loading_text) }}
+<div class="row">
+    <div class="span3" style="padding: 8px 0;">
+        {{ helper.render_project_local_nav(project, "tasks", current_user) }}
+    </div>
+    <div id="body" class="span9" style="min-height:400px;">
+        {{ helper.render_project_title(project, upload_method, subtitle=_('Export All Tasks and Task Runs'))}}
+        <p>{{ _('You can export and download') }} <strong>{{ _('all the available') }}</strong> {{ _('Tasks and Task Runs (the submitted answers by the users) in CSV or JSON formats.') }}</p>
+        <div class="row-fluid">
+            <div id="csv" class="span6 well">
+                <h2>{{_('Export in CSV format')}}</h2>
+                {% if n_tasks != 0 %}
+                <a href={{url_for('project.export_to', short_name=project.short_name, type='task', format='csv')}} rel="nofollow" class="btn btn-large" download>{{ _('Tasks') }}</a>
+                {% else %}
+                <a href='#' rel="nofollow" class="btn btn-large disabled" download>{{ _('Tasks') }}</a>
+                {% endif %}
+                {% if n_task_runs != 0 %}
+                <a href={{url_for('project.export_to', short_name=project.short_name, type='task_run', format='csv')}} rel="nofollow" class="btn btn-large" download>{{ _('Task Runs') }}</a>
+                {% else %}
+                <a href='#' rel="nofollow" class="btn btn-large disabled" download>{{ _('Task Runs') }}</a>
+                {% endif %}
+            </div>
+            <div id="json" class="span6 well">
+                <h2>{{_('Export in JSON format')}}</h2>
+                {% if n_tasks != 0 %}
+                <a href={{url_for('project.export_to', short_name=project.short_name, type='task', format='json')}} rel="nofollow" class="btn btn-large" download>{{ _('Tasks') }}</a>
+                {% else %}
+                <a href='#' rel="nofollow" class="btn btn-large disabled" download>{{ _('Tasks') }}</a>
+                {% endif %}
+                {% if n_task_runs != 0 %}
+                <a href={{url_for('project.export_to', short_name=project.short_name, type='task_run', format='json')}} rel="nofollow" class="btn btn-large" download>{{ _('Task Runs') }}</a>
+                {% else %}
+                <a href='#' rel="nofollow" class="btn btn-large disabled" download>{{ _('Task Runs') }}</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row-fluid">
+            {% if current_user.is_authenticated() and project.owner_id == current_user.id %}
+            <div id="ckan" class="span6 well">
+                {% if ckan_name %}
+                <h2>{{ _('Export to the') }} {{ckan_name}}</h2>
+                {% else %}
+                <h2>{{ _('Export to a CKAN server') }}</h2>
+                {% endif %}
+                <p><span class="label label-danger"><i class="icon-bullhorn"></i> {{ _('IMPORTANT') }}</span> {{ _('This export option stills in beta mode and may fail in the CKAN server. If you get an error, please send an e-mail to info@pybossa.com') }}</p>
+                {% if current_user.ckan_api %}
+                <a id="ckan_task" href="{{url_for('project.export_to', short_name=project.short_name, type='task', format='ckan')}}" rel="nofollow" class="btn btn-large">{{_('Tasks')}}</a>
+                <a id="ckan_task_run" href="{{url_for('project.export_to', short_name=project.short_name, type='task_run', format='ckan')}}" rel="nofollow" class="btn btn-large">{{_('Task Runs')}}</a>
+                {% else %}
+                <p id="ckan_warning">{{ _("You don't have a Datahub.io API key in your") }} {{BRAND}} {{ _('account. Please,') }} <a href="http://datahub.io/user/register">{{ _('create an account') }}</a> {{ _('and copy/paste the API key in your profile in order to use this exporter') }}.</p>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<script>
+    $("#ckan > a").off('click').on('click', function(){
+        $("#loading").show();
+    });
+</script>
+{% endblock %}

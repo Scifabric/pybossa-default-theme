@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% import "applications/_helpers.html" as helper %}
+{% import "projects/_helpers.html" as helper %}
 {% import "account/_helpers.html" as account_helper %}
 
 {% block content %}
@@ -31,15 +31,15 @@
     <!-- This is here just to demonstrate the callbacks -->
 </div>
             <!--<ul class="featured">
-                {% for f in categories_apps['featured'] %}
-                <li><a href={{ url_for('app.details', short_name=f.short_name)}}>
-                    {{ helper.render_app_thumbnail(f, upload_method) }}
+                {% for f in categories_projects['featured'] %}
+                <li><a href="{{ url_for('project.details', short_name=f.short_name)}}">
+                    {{ helper.render_project_thumbnail(f, upload_method) }}
                     <h3>{{f.name}}</h3>
                     <span class="label label-info">{{ _('Info') }}</span>
                     </a>
                 </li>
                 {% endfor %}
-                {% for number in range(18 - categories_apps['featured']|count) %}
+                {% for number in range(18 - categories_projects['featured']|count) %}
                 <li></li>
                 {% endfor %}
             </ul>-->
@@ -54,7 +54,7 @@
             <p>{{ _('It\'s really simple to start contributing.') }}</p>
           </div>
           <div class="span8">
-              <a href="{{url_for('app.index')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a> <a href="{{url_for('app.new')}}" class="btn btn-primary btn-large"><i class="icon-plus-sign"></i> {{ _('Create a Project') }}</a>
+              <a href="{{url_for('project.index')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a> <a href="{{url_for('project.new')}}" class="btn btn-primary btn-large"><i class="icon-plus-sign"></i> {{ _('Create a Project') }}</a>
           </div>
       </section>-->
       
@@ -62,27 +62,27 @@
       
        <!-- <h2><i class="icon-th"></i>{{ _('Most Active Projects') }}</h2>
         <div class="row">
-          {% for app in top_apps %}
+          {% for project in top_projects %}
           <div class="span3">
-            <div class="app box">
-                {% if app.info.thumbnail %}
-                <a href="{{url_for('app.details', short_name=app.short_name)}}" class="image" style="background-image:url({{helper.render_url_thumbnail(app, upload_method)}})"></a>
+            <div class="project box">
+                {% if project.info.thumbnail %}
+                <a href="{{url_for('project.details', short_name=project.short_name)}}" class="image" style="background-image:url({{helper.render_url_thumbnail(project, upload_method)}})"></a>
                 {% else %}
-                <a href="{{url_for('app.details', short_name=app.short_name)}}" class="image" style="background-image:url({{url_for('static',filename='img/placeholder.project.png')}})"></a>
+                <a href="{{url_for('project.details', short_name=project.short_name)}}" class="image" style="background-image:url({{url_for('static',filename='img/placeholder.project.png')}})"></a>
                 {% endif %}
-                <h3>{{app.name | truncate(20, true)}}</h3>
-                <p>{{app.description | truncate(32, true)}}</p>
-                <p><a href="{{url_for('app.details',short_name=app.short_name)}}" class="btn btn-mini btn-info">Info</a> <a href="{{url_for('app.presenter',short_name=app.short_name)}}" class="btn btn-mini btn-primary">{{ _('Start') }}</a></p>
+                <h3>{{project.name | truncate(20, true)}}</h3>
+                <p>{{project.description | truncate(32, true)}}</p>
+                <p><a href="{{url_for('project.details',short_name=project.short_name)}}" class="btn btn-mini btn-info">Info</a> <a href="{{url_for('project.presenter',short_name=project.short_name)}}" class="btn btn-mini btn-primary">{{ _('Start') }}</a></p>
             </div>
           </div>
           {% endfor %}
-          {% for i in range(4-top_apps|count)%}
+          {% for i in range(4-top_projects|count)%}
           <div class="span3">
-            <div class="app box">
+            <div class="project box">
                 <a href="#" class="image" style="background-image:url({{url_for('static',filename='img/placeholder.project.png')}})"></a>
                 <h3>{{ _('Your project') }}</h3>
                 <p>{{ _('could be here!') }}</p>
-                <p><a href="{{url_for('app.new')}}" class="btn btn-mini btn-primary">{{ _('Create a project') }}</a></p>
+                <p><a href="{{url_for('project.new')}}" class="btn btn-mini btn-primary">{{ _('Create a project') }}</a></p>
             </div>
           </div>
           {% endfor %}
