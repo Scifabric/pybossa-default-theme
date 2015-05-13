@@ -11,7 +11,7 @@
             <ul class="nav">
               <li {% if active_page == 'home' %} class="active" {% endif %}><a href="{{ url_for('home.home') }}">Home</a></li>
               <li {% if active_page == 'community' %} class="active" {% endif %}><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
-              <li {% if active_page == 'applications' %} class="active" {% endif %}><a href="{{ url_for('app.index') }}">{{ _('Projects') }}</a></li>
+              <li {% if active_page == 'projects' %} class="active" {% endif %}><a href="{{ url_for('app.index') }}">{{ _('Projects') }}</a></li>
               <li {% if active_page == 'somos' %} class="active" {% endif %}><a href="http://chilecientifico.cl/somos.html">Quiénes somos</a></li>
               <li {% if active_page == 'contacto' %} class="active" {% endif %}><a href="http://chilecientifico.cl/contacto.html">Contacto</a></li>
              <!-- <li {% if active_page == 'create' %} class="active" {% endif %}><a href="{{ url_for('app.new') }}">{{ _('Create') }}</a></li>
