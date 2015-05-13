@@ -67,7 +67,7 @@ background-image: -webkit-linear-gradient(top, #063251, #053453);
 background-image: -o-linear-gradient(top, #b8db80, #053453);
 background-image: linear-gradient(top, #ffffff, #053453);
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='lighten(@primary, 20%)', endColorstr='@primary', GradientType=0);
-border-color: #516f20 #516f20 #6e972b;
+border-color: #516f20 #516f20 #FFFFFF;
 border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
@@ -211,7 +211,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8bbf36', en
   background-color: #053453;
   background-image: none;
   filter: none;
-  border-color: #516f20 #516f20 #6e972b;
+  border-color: #516f20 #516f20 #FFFFFF;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
@@ -220,10 +220,10 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8bbf36', en
 .navbar .btn-navbar.active,
 .navbar .btn-navbar.disabled,
 .navbar .btn-navbar[disabled] {
-  background-color: #a2d058;
+  background-color: #C5C5C5;
 }
 .navbar .btn-navbar .icon-bar {
-  background-color: #6e972b;
+  background-color: #FFFFFF;
 }
 .navbar .navbar-form.form-search .search-query {
   border: none;

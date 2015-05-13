@@ -1,7 +1,7 @@
     <div class="row">
         <div class="span11">
             <h1>{{ _('About') }}</h1>
-            <p>
+          <!--  <p>
             {{ _('PyBossa is a free, open-source crowd-sourcing and micro-tasking platform. It enables people to create and run projects that utilise online assistance in performing tasks that require human cognition such as image classification, transcription, geocoding and more. PyBossa is there to help researchers, civic hackers and developers to create projects where anyone around the world with some time, interest and an internet connection can contribute.') }}</p>
 
             <p>
@@ -17,15 +17,18 @@
             <p>
             {{ _('You can read more about the architecture in the') }} <a href="http://docs.pybossa.com/">{{ _('PyBossa Documentation') }}</a> {{ _('and follow the') }} <a href="http://docs.pybossa.com/en/latest/user/tutorial.html">{{ _('step-by-step tutorial to create your own projects') }}.</a>.
             </p>
-
+-->
+<p>Chile Cient&iacute;co es una sitio realizado con Pybossa.</p>
+<p>La plataforma permite la creación y ejecuci&oacute;n de proyectos en los que se requiera la ayuda del conocimiento humano para resolver tareas como por ejemplo la clasificaci&oacute;n de im&aacute;genes, transcripci&oacute;n de documentos, geolocalizaci&oacute;n, etc. PyBossa es una herramienta que pretende ayudar a investigadores, hackers c&iacute;vicos y desarrolladores a crear proyectos en los que cualquier persona del mundo pueda contribuir si tiene una conexi&oacute;n a Internet e inter&eacute;s en el proyecto.</p>
             <h1>{{ _('Statistics') }}</h1>
             <p>
-           {{ _(' PyBossa provides individual statistics for every project in the system, as well as a') }} <a href="{{url_for('stats.index')}}">{{ _('general overview about the system like total number of users, tasks, etc') }}</a>. 
+           <!--{{ _(' PyBossa provides individual statistics for every project in the system, as well as a') }}-->
+           Si te interesa revisar las estad&iacute;sticas globales del proyecto, haz clic en el siguiente bot&oacute;n. <!--<a href="{{url_for('stats.index')}}">{{ _('general overview about the system like total number of users, tasks, etc') }}</a>. -->
             </p>
             <a href="{{url_for('stats.index')}}" class="btn btn-primary"><i class="icon-dashboard"></i> {{ _('Check the global statistics') }}</a>
 
-            <h1 id="contact">{{ _('Contact information') }}</h1>
-            <ul>
+            <h1 id="contact">Información de Contacto</h1>
+            <!--<ul>
                 <li>{{ _('For more info, send us an e-mail to: ') }}<a href="mailto:info@pybossa.com">info@pybossa.com</a> or <a class="btn" href="http://twitter.com/pybossa"><i class="icon-twitter"></i>{{ _('Follow us on Twitter!') }}</a></li>
                 <li>{{ _('E-mail list: ') }}<a href="http://lists.okfn.org/mailman/listinfo/okfn-labs">okfn-labs@lists.okfn.org</a>.</li>                
                 <li><p>{{ _('Report any bug, issue or improvement:') }} 
@@ -33,6 +36,7 @@
                         <i class="icon-github"></i>{{ _('Github Issues') }}
                     </a>
                     </li>            
-            </ul>
+            </ul>--> 
+            <p><a href="http://chilecientifico.cl/contacto.html"><img src="static/img/email-icon.png" width="52" height="52"></a><a href="https://www.facebook.com/pages/Chilecientificocl/33798609451?fref=ts"><img src="static/img/fb-icon.png" width="54" height="54"></a><a href="https://twitter.com/Chilecientifico"><img src="static/img/tw-icon.png" width="54" height="54"></a></p>
         </div>
     </div>
