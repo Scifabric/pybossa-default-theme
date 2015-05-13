@@ -89,11 +89,11 @@ p,h3,h4,pre {
   font-weight: bold;
   }
 
-a {
+/*a {
   color: #fff;
   text-decoration: none;
   }
-
+*/
 #download {
   background: #333;
   background: rgba(255,255,255,.1);
@@ -119,11 +119,11 @@ a {
 
 /* Callback example */
 
-h3 {
+/*h3 {
   font: 20px/30px "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
   color: #fff;
-  }
+  }*/
 
 .events {
   list-style: none;
