@@ -20,6 +20,7 @@
         <h1><strong>{{ _('Dashboard last 7 days') }}</strong></h1>
     </div>
 </div>
+{% if wait == False %}
 <div class="row">
     <div class="span6">
         <h2>Active users</h2>
@@ -142,5 +143,12 @@
         {% endif %}
     </div>
 </div>
+{% else %}
+<div class="row">
+    <div class="span12">
+        <h1>No data available. You'll have to wait 24 hours.</h1>
+    </div>
+</div>
+{% endif %}
 {{ broken_image() }}
 {% endblock %}
