@@ -11,6 +11,22 @@
     <div class="span9" style="min-height:400px;">
         <h1><strong>{{ _('Admin Site') }}</strong></h1>
         <div class="row-fluid">
+            <div id="dashboard" class="span6 well">
+                <h2><i class="icon-dashboard"></i> {{_('Dashboard')}}</h2>
+                <p>{{_('Internal Statistics')}}</p>
+                <a href="{{url_for('admin.dashboard')}}" class="btn btn-primary">
+                    {{ _('Go') }} <i class="icon-chevron-right"></i>
+                </a>
+            </div>
+            <div id="dashboard" class="span6 well">
+                <h2><i class="icon-dashboard"></i> {{_('Background Jobs')}}</h2>
+                <p>{{_('Monitor the background jobs')}}</p>
+                <a href="{{url_for('rq_dashboard.overview')}}" class="btn btn-primary">
+                    {{ _('Manage') }} <i class="icon-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row-fluid">
             <div id="featured-apps" class="span6 well">
                 <h2><i class="icon-star"></i> {{_('Featured Projects')}}</h2>
                 <p>{{_('Show projects on the front page')}}</p>
@@ -42,15 +58,6 @@
                 </a>
                 <a href="{{url_for('admin.export_users', format='csv')}}" class="btn btn-primary">
                     {{ _('CSV') }}
-                </a>
-            </div>
-        </div>
-        <div class="row-fluid">
-            <div id="dashboard" class="span6 well">
-                <h2><i class="icon-dashboard"></i> {{_('Background Jobs')}}</h2>
-                <p>{{_('Monitor the background jobs')}}</p>
-                <a href="{{url_for('rq_dashboard.overview')}}" class="btn btn-primary">
-                    {{ _('Manage') }} <i class="icon-chevron-right"></i>
                 </a>
             </div>
         </div>
