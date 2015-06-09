@@ -124,3 +124,15 @@
   </div>
 {% endmacro %}
 
+
+{% macro render_avatar(user, upload_method, class, width) %}
+{% if user.info.avatar %}
+    {% if upload_method == 'rackspace'%}
+    <img class="{{class}}" width="{{width}}" src="{{ url_for('rackspace', filename=user.info.avatar, container=user.info.container)}}" onerror="imgError(this, 'user');">
+    {% else %}
+    <img class="{{class}}" width="{{width}}" src="{{ url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}" onerror="imgError(this, 'user');">
+    {% endif %}
+{% else %}
+<img class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.user.png')}}">
+{% endif %}
+{% endmacro %}
