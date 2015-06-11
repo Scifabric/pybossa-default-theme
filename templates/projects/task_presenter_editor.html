@@ -58,6 +58,7 @@ var render = function(presenterSource) {
         iframeDoc = iframe.contentDocument;
 
     iframeDoc.open();
+    iframeDoc.location.hash='_';
     iframeDoc.write(source);
     iframeDoc.close();
 };
