@@ -40,12 +40,18 @@
     </div>
 </div>
 
-<div id="preview" class="row" hidden>
-    <div class="span12">
-        <h2>Preview</h2>
-            <section id="output">
-                <iframe></iframe>
-            </section>
+<div id="modal-preview" class="modal hide big-modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">{{ _('&times;') }}</button>
+        <h2><strong>{{project.name}}</strong>: {{ _('Task Presenter Preview') }}</h2>
+    </div>
+    <div class="modal-body">
+        <section id="output">
+            <iframe></iframe>
+        </section>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">{{ _('Close') }}</button>
     </div>
 </div>
 
@@ -106,14 +112,11 @@ var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     mode:'text/html',
     lineNumbers: true,
     autofocus: true
-})
-.on("change", function (instance, changes) {
-    render(instance.getValue());
 });
 
 function showPreview() {
-    var preview = document.getElementById('preview');
-    preview.hidden = false;
+    render(editor.getValue());
+    $("#modal-preview").modal('show');
 }
 $(".btn-preview").off('click').on('click', function(){
     showPreview();
