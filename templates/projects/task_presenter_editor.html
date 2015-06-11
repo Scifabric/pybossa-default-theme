@@ -11,10 +11,9 @@
 <script src="{{url_for('static', filename='vendor/codemirror/mode/css/css.js')}}"></script>
 <script src="{{url_for('static', filename='vendor/codemirror/mode/htmlmixed/htmlmixed.js')}}"></script>
 <style>
-    #preview {
+    iframe {
+        height:800px;
         width: 100%;
-        height: 320px;
-        padding: 20px;
     }
     .CodeMirror {
         width: 700px;
@@ -45,7 +44,7 @@
     <div class="span12">
         <h3>Preview</h3>
             <section id="output">
-                <iframe height="800px" width="100%"></iframe>
+                <iframe></iframe>
             </section>
     </div>
 </div>
