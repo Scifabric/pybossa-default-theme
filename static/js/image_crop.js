@@ -2,11 +2,21 @@
 
     global = global || {};
     // Preview image before uploading
+    var MAX_FILE_SIZE = 2000000;
+
     function _previewImage(){
         var oFReader = new FileReader();
-        oFReader.readAsDataURL(document.getElementById("avatar").files[0]);
-        
+        var avatar = $("#avatar")
+        var avatar_file = avatar[0].files[0];
+        if (avatar_file.size > MAX_FILE_SIZE) {
+            alert("This file is too large. Max size allowed is 2MB. Please, select another file.");
+            avatar.replaceWith(avatar = avatar.clone(true));
+            return;
+        }
+        oFReader.readAsDataURL(avatar_file);
+
         oFReader.onload = function (oFREvent) {
+
             document.getElementById("uploadPreview").src = oFREvent.target.result;
             var img = document.getElementById('uploadPreview'); 
             //or however you get a handle to the IMG
