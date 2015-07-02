@@ -198,13 +198,28 @@ function imgError(image) {
     <div class="span1"><input type="text" value="{{overall_progress | round |int}}" class="dial"></div>
     <h2><strong> {{_('Overall progress')}}</strong>: {{ overall_progress | round | int }}% {{_('completed')}}
         {% if show_contribute_btn %}
-        <a href="{{ url_for('project.presenter', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Start Contributing Now!') }}</a>
+        {{ render_contribute_button(project) }}
         {% elif show_n_tasks %}
         <span class="pull-right"><strong>{{n_tasks}}</strong> {{_('Tasks')}}</span>
         {% endif %}
 
     </h2>
 </div>
+{% endmacro %}
+
+{% macro render_contribute_button(project) %}
+    {% if project['contrib_button'] == 'completed' %}
+    <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Done! View results') }}</a>
+    {% endif %}
+    {% if project['contrib_button'] == 'can_contribute' %}
+    <a href="{{ url_for('project.presenter', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Start Contributing Now!') }}</a>
+    {% endif %}
+    {% if project['contrib_button'] == 'cannot_contribute' %}
+    <a href="{{url_for('project.details', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Thanks for contributing') }}</a>
+    {% endif %}
+    {% if project['contrib_button'] == 'draft' %}
+    <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Draft project, complete it!') }}</a>
+    {% endif %}
 {% endmacro %}
 
 {% macro render_grid_projects(projects, title, upload_method) %}
