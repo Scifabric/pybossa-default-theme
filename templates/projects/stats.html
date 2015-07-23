@@ -60,7 +60,7 @@
                     var graph = Flotr.draw(container, [{data: appStats.hourStats[1]['values'], label:appStats.hourStats[1]['label']},{ data:appStats.hourStats[2]['values'],label:appStats.hourStats[2]['label'] }], {
                         bubbles : {show: true, baseRadius:5},
                         xaxis   : {min: 0, max:24, tickFormatter: hours},
-                        yaxis   : {min: 0, max:_.max(appStats.hourStats[0])},
+                        yaxis   : {min: 0, max:_.max(appStats.hourStats[0]), tickDecimals: 0 },
                         mouse   : {track: true, trackFormatter: answersPerHour},
                         HtmlText: false,
                         legend  : {postion: 'nw'}
@@ -90,7 +90,7 @@
                     }
                     var options = {
                         xaxis   : {mode:'time'},
-                        yaxis   : {max: appStats.dayStats[4]['values'][0][1] + 1},
+                        yaxis   : {min:0, max: appStats.dayStats[3]['values'][0][1] + 1, tickDecimals: 0},
                         mouse   : {track: true, trackFormatter: answersPerDay},
                         HtmlText: false,
                         legend  : {postion: 'nw'},
@@ -108,7 +108,7 @@
                         
                         // Return a new graph.
                         return Flotr.draw(
-                        dayStatsTotalContainer, [{ data:appStats.dayStats[3]['values'],label:appStats.dayStats[3]['label']}, { data:appStats.dayStats[4]['values'],label:appStats.dayStats[4]['label']} , ], o);
+                        dayStatsTotalContainer, [{ data:appStats.dayStats[3]['values'],label:appStats.dayStats[3]['label']},  ], o);
                     }
                         
                         // Actually draw the graph.
@@ -161,6 +161,7 @@
                     }
                     var options = {
                         xaxis   : {mode:'time'},
+                        yaxis   : {min: 0, tickDecimals: 0},
                         mouse   : {track: true, trackFormatter: answersPerDay},
                         HtmlText: false,
                         legend  : {postion: 'nw'},
