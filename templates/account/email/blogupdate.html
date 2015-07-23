@@ -1,0 +1,7 @@
+<h2 class="null"><a href="{{url_for('project.show_blogpost', short_name=blog.project.short_name, id=blog.id, _external=True)}}">Project Update: {{blog['title']}}</a></h2>
+<section>{{blog['body'] | markdown }}</section>
+<hr>
+<p><a href="{{url_for('account.update_profile', name=user_name, _external=True)}}">Update your notifications preferences</a></p>
+<p>Powered by <a href="http://pybossa.com">PyBossa</a></p>
+<p>Follow us: <a href="http://twitter.com/pybossa">Twitter</a>, <a
+    href="https://plus.google.com/115359083217638640334/posts">Google+</a></p>

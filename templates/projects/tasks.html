@@ -46,7 +46,7 @@
                         <h2><i class="icon-road"></i> {{_('Browse')}}</h2>
                         <p>{{_('Check the status of the tasks')}}</p>
                         <a href="{{url_for('project.tasks_browse',
-                            short_name=project.short_name)}}" class="btn btn-primary">{{_('Browse')}} <i class="icon-chevron-right"></i></a>
+                            short_name=project.short_name)}}" rel="nofollow" class="btn btn-primary">{{_('Browse')}} <i class="icon-chevron-right"></i></a>
                     </div>
                     {% if current_user.pro or current_user.admin %}
                     <div id="autoimport_tasks" class="span6 well">
@@ -62,7 +62,7 @@
                         <h2><i class="icon-road"></i> {{_('Browse')}}</h2>
                         <p>{{_('Check the status of the tasks')}}</p>
                         <a href="{{url_for('project.tasks_browse',
-                            short_name=project.short_name)}}" class="btn btn-primary">{{_('Browse')}} <i class="icon-chevron-right"></i></a>
+                            short_name=project.short_name)}}" rel="nofollow" class="btn btn-primary">{{_('Browse')}} <i class="icon-chevron-right"></i></a>
                     </div>
                     <div id="export_tasks" class="span6 well">
                         <h2><i class="icon-download"></i> {{_('Export Tasks')}}</h2>
