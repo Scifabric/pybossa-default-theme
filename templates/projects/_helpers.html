@@ -212,6 +212,9 @@ function imgError(image) {
     {% if project['contrib_button'] == 'draft' %}
     <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Draft project, complete it!') }}</a>
     {% endif %}
+    {% if project['contrib_button'] == 'publish' %}
+    <a href="{{url_for('project.publish', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('You can now publish it!') }}</a>
+    {% endif %}
 {% endmacro %}
 
 {% macro render_grid_projects(projects, title, upload_method) %}
