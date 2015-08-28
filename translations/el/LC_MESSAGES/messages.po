@@ -1,4 +1,4 @@
-# Translations template for PROJECT.
+# Greek translations for PROJECT.
 # Copyright (C) 2015 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # Stella Christou <stella.christou.10@ucl.ac.uk>, 2015.
@@ -7,365 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-06-03 11:35+0200\n"
+"POT-Creation-Date: 2015-08-27 13:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: el <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.3\n"
-
-#: core.py:407
-msgid ""
-"Please update your e-mail address in your profile page, right now it is "
-"empty!"
-msgstr "Σας παρακαλούμε να επικυρώσετε το προφίλ σας με την ηλεκρτονική σας διεύθυνση, καθώς τώρα είναι "κενή"!" 
-
-#: importers.py:76
-msgid "The file you uploaded has two headers with the same name."
-msgstr "Το αρχείο που ανεβάσατε έχει δύο τίτλους με το ίδιο όνομα"
-
-#: importers.py:99
-msgid "Oops! That file doesn't look like the right file."
-msgstr "Ουπς! Το αρχείο αυτό δεν φαίνεται να είναι το σωστό αρχείο"
-
-#: importers.py:349
-msgid "It looks like there were no new records to import"
-msgstr "Δεν φαίνεται να υπάρχουν νέα αρχεία προς εισαγωγή "
-
-#: importers.py:351
-msgid "new tasks were imported successfully"
-msgstr "Η νέες εργασίες εισήχθησαν επιτυχώς"
-
-#: importers.py:353
-msgid "new task was imported successfully"
-msgstr "Η νέα εργασία εισήχθη επιτυχώς"
-
-#: exporter/csv_export.py:91
-msgid ""
-"Oops, the project does not have tasks to                         export, "
-"if you are the owner add some tasks"
-msgstr "Ουπς, το πρόγραμμα δεν έχει εργασίες προς εξαγωγή,"
-"εάν είστε ο ιδιοκτήτης προσθέστε νέες εργασίες"
-
-#: exporter/csv_export.py:97
-msgid ""
-"Oops, there are no Task Runs yet to export, invite"
-"                          some users to participate"
-msgstr "Ουπς, δεν υπάρχουν τρέχουσες εργασίες προς εξαγωγή, προσκαλέστε"
-"χρήστες για συμμετοχή"
-
-#: forms/forms.py:40 forms/forms.py:356
-#: themes/default/templates/stats/index.html:18
-msgid "Name"
-msgstr "Όνομα"
-
-#: forms/forms.py:43
-msgid "Name is already taken."
-msgstr "Αυτό το όνομα χρησιμοποιείται"
-
-#: forms/forms.py:44
-msgid "Short Name"
-msgstr "Μικρό Όνομα"
-
-#: forms/forms.py:48
-msgid "Short Name is already taken."
-msgstr "Αυτό το μικρό όνομα χρησιμοποιείται"
-
-#: forms/forms.py:51 forms/forms.py:62
-msgid "Long Description"
-msgstr "Εκτενής Περιγραφή"
-
-#: forms/forms.py:57 forms/forms.py:360
-#: themes/default/templates/projects/_helpers.html:63
-#: themes/default/templates/projects/_helpers.html:131
-msgid "Description"
-msgstr "Περιγραφή"
-
-#: forms/forms.py:59
-msgid "You must provide a description."
-msgstr "Πρέπει να παραθέσετε περιγραφή"
-
-#: forms/forms.py:64
-msgid "Allow Anonymous Contributors"
-msgstr "Επιτρέψτε Ανώνυμους Συνειρφέρωντες  "
-
-#: forms/forms.py:65 themes/default/templates/projects/_helpers.html:70
-#: themes/default/templates/projects/tasks/delete.html:24
-msgid "Yes"
-msgstr "Ναι"
-
-#: forms/forms.py:66 themes/default/templates/projects/_helpers.html:72
-msgid "No"
-msgstr "Όχι"
-
-#: forms/forms.py:67
-msgid "Category"
-msgstr "Κατηγορία"
-
-#: forms/forms.py:68
-msgid "Hide?"
-msgstr "Ελαχιστοποίηση;"
-
-#: forms/forms.py:69
-msgid "Password (leave blank for no password)"
-msgstr "Κωδικός  (αφήστε κενό αντί χρήσης κωδικού)"
-
-#: forms/forms.py:70
-msgid "Webhook"
-msgstr ""
-
-#: forms/forms.py:80 themes/default/templates/projects/task_settings.html:36
-#: view/projects.py:1192
-msgid "Redundancy"
-msgstr "Πλεονασμός"
-
-#: forms/forms.py:84
-msgid ""
-"Number of answers should be a"
-"                                                        value between 1 "
-"and 1,000"
-msgstr "Ο αριθμός τον απαντήσεων πρέπει να ειναι μια"
-"τιμή μεταξύ 1"
-"και 1.000" 
-
-#: forms/forms.py:89
-msgid "Task IDs"
-msgstr ""
-
-#: forms/forms.py:93 themes/default/templates/projects/task_settings.html:24
-msgid "Priority"
-msgstr "Προτεραιότητα"
-
-#: forms/forms.py:96
-msgid ""
-"Priority should be a"
-"                                                        value between 0.0"
-" and 1.0"
-msgstr "Η προτεραιότητα θα πρέπει να είναι μια"
-"τιμή μεταξύ 0,0"
-"και 1,0"
-
-#: forms/forms.py:103 themes/default/templates/projects/task_scheduler.html:14
-#: themes/default/templates/projects/task_settings.html:17
-#: view/projects.py:1224
-msgid "Task Scheduler"
-msgstr "Προγραμματιστής Εργασιών"
-
-#: forms/forms.py:114
-msgid "Title"
-msgstr "Τίτλος"
-
-#: forms/forms.py:115
-msgid "You must enter a title for the post."
-msgstr "Πρέπει να εισάγετε τίτλο για την ανάρτηση"
-
-#: forms/forms.py:117
-msgid "Body"
-msgstr "Κυρίως"
-
-#: forms/forms.py:118
-msgid "You must enter some text for the post."
-msgstr "Πρέπει να εισάγετε κείμενο για την ανάρτηση"
-
-#: forms/forms.py:123 forms/forms.py:212
-msgid "Password"
-msgstr "Κωδικός"
-
-#: forms/forms.py:124
-msgid "You must enter a password"
-msgstr "Πρέπει να εισάγετε κωδικό"
-
-#: forms/forms.py:130 forms/forms.py:143
-msgid "You must provide a URL"
-msgstr "Πρέπει να παραθέσετε έναν Ενιαίο Εντοπιστή Πόρων (URL) "
-
-#: forms/forms.py:131 forms/forms.py:144
-msgid "Oops! That's not a valid URL. You must provide a valid URL"
-msgstr "Ουπς! Αυτός δεν είναι ο σωστός Ενιαίος Εντοπιστής Πόρων (URL). Πρέπει να παραθέσετε τον σωστό Ενιαίο Εντοπιστή Πόρων (URL) "
-
-#: forms/forms.py:133 forms/forms.py:146
-msgid "URL"
-msgstr "Ενιαίος Εντοπιστής Πόρων (URL)"
-
-#: forms/forms.py:156
-msgid "You must provide an EpiCollect Plus project name"
-msgstr "Πρέπει να παραθεσετε ένα όνομα προγράμματος μέσω του EpiCollect Plus"
-
-#: forms/forms.py:158
-msgid "You must provide a Form name for the project"
-msgstr "Πρέπει να παραθέσετε ένα όνομα Μορφής για το πρόγραμμα "
-
-#: forms/forms.py:160
-msgid "Project Name"
-msgstr "Όνομα Προγράμματος"
-
-#: forms/forms.py:162
-msgid "Form name"
-msgstr "Όνομα Μορφής"
-
-#: forms/forms.py:173
-msgid "You must provide a valid Flickr album ID"
-msgstr "Πρέπει να παραθέσετε την σωστή ταυτότητα του άλμπουμ στο Flickr"
-
-#: forms/forms.py:174
-msgid "Album ID"
-msgstr "Ταυτότητα Άλμπουμ"
-
-#: forms/forms.py:208 themes/default/templates/account/_helpers.html:41
-msgid "E-mail"
-msgstr "Ηλεκτρονικό Ταχυδρομείο"
-
-#: forms/forms.py:210
-msgid "The e-mail is required"
-msgstr "Το ηλεκτρονικό ταχυδρομείο απαιτείται"
-
-#: forms/forms.py:214
-msgid "You must provide a password"
-msgstr "Πρέπει να παραθέσετε έναν κωδικό"
-
-#: forms/forms.py:222 forms/forms.py:261
-#, python-format
-msgid "Full name must be between 3 and %s characters long"
-msgstr "Ολόκληρο το όνομα θα πρέπει να αποτελείται από 3 εως και  % χαρακτήρες"
-
-#: forms/forms.py:224 forms/forms.py:263
-msgid "Full name"
-msgstr "Ολόκληρο Όνομα"
-
-#: forms/forms.py:227 forms/forms.py:266
-#, python-format
-msgid "User name must be between 3 and %s characters long"
-msgstr "Το όνομα του χρήστη θα πρέπει να αποτελείται από 3 εως και % χαρακτήρες"
-
-#: forms/forms.py:229 forms/forms.py:268
-msgid "The user name is already taken"
-msgstr "Αυτό το όνομα χρήστη χρησιμοποιείται"
-
-#: forms/forms.py:230
-msgid "User name"
-msgstr "Όνομα χρήστη"
-
-#: forms/forms.py:236 forms/forms.py:275 forms/forms.py:339
-#, python-format
-msgid "Email must be between 3 and %s characters long"
-msgstr "Το ηλεκτρονικό ταχυδρομείο θα πρέπει να αποτελείται απο 3 εως και % χαρακτήρες"
-
-#: forms/forms.py:238 forms/forms.py:277
-msgid "Email is already taken"
-msgstr "Αυτό το ηλεκτρονικό ταχυδρομείο χρησιμοποιείται"
-
-#: forms/forms.py:239 forms/forms.py:278 forms/forms.py:341
-msgid "Email Address"
-msgstr "Διεύθυνση Ηλεκτρονικού Ταχυδρομείου"
-
-#: forms/forms.py:246 forms/forms.py:314 forms/forms.py:326
-msgid "Password cannot be empty"
-msgstr "Ο κωδικός δε μπορεί να είναι κενός"
-
-#: forms/forms.py:247 forms/forms.py:315 forms/forms.py:327
-msgid "Passwords must match"
-msgstr "Οι δυο κωδικοί πρέπει να ταυτίζονται"
-
-#: forms/forms.py:248 forms/forms.py:328
-msgid "New Password"
-msgstr "Νέος κωδικός"
-
-#: forms/forms.py:252 forms/forms.py:331
-msgid "Repeat Password"
-msgstr "Επαναλάβετε τον κωδικό"
-
-#: forms/forms.py:269
-msgid "Username"
-msgstr "Όνομα χρήστη"
-
-#: forms/forms.py:284
-msgid "Get email notifications"
-msgstr "Θέλω να λαμβάνω ειδοποιήσεις μέσω του ηλεκτρονικού ταχυδρομείου "
-
-#: forms/forms.py:286
-msgid "Language"
-msgstr "Γλώσσα"
-
-#: forms/forms.py:287
-msgid "CKAN API Key"
-msgstr "CKAN API Κλειδί"
-
-#: forms/forms.py:288
-msgid "Privacy Mode"
-msgstr "Λειτουργία προστασίας ιδιωτικού απορρήτου"
-
-#: forms/forms.py:295
-msgid "English"
-msgstr "Αγγλικά"
-
-#: forms/forms.py:297
-msgid "Spanish"
-msgstr "Ισπανικά"
-
-#: forms/forms.py:299
-msgid "French"
-msgstr "Γαλλικά"
-
-#: forms/forms.py:301
-msgid "German"
-msgstr "Γερμανικά"
-
-#: forms/forms.py:303
-msgid "Italian"
-msgstr "Ιταλικά"
-
-#: forms/forms.py:312
-msgid "Current password"
-msgstr "Τρέχοντας κωδικός πρόσβασης"
-
-#: forms/forms.py:316
-msgid "New password"
-msgstr "Νέος κωδικός"
-
-#: forms/forms.py:319
-msgid "Repeat password"
-msgstr "Επαναλάβετε τον κωδικό"
-
-#: forms/forms.py:351 themes/default/templates/account/settings.html:12
-#: themes/default/templates/projects/stats.html:297
-#: themes/default/templates/projects/stats.html:298
-#: themes/default/templates/projects/stats.html:299
-#: themes/default/templates/projects/stats.html:300
-#: themes/default/templates/projects/stats.html:301
-#: themes/default/templates/projects/stats.html:366
-msgid "User"
-msgstr "Χρήστης"
-
-#: forms/forms.py:366
-msgid "Avatar"
-msgstr "Είδωλο"
-
-#: forms/validator.py:34
-msgid "This item already exists"
-msgstr "Αυτό το αρχείο υπάρχει ήδη "
-
-#: forms/validator.py:54
-#, python-format
-msgid "%sand space symbols are forbidden"
-msgstr "% και σύμβολα που υποδηλώνουν κενό απαγορεύονται "
-
-#: forms/validator.py:70
-msgid "Only comma separated values are allowed, no spaces"
-msgstr "Επιτρέπονται μόνο τιμές διαχωρισμένες με κόμμα, όχι κενά"
-
-#: forms/validator.py:86
-msgid "Invalid URL"
-msgstr "Άκυρος Ενιαίος Εντοπιστής Πόρων (URL) "
-
-#: forms/validator.py:98
-msgid "Connection error"
-msgstr "Σφάλμα σύνδεσης"
-
-#: forms/validator.py:108
-msgid "This name is used by the system."
-msgstr "Αυτό το όνομα χρησιμποποιείται απο το σύστημα"
+"Generated-By: Babel 2.0\n"
 
 #: themes/default/templates/_navbar.html:12
 #: themes/default/templates/account/index.html:14
@@ -375,8 +25,7 @@ msgstr "Κοινότητα"
 #: themes/default/templates/_navbar.html:13
 #: themes/default/templates/base.html:78
 #: themes/default/templates/account/projects.html:13
-#: themes/default/templates/stats/global.html:89 view/account.py:385
-#: view/projects.py:164
+#: themes/default/templates/stats/global.html:89
 msgid "Projects"
 msgstr "Προγράμματα"
 
@@ -505,6 +154,10 @@ msgstr "Tweet"
 msgid "Nick"
 msgstr "Ψευδώνυμο"
 
+#: themes/default/templates/account/_helpers.html:41
+msgid "E-mail"
+msgstr "Ηλεκτρονικό Ταχυδρομείο"
+
 #: themes/default/templates/account/_helpers.html:54
 #: themes/default/templates/account/_helpers.html:67
 #: themes/default/templates/stats/index.html:17
@@ -560,16 +213,19 @@ msgid ""
 "In order to confirm your identity, we've sent an email to the address you"
 " just provided. Please, check it out and click on the link you'll find to"
 " create your account at"
-msgstr "Για να διασταυρώσουμε την ταυτότητά σας, στείλαμε μήνυμα στη διεύθυνση του ηλεκτρονικού ταχυδρομείου"
-"που μόλις καταχωρήσατε. Σας παρακαλούμε να το ελέγξετε και να κάνετε κλικ στον σύνδεσμο που θα βρείτε για"
-"να δημιουργήσετε τον λογαριασμό σας στο"
+msgstr ""
+"Για να διασταυρώσουμε την ταυτότητά σας, στείλαμε μήνυμα στη διεύθυνση "
+"του ηλεκτρονικού ταχυδρομείουπου μόλις καταχωρήσατε. Σας παρακαλούμε να "
+"το ελέγξετε και να κάνετε κλικ στον σύνδεσμο που θα βρείτε γιανα "
+"δημιουργήσετε τον λογαριασμό σας στο"
 
 #: themes/default/templates/account/account_validation.html:9
 msgid ""
 "If you are not receiving the email, please check the junk folder. If it's"
 " not there please drop us an email to"
-msgstr "Εάν δε λαμβάνετε το μήνυμα, παρακαλούμε να ελέγξετε των φάκελο των αχρήστων. Εαν δεν "
-"είναι εκεί, παρακαλούμε να μας στείλετε ένα μήνυμα στο"
+msgstr ""
+"Εάν δε λαμβάνετε το μήνυμα, παρακαλούμε να ελέγξετε των φάκελο των "
+"αχρήστων. Εαν δεν είναι εκεί, παρακαλούμε να μας στείλετε ένα μήνυμα στο"
 
 #: themes/default/templates/account/account_validation.html:10
 msgid "In the meantime, you can check some of the amazing"
@@ -600,8 +256,9 @@ msgstr "Ενημερωτικό δελτίο"
 msgid ""
 "If you want to be updated with our new features, projects, and\n"
 "        scientific projects, subscribe to our newsletter."
-msgstr "Εάν θέλετε να μένετε ενήμεροι σχετικά με τις νέες εφαρμογρές, προγράμματα και"
-"επιστημονικά προγράμματα, εγγραφείτε στο ενημερωτικό μας δελτίο"
+msgstr ""
+"Εάν θέλετε να μένετε ενήμεροι σχετικά με τις νέες εφαρμογρές, προγράμματα"
+" καιεπιστημονικά προγράμματα, εγγραφείτε στο ενημερωτικό μας δελτίο"
 
 #: themes/default/templates/account/newsletter.html:15
 msgid "Sign me up!"
@@ -610,56 +267,6 @@ msgstr "Θέλω να εγγραφώ!"
 #: themes/default/templates/account/newsletter.html:18
 msgid "Not interested"
 msgstr "Δεν με ενδιαφέρει"
-
-#: themes/default/templates/account/password.html:13
-#: themes/default/templates/account/update.html:54
-msgid "Change your Password"
-msgstr "Αλλαγή κωδικού"
-
-#: themes/default/templates/account/password.html:18
-msgid "my current password"
-msgstr "ο τρέχοντας κωδικός μου"
-
-#: themes/default/templates/account/password.html:19
-#: themes/default/templates/account/password_reset.html:10
-msgid "my new password"
-msgstr "ο νέος κωδικός μου"
-
-#: themes/default/templates/account/password.html:20
-#: themes/default/templates/account/password_reset.html:11
-msgid "my new password again"
-msgstr "ο νέος κωδικός μου, πάλι"
-
-#: themes/default/templates/account/password.html:22
-#: themes/default/templates/account/update.html:64
-msgid "Save the Changes"
-msgstr "Αποθήκευση αλλαγών"
-
-#: themes/default/templates/account/password.html:23
-#: themes/default/templates/account/password_forgot.html:13
-#: themes/default/templates/account/password_reset.html:14
-#: themes/default/templates/account/register.html:25
-#: themes/default/templates/account/signin.html:46
-#: themes/default/templates/account/update.html:48
-#: themes/default/templates/account/update.html:65
-#: themes/default/templates/account/update.html:78
-#: themes/default/templates/admin/update_category.html:23
-#: themes/default/templates/projects/new.html:27
-#: themes/default/templates/projects/new_blogpost.html:22
-#: themes/default/templates/projects/password.html:20
-#: themes/default/templates/projects/task_n_answers.html:21
-#: themes/default/templates/projects/task_presenter_editor.html:37
-#: themes/default/templates/projects/task_priority.html:31
-#: themes/default/templates/projects/task_scheduler.html:36
-#: themes/default/templates/projects/update.html:48
-#: themes/default/templates/projects/update_blogpost.html:24
-#: themes/default/templates/projects/importers/csv.html:24
-#: themes/default/templates/projects/importers/dropbox.html:31
-#: themes/default/templates/projects/importers/epicollect.html:26
-#: themes/default/templates/projects/importers/flickr.html:51
-#: themes/default/templates/projects/importers/gdocs.html:24
-msgid "Cancel"
-msgstr "Ακύρωση"
 
 #: themes/default/templates/account/password_forgot.html:6
 #: themes/default/templates/account/password_reset.html:6
@@ -673,6 +280,39 @@ msgstr "το ηλεκτρονικό μου ταχυδρομείο"
 #: themes/default/templates/account/password_forgot.html:12
 msgid "Reset my Password"
 msgstr "Επαναφορά του κωδικού μου"
+
+#: themes/default/templates/account/password_forgot.html:13
+#: themes/default/templates/account/password_reset.html:14
+#: themes/default/templates/account/register.html:25
+#: themes/default/templates/account/signin.html:46
+#: themes/default/templates/account/update.html:48
+#: themes/default/templates/account/update.html:65
+#: themes/default/templates/account/update.html:78
+#: themes/default/templates/admin/update_category.html:23
+#: themes/default/templates/projects/new.html:27
+#: themes/default/templates/projects/new_blogpost.html:22
+#: themes/default/templates/projects/password.html:20
+#: themes/default/templates/projects/task_n_answers.html:21
+#: themes/default/templates/projects/task_presenter_editor.html:36
+#: themes/default/templates/projects/task_priority.html:31
+#: themes/default/templates/projects/task_scheduler.html:36
+#: themes/default/templates/projects/update.html:48
+#: themes/default/templates/projects/update_blogpost.html:24
+#: themes/default/templates/projects/importers/csv.html:24
+#: themes/default/templates/projects/importers/dropbox.html:31
+#: themes/default/templates/projects/importers/epicollect.html:26
+#: themes/default/templates/projects/importers/flickr.html:51
+#: themes/default/templates/projects/importers/gdocs.html:24
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: themes/default/templates/account/password_reset.html:10
+msgid "my new password"
+msgstr "ο νέος κωδικός μου"
+
+#: themes/default/templates/account/password_reset.html:11
+msgid "my new password again"
+msgstr "ο νέος κωδικός μου, πάλι"
 
 #: themes/default/templates/account/profile.html:15
 msgid "Your Profile"
@@ -700,12 +340,11 @@ msgid "You have not created a project"
 msgstr "Δεν έχετε δημιουργήσει πρόγραμμα"
 
 #: themes/default/templates/account/projects.html:29
-#: themes/default/templates/home/index.html:37 view/projects.py:199
+#: themes/default/templates/home/index.html:37
 msgid "Create a Project"
 msgstr "Δημιουργία προγράμματος"
 
 #: themes/default/templates/account/register.html:6
-#: themes/default/templates/account/reset-api-key.html:14
 #: themes/default/templates/account/signin.html:6
 msgid "Note"
 msgstr "Σημείωση"
@@ -750,7 +389,8 @@ msgstr "Ολόκληρο το όνομά μου"
 
 #: themes/default/templates/account/register.html:19
 #: themes/default/templates/account/update.html:41
-msgid "my username"
+#, fuzzy
+msgid "myusername"
 msgstr "το όνομα χρήστη μου"
 
 #: themes/default/templates/account/register.html:20
@@ -763,40 +403,6 @@ msgstr "hello@mywebsite.org"
 msgid "my secret password"
 msgstr "ο κρυφός μου κωδικός"
 
-#: themes/default/templates/account/reset-api-key.html:12
-msgid " Reset API Key"
-msgstr "Επαναφορά του κλειδιού API "
-
-#: themes/default/templates/account/reset-api-key.html:14
-msgid ""
-" If you reset the API key, you will need to use the new generated key for"
-" any API call."
-msgstr "Εάν επαναφέρετε το κλειδί API, θα πρέπει να χρησιμοποιήσετε ένα νέο κλειδί για"
-"κάθε κλήση API"
-
-#: themes/default/templates/account/reset-api-key.html:17
-#: themes/default/templates/account/update.html:85
-msgid "Do you want to reset your personal API Key?"
-msgstr "Θέλετε να επαναφέρετε το προσωπικό σας κλειδί API;"
-
-#: themes/default/templates/account/reset-api-key.html:21
-#: themes/default/templates/account/update.html:89
-msgid "No, do not reset the API key!"
-msgstr "Όχι, μην επαναφέρεις το κλειδί API!"
-
-#: themes/default/templates/account/settings.html:14
-#: themes/default/templates/account/update.html:17
-msgid "Update your profile"
-msgstr "Ανανεώστε το προφίλ σας"
-
-#: themes/default/templates/account/settings.html:15
-msgid "Reset the API Key"
-msgstr "Επαναφορά του κλειδιού API"
-
-#: themes/default/templates/account/settings.html:17
-msgid " Change your Password"
-msgstr "Αλλάξτε τον κωδικό σας"
-
 #: themes/default/templates/account/signin.html:7
 msgid "Sign in button"
 msgstr "Κουμπί σύνδεσης"
@@ -805,8 +411,7 @@ msgstr "Κουμπί σύνδεσης"
 msgid ""
 "below you are agreeing to\n"
 "    the"
-msgstr "παρακάτω συμφωνείτε με"
-"τα"
+msgstr "παρακάτω συμφωνείτε μετα"
 
 #: themes/default/templates/account/signin.html:13
 #: themes/default/templates/account/signin.html:23
@@ -839,6 +444,10 @@ msgstr "Δημιουργία νέου λογαριασμού!"
 msgid "Forgot Password"
 msgstr "Ξέχασα τον κωδικό μου"
 
+#: themes/default/templates/account/update.html:17
+msgid "Update your profile"
+msgstr "Ανανεώστε το προφίλ σας"
+
 #: themes/default/templates/account/update.html:31
 #: themes/default/templates/projects/update.html:28
 msgid "Upload"
@@ -848,6 +457,108 @@ msgstr "Ανεβάστε"
 #: themes/default/templates/account/update.html:77
 msgid "Save the changes"
 msgstr "Αποθήκευση αλλαγών"
+
+#: themes/default/templates/account/update.html:54
+msgid "Change your Password"
+msgstr "Αλλαγή κωδικού"
+
+#: themes/default/templates/account/update.html:64
+msgid "Save the Changes"
+msgstr "Αποθήκευση αλλαγών"
+
+#: themes/default/templates/account/update.html:85
+msgid "Do you want to reset your personal API Key?"
+msgstr "Θέλετε να επαναφέρετε το προσωπικό σας κλειδί API;"
+
+#: themes/default/templates/account/update.html:89
+msgid "No, do not reset the API key!"
+msgstr "Όχι, μην επαναφέρεις το κλειδί API!"
+
+#: themes/default/templates/account/email/forgot_password.html:4
+#, fuzzy
+msgid "Recover your lost password"
+msgstr "Επαναφορά του κωδικού"
+
+#: themes/default/templates/account/email/forgot_password.html:8
+#: themes/default/templates/account/email/forgot_password_openid.html:8
+#: themes/default/templates/account/email/validate_account.html:8
+msgid "Hello"
+msgstr ""
+
+#: themes/default/templates/account/email/forgot_password.html:14
+#: themes/default/templates/account/email/forgot_password_openid.html:13
+msgid "We received a request to recover your password for"
+msgstr ""
+
+#: themes/default/templates/account/email/forgot_password.html:17
+#: themes/default/templates/account/email/forgot_password_openid.html:16
+#: themes/default/templates/account/email/validate_account.html:22
+msgid "If you did not request this, please ignore this email"
+msgstr ""
+
+#: themes/default/templates/account/email/forgot_password.html:20
+msgid "To recover your password, please visit the URL below"
+msgstr ""
+
+#: themes/default/templates/account/email/forgot_password.html:23
+msgid "Click here to recover your account"
+msgstr ""
+
+#: themes/default/templates/account/email/forgot_password.html:26
+#: themes/default/templates/account/email/forgot_password_openid.html:22
+#: themes/default/templates/account/email/validate_account.html:31
+msgid "Regards"
+msgstr ""
+
+#: themes/default/templates/account/email/forgot_password_openid.html:4
+#, fuzzy
+msgid "Recover your password"
+msgstr "Επαναφορά του κωδικού"
+
+#: themes/default/templates/account/email/forgot_password_openid.html:19
+msgid "Our records show that you use your"
+msgstr ""
+
+#: themes/default/templates/account/email/forgot_password_openid.html:19
+msgid ""
+"account to sign in. Please use the same account to sign-in again. If you "
+"forgot the password to your"
+msgstr ""
+
+#: themes/default/templates/account/email/forgot_password_openid.html:19
+#, fuzzy
+msgid "account, please contact"
+msgstr "λογαριασμό σας. Παρακαλείστε"
+
+#: themes/default/templates/account/email/forgot_password_openid.html:25
+#: themes/default/templates/account/email/validate_account.html:34
+msgid "Team"
+msgstr ""
+
+#: themes/default/templates/account/email/validate_account.html:4
+#, fuzzy
+msgid "Validate your account"
+msgstr "να δημιουργήσετε λογαργιασμό"
+
+#: themes/default/templates/account/email/validate_account.html:13
+#, fuzzy
+msgid "Thank you for creating an account in"
+msgstr "να δημιουργήσετε λογαργιασμό"
+
+#: themes/default/templates/account/email/validate_account.html:16
+#, fuzzy
+msgid "Just one more step!"
+msgstr "Άλλο ένα βήμα, παρακαλώ"
+
+#: themes/default/templates/account/email/validate_account.html:19
+msgid ""
+"To verify that you are the owner of this e-mail address, please visit the"
+" URL below"
+msgstr ""
+
+#: themes/default/templates/account/email/validate_account.html:25
+msgid "Click here to confirm your e-mail address and create your account"
+msgstr ""
 
 #: themes/default/templates/admin/_helpers.html:9
 msgid "nick"
@@ -893,7 +604,7 @@ msgstr "Επεξεργασία Ονόματος Κατηγορίας"
 
 #: themes/default/templates/admin/categories.html:41
 #: themes/default/templates/admin/categories.html:43
-#: themes/default/templates/admin/del_category.html:17 view/admin.py:296
+#: themes/default/templates/admin/del_category.html:17
 msgid "Delete Category"
 msgstr "Διαγραφή Κατηγορίας"
 
@@ -901,32 +612,32 @@ msgstr "Διαγραφή Κατηγορίας"
 msgid "Dashboard last 7 days"
 msgstr "Το ταμπλό τις τελευταίες 7 ημέρες"
 
-#: themes/default/templates/admin/dashboard.html:98
+#: themes/default/templates/admin/dashboard.html:101
 msgid "Recent activity"
 msgstr "Πρόσφατη δραστηριότητα"
 
-#: themes/default/templates/admin/dashboard.html:105
+#: themes/default/templates/admin/dashboard.html:108
 msgid "new project created"
 msgstr "το νέο πρόγραμμα που δημιουργήθηκε"
 
-#: themes/default/templates/admin/dashboard.html:109
+#: themes/default/templates/admin/dashboard.html:112
 msgid "has published a blog post"
 msgstr "έχει δημοσιεύσει ανάρτηση σε blog "
 
-#: themes/default/templates/admin/dashboard.html:113
+#: themes/default/templates/admin/dashboard.html:116
 msgid "has added new tasks"
 msgstr "'έχει προσθέσει νέες εργασίες"
 
-#: themes/default/templates/admin/dashboard.html:117
+#: themes/default/templates/admin/dashboard.html:120
 msgid "has completed a task"
 msgstr "έχει ολοκληρώσει μία εργασία"
 
-#: themes/default/templates/admin/dashboard.html:121
+#: themes/default/templates/admin/dashboard.html:124
 msgid "has contributed to"
 msgstr "έχει συμβάλλει στο"
 
-#: themes/default/templates/admin/dashboard.html:129
-#: themes/default/templates/admin/dashboard.html:139
+#: themes/default/templates/admin/dashboard.html:132
+#: themes/default/templates/admin/dashboard.html:142
 msgid "has joined"
 msgstr "έχει συνδεθεί"
 
@@ -940,15 +651,15 @@ msgstr "Ζώνη Κινδύνου!"
 msgid ""
 "Deleting the category will remove it from all the projects! This "
 "operation cannot be undone!"
-msgstr "Η διαγραφή αυτής της κατηγορίας θα την αφαιρέσει από όλα τα προγράμματα! Η"
-"πράξη αυτή δε μπορεί να ανακαλεστεί!"
+msgstr ""
+"Η διαγραφή αυτής της κατηγορίας θα την αφαιρέσει από όλα τα προγράμματα! "
+"Ηπράξη αυτή δε μπορεί να ανακαλεστεί!"
 
 #: themes/default/templates/admin/del_category.html:21
 msgid "No, do not delete it"
 msgstr "Όχι, μην την διαγράψεις"
 
-#: themes/default/templates/admin/index.html:15 view/admin.py:380
-#: view/admin.py:394
+#: themes/default/templates/admin/index.html:15
 msgid "Dashboard"
 msgstr "Ταμπλό"
 
@@ -984,7 +695,7 @@ msgstr "Προτεινόμενα Προγράμματα"
 msgid "Show projects on the front page"
 msgstr "Εμφάνιση προγραμμάτων στην αρχική σελίδα"
 
-#: themes/default/templates/admin/index.html:38 view/admin.py:275
+#: themes/default/templates/admin/index.html:38
 msgid "Categories"
 msgstr "Κατηγορίες"
 
@@ -1001,7 +712,7 @@ msgid "Manage administrators"
 msgstr "Διαχείριση διαχειριστών"
 
 #: themes/default/templates/admin/index.html:54
-#: themes/default/templates/projects/stats.html:225
+#: themes/default/templates/projects/stats.html:226
 msgid "Users"
 msgstr "Χρήστες"
 
@@ -1011,7 +722,7 @@ msgstr "Εξαγωγή λίστας χρηστών"
 
 #: themes/default/templates/admin/index.html:57
 msgid "JSON"
-msgstr "JSON
+msgstr "JSO"
 
 #: themes/default/templates/admin/index.html:60
 msgid "CSV"
@@ -1021,13 +732,11 @@ msgstr "CSV"
 msgid "Manage featured projects"
 msgstr "Διαχείριση προτεινόμενων προγραμμάτων"
 
-#: themes/default/templates/admin/update_category.html:22 view/admin.py:332
-#: view/admin.py:351
+#: themes/default/templates/admin/update_category.html:22
 msgid "Update Category"
 msgstr "Ανανέωση Κατηγορίας"
 
-#: themes/default/templates/admin/users.html:14 view/admin.py:134
-#: view/admin.py:138
+#: themes/default/templates/admin/users.html:14
 msgid "Manage Admin Users"
 msgstr "Διαχείριση των Χρηστών Διαχείρισης "
 
@@ -1056,13 +765,16 @@ msgid ""
 "help researchers, civic hackers and developers to create projects where "
 "anyone around the world with some time, interest and an internet "
 "connection can contribute."
-msgstr "Το PyBossa είναι μία δωρεάν πλατφόρμα ανοιχτών πηγών που βασίζεται στη συμμετοχή ατόμων για μικρο-εργασίες τα πλαίσια του πληθοπορισμού."
-"Επιτρέπει στα άτομα να δημιουργούν και να τρέχουν προγρμάμματα που άμεσα βοηθάνε"
-"την ολοκλήρωση εργασιών που χρειάζονται ανθρώπινη νόηση όπως η κατηγοριοποιήση"
-"εικόνων, η μεταγραφή, η γεωκωδικοποίηση κ.ά.. Το PyBossa είναι"
-"βοηθητικό εργαλείο που χρησιμοποιείται από ερευνητές, χάκερ πολίτες και προγραμματιστές, ενώ"
-"δίνει τη δυνατότητα σε οποιονδήποτε ανά τον κόσμο- με λίγο χρόνο, θέληση και πρόσβαση στο διαδύκτιο-"
-"να συμβάλλει."
+msgstr ""
+"Το PyBossa είναι μία δωρεάν πλατφόρμα ανοιχτών πηγών που βασίζεται στη "
+"συμμετοχή ατόμων για μικρο-εργασίες τα πλαίσια του "
+"πληθοπορισμού.Επιτρέπει στα άτομα να δημιουργούν και να τρέχουν "
+"προγρμάμματα που άμεσα βοηθάνετην ολοκλήρωση εργασιών που χρειάζονται "
+"ανθρώπινη νόηση όπως η κατηγοριοποιήσηεικόνων, η μεταγραφή, η "
+"γεωκωδικοποίηση κ.ά.. Το PyBossa είναιβοηθητικό εργαλείο που "
+"χρησιμοποιείται από ερευνητές, χάκερ πολίτες και προγραμματιστές, "
+"ενώδίνει τη δυνατότητα σε οποιονδήποτε ανά τον κόσμο- με λίγο χρόνο, "
+"θέληση και πρόσβαση στο διαδύκτιο-να συμβάλλει."
 
 #: themes/default/templates/home/_about.html:8
 msgid "PyBossa is different to existing efforts:"
@@ -1078,8 +790,10 @@ msgid ""
 "Unlike, say, “mechanical turk” style projects, PyBossa is not designed to"
 " handle payment or money — it is designed to support volunteer-driven "
 "projects."
-msgstr "Σε αντίθεση για παράδειγμα με τα προγράμματα τύπου “mechanical turk”, το PyBossa δεν είναι σχεδιασμένο για να"
-"διαχειρίζεται πληρωμές ή χρήματα- είναι σχεδιασμένο για να υποστηρίζει εθελοντικά προγράμματα."
+msgstr ""
+"Σε αντίθεση για παράδειγμα με τα προγράμματα τύπου “mechanical turk”, το "
+"PyBossa δεν είναι σχεδιασμένο για ναδιαχειρίζεται πληρωμές ή χρήματα- "
+"είναι σχεδιασμένο για να υποστηρίζει εθελοντικά προγράμματα."
 
 #: themes/default/templates/home/_about.html:13
 msgid ""
@@ -1088,16 +802,21 @@ msgid ""
 "project itself. Individual crowd-sourcing projects are written as simple "
 "snippets of Javascript and HTML which are then deployed on a PyBossa "
 "instance (such as"
-msgstr " Είναι σχεδιασμένο σαν πλατφόρμα για την ανάπτυξη προγραμμάτων μικρο-εργασιών στα πλαίσια του πληθοπορισμού, χωρίς όμως να είναι πληθοποριστικό πρόγραμμα αυτό καθέ αυτό. Ξεχωριστά προγράμματα καταγράφονται ως απλά"
-"αποσπάσματα Javascript και HTML και μετά αναπτύσσονται κατά την υπόδειξη του PyBossa"
-"(όπως το"
+msgstr ""
+" Είναι σχεδιασμένο σαν πλατφόρμα για την ανάπτυξη προγραμμάτων "
+"μικρο-εργασιών στα πλαίσια του πληθοπορισμού, χωρίς όμως να είναι "
+"πληθοποριστικό πρόγραμμα αυτό καθέ αυτό. Ξεχωριστά προγράμματα "
+"καταγράφονται ως απλάαποσπάσματα Javascript και HTML και μετά "
+"αναπτύσσονται κατά την υπόδειξη του PyBossa(όπως το"
 
 #: themes/default/templates/home/_about.html:13
 msgid ""
 "This way one can easily develop custom projects while using the PyBossa "
 "platform to store your data, manage users, and handle workflow"
-msgstr "Με αυτό τον τρόπο, μπορεί κανείς να αναπτύξει πρωτότυπα προγράμματα ενώ χρησιμοποιεί την πλατφόρμα του"
-"PyBossa για την αποθήκευση δεδομένων, τη διαχείριση των χρηστών και της ροής των εργασιών" 
+msgstr ""
+"Με αυτό τον τρόπο, μπορεί κανείς να αναπτύξει πρωτότυπα προγράμματα ενώ "
+"χρησιμοποιεί την πλατφόρμα τουPyBossa για την αποθήκευση δεδομένων, τη "
+"διαχείριση των χρηστών και της ροής των εργασιών"
 
 #: themes/default/templates/home/_about.html:18
 msgid "You can read more about the architecture in the"
@@ -1125,12 +844,15 @@ msgstr "Στατιστικές"
 msgid ""
 " PyBossa provides individual statistics for every project in the system, "
 "as well as a"
-msgstr "Το PyBossa παρέχει μεμονωμένες στατιστικές για κάθε πρόγραμμα σε αυτό το σύστημα"
-"καθώς και μια"
+msgstr ""
+"Το PyBossa παρέχει μεμονωμένες στατιστικές για κάθε πρόγραμμα σε αυτό το "
+"σύστημακαθώς και μια"
 
 #: themes/default/templates/home/_about.html:23
 msgid "general overview about the system like total number of users, tasks, etc"
-msgstr "γενική επισκόπηση του συστήματος, όπως τον συνολικό αριθμό χρηστών, εργασιών κ.ο.κ." "
+msgstr ""
+"γενική επισκόπηση του συστήματος, όπως τον συνολικό αριθμό χρηστών, "
+"εργασιών κ.ο.κ.\" "
 
 #: themes/default/templates/home/_about.html:25
 msgid "Check the global statistics"
@@ -1165,9 +887,10 @@ msgid ""
 "Online assistance in performing tasks that require human cognition, "
 "knowledge or intelligence such as image classification, transcription, "
 "geocoding and more!"
-msgstr "Διαδυκτιακή βοήθεια για την ολοκλήρωση εργασιών που απαιτούν ανθρώπινη νόηση,"
-"γνώση ή νοημοσύνη όπως η κατηγοριοποίηση εικόνων, η μεταγραφή,"
-"η γεωκωδικοποίηση κ.ά.!"
+msgstr ""
+"Διαδυκτιακή βοήθεια για την ολοκλήρωση εργασιών που απαιτούν ανθρώπινη "
+"νόηση,γνώση ή νοημοσύνη όπως η κατηγοριοποίηση εικόνων, η μεταγραφή,η "
+"γεωκωδικοποίηση κ.ά.!"
 
 #: themes/default/templates/home/_pybossa_text.html:3
 msgid "Help advance research"
@@ -1183,7 +906,7 @@ msgstr "Πράγματα που δε μπορούν να κάνουν οι υπ�
 
 #: themes/default/templates/home/index.html:18
 #: themes/default/templates/projects/_helpers.html:36
-#: themes/default/templates/projects/_helpers.html:222
+#: themes/default/templates/projects/_helpers.html:237
 msgid "Info"
 msgstr "Πληροφορίες"
 
@@ -1236,8 +959,8 @@ msgstr "Υποβεβλημένες εργασίες"
 #: themes/default/templates/projects/export.html:32
 #: themes/default/templates/projects/export.html:34
 #: themes/default/templates/projects/export.html:53
-#: themes/default/templates/projects/stats.html:277
-#: themes/default/templates/projects/stats.html:367
+#: themes/default/templates/projects/stats.html:278
+#: themes/default/templates/projects/stats.html:368
 #: themes/default/templates/projects/tasks.html:13
 #: themes/default/templates/projects/tasks_browse.html:62
 msgid "Tasks"
@@ -1273,6 +996,11 @@ msgstr "Blog"
 msgid "ID"
 msgstr "Ταυτότητα"
 
+#: themes/default/templates/projects/_helpers.html:63
+#: themes/default/templates/projects/_helpers.html:131
+msgid "Description"
+msgstr "Περιγραφή"
+
 #: themes/default/templates/projects/_helpers.html:64
 #: themes/default/templates/projects/_helpers.html:132
 msgid "Creation Date"
@@ -1300,6 +1028,15 @@ msgstr "ολοκληρώθηκε"
 msgid "Hidden"
 msgstr "Ελαχιστοποιημένο"
 
+#: themes/default/templates/projects/_helpers.html:70
+#: themes/default/templates/projects/tasks/delete.html:24
+msgid "Yes"
+msgstr "Ναι"
+
+#: themes/default/templates/projects/_helpers.html:72
+msgid "No"
+msgstr "Όχι"
+
 #: themes/default/templates/projects/_helpers.html:105
 #: themes/default/templates/projects/_helpers.html:115
 msgid "Remove from Featured!"
@@ -1323,9 +1060,22 @@ msgstr "Εμένα"
 msgid "Try it!"
 msgstr "Δοκιμάστε το!"
 
-#: themes/default/templates/projects/_helpers.html:201
+#: themes/default/templates/projects/_helpers.html:212
+msgid "Done! View results"
+msgstr ""
+
+#: themes/default/templates/projects/_helpers.html:215
 msgid "Start Contributing Now!"
 msgstr "Αρχίστε να συμβάλλετε τώρα!"
+
+#: themes/default/templates/projects/_helpers.html:218
+#, fuzzy
+msgid "Thanks for contributing"
+msgstr "Αρχίστε να συμβάλλετε"
+
+#: themes/default/templates/projects/_helpers.html:221
+msgid "Draft project, complete it!"
+msgstr ""
 
 #: themes/default/templates/projects/actions.html:9
 #: themes/default/templates/projects/settings.html:18
@@ -1439,14 +1189,22 @@ msgstr "Διαγραφή προγράμματος"
 
 #: themes/default/templates/projects/delete.html:14
 msgid "If you delete the project and its tasks, it will be gone forever!"
-msgstr "Εάν διαγράψετε το πρόγραμμα και τις εργασίες του, θα εξαφανιστεί για πάντα!"
+msgstr ""
+"Εάν διαγράψετε το πρόγραμμα και τις εργασίες του, θα εξαφανιστεί για "
+"πάντα!"
 
 #: themes/default/templates/projects/delete.html:20
 msgid ""
 "Are you sure you want to delete this project and all its tasks and "
 "associated task runs?"
-msgstr "Είστε σίγουρος/η οτι θέλετε να διαγράψετε αυτό το πρόγραμμα και όλες του τις"
-εργασίες και σχετικές του εκτελέσεις;"
+msgstr ""
+"Είστε σίγουρος/η οτι θέλετε να διαγράψετε αυτό το πρόγραμμα και όλες του "
+"τις"
+
+#: themes/default/templates/projects/delete.html:22
+#, fuzzy
+msgid "Yes, delete it"
+msgstr "Όχι, μην την διαγράψεις"
 
 #: themes/default/templates/projects/delete.html:23
 msgid "No, do not delete it!"
@@ -1468,7 +1226,9 @@ msgstr "όλα είναι διαθέσιμα"
 msgid ""
 "Tasks and Task Runs (the submitted answers by the users) in CSV or JSON "
 "formats."
-msgstr "Εργασίες και Εκτελέσεις (όπως έχουν υποβληθεί από τους χρήστες) σε μορφές CSV ή JSON "
+msgstr ""
+"Εργασίες και Εκτελέσεις (όπως έχουν υποβληθεί από τους χρήστες) σε μορφές"
+" CSV ή JSON "
 
 #: themes/default/templates/projects/export.html:17
 msgid "Export in CSV format"
@@ -1502,7 +1262,9 @@ msgstr "ΣΗΜΑΝΤΙΚΟ"
 msgid ""
 "This export option stills in beta mode and may fail in the CKAN server. "
 "If you get an error, please send an e-mail to info@pybossa.com"
-msgstr "Αυτή η επιλογή εξαγωγή λειτουργεί με φίλτρα βήτα λειτουργίας και μπορεί να αποτύχει σε διακομιστή CKAN "
+msgstr ""
+"Αυτή η επιλογή εξαγωγή λειτουργεί με φίλτρα βήτα λειτουργίας και μπορεί "
+"να αποτύχει σε διακομιστή CKAN "
 
 #: themes/default/templates/projects/export.html:56
 msgid "You don't have a Datahub.io API key in your"
@@ -1518,7 +1280,9 @@ msgstr "να δημιουργήσετε λογαργιασμό"
 
 #: themes/default/templates/projects/export.html:56
 msgid "and copy/paste the API key in your profile in order to use this exporter"
-msgstr "και να κάνετε αντιγραφή/ επικόλληση του κλειδιού API στο προφίλ σας για να μπορέσετε να χρησιμοποιείσετε αυτόν τον εξαγωγέα"
+msgstr ""
+"και να κάνετε αντιγραφή/ επικόλληση του κλειδιού API στο προφίλ σας για "
+"να μπορέσετε να χρησιμοποιείσετε αυτόν τον εξαγωγέα"
 
 #: themes/default/templates/projects/index.html:35
 msgid "A special selection of the most interesting projects"
@@ -1535,7 +1299,9 @@ msgstr "Προγράμματα σε εξέλιξη"
 
 #: themes/default/templates/projects/index.html:58
 msgid "Sorry, there are no published projects for this category yet"
-msgstr "Συγγνώμη, δεν υπάρχουν δημοσιευμένα προγράμματα σε αυτή την κατηγορία προς το παρόν"
+msgstr ""
+"Συγγνώμη, δεν υπάρχουν δημοσιευμένα προγράμματα σε αυτή την κατηγορία "
+"προς το παρόν"
 
 #: themes/default/templates/projects/new.html:13
 msgid "Project"
@@ -1577,13 +1343,12 @@ msgid ""
 " project can help change things!"
 "                                                             \n"
 "            (you can use Markdown to give format to your description!)"
-msgstr "Εξηγείστε το πρόγραμμα "
-"		· Γιατί; Γιατί δημιουργείτε αυτό το πρόγραμμα, τι θέλετε"
-"να επιτύχετε με αυτό"
-"		· Πώς; Εξηγείστε πώς δουλεύει το πρόγραμμά σας"
-"		· Πώς μπορείτε να βοηθήσετε: Εξηγείστε στους"
-"εθελοντές γιατί είναι σημαντική η συμβολή τους και πώς τα αποτελέσματα του"
-"προγράμματος μπορούν να βοηθήσουν στο να αλλάξουν πράγματα!"   
+msgstr ""
+"Εξηγείστε το πρόγραμμα \t\t· Γιατί; Γιατί δημιουργείτε αυτό το πρόγραμμα,"
+" τι θέλετενα επιτύχετε με αυτό\t\t· Πώς; Εξηγείστε πώς δουλεύει το "
+"πρόγραμμά σας\t\t· Πώς μπορείτε να βοηθήσετε: Εξηγείστε στουςεθελοντές "
+"γιατί είναι σημαντική η συμβολή τους και πώς τα αποτελέσματα "
+"τουπρογράμματος μπορούν να βοηθήσουν στο να αλλάξουν πράγματα!"
 
 #: themes/default/templates/projects/new.html:26
 msgid "Create the project"
@@ -1619,8 +1384,10 @@ msgstr "Υποβολή"
 msgid ""
 "Sorry, you've contributed to all the tasks for this project, but this "
 "project still needs more volunteers, so please spread the word!"
-msgstr "Συγγνώμη, έχετε συμβάλλει σε όλες τις εργασίες του προγράμματος, αλλά αυτό"
-"το πρόγραμμα χρειάζεται περισσότερους εθελοντές, γι' αυτό διαδώστε το!"
+msgstr ""
+"Συγγνώμη, έχετε συμβάλλει σε όλες τις εργασίες του προγράμματος, αλλά "
+"αυτότο πρόγραμμα χρειάζεται περισσότερους εθελοντές, γι' αυτό διαδώστε "
+"το!"
 
 #: themes/default/templates/projects/settings.html:16
 msgid "Project Settings"
@@ -1659,7 +1426,9 @@ msgstr "Ολοκληρωμένες Εργασίες τις τελευταίες 
 #: themes/default/templates/projects/stats.html:77
 #: themes/default/templates/projects/stats.html:148
 msgid "select an area to zoom, click to reset the chart"
-msgstr "διαλέξτε μια περιοχή για να εστιάσετε και να μεγενθύνετε, κάντε κλικ για να επαναφέρετε τον πίνακα"
+msgstr ""
+"διαλέξτε μια περιοχή για να εστιάσετε και να μεγενθύνετε, κάντε κλικ για "
+"να επαναφέρετε τον πίνακα"
 
 #: themes/default/templates/projects/stats.html:148
 msgid "Answers per day"
@@ -1669,53 +1438,62 @@ msgstr "Απαντήσεις τη μέρα"
 msgid "answers were submitted this day"
 msgstr "οι απαντήσεις θα υποβληθούν αυτή τη μέρα"
 
-#: themes/default/templates/projects/stats.html:218
+#: themes/default/templates/projects/stats.html:219
 msgid "Distribution of Answers"
 msgstr "Διανομή Απαντήσεων"
 
-#: themes/default/templates/projects/stats.html:224
+#: themes/default/templates/projects/stats.html:225
 msgid "Type"
 msgstr "Τύπος"
 
-#: themes/default/templates/projects/stats.html:226
+#: themes/default/templates/projects/stats.html:227
 msgid "Percentage"
 msgstr "Ποσοστό"
 
-#: themes/default/templates/projects/stats.html:265
+#: themes/default/templates/projects/stats.html:266
 msgid "Details about Anonymous Users"
 msgstr "Λεπτομέρειες για τους Ανώνυμους Χρήστες"
 
-#: themes/default/templates/projects/stats.html:268
+#: themes/default/templates/projects/stats.html:269
 msgid "anonymous users have"
 msgstr "οι ανώνυμοι χρήστες έχουν"
 
-#: themes/default/templates/projects/stats.html:268
-#: themes/default/templates/projects/stats.html:359
+#: themes/default/templates/projects/stats.html:269
+#: themes/default/templates/projects/stats.html:360
 msgid "participated"
 msgstr "συμμετάχει"
 
-#: themes/default/templates/projects/stats.html:275
+#: themes/default/templates/projects/stats.html:276
 msgid "Country"
 msgstr "Χώρα"
 
-#: themes/default/templates/projects/stats.html:276
+#: themes/default/templates/projects/stats.html:277
 msgid "City"
 msgstr "Πόλη"
 
-#: themes/default/templates/projects/stats.html:317
+#: themes/default/templates/projects/stats.html:298
+#: themes/default/templates/projects/stats.html:299
+#: themes/default/templates/projects/stats.html:300
+#: themes/default/templates/projects/stats.html:301
+#: themes/default/templates/projects/stats.html:302
+#: themes/default/templates/projects/stats.html:367
+msgid "User"
+msgstr "Χρήστης"
+
+#: themes/default/templates/projects/stats.html:318
 #: themes/default/templates/stats/global.html:169
 msgid "This page includes GeoLite data created by MaxMind, available from"
 msgstr "Αυτή η σελίδα εμπεριέχει δεδομένα GeoLite από το MaxMind, διαθέσιμα από "
 
-#: themes/default/templates/projects/stats.html:356
+#: themes/default/templates/projects/stats.html:357
 msgid "Details about Authenticated Users"
 msgstr "Λεπτομέριες για Εξουσιοδοτημένους Χρήστες "
 
-#: themes/default/templates/projects/stats.html:359
+#: themes/default/templates/projects/stats.html:360
 msgid "authenticated users have"
 msgstr "οι εξουσιοδοτημένοι χρήστες έχουν"
 
-#: themes/default/templates/projects/stats.html:361
+#: themes/default/templates/projects/stats.html:362
 msgid "Top 5 users"
 msgstr "Οι 5 Κορυφαίοι χρήστες"
 
@@ -1777,38 +1555,37 @@ msgstr "Ο αριθμός απαντήσεων ανά εργασία που θέ
 msgid "Set redundancy"
 msgstr "Ορίστε τον πλεονασμό "
 
-#: themes/default/templates/projects/task_presenter_editor.html:29
+#: themes/default/templates/projects/task_presenter_editor.html:28
 #: themes/default/templates/projects/snippets/options.html:3
 msgid "Task Presenter Editor"
 msgstr "Εκδότης Κομιστή Εργασιών"
 
-#: themes/default/templates/projects/task_presenter_editor.html:29
+#: themes/default/templates/projects/task_presenter_editor.html:28
 msgid "Help"
 msgstr "Βοήθεια"
 
-#: themes/default/templates/projects/task_presenter_editor.html:35
+#: themes/default/templates/projects/task_presenter_editor.html:34
 msgid "Update the project task presenter"
 msgstr "Ενημερώστε τον κομιστή εργασιών του προγράμματος"
 
-#: themes/default/templates/projects/task_presenter_editor.html:36
+#: themes/default/templates/projects/task_presenter_editor.html:35
 msgid "Preview the task presenter"
 msgstr "Προεπισκόπηση του κομιστή εργασιών"
 
-#: themes/default/templates/projects/task_presenter_editor.html:46
+#: themes/default/templates/projects/task_presenter_editor.html:45
 msgid "&times;"
 msgstr "&ώρες"
 
-#: themes/default/templates/projects/task_presenter_editor.html:47
+#: themes/default/templates/projects/task_presenter_editor.html:46
 msgid "Task Presenter Preview"
 msgstr "Προεπισκόπηση Κομιστή Εργασιών"
 
-#: themes/default/templates/projects/task_presenter_editor.html:53
+#: themes/default/templates/projects/task_presenter_editor.html:54
 msgid "Close"
 msgstr "Κλείσιμο"
 
 #: themes/default/templates/projects/task_priority.html:14
 #: themes/default/templates/projects/task_settings.html:22
-#: view/projects.py:1271
 msgid "Task Priority"
 msgstr "Προτεραιότητα Εργασίας"
 
@@ -1826,10 +1603,10 @@ msgid ""
 "                providing a list of task IDs separated by commas. The "
 "lowest\n"
 "                priority is"
-msgstr "μιας ή παραπάνω εργασιών, \n "
-"		παραθέτοντας μια λίστα των ταυτοτήτων των εργασιών διαχωρισμένες με κόμμα. Η"
-"Προτεραιότητα είναι"
-
+msgstr ""
+"μιας ή παραπάνω εργασιών, \n"
+" \t\tπαραθέτοντας μια λίστα των ταυτοτήτων των εργασιών διαχωρισμένες με "
+"κόμμα. ΗΠροτεραιότητα είναι"
 
 #: themes/default/templates/projects/task_priority.html:19
 msgid "and the highest priority is"
@@ -1839,8 +1616,7 @@ msgstr "και η ανώτερη προτεραιότητα είναι"
 msgid ""
 "The priority value is only\n"
 "                respected by the"
-msgstr "Η τιμή της προτεραιότητας"
-" 		 εκτιμάται μόνο από τον"
+msgstr "Η τιμή της προτεραιότητας \t\t εκτιμάται μόνο από τον"
 
 #: themes/default/templates/projects/task_priority.html:22
 msgid "default scheduler"
@@ -1857,6 +1633,11 @@ msgstr "Τιμή προτεραιότητας μεταξύ 0.0 και 1.0"
 #: themes/default/templates/projects/task_priority.html:30
 msgid "Change Priority"
 msgstr "Αλλαγή προτεραιότητας"
+
+#: themes/default/templates/projects/task_scheduler.html:14
+#: themes/default/templates/projects/task_settings.html:17
+msgid "Task Scheduler"
+msgstr "Προγραμματιστής Εργασιών"
 
 #: themes/default/templates/projects/task_scheduler.html:15
 msgid "You can choose from the following schedulers"
@@ -1880,11 +1661,9 @@ msgid ""
 "                    has not been completed (the value of number of "
 "answers has\n"
 "                    not achieved) excluding the current user"
-msgstr "επιστρέφει μία εργασία που"
-			δεν έχει ολοκληρωθεί (η τιμή των αριθμών των"
-"απαντήσεων δεν
-"			έχει επιτευχθεί) εξαιρώντας τον παρόν χρήστη"
-
+msgstr ""
+"επιστρέφει μία εργασία πουαπαντήσεων δε\t\t\tέχει επιτευχθεί) εξαιρώντας "
+"τον παρόν χρήστη"
 
 #: themes/default/templates/projects/task_scheduler.html:21
 msgid "Breadth First"
@@ -1896,10 +1675,9 @@ msgid ""
 "                    task which has the least number of task runs "
 "(answers)\n"
 "                    excluding the current user"
-msgstr "επιστρέφει μία"
-"		εργασία η οποία έχει τον χαμηλότερο αριθμό (απαντήσεων) εργασιών προς εκτέλεση"
-"		εξαιρώντας τον παρόν χρήστη"
-
+msgstr ""
+"επιστρέφει μία\t\tεργασία η οποία έχει τον χαμηλότερο αριθμό (απαντήσεων)"
+" εργασιών προς εκτέλεση\t\tεξαιρώντας τον παρόν χρήστη"
 
 #: themes/default/templates/projects/task_scheduler.html:24
 msgid "Random"
@@ -1911,11 +1689,9 @@ msgid ""
 "                    randomly --a user could get the same task twice or "
 "more\n"
 "                    times"
-msgstr "επιστρέφει μία εργασία"
-"		τυχαία-- ο χρήστης μπορεί να λάβει την ίδια εργασία δύο ή"
-"και παραπάνω"
-"		φορές"
-
+msgstr ""
+"επιστρέφει μία εργασία\t\tτυχαία-- ο χρήστης μπορεί να λάβει την ίδια "
+"εργασία δύο ήκαι παραπάνω\t\tφορές"
 
 #: themes/default/templates/projects/task_settings.html:18
 msgid "Change how the tasks are delivered to volunteers"
@@ -1929,6 +1705,10 @@ msgstr "Προγραμματιστής"
 msgid "Change the priority of the tasks"
 msgstr "Αλλαγή προτεραιότητας εργασιών"
 
+#: themes/default/templates/projects/task_settings.html:24
+msgid "Priority"
+msgstr "Προτεραιότητα"
+
 #: themes/default/templates/projects/task_settings.html:29
 msgid "Delete Tasks"
 msgstr "Διαγραφή Εργασιών"
@@ -1940,6 +1720,10 @@ msgstr "Διαγράψτε όλες τις εργασίες και τις ανά
 #: themes/default/templates/projects/task_settings.html:35
 msgid "Change the redundancy level for the tasks"
 msgstr "Αλλάξτε το επίπεδο πλεονασμού για τις εργασίες"
+
+#: themes/default/templates/projects/task_settings.html:36
+msgid "Redundancy"
+msgstr "Πλεονασμός"
 
 #: themes/default/templates/projects/tasks.html:21
 msgid "Import tasks from templates, GDrive, or CSV"
@@ -1965,7 +1749,7 @@ msgid "Export tasks to JSON, CSV or a CKAN server"
 msgstr "Εξαγωγή εργασιών σε διακομυστή JSON, CSV ή CKAN"
 
 #: themes/default/templates/projects/tasks.html:27
-#: themes/default/templates/projects/tasks.html:70 view/projects.py:903
+#: themes/default/templates/projects/tasks.html:70
 msgid "Export"
 msgstr "Εξαγωγή"
 
@@ -2025,7 +1809,9 @@ msgstr "Εργασία"
 
 #: themes/default/templates/projects/tasks_browse.html:18
 msgid "This number identifies the task for the project and it is unique"
-msgstr "Αυτός ο αριθμός ταυτοποιεί την εργασία για το πρόγραμμα και είναι μοναδικός"
+msgstr ""
+"Αυτός ο αριθμός ταυτοποιεί την εργασία για το πρόγραμμα και είναι "
+"μοναδικός"
 
 #: themes/default/templates/projects/tasks_browse.html:19
 msgid ""
@@ -2037,8 +1823,9 @@ msgstr "Ο πρώτος αριθμόες δείχνει πόσες απαντή�
 msgid ""
 "This redundancy method will help to detect errors, typos, data forging, "
 "etc. when the task has been completed"
-msgstr "Αυτή η μέθοδος πλεονασμού θα βοηθήσει στον εντοπισμό σφαλμάτων, τυπογραφικών, αντιγραφή δεδομένων"
-"κ.λ.π. αφού έχει ολοκληρωθεί η εργασία"
+msgstr ""
+"Αυτή η μέθοδος πλεονασμού θα βοηθήσει στον εντοπισμό σφαλμάτων, "
+"τυπογραφικών, αντιγραφή δεδομένωνκ.λ.π. αφού έχει ολοκληρωθεί η εργασία"
 
 #: themes/default/templates/projects/tasks_browse.html:19
 msgid "second number"
@@ -2089,8 +1876,9 @@ msgid "Do you want to hide your project?"
 msgstr "Θέλετε να ελαχιστοποιήσετε το πρόγραμμά σας;"
 
 #: themes/default/templates/projects/update.html:47
-msgid "Save the changes"
-msgstr "Αποθηκεύστε τις αλλαγές"
+#, fuzzy
+msgid "Save te changes"
+msgstr "Αποθήκευση αλλαγών"
 
 #: themes/default/templates/projects/update_blogpost.html:14
 msgid "Edit the blog post"
@@ -2108,7 +1896,9 @@ msgstr "Από αρχείο CSV "
 msgid ""
 "Please provide a URL (i.e. DropBox, Box, Ubuntu One, etc. public link) to"
 " a CSV file with data for"
-msgstr "Παρακαλούμε να παραθέσετε έναn Ενιαίος Εντοπιστής Πόρων (URL) (π.χ. DropBox, Box, Ubuntu One, κ.λ.π. δημόσιους συνδέσμους) στο"
+msgstr ""
+"Παρακαλούμε να παραθέσετε έναn Ενιαίος Εντοπιστής Πόρων (URL) (π.χ. "
+"DropBox, Box, Ubuntu One, κ.λ.π. δημόσιους συνδέσμους) στο"
 
 #: themes/default/templates/projects/importers/csv.html:20
 #: themes/default/templates/projects/importers/dropbox.html:26
@@ -2148,7 +1938,9 @@ msgstr "Από ένα πρόγραμμα EpiCollect"
 
 #: themes/default/templates/projects/importers/epicollect.html:20
 msgid "Please provide an EpiCollect Plus project name to import its data for"
-msgstr "Παρακαλούμε να παραθέσετε ένα όνομα προγράμματος EpiCollect Plus για να εισάγετε δεδομένα για"
+msgstr ""
+"Παρακαλούμε να παραθέσετε ένα όνομα προγράμματος EpiCollect Plus για να "
+"εισάγετε δεδομένα για"
 
 #: themes/default/templates/projects/importers/epicollect.html:22
 msgid "The name of the public EpiCollect Plus project"
@@ -2168,7 +1960,9 @@ msgstr "Ανάκληση πρόσβασης"
 
 #: themes/default/templates/projects/importers/flickr.html:23
 msgid "Grant Crowdcrafting access to your Flickr albums to select one..."
-msgstr "Παραχωρήστε άδεια πρόσβασης Crowdcrafting στα Flickr άλμουπ σας για να διαλέξετε ένα … "
+msgstr ""
+"Παραχωρήστε άδεια πρόσβασης Crowdcrafting στα Flickr άλμουπ σας για να "
+"διαλέξετε ένα … "
 
 #: themes/default/templates/projects/importers/flickr.html:25
 msgid "Log in Flickr"
@@ -2196,7 +1990,9 @@ msgstr "Από ένα Υπολογιστικό Φύλλο στο Google Docs "
 
 #: themes/default/templates/projects/importers/gdocs.html:20
 msgid "Please provide a URL to a Google Drive Spreadsheet with data for"
-msgstr "Παρακαλούμε να παραθέσετε έναν Ενιαίο Εντοπιστή Πόρων (URL) για ένα Υπολογιστικό Φύλλο στο Google Drive με δεδομένα για"
+msgstr ""
+"Παρακαλούμε να παραθέσετε έναν Ενιαίο Εντοπιστή Πόρων (URL) για ένα "
+"Υπολογιστικό Φύλλο στο Google Drive με δεδομένα για"
 
 #: themes/default/templates/projects/importers/gdocs.html:21
 msgid "The URL of the Google Docs Spreadsheet"
@@ -2343,6 +2139,7 @@ msgstr "Δοκιμάστε με ένα άλλο"
 #: themes/default/templates/projects/tasks/csv.html:3
 msgid "Provide a public link to your own CSV file"
 msgstr "Παραθέστε έναν δημόσιο σύνδεσμο για το δικό σας αρχείο CSV"
+
 #: themes/default/templates/projects/tasks/csv.html:5
 msgid ""
 "Use the CSV URL\n"
@@ -2358,9 +2155,9 @@ msgid ""
 "If you delete all the\n"
 "            tasks and task runs they will be gone\n"
 "            forever!"
-msgstr "Εάν διαγράψετε όλες τις 
-"	εργασίες και τις εκτελέσεις θα εξαφανιστούν"
-"	για πάντα!"
+msgstr ""
+"Εάν διαγράψετε όλες τι\tεργασίες και τις εκτελέσεις θα εξαφανιστούν\tγια "
+"πάντα!"
 
 #: themes/default/templates/projects/tasks/delete.html:16
 msgid "You cannot undo this action!"
@@ -2370,15 +2167,15 @@ msgstr "Δεν μπορείτε να ανακαλέσετε αυτή την πρ
 msgid ""
 "Are you sure you want to delete ALL the project tasks and associated task"
 " runs?"
-msgstr "Είστε σίγουρος/η οτι θέλετε να διαγράψετε ΟΛΕΣ τις εργασίες του προγράμματος και τις αντίστοιχες"
-"εκτελέσεις τους;"
+msgstr ""
+"Είστε σίγουρος/η οτι θέλετε να διαγράψετε ΟΛΕΣ τις εργασίες του "
+"προγράμματος και τις αντίστοιχεςεκτελέσεις τους;"
 
 #: themes/default/templates/projects/tasks/delete.html:26
 msgid ""
 "No, do not delete\n"
 "              anything!"
-msgstr "Όχι, μην διαγράψεις"
-"		 τίποτα!"
+msgstr "Όχι, μην διαγράψεις\t\t τίποτα!"
 
 #: themes/default/templates/projects/tasks/dropbox.html:3
 msgid "Use files from your Dropbox account"
@@ -2418,8 +2215,7 @@ msgstr "Επαναχρησιμοποίηση των εργασιών Εύρεσ�
 msgid ""
 "Use the\n"
 "      Image tasks"
-msgstr "Χρήση των"
-"	εργασιών Εικόνας"
+msgstr "Χρήση των\tεργασιών Εικόνας"
 
 #: themes/default/templates/projects/tasks/gdocs-map.html:3
 msgid "Re-use the Urban Park tasks"
@@ -2429,8 +2225,7 @@ msgstr "Επαναχρησιμοποίηση των εργασιών του Urba
 msgid ""
 "Use the\n"
 "      Mapping tasks"
-msgstr "Χρήση των"
-"	εργασιών χαρτογράφησης"
+msgstr "Χρήση των\tεργασιών χαρτογράφησης"
 
 #: themes/default/templates/projects/tasks/gdocs-pdf.html:3
 msgid "Re-use the PDF transcription tasks"
@@ -2440,8 +2235,7 @@ msgstr "Επαναχρησιμοποίηση των εργασιών PDF μετ�
 msgid ""
 "Use the\n"
 "      Transcription tasks"
-msgstr "Χρήση των"
-"	εργασιών Μεταγραφής"
+msgstr "Χρήση των\tεργασιών Μεταγραφής"
 
 #: themes/default/templates/projects/tasks/gdocs-sound.html:3
 msgid "Re-use the SoundCloud tasks"
@@ -2451,8 +2245,7 @@ msgstr "Επαναχρησιμοποίηση των εργασιών του Soun
 msgid ""
 "Use the\n"
 "      Sound tasks"
-msgstr "Χρήση των"
-"	εργασιών Ήχου"
+msgstr "Χρήση των\tεργασιών Ήχου"
 
 #: themes/default/templates/projects/tasks/gdocs-video.html:3
 msgid "Re-use the Vimeo tasks"
@@ -2462,8 +2255,7 @@ msgstr "Επαναχρησιμοποίηση εργασιών Vimeo"
 msgid ""
 "Use the\n"
 "      Video tasks"
-msgstr "Χρήση των"
-"	εργασιών Βίντεο"
+msgstr "Χρήση των\tεργασιών Βίντεο"
 
 #: themes/default/templates/projects/tasks/gdocs.html:2
 msgid "Google Drive Spreadsheet"
@@ -2544,269 +2336,512 @@ msgstr "Ανώνυμοι Εθελοντές"
 msgid "Community Leaderboard"
 msgstr "Κοινοτικός Πίνακας Κατάταξης"
 
+#: themes/default/templates/stats/index.html:18
+msgid "Name"
+msgstr "Όνομα"
+
 #: themes/default/templates/stats/index.html:19
 msgid "Score"
 msgstr "Σκορ"
 
-#: view/account.py:119
-msgid "Welcome back"
-msgstr "Καλώς ήρθατε και πάλι"
+#~ msgid ""
+#~ "Please update your e-mail address in "
+#~ "your profile page, right now it is"
+#~ " empty!"
+#~ msgstr ""
+#~ "Σας παρακαλούμε να επικυρώσετε το προφίλ"
+#~ " σας με την ηλεκρτονική σας "
+#~ "διεύθυνση, καθώς τώρα είναι \"κενή\"!"
 
-#: view/account.py:125
-msgid "Ooops, Incorrect email/password"
-msgstr "Ουπς, λάθος ηλεκτρονικό ταχυδρομείο/ κωδικός"
+#~ msgid "The file you uploaded has two headers with the same name."
+#~ msgstr "Το αρχείο που ανεβάσατε έχει δύο τίτλους με το ίδιο όνομα"
 
-#: view/account.py:130
-msgid ""
-"Ooops, we didn't find you in the system,                           did "
-"you sign up?"
-msgstr "Ούπς, δεν σας βρήκαμε στο συστημα,
-"έχετε εγγραφεί;" 
+#~ msgid "Oops! That file doesn't look like the right file."
+#~ msgstr "Ουπς! Το αρχείο αυτό δεν φαίνεται να είναι το σωστό αρχείο"
 
-#: view/account.py:135 view/account.py:234 view/account.py:509
-#: view/account.py:525 view/account.py:539 view/account.py:572
-#: view/admin.py:267 view/admin.py:348 view/projects.py:218
-#: view/projects.py:275 view/projects.py:414 view/projects.py:1211
-#: view/projects.py:1262 view/projects.py:1307 view/projects.py:1382
-#: view/projects.py:1427
-msgid "Please correct the errors"
-msgstr "Παρακαλούμε διορθώστε τα λάθη"
+#~ msgid "It looks like there were no new records to import"
+#~ msgstr "Δεν φαίνεται να υπάρχουν νέα αρχεία προς εισαγωγή "
 
-#: view/account.py:171
-msgid "You are now signed out"
-msgstr "Έχετε αποσυνδεθεί"
+#~ msgid "new tasks were imported successfully"
+#~ msgstr "Η νέες εργασίες εισήχθησαν επιτυχώς"
 
-#: view/account.py:202
-msgid ""
-"An e-mail has been sent to                        validate your e-mail "
-"address."
-msgstr "Στείλαμε μήνυμα για να επικυρώσετε τη"
-"διεύθυνση του ηλεκτρονικού σας ταχυδρομείου"
+#~ msgid "new task was imported successfully"
+#~ msgstr "Η νέα εργασία εισήχθη επιτυχώς"
 
-#: view/account.py:236
-msgid "Register"
-msgstr "Εγγραφή"
+#~ msgid ""
+#~ "Oops, the project does not have "
+#~ "tasks to                         export, if "
+#~ "you are the owner add some tasks"
+#~ msgstr ""
+#~ "Ουπς, το πρόγραμμα δεν έχει εργασίες "
+#~ "προς εξαγωγή,εάν είστε ο ιδιοκτήτης "
+#~ "προσθέστε νέες εργασίες"
 
-#: view/account.py:263
-msgid "Subscribe to our Newsletter"
-msgstr "Εγγραφή στο Ενημερωτικό μας Δελτίο "
+#~ msgid ""
+#~ "Oops, there are no Task Runs yet"
+#~ " to export, invite                          some"
+#~ " users to participate"
+#~ msgstr ""
+#~ "Ουπς, δεν υπάρχουν τρέχουσες εργασίες "
+#~ "προς εξαγωγή, προσκαλέστεχρήστες για συμμετοχή"
 
-#: view/account.py:294
-msgid "Thanks for signing-up"
-msgstr "Σας ευχαριστούμε για την εγγραφή"
+#~ msgid "Name is already taken."
+#~ msgstr "Αυτό το όνομα χρησιμοποιείται"
 
-#: view/account.py:303
-msgid "Your email has been validated."
-msgstr "Το ηλεκτρονικό σας ταχυδρομείο επικυρώθηκε"
+#~ msgid "Short Name"
+#~ msgstr "Μικρό Όνομα"
 
-#: view/account.py:357
-msgid "Profile"
-msgstr "Προφίλ"
+#~ msgid "Short Name is already taken."
+#~ msgstr "Αυτό το μικρό όνομα χρησιμοποιείται"
 
-#: view/account.py:466
-msgid ""
-"Your avatar has been updated! It may                       take some "
-"minutes to refresh..."
-msgstr "Το είδωλο σας ενημερώθηκε! Μπορεί να πάρει"
-"κάποια λεπτά για να ανανεωθεί…" 
+#~ msgid "Long Description"
+#~ msgstr "Εκτενής Περιγραφή"
 
-#: view/account.py:496
-#, python-format
-msgid ""
-"An email has been sent to verify your                           new "
-"email: %s. Once you verify it, it will                           be "
-"updated.email_addr"
-msgstr "Στείλαμε μήνυμα για να επικυρώσετε τη νέα σας"
-"διεύθυνση ηλεκτρονικού ταχυδρομείου"
-": %. Μόλις το επικυρώσετε, θα ενημερωθεί"
-"updated.email_addr"
+#~ msgid "You must provide a description."
+#~ msgstr "Πρέπει να παραθέσετε περιγραφή"
 
+#~ msgid "Allow Anonymous Contributors"
+#~ msgstr "Επιτρέψτε Ανώνυμους Συνειρφέρωντες  "
 
-#: view/account.py:507 view/account.py:537
-msgid "Your profile has been updated!"
-msgstr "Το προφίλ σας ενημερώθηκε!"
+#~ msgid "Category"
+#~ msgstr "Κατηγορία"
 
-#: view/account.py:518
-msgid "Yay, you changed your password succesfully!"
-msgstr "Επιτυχής αλλαγή κωδικού!"
+#~ msgid "Hide?"
+#~ msgstr "Ελαχιστοποίηση;"
 
-#: view/account.py:521
-msgid "Your current password doesn't match the one in our records"
-msgstr "Ο τρέχων κωδικός σας δεν ταιριάζει με αυτόν στα αρχεία μας"
+#~ msgid "Password (leave blank for no password)"
+#~ msgstr "Κωδικός  (αφήστε κενό αντί χρήσης κωδικού)"
 
-#: view/account.py:569
-msgid "You reset your password successfully!"
-msgstr "Επιτυχής επαναφορά κωδικού! "
+#~ msgid "Webhook"
+#~ msgstr ""
 
-#: view/account.py:623
-msgid "We've send you an email with account recovery instructions!"
-msgstr "Στείλαμε ένα μήνυμα με οδηγίες ανάκτησης του λογαριασμούς σας! "
+#~ msgid ""
+#~ "Number of answers should be a"
+#~ "                                                        value "
+#~ "between 1 and 1,000"
+#~ msgstr "Ο αριθμός τον απαντήσεων πρέπει να ειναι μιατιμή μεταξύ 1και 1.000"
 
-#: view/account.py:627
-msgid ""
-"We don't have this email in our records. You may have signed up with a "
-"different email or used Twitter, Facebook, or Google to sign-in"
-msgstr "Αυτό το ηλεκτρονικό ταχυδρομείο δεν υπάρχει στα αρχεία μας. Μπορεί να έχετε εγγραφεί"
-"χρησιμοποιώντας διαφορετική διεύθυνση ή μέσω Twitter, Facebook, ή Google"
+#~ msgid "Task IDs"
+#~ msgstr ""
 
-#: view/account.py:632
-msgid "Something went wrong, please correct the errors on the form"
-msgstr "Κάτι πήγε λάθος, παρακαλούμε να διορθώσετε τα λάθη στη φόρμα"
+#~ msgid ""
+#~ "Priority should be a"
+#~ "                                                        value "
+#~ "between 0.0 and 1.0"
+#~ msgstr "Η προτεραιότητα θα πρέπει να είναι μιατιμή μεταξύ 0,0και 1,0"
 
-#: view/account.py:653
-msgid "New API-KEY generated"
-msgstr "Δημιουργία νέου API-KEY"
+#~ msgid "Title"
+#~ msgstr "Τίτλος"
 
-#: view/admin.py:264
-msgid "Category added"
-msgstr "Προσθήκη Κατηγορίας"
+#~ msgid "You must enter a title for the post."
+#~ msgstr "Πρέπει να εισάγετε τίτλο για την ανάρτηση"
 
-#: view/admin.py:300
-msgid "Category deleted"
-msgstr "Διαγραφή Κατηγορίας"
+#~ msgid "Body"
+#~ msgstr "Κυρίως"
 
-#: view/admin.py:305
-msgid ""
-"Sorry, it is not possible to delete the only available category. You can "
-"modify it,  click the edit button"
-msgstr "Συγγνώμη, είναι αδύντατο να διαγράψετε την μόνη διαθέσιμη κατηγορία. Μπορείτε να"
-"την τροποποιήσετε, πατώντας το κουμπί επεξεργασίας"
+#~ msgid "You must enter some text for the post."
+#~ msgstr "Πρέπει να εισάγετε κείμενο για την ανάρτηση"
 
-#: view/admin.py:344
-msgid "Category updated"
-msgstr "Ενημέρωση Κατηγορίας"
+#~ msgid "Password"
+#~ msgstr "Κωδικός"
 
-#: view/projects.py:234
-msgid "Project created!"
-msgstr "Το πρόγραμμα δημιουργήθηκε!"
+#~ msgid "You must enter a password"
+#~ msgstr "Πρέπει να εισάγετε κωδικό"
 
-#: view/projects.py:237
-msgid "You can check the "
-msgstr "Μπορείτε να δείτε τον"
+#~ msgid "You must provide a URL"
+#~ msgstr "Πρέπει να παραθέσετε έναν Ενιαίο Εντοπιστή Πόρων (URL) "
 
-#: view/projects.py:239
-msgid "Guide and Documentation"
-msgstr "Οδηγό και Καταγραφή "
+#~ msgid "Oops! That's not a valid URL. You must provide a valid URL"
+#~ msgstr ""
+#~ "Ουπς! Αυτός δεν είναι ο σωστός "
+#~ "Ενιαίος Εντοπιστής Πόρων (URL). Πρέπει "
+#~ "να παραθέσετε τον σωστό Ενιαίο Εντοπιστή"
+#~ " Πόρων (URL) "
 
-#: view/projects.py:241
-msgid "for adding tasks, a thumbnail, using PyBossa.JS, etc."
-msgstr "για την προσθήλη εργασιών, ενός thumbnail, χρησιμοποιώντας PyBossa.JS, κ.λ.π. "
+#~ msgid "URL"
+#~ msgstr "Ενιαίος Εντοπιστής Πόρων (URL)"
 
-#: view/projects.py:269
-msgid "Task presenter added!"
-msgstr "Ο Κομιστής Εργασιών προστέθηκε!"
+#~ msgid "You must provide an EpiCollect Plus project name"
+#~ msgstr "Πρέπει να παραθεσετε ένα όνομα προγράμματος μέσω του EpiCollect Plus"
 
-#: view/projects.py:282
-msgid "<strong>Note</strong> You will need to upload the tasks using the"
-msgstr "Πρέπει να ανεβάσετε τις εργασίες χρησιμοποιώντας τον"
+#~ msgid "You must provide a Form name for the project"
+#~ msgstr "Πρέπει να παραθέσετε ένα όνομα Μορφής για το πρόγραμμα "
 
-#: view/projects.py:284
-msgid "CSV importer"
-msgstr "εισαγωγέα CSV "
+#~ msgid "Project Name"
+#~ msgstr "Όνομα Προγράμματος"
 
-#: view/projects.py:285
-msgid ""
-" or download the project bundle and run the "
-"<strong>createTasks.py</strong> script in your computer"
-msgstr "ή κατεβάζοντας το πρόγραμμα και εκτελώντας το"
-"<strong>createTasks.py</strong> κείμενο στον υπολογιστή σας"
+#~ msgid "Form name"
+#~ msgstr "Όνομα Μορφής"
 
-#: view/projects.py:351
-msgid "Project deleted!"
-msgstr "Το πρόγραμμα διαγράφηκε!"
+#~ msgid "You must provide a valid Flickr album ID"
+#~ msgstr "Πρέπει να παραθέσετε την σωστή ταυτότητα του άλμπουμ στο Flickr"
 
-#: view/projects.py:388
-msgid "Project updated!"
-msgstr "Το πρόγραμμα ενημερώθηκε!"
+#~ msgid "Album ID"
+#~ msgstr "Ταυτότητα Άλμπουμ"
 
-#: view/projects.py:433
-msgid ""
-"Your project thumbnail has been updated! It may"
-"                                   take some minutes to refresh..."
-msgstr "Το thumbnail του προγράμματος ενημερώθηκε! Μπορεί να "
-"πάρει κάποια λεπτά για να ανανεωθεί…"
+#~ msgid "The e-mail is required"
+#~ msgstr "Το ηλεκτρονικό ταχυδρομείο απαιτείται"
 
-#: view/projects.py:436
-msgid "You must provide a file to change the avatar"
-msgstr "Πρέπει να παραθέσετε ένα αρχείο για να αλλάξετε είδωλο"
+#~ msgid "You must provide a password"
+#~ msgstr "Πρέπει να παραθέσετε έναν κωδικό"
 
-#: view/projects.py:514
-msgid "Importing tasks, this may take a while, wait..."
-msgstr "Εισαγωγή αρχείων, αυτό μπορεί να πάρει κάποια λεπτά..."
+#~ msgid "Full name must be between 3 and %s characters long"
+#~ msgstr "Ολόκληρο το όνομα θα πρέπει να αποτελείται από 3 εως και  % χαρακτήρες"
 
-#: view/projects.py:572
-msgid ""
-"You're trying to import a large amount of tasks, so please be patient."
-"            You will receive an email when the tasks are ready."
-msgstr "Προσπαθείτε να εισάγετε μεγάλο ποσό εργασιών, γι'αυτό σας παρακαλούμε να είστε υπομονετικός."
-"	Θα λάβετε ένα μήνυμα όταν οι εργασίες είναι έτοιμες."
+#~ msgid "Full name"
+#~ msgstr "Ολόκληρο Όνομα"
 
-#: view/projects.py:615
-msgid "Success! Tasks will be imported daily."
-msgstr "Επιτυχία! Οι εργασίες θα εισάγωνται καθημερινά"
+#~ msgid "User name must be between 3 and %s characters long"
+#~ msgstr "Το όνομα του χρήστη θα πρέπει να αποτελείται από 3 εως και % χαρακτήρες"
 
-#: view/projects.py:669
-msgid "Sorry, incorrect password"
-msgstr "Συγγνώμη, λάθος κωδικός"
+#~ msgid "The user name is already taken"
+#~ msgstr "Αυτό το όνομα χρήστη χρησιμοποιείται"
 
-#: view/projects.py:699
-msgid ""
-"Ooops! You are an anonymous user and will not get any credit for your "
-"contributions."
-msgstr "Ουπς! Είστε ένας ανώνυμος χρήστης και δεν θα λάβετε αναγνώριση για τη"
-"συμβολή σας."
+#~ msgid "User name"
+#~ msgstr "Όνομα χρήστη"
 
-#: view/projects.py:891
-msgid "All the tasks and associated task runs have been deleted"
-msgstr "Όλες οι εργασίες και οι αντίστοιχες εκτελέσεις έχουν διαγραφεί"
+#~ msgid "Email must be between 3 and %s characters long"
+#~ msgstr ""
+#~ "Το ηλεκτρονικό ταχυδρομείο θα πρέπει να"
+#~ " αποτελείται απο 3 εως και % "
+#~ "χαρακτήρες"
 
-#: view/projects.py:904
-msgid "Exporting data..., this may take a while"
-msgstr "Εξαγωγή δεδομένων… αυτό μπορεί να πάρει κάποια ώρα"
+#~ msgid "Email is already taken"
+#~ msgstr "Αυτό το ηλεκτρονικό ταχυδρομείο χρησιμοποιείται"
 
-#: view/projects.py:997
-msgid "Data exported to "
-msgstr "Τα δεδομένα εξήχθησαν στο"
+#~ msgid "Email Address"
+#~ msgstr "Διεύθυνση Ηλεκτρονικού Ταχυδρομείου"
 
-#: view/projects.py:1055
-msgid ""
-"Oops, the project does not have tasks to                     export, if "
-"you are the owner add some tasks"
-msgstr "Ουπς, το πρόγραμμα δεν έχει εργασίες προς εξαγωγή, εάν"
-"είστε ο διαχειριστής προσθέστε κάποιες εργασίες"
+#~ msgid "Password cannot be empty"
+#~ msgstr "Ο κωδικός δε μπορεί να είναι κενός"
 
-#: view/projects.py:1061
-msgid ""
-"Oops, there are no Task Runs yet to export, invite                      "
-"some users to participate"
-msgstr "Ουπς, δεν υπάρχουν Εκτελέσεις Εργασιών προς εξαγωγή, προσκαλέστε"
-"κάποιους χρήστες για συμμετοχή"
+#~ msgid "Passwords must match"
+#~ msgstr "Οι δυο κωδικοί πρέπει να ταυτίζονται"
 
-#: view/projects.py:1207
-msgid "Redundancy of Tasks updated!"
-msgstr "Ο πλεονασμός των εργασιών ενημερώθηκε!"
+#~ msgid "New Password"
+#~ msgstr "Νέος κωδικός"
 
-#: view/projects.py:1257
-msgid "Project Task Scheduler updated!"
-msgstr "Ο προγραμματιστής των εργασιών του προγράμματος ενημερώθηκε!"
+#~ msgid "Repeat Password"
+#~ msgstr "Επαναλάβετε τον κωδικό"
 
-#: view/projects.py:1304
-msgid "Task priority has been changed"
-msgstr "Η προτεραιότητα των εργασιών έχει αλλάξει"
+#~ msgid "Username"
+#~ msgstr "Όνομα χρήστη"
 
-#: view/projects.py:1361
-msgid "Write a new post"
-msgstr "Γράψτε μία νέα ανάρτηση"
+#~ msgid "Get email notifications"
+#~ msgstr "Θέλω να λαμβάνω ειδοποιήσεις μέσω του ηλεκτρονικού ταχυδρομείου "
 
-#: view/projects.py:1393
-msgid "Blog post created!"
-msgstr "Η ανάρτηση του blog ολοκληρώθηκε! "
+#~ msgid "Language"
+#~ msgstr "Γλώσσα"
 
-#: view/projects.py:1411
-msgid "Edit a post"
-msgstr "Επεξεργασία της ανάρτησης"
+#~ msgid "CKAN API Key"
+#~ msgstr "CKAN API Κλειδί"
 
-#: view/projects.py:1439
-msgid "Blog post updated!"
-msgstr "Η ανάρτηση του blog ενημερώθηκε!"
+#~ msgid "Privacy Mode"
+#~ msgstr "Λειτουργία προστασίας ιδιωτικού απορρήτου"
+
+#~ msgid "English"
+#~ msgstr "Αγγλικά"
+
+#~ msgid "Spanish"
+#~ msgstr "Ισπανικά"
+
+#~ msgid "French"
+#~ msgstr "Γαλλικά"
+
+#~ msgid "German"
+#~ msgstr "Γερμανικά"
+
+#~ msgid "Italian"
+#~ msgstr "Ιταλικά"
+
+#~ msgid "Current password"
+#~ msgstr "Τρέχοντας κωδικός πρόσβασης"
+
+#~ msgid "New password"
+#~ msgstr "Νέος κωδικός"
+
+#~ msgid "Repeat password"
+#~ msgstr "Επαναλάβετε τον κωδικό"
+
+#~ msgid "Avatar"
+#~ msgstr "Είδωλο"
+
+#~ msgid "This item already exists"
+#~ msgstr "Αυτό το αρχείο υπάρχει ήδη "
+
+#~ msgid "%sand space symbols are forbidden"
+#~ msgstr "% και σύμβολα που υποδηλώνουν κενό απαγορεύονται "
+
+#~ msgid "Only comma separated values are allowed, no spaces"
+#~ msgstr "Επιτρέπονται μόνο τιμές διαχωρισμένες με κόμμα, όχι κενά"
+
+#~ msgid "Invalid URL"
+#~ msgstr "Άκυρος Ενιαίος Εντοπιστής Πόρων (URL) "
+
+#~ msgid "Connection error"
+#~ msgstr "Σφάλμα σύνδεσης"
+
+#~ msgid "This name is used by the system."
+#~ msgstr "Αυτό το όνομα χρησιμποποιείται απο το σύστημα"
+
+#~ msgid "my current password"
+#~ msgstr "ο τρέχοντας κωδικός μου"
+
+#~ msgid " Reset API Key"
+#~ msgstr "Επαναφορά του κλειδιού API "
+
+#~ msgid ""
+#~ " If you reset the API key, "
+#~ "you will need to use the new "
+#~ "generated key for any API call."
+#~ msgstr ""
+#~ "Εάν επαναφέρετε το κλειδί API, θα "
+#~ "πρέπει να χρησιμοποιήσετε ένα νέο κλειδί"
+#~ " γιακάθε κλήση API"
+
+#~ msgid "Reset the API Key"
+#~ msgstr "Επαναφορά του κλειδιού API"
+
+#~ msgid " Change your Password"
+#~ msgstr "Αλλάξτε τον κωδικό σας"
+
+#~ msgid "Welcome back"
+#~ msgstr "Καλώς ήρθατε και πάλι"
+
+#~ msgid "Ooops, Incorrect email/password"
+#~ msgstr "Ουπς, λάθος ηλεκτρονικό ταχυδρομείο/ κωδικός"
+
+#~ msgid ""
+#~ "Ooops, we didn't find you in the"
+#~ " system,                           did you sign"
+#~ " up?"
+#~ msgstr "Ούπς, δεν σας βρήκαμε στο συστημαέχετε εγγραφεί;"
+
+#~ msgid "Please correct the errors"
+#~ msgstr "Παρακαλούμε διορθώστε τα λάθη"
+
+#~ msgid "You are now signed out"
+#~ msgstr "Έχετε αποσυνδεθεί"
+
+#~ msgid ""
+#~ "An e-mail has been sent to"
+#~ "                        validate your e-mail "
+#~ "address."
+#~ msgstr ""
+#~ "Στείλαμε μήνυμα για να επικυρώσετε "
+#~ "τηδιεύθυνση του ηλεκτρονικού σας ταχυδρομείου"
+
+#~ msgid "Register"
+#~ msgstr "Εγγραφή"
+
+#~ msgid "Subscribe to our Newsletter"
+#~ msgstr "Εγγραφή στο Ενημερωτικό μας Δελτίο "
+
+#~ msgid "Thanks for signing-up"
+#~ msgstr "Σας ευχαριστούμε για την εγγραφή"
+
+#~ msgid "Your email has been validated."
+#~ msgstr "Το ηλεκτρονικό σας ταχυδρομείο επικυρώθηκε"
+
+#~ msgid "Profile"
+#~ msgstr "Προφίλ"
+
+#~ msgid ""
+#~ "Your avatar has been updated! It "
+#~ "may                       take some minutes to"
+#~ " refresh..."
+#~ msgstr ""
+#~ "Το είδωλο σας ενημερώθηκε! Μπορεί να "
+#~ "πάρεικάποια λεπτά για να ανανεωθεί…"
+
+#~ msgid ""
+#~ "An email has been sent to verify"
+#~ " your                           new email: %s."
+#~ " Once you verify it, it will"
+#~ "                           be updated.email_addr"
+#~ msgstr ""
+#~ "Στείλαμε μήνυμα για να επικυρώσετε τη"
+#~ " νέα σαςδιεύθυνση ηλεκτρονικού ταχυδρομείου: "
+#~ "%. Μόλις το επικυρώσετε, θα "
+#~ "ενημερωθείupdated.email_addr"
+
+#~ msgid "Your profile has been updated!"
+#~ msgstr "Το προφίλ σας ενημερώθηκε!"
+
+#~ msgid "Yay, you changed your password succesfully!"
+#~ msgstr "Επιτυχής αλλαγή κωδικού!"
+
+#~ msgid "Your current password doesn't match the one in our records"
+#~ msgstr "Ο τρέχων κωδικός σας δεν ταιριάζει με αυτόν στα αρχεία μας"
+
+#~ msgid "You reset your password successfully!"
+#~ msgstr "Επιτυχής επαναφορά κωδικού! "
+
+#~ msgid "We've send you an email with account recovery instructions!"
+#~ msgstr "Στείλαμε ένα μήνυμα με οδηγίες ανάκτησης του λογαριασμούς σας! "
+
+#~ msgid ""
+#~ "We don't have this email in our"
+#~ " records. You may have signed up "
+#~ "with a different email or used "
+#~ "Twitter, Facebook, or Google to sign-"
+#~ "in"
+#~ msgstr ""
+#~ "Αυτό το ηλεκτρονικό ταχυδρομείο δεν "
+#~ "υπάρχει στα αρχεία μας. Μπορεί να "
+#~ "έχετε εγγραφείχρησιμοποιώντας διαφορετική διεύθυνση"
+#~ " ή μέσω Twitter, Facebook, ή Google"
+
+#~ msgid "Something went wrong, please correct the errors on the form"
+#~ msgstr "Κάτι πήγε λάθος, παρακαλούμε να διορθώσετε τα λάθη στη φόρμα"
+
+#~ msgid "New API-KEY generated"
+#~ msgstr "Δημιουργία νέου API-KEY"
+
+#~ msgid "Category added"
+#~ msgstr "Προσθήκη Κατηγορίας"
+
+#~ msgid "Category deleted"
+#~ msgstr "Διαγραφή Κατηγορίας"
+
+#~ msgid ""
+#~ "Sorry, it is not possible to "
+#~ "delete the only available category. You"
+#~ " can modify it,  click the edit "
+#~ "button"
+#~ msgstr ""
+#~ "Συγγνώμη, είναι αδύντατο να διαγράψετε "
+#~ "την μόνη διαθέσιμη κατηγορία. Μπορείτε "
+#~ "νατην τροποποιήσετε, πατώντας το κουμπί "
+#~ "επεξεργασίας"
+
+#~ msgid "Category updated"
+#~ msgstr "Ενημέρωση Κατηγορίας"
+
+#~ msgid "Project created!"
+#~ msgstr "Το πρόγραμμα δημιουργήθηκε!"
+
+#~ msgid "You can check the "
+#~ msgstr "Μπορείτε να δείτε τον"
+
+#~ msgid "Guide and Documentation"
+#~ msgstr "Οδηγό και Καταγραφή "
+
+#~ msgid "for adding tasks, a thumbnail, using PyBossa.JS, etc."
+#~ msgstr ""
+#~ "για την προσθήλη εργασιών, ενός "
+#~ "thumbnail, χρησιμοποιώντας PyBossa.JS, κ.λ.π. "
+
+#~ msgid "Task presenter added!"
+#~ msgstr "Ο Κομιστής Εργασιών προστέθηκε!"
+
+#~ msgid "<strong>Note</strong> You will need to upload the tasks using the"
+#~ msgstr "Πρέπει να ανεβάσετε τις εργασίες χρησιμοποιώντας τον"
+
+#~ msgid "CSV importer"
+#~ msgstr "εισαγωγέα CSV "
+
+#~ msgid ""
+#~ " or download the project bundle "
+#~ "and run the <strong>createTasks.py</strong> "
+#~ "script in your computer"
+#~ msgstr ""
+#~ "ή κατεβάζοντας το πρόγραμμα και "
+#~ "εκτελώντας το<strong>createTasks.py</strong> κείμενο "
+#~ "στον υπολογιστή σας"
+
+#~ msgid "Project deleted!"
+#~ msgstr "Το πρόγραμμα διαγράφηκε!"
+
+#~ msgid "Project updated!"
+#~ msgstr "Το πρόγραμμα ενημερώθηκε!"
+
+#~ msgid ""
+#~ "Your project thumbnail has been updated!"
+#~ " It may                                   take "
+#~ "some minutes to refresh..."
+#~ msgstr ""
+#~ "Το thumbnail του προγράμματος ενημερώθηκε! "
+#~ "Μπορεί να πάρει κάποια λεπτά για "
+#~ "να ανανεωθεί…"
+
+#~ msgid "You must provide a file to change the avatar"
+#~ msgstr "Πρέπει να παραθέσετε ένα αρχείο για να αλλάξετε είδωλο"
+
+#~ msgid "Importing tasks, this may take a while, wait..."
+#~ msgstr "Εισαγωγή αρχείων, αυτό μπορεί να πάρει κάποια λεπτά..."
+
+#~ msgid ""
+#~ "You're trying to import a large "
+#~ "amount of tasks, so please be "
+#~ "patient.            You will receive an "
+#~ "email when the tasks are ready."
+#~ msgstr ""
+#~ "Προσπαθείτε να εισάγετε μεγάλο ποσό "
+#~ "εργασιών, γι'αυτό σας παρακαλούμε να "
+#~ "είστε υπομονετικός.\tΘα λάβετε ένα "
+#~ "μήνυμα όταν οι εργασίες είναι έτοιμες."
+
+#~ msgid "Success! Tasks will be imported daily."
+#~ msgstr "Επιτυχία! Οι εργασίες θα εισάγωνται καθημερινά"
+
+#~ msgid "Sorry, incorrect password"
+#~ msgstr "Συγγνώμη, λάθος κωδικός"
+
+#~ msgid ""
+#~ "Ooops! You are an anonymous user "
+#~ "and will not get any credit for"
+#~ " your contributions."
+#~ msgstr ""
+#~ "Ουπς! Είστε ένας ανώνυμος χρήστης και"
+#~ " δεν θα λάβετε αναγνώριση για "
+#~ "τησυμβολή σας."
+
+#~ msgid "All the tasks and associated task runs have been deleted"
+#~ msgstr "Όλες οι εργασίες και οι αντίστοιχες εκτελέσεις έχουν διαγραφεί"
+
+#~ msgid "Exporting data..., this may take a while"
+#~ msgstr "Εξαγωγή δεδομένων… αυτό μπορεί να πάρει κάποια ώρα"
+
+#~ msgid "Data exported to "
+#~ msgstr "Τα δεδομένα εξήχθησαν στο"
+
+#~ msgid ""
+#~ "Oops, the project does not have "
+#~ "tasks to                     export, if you"
+#~ " are the owner add some tasks"
+#~ msgstr ""
+#~ "Ουπς, το πρόγραμμα δεν έχει εργασίες "
+#~ "προς εξαγωγή, εάνείστε ο διαχειριστής "
+#~ "προσθέστε κάποιες εργασίες"
+
+#~ msgid ""
+#~ "Oops, there are no Task Runs yet"
+#~ " to export, invite                      some "
+#~ "users to participate"
+#~ msgstr ""
+#~ "Ουπς, δεν υπάρχουν Εκτελέσεις Εργασιών "
+#~ "προς εξαγωγή, προσκαλέστεκάποιους χρήστες για"
+#~ " συμμετοχή"
+
+#~ msgid "Redundancy of Tasks updated!"
+#~ msgstr "Ο πλεονασμός των εργασιών ενημερώθηκε!"
+
+#~ msgid "Project Task Scheduler updated!"
+#~ msgstr "Ο προγραμματιστής των εργασιών του προγράμματος ενημερώθηκε!"
+
+#~ msgid "Task priority has been changed"
+#~ msgstr "Η προτεραιότητα των εργασιών έχει αλλάξει"
+
+#~ msgid "Write a new post"
+#~ msgstr "Γράψτε μία νέα ανάρτηση"
+
+#~ msgid "Blog post created!"
+#~ msgstr "Η ανάρτηση του blog ολοκληρώθηκε! "
+
+#~ msgid "Edit a post"
+#~ msgstr "Επεξεργασία της ανάρτησης"
+
+#~ msgid "Blog post updated!"
+#~ msgstr "Η ανάρτηση του blog ενημερώθηκε!"
 
