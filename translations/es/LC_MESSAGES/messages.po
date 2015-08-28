@@ -475,9 +475,8 @@ msgid "No, do not reset the API key!"
 msgstr "¡No, no quiero reiniciar mi clave API!"
 
 #: themes/default/templates/account/email/forgot_password.html:4
-#, fuzzy
 msgid "Recover your lost password"
-msgstr "Restablecer tu contraseña"
+msgstr "Recupera tu contraseña"
 
 #: themes/default/templates/account/email/forgot_password.html:8
 #: themes/default/templates/account/email/forgot_password_openid.html:8
@@ -511,9 +510,8 @@ msgid "Regards"
 msgstr ""
 
 #: themes/default/templates/account/email/forgot_password_openid.html:4
-#, fuzzy
 msgid "Recover your password"
-msgstr "Restablecer tu contraseña"
+msgstr "Recupera tu contraseña"
 
 #: themes/default/templates/account/email/forgot_password_openid.html:19
 msgid "Our records show that you use your"
@@ -526,9 +524,8 @@ msgid ""
 msgstr ""
 
 #: themes/default/templates/account/email/forgot_password_openid.html:19
-#, fuzzy
 msgid "account, please contact"
-msgstr "cuenta. Por favor,"
+msgstr "cuenta. Por favor, contacta"
 
 #: themes/default/templates/account/email/forgot_password_openid.html:25
 #: themes/default/templates/account/email/validate_account.html:34
@@ -536,17 +533,14 @@ msgid "Team"
 msgstr ""
 
 #: themes/default/templates/account/email/validate_account.html:4
-#, fuzzy
 msgid "Validate your account"
-msgstr "crea una cuenta"
+msgstr "Valida tu cuenta"
 
 #: themes/default/templates/account/email/validate_account.html:13
-#, fuzzy
 msgid "Thank you for creating an account in"
-msgstr "crea una cuenta"
+msgstr "Gracias por crear una cuenta en"
 
 #: themes/default/templates/account/email/validate_account.html:16
-#, fuzzy
 msgid "Just one more step!"
 msgstr "Sólo un paso más, por favor"
 
@@ -613,39 +607,33 @@ msgid "Dashboard last 7 days"
 msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:101
-#, fuzzy
 msgid "Recent activity"
-msgstr "Actualizado"
+msgstr "Actividad reciente"
 
 #: themes/default/templates/admin/dashboard.html:108
-#, fuzzy
 msgid "new project created"
-msgstr "Proyecto creado!"
+msgstr "nuevo proyecto creado"
 
 #: themes/default/templates/admin/dashboard.html:112
-#, fuzzy
 msgid "has published a blog post"
-msgstr "Escribe un artículo"
+msgstr "ha publicado un nuevo blog post"
 
 #: themes/default/templates/admin/dashboard.html:116
 msgid "has added new tasks"
 msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:120
-#, fuzzy
 msgid "has completed a task"
-msgstr "completado"
+msgstr "ha completado una tarea"
 
 #: themes/default/templates/admin/dashboard.html:124
-#, fuzzy
 msgid "has contributed to"
-msgstr "tareas contribuidas"
+msgstr "ha contribuido a"
 
 #: themes/default/templates/admin/dashboard.html:132
 #: themes/default/templates/admin/dashboard.html:142
-#, fuzzy
 msgid "has joined"
-msgstr "Se ha unido"
+msgstr "se ha unido"
 
 #: themes/default/templates/admin/del_category.html:15
 #: themes/default/templates/projects/delete.html:14
@@ -666,18 +654,16 @@ msgid "No, do not delete it"
 msgstr "¡No, borrar!"
 
 #: themes/default/templates/admin/index.html:15
-#, fuzzy
 msgid "Dashboard"
-msgstr "Clasificación"
+msgstr "Panel de control"
 
 #: themes/default/templates/admin/index.html:16
-#, fuzzy
 msgid "Internal Statistics"
 msgstr "Ver las estadísticas globales"
 
 #: themes/default/templates/admin/index.html:18
 msgid "Go"
-msgstr ""
+msgstr "Ir"
 
 #: themes/default/templates/admin/index.html:22
 msgid "Background Jobs"
@@ -1080,9 +1066,8 @@ msgid "Start Contributing Now!"
 msgstr "¡Participa!"
 
 #: themes/default/templates/projects/_helpers.html:218
-#, fuzzy
 msgid "Thanks for contributing"
-msgstr "Participa"
+msgstr "Gracias por contribuir"
 
 #: themes/default/templates/projects/_helpers.html:221
 msgid "Draft project, complete it!"
@@ -1211,9 +1196,8 @@ msgstr ""
 "\" respuestas asociadas a ella?"
 
 #: themes/default/templates/projects/delete.html:22
-#, fuzzy
 msgid "Yes, delete it"
-msgstr "¡No, borrar!"
+msgstr "Sí, borrarlo"
 
 #: themes/default/templates/projects/delete.html:23
 msgid "No, do not delete it!"
@@ -2083,9 +2067,8 @@ msgid "HTML, JavaScript and Geo expertise"
 msgstr "HTML, JavaScript y mapas/GIS"
 
 #: themes/default/templates/projects/presenters/map.html:6
-#, fuzzy
 msgid "Use the Maps project template"
-msgstr "Reutilizar la plantilla de imágenes"
+msgstr "Reutilizar la plantilla de mapas"
 
 #: themes/default/templates/projects/presenters/pdf.html:2
 #: themes/default/templates/projects/tasks/gdocs-pdf.html:2
@@ -2206,7 +2189,6 @@ msgid "Use an EpiCollect Plus project"
 msgstr "Utilizar un proyecto EpiCollect Plus"
 
 #: themes/default/templates/projects/tasks/epicollect.html:5
-#, fuzzy
 msgid ""
 "Use the EpiCollect\n"
 "      Plus importer"
@@ -2231,7 +2213,6 @@ msgid ""
 msgstr "Utiliza las tareas de Imágenes"
 
 #: themes/default/templates/projects/tasks/gdocs-map.html:3
-#, fuzzy
 msgid "Re-use the Urban Park tasks"
 msgstr "Reutiliza las tareas de Urban Parks"
 
@@ -2252,7 +2233,6 @@ msgid ""
 msgstr "Utiliza las tareas de transcripción"
 
 #: themes/default/templates/projects/tasks/gdocs-sound.html:3
-#, fuzzy
 msgid "Re-use the SoundCloud tasks"
 msgstr "Reutiliza las tareas de SoundCloud"
 
@@ -2281,11 +2261,10 @@ msgid "Import a Google Drive Spreadsheet"
 msgstr "Importar desde Google Drive"
 
 #: themes/default/templates/projects/tasks/gdocs.html:5
-#, fuzzy
 msgid ""
 "Use the Google Drive\n"
 "      importer"
-msgstr "Utilizar hoja de cálculo de Google Drive"
+msgstr "Utilizar el importador de Google Drive"
 
 #: themes/default/templates/stats/global.html:38
 msgid "General Statistics"
