@@ -860,32 +860,32 @@ msgstr "Reinicie sua senha"
 #: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:8
 #: themes/pybossa-default-theme/templates/account/email/validate_account.html:8
 msgid "Hello"
-msgstr ""
+msgstr "Olá"
 
 #: themes/pybossa-default-theme/templates/account/email/forgot_password.html:14
 #: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:13
 msgid "We received a request to recover your password for"
-msgstr ""
+msgstr "Nós recebemos uma solicitação para recuperar sua senha para"
 
 #: themes/pybossa-default-theme/templates/account/email/forgot_password.html:17
 #: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:16
 #: themes/pybossa-default-theme/templates/account/email/validate_account.html:22
 msgid "If you did not request this, please ignore this email"
-msgstr ""
+msgstr "Se você não solicitou isso, por favor ignore este email"
 
 #: themes/pybossa-default-theme/templates/account/email/forgot_password.html:20
 msgid "To recover your password, please visit the URL below"
-msgstr ""
+msgstr "Para recuperar sua senha, por favor visite a URL abaixo"
 
 #: themes/pybossa-default-theme/templates/account/email/forgot_password.html:23
 msgid "Click here to recover your account"
-msgstr ""
+msgstr "Clique aqui para recuperar sua conta"
 
 #: themes/pybossa-default-theme/templates/account/email/forgot_password.html:26
 #: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:22
 #: themes/pybossa-default-theme/templates/account/email/validate_account.html:31
 msgid "Regards"
-msgstr ""
+msgstr "Atenciosamente"
 
 #: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:4
 msgid "Recover your password"
@@ -900,6 +900,8 @@ msgid ""
 "account to sign in. Please use the same account to sign-in again. If you "
 "forgot the password to your"
 msgstr ""
+"Conta para se inscrever. Por favor, utilize a mesma conta para se inscrever novamente. Se você "
+"esqueceu a senha para seu"
 
 #: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:19
 msgid "account, please contact"
@@ -908,7 +910,7 @@ msgstr "conta. Por favor,"
 #: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:25
 #: themes/pybossa-default-theme/templates/account/email/validate_account.html:34
 msgid "Team"
-msgstr ""
+msgstr "Equipe"
 
 #: themes/pybossa-default-theme/templates/account/email/validate_account.html:4
 msgid "Validate your account"
@@ -927,14 +929,16 @@ msgid ""
 "To verify that you are the owner of this e-mail address, please visit the"
 " URL below"
 msgstr ""
+"Para verificar se você é o proprietário deste endereço de email, visite a"
+" URL abaixo"
 
 #: themes/pybossa-default-theme/templates/account/email/validate_account.html:25
 msgid "Click here to confirm your e-mail address and create your account"
-msgstr ""
+msgstr "Clique aqui para confirmar seu endereço de email e criar sua conta"
 
 #: themes/pybossa-default-theme/templates/admin/_helpers.html:9
 msgid "nick"
-msgstr ""
+msgstr "apelido"
 
 #: themes/pybossa-default-theme/templates/admin/_helpers.html:10
 msgid "Member since"
