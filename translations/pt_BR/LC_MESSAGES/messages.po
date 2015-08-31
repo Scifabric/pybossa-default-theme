@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-07-21 09:49-0300\n"
+"POT-Creation-Date: 2015-08-31 13:22-0300\n"
 "PO-Revision-Date: 2015-07-20 12:59-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: core.py:408
+#: core.py:413
 msgid ""
 "Please update your e-mail address in your profile page, right now it is "
 "empty!"
 msgstr ""
-"Por favor atualize seu endereço de e-mail em seu perfil, faça-o agora pois ele está "
-"fazio!"
+"Por favor atualize seu endereço de e-mail em seu perfil, faça-o agora "
+"pois ele está fazio!"
 
 #: importers.py:93
 msgid "The file you uploaded has two headers with the same name."
@@ -55,13 +55,29 @@ msgstr "novas tarefas foram importadas com sucesso"
 msgid "new task was imported successfully"
 msgstr "nova tarefa foi importada com sucesso"
 
+#: cache/project_stats.py:398 cache/project_stats.py:437
+msgid "Anon + Auth"
+msgstr ""
+
+#: cache/project_stats.py:399
+msgid "Completed Tasks"
+msgstr "completou uma tarefa"
+
+#: cache/project_stats.py:401 cache/project_stats.py:439
+msgid "Anonymous"
+msgstr "Usuários Anônimos"
+
+#: cache/project_stats.py:402 cache/project_stats.py:440
+msgid "Authenticated"
+msgstr "Usuários Autenticados"
+
 #: exporter/csv_export.py:91
 msgid ""
 "Oops, the project does not have tasks to                         export, "
 "if you are the owner add some tasks"
 msgstr ""
-"Oops, o projeto não tem tarefas para                             exportar, "
-"se você é o priprietário adicione algumas tarefas"
+"Oops, o projeto não tem tarefas para                             "
+"exportar, se você é o priprietário adicione algumas tarefas"
 
 #: exporter/csv_export.py:97
 msgid ""
@@ -71,7 +87,7 @@ msgstr ""
 "Oops, não existem execuções para exportar, convide"
 "                          usuários para participar"
 
-#: forms/forms.py:40 forms/forms.py:358
+#: forms/forms.py:40 forms/forms.py:346
 #: themes/pybossa-default-theme/templates/stats/index.html:18
 msgid "Name"
 msgstr "Nome"
@@ -92,7 +108,7 @@ msgstr "Nome curto já em uso."
 msgid "Long Description"
 msgstr "Descriçao longa"
 
-#: forms/forms.py:57 forms/forms.py:362
+#: forms/forms.py:57 forms/forms.py:350
 #: themes/pybossa-default-theme/templates/projects/_helpers.html:63
 #: themes/pybossa-default-theme/templates/projects/_helpers.html:131
 msgid "Description"
@@ -135,7 +151,7 @@ msgstr ""
 
 #: forms/forms.py:80
 #: themes/pybossa-default-theme/templates/projects/task_settings.html:36
-#: view/projects.py:1200
+#: view/projects.py:1206
 msgid "Redundancy"
 msgstr "Redundância"
 
@@ -165,13 +181,13 @@ msgid ""
 " and 1.0"
 msgstr ""
 "Prioridade deve ser um"
-"                                                        valor entre 0.0"
-" e 1.0"
+"                                                        valor entre 0.0 e"
+" 1.0"
 
 #: forms/forms.py:103
 #: themes/pybossa-default-theme/templates/projects/task_scheduler.html:14
 #: themes/pybossa-default-theme/templates/projects/task_settings.html:17
-#: view/projects.py:1232
+#: view/projects.py:1238
 msgid "Task Scheduler"
 msgstr "Escalonador de tarefas"
 
@@ -270,7 +286,7 @@ msgstr "Nome de usuário já em uso"
 msgid "User name"
 msgstr "Usuário"
 
-#: forms/forms.py:236 forms/forms.py:275 forms/forms.py:341
+#: forms/forms.py:236 forms/forms.py:275 forms/forms.py:329
 #, python-format
 msgid "Email must be between 3 and %s characters long"
 msgstr "Email deve conter entre 3 e %s caracteres"
@@ -279,23 +295,23 @@ msgstr "Email deve conter entre 3 e %s caracteres"
 msgid "Email is already taken"
 msgstr "Email já em uso"
 
-#: forms/forms.py:239 forms/forms.py:278 forms/forms.py:343
+#: forms/forms.py:239 forms/forms.py:278 forms/forms.py:331
 msgid "Email Address"
 msgstr "Endereço de email"
 
-#: forms/forms.py:246 forms/forms.py:316 forms/forms.py:328
+#: forms/forms.py:246 forms/forms.py:304 forms/forms.py:316
 msgid "Password cannot be empty"
 msgstr "Senha não pode ser vazia"
 
-#: forms/forms.py:247 forms/forms.py:317 forms/forms.py:329
+#: forms/forms.py:247 forms/forms.py:305 forms/forms.py:317
 msgid "Passwords must match"
 msgstr "Senha não pode ser vazia"
 
-#: forms/forms.py:248 forms/forms.py:330
+#: forms/forms.py:248 forms/forms.py:318
 msgid "New Password"
 msgstr "Nova senha"
 
-#: forms/forms.py:252 forms/forms.py:333
+#: forms/forms.py:252 forms/forms.py:321
 msgid "Repeat Password"
 msgstr "Repita a senha"
 
@@ -319,53 +335,29 @@ msgstr "Chave CKAN"
 msgid "Privacy Mode"
 msgstr "Modo privado"
 
-#: forms/forms.py:295
-msgid "English"
-msgstr "Inglês"
-
-#: forms/forms.py:297
-msgid "Spanish"
-msgstr "Espanhol"
-
-#: forms/forms.py:299
-msgid "French"
-msgstr "Frances"
-
-#: forms/forms.py:301
-msgid "German"
-msgstr "Alemão"
-
-#: forms/forms.py:303
-msgid "Italian"
-msgstr "Italiano"
-
-#: forms/forms.py:305
-msgid "Portuguese"
-msgstr "Português"
-
-#: forms/forms.py:314
+#: forms/forms.py:302
 msgid "Current password"
 msgstr "Senha atual"
 
-#: forms/forms.py:318
+#: forms/forms.py:306
 msgid "New password"
 msgstr "Nova senha"
 
-#: forms/forms.py:321
+#: forms/forms.py:309
 msgid "Repeat password"
 msgstr "Repita a nova senha"
 
-#: forms/forms.py:353
-#: themes/pybossa-default-theme/templates/projects/stats.html:297
+#: forms/forms.py:341
 #: themes/pybossa-default-theme/templates/projects/stats.html:298
 #: themes/pybossa-default-theme/templates/projects/stats.html:299
 #: themes/pybossa-default-theme/templates/projects/stats.html:300
 #: themes/pybossa-default-theme/templates/projects/stats.html:301
-#: themes/pybossa-default-theme/templates/projects/stats.html:366
+#: themes/pybossa-default-theme/templates/projects/stats.html:302
+#: themes/pybossa-default-theme/templates/projects/stats.html:367
 msgid "User"
 msgstr "Usuário"
 
-#: forms/forms.py:368
+#: forms/forms.py:356
 msgid "Avatar"
 msgstr "Avatar"
 
@@ -451,6 +443,17 @@ msgstr "Sair"
 #: themes/pybossa-default-theme/templates/account/signin.html:45
 msgid "Sign in"
 msgstr "Entrar"
+
+#: themes/pybossa-default-theme/templates/base.html:57
+msgid ""
+"Cookies help us deliver our services. By using our services, you agree to"
+" our use of cookies."
+msgstr "Os cookies nos ajudam a oferecer nossos serviços. Ao utilizar nossos serviços, você concorda com "
+" a nossa utilização de cookies."
+
+#: themes/pybossa-default-theme/templates/base.html:57
+msgid "More info"
+msgstr "Mais informações"
 
 #: themes/pybossa-default-theme/templates/base.html:66
 msgid "Resources"
@@ -588,17 +591,17 @@ msgid ""
 " just provided. Please, check it out and click on the link you'll find to"
 " create your account at"
 msgstr ""
-"A fim de confirmar sua identidade, nós enviamos um email para o endereço que você"
-" forneceu. Por favor, verifique e clique no link que você encontrar para"
-" criar sua conta em"
+"A fim de confirmar sua identidade, nós enviamos um email para o endereço "
+"que você forneceu. Por favor, verifique e clique no link que você "
+"encontrar para criar sua conta em"
 
 #: themes/pybossa-default-theme/templates/account/account_validation.html:9
 msgid ""
 "If you are not receiving the email, please check the junk folder. If it's"
 " not there please drop us an email to"
 msgstr ""
-"Se você não receber o email, por favor verifique sua lixeira. E se"
-" não encontrar, mande um email para"
+"Se você não receber o email, por favor verifique sua lixeira. E se não "
+"encontrar, mande um email para"
 
 #: themes/pybossa-default-theme/templates/account/account_validation.html:10
 msgid "In the meantime, you can check some of the amazing"
@@ -849,6 +852,86 @@ msgstr "Você deseja reiniciar sua chave de API pessoal?"
 msgid "No, do not reset the API key!"
 msgstr "Não, não reinicie minha chave de API!"
 
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:4
+msgid "Recover your lost password"
+msgstr "Reinicie sua senha"
+
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:8
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:8
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:8
+msgid "Hello"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:14
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:13
+msgid "We received a request to recover your password for"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:17
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:16
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:22
+msgid "If you did not request this, please ignore this email"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:20
+msgid "To recover your password, please visit the URL below"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:23
+msgid "Click here to recover your account"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:26
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:22
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:31
+msgid "Regards"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:4
+msgid "Recover your password"
+msgstr "Reinicie sua senha"
+
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:19
+msgid "Our records show that you use your"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:19
+msgid ""
+"account to sign in. Please use the same account to sign-in again. If you "
+"forgot the password to your"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:19
+msgid "account, please contact"
+msgstr "conta. Por favor,"
+
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:25
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:34
+msgid "Team"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:4
+msgid "Validate your account"
+msgstr "crie uma conta"
+
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:13
+msgid "Thank you for creating an account in"
+msgstr "crie uma conta"
+
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:16
+msgid "Just one more step!"
+msgstr "Só mais um passo, por favor"
+
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:19
+msgid ""
+"To verify that you are the owner of this e-mail address, please visit the"
+" URL below"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:25
+msgid "Click here to confirm your e-mail address and create your account"
+msgstr ""
+
 #: themes/pybossa-default-theme/templates/admin/_helpers.html:9
 msgid "nick"
 msgstr ""
@@ -942,8 +1025,8 @@ msgid ""
 "Deleting the category will remove it from all the projects! This "
 "operation cannot be undone!"
 msgstr ""
-"Removendo a categoria irá removê-la de todas as aplicações! Esta "
-"operação não pode ser desfeita!"
+"Removendo a categoria irá removê-la de todas as aplicações! Esta operação"
+" não pode ser desfeita!"
 
 #: themes/pybossa-default-theme/templates/admin/del_category.html:21
 msgid "No, do not delete it"
@@ -1003,7 +1086,7 @@ msgid "Manage administrators"
 msgstr "Gerenciar administradores"
 
 #: themes/pybossa-default-theme/templates/admin/index.html:54
-#: themes/pybossa-default-theme/templates/projects/stats.html:225
+#: themes/pybossa-default-theme/templates/projects/stats.html:226
 msgid "Users"
 msgstr "Usuários"
 
@@ -1059,13 +1142,13 @@ msgid ""
 "anyone around the world with some time, interest and an internet "
 "connection can contribute."
 msgstr ""
-"PyBossa é uma plataforma open-source, crowd-sourcing e micro-tasking."
-" Ele permite que as pessoas criem e executem projetos que utilizam assistência "
-"online na execução de tarefas que requerem cognição humana, tais como classificação"
-" de imagens, transcrição, geocodificação e muito mais. PyBossa foi criado para "
-"ajudar pesquisadores, hackers cívicos e desenvolvedores a criar projetos onde qualquer pessoa no mundo com "
-"algum tempo, interesse e uma conexão à internet pode contribuir."
-
+"PyBossa é uma plataforma open-source, crowd-sourcing e micro-tasking. Ele"
+" permite que as pessoas criem e executem projetos que utilizam "
+"assistência online na execução de tarefas que requerem cognição humana, "
+"tais como classificação de imagens, transcrição, geocodificação e muito "
+"mais. PyBossa foi criado para ajudar pesquisadores, hackers cívicos e "
+"desenvolvedores a criar projetos onde qualquer pessoa no mundo com algum "
+"tempo, interesse e uma conexão à internet pode contribuir."
 
 #: themes/pybossa-default-theme/templates/home/_about.html:8
 msgid "PyBossa is different to existing efforts:"
@@ -1082,10 +1165,9 @@ msgid ""
 " handle payment or money — it is designed to support volunteer-driven "
 "projects."
 msgstr ""
-"Ao contrário de, digamos, projetos estilo “mechanical turk”, PyBossa não é projetado para"
-" com pagamento ou dinheiro — se destina a apoiar projetos conduzidos por "
-"voluntários."
-
+"Ao contrário de, digamos, projetos estilo “mechanical turk”, PyBossa não "
+"é projetado para com pagamento ou dinheiro — se destina a apoiar projetos"
+" conduzidos por voluntários."
 
 #: themes/pybossa-default-theme/templates/home/_about.html:13
 msgid ""
@@ -1095,19 +1177,20 @@ msgid ""
 "snippets of Javascript and HTML which are then deployed on a PyBossa "
 "instance (such as"
 msgstr ""
-"Ele foi projetado como uma estrutura e plataforma para desenvolver a implantação de projetos de "
-"crowd-sourcing e microtasking ao invés de ser em sí um projeto de crowd-sourcing."
-"Projetos crowd-sourcing individuais são escritos como trechos simples em Javascript e HTML que "
-"são implantados em uma instância PyBossa"
-"(como o"
+"Ele foi projetado como uma estrutura e plataforma para desenvolver a "
+"implantação de projetos de crowd-sourcing e microtasking ao invés de ser "
+"em sí um projeto de crowd-sourcing.Projetos crowd-sourcing individuais "
+"são escritos como trechos simples em Javascript e HTML que são "
+"implantados em uma instância PyBossa(como o"
 
 #: themes/pybossa-default-theme/templates/home/_about.html:13
 msgid ""
 "This way one can easily develop custom projects while using the PyBossa "
 "platform to store your data, manage users, and handle workflow"
 msgstr ""
-"Desta forma, pode-se facilmente desenvolver projetos personalizados ao usar a plataforma "
-"PyBossa para armazenar seus dados, gerenciar usuários e lidar com o fluxo de trabalho"
+"Desta forma, pode-se facilmente desenvolver projetos personalizados ao "
+"usar a plataforma PyBossa para armazenar seus dados, gerenciar usuários e"
+" lidar com o fluxo de trabalho"
 
 #: themes/pybossa-default-theme/templates/home/_about.html:18
 msgid "You can read more about the architecture in the"
@@ -1136,9 +1219,8 @@ msgid ""
 " PyBossa provides individual statistics for every project in the system, "
 "as well as a"
 msgstr ""
-" PyBossa fornece estatísticas individuais para qualquer projeto do sistema, "
-"bem como uma"
-
+" PyBossa fornece estatísticas individuais para qualquer projeto do "
+"sistema, bem como uma"
 
 #: themes/pybossa-default-theme/templates/home/_about.html:23
 msgid "general overview about the system like total number of users, tasks, etc"
@@ -1178,9 +1260,9 @@ msgid ""
 "knowledge or intelligence such as image classification, transcription, "
 "geocoding and more!"
 msgstr ""
-"Assistência online para execução de tarefas que requerem cognição humana, "
-"conhecimento ou inteligência, como classificação de imagens, transcrição, "
-"geocodificação e muito mais!"
+"Assistência online para execução de tarefas que requerem cognição humana,"
+" conhecimento ou inteligência, como classificação de imagens, "
+"transcrição, geocodificação e muito mais!"
 
 #: themes/pybossa-default-theme/templates/home/_pybossa_text.html:3
 msgid "Help advance research"
@@ -1249,8 +1331,8 @@ msgstr "Tarefas realizadas"
 #: themes/pybossa-default-theme/templates/projects/export.html:32
 #: themes/pybossa-default-theme/templates/projects/export.html:34
 #: themes/pybossa-default-theme/templates/projects/export.html:53
-#: themes/pybossa-default-theme/templates/projects/stats.html:277
-#: themes/pybossa-default-theme/templates/projects/stats.html:367
+#: themes/pybossa-default-theme/templates/projects/stats.html:278
+#: themes/pybossa-default-theme/templates/projects/stats.html:368
 #: themes/pybossa-default-theme/templates/projects/tasks.html:13
 #: themes/pybossa-default-theme/templates/projects/tasks_browse.html:62
 msgid "Tasks"
@@ -1471,8 +1553,12 @@ msgid ""
 "Are you sure you want to delete this project and all its tasks and "
 "associated task runs?"
 msgstr ""
-"Você está certo que deseja excluir o projeto, suas tarefas e "
-"as execuções das tarefas?"
+"Você está certo que deseja excluir o projeto, suas tarefas e as execuções"
+" das tarefas?"
+
+#: themes/pybossa-default-theme/templates/projects/delete.html:22
+msgid "Yes, delete it"
+msgstr "Não, não apague isto"
 
 #: themes/pybossa-default-theme/templates/projects/delete.html:23
 msgid "No, do not delete it!"
@@ -1495,8 +1581,8 @@ msgid ""
 "Tasks and Task Runs (the submitted answers by the users) in CSV or JSON "
 "formats."
 msgstr ""
-"disponíveis (respostas submetidas pelos usuários) nos formatos "
-"CSV ou JSON."
+"disponíveis (respostas submetidas pelos usuários) nos formatos CSV ou "
+"JSON."
 
 #: themes/pybossa-default-theme/templates/projects/export.html:17
 msgid "Export in CSV format"
@@ -1531,8 +1617,9 @@ msgid ""
 "This export option stills in beta mode and may fail in the CKAN server. "
 "If you get an error, please send an e-mail to info@pybossa.com"
 msgstr ""
-"Esta opção de exportação está em modo beta e pode não funcionar no servidor CKAN. "
-"Se você receber um erro, por favor mande um e-mail para info@pybossa.com"
+"Esta opção de exportação está em modo beta e pode não funcionar no "
+"servidor CKAN. Se você receber um erro, por favor mande um e-mail para "
+"info@pybossa.com"
 
 #: themes/pybossa-default-theme/templates/projects/export.html:56
 msgid "You don't have a Datahub.io API key in your"
@@ -1610,13 +1697,13 @@ msgid ""
 msgstr ""
 "Explique seu projeto"
 "                                                             \n"
-"                · Por quê? Por que você está criando este projeto, o que você deseja "
-"alcançar"
+"                · Por quê? Por que você está criando este projeto, o que "
+"você deseja alcançar"
 "                                                             \n"
 "                · Como? Explique como seu projeto funciona"
 "                                                             \n"
-"                · como ajudar: Explique aos voluntátios como "
-"eles podem contribuir para o objetivo do seu projeto"
+"                · como ajudar: Explique aos voluntátios como eles podem "
+"contribuir para o objetivo do seu projeto"
 "                                                             \n"
 "                · você ajudará a fazer a diferença? Explique aos "
 "voluntários porque sua contribuição é essencial e como o resultado do seu"
@@ -1659,8 +1746,9 @@ msgid ""
 "Sorry, you've contributed to all the tasks for this project, but this "
 "project still needs more volunteers, so please spread the word!"
 msgstr ""
-"Desculpe, você contribuiu para todas as tarefas deste projeto, mas "
-"este projeto ainda precisa de mais voluntários, então convide outros colaboradores!"
+"Desculpe, você contribuiu para todas as tarefas deste projeto, mas este "
+"projeto ainda precisa de mais voluntários, então convide outros "
+"colaboradores!"
 
 #: themes/pybossa-default-theme/templates/projects/settings.html:16
 msgid "Project Settings"
@@ -1709,53 +1797,53 @@ msgstr "Respostas por dia"
 msgid "answers were submitted this day"
 msgstr "respostas foram submetidas hoje"
 
-#: themes/pybossa-default-theme/templates/projects/stats.html:218
+#: themes/pybossa-default-theme/templates/projects/stats.html:219
 msgid "Distribution of Answers"
 msgstr "Distribuição das Respostas"
 
-#: themes/pybossa-default-theme/templates/projects/stats.html:224
+#: themes/pybossa-default-theme/templates/projects/stats.html:225
 msgid "Type"
 msgstr "Tipo"
 
-#: themes/pybossa-default-theme/templates/projects/stats.html:226
+#: themes/pybossa-default-theme/templates/projects/stats.html:227
 msgid "Percentage"
 msgstr "Porcentagem"
 
-#: themes/pybossa-default-theme/templates/projects/stats.html:265
+#: themes/pybossa-default-theme/templates/projects/stats.html:266
 msgid "Details about Anonymous Users"
 msgstr "Detalhes sobre Usuários Anônimos"
 
-#: themes/pybossa-default-theme/templates/projects/stats.html:268
+#: themes/pybossa-default-theme/templates/projects/stats.html:269
 msgid "anonymous users have"
 msgstr "usuários anônimos tem"
 
-#: themes/pybossa-default-theme/templates/projects/stats.html:268
-#: themes/pybossa-default-theme/templates/projects/stats.html:359
+#: themes/pybossa-default-theme/templates/projects/stats.html:269
+#: themes/pybossa-default-theme/templates/projects/stats.html:360
 msgid "participated"
 msgstr "participado"
 
-#: themes/pybossa-default-theme/templates/projects/stats.html:275
+#: themes/pybossa-default-theme/templates/projects/stats.html:276
 msgid "Country"
 msgstr "País"
 
-#: themes/pybossa-default-theme/templates/projects/stats.html:276
+#: themes/pybossa-default-theme/templates/projects/stats.html:277
 msgid "City"
 msgstr "Cidade"
 
-#: themes/pybossa-default-theme/templates/projects/stats.html:317
+#: themes/pybossa-default-theme/templates/projects/stats.html:318
 #: themes/pybossa-default-theme/templates/stats/global.html:169
 msgid "This page includes GeoLite data created by MaxMind, available from"
 msgstr "Esta página inclue dados GeoLite creado por MaxMind, disponível em"
 
-#: themes/pybossa-default-theme/templates/projects/stats.html:356
+#: themes/pybossa-default-theme/templates/projects/stats.html:357
 msgid "Details about Authenticated Users"
 msgstr "Detalhes sobre Usuários Autenticados"
 
-#: themes/pybossa-default-theme/templates/projects/stats.html:359
+#: themes/pybossa-default-theme/templates/projects/stats.html:360
 msgid "authenticated users have"
 msgstr "usuários autenticados têm"
 
-#: themes/pybossa-default-theme/templates/projects/stats.html:361
+#: themes/pybossa-default-theme/templates/projects/stats.html:362
 msgid "Top 5 users"
 msgstr "Top 5 usuários"
 
@@ -1848,7 +1936,7 @@ msgstr "Fechar"
 
 #: themes/pybossa-default-theme/templates/projects/task_priority.html:14
 #: themes/pybossa-default-theme/templates/projects/task_settings.html:22
-#: view/projects.py:1279
+#: view/projects.py:1285
 msgid "Task Priority"
 msgstr "Prioridade da tarefa"
 
@@ -1868,8 +1956,8 @@ msgid ""
 "                priority is"
 msgstr ""
 "de uma ou mais tarefas,\n"
-"                fornecendo uma lista de IDs das tarefas separadas por vírgula. A "
-"prioridade\n"
+"                fornecendo uma lista de IDs das tarefas separadas por "
+"vírgula. A prioridade\n"
 "                mais baixa é"
 
 #: themes/pybossa-default-theme/templates/projects/task_priority.html:19
@@ -1924,8 +2012,7 @@ msgid ""
 "                    not achieved) excluding the current user"
 msgstr ""
 "Retorna uma tarefa qie\n"
-"                    não foi concluída (o valor do número de "
-"respostas \n"
+"                    não foi concluída (o valor do número de respostas \n"
 "                    não atingiu) excluindo o usuário atual"
 
 #: themes/pybossa-default-theme/templates/projects/task_scheduler.html:21
@@ -1944,7 +2031,6 @@ msgstr ""
 "(respostas)\n"
 "                    excluindo o usuário atual"
 
-
 #: themes/pybossa-default-theme/templates/projects/task_scheduler.html:24
 msgid "Random"
 msgstr "Aleatória"
@@ -1960,7 +2046,6 @@ msgstr ""
 "                    aleatória - um usuário pode receber a tarefa duas ou "
 "mais\n"
 "                    vezes"
-
 
 #: themes/pybossa-default-theme/templates/projects/task_settings.html:18
 msgid "Change how the tasks are delivered to volunteers"
@@ -2078,16 +2163,16 @@ msgid ""
 "The first number shows how many answers have been submitted for the task "
 "and the"
 msgstr ""
-"O primeiro número representa o total de respostas submetidas para a tarefa "
-"e"
+"O primeiro número representa o total de respostas submetidas para a "
+"tarefa e"
 
 #: themes/pybossa-default-theme/templates/projects/tasks_browse.html:19
 msgid ""
 "This redundancy method will help to detect errors, typos, data forging, "
 "etc. when the task has been completed"
 msgstr ""
-"Este método de redundância vai ajudar a detectar erros, erros de digitação, "
-"forjamento de dados, etc., quando a tarefa for concluída"
+"Este método de redundância vai ajudar a detectar erros, erros de "
+"digitação, forjamento de dados, etc., quando a tarefa for concluída"
 
 #: themes/pybossa-default-theme/templates/projects/tasks_browse.html:19
 msgid "second number"
@@ -2158,8 +2243,8 @@ msgid ""
 "Please provide a URL (i.e. DropBox, Box, Ubuntu One, etc. public link) to"
 " a CSV file with data for"
 msgstr ""
-"Por favor forneça uma URL (i.e. DropBox, Box, Ubuntu One, etc. link público) para"
-" o arquivo CSV com dados para"
+"Por favor forneça uma URL (i.e. DropBox, Box, Ubuntu One, etc. link "
+"público) para o arquivo CSV com dados para"
 
 #: themes/pybossa-default-theme/templates/projects/importers/csv.html:20
 #: themes/pybossa-default-theme/templates/projects/importers/dropbox.html:26
@@ -2199,7 +2284,9 @@ msgstr "De um projeto EpiCollect Plus"
 
 #: themes/pybossa-default-theme/templates/projects/importers/epicollect.html:20
 msgid "Please provide an EpiCollect Plus project name to import its data for"
-msgstr "Por favor forneça o nome de um projeto EpiCollect Plus de modo a importar seus dados para"
+msgstr ""
+"Por favor forneça o nome de um projeto EpiCollect Plus de modo a importar"
+" seus dados para"
 
 #: themes/pybossa-default-theme/templates/projects/importers/epicollect.html:22
 msgid "The name of the public EpiCollect Plus project"
@@ -2219,7 +2306,9 @@ msgstr "Revogar acesso"
 
 #: themes/pybossa-default-theme/templates/projects/importers/flickr.html:23
 msgid "Grant Crowdcrafting access to your Flickr albums to select one..."
-msgstr "Conceda acesso Crowdcrafting para seus álbuns do Flickr para selecionar um..."
+msgstr ""
+"Conceda acesso Crowdcrafting para seus álbuns do Flickr para selecionar "
+"um..."
 
 #: themes/pybossa-default-theme/templates/projects/importers/flickr.html:25
 msgid "Log in Flickr"
@@ -2426,8 +2515,8 @@ msgid ""
 "Are you sure you want to delete ALL the project tasks and associated task"
 " runs?"
 msgstr ""
-"Você está certo que deseja remover TODAS as tarefas e as execuções"
-" associadas?"
+"Você está certo que deseja remover TODAS as tarefas e as execuções "
+"associadas?"
 
 #: themes/pybossa-default-theme/templates/projects/tasks/delete.html:26
 msgid ""
@@ -2629,9 +2718,9 @@ msgstr ""
 #: view/account.py:117 view/account.py:216 view/account.py:491
 #: view/account.py:507 view/account.py:521 view/account.py:554
 #: view/admin.py:268 view/admin.py:349 view/projects.py:219
-#: view/projects.py:276 view/projects.py:415 view/projects.py:1219
-#: view/projects.py:1270 view/projects.py:1315 view/projects.py:1390
-#: view/projects.py:1435
+#: view/projects.py:276 view/projects.py:415 view/projects.py:1225
+#: view/projects.py:1276 view/projects.py:1321 view/projects.py:1396
+#: view/projects.py:1441
 msgid "Please correct the errors"
 msgstr "Por favor corrija os erros"
 
@@ -2644,8 +2733,8 @@ msgid ""
 "An e-mail has been sent to                        validate your e-mail "
 "address."
 msgstr ""
-"Um e-mail foi enviado para                        validar seu endereço "
-"de e-mail."
+"Um e-mail foi enviado para                        validar seu endereço de"
+" e-mail."
 
 #: view/account.py:218
 msgid "Register"
@@ -2672,8 +2761,8 @@ msgid ""
 "Your avatar has been updated! It may                       take some "
 "minutes to refresh..."
 msgstr ""
-"Seu avatar está sendo atualizado! pode                     demorar "
-"alguns minutos para atualização..."
+"Seu avatar está sendo atualizado! pode                     demorar alguns"
+" minutos para atualização..."
 
 #: view/account.py:478
 #, python-format
@@ -2711,8 +2800,8 @@ msgid ""
 "We don't have this email in our records. You may have signed up with a "
 "different email or used Twitter, Facebook, or Google to sign-in"
 msgstr ""
-"Nós não temos este email em nossos registros. Você deve ter entrado "
-"com um email diferente ou usado sua conta do Twitter, Facebook ou Google"
+"Nós não temos este email em nossos registros. Você deve ter entrado com "
+"um email diferente ou usado sua conta do Twitter, Facebook ou Google"
 
 #: view/account.py:614
 msgid "Something went wrong, please correct the errors on the form"
@@ -2796,7 +2885,8 @@ msgid ""
 "                                   take some minutes to refresh..."
 msgstr ""
 "A miniatura do seu projeto foi atualizada! Pode"
-"                                   demorar alguns minutos para atualização..."
+"                                   demorar alguns minutos para "
+"atualização..."
 
 #: view/projects.py:437
 msgid "You must provide a file to change the avatar"
@@ -2809,10 +2899,11 @@ msgstr "Importando tarefas, isto pode demorar um pouco, aguarde..."
 #: view/projects.py:573
 msgid ""
 "You're trying to import a large amount of tasks, so please be patient."
-	"            You will receive an email when the tasks are ready."
+"            You will receive an email when the tasks are ready."
 msgstr ""
-"Você está tentando importar uma grande quantidade de tarefas, por favor seja paciente."
-        "            Você receberá um e-mail quando as tarefas estiverem prontas."
+"Você está tentando importar uma grande quantidade de tarefas, por favor "
+"seja paciente.            Você receberá um e-mail quando as tarefas "
+"estiverem prontas."
 
 #: view/projects.py:616
 msgid "Success! Tasks will be imported daily."
@@ -2835,8 +2926,8 @@ msgid ""
 "Sorry, but this project is still a draft and does not have a task "
 "presenter."
 msgstr ""
-"Desculpe, mas este projeto ainda é um rascunho e não tem nenhum visualizador"
-"de tarefas."
+"Desculpe, mas este projeto ainda é um rascunho e não tem nenhum "
+"visualizadorde tarefas."
 
 #: view/projects.py:899
 msgid "All the tasks and associated task runs have been deleted"
@@ -2855,8 +2946,8 @@ msgid ""
 "Oops, the project does not have tasks to                     export, if "
 "you are the owner add some tasks"
 msgstr ""
-"Oops, o projeto não tem tarefas para                         exportar, se "
-"você é o proprietário adicione algumas tarefas"
+"Oops, o projeto não tem tarefas para                         exportar, se"
+" você é o proprietário adicione algumas tarefas"
 
 #: view/projects.py:1069
 msgid ""
@@ -2866,31 +2957,49 @@ msgstr ""
 "Oops, não existem execuções para exportar,convide                      "
 "usuários para participar"
 
-#: view/projects.py:1215
+#: view/projects.py:1221
 msgid "Redundancy of Tasks updated!"
 msgstr "Redundância das tarefas atualizada!"
 
-#: view/projects.py:1265
+#: view/projects.py:1271
 msgid "Project Task Scheduler updated!"
 msgstr "Escalonador de tarefas atualizado!"
 
-#: view/projects.py:1312
+#: view/projects.py:1318
 msgid "Task priority has been changed"
 msgstr "Prioridade da tarefa foi alterada"
 
-#: view/projects.py:1369
+#: view/projects.py:1375
 msgid "Write a new post"
 msgstr "Escreva um novo post"
 
-#: view/projects.py:1401
+#: view/projects.py:1407
 msgid "Blog post created!"
 msgstr "Post criado!"
 
-#: view/projects.py:1419
+#: view/projects.py:1425
 msgid "Edit a post"
 msgstr "Edite seu post"
 
-#: view/projects.py:1447
+#: view/projects.py:1453
 msgid "Blog post updated!"
 msgstr "Post atualizado"
+
+#~ msgid "English"
+#~ msgstr "Inglês"
+
+#~ msgid "Spanish"
+#~ msgstr "Espanhol"
+
+#~ msgid "French"
+#~ msgstr "Frances"
+
+#~ msgid "German"
+#~ msgstr "Alemão"
+
+#~ msgid "Italian"
+#~ msgstr "Italiano"
+
+#~ msgid "Portuguese"
+#~ msgstr "Português"
 
