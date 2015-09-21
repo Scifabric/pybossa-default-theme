@@ -49,7 +49,7 @@ It has the instructions to become a contributor.
 
 ## Copyright / License
 
-Copyright 2015 SciFabric LTD.
+Copyright 2015 [SciFabric LTD](http://scifabric.com).
 
 Source Code License: The GNU Affero General Public License, either version 3 of the License
 or (at your option) any later version. (see COPYING file)
