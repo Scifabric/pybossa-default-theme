@@ -39,8 +39,9 @@
         {{ render_field(form.description, class_="input-xlarge", placeholder=_('Give some details about the project')) }}
         {{ render_field(form.long_description, class_="input-xlarge", placeholder=_('Explain the project (use Markdown!)')) }}
         {{ render_field(form.category_id) }}
-        {{ render_field(form.allow_anonymous_contributors) }}
-        {{ render_field(form.password) }}
+        {{ render_field(form.allow_anonymous_contributors, tooltip=_('Check if you want to allow anonymous users contribute to your project')) }}
+        {{ render_field(form.protect, id='protect') }}
+        <div id='password'>{{ render_field(form.password) }}</div>
         {{ render_field(form.webhook) }}
         {{ render_field(form.hidden, tooltip=_('Do you want to hide your project?')) }}
         <div class="form-actions">
@@ -51,9 +52,20 @@
     </form>
   </div>
 </div>
-<script>
+<script type="text/javascript">
     $("i[rel='tooltip']").tooltip();
 </script>
 <script src="{{url_for('static', filename='js/image_crop.js')}}" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+    var passProtected = document.getElementById('protect').checked;
+    if (!passProtected) {
+        $('#password').hide();
+    }
+    $('#protect').on('change', function() {
+        $('#password').toggle();
+    });
+});
+</script>
 {{ helper.broken_image() }}
 {% endblock %}
