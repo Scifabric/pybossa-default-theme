@@ -65,14 +65,6 @@
         <li><strong><i class="icon-time"></i> {{ _('Last Activity') }}</strong>: {{ last_activity}}</li>
         <li><strong><i class="icon-cogs"></i> {{ _('Overall progress') }}</strong>: {{ overall_progress | round | int }}% {{ _('completed') }}</li>
         <li><strong><i class="icon-tasks"></i> <a href="{{url_for('project.tasks',short_name=project.short_name)}}">{{ _('Tasks') }}</strong></a> ({{ n_tasks }})</li>
-        {% if not current_user.is_anonymous() %}
-        <li>{% if project.hidden == 1 %}
-            <i class="icon icon-eye-close"></i> <strong>{{ _('Hidden') }}</strong>: {{ _('Yes') }}
-        {% else %} 
-            <i class="icon icon-eye-open"></i> <strong>{{ _('Hidden') }}</strong>: {{ _('No') }}
-        {% endif %}
-        </li>
-        {% endif %}
       </ul>
     </div>
 </div>
@@ -219,6 +211,9 @@ function imgError(image) {
     {% endif %}
     {% if project['contrib_button'] == 'draft' %}
     <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Draft project, complete it!') }}</a>
+    {% endif %}
+    {% if project['contrib_button'] == 'publish' %}
+    <a href="{{url_for('project.publish', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('You can now publish it!') }}</a>
     {% endif %}
 {% endmacro %}
 
