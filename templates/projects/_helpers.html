@@ -46,6 +46,12 @@
         href="{{url_for('project.auditlog', short_name=project.short_name)}}"><i
     class="icon-chevron-right"></i> {{_('Audit Logs')}}</a></li>
     {% endif %}
+    {% if ( current_user.is_authenticated() and current_user.id == project.owner_id
+    and current_user.pro) or current_user.admin %}
+    <li {% if active_link=="webhook"%}class="active"{% endif %}><a
+        href="{{url_for('project.webhook_handler', short_name=project.short_name)}}"><i
+    class="icon-chevron-right"></i> {{_('Webhooks')}}</a></li>
+    {% endif %}
     <li {% if active_link=="blog"%}class="active"{% endif %}><a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Blog')}}</a></li>
 </ul>
 {% endmacro %}
