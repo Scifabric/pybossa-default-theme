@@ -13,13 +13,12 @@
 
     <div class="span9">
         <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
-        <h2>{{_('From a Flickr Album')}}
-            <a id="revoke" href="{{ url_for('flickr.logout', next=url_for(target, short_name=project.short_name, type='flickr')) }}" class="btn btn-secondary pull-right" style="display:none;">{{ _('Revoke access') }}</a>
-        </h2>
+        <h2>{{_('From a Flickr Album')}}</h2>
+        <a id="revoke" href="{{ url_for('flickr.logout', next=url_for(target, short_name=project.short_name, type='flickr')) }}" class="btn btn-secondary pull-right" style="display:none;">{{ _('Revoke access') }}</a>
         <br>
         <div id="grant">
             <p> {{ _('Grant access to your Flickr albums to select one...') }}</p>
-            <p><a href="{{ url_for('flickr.login', next=url_for(target, short_name=project.short_name, type='flickr')) }}" class="btn btn-secondary">{{ _('Log in Flickr') }}</a></p>
+            <a href="{{ url_for('flickr.login', next=url_for(target, short_name=project.short_name, type='flickr')) }}" class="btn btn-secondary">{{ _('Log in Flickr') }}</a>
         </div>
         <div id="albums-container">
             <ul id="albums"></ul>
