@@ -93,7 +93,8 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-<script>
+<script type="text/javascript">
+(function() {
 // Default language
 var userLocale = "en";
 // Translations
@@ -211,4 +212,5 @@ pybossa.presentTask(function(task, deferred) {
 });
 
 pybossa.run('{{project.short_name}}');
+})();
 </script>

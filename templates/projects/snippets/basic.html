@@ -3,7 +3,8 @@
         <h1>Write here your HTML Task Presenter</h1>
     </div>
 </div>
-<script>
+<script type="text/javascript">
+(function() {
     // Your JavaScript code
     pybossa.taskLoaded(function(task, deferred){
         // When the task is loaded, do....
@@ -15,4 +16,5 @@
     });
 
     pybossa.run('{{project.short_name}}');
+})();
 </script>
