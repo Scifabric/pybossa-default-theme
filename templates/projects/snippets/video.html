@@ -90,7 +90,8 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-<script>
+<script type="text/javascript">
+(function() {
 function loadUserProgress() {
     pybossa.userProgress('{{project.short_name}}').done(function(data){
         var pct = Math.round((data.done*100)/data.total);
@@ -151,4 +152,5 @@ pybossa.presentTask(function(task, deferred) {
 });
 
 pybossa.run('{{project.short_name}}');
+})();
 </script>
