@@ -15,7 +15,7 @@
         <h1><a href="{{url_for('project.details', short_name=project.short_name)}}">{{ project.name }}</a>: {{ _('Results') }}</h1>
     </div>
 </div>
-{% if project.info.results and project['n_results'] > 0 %}
+{% if project.info.results and n_results > 0 %}
      {{ project.info.results | safe}}
 {% else %}
  <h2>{{_('No results')}}</h2>
