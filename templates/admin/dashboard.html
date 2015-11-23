@@ -26,7 +26,7 @@
 {% if wait == False %}
 <div class="row">
     <div class="span6">
-        <h2>{{ _('Active users') }}</h2>
+        <h2>{{ _('Active users') }}: {{active_users_last_week['series'][0] | sum}}</h2>
         <div id="dashboard_week_users" class="ct-chart ct-perfect-fourth"></div>
         <script>
             var data = {{ active_users_last_week | tojson | safe }};
@@ -35,7 +35,7 @@
         </script>
     </div>
     <div class="span6">
-        <h2>{{ _('Active anonymous users') }}</h2>
+        <h2>{{ _('Active anonymous users') }}: {{active_anon_last_week['series'][0] | sum}}</h2>
         <div id="dashboard_week_anon"  class="ct-chart ct-perfect-fourth"></div>
         <script>
             var data = {{ active_anon_last_week | tojson | safe }};
@@ -60,7 +60,7 @@
         </ul>
     </div>
     <div class="span6">
-        <h2>{{ _('New tasks') }}</h2>
+        <h2>{{ _('New tasks') }}: {{new_tasks_week['series'][0] | sum}}</h2>
         <div id="dashboard_week_new_tasks" class="ct-chart ct-perfect-fourth"></div>
         <script>
             var data = {{ new_tasks_week | tojson | safe }};
@@ -69,7 +69,7 @@
         </script>
     </div>
     <div class="span6">
-        <h2>{{ _('New Answers') }}</h2>
+        <h2>{{ _('New Answers') }}: {{new_task_runs_week['series'][0] | sum}}</h2>
         <div id="dashboard_week_new_task_runs" class="ct-chart ct-perfect-fourth"></div>
         <script>
             var data = {{ new_task_runs_week | tojson | safe }};
@@ -78,7 +78,7 @@
         </script>
     </div>
     <div class="span6">
-        <h2>{{ _('New Users') }}</h2>
+        <h2>{{ _('New Users') }}: {{new_users_week['series'][0] | sum}}</h2>
         <div id="dashboard_week_new_users" class="ct-chart ct-perfect-fourth"></div>
         <script>
             var data = {{ new_users_week | tojson | safe }};
@@ -87,7 +87,7 @@
         </script>
     </div>
     <div class="span6">
-        <h2>{{ _('Returning Users') }}</h2>
+        <h2>{{ _('Returning Users') }}: {{returning_users_week['series'][0] | sum}}</h2>
         <div id="dashboard_week_returning_users" class="ct-chart ct-perfect-fourth"></div>
         <script>
             var data = {{ returning_users_week | tojson | safe }};
