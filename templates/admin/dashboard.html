@@ -20,13 +20,13 @@
         <h1><strong>{{ _('Dashboard last 7 days') }}</strong></h1>
     </div>
     <div class="span2">
-        <h1><a href="{{url_for('admin.dashboard', refresh='1')}}" class="btn">Refresh</a></h1>
+        <h1><a href="{{url_for('admin.dashboard', refresh='1')}}" class="btn">{{ _('Refresh') }}</a></h1>
     </div>
 </div>
 {% if wait == False %}
 <div class="row">
     <div class="span6">
-        <h2>Active users</h2>
+        <h2>{{ _('Active users') }}</h2>
         <div id="dashboard_week_users" class="ct-chart ct-perfect-fourth"></div>
         <script>
             var data = {{ active_users_last_week | tojson | safe }};
@@ -35,7 +35,7 @@
         </script>
     </div>
     <div class="span6">
-        <h2>Active anonymous users </h2>
+        <h2>{{ _('Active anonymous users') }}</h2>
         <div id="dashboard_week_anon"  class="ct-chart ct-perfect-fourth"></div>
         <script>
             var data = {{ active_anon_last_week | tojson | safe }};
@@ -44,7 +44,7 @@
         </script>
     </div>
     <div class="span6">
-        <h2>New projects: {{new_projects_last_week|count}}</h2>
+        <h2>{{ _('New projects') }}: {{new_projects_last_week|count}}</h2>
         <ul>
         {% for project in new_projects_last_week %}
         <li><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.p_name}}</a> by <a href="{{url_for('account.profile', name=project.u_name)}}">{{project.u_name}}</a> ({{project.email_addr}})</li>
@@ -52,7 +52,7 @@
         </ul>
     </div>
     <div class="span6">
-        <h2>Updated projects: {{update_projects_last_week|count}}</h2>
+        <h2>{{ _('Updated projects') }}: {{update_projects_last_week|count}}</h2>
         <ul>
         {% for project in update_projects_last_week %}
         <li><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.p_name}}</a> by <a href="{{url_for('account.profile', name=project.u_name)}}">{{project.u_name}}</a> ({{project.email_addr}})</li>
@@ -60,7 +60,7 @@
         </ul>
     </div>
     <div class="span6">
-        <h2>New tasks</h2>
+        <h2>{{ _('New tasks') }}</h2>
         <div id="dashboard_week_new_tasks" class="ct-chart ct-perfect-fourth"></div>
         <script>
             var data = {{ new_tasks_week | tojson | safe }};
@@ -69,7 +69,7 @@
         </script>
     </div>
     <div class="span6">
-        <h2>New Answers</h2>
+        <h2>{{ _('New Answers') }}</h2>
         <div id="dashboard_week_new_task_runs" class="ct-chart ct-perfect-fourth"></div>
         <script>
             var data = {{ new_task_runs_week | tojson | safe }};
@@ -78,7 +78,7 @@
         </script>
     </div>
     <div class="span6">
-        <h2>New Users</h2>
+        <h2>{{ _('New Users') }}</h2>
         <div id="dashboard_week_new_users" class="ct-chart ct-perfect-fourth"></div>
         <script>
             var data = {{ new_users_week | tojson | safe }};
@@ -87,7 +87,7 @@
         </script>
     </div>
     <div class="span6">
-        <h2>Returning Users</h2>
+        <h2>{{ _('Returning Users') }}</h2>
         <div id="dashboard_week_returning_users" class="ct-chart ct-perfect-fourth"></div>
         <script>
             var data = {{ returning_users_week | tojson | safe }};
@@ -149,7 +149,7 @@
 {% else %}
 <div class="row">
     <div class="span12">
-        <h1>No data available. You'll have to wait 24 hours.</h1>
+        <h1>{{ _("No data available yet. You'll need to wait 24 hours.") }}</h1>
     </div>
 </div>
 {% endif %}
