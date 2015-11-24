@@ -46,7 +46,7 @@
         <h2>{{ _('Draft projects') }}: {{draft_projects_last_week|count}}</h2>
         <ul>
         {% for project in draft_projects_last_week %}
-        <li><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.p_name}}</a> by <a href="{{url_for('account.profile', name=project.u_name)}}">{{project.u_name}}</a> ({{project.email_addr}})</li>
+            <li><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.p_name}}</a> by <a href="{{url_for('account.profile', name=project.u_name)}}">{{project.u_name}}</a> ({{project.email_addr}})</li>
         {% endfor %}
         </ul>
     </div>
@@ -54,7 +54,7 @@
         <h2>{{ _('Published projects') }}: {{published_projects_last_week|count}}</h2>
         <ul>
         {% for project in published_projects_last_week %}
-        <li><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.p_name}}</a> by <a href="{{url_for('account.profile', name=project.u_name)}}">{{project.u_name}}</a> ({{project.email_addr}})</li>
+            <li><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.p_name}}</a> by <a href="{{url_for('account.profile', name=project.u_name)}}">{{project.u_name}}</a> ({{project.email_addr}})</li>
         {% endfor %}
         </ul>
     </div>
@@ -62,7 +62,7 @@
         <h2>{{ _('Updated projects') }}: {{update_projects_last_week|count}}</h2>
         <ul>
         {% for project in update_projects_last_week %}
-        <li><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.p_name}}</a> by <a href="{{url_for('account.profile', name=project.u_name)}}">{{project.u_name}}</a> ({{project.email_addr}})</li>
+            <li><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.p_name}}</a> by <a href="{{url_for('account.profile', name=project.u_name)}}">{{project.u_name}}</a> ({{project.email_addr}})</li>
         {% endfor %}
         </ul>
     </div>
