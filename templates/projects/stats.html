@@ -41,9 +41,16 @@
             </div>
             {% endif %}
 
+            <div id="card" class="row-fluid">
+                <div class="span12 well">
+                    <h2>{{_('Average contribution time per task') }}:</h2>
+                    <p>{{ avg_contrib_time }} {{ _('seconds') }}</p>
+                </div>
+            </div>
+
             <!-- Hour Stats CARD -->
             <div id="card" class="row-fluid">
-                <div class="span12  well">
+                <div class="span12 well">
                     <h2>{{_('Distribution of Answers per Hour')}}</h2>
                     <div id="hourStats" style="margin:0;height:500px;">
                     </div>
@@ -73,7 +80,7 @@
 
             <!-- Day Stats Total CARD -->
             <div id="card" class="row-fluid">
-                <div  class="span12  well">
+                <div  class="span12 well">
                     <h2>{{_('Completed Tasks in the last 15 days')}} <small> {{_('select an area to zoom, click to reset the chart')}}</small></h2>
                     <div id="dayStatsTotal" style="margin:0;height:500px;"></div>
                     <script>
@@ -144,7 +151,7 @@
 
             <!-- Day Stats CARD -->
             <div id="card" class="row-fluid">
-                <div  class="span12  well">
+                <div  class="span12 well">
                     <h2>{{_('Answers per day')}} <small> {{_('select an area to zoom, click to reset the chart')}}</small></h2>
                     <div id="dayStats" style="margin:0;height:500px;"></div>
                     <script>
@@ -215,7 +222,7 @@
 
             <!-- Number of answers CARD -->
             <div id="card" class="row-fluid">
-                <div id="dist-answers" class="span12  well">
+                <div id="dist-answers" class="span12 well">
                     <h2>{{_('Distribution of Answers')}}</h2>
                     <div class="row-fluid">
                         <div class="span6">
@@ -262,7 +269,7 @@
 
             <!-- Anon User Stats CARD -->
             <div id="card" class="row-fluid">
-                <div id="dist-anon" class="span12  well">
+                <div id="dist-anon" class="span12 well">
                     <h2>{{_('Details about Anonymous Users')}}</h2>
                     <div class="row-fluid">
                         <div class="span12">
@@ -353,7 +360,7 @@
 
             <!-- Auth User Stats CARD -->
             <div id="card" class="row-fluid">
-                <div id="dist-auth" class="span12  well">
+                <div id="dist-auth" class="span12 well">
                     <h2>{{_('Details about Authenticated Users')}}</h2>
                     <div class="row-fluid">
                         <div class="span12">
