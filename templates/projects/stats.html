@@ -41,12 +41,14 @@
             </div>
             {% endif %}
 
+            {% if current_user.pro or current_user.admin %}
             <div id="card" class="row-fluid">
                 <div class="span12 well">
                     <h2>{{_('Average contribution time per task') }}:</h2>
                     <p>{{ avg_contrib_time }} {{ _('seconds') }}</p>
                 </div>
             </div>
+            {% endif %}
 
             <!-- Hour Stats CARD -->
             <div id="card" class="row-fluid">
