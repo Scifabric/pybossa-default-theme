@@ -1504,12 +1504,11 @@ msgstr "anonimizados"
 
 #: themes/default/templates/projects/stats.html:47
 msgid "Average contribution time per task"
-msgstr ""
+msgstr "Tiempo medio de respuesta por tarea"
 
 #: themes/default/templates/projects/stats.html:48
-#, fuzzy
 msgid "seconds"
-msgstr "segundo número"
+msgstr "segundos"
 
 #: themes/default/templates/projects/stats.html:56
 msgid "Distribution of Answers per Hour"
