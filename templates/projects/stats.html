@@ -45,7 +45,7 @@
             <div id="card" class="row-fluid">
                 <div class="span12 well">
                     <h2>{{_('Average contribution time per task') }}:</h2>
-                    <p>{{ avg_contrib_time }} {{ _('seconds') }}</p>
+                    <p><span id="avgTime">{{ avg_contrib_time }}</span> {{ _('seconds') }}</p>
                 </div>
             </div>
             {% endif %}
@@ -415,5 +415,19 @@
             {%endif%}
         </div>
 </div>
+<script type="text/javascript">
+(function() {
+    var time = document.getElementById('avgTime');
+    try {
+        var localTime = time.innerHTML;
+        var locale = navigator.languages ? navigator.languages[0] : navigator.language;
+        var localTime = parseFloat(time.innerHTML).toLocaleString(locale);
+        time.innerHTML = localTime;
+    }
+    catch (e) {
+        console.log("Unable to convert to local string.");
+    }
+})();
+</script>
 {{ helper.broken_image() }}
 {% endblock %}
