@@ -41,7 +41,7 @@
             </div>
             {% endif %}
 
-            {% if current_user.pro or current_user.admin %}
+            {% if owner.pro or current_user.admin %}
             <div id="card" class="row-fluid">
                 <div class="span12 well">
                     <h2>{{_('Average contribution time per task') }}:</h2>
