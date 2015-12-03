@@ -61,6 +61,16 @@
                 </a>
             </div>
         </div>
+        <div class="row">
+            <div class="span12">
+                <h2>{{_('Latest news from PyBossa')}}</h2>
+                <ul class="news">
+                    {% for new in news %}
+                    <li><strong>{{new.updated[0:10]}}</strong> {% if 'github' in new.links[0].href %} <span class="label label-info">{{_('New PyBossa version')}}</span> {% else %} <span class="label label-default">{{_('New SciFabric Blog Post')}}</span> {% endif %}<a target="_blank" href="{{new.links[0].href}}">{{new.title}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
