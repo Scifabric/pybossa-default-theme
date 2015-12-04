@@ -7,7 +7,7 @@
 {{ helper.render_loading(text=loading_text) }}
 <div class="row">
     <div class="span3" style="padding: 8px 0;">
-        {{ helper.render_project_local_nav(project, "tasks", current_user) }}
+        {{ helper.render_project_local_nav(project, "tasks",current_user, pro_features) }}
     </div>
     <div id="body" class="span9" style="min-height:400px;">
         {{ helper.render_project_title(project, upload_method, subtitle=_('Export All Tasks and Task Runs'))}}

@@ -6,7 +6,7 @@
 {% block content %}
 <div class="row">
     <div class="span3">
-        {{ helper.render_project_local_nav(project, active_link, current_user) }}
+        {{ helper.render_project_local_nav(project, active_link, current_user, pro_features) }}
     </div>
     <div class="span9">
         <h1><strong>{{project.name}}</strong>: {{ _('Delete all Tasks and Task Runs') }}</h1>
