@@ -35,7 +35,7 @@
 <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
     <li {% if active_link=="info"%}class="active"{% endif %}><a href="{{url_for('project.details', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Info')}}</a></li>
     <li {% if active_link=="contribute"%}class="active"{% endif %}><a href="{{url_for('project.presenter', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Contribute')}}</a></li>
-    <li {% if active_link=="tasks"%}class="active"{% endif %}><a href="{{url_for('project.results', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Results')}}</a></li>
+    <li {% if active_link=="results"%}class="active"{% endif %}><a href="{{url_for('project.results', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Results')}}</a></li>
     <li {% if active_link=="tasks"%}class="active"{% endif %}><a href="{{url_for('project.tasks', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Tasks')}}</a></li>
     <li {% if active_link=="stats"%}class="active"{% endif %}><a href="{{url_for('project.show_stats', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Statistics')}}</a></li>
     {% if ( current_user.is_authenticated() and current_user.id == project.owner_id ) or current_user.admin %}
