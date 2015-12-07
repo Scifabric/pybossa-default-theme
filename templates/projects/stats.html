@@ -41,7 +41,7 @@
             </div>
             {% endif %}
 
-            {% if owner.pro or current_user.admin %}
+            {% if pro_features['better_stats_enabled'] %}
             <div id="card" class="row-fluid">
                 <div class="span12 well">
                     <h2>{{_('Average contribution time per task') }}:</h2>
