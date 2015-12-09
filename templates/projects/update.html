@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="{{url_for('static', filename='css/jquery.Jcrop.min.css')}}" type="text/css" />
 <div class="row">
     <div class="span3">
-        {{ helper.render_project_local_nav(project, 'settings', current_user) }}
+        {{ helper.render_project_local_nav(project, 'settings', current_user, pro_features) }}
     </div>
   <div class="span9">
       <legend><strong>{{project.name}}</strong>: {{_('Update the project')}}</legend>
