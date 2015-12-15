@@ -16,10 +16,11 @@
       <h2>{{_('From Twitter hashtag or account')}}</h2>
       <form class="form-horizontal" method="post" action="{{ url_for(target, short_name=project.short_name) }}">
         <fieldset>
-        {{ form.hidden_tag() }}
-        <span class="help-inline">{{_('Please provide the hashtag you want to import tweets')}}.</span>
-          {{ render_field(form.hashtag, class_="input-block-level", placeholder=_('#PyBossaIsCool')) }}
-          {{ render_field(form.user, class_="input-block-level", placeholder=_('@PyBossa')) }}
+            {{ form.hidden_tag() }}
+            <span class="help-inline">
+                {{_('Please provide the source of your tweets. It can be a "#hashtag", a regular "word" to search or a "@user_account" from where to import them')}}.
+            </span>
+          {{ render_field(form.source, class_="input-block-level", placeholder=_('#hashtag or @user or something else')) }}
           {{ render_field(form.max_tweets, class_="input-block-level") }}
           <div class="form-actions">
             <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
