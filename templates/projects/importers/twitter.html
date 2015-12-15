@@ -19,6 +19,8 @@
         {{ form.hidden_tag() }}
         <span class="help-inline">{{_('Please provide the hashtag you want to import tweets')}}.</span>
           {{ render_field(form.hashtag, class_="input-block-level", placeholder=_('#PyBossaIsCool')) }}
+          {{ render_field(form.user, class_="input-block-level", placeholder=_('@PyBossa')) }}
+          {{ render_field(form.max_tweets, class_="input-block-level") }}
           <div class="form-actions">
             <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
             <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
