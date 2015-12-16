@@ -13,7 +13,7 @@
     <div class="span9">
         <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
       {% if form %}
-      <h2>{{_('From Twitter hashtag or account')}}</h2>
+      <h2>{{_('From a Twitter hashtag or account')}}</h2>
       <form class="form-horizontal" method="post" action="{{ url_for(target, short_name=project.short_name) }}">
         <fieldset>
             {{ form.hidden_tag() }}
