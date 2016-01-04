@@ -44,7 +44,7 @@
             </span>
           {{ render_field(form.source, class_="input-block-level", placeholder=_('#hashtag or @user or something else')) }}
           {{ render_field(form.max_tweets, class_="input-block-level") }}
-          {{ form.user_credentials(value=current_user.info.get('twitter_token')) }}
+          {{ form.user_credentials(value=current_user.info.get('twitter_token') | tojson, type='hidden') }}
           <div class="form-actions">
             <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
             <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
