@@ -26,6 +26,11 @@
         {% elif importer['type']=='flickr'%}
         <p><strong>Type: </strong>Flickr album importer</p>
         <p><strong>Flickr album ID: </strong>{{ importer['album_id'] }}</p>
+        {% elif importer['type']=='twitter'%}
+        <p><strong>Type: </strong>Twitter importer</p>
+        <p><strong>From source: </strong>{{ importer['source'] }}</p>
+        <p><strong>Number of tweets to import at once: </strong>{{ importer['max_tweets'] }}</p>
+        <p><strong>Credentials: </strong>{{ "User" if importer['user_credentials'] else "Platform"}}</p>
         {% endif %}
 
       <form class="form-horizontal" method="post" action="{{ url_for('project.delete_autoimporter', short_name=project.short_name) }}">
