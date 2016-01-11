@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-12-16 12:41+0000\n"
+"POT-Creation-Date: 2016-01-11 14:56+0000\n"
 "PO-Revision-Date: 2015-07-20 12:59-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pt_BR\n"
@@ -303,7 +303,7 @@ msgstr "Reiniciar minha senha"
 #: themes/default/templates/projects/importers/epicollect.html:26
 #: themes/default/templates/projects/importers/flickr.html:35
 #: themes/default/templates/projects/importers/gdocs.html:24
-#: themes/default/templates/projects/importers/twitter.html:27
+#: themes/default/templates/projects/importers/twitter.html:41
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1227,7 +1227,7 @@ msgid "Written: "
 msgstr "Escrito:"
 
 #: themes/default/templates/projects/blog_post.html:31
-#: themes/default/templates/projects/task_autoimporter.html:35
+#: themes/default/templates/projects/task_autoimporter.html:40
 #: themes/default/templates/projects/task_settings.html:31
 msgid "Delete"
 msgstr "Excluir"
@@ -1238,7 +1238,7 @@ msgstr "Editar"
 
 #: themes/default/templates/projects/blog_post.html:36
 #: themes/default/templates/projects/blog_post.html:41
-#: themes/default/templates/projects/task_autoimporter.html:36
+#: themes/default/templates/projects/task_autoimporter.html:41
 msgid "Back"
 msgstr "Voltar"
 
@@ -1864,7 +1864,7 @@ msgstr "Importar tarefas de templates, GDrive ou CSV"
 #: themes/default/templates/projects/importers/epicollect.html:25
 #: themes/default/templates/projects/importers/flickr.html:34
 #: themes/default/templates/projects/importers/gdocs.html:23
-#: themes/default/templates/projects/importers/twitter.html:26
+#: themes/default/templates/projects/importers/twitter.html:40
 msgid "Import"
 msgstr "Importar"
 
@@ -2157,14 +2157,30 @@ msgstr "URL para a planilha do Google Docs"
 msgid "From a Twitter hashtag or account"
 msgstr ""
 
-#: themes/default/templates/projects/importers/twitter.html:21
+#: themes/default/templates/projects/importers/twitter.html:20
 msgid ""
-"Please provide the source of your tweets. It can be a \"#hashtag\", a "
-"regular \"word\" to search or a \"@user_account\" from where to import "
-"them"
+"You can provide your own Twitter credentials and make API requests in "
+"behalf of them, or use the credentials provided by us. (The later only "
+"allows to import the number of tweets returned by a single Twitter API "
+"call, which is 100 for searches and 200 for user timelines.)"
 msgstr ""
 
 #: themes/default/templates/projects/importers/twitter.html:23
+msgid "I'll use my credentials"
+msgstr ""
+
+#: themes/default/templates/projects/importers/twitter.html:24
+msgid "I'll use credentials provided by the platform"
+msgstr ""
+
+#: themes/default/templates/projects/importers/twitter.html:32
+msgid ""
+"Please provide the source of your tweets. It can be a \"#hashtag\", a "
+"regular \"word\" for search or a \"@user_account\" from where to import "
+"them"
+msgstr ""
+
+#: themes/default/templates/projects/importers/twitter.html:34
 msgid "#hashtag or @user or something else"
 msgstr ""
 
@@ -2883,4 +2899,12 @@ msgstr "Pontuação"
 
 #~ msgid "No"
 #~ msgstr "Não"
+
+#~ msgid ""
+#~ "Please provide the source of your "
+#~ "tweets. It can be a \"#hashtag\", "
+#~ "a regular \"word\" to search or a"
+#~ " \"@user_account\" from where to import "
+#~ "them"
+#~ msgstr ""
 
