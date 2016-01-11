@@ -12,48 +12,37 @@
     </div>
     <div class="span9">
         <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
-      {% if form %}
-      <h2>{{_('From a Twitter hashtag or account')}}</h2>
-      {% if not current_user.info.get('twitter_token') %}
-      <div class="alert">
-        <p>
-          {{ _('You can provide your own Twitter credentials and make API requests in behalf of them, or use the credentials provided by us. (The later only allows to import the number of tweets returned by a single Twitter API call, which is 100 for searches and 200 for user timelines.)') }}
-        </p>
-      </div>
-      <a href="{{ url_for('twitter.login', next=url_for(target, short_name=project.short_name, type='twitter'), no_login=1) }}" class="btn choice">{{ _("I'll use my credentials") }}</a>
-      <a class="btn choice">{{ _("I'll use credentials provided by the platform") }}</a>
-      <form class="form-horizontal" method="post" action="{{ url_for(target, short_name=project.short_name) }}" style="display:none;">
-        <fieldset>
-            {{ form.hidden_tag() }}
-            <span class="help-inline">
-                {{_('Please provide the source of your tweets. It can be a "#hashtag", a regular "word" for search or a "@user_account" from where to import them')}}.
-            </span>
-          {{ render_field(form.source, class_="input-block-level", placeholder=_('#hashtag or @user or something else')) }}
-          {{ render_field(form.max_tweets, class_="input-block-level") }}
-          <div class="form-actions">
-            <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
-          </div>
-        </fieldset>
-      </form>
-      {% else %}
-      <form class="form-horizontal" method="post" action="{{ url_for(target, short_name=project.short_name) }}">
-        <fieldset>
-            {{ form.hidden_tag() }}
-            <span class="help-inline">
-                {{_('Please provide the source of your tweets. It can be a "#hashtag", a regular "word" for search or a "@user_account" from where to import them')}}.
-            </span>
-          {{ render_field(form.source, class_="input-block-level", placeholder=_('#hashtag or @user or something else')) }}
-          {{ render_field(form.max_tweets, class_="input-block-level") }}
-          {{ form.user_credentials(value=current_user.info.get('twitter_token') | tojson, type='hidden') }}
-          <div class="form-actions">
-            <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
-          </div>
-        </fieldset>
-      </form>
-      {% endif %}
-      {% endif %}
+        {% if form %}
+        <h2>{{_('From a Twitter hashtag or account')}}</h2>
+        {% if not current_user.info.get('twitter_token') %}
+        <div class="alert">
+            <p>
+              {{ _('You can provide your own Twitter credentials and make API requests in behalf of them, or use the credentials provided by us. (The later only allows to import the number of tweets returned by a single Twitter API call, which is 100 for searches and 200 for user timelines.)') }}
+            </p>
+        </div>
+        <a href="{{ url_for('twitter.login', next=url_for(target, short_name=project.short_name, type='twitter'), no_login=1) }}" class="btn choice">{{ _("I'll use my credentials") }}</a>
+        <a class="btn choice">{{ _("I'll use credentials provided by the platform") }}</a>
+        <form class="form-horizontal" method="post" action="{{ url_for(target, short_name=project.short_name) }}" style="display:none;">
+        {% else %}
+        <form class="form-horizontal" method="post" action="{{ url_for(target, short_name=project.short_name) }}">
+        {% endif %}
+            <fieldset>
+                {{ form.hidden_tag() }}
+                <span class="help-inline">
+                    {{_('Please provide the source of your tweets. It can be a "#hashtag", a regular "word" for search or a "@user_account" from where to import them')}}.
+                </span>
+                {{ render_field(form.source, class_="input-block-level", placeholder=_('#hashtag or @user or something else')) }}
+                {{ render_field(form.max_tweets, class_="input-block-level") }}
+                {% if current_user.info.get('twitter_token') %}
+                {{ form.user_credentials(value=current_user.info.get('twitter_token') | tojson, type='hidden') }}
+                {% endif %}
+                <div class="form-actions">
+                    <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
+                    <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
+                </div>
+            </fieldset>
+        </form>
+        {% endif %}
     </div>
 </div>
 <script>
