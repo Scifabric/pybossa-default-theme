@@ -20,7 +20,7 @@
           {{ _('You can provide your own Twitter credentials and make API requests in behalf of them, or use the credentials provided by us. (The later only allows to import the number of tweets returned by a single Twitter API call, which is 100 for searches and 200 for user timelines.)') }}
         </p>
       </div>
-      <a id="user" href="{{ url_for('twitter.login', next=url_for(target, short_name=project.short_name, type='twitter'), no_login=1) }}" class="btn">{{ _("I'll use my credentials") }}</a>
+      <a href="{{ url_for('twitter.login', next=url_for(target, short_name=project.short_name, type='twitter'), no_login=1) }}" class="btn choice">{{ _("I'll use my credentials") }}</a>
       <a class="btn choice">{{ _("I'll use credentials provided by the platform") }}</a>
       <form class="form-horizontal" method="post" action="{{ url_for(target, short_name=project.short_name) }}" style="display:none;">
         <fieldset>
@@ -61,9 +61,9 @@
         $("#loading").show();
     });
     $('.choice').on('click', function(evt){
-      var $btn = $(this);
-      $('.choice').hide();
-      $('form').show();
+        var $btn = $(this);
+        $('.choice').hide();
+        $('form').show();
     })
 </script>
 {% endblock %}
