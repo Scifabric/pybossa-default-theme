@@ -24,19 +24,19 @@
             <ul id="buckets"></ul>
         </div>
         <br>
+        <p>
+            {{ _('For more information, please look at') }}
+            <a href="http://docs.pybossa.com/en/latest/user/overview.html" target="_blank">{{ _('the documentation') }}.</a>
+        </p>
         {% if form %}
         <form class="form-group" method="post" action="{{ url_for(target, short_name=project.short_name) }}">
             <fieldset>
                 {{ form.hidden_tag() }}
-                <p>
-                    {{ _('For more information, please look at') }}
-                    <a href="http://docs.pybossa.com/en/latest/user/overview.html" target="_blank">{{ _('the documentation') }}.</a>
-                </p>
-                <p id="message" style="display: none;">{{ _('You are about to import') }} <span id="numFiles"></span> {{ _('files') }}.</p>
-                    <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-                    <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
-                </div>
+
             </fieldset>
+            <p id="message" style="display: none;">{{ _('You are about to import') }} <span id="numFiles"></span> {{ _('files') }}.</p>
+                <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
+                <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
         </form>
         {% endif %}
     </div>
