@@ -14,11 +14,6 @@
     <div class="span9">
         <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
         <h2>{{_('From an Amazon S3 bucket')}}</h2>
-        <div id="grant">
-            {{ _('Grant Crowdcrafting access to your S3 buckets to select one...') }}
-            <br>
-            <a href="{{ url_for('amazon.login', next=url_for(target, short_name=project.short_name, type='s3')) }}" class="btn btn-secondary">{{ _('Log in AWS') }}</a>
-        </div>
         <br>
         <div id="buckets-container" class="row">
             <ul id="buckets"></ul>
