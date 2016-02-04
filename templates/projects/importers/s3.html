@@ -6,6 +6,11 @@
 {% block content %}
 {% from "_formhelpers.html" import render_field %}
 {{ helper.render_loading(loading_text) }}
+<style type="text/css">
+.selected {
+    background-color: #D4D4D4;
+}
+</style>
 <div class="row">
     <div class="span3">
         {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features)}}
@@ -15,23 +20,24 @@
         <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
         <h2>{{_('From an Amazon S3 bucket')}}</h2>
         <br>
-        <div id="buckets-container" class="row">
-            <ul id="buckets"></ul>
-        </div>
-        <br>
         <p>
             {{ _('For more information, please look at') }}
             <a href="http://docs.pybossa.com/en/latest/user/overview.html" target="_blank">{{ _('the documentation') }}.</a>
         </p>
+        <br>
+        <div id="objects-container" class="row">
+            <ul id="objects"></ul>
+        </div>
         {% if form %}
         <form class="form-group" method="post" action="{{ url_for(target, short_name=project.short_name) }}">
             <fieldset>
                 {{ form.hidden_tag() }}
-
+                {{ form.files(style="display: none;") }}
+                {{ render_field(form.bucket, class_="input-block-level", placeholder=_("Name of the S3 bucket")) }}
             </fieldset>
-            <p id="message" style="display: none;">{{ _('You are about to import') }} <span id="numFiles"></span> {{ _('files') }}.</p>
-                <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-                <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
+            <a id="get-bucket" class="btn">{{ _('Search in bucket') }}</a>
+            <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
+            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
         </form>
         {% endif %}
     </div>
@@ -39,21 +45,49 @@
 
 <script type="text/javascript">
     $(function() {
-        $.get('/amazon/s3/buckets').done(function(buckets) {
-            if (buckets.hasOwnProperty('length') && buckets.length > 0) {
-                $('#revoke').show();
-                $('#grant').hide();
-                $('#buckets-container').prepend('<p>'+"{{ _('Select one of your buckets:') }}"+'</p>');
-                buckets.forEach(function(bucket){
-                    var bucketElement = $('<li class="col-md-4 col-sm-6 col-xs-12"><h4>'+bucket.title+'</h4><img src="'+bucket.thumbnail_url+'"><p class="small">'+bucket.photos+' {{ _('photos') }}</p><button id="'+bucket.id+'" class="btn btn-default btn-bucket">{{ _('Select') }}</button></li>');
-                    $('#buckets').append(bucketElement);
+        $('#get-bucket').on('click', function() {
+            var files = [];
+            var bucketName = $('#bucket').val();
+            var filesInput = document.getElementById("files");
+            filesInput.innerHTML = null;
+            $('#objects').empty();
+            $.get('/amazon/bucket/'+bucketName).done(function(objects) {
+                objects.forEach(function(object){
+                    var objectElement = $('<li class="object" role="button" style="cursor:pointer;">' + object + '</li>');
+                    $('#objects').append(objectElement);
                 });
-            }
-            $(".btn-bucket").each(function(){
-                $(this).off('click').on('click', function(evt){
-                    evt.preventDefault();
-                    document.getElementById('bucket_id').value = $(this).attr('id');
+                $(".object").each(function(){
+                    var objectDomElement = $(this);
+                    var objectName = $(this).text();
+                    objectDomElement.off('click').on('click', function(evt){
+                        evt.preventDefault();
+                        objectDomElement.toggleClass('selected');
+                        if (objectDomElement.hasClass('selected')) {
+                            if (files.indexOf(objectName) === -1) {
+                                files.push(objectName);
+                            }
+                        }
+                        else {
+                            files.splice(files.indexOf(objectName), 1);
+                        }
+                        filesInput.innerHTML = null;
+                        files.forEach(function(file, index){
+                            var element = document.createElement("li");
+                            var content = document.createTextNode(file);
+                            var input = document.createElement('input');
+                            input.id = "files-" + index;
+                            input.type = "hidden";
+                            input.name = "files-" + index;
+                            input.value = file;
+                            element.appendChild(input);
+                            element.appendChild(content);
+                            filesInput.appendChild(element);
+                        });
+                    });
                 });
+            }).fail(function(resp) {
+                if (resp.status === 403) alert("Oops... it seems that bucket is private.")
+                if (resp.status === 404) alert("Oops... we could not find that bucket.")
             });
         });
     });
