@@ -1,6 +1,6 @@
 {% extends "/base.html" %}
 {% set active_page = "projects" %}
-{% set active_project  = project.short_name %}
+{% set active_project = project.short_name %}
 {% import "projects/_helpers.html" as helper %}
 
 {% block content %}
@@ -86,8 +86,8 @@
                     });
                 });
             }).fail(function(resp) {
-                if (resp.status === 403) alert("Oops... it seems that bucket is private.")
-                if (resp.status === 404) alert("Oops... we could not find that bucket.")
+                if (resp.status === 403) alert("{{ _('Oops... it seems that bucket is private.') }}")
+                if (resp.status === 404) alert("{{ _('Oops... we could not find that bucket.') }}")
             });
         });
     });
