@@ -2172,8 +2172,8 @@ msgid ""
 msgstr ""
 "Puedes usar tus propias credenciales de Twitter para hacer peticiones a "
 "la API con ellas, o usar las credenciales que proporcionamos nosotros para"
-" ello. (Estoúltimo sólo te permitirá importar un número de tweets "
-"equivalente a una únicallamada a la API de Twitter, 100 para búsquedas o "
+" ello. (Esto último sólo te permitirá importar un número de tweets "
+"equivalente a una única llamada a la API de Twitter, 100 para búsquedas o "
 "200 para timelines de una cuenta.)"
 
 #: themes/default/templates/projects/importers/twitter.html:23
