@@ -30,6 +30,9 @@
                 {{ form.hidden_tag() }}
                 <span class="help-inline">
                     {{_('Please provide the source of your tweets. It can be a "#hashtag", a regular "word" for search or a "@user_account" from where to import them')}}.
+                    <br />
+                    {{ _('For more information, please look at') }}
+                    <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-from-a-twitter-account-or-search-result" target="_blank">{{ _('the documentation') }}.</a>
                 </span>
                 {{ render_field(form.source, class_="input-block-level", placeholder=_('#hashtag or @user or something else')) }}
                 {{ render_field(form.max_tweets, class_="input-block-level") }}
