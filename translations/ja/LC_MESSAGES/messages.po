@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-01-11 14:56+0000\n"
+"POT-Creation-Date: 2016-02-05 18:06+0000\n"
 "PO-Revision-Date: 2015-07-13 10:40+0900\n"
 "Last-Translator: Yu Fujimoto <yu.fujimoto@geo-nara.net>\n"
 "Language: ja\n"
@@ -296,7 +296,8 @@ msgstr "パスワードのリセット"
 #: themes/default/templates/projects/importers/epicollect.html:26
 #: themes/default/templates/projects/importers/flickr.html:35
 #: themes/default/templates/projects/importers/gdocs.html:24
-#: themes/default/templates/projects/importers/twitter.html:41
+#: themes/default/templates/projects/importers/s3.html:37
+#: themes/default/templates/projects/importers/twitter.html:44
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -1123,6 +1124,7 @@ msgstr "タスクの発表者を編集する"
 #: themes/default/templates/projects/importers/epicollect.html:14
 #: themes/default/templates/projects/importers/flickr.html:15
 #: themes/default/templates/projects/importers/gdocs.html:14
+#: themes/default/templates/projects/importers/s3.html:20
 #: themes/default/templates/projects/importers/twitter.html:14
 msgid "Import tasks"
 msgstr "タスクをインポートする"
@@ -1796,7 +1798,8 @@ msgstr "テンプレート、GDriveあるいはCSVによるタスクのインポ
 #: themes/default/templates/projects/importers/epicollect.html:25
 #: themes/default/templates/projects/importers/flickr.html:34
 #: themes/default/templates/projects/importers/gdocs.html:23
-#: themes/default/templates/projects/importers/twitter.html:40
+#: themes/default/templates/projects/importers/s3.html:36
+#: themes/default/templates/projects/importers/twitter.html:43
 msgid "Import"
 msgstr "インポート"
 
@@ -1989,6 +1992,8 @@ msgstr "CSVファイルのURL（DropBox, Box, Ubuntu One等のパブリック・
 #: themes/default/templates/projects/importers/epicollect.html:20
 #: themes/default/templates/projects/importers/flickr.html:31
 #: themes/default/templates/projects/importers/gdocs.html:20
+#: themes/default/templates/projects/importers/s3.html:23
+#: themes/default/templates/projects/importers/twitter.html:34
 msgid "For more information, please look at"
 msgstr "より詳しい情報は次のリンク先を参照してください："
 
@@ -1997,6 +2002,8 @@ msgstr "より詳しい情報は次のリンク先を参照してください：
 #: themes/default/templates/projects/importers/epicollect.html:20
 #: themes/default/templates/projects/importers/flickr.html:31
 #: themes/default/templates/projects/importers/gdocs.html:20
+#: themes/default/templates/projects/importers/s3.html:23
+#: themes/default/templates/projects/importers/twitter.html:35
 msgid "the documentation"
 msgstr "解説書"
 
@@ -2077,6 +2084,27 @@ msgstr "このプロジェクトのためのGoogle Drive スプレッドシー�
 msgid "The URL of the Google Docs Spreadsheet"
 msgstr "Google Docs スプレッドシートのURL"
 
+#: themes/default/templates/projects/importers/s3.html:21
+msgid "From an Amazon S3 bucket"
+msgstr ""
+
+#: themes/default/templates/projects/importers/s3.html:33
+#, fuzzy
+msgid "Name of the S3 bucket"
+msgstr "プロジェクトの名称"
+
+#: themes/default/templates/projects/importers/s3.html:35
+msgid "Search in bucket"
+msgstr ""
+
+#: themes/default/templates/projects/importers/s3.html:86
+msgid "Oops... it seems that bucket is private."
+msgstr ""
+
+#: themes/default/templates/projects/importers/s3.html:87
+msgid "Oops... we could not find that bucket."
+msgstr ""
+
 #: themes/default/templates/projects/importers/twitter.html:16
 msgid "From a Twitter hashtag or account"
 msgstr ""
@@ -2104,7 +2132,7 @@ msgid ""
 "them"
 msgstr ""
 
-#: themes/default/templates/projects/importers/twitter.html:34
+#: themes/default/templates/projects/importers/twitter.html:37
 msgid "#hashtag or @user or something else"
 msgstr ""
 
@@ -2388,6 +2416,19 @@ msgstr ""
 "Google Drive\n"
 "インポート"
 
+#: themes/default/templates/projects/tasks/s3.html:2
+msgid "S3"
+msgstr ""
+
+#: themes/default/templates/projects/tasks/s3.html:3
+msgid "Use files from an Amazon S3 bucket"
+msgstr ""
+
+#: themes/default/templates/projects/tasks/s3.html:5
+#, fuzzy
+msgid "Use the Amazon S3 importer"
+msgstr "Dropboxのインポート"
+
 #: themes/default/templates/projects/tasks/twitter.html:3
 msgid "Import tweets from a search or a user account"
 msgstr ""
@@ -2474,7 +2515,7 @@ msgstr "スコア"
 #~ msgstr ""
 
 #~ msgid ""
-#~ msgstr "おっと！エクスポートするべき稼働中のタスクがありません。何人かの参加者を招待してください。"
+#~ msgstr ""
 
 #~ msgid "The file you uploaded has two headers with the same name."
 #~ msgstr "アップロードされたファイルは、同じ名前のヘッダーが複数含まれているようです。"
@@ -2844,12 +2885,4 @@ msgstr "スコア"
 
 #~ msgid "No"
 #~ msgstr "いいえ"
-
-#~ msgid ""
-#~ "Please provide the source of your "
-#~ "tweets. It can be a \"#hashtag\", "
-#~ "a regular \"word\" to search or a"
-#~ " \"@user_account\" from where to import "
-#~ "them"
-#~ msgstr ""
 

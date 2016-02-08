@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-01-11 14:56+0000\n"
+"POT-Creation-Date: 2016-02-05 18:06+0000\n"
 "PO-Revision-Date: 2015-07-20 12:59-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pt_BR\n"
@@ -303,7 +303,8 @@ msgstr "Reiniciar minha senha"
 #: themes/default/templates/projects/importers/epicollect.html:26
 #: themes/default/templates/projects/importers/flickr.html:35
 #: themes/default/templates/projects/importers/gdocs.html:24
-#: themes/default/templates/projects/importers/twitter.html:41
+#: themes/default/templates/projects/importers/s3.html:37
+#: themes/default/templates/projects/importers/twitter.html:44
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1154,6 +1155,7 @@ msgstr "Edite o visualizador de tarefas"
 #: themes/default/templates/projects/importers/epicollect.html:14
 #: themes/default/templates/projects/importers/flickr.html:15
 #: themes/default/templates/projects/importers/gdocs.html:14
+#: themes/default/templates/projects/importers/s3.html:20
 #: themes/default/templates/projects/importers/twitter.html:14
 msgid "Import tasks"
 msgstr "Importar tarefas"
@@ -1864,7 +1866,8 @@ msgstr "Importar tarefas de templates, GDrive ou CSV"
 #: themes/default/templates/projects/importers/epicollect.html:25
 #: themes/default/templates/projects/importers/flickr.html:34
 #: themes/default/templates/projects/importers/gdocs.html:23
-#: themes/default/templates/projects/importers/twitter.html:40
+#: themes/default/templates/projects/importers/s3.html:36
+#: themes/default/templates/projects/importers/twitter.html:43
 msgid "Import"
 msgstr "Importar"
 
@@ -2061,6 +2064,8 @@ msgstr ""
 #: themes/default/templates/projects/importers/epicollect.html:20
 #: themes/default/templates/projects/importers/flickr.html:31
 #: themes/default/templates/projects/importers/gdocs.html:20
+#: themes/default/templates/projects/importers/s3.html:23
+#: themes/default/templates/projects/importers/twitter.html:34
 msgid "For more information, please look at"
 msgstr "Para mais informações, porfavor veja a"
 
@@ -2069,6 +2074,8 @@ msgstr "Para mais informações, porfavor veja a"
 #: themes/default/templates/projects/importers/epicollect.html:20
 #: themes/default/templates/projects/importers/flickr.html:31
 #: themes/default/templates/projects/importers/gdocs.html:20
+#: themes/default/templates/projects/importers/s3.html:23
+#: themes/default/templates/projects/importers/twitter.html:35
 msgid "the documentation"
 msgstr "documentação"
 
@@ -2153,6 +2160,27 @@ msgstr "Por favor forneça uma URL para a planilha do Google Drive com dados par
 msgid "The URL of the Google Docs Spreadsheet"
 msgstr "URL para a planilha do Google Docs"
 
+#: themes/default/templates/projects/importers/s3.html:21
+msgid "From an Amazon S3 bucket"
+msgstr ""
+
+#: themes/default/templates/projects/importers/s3.html:33
+#, fuzzy
+msgid "Name of the S3 bucket"
+msgstr "O nome do projeto"
+
+#: themes/default/templates/projects/importers/s3.html:35
+msgid "Search in bucket"
+msgstr ""
+
+#: themes/default/templates/projects/importers/s3.html:86
+msgid "Oops... it seems that bucket is private."
+msgstr ""
+
+#: themes/default/templates/projects/importers/s3.html:87
+msgid "Oops... we could not find that bucket."
+msgstr ""
+
 #: themes/default/templates/projects/importers/twitter.html:16
 msgid "From a Twitter hashtag or account"
 msgstr ""
@@ -2180,7 +2208,7 @@ msgid ""
 "them"
 msgstr ""
 
-#: themes/default/templates/projects/importers/twitter.html:34
+#: themes/default/templates/projects/importers/twitter.html:37
 msgid "#hashtag or @user or something else"
 msgstr ""
 
@@ -2475,6 +2503,19 @@ msgid ""
 msgstr ""
 "Use um modelo do\n"
 "      Google Drive"
+
+#: themes/default/templates/projects/tasks/s3.html:2
+msgid "S3"
+msgstr ""
+
+#: themes/default/templates/projects/tasks/s3.html:3
+msgid "Use files from an Amazon S3 bucket"
+msgstr ""
+
+#: themes/default/templates/projects/tasks/s3.html:5
+#, fuzzy
+msgid "Use the Amazon S3 importer"
+msgstr "Use o importador Dropbox"
 
 #: themes/default/templates/projects/tasks/twitter.html:3
 msgid "Import tweets from a search or a user account"
@@ -2899,12 +2940,4 @@ msgstr "Pontuação"
 
 #~ msgid "No"
 #~ msgstr "Não"
-
-#~ msgid ""
-#~ "Please provide the source of your "
-#~ "tweets. It can be a \"#hashtag\", "
-#~ "a regular \"word\" to search or a"
-#~ " \"@user_account\" from where to import "
-#~ "them"
-#~ msgstr ""
 

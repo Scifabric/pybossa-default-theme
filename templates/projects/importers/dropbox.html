@@ -23,7 +23,7 @@
         <form method="post" action="{{ url_for(target, short_name=project.short_name) }}">
             <fieldset>
                 {{ form.hidden_tag() }}
-                <span class="help-inline"> {{ _('For more information, please look at') }} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-from-a-flickr-photo-set" target="_blank">{{ _('the documentation') }}.</a></span>
+                <span class="help-inline"> {{ _('For more information, please look at') }} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-from-a-dropbox-account" target="_blank">{{ _('the documentation') }}.</a></span>
                 <p id="message" style="display: none;">{{ _('You are about to import') }} <span id="numFiles"></span> {{ _('files') }}.</p>
                 {{ form.files(style="display: none;") }}
                 <div>

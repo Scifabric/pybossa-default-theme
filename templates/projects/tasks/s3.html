@@ -1,0 +1,6 @@
+<div class="well">
+    <h2><i class="icon-folder-open"></i> {{_('S3')}}</h2>
+    <h3>{{_('Use files from an Amazon S3 bucket')}}</h3>
+  <p><a href="{{url_for('project.import_task', short_name=project.short_name,
+      type='s3')}}" class="btn btn-inverse">{{_('Use the Amazon S3 importer')}}</a></p>
+</div>
