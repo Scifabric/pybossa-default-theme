@@ -12,7 +12,7 @@
         <h1><strong>{{project.name}}</strong>: {{ _('Publish the project') }}</h1>
         <div class="alert alert-danger">
             <strong>{{ _('Please read carefully!') }}</strong>
-            <p>{{ _('You are about to publish your project. This CANNOT be undone! Once your project has been published, people will be able to contribute to it and answers will begin to be stored.') }}</p>
+            <p>{{ _('You are about to publish your project. This CANNOT be undone! Once your project has been published, people will be able to contribute to it. All the taskruns (answers) that may have been created during the test phase will be flushed and your project will start fresh.') }}</p>
             <p>{{ _('That means that your project should be working properly, so please make sure it does. Otherwise you can work on it and publish it once it works fine.') }}</p>
         </div>
         <form class="form-horizontal" method="post" action="{{ url_for('project.publish', short_name = project.short_name) }}">
