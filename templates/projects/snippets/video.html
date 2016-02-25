@@ -90,6 +90,7 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
+<script type="text/javascript" src="/static/js/pybossa-player/dist/pybossa-player.min.js"></script>
 <script type="text/javascript">
 (function() {
 function loadUserProgress() {
@@ -104,32 +105,20 @@ function loadUserProgress() {
 }
 
 pybossa.taskLoaded(function(task, deferred) {
-    if ( !$.isEmptyObject(task) ) {
-        // load video from Vimeo
-        deferred.resolve(task);
-    }
-    else {
-        deferred.resolve(task);
-    }
+    deferred.resolve(task);
 });
 
 pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         loadUserProgress();
-        if ((task.info.oembed === undefined) && (task.info.video_url)) {
-            var oembed = $("<video>");
-            oembed.attr("src", task.info.video_url);
-            oembed.attr("width", 512);
-            oembed.prop('controls', true);
-            task.info.oembed = oembed;
-        }
-        $('#video-clip').html('').append(task.info.oembed);
+        var player = PybossaPlayer(task.info.video_url, 'video-clip');
         $('#task-id').html(task.id);
 
         $('.btn-answer').off('click').on('click', function(evt) {
             var answer = {'answer': $(this).attr("value")};
             if (typeof answer != 'undefined') {
                 pybossa.saveTask(task.id, answer).done(function() {
+                    player.destroy();
                     deferred.resolve();
                 });
                 $("#loading").fadeIn(500);
