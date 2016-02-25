@@ -120,7 +120,7 @@ pybossa.taskLoaded(function(task, deferred) {
 pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         loadUserProgress();
-        var player = PybossaPlayer(task.info.audio_url, 'sound-clip');
+        var player = PybossaPlayer(task.info.audio_url, 'sound-clip', true);
         $('#question').html(task.info.question);
         $('#task-id').html(task.id);
 
