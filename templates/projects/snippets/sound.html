@@ -90,6 +90,7 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
+<script type="text/javascript" src="/static/js/pybossa-player/dist/pybossa-player.min.js"></script>
 <script type="text/javascript">
 (function() {
 function loadUserProgress() {
@@ -106,23 +107,8 @@ function loadUserProgress() {
 pybossa.taskLoaded(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         // keep this  if block for backwards compatibility...
-        // load image from soundcloud
         if (task.info.song) {
-            var embed = $('<iframe />');
-            embed.css('width', '100%');
-            embed.css('height', 166);
-            embed.attr('scrolling', 'no');
-            embed.attr('frameborder', 'no');
-            embed.attr('src', task.info.song);
-            task.info.embed = embed;
-        }
-
-        if ((task.info.embed === undefined) && (task.info.audio_url)) {
-            var embed = $("<audio>");
-            embed.attr("src", task.info.audio_url);
-            embed.attr("width", '100%');
-            embed.prop('controls', true);
-            task.info.embed = embed;
+            task.info.audio_url = task.info.song;
         }
         deferred.resolve(task);
     }
@@ -134,7 +120,7 @@ pybossa.taskLoaded(function(task, deferred) {
 pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         loadUserProgress();
-        $('#sound-clip').html('').append(task.info.embed);
+        var player = PybossaPlayer(task.info.audio_url, 'sound-clip');
         $('#question').html(task.info.question);
         $('#task-id').html(task.id);
 
@@ -142,6 +128,7 @@ pybossa.presentTask(function(task, deferred) {
             var answer = {'answer': $(this).attr("value")};
             if (typeof answer != 'undefined') {
                 pybossa.saveTask(task.id, answer).done(function() {
+                    player.destroy();
                     deferred.resolve();
                 });
                 $("#loading").fadeIn(500);
