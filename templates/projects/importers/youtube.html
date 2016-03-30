@@ -19,6 +19,10 @@
     <div class="span9">
         <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
         <h2>{{_('From Youtube')}}</h2>
+        <br>
+        <span class="help-inline"> {{ _('Please provide a URL to a Youtube playlist with videos for') }} {{ active_project }}.
+        </span>
+        <br>
         <div id="objects-container" class="row">
             <ul id="objects"></ul>
         </div>
@@ -26,14 +30,11 @@
         <form class="form-group" method="post" action="{{ url_for(target, short_name=project.short_name) }}">
             <fieldset>
                 {{ form.hidden_tag() }}
-                <span class="help-inline"> {{ _('Please provide a URL to a Youtube playlist with videos for') }} {{ active_project }}.
-                </span>
-                {{ render_field(form.playlist_url, class="form-control", placeholder=_("URL of a Youtube Playlist")) }}
-                <div class="form-actions">
-                    <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-                    <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
-                </div>
+                {{ render_field(form.playlist_url, class="input-block-level", placeholder=_("URL of a Youtube Playlist")) }}
             </fieldset>
+            <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
+            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
+
         </form>
         {% endif %}
     </div>
