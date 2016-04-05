@@ -1,0 +1,46 @@
+{% extends "/base.html" %}
+{% set active_page = "projects" %}
+{% set active_project = project.short_name %}
+{% import "projects/_helpers.html" as helper %}
+
+{% block content %}
+{% from "_formhelpers.html" import render_field %}
+{{ helper.render_loading(loading_text) }}
+<style type="text/css">
+.selected {
+    background-color: #D4D4D4;
+}
+</style>
+<div class="row">
+    <div class="span3">
+        {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features)}}
+    </div>
+
+    <div class="span9">
+        <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
+        <h2>{{_('From Youtube')}}</h2>
+        <br>
+        <span class="help-inline"> {{ _('Please provide a URL to a Youtube playlist with videos for') }} {{ active_project }}.
+        </span>
+        <br>
+        <div id="objects-container" class="row">
+            <ul id="objects"></ul>
+        </div>
+        {% if form %}
+        <form class="form-group" method="post" action="{{ url_for(target, short_name=project.short_name) }}">
+            <fieldset>
+                {{ form.hidden_tag() }}
+                {{ render_field(form.playlist_url, class="input-block-level", placeholder=_("URL of a Youtube Playlist")) }}
+            </fieldset>
+            <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
+            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
+        </form>
+        {% endif %}
+    </div>
+</div>
+<script>
+    $("#submit").off('click').on('click', function(){
+        $("#loading").show();
+    });
+</script>
+{% endblock %}
