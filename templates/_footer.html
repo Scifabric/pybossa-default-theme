@@ -1,16 +1,42 @@
-      <div class="container">
-        <div class="row" style="text-align:center;">
-          <div class="col-md-4">
-              <a href="http://citizencyberscience.net/"><img src="{{url_for('static', filename='img/ccc.png')}}"></a>
-          </div>
-          <div class="col-md-4">
-              <a href="http://okfn.org/"><img src="{{url_for('static', filename='img/okf.png')}}"></a>
-          </div>
-          <!--<div class="col-md-3">
-              <a href="http://www.unige.ch/"><img src="{{url_for('static', filename='img/udg.png')}}"></a>
-          </div>-->
-          <div class="col-md-4">
-              <a href="http://pybossa.com/"><img src="{{url_for('static', filename='img/pybossa.png')}}"></a>
-          </div>
+<footer>
+{% if not enforce_privacy %}
+<div id="footer_links" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul>
+                <li><strong>{{ _('Resources') }}</strong></li>
+                <li><i class="icon-link"></i> <a href="http://docs.pybossa.com">{{ _('Docs') }}</a></li>
+                <li><i class="icon-link"></i> <a href="{{url_for('help.api')}}">API</a></li>
+                <li><i class="icon-link"></i> <a href="{{url_for('help.tos')}}">{{ _('Terms of Use') }}</a></li>
+                <li><i class="icon-link"></i> <a href="{{url_for('help.cookies_policy')}}">{{ _('Cookies Policy') }}</a></li>
+                <li><i class="icon-link"></i> <a href="{{url_for('stats.index')}}">{{ _('Stats') }}</a></li>
+            </ul>
         </div>
-      </div>
+        <div class="col-md-3">
+            <ul>
+                <li><strong>{{ _('Licenses') }}</strong></li>
+                <li><i class="icon-link"></i> <a href="{{url_for('help.license')}}">{{ _('Overview') }}</a></li>
+                <li><i class="icon-link"></i> <a href="{{url_for('help.license', _anchor='projects')}}">{{ _('Projects') }}</a></li>
+                <li><i class="icon-link"></i> <a href="{{url_for('help.license', _anchor='data')}}">{{ _('Data') }}</a></li>
+                <li><i class="icon-link"></i> <a href="{{url_for('help.license', _anchor='content')}}">{{ _('Content') }}</a></li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <ul>
+                <li><strong>{{ _('Technologies') }}</strong></li>
+                <li><i class="icon-link"></i> <a href="http://ckan.org">{{ _('CKAN') }}</a></li>
+                <li><i class="icon-link"></i> <a href="http://www.epicollect.net">{{ _('EpiCollect') }}</a></li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <ul>
+                <li><strong>{{ _('Contact') }}</strong></li>
+                <li><i class="icon-envelope"></i> <a href="mailto:{{contact_email}}">{{ _('Email') }}</a></li>
+                <li><i class="icon-twitter"></i> <a href="http://twitter.com/{{contact_twitter}}">{{ _('Twitter') }}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endif %}
+</footer>
+
