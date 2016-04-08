@@ -6,7 +6,7 @@
 
 <div class="row">
     <!-- Success and Error Messages for the user --> 
-    <div class="span6 offset2" style="height:50px">
+    <div class="col-md-6 col-md-offset-2" style="height:50px">
         <div id="success" class="alert alert-success" style="display:none;">
             <a class="close">×</a>
             <strong>Well done! Your answer has been saved</strong>
@@ -21,11 +21,11 @@
             <strong>Congratulations! You have participated in all available tasks!</strong>
             <br/>
             <div class="alert-actions">
-                <a class="btn small" href="/">Go back</a>
-                <a class="btn small" href="/project">or, Check other projects</a>
+                <a class="btn btn-default small" href="/">Go back</a>
+                <a class="btn btn-default small" href="/project">or, Check other projects</a>
             </div>
         </div>
-        <div id="error" class="alert alert-error" style="display:none;">
+        <div id="error" class="alert alert-danger" style="display:none;">
             <a class="close">×</a>
             <strong>Error! Something went wrong, please contact the site administrators</strong>
         </div>
@@ -33,7 +33,7 @@
 </div> <!-- End Success and Error Messages for the user -->
 
 <div class="row skeleton">
-    <div id="question" class="span12">
+    <div id="question" class="col-md-12">
       <h1>Question</h1>
       <span class="label label-info"><i class="icon icon-bullhorn"></i> Important</span> <strong>This is just a demo project. You can re-use the code to create your own project.</strong>
       <hr>
@@ -42,7 +42,7 @@
 
 <div class="row skeleton">
     <!-- Answer buttons -->
-    <div id="answer" class="span8" style="text-align:center;">
+    <div id="answer" class="col-md-8" style="text-align:center;">
         <div class="btn-group" style="padding-bottom:5px;">
             <button id="prev" class="btn btn-navigate disabled" value="prev"><i class="icon-arrow-left"></i></button>
             <button class="btn btn-zoom" value=0>1:1</button>
@@ -54,12 +54,12 @@
           <p>Page <span id="currentPage">#</span> of <span id="totalPages">#</span></p>
         </div>
      </div>
-    <div class="span4">
+    <div class="col-md-4">
         <p>You are working now on task: <span id="task-id" class="label label-warning">#</span></p>
         <p>You have completed: <span id="done" class="label label-info"></span> tasks from
         <span id="total" class="label label-inverse"></span></p>
         <div class="progress progress-striped">
-            <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
+            <div id="progress" rel="tooltip" title="#" class="progress-bar" style="width: 0%;"></div>
         </div>
         <div>
             <h5>Write here the transcription</h5>

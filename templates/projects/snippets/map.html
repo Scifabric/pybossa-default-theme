@@ -14,7 +14,7 @@
 </style>
 <div class="row">
     <!-- Success and Error Messages for the user --> 
-    <div class="span8 offset2" style="height:50px">
+    <div class="col-md-8 col-md-offset-2" style="height:50px">
         <!-- Success alert box -->
         <div id="success" class="alert alert-success" style="display:none;">
             <a class="close">×</a><strong>Well done!</strong> Your answer has been saved
@@ -32,12 +32,12 @@
             <strong>Congratulations!</strong> You have participated in all available tasks!
             <br/>
             <div class="alert-actions">
-                <a class="btn small" href="/">Go back</a>
-                <a class="btn small" href="/project">or, Check other projects</a>
+                <a class="btn btn-default small" href="/">Go back</a>
+                <a class="btn btn-default small" href="/project">or, Check other projects</a>
             </div>
         </div>
         <!-- Error alert box -->
-        <div id="error" class="alert alert-error" style="display:none;">
+        <div id="error" class="alert alert-danger" style="display:none;">
             <a class="close">×</a>
             <strong>Error!</strong> Something went wrong, please contact the site administrators
         </div>
@@ -46,14 +46,14 @@
             <a class="close">×</a>
             <p><strong>Sorry!</strong> Your web browser does not support the project.<p>
             <div class="alert-actions">
-<a c    lass="btn small" href="/project">Please, try with another project</a>
+<a c    lass="btn btn-default small" href="/project">Please, try with another project</a>
             </div>
         </div>
     </div><!-- End of span8 offset2-->
 </div><!-- End of Row-->
 
 <div class="row">
-  <div class="skeleton span11 offset1">
+  <div class="skeleton col-md-11 col-md-offset-1">
     <div id="question">
       <h1>Question</h1>
       <h3 id="city">City</h3>
@@ -75,7 +75,7 @@
 </div>
 
 <div class="row skeleton">
-    <div id="disqus_thread" class="span11 offset1"></div>
+    <div id="disqus_thread" class="col-md-11 col-md-offset-1"></div>
 </div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
