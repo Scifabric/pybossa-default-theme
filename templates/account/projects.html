@@ -6,10 +6,10 @@
 
 {% block content %}
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_account_local_nav(current_user, active_link) }}
     </div>
-    <div class="span9" style="min-height:400px">
+    <div class="col-md-9" style="min-height:400px">
         <h1><strong>{{ current_user.fullname }}'s</strong>: {{ _('Projects') }}</h1>
         {% if projects_published or projects_draft %}
             {% if projects_published %}

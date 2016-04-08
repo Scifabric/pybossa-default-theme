@@ -31,20 +31,20 @@
 
 
 {% macro render_user_profile(user, upload_method, settings, private=True) %}
-<div class="row-fluid">
-    <div class="span3">
-        {{ render_user_thumbnail(user, upload_method, class="img-polaroid") }}
+<div class="row">
+    <div class="col-md-3">
+        {{ render_user_thumbnail(user, upload_method, class="img-thumbnail") }}
     </div>
-    <div class="span9">
+    <div class="col-md-9">
         <h2><i class="icon-user"></i> {{ _('Nick')}}: <small>{{ user.name }}</small></h2>
         {% if private %}
         <h2><i class="icon-envelope"></i> {{_('E-mail')}}: <small>{{
                 user.email_addr }}</small> 
             {% if (user.valid_email == False) %}
               {% if (user.confirmation_email_sent == False) %}
-              <a href="{{ url_for('account.confirm_email')}}" class="btn btn-small">Validate email</a>
+              <a href="{{ url_for('account.confirm_email')}}" class="btn btn-sm">Validate email</a>
               {% else %}
-              <a href="#" class="btn btn-small disabled">Email sent for
+              <a href="#" class="btn btn-sm disabled">Email sent for
                   validation</a>
               {% endif %}
             {% endif %}

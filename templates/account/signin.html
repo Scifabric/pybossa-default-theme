@@ -42,13 +42,13 @@
       {{ render_field(form.email, placeholder="") }}
       {{ render_field(form.password, placeholder="") }}
     <div class="form-actions">
-      <input type="submit" value="{{ _('Sign in') }}" class="btn btn-primary btn-large" />
-      <input type="reset" value="{{ _('Cancel') }}" class="btn" />
+      <input type="submit" value="{{ _('Sign in') }}" class="btn btn-primary btn-lg" />
+      <input type="reset" value="{{ _('Cancel') }}" class="btn btn-default" />
     </div>
   </form>
 
 <div class="row">
-    <div class="span12" style="text-align:center">
+    <div class="col-md-12" style="text-align:center">
         <a href="{{ url_for('account.register') }}" class="btn btn-success"><i class="icon icon-white icon-user"></i>{{ _(' Create a new account!') }}</a>
         <a href="{{ url_for('account.forgot_password') }}" class="btn btn-success">{{ _('Forgot Password') }}</a>
     </div>

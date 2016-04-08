@@ -10,14 +10,14 @@
 <link rel="stylesheet" href="{{url_for('static', filename='css/jquery.Jcrop.min.css')}}" type="text/css" />
 
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_account_local_nav(current_user, active_link) }}
     </div>
-    <div class="span9">
+    <div class="col-md-9">
         <h1><strong>{{current_user.fullname}}</strong>: {{ _('Update your profile') }}</h1>
         <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile', name=current_user.name) }}" enctype="multipart/form-data">
             <fieldset>
-                <div class="span2 img-polaroid">
+                <div class="col-md-2 img-thumbnail">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                 {{ helper.render_user_thumbnail(current_user, upload_method)}}
                 </div>
@@ -28,7 +28,7 @@
             {{ upload_form.y2 }}
             <img id="uploadPreview">
             <div class="form-actions">
-                <button type="submit" name='btn' value="Upload" class="btn btn-primary btn-large" />{{ _('Upload') }}</button>
+                <button type="submit" name='btn' value="Upload" class="btn btn-primary btn-lg" />{{ _('Upload') }}</button>
             </div>
             </fieldset>
         </form>
@@ -44,8 +44,8 @@
             {{ render_field(form.privacy_mode) }}
             {{ render_field(form.subscribed) }}
             <div class="form-actions">
-                <button type="submit" name='btn' value="Profile" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
-              <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
+                <button type="submit" name='btn' value="Profile" class="btn btn-primary btn-lg" />{{ _('Save the changes') }}</button>
+              <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn btn-default">{{ _('Cancel') }}</a>
             </div>
             </fieldset>
         </form>
@@ -61,8 +61,8 @@
                 {{ render_field(password_form.new_password) }}
                 {{ render_field(password_form.confirm) }}
                 <div class="form-actions">
-                    <button type="submit" name="btn" value="Password" class="btn btn-primary btn-large">{{ _('Save the Changes')}}</button>
-                    <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
+                    <button type="submit" name="btn" value="Password" class="btn btn-primary btn-lg">{{ _('Save the Changes')}}</button>
+                    <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn btn-default">{{ _('Cancel') }}</a>
                 </div>
             </fieldset>
         </form>
@@ -74,8 +74,8 @@
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             {{ render_field(form.ckan_api) }}
             <div class="form-actions">
-                <button type="submit" name='btn' value="External" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
-              <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
+                <button type="submit" name='btn' value="External" class="btn btn-primary btn-lg" />{{ _('Save the changes') }}</button>
+              <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn btn-default">{{ _('Cancel') }}</a>
             </div>
             </fieldset>
         </form>
@@ -85,8 +85,8 @@
         <h3><strong>{{ _('Do you want to reset your personal API Key?') }}</strong></h3>
             <div class="form-actions">
               <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-              <button type="submit" class="btn btn-small" value="Reset">Reset</button>
-              <a href="{{ url_for('account.profile', name=current_user.name) }}" class="btn btn-large btn-primary">{{ _('No, do not reset the API key!') }}</a>
+              <button type="submit" class="btn btn-sm" value="Reset">Reset</button>
+              <a href="{{ url_for('account.profile', name=current_user.name) }}" class="btn btn-lg btn-primary">{{ _('No, do not reset the API key!') }}</a>
             </div>
         </fieldset>
         </form>
