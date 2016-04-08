@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    {% if navbar-brand == title %}
+    {% if brand == title %}
     <title>{{ title }} - PyBossa by Scifabric</title>
     {% else %}
-    <title>{{ navbar-brand }} &middot; {{ title | safe}} - PyBossa by Scifabric</title>
+    <title>{{ brand }} &middot; {{ title | safe}} - PyBossa by Scifabric</title>
     {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PYBOSSA is the ultimate crowdsourcing framework to analyze or enrich data that can't be processed by machines alone.">
@@ -53,7 +53,7 @@
     </div> <!-- /container -->
     {% if show_cookies_warning %}
     <div id="cookies_warning">
-        <p>Cookies help us deliver our services. By using our services, you agree to our use of cookies. <button class="btn btn-xs btn-success" onclick="accept_cookies()"><i class="icon-thumbs-up"></i> OK</button> <a class="btn btn-xs" href="{{url_for('help.cookies_policy')}}"><i class="icon-info-sign"></i> More info</a></p>
+        <p>Cookies help us deliver our services. By using our services, you agree to our use of cookies. <button class="btn btn-mini btn-success" onclick="accept_cookies()"><i class="icon-thumbs-up"></i> OK</button> <a class="btn btn-mini" href="{{url_for('help.cookies_policy')}}"><i class="icon-info-sign"></i> More info</a></p>
     </div>
     {% endif %}
     <footer>
