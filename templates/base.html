@@ -41,20 +41,20 @@
     <div class="container" style="min-height:400px;">
         {% block content %}{% endblock %}
     </div> <!-- /container -->
-    {% if show_cookies_warning %}
-    <div id="cookies_warning">
-        <p>Cookies help us deliver our services. By using our services, you agree to our use of cookies. <button class="btn btn-xs btn-success" onclick="accept_cookies()"><i class="icon-thumbs-up"></i> OK</button> <a class="btn btn-xs" href="{{url_for('help.cookies_policy')}}"><i class="icon-info-sign"></i> More info</a></p>
-    </div>
-    {% endif %}
-
     {% include "_footer.html" %}
     <!-- Le javascript -->
+    <script>
+        window.cookieconsent_options = {"message":"Cookies help us to deliver our services. By using our services, you agree to our use of cookies.","dismiss":"Got it!","learnMore":"Learn More.","link":"{{url_for('help.cookies_policy')}}","theme":"dark-bottom"};
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
     {% assets filters="jsmin", output="js/gen/default.min.js",
               "js/vendor/jquery-2.2.3.js", "js/vendor/bootstrap.js", 
               "js/vendor/modernizr.min.js", "js/flashmessages.js", 
-              "js/vendor/cookies.js" %}
+              "js/vendor/cookieconsent.min.js"
+              %}
               <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
+
     {% include "_flash_messages.html" %}
   </body>
 </html>
