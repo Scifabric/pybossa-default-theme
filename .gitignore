@@ -9,3 +9,4 @@ _gcs.html
 _gcs_form.html
 static/.webassets-cache/*
 static/css/gen/*
+static/js/gen/*
