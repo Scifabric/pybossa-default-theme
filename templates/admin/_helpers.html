@@ -1,11 +1,11 @@
 {% import "account/_helpers.html" as helper %}
 
 {% macro render_admin_user(user, upload_method) %}
-<div class="row-fluid well well-small">
-    <div class="span2">
+<div class="row well well-small">
+    <div class="col-md-2">
         {{ helper.render_user_thumbnail(user, upload_method, style="height:100px; width:100px;")}}
     </div>
-    <div class="span10">
+    <div class="col-md-10">
         <h2>{{user.fullname}} <small>({{ _('nick') }}: {{user.name}})</small></h2>
         <h3>{{ _('Member since') }}: {{user.created[0:10]}}</h3>
         {% if user.admin %}

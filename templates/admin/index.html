@@ -5,20 +5,20 @@
 
 {% block content %}
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_account_local_nav(current_user, active_link) }}
     </div>
-    <div class="span9" style="min-height:400px;">
+    <div class="col-md-9" style="min-height:400px;">
         <h1><strong>{{ _('Admin Site') }}</strong></h1>
-        <div class="row-fluid">
-            <div id="dashboard" class="span6 well">
+        <div class="row">
+            <div id="dashboard" class="col-md-6 well">
                 <h2><i class="icon-dashboard"></i> {{_('Dashboard')}}</h2>
                 <p>{{_('Internal Statistics')}}</p>
                 <a href="{{url_for('admin.dashboard')}}" class="btn btn-primary">
                     {{ _('Go') }} <i class="icon-chevron-right"></i>
                 </a>
             </div>
-            <div id="dashboard" class="span6 well">
+            <div id="dashboard" class="col-md-6 well">
                 <h2><i class="icon-dashboard"></i> {{_('Background Jobs')}}</h2>
                 <p>{{_('Monitor the background jobs')}}</p>
                 <a href="{{url_for('rq_dashboard.overview')}}" class="btn btn-primary">
@@ -26,15 +26,15 @@
                 </a>
             </div>
         </div>
-        <div class="row-fluid">
-            <div id="featured-apps" class="span6 well">
+        <div class="row">
+            <div id="featured-apps" class="col-md-6 well">
                 <h2><i class="icon-star"></i> {{_('Featured Projects')}}</h2>
                 <p>{{_('Show projects on the front page')}}</p>
                 <a href="{{url_for('admin.featured')}}" class="btn btn-primary">
                     {{ _('Manage') }} <i class="icon-chevron-right"></i>
                 </a>
             </div>
-            <div id="categories" class="span6 well">
+            <div id="categories" class="col-md-6 well">
                 <h2><i class="icon-check"></i> {{_('Categories')}}</h2>
                 <p>{{_('Manage project categories')}}</p>
                 <a href="{{url_for('admin.categories')}}" class="btn btn-primary">
@@ -42,15 +42,15 @@
                 </a>
             </div>
         </div>
-        <div class="row-fluid">
-            <div id="users" class="span6 well">
+        <div class="row">
+            <div id="users" class="col-md-6 well">
                 <h2><i class="icon-user"></i> {{_('Administrators')}}</h2>
                 <p>{{_('Manage administrators')}}</p>
                 <a href="{{url_for('admin.users')}}" class="btn btn-primary">
                     {{ _('Manage') }} <i class="icon-chevron-right"></i>
                 </a>
             </div>
-            <div id="users-list" class="span6 well">
+            <div id="users-list" class="col-md-6 well">
                 <h2><i class="icon-list"></i> {{_('Users')}}</h2>
                 <p>{{_('Export a list of users')}}</p>
                 <a href="{{url_for('admin.export_users', format='json')}}" class="btn btn-primary">
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="span12">
+            <div class="col-md-12">
                 <h2>{{_('Latest news from PyBossa')}}</h2>
                 <ul class="news">
                     {% for new in news %}

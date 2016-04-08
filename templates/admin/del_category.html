@@ -6,10 +6,10 @@
 {% block content %}
 
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3">
         {{ render_account_local_nav(current_user, active_link) }}
     </div>
-    <div class="span9">
+    <div class="col-md-9">
         <h1><strong>{{ _('Admin Site') }}:</strong> {{title}}</h1>
         <div class="alert alert-danger">
             <strong>{{ _('Danger Zone!') }}</strong> {{ _('Deleting the category will remove it from all the projects! This operation cannot be undone!') }}
@@ -17,8 +17,8 @@
         <h2>{{_('Delete Category')}}: {{category.name}}?</h2>
         <form method="post" action="{{url_for('admin.del_category', id=category.id)}}">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-            <input class="btn btn-small" type="submit" value="Yes"></input>
-            <a class="btn btn-large" href="{{url_for('admin.categories')}}">{{ _('No, do not delete it') }}</a>
+            <input class="btn btn-sm" type="submit" value="Yes"></input>
+            <a class="btn btn-lg" href="{{url_for('admin.categories')}}">{{ _('No, do not delete it') }}</a>
         </form>
     </div>
 </div>
