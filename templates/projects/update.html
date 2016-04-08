@@ -7,10 +7,10 @@
 <script src="{{url_for('static', filename='js/vendor/jquery.Jcrop.min.js')}}"></script>
 <link rel="stylesheet" href="{{url_for('static', filename='css/jquery.Jcrop.min.css')}}" type="text/css" />
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_project_local_nav(project, 'settings', current_user, pro_features) }}
     </div>
-  <div class="span9">
+  <div class="col-md-9">
       <legend><strong>{{project.name}}</strong>: {{_('Update the project')}}</legend>
       <!-- Update form for project thumbnail -->
       <form method="post" class="form-horizontal" action="{{ url_for('project.update', short_name=project.short_name) }}" enctype="multipart/form-data">
@@ -25,7 +25,7 @@
               {{ upload_form.x2 }}
               {{ upload_form.y2 }}
           <div class="form-actions">
-            <button type="submit" name='btn' value="Upload" class="btn btn-primary btn-large">{{ _('Upload') }}</button>
+            <button type="submit" name='btn' value="Upload" class="btn btn-primary btn-lg">{{ _('Upload') }}</button>
           </div>
           </fieldset>
       </form>
@@ -45,7 +45,7 @@
         {{ render_field(form.webhook) }}
         <div class="form-actions">
           <button type="submit" name='btn' value="Save the changes" class="btn btn-primary">{{_('Save te changes')}}</button>
-          <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn">{{_('Cancel')}}</a>
+          <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
         </div>
       </fieldset>
     </form>

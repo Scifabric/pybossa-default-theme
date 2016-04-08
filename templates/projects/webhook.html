@@ -6,10 +6,10 @@
 {% block content %}
 {% include "projects/js/webhook.js" %}
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_project_local_nav(project, 'webhook', current_user, pro_features) }}
     </div>
-    <div class="span9" style="min-height:400px">
+    <div class="col-md-9" style="min-height:400px">
         {{ helper.render_project_title(project, upload_method) }}
         <div style="text-align:center; padding-bottom:15px;">
             <a id="webhooks-refresh" href="#" class="btn btn-info" style="display:none;" onclick="document.location.reload(true);"> Refresh</a>

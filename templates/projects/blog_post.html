@@ -6,7 +6,7 @@
 {% block content %}
 <div class="row">
     {% if blogpost %}
-    <div class="span9" style="min-height:400px">
+    <div class="col-md-9" style="min-height:400px">
         <hr>
             <article>
                 <header>
@@ -29,16 +29,16 @@
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <div class="form-actions">
                 <input type="submit" value={{_('Delete')}} class="btn btn-danger" />
-                <a href="{{url_for('project.update_blogpost', short_name=project.short_name, id=blogpost.id)}}" class="btn">{{_('Edit')}}</a>
+                <a href="{{url_for('project.update_blogpost', short_name=project.short_name, id=blogpost.id)}}" class="btn btn-default">{{_('Edit')}}</a>
             </div>
         </form>
         {% endif %}
-        <a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}" class="btn">{{_('Back')}}</a>
+        <a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}" class="btn btn-default">{{_('Back')}}</a>
     </div>
     {% else %}
     <div class="page-header">
         <h1>{{ _('Sorry! This blogpost does not exist.') }}</h1>
-        <a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}" class="btn">{{_('Back')}}</a>
+        <a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}" class="btn btn-default">{{_('Back')}}</a>
     </div>
     {% endif %}
 </div>

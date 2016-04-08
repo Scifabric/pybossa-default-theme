@@ -7,10 +7,10 @@
 {% block content %}
 {% if project %}
         <div class="row">
-            <div class="span3">
+            <div class="col-md-3">
                 {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features) }}
             </div>
-            <div class="span9">
+            <div class="col-md-9">
                 {{ helper.render_project_title(project, subtitle=_('Task Scheduler'))}}
                 <p>{{_('You can choose from the following schedulers')}}:</p>
                 <ul>
@@ -33,7 +33,7 @@
                         placeholder="Task scheduler for your rpoject")}}
                         <div class="form-actions">
                             <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
-                            <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn">{{_('Cancel')}}</a>
+                            <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
                         </div>
                     </fieldset>
                 </form>

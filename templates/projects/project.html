@@ -6,11 +6,11 @@
 {% block content %}
 <div class="row">
     {% if project %}
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_project_local_nav(project, 'info', current_user, pro_features) }}
     </div>
     <!-- Project -->
-    <div class="span9" style="min-height:400px">
+    <div class="col-md-9" style="min-height:400px">
         {{ helper.render_project_title(project, upload_method) }}
         <hr>
         {{ helper.render_overall_progress(project, n_tasks, overall_progress) }}

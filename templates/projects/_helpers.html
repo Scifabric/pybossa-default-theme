@@ -59,11 +59,11 @@
 {% endmacro %}
 
 {% macro render_project_summary(project, n_tasks, overall_progress, last_activity, current_user, upload_method) -%}
-<div class="row-fluid">
-    <div class="span2">
-        {{ render_project_thumbnail(project, upload_method, class='img-polaroid') }}
+<div class="row">
+    <div class="col-md-2">
+        {{ render_project_thumbnail(project, upload_method, class='img-thumbnail') }}
     </div>
-    <div class="span8">
+    <div class="col-md-8">
       <ul style="list-style-type: none; font-size: 16px;">
         {% if current_user.id == project.owner_id %}
         <li><strong><i class="icon-cog"></i> {{ _('ID') }}</strong>: {{ project.id }}</li>
@@ -79,11 +79,11 @@
 {% endmacro %}
 
 {% macro render_project_short_summary(project, upload_method) -%}
-<div class="row-fluid well well-small">
-    <div class="span3">
-        {{ render_project_thumbnail(project, upload_method, class="img-polaroid", style="max-width:100px") }}
+<div class="row well well-small">
+    <div class="col-md-3">
+        {{ render_project_thumbnail(project, upload_method, class="img-thumbnail", style="max-width:100px") }}
     </div>
-    <div class="span9">
+    <div class="col-md-9">
         <h2><a href="{{url_for('project.settings', short_name=project.short_name)}}">{{project.name}}</a></h2>
         <p>{{ project['description'] }}</p>
         <a class="btn btn-inverse" href="{{url_for('project.settings', short_name=project.short_name)}}"><i class="icon-wrench"></i> {{ _('Settings') }}</a>
@@ -92,11 +92,11 @@
 {% endmacro %}
 
 {% macro render_project_admin_featured(project, upload_method) -%}
-<div class="row-fluid well well-small">
-    <div class="span3">
-        {{ render_project_thumbnail(project, upload_method, class="img-polaroid", style="max-width:100px") }}
+<div class="row well well-small">
+    <div class="col-md-3">
+        {{ render_project_thumbnail(project, upload_method, class="img-thumbnail", style="max-width:100px") }}
     </div>
-    <div class="span9">
+    <div class="col-md-9">
         <h2><a href="{{url_for('project.settings', short_name=project.short_name)}}">{{project.name}}</a></h2>
         <p>{{ project['description'] }}</p>
         <a class="btn btn-inverse" href="{{url_for('project.settings', short_name=project.short_name)}}"><i class="icon-wrench"></i> {{ _('Settings') }}</a>
@@ -121,13 +121,13 @@
 
 
 {% macro show_project(project, active_cat, current_user, upload_method) %}
-<div class="project-item row-fluid {{class}} well">
+<div class="project-item row {{class}} well">
     <h2><a href="{{ url_for('project.details', short_name = project.short_name) }}">{{ project.name }}</a></h2>
-    <div class="row-fluid">
-        <div class="span3">
+    <div class="row">
+        <div class="col-md-3">
             {{ render_project_thumbnail(project, upload_method, class='thumbnail', style='max-width:100px; max-height:100px;') }}
         </div> <!-- End of span3 -->
-        <div id="data" class="span9">
+        <div id="data" class="col-md-9">
             <p style="margin:0"><strong><i class="icon-info-sign"></i> {{ _('Description') }}</strong>: {{ project.description }}</p>
             <p style="margin:0"><strong><i class="icon-ok"></i> {{ _('Creation Date') }}</strong>: <span class="date">{{ project.created[0:10] }}</span></p>
             {% if project.last_activity_raw != None %}
@@ -185,7 +185,7 @@ function imgError(image) {
 
 {% macro render_project_title(project, upload_method, subtitle=None) %}
 <h1>
-    {{ render_project_thumbnail(project, upload_method, class="img-polaroid", style="max-width:60px") }}
+    {{ render_project_thumbnail(project, upload_method, class="img-thumbnail", style="max-width:60px") }}
     {% if subtitle %}
     <strong>{{ project.name }}</strong>: {{subtitle}}</h1>
     {% else %}
@@ -194,8 +194,8 @@ function imgError(image) {
 {% endmacro %}
 
 {% macro render_overall_progress(project, n_tasks, overall_progress, show_contribute_btn=True, show_n_tasks=False) %}
-<div class="row-fluid">
-    <div class="span1"><input type="text" value="{{overall_progress | round |int}}" class="dial"></div>
+<div class="row">
+    <div class="col-md-1"><input type="text" value="{{overall_progress | round |int}}" class="dial"></div>
     <h2><strong> {{_('Overall progress')}}</strong>: {{ overall_progress | round | int }}% {{_('completed')}}
         {% if show_contribute_btn %}
         {{ render_contribute_button(project) }}
@@ -227,15 +227,15 @@ function imgError(image) {
 
 {% macro render_grid_projects(projects, title, upload_method) %}
     <div class="banner">
-        <div class="row-fluid">
-            <div class="span4">
+        <div class="row">
+            <div class="col-md-4">
                 <h1>{{title}}</h1>
             </div>
-            <div class="span8">
+            <div class="col-md-8">
               <ul class="featured">
                   {% for project in projects %}
                   <li><a href={{ url_for('project.details', short_name=project.short_name)}}>
-                      {{ render_project_thumbnail(project, upload_method, class='img-polaroid', style="min-height:100px; min-width:100px;")}}
+                      {{ render_project_thumbnail(project, upload_method, class='img-thumbnail', style="min-height:100px; min-width:100px;")}}
                       <h3>{{project.name}}</h3>
                       <span class="label label-info">{{ _('Info') }}</span>
                       </a>
@@ -252,7 +252,7 @@ function imgError(image) {
 
 {% macro render_loading(text) %}
 <div class="row">
-    <div class="span12">
+    <div class="col-md-12">
         <div id="loading" class="alert alert-info" style="display:none;">
             <img src="{{url_for('static', filename='img/loading.gif')}}"/> {{text}}
         </div>
