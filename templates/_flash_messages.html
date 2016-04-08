@@ -10,7 +10,10 @@
                 $("#pybossa-notification").addClass("hide-notification");
                 });
         console.log(type);
-        if ((type === 'danger') || (type === 'warning')) {
+        if (type === undefined) {
+            type = 'info';
+        }
+        if ((type === 'danger') || (type === 'error') || (type === 'warning')) {
             icon.addClass("fa fa-2x fa-exclamation-triangle pull-left"); 
         }
 
@@ -20,6 +23,9 @@
 
         var text = $("<span/>");
         text.html(msg);
+        if (type === 'error') {
+            type = 'danger';
+        }
         div.addClass("alert-" + type);
         div.prepend(icon);
         div.append(text);
@@ -29,7 +35,7 @@
             $("body").prepend(div);
         }
         else {
-            $("#notification").addClass("hide-notification");
+            $("#pybossa-notification").addClass("hide-notification");
         }
     }
 </script>
@@ -38,6 +44,7 @@
 {% if messages %}
   {% for category, message in messages %}
     <script>
+        console.log("{{category}}");
         notify("{{message|safe}}", true, "{{category}}");
     </script>
   {% endfor %}
