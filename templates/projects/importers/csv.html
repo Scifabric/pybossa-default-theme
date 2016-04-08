@@ -7,10 +7,10 @@
 {% from "_formhelpers.html" import render_field %}
 {{ helper.render_loading(loading_text) }}
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features)}}
     </div>
-    <div class="span9">
+    <div class="col-md-9">
         <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
       {% if form %}
       <h2>{{_('From a CSV file')}}</h2>
@@ -18,10 +18,10 @@
         <fieldset>
         {{ form.hidden_tag() }}
         <span class="help-inline">{{_('Please provide a URL (i.e. DropBox, Box, Ubuntu One, etc. public link) to a CSV file with data for')}} {{ active_project }}.<br/> {{_('For more information, please look at')}} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-via-the-built-in-csv-task-creator" target="_blank">{{_('the documentation')}}.</a></span>
-          {{ render_field(form.csv_url, class_="input-block-level", placeholder=_('The URL of the CSV file')) }}
+          {{ render_field(form.csv_url, class_="form-control", placeholder=_('The URL of the CSV file')) }}
           <div class="form-actions">
             <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
+            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn btn-default">{{_('Cancel')}}</a>
           </div>
         </fieldset>
       </form>

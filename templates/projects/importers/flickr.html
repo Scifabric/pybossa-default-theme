@@ -7,11 +7,11 @@
 {% from "_formhelpers.html" import render_field %}
 {{ helper.render_loading(loading_text) }}
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features)}}
     </div>
 
-    <div class="span9">
+    <div class="col-md-9">
         <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
         <h2>{{_('From a Flickr Album')}}</h2>
         <a id="revoke" href="{{ url_for('flickr.logout', next=url_for(target, short_name=project.short_name, type='flickr')) }}" class="btn btn-secondary pull-right" style="display:none;">{{ _('Revoke access') }}</a>
@@ -29,10 +29,10 @@
             <fieldset>
                 {{ form.hidden_tag() }}
                 <span class="help-inline"> {{ _('Or manually provide the ID of a Flickr set with images for') }} {{ active_project }}. <br/> {{ _('For more information, please look at') }} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-from-a-flickr-photo-set" target="_blank">{{ _('the documentation') }}.</a></span>
-                {{ render_field(form.album_id, class_="input-block-level", placeholder="The ID of the Flickr set") }}
+                {{ render_field(form.album_id, class_="form-control", placeholder="The ID of the Flickr set") }}
                 <div class="form-actions">
                     <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-                    <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
+                    <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn btn-default">{{_('Cancel')}}</a>
                 </div>
             </fieldset>
         </form>

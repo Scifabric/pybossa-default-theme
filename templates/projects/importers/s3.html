@@ -12,11 +12,11 @@
 }
 </style>
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3">
         {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features)}}
     </div>
 
-    <div class="span9">
+    <div class="col-md-9">
         <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
         <h2>{{_('From an Amazon S3 bucket')}}</h2>
         <br>
@@ -30,11 +30,11 @@
             <fieldset>
                 {{ form.hidden_tag() }}
                 {{ form.files(style="display: none;") }}
-                {{ render_field(form.bucket, class_="input-block-level", placeholder=_("Name of the S3 bucket")) }}
+                {{ render_field(form.bucket, class_="form-control", placeholder=_("Name of the S3 bucket")) }}
             </fieldset>
-            <a id="get-bucket" class="btn">{{ _('Search in bucket') }}</a>
+            <a id="get-bucket" class="btn btn-default">{{ _('Search in bucket') }}</a>
             <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
+            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn btn-default">{{_('Cancel')}}</a>
         </form>
         {% endif %}
     </div>
