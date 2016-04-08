@@ -13,6 +13,7 @@
 
     <!-- Le styles -->
     {% assets filters="libsass", output="css/gen/pybossa.min.css",
+              depends="sass/**/*.scss", 
               "sass/_pybossa.scss"%}
         <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
     {% endassets %}
@@ -39,11 +40,6 @@
   </head>
 
   <body>
-    {% if not current_user.is_anonymous() %}
-    <!-- checkpoint::logged-in::{{current_user.name}} -->
-    {% endif %}
-
-
     {% set active_page = active_page | default('index') -%}
     {% set active_project  = active_project | default('none') -%}
     {% include "_navbar.html" %}
