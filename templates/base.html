@@ -42,11 +42,11 @@
   <body>
     {% set active_page = active_page | default('index') -%}
     {% set active_project  = active_project | default('none') -%}
+    {% include "_flash_messages.html" %}
     {% include "_navbar.html" %}
 
     <div class="container" style="min-height:400px;">
 
-    {% include "_flash_messages.html" %}
 
     {% block content %}{% endblock %}
 
