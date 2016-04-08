@@ -1,42 +1,55 @@
 <footer>
-{% if not enforce_privacy %}
-<div id="footer_links" class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <ul>
-                <li><strong>{{ _('Resources') }}</strong></li>
-                <li><i class="icon-link"></i> <a href="http://docs.pybossa.com">{{ _('Docs') }}</a></li>
-                <li><i class="icon-link"></i> <a href="{{url_for('help.api')}}">API</a></li>
-                <li><i class="icon-link"></i> <a href="{{url_for('help.tos')}}">{{ _('Terms of Use') }}</a></li>
-                <li><i class="icon-link"></i> <a href="{{url_for('help.cookies_policy')}}">{{ _('Cookies Policy') }}</a></li>
-                <li><i class="icon-link"></i> <a href="{{url_for('stats.index')}}">{{ _('Stats') }}</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <ul>
-                <li><strong>{{ _('Licenses') }}</strong></li>
-                <li><i class="icon-link"></i> <a href="{{url_for('help.license')}}">{{ _('Overview') }}</a></li>
-                <li><i class="icon-link"></i> <a href="{{url_for('help.license', _anchor='projects')}}">{{ _('Projects') }}</a></li>
-                <li><i class="icon-link"></i> <a href="{{url_for('help.license', _anchor='data')}}">{{ _('Data') }}</a></li>
-                <li><i class="icon-link"></i> <a href="{{url_for('help.license', _anchor='content')}}">{{ _('Content') }}</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <ul>
-                <li><strong>{{ _('Technologies') }}</strong></li>
-                <li><i class="icon-link"></i> <a href="http://ckan.org">{{ _('CKAN') }}</a></li>
-                <li><i class="icon-link"></i> <a href="http://www.epicollect.net">{{ _('EpiCollect') }}</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <ul>
-                <li><strong>{{ _('Contact') }}</strong></li>
-                <li><i class="icon-envelope"></i> <a href="mailto:{{contact_email}}">{{ _('Email') }}</a></li>
-                <li><i class="icon-twitter"></i> <a href="http://twitter.com/{{contact_twitter}}">{{ _('Twitter') }}</a></li>
-            </ul>
+<div class="container-fluid scifabric">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-offset-4 col-sm-4 col-md-offset-0 col-md-4 "> 
+                    <a href="http://scifabric.com/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server"><img alt="SciFabric Logo" class="logo_horiz" src="{{ url_for('static', filename='img/scifabric.svg')}}"></a>
+                    <p class="dev-and-host">Developing <a href="http://pybossa.com/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">PyBossa</a><br> and hosting <a href="http://crowdcrafting.org/">Crowdcrafting</a><br> since 2011</p>
+                    <p>
+                    <a href="https://shuttleworthfoundation.org">
+                        <img class="logo_sf" src="{{url_for('static', filename='img/logo_sf.svg')}}" width="279"></a>
+                    </p>
+
+
+                </div>
+                <div class="col-sm-offset-2 col-sm-4 col-md-offset-0 col-md-2 col-lg-2">
+
+                    <p><strong>Products</strong></p>
+                    <p><a href="http://pybossa.com/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">Pybossa</a></p>
+                    <p><a href="http://crowdcrafting.org/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">Crowdcrafting</a></p>
+
+                </div>
+
+                <div class="col-sm-4 col-md-2 col-lg-2">
+
+                    <p><strong>Services</strong></p>
+                    <p><a href="http://scifabric.com/crowdsourcing/pybossa-cloud-servers/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">Crowdsourcing servers</a></p>
+                    <p><a href="http://scifabric.com/crowdsourcing/#education?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">Education</a></p>
+                    <p><a href="http://scifabric.com/crowdsourcing/training/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">Training</a></p>
+                    <p><a href="http://scifabric.com/crowdsourcing/pybossa-cloud-servers/#support?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">Support</a></p>
+
+                </div>
+
+                <div class="col-sm-offset-2 col-sm-4 col-md-offset-0 col-md-2 col-lg-2">
+                    <p><strong>Company</strong></p>
+                    <p><a href="http://scifabric.com/success-stories/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">Success stories</a></p>
+                    <p><a href="http://scifabric.com/team/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">About us</a></p>
+                    <p><a href="http://scifabric.com/contact/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">Contact</a></p>
+                    <p><a href="http://scifabric.com/press/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">Press</a></p>
+                    <p><a href="http://scifabric.com/jobs/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">Jobs</a></p>
+                </div>
+
+                <div class="col-sm-4 col-md-2 col-lg-2">
+
+                    <p><strong>Social</strong></p>
+                    <p><a href="http://scifabric.com/blog/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server">Blog</a></p>
+                    <p><a href="https://www.facebook.com/scifabric/">Facebook</a></p>
+                    <p><a href="http://twitter.com/Scifabric/">Twitter</a></p>
+                    <p><a href="https://www.linkedin.com/company/scifabric">LinkedIn</a></p>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
-{% endif %}
 </footer>
 
