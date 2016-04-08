@@ -12,10 +12,19 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="{{url_for('static', filename='vendor/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- <link href="{{url_for('static', filename='vendor/bootstrap.min.css')}}" rel="stylesheet" type="text/css">-->
+    <!--{% assets filters="libsass", output="css/gen/bootstrap.min.css",
+              "sass/_bootstrap.scss"%}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+    {% endassets %}-->
+    {% assets filters="libsass", output="css/gen/pybossa.min.css",
+              "sass/_pybossa.scss"%}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+    {% endassets %}
+
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <link href="{{url_for('static', filename='css/fonts/stylesheet.css')}}" rel="stylesheet">
-    <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
+    <!--<link href="{{url_for('static', filename='css/fonts/stylesheet.css')}}" rel="stylesheet">-->
+    <!-- <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">-->
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -61,7 +70,7 @@
     {% if not enforce_privacy %}
     <div id="footer_links" class="container">
         <div class="row">
-            <div class="span3">
+            <div class="col-md-3">
                 <ul>
                     <li><strong>{{ _('Resources') }}</strong></li>
                     <li><i class="icon-link"></i> <a href="http://docs.pybossa.com">{{ _('Docs') }}</a></li>
@@ -71,7 +80,7 @@
                     <li><i class="icon-link"></i> <a href="{{url_for('stats.index')}}">{{ _('Stats') }}</a></li>
                 </ul>
             </div>
-            <div class="span3">
+            <div class="col-md-3">
                 <ul>
                     <li><strong>{{ _('Licenses') }}</strong></li>
                     <li><i class="icon-link"></i> <a href="{{url_for('help.license')}}">{{ _('Overview') }}</a></li>
@@ -80,14 +89,14 @@
                     <li><i class="icon-link"></i> <a href="{{url_for('help.license', _anchor='content')}}">{{ _('Content') }}</a></li>
                 </ul>
             </div>
-            <div class="span3">
+            <div class="col-md-3">
                 <ul>
                     <li><strong>{{ _('Technologies') }}</strong></li>
                     <li><i class="icon-link"></i> <a href="http://ckan.org">{{ _('CKAN') }}</a></li>
                     <li><i class="icon-link"></i> <a href="http://www.epicollect.net">{{ _('EpiCollect') }}</a></li>
                 </ul>
             </div>
-            <div class="span3">
+            <div class="col-md-3">
                 <ul>
                     <li><strong>{{ _('Contact') }}</strong></li>
                     <li><i class="icon-envelope"></i> <a href="mailto:{{contact_email}}">{{ _('Email') }}</a></li>
