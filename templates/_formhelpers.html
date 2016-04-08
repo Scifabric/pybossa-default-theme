@@ -1,15 +1,15 @@
 {% macro render_field(field, addon, prepend, tooltip, label_text) %}
-    <div class="control-group {% if field.errors %} error {% endif %}">
+    <div class="form-group {% if field.errors %} error {% endif %}">
         {{ render_label(field, tooltip, label_text) }}
         <div class="controls">
             {% if addon %}
             <div class="{% if prepend %}input-prepend{%else%}input-append{%endif%}">
                 {% if prepend %}
-                <span class="add-on">{{addon|safe}}</span>
+                <span class="input-group-addon">{{addon|safe}}</span>
                 {{field(**kwargs)}}
                 {% else %}
                 {{field(**kwargs)}}
-                <span class="add-on">{{addon|safe}}</span>
+                <span class="input-group-addon">{{addon|safe}}</span>
                 {% endif %}
             </div>
             {% else %}
