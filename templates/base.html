@@ -37,10 +37,7 @@
     {% set active_page = active_page | default('index') -%}
     {% set active_project  = active_project | default('none') -%}
     {% include "_navbar.html" %}
-
-    <div class="container" style="min-height:400px;">
-        {% block content %}{% endblock %}
-    </div> <!-- /container -->
+    {% block content %}{% endblock %}
     {% include "_footer.html" %}
     <!-- Le javascript -->
     <script>
