@@ -274,16 +274,16 @@ function imgError(image) {
 {% endif %}
 {% endmacro %}
 
-{% macro render_url_thumbnail(project, upload_method) %}
-{% if project.info.container %}
-    {% if upload_method == 'rackspace'%}
-    {{ url_for('rackspace', filename=project.info.thumbnail, container=project.info.container)}}"
-    {% else %}
+{%- macro render_url_thumbnail(project, upload_method) %}
+{%- if project.info.container %}
+    {%- if upload_method == 'rackspace'%}
+    {{ url_for('rackspace', filename=project.info.thumbnail, container=project.info.container)}}
+    {%- else %}
     {{ url_for('uploads.uploaded_file', filename=(project.info.container + '/' + project.info.thumbnail))}}
-    {% endif %}
-{% elif project.info.thumbnail %}
+    {% endif -%}
+{%- elif project.info.thumbnail %}
     {{project.info.thumbnail}}"
-{% else %}
-{{url_for('static', filename='img/placeholder.project.png')}}"
-{% endif %}
-{% endmacro %}
+{% else -%}
+{{url_for('static', filename='img/placeholder.project.png')}}
+{% endif -%}
+{% endmacro -%}
