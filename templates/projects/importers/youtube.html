@@ -39,8 +39,72 @@
     </div>
 </div>
 <script>
-    $("#submit").off('click').on('click', function(){
+
+    var input_counter = 0;
+
+    // var videos = []
+
+    // Use the API Loader script to load google.picker and gapi.auth.
+    function newPicker() {
+      gapi.load('picker', {'callback': createPicker});
+    }
+
+    // Create and render a Picker object for picking user Photos.
+    function createPicker() {
+        var videoView = new google.picker.VideoSearchView()
+            .setSite(google.picker.VideoSearchView.YOUTUBE);
+        var picker = new google.picker.PickerBuilder().
+            addView(videoView).
+            setCallback(pickerCallback).
+            build();
+        picker.setVisible(true);
+    }
+
+    // A simple callback implementation.
+    function pickerCallback(data) {
+      if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
+        var doc = data[google.picker.Response.DOCUMENTS][0];
+        var url = doc[google.picker.Document.URL];
+        var id = doc[google.picker.Document.ID];
+        var title = doc[google.picker.Document.NAME];
+
+        var visible_element = document.createElement("li");
+        $(visible_element).append(
+            $('<a>').attr('href', url).attr("target","_blank").append(
+                $('<span>').append(title)
+            )
+        );
+
+        var data_element = document.createElement("li");
+        var input = document.createElement('input');
+        var list = document.getElementById("videolist");
+        input.id = "videolist-" + input_counter;
+        input.type = "hidden";
+        input.value = JSON.stringify({ 'youtube_id': id });
+        input.name = "videolist-" + input_counter;
+        data_element.appendChild(input);
+        list.appendChild(data_element);
+        input_counter++;
+
+        $('#youtubelist').append(visible_element);
+      }
+    }
+
+    $('.picker').on('click', function(evt){
+        newPicker();
+    });
+    $(".submit").off('click').on('click', function(){
         $("#loading").show();
     });
+    $('.choice').on('click', function(evt){
+        var $btn = $(this);
+        $('.choice').hide();
+        if ( $btn.hasClass( "onebyonebtn" ) ) {
+            $('.onebyone').show();
+        }
+        else {
+            $('.playlist').show();
+        }
+    })
 </script>
 {% endblock %}
