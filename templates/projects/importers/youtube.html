@@ -6,6 +6,7 @@
 {% block content %}
 {% from "_formhelpers.html" import render_field %}
 {{ helper.render_loading(loading_text) }}
+<script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
 <style type="text/css">
 .selected {
     background-color: #D4D4D4;
@@ -33,7 +34,7 @@
         <a class="btn choice playlistbtn">{{ _("Playlist") }}</a>
         </div>
 
-        <div class="onebyone">
+        <div class="onebyone" style="display:none;">
             <span class="help-inline"> {{ _('Please select the videos you want to import for ') }} {{ active_project }}.
             </span>
             <br>
@@ -47,7 +48,9 @@
                     <ul id="youtubelist">
                     </ul>
                     {{ form.videolist(style="display: none;") }}
+                    <br>
                     <a class="btn btn-default picker">{{_('Add a Youtube video')}}</a>
+                    <br>
                 </fieldset>
                 <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
                 <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
@@ -55,7 +58,7 @@
             {% endif %}
         </div>
 
-        <div class="playlist">
+        <div class="playlist" style="display:none;">
             <span class="help-inline"> {{ _('Please provide a URL to a Youtube playlist with videos for') }} {{ active_project }}.
             </span>
             <br>
@@ -139,7 +142,7 @@
         if ( $btn.hasClass( "onebyonebtn" ) ) {
             $('.onebyone').show();
         }
-        else {
+        else if ( $btn.hasClass( "playlistbtn" ) ) {
             $('.playlist').show();
         }
     })
