@@ -20,7 +20,7 @@ as a sub-module in PyBossa.
 
 # Translations
 
-If you want to enable the translations for your PyBossa server, you'll have to create 
+If you want to enable the translations for your PyBossa server, you'll have to create
 a symbolic link of the translations folder into the pybossa root folder:
 
 ```bash
@@ -29,6 +29,21 @@ ln -s pybossa/themes/pybossa-default-theme/translations pybossa/translations
 
 Then, restart the server and you'll be done. NOTE: be sure to enable/disable the
 locales that you want to use.
+
+## How to update pybabel translations for this theme
+
+Go to the your pybossa/pybossa directory and use this two commands:
+
+```bash
+pybabel extract . -F themes/pybossa-default-theme/babel.cfg -k lazy_gettext -o themes/pybossa-default-theme/translations/messages.pot
+pybabel update -i themes/pybossa-default-theme/translations/messages.pot -d themes/pybossa-default-theme/translations
+```
+
+Be sure to escape special characters correctly like e.g. `'`! Edit ES translations and run finally:
+
+```bash
+pybabel compile -d themes/pybossa-default-theme/translations
+```
 
 # Creating a new theme
 
