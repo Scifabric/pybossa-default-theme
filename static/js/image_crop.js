@@ -29,21 +29,19 @@
                 height = width - 100;
             }
 
-            jQuery(function($) {
-                $('#uploadPreview').Jcrop({
-                    onSelect:    _updateCoords,
-                    onChange:    _updateCoords,
-                    bgColor:     'black',
-                    bgOpacity:   .4,
-                    minSize: [100, 100],
-                    setSelect:   [  0, 
-                                    0, 
-                                    (width / 2), 
-                                    (height/ 2)],
-                    aspectRatio: 1,
-                    boxWidth: 450
+            var image = document.getElementById('uploadPreview');
+            image.addEventListener('crop', function () {
+                console.log("HOLA");
+                console.log(this.cropper.getData());
+                var data = this.cropper.getData();
+                $("#x1").val(Math.floor(data.x));
+                $("#y1").val(Math.floor(data.y));
+                $("#x2").val(Math.floor(data.x + data.width));
+                $("#y2").val(Math.floor(data.y + data.height));
 
-                });
+            });
+            var cropper = new Cropper(image, {
+              aspectRatio: 1 / 1
             });
         };
     }
