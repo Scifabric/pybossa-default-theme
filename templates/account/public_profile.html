@@ -5,27 +5,35 @@
 {% import "privacy/locked.html" as privacy %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-12">
-        {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
-        {{ privacy.render_lock_page() }}
-        {% else %}
-        <section id="user-data">
-            <h1><strong>{{user.fullname}}</strong></h1>
-            {{ helper.render_user_profile(user, upload_method, settings=False, private=False) }}
-        </section>
-        {% if projects_created %}
-        <section id="created-projects" style="margin-top:10px;">
-            {{render_grid_projects(projects_created, "Created Projects", upload_method)}}
-        </section>
-        {% endif %}
-        {% if projects %}
-        <section id="contributed-projects" style="margin-top:10px;">
-            {{render_grid_projects(projects, "Contributions", upload_method)}}
-        </section>
-        {% endif %}
-        {% endif %}
+<section class="account public-profile">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
+                {{ privacy.render_lock_page() }}
+                {% else %}
+                <div class="text-center">
+                    {{helper.render_user_thumbnail(user, upload_method, class='img-thumbnail')}}
+                    <h1 id="user-data">{{user.fullname}}</h1>
+                    {% if user.rank %}
+                    <h2><i class="fa fa-trophy"></i> {{ _('Rank')}}: {{user.rank}}</h2>
+                    {% endif %}
+
+                </div>
+                {% if projects_created %}
+                <section id="created-projects" style="margin-top:10px;">
+                    {{render_grid_projects(projects_created, "Created Projects", upload_method)}}
+                </section>
+                {% endif %}
+                {% if projects %}
+                <section id="contributed-projects" style="margin-top:10px;">
+                    {{render_grid_projects(projects, "Contributions", upload_method)}}
+                </section>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
     </div>
-</div>
+</section>
 {{ broken_image() }}
 {% endblock %}
