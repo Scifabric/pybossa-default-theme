@@ -24,7 +24,7 @@ If you want to enable the translations for your PyBossa server, you'll have to c
 a symbolic link of the translations folder into the pybossa root folder:
 
 ```bash
-ln -s pybossa/themes/pybossa-default-theme/translations pybossa/translations
+ln -s pybossa/themes/default/translations pybossa/translations
 ```
 
 Then, restart the server and you'll be done. NOTE: be sure to enable/disable the
@@ -35,14 +35,14 @@ locales that you want to use.
 Go to the your pybossa/pybossa directory and use this two commands:
 
 ```bash
-pybabel extract . -F themes/pybossa-default-theme/babel.cfg -k lazy_gettext -o themes/pybossa-default-theme/translations/messages.pot
-pybabel update -i themes/pybossa-default-theme/translations/messages.pot -d themes/pybossa-default-theme/translations
+pybabel extract . -F themes/default/babel.cfg -k lazy_gettext -o themes/default/translations/messages.pot
+pybabel update -i themes/default/translations/messages.pot -d themes/default/translations
 ```
 
 Be sure to escape special characters correctly like e.g. `'`! Edit ES translations and run finally:
 
 ```bash
-pybabel compile -d themes/pybossa-default-theme/translations
+pybabel compile -d themes/default/translations
 ```
 
 # Creating a new theme
