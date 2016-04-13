@@ -229,8 +229,10 @@ function imgError(image) {
 <section id="{{id}}" class="account {{title |lower }}-projects">
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-10 text-center">
-               <h1>{{title}}</h1>
+            <div class="col-md-offset-1 col-md-10">
+                <div class="text-center">
+                    <h1>{{title}}</h1>
+                </div>
                {% for f in projects %}
                <div class="col-sm-offset-2 col-sm-8 col-md-offset-0 col-md-4">
                    <div class="thumbnail card">
@@ -238,7 +240,7 @@ function imgError(image) {
                        <div class="caption">
                            <h3>{{f.name}}</h3>
                            <p>{{f.description}}</p>
-                           <p class="readmore"><a href="{{ url_for('project.details', short_name=f.short_name)}}">{{_('Contribute')}}</a></p>
+                           <p class="readmore"><a href="{{ url_for('project.details', short_name=f.short_name)}}">{{_('More info')}}</a></p>
                        </div>
                    </div>
                </div>

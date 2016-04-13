@@ -13,7 +13,9 @@
                 {{ privacy.render_lock_page() }}
                 {% else %}
                 <div class="text-center">
-                    {{helper.render_user_thumbnail(user, upload_method, class='img-thumbnail')}}
+                    {{helper.render_user_thumbnail(user, upload_method, class='col-xs-4 img-circle')}}
+                </div>
+                <div class="text-center">
                     <h1 id="user-data">{{user.fullname}}</h1>
                     {% if user.rank %}
                     <h2><i class="fa fa-trophy"></i> {{ _('Rank')}}: {{user.rank}}</h2>
