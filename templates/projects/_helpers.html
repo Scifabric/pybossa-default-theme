@@ -86,7 +86,7 @@
     <div class="col-md-9">
         <h2><a href="{{url_for('project.settings', short_name=project.short_name)}}">{{project.name}}</a></h2>
         <p>{{ project['description'] }}</p>
-        <a class="btn btn-inverse" href="{{url_for('project.settings', short_name=project.short_name)}}"><i class="icon-wrench"></i> {{ _('Settings') }}</a>
+        <a class="btn btn-primary" href="{{url_for('project.settings', short_name=project.short_name)}}"><i class="icon-wrench"></i> {{ _('Settings') }}</a>
     </div>
 </div>
 {% endmacro %}
@@ -99,7 +99,7 @@
     <div class="col-md-9">
         <h2><a href="{{url_for('project.settings', short_name=project.short_name)}}">{{project.name}}</a></h2>
         <p>{{ project['description'] }}</p>
-        <a class="btn btn-inverse" href="{{url_for('project.settings', short_name=project.short_name)}}"><i class="icon-wrench"></i> {{ _('Settings') }}</a>
+        <a class="btn btn-primary" href="{{url_for('project.settings', short_name=project.short_name)}}"><i class="icon-wrench"></i> {{ _('Settings') }}</a>
         {% if project.featured %}
         <button id="projectBtnDel{{project.id}}" class="btn btn-danger" onclick="del({{project.id}})">
                 <i id="project{{project.id}}" class="icon-remove"></i> {{ _('Remove from Featured!') }}
