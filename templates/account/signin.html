@@ -6,12 +6,8 @@
         <div class="row">
             <div class="col-md-offset-4 col-md-4" style="margin-top:10px;">
                 <h1>{{_('Sign in')}}</h1>
-                {% from "_formhelpers.html" import render_field %}
-                <form id="signin" method="post" action="">
-                {{ render_field(form.email, placeholder="") }}
-                {{ render_field(form.password, placeholder="") }}
-                <input type="submit" value="{{ _('Sign in') }}" class="btn btn-primary btn-block" />
-                </form>
+                {% from "_formhelpers.html" import render_field, render_form %}
+                {{ render_form(form, form_id="signin", action_text=_('Sign in'), btn_class="btn btn-primary btn-block")}}
 
                 <p class="text-center">{{_('Not registered?')}} <a href="{{ url_for('account.register') }}">{{_('Sign up for free now')}}</a> <br/>{{_('or sign in/sign up through')}}</p>
 
