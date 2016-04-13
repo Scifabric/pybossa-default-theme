@@ -31,8 +31,6 @@
 
             var image = document.getElementById('uploadPreview');
             image.addEventListener('crop', function () {
-                console.log("HOLA");
-                console.log(this.cropper.getData());
                 var data = this.cropper.getData();
                 $("#x1").val(Math.floor(data.x));
                 $("#y1").val(Math.floor(data.y));
@@ -41,7 +39,8 @@
 
             });
             var cropper = new Cropper(image, {
-              aspectRatio: 1 / 1
+              aspectRatio: 1 / 1,
+              zoomable: false,
             });
         };
     }
