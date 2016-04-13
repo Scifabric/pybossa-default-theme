@@ -18,22 +18,17 @@
                     {% if user.rank %}
                     <h2><i class="fa fa-trophy"></i> {{ _('Rank')}}: {{user.rank}}</h2>
                     {% endif %}
-
                 </div>
-                {% if projects_created %}
-                <section id="created-projects" style="margin-top:10px;">
-                    {{render_grid_projects(projects_created, "Created Projects", upload_method)}}
-                </section>
-                {% endif %}
-                {% if projects %}
-                <section id="contributed-projects" style="margin-top:10px;">
-                    {{render_grid_projects(projects, "Contributions", upload_method)}}
-                </section>
-                {% endif %}
-                {% endif %}
             </div>
         </div>
     </div>
 </section>
+{% if projects_created %}
+{{render_grid_projects(projects_created, "Created Projects", upload_method, id="created-projects")}}
+{% endif %}
+{% if projects %}
+{{render_grid_projects(projects, "Contributions", upload_method, id="contributed-projects")}}
+{% endif %}
+{% endif %}
 {{ broken_image() }}
 {% endblock %}
