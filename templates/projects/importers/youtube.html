@@ -45,12 +45,14 @@
             <form class="form-group" method="post" action="{{ url_for(target, short_name=project.short_name) }}">
                 <fieldset>
                     {{ form.hidden_tag() }}
-                    <ul id="youtubelist">
-                    </ul>
+                    <div class="row">
+                        <ul id="youtubelist">
+                        </ul>
+                    </div>
                     {{ form.videolist(style="display: none;") }}
-                    <br>
-                    <a class="btn btn-default picker">{{_('Add a Youtube video')}}</a>
-                    <br>
+                    <div class="control-group">
+                        <a class="btn btn-default picker">{{_('Add a Youtube video')}}</a>
+                    </div>
                 </fieldset>
                 <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
                 <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
