@@ -8,7 +8,6 @@ function pybossaNotify(msg, showNotification, type){
     close.on('click', function(){
         $("#pybossa-notification").addClass("hide-notification");
     });
-    console.log(type);
     if (type === undefined) {
         type = 'info';
     }
@@ -19,6 +18,11 @@ function pybossaNotify(msg, showNotification, type){
     if (type === 'info') {
         icon.addClass("fa fa-2x fa-bullhorn pull-left"); 
     }
+
+    if (type === 'success') {
+        icon.addClass("fa fa-2x fa-check pull-left"); 
+    }
+
 
     var text = $("<span/>");
     text.html(msg);
