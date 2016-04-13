@@ -30,7 +30,7 @@
             <fieldset>
                 {{ form.hidden_tag() }}
                 {{ form.files(style="display: none;") }}
-                {{ render_field(form.bucket, class_="form-control", placeholder=_("Name of the S3 bucket")) }}
+                {{ render_field(form.bucket, placeholder=_("Name of the S3 bucket")) }}
             </fieldset>
             <a id="get-bucket" class="btn btn-default">{{ _('Search in bucket') }}</a>
             <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />

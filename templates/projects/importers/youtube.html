@@ -30,7 +30,7 @@
         <form class="form-group" method="post" action="{{ url_for(target, short_name=project.short_name) }}">
             <fieldset>
                 {{ form.hidden_tag() }}
-                {{ render_field(form.playlist_url, class="form-control", placeholder=_("URL of a Youtube Playlist")) }}
+                {{ render_field(form.playlist_url, placeholder=_("URL of a Youtube Playlist")) }}
             </fieldset>
             <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
             <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn btn-default">{{_('Cancel')}}</a>
