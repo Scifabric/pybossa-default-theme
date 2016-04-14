@@ -225,16 +225,16 @@ function imgError(image) {
     {% endif %}
 {% endmacro %}
 
-{% macro render_grid_projects(projects, title, upload_method, id=None) %}
+{% macro render_grid_projects(projects, title, upload_method, id=None, title_class='col-md-offset-1 col-md-10', projects_class='col-sm-offset-2 col-sm-8 col-md-offset-0 col-md-4') %}
 <section id="{{id}}" class="account {{title |lower }}-projects">
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-10">
+            <div class="{{title_class}}">
                 <div class="text-center">
                     <h1>{{title}}</h1>
                 </div>
                {% for f in projects %}
-               <div class="col-sm-offset-2 col-sm-8 col-md-offset-0 col-md-4">
+               <div class="{{projects_class}}">
                    <div class="thumbnail card">
                        <div class="post-pic" style="background: rgb(0, 151, 167) url({{render_url_thumbnail(f, upload_method)}}) no-repeat center top; background-size: cover;"></div>
                        <div class="caption">
