@@ -15,19 +15,7 @@
                 <h1>{{ _('Your Account') }}: {{current_user.fullname}}</h1>
                 {{ helper.render_user_profile(current_user, upload_method, "settings") }} 
                 {% if projects_contrib | count > 0 %}
-                <hr>
-                <h2>{{ _('Your Contributions') }}</h2>
-                {% for project in projects_contrib %}
-                <div class="row well well-small">
-                    <div class="col-md-3">
-                        {{ project_helper.render_project_thumbnail(project, upload_method, class='img-thumbnail', style='max-width:100px; max-height:100px;') }}
-                    </div>
-                    <div class="col-md-9">
-                        <h2><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.name}}</a></h2>
-                        <a class="btn btn-primary" href="{{url_for('project.presenter', short_name=project.short_name)}}"><i class="icon-thumbs-up"></i> {{ _('Contribute!') }}</a>
-                    </div>
-                </div><!-- end row-fluid -->
-                {% endfor %}
+                {{ project_helper.render_grid_projects(projects_contrib,  _('Your Contributions'), upload_method, title_class="col-md-10")}}
                 {% endif %}
             </div><!-- end span9 -->
         </div>
