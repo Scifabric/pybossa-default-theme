@@ -39,7 +39,7 @@
 <p><strong><i class="fa fa-envelope"></i> {{_('E-mail')}}:</strong> {{user.email_addr }} 
     {% if (user.valid_email == False) %}
       {% if (user.confirmation_email_sent == False) %}
-      <a href="{{ url_for('account.confirm_email')}}" class="btn btn-sm">Validate email</a>
+      <a href="{{ url_for('account.confirm_email')}}" class="btn btn-warning btn-xs">Validate email</a>
       {% else %}
       <a href="#" class="btn btn-sm disabled">Email sent for
           validation</a>
@@ -88,36 +88,33 @@
 {% endmacro %}
 
 {% macro render_pagination(pagination) %}
-  <div class="pagination pagination-centered">
-      <ul>
-        {% if pagination.has_prev %}
-          <li>
-          <a href="{{ url_for_other_page(pagination.page - 1)
-            }}">&laquo; {{_('Prev')}}</a>
-          </li>
-        {% endif %}
+<ul class="pagination pagination-sm">
+  {% if pagination.has_prev %}
+  <li><a href="{{ url_for_other_page(pagination.page - 1)}}">&laquo; {{_('Prev')}}</a></li>
+  {% else %}
+  <li class="disabled"><a href="#">&laquo; {{_('Prev')}}</a></li>
+  {% endif %}
 
-        {%- for page in pagination.iter_pages() %}
-          {% if page %}
-            {% if page != pagination.page %}
-            <li>
-              <a href="{{ url_for_other_page(page) }}">{{ page }}</a>
-             </li>
-            {% else %}
-            <li class="active">
-                <a href="#">{{ page }}</a>
-            </li>  
-            {% endif %}
-          {% endif %}
-        {%- endfor %}
-        {% if pagination.has_next %}
-          <li>
-          <a href="{{ url_for_other_page(pagination.page + 1)
-            }}">{{_('Next')}} &raquo;</a>
-          </li>
-        {% endif %}
-    </ul>
-  </div>
+  {%- for page in pagination.iter_pages() %}
+    {% if page %}
+      {% if page != pagination.page %}
+      <li>
+        <a href="{{ url_for_other_page(page) }}">{{ page }}</a>
+       </li>
+      {% else %}
+      <li class="active">
+          <a href="#">{{ page }}</a>
+      </li>  
+      {% endif %}
+    {% endif %}
+  {%- endfor %}
+  {% if pagination.has_next %}
+    <li>
+    <a href="{{ url_for_other_page(pagination.page + 1)
+      }}">{{_('Next')}} &raquo;</a>
+    </li>
+  {% endif %}
+</ul>
 {% endmacro %}
 
 
