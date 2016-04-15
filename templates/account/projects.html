@@ -14,10 +14,10 @@
             <div class="col-md-8" style="min-height:400px">
                 {% if projects_published or projects_draft %}
                     {% if projects_published %}
-                    {{ project_helper.render_grid_projects(projects_published,  _('Published Projects'), upload_method, title_class="col-md-10")}}
+                    {{ project_helper.render_grid_projects(projects_published,  _('Published Projects'), upload_method, title_class="col-md-12", container=False)}}
                     {% endif %}
                     {% if projects_draft %}
-                    {{ project_helper.render_grid_projects(projects_draft,  _('Draft Projects'), upload_method, title_class="col-md-10")}}
+                    {{ project_helper.render_grid_projects(projects_draft,  _('Draft Projects'), upload_method, title_class="col-md-10", container=False)}}
                     {% endif %}
                  {% else %}
                  <h1>{{_('You have not created a project')}}</h1>

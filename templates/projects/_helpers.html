@@ -225,9 +225,11 @@
     {% endif %}
 {% endmacro %}
 
-{% macro render_grid_projects(projects, title, upload_method, id=None, title_class='col-md-offset-1 col-md-10', projects_class='col-sm-offset-2 col-sm-8 col-md-offset-0 col-md-4') %}
+{% macro render_grid_projects(projects, title, upload_method, id=None, title_class='col-md-offset-1 col-md-10', projects_class='col-sm-offset-2 col-sm-8 col-md-offset-0 col-md-4', container=True) %}
 <section id="{{id}}" class="account {{title |lower }}-projects">
+    {% if container %}
     <div class="container">
+    {% endif %}
         <div class="row">
             <div class="{{title_class}}">
                 <div class="text-center">
@@ -247,7 +249,9 @@
                {% endfor %}
            </div>
         </div>
+    {% if container %}
     </div>
+    {% endif %}
 </section>
 
 
