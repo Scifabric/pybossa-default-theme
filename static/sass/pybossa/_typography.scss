@@ -49,11 +49,7 @@ p.lead {
     font-weight: 400;
 }
 
-p.lead.dark {
-    color: $grey;
-    font-weight: 400;
-    font-size: 20px;
-}
+
 
 footer p {
     color: $semi-white;
@@ -67,6 +63,24 @@ footer p {
 
 .bright-grey {
     color: $bright-grey;
+}
+
+@font-face {
+    font-family: 'mr_dafoeregular';
+    src: url('/static/fonts/mrdafoe-regular.eot');
+    src: url('/static/fonts/mrdafoe-regular.eot?#iefix') format('embedded-opentype'),
+         url('/static/fonts/mrdafoe-regular.woff2') format('woff2'),
+         url('/static/fonts/mrdafoe-regular.woff') format('woff'),
+         url('/static/fonts/mrdafoe-regular.ttf') format('truetype'),
+         url('/static/fonts/mrdafoe-regular.svg#mr_dafoeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1,h2,h3,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5,.h6 {
+  font-weight: 600;
+  color: #2E4B63;
 }
 
 

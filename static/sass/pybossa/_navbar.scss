@@ -1,0 +1,82 @@
+.navbar-default {
+  background-color: rgba(255,255,255, .85);
+  border-bottom: 1px solid #D6DCDE;
+
+}
+.navbar-default .navbar-brand {
+  color: #2E4B63;
+  font-weight: 500;
+  font-size: 30px;
+  font-family: "mr_dafoeregular";
+}
+.navbar-default .navbar-brand span{
+  color: #2E4B63;
+  font-weight: 700;
+  font-family: "source sans pro";
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #2E4B63;
+  background-color: transparent;
+}
+.navbar-default .navbar-text {
+  color: #2E4B63;
+  text-transform: uppercase;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #2E4B63;
+  text-transform: uppercase;
+  font-weight: 500
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #2E4B63;
+  background-color: transparent;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #ffffff;
+  background-color: #1a242f;
+}
+.navbar-default .navbar-nav > .disabled > a,
+.navbar-default .navbar-nav > .disabled > a:hover,
+.navbar-default .navbar-nav > .disabled > a:focus {
+  color: #cccccc;
+  background-color: transparent;
+}
+.navbar-default .navbar-toggle {
+  border-color: #1a242f;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #1a242f;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: transparent;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: #1a242f;
+  color: #ffffff;
+}
+
+
+@media (min-width: 768px) {
+
+  .navbar {
+  min-height: 75px;
+  }
+
+  .navbar-nav > li > a {
+    padding-top: 25.5px;
+    padding-bottom: 19.5px;
+  }
+  
+}

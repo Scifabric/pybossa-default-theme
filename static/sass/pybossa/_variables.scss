@@ -10,16 +10,16 @@ $bootstrap-sass-asset-helper: false !default;
 
 $gray-base:              #000 !default;
 $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:              #7b8a8b !default;   // #333
-$gray:                   #95a5a6 !default; // #555
-$gray-light:             #b4bcc2 !default;   // #999
+$gray-dark:              #2E4B63 !default;   // #333
+$gray:                   #546E7A !default; // #555
+$gray-light:             #D6DCDE default;   // #999
 $gray-lighter:           #F5F7F7 !default; // #eee
 
-$brand-primary:         #546E7A !default;
-$brand-success:         #3AB0D5 !default;
-$brand-info:            #3498DB !default;
-$brand-warning:         #F39C12 !default;
-$brand-danger:          #E74C3C !default;
+$brand-primary:         #2E4B63 !default;
+$brand-success:         #B8E986 !default;
+$brand-info:            #86B9D7 !default;
+$brand-warning:         #EEAF4B !default;
+$brand-danger:          #DC5465 !default;
 
 
 //== Scaffolding
