@@ -54,7 +54,7 @@
   background-color: #1a242f;
 }
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #ffffff;
+  background-color: #1a242f;
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
@@ -67,11 +67,21 @@
   color: #ffffff;
 }
 
+.navbar-brand {
+    padding: 13.5px 15px;
+}
+
+
+
 
 @media (min-width: 768px) {
 
   .navbar {
-  min-height: 75px;
+  min-height: 70px;
+  }
+
+  .navbar-brand {
+    padding: 17.5px 15px;
   }
 
   .navbar-nav > li > a {
