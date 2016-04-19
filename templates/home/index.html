@@ -5,11 +5,11 @@
 <section class="home featured">
     <div class="jumbotron">
         <div class="container text-center firstfold">
-            {% if categories_projects['featured'] | count > 0 %}
-            {% set featured_project = categories_projects['featured'] | random %}
-            <h1>{{ featured_project.name }}</h1>
-            <p>{{ featured_project.description }}</p>
-            <a class="btn btn-primary" href="{{ url_for('project.details', short_name=featured_project.short_name)}}">{{_('Contribute')}}</a>
+              {% if categories_projects['featured'] | count > 0 %}
+              {% set featured_project = categories_projects['featured'] | random %}
+            <h1>Un proyecto sin gluten</h1>
+            <p>Señor alérgeno es una plataforma para clasificar productos que contienen alérgenos en sus ingredientes. Y toda la información que se recopila se comparte abierta, libre y gratuitamente.</p>
+            <a class="btn btn-primary" href="{{ url_for('project.details', short_name=featured_project.short_name)}}">Empieza a clasificar</a>
             {% else %}
             <h1>{{_('Welcome to ')}} {{brand}}</h1>
             <p>{{_("The ultimate crowdsourcing framework to analyze or enrich data that can't be processed by machines alone.")}}</p>

@@ -11,13 +11,13 @@ body {
     text-rendering:optimizeLegibility;
     color: $grey;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.42857143;
 }
 
 h1 {
     color: $grey;
-    font-size: 46px;
+    font-size: 36px;
     font-weight: 700;
 }
 
@@ -36,7 +36,7 @@ h3 {
 p {
     color: $grey;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 p.dark {
@@ -46,10 +46,8 @@ p.dark {
 p.lead {
     color: $bright-grey;
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 500;
 }
-
-
 
 footer p {
     color: $semi-white;
@@ -84,17 +82,7 @@ h1,h2,h3,h4,h5,h6,
 }
 
 
-@media (max-width: 768px) {
-    .jumbotron .h1,
-    .jumbotron h1{
-    font-size: 28px;
-    }
 
-    .jumbotron .h2,
-    .jumbotron h2{
-        font-size: 20px;
-    }
-}
 
 .text-sm {
     font-size: 11px;
