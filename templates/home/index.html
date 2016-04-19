@@ -7,17 +7,32 @@
         <div class="container text-center firstfold">
               {% if categories_projects['featured'] | count > 0 %}
               {% set featured_project = categories_projects['featured'] | random %}
-            
-            <img src="static/img/trigo-si-o-no.svg">
+            <div class="col-xs-12 col-sm-6 col-sm-push-6">
+            <img class="sr-alergeno-home" src="static/img/trigo-si-o-no.svg">
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-pull-6">
             <h1>Un proyecto sin gluten</h1>
-            <p>Señor alérgeno es una plataforma para clasificar productos que contienen alérgenos en sus ingredientes. Y toda la información que se recopila se comparte abierta, libre y gratuitamente.</p>
+            <p>Señor alérgeno es una plataforma para clasificar productos que contienen alérgenos en sus ingredientes. Y toda la información que se recopila se comparte abierta, libre y gratuitamente.<br>
             <a class="btn btn-primary" href="{{ url_for('project.details', short_name=featured_project.short_name)}}">Empieza a clasificar</a>
+            </p>
+            </div>
             {% else %}
         
             {% endif %}
         </div>
     </div>
 </section>
+<section class="numbers">
+  <div class="container text-center">
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <img src="static/img/numbers.svg">
+    <h2>En este momento tenemos ya 1537 productos clasificados</h2>
+    <p>¿Quieres la lista?  Pues descárgatela <a href="#">aquí</a></p>
+  </div>
+  </div>
+
+</section>
+
 <!--
 <section class="home projects">
     <div class="container">
