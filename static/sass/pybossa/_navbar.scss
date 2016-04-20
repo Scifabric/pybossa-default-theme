@@ -37,8 +37,9 @@
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #ffffff;
-  background-color: #1a242f;
+  color: $gray-dark;
+  background-color: transparent;
+  border-bottom: 2px solid #3ab0d5;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -63,8 +64,9 @@
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #1a242f;
-  color: #ffffff;
+  background-color: transparent;
+  color: $gray-dark;
+  padding-bottom: 10px;
 }
 
 .navbar-brand {
@@ -86,7 +88,7 @@
 
   .navbar-nav > li > a {
     padding-top: 25.5px;
-    padding-bottom: 19.5px;
+    padding-bottom: 4px;
   }
 
 }
