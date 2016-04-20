@@ -123,8 +123,7 @@
 {% macro show_project(project, active_cat, current_user, upload_method) %}
 <div class="project-item {{class}} col-xs-12 col-md-8">
     <div class="media">
-  <div class="media-left">{{ render_project_thumbnail(project, upload_method, class='thumbnail', style='max-width:100px; max-height:100px;') }}
-            </div>
+ 
             <div class="media-body">
             <h4 class="media-heading">
             <a href="{{ url_for('project.details', short_name = project.short_name) }}">{{ project.name }}</a></h2>
@@ -145,6 +144,8 @@
             {% if active_cat != "draft" %}
             <p style="margin:0"><a class="btn btn-primary project-btn" href="{{ url_for('project.presenter', short_name = project.short_name) }}"><i class="icon icon-white icon-ok"></i> {{ _('Try it!') }}</a></p>
             {% endif %}
+            </div>
+             <div class="media-right hidden-xs ">{{ render_project_thumbnail(project, upload_method, class='thumbnail', style='max-width:100px; max-height:100px;') }}
             </div>
         </div> <!-- end of id=data class=span8 -->
 </div><!-- end of class=row -->
