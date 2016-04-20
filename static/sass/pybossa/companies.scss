@@ -22,6 +22,31 @@
 	margin-top: 60px;
 }
 
+.alergeno-description{
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+
+.alergeno-description h2{
+	font-size: 37px !important;
+	font-family: 'mr_dafoeregular';
+	color: $white;
+}
+
+.alergeno-description h2 span{
+	font-size: 37px !important;
+	font-family: 'Source Sans Pro';
+	color: $gray-dark;
+}
+
+.alergeno-description p{
+	color: $white;
+}
+.alergeno-description a{
+	color: $gray-dark;
+}
+
 
 @media (max-width: 768px) {
     
