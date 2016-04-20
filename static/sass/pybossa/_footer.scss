@@ -1,42 +1,15 @@
 footer {
-    background-color: $grey-bg;
-    color: white;
-    padding:100px 0 80px ;
-    margin:0;
+    border-top: 1px solid #D6DCDE;
+    padding:50px 0 80px ;
+    margin-top:30px;
 }
 
-footer .col-md-2 p:first-child
-{ margin-top: 12px;
-  padding-bottom: 30px;
-}
-
-footer p{
-    color: $semi-white;
-    margin-bottom: 2px;
-}
-
-footer p strong {
-    color: $white;
-}
 
 footer a,{
-    color: $semi-white;
+    padding-right: 15px;
 }
 
-footer a:hover{
-    color: $white;
-}
 
-footer .logo_horiz {
-    width: 40%;
-    margin-bottom: 15px;
-}
-
-footer .logo_sf {
-    margin-top: 10px;
-    width: 40%;
-    opacity: .7;
-}
 
 
 #go-to-top {
