@@ -6,8 +6,8 @@
 {% block content %}
 <script src="{{url_for('static', filename='js/vendor/isotope.pkgd.min.js')}}"></script>
 <div class="container">
-    <div class="col-md-3 hidden-xs hidden-sm">
-            <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
+<div class="col-md-10 col-md-offset-1 chidden-xs hidden-sm">
+            <ul  class="nav nav-pills categories">
                 {% for c in categories %}
                 <li {% if active_cat.short_name==c.short_name%}class="active"{% endif %}><a href="{{url_for('project.project_cat_index', category=c.short_name)}}"><i class="icon-chevron-right"></i> {{ c.name }}</a></li>
                 {% endfor %}
@@ -16,7 +16,7 @@
                 {% endif %}
             </ul>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-10 col-md-offset-1">
             <div id="sorts" class="btn-group pull-right" style="margin-top:12px;">
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-sort-value="original-order">Order by <span id="order">name</span> <span class="caret"></span></button>
               <ul class="dropdown-menu" style="top:35px;">

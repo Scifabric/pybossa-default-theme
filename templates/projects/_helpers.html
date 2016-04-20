@@ -121,13 +121,15 @@
 
 
 {% macro show_project(project, active_cat, current_user, upload_method) %}
-<div class="project-item row {{class}} well">
-    <h2><a href="{{ url_for('project.details', short_name = project.short_name) }}">{{ project.name }}</a></h2>
-    <div class="row">
-        <div class="col-md-3">
-            {{ render_project_thumbnail(project, upload_method, class='thumbnail', style='max-width:100px; max-height:100px;') }}
-        </div> <!-- End of span3 -->
-        <div id="data" class="col-md-9">
+<div class="project-item {{class}} col-xs-12 col-md-8">
+    <div class="media">
+  <div class="media-left">{{ render_project_thumbnail(project, upload_method, class='thumbnail', style='max-width:100px; max-height:100px;') }}
+            </div>
+            <div class="media-body">
+            <h4 class="media-heading">
+            <a href="{{ url_for('project.details', short_name = project.short_name) }}">{{ project.name }}</a></h2>
+            </h4>
+
             <p style="margin:0"><strong><i class="icon-info-sign"></i> {{ _('Description') }}</strong>: {{ project.description }}</p>
             <p style="margin:0"><strong><i class="icon-ok"></i> {{ _('Creation Date') }}</strong>: <span class="date">{{ project.created[0:10] }}</span></p>
             {% if project.last_activity_raw != None %}
@@ -141,10 +143,10 @@
             <p style="margin:0"><strong><i class="icon-user"></i> {{ _('Created by') }}</strong>: {{ project.owner }}</p>
             {% endif %}
             {% if active_cat != "draft" %}
-            <p style="margin:0"><a class="btn btn-primary" href="{{ url_for('project.presenter', short_name = project.short_name) }}"><i class="icon icon-white icon-ok"></i> {{ _('Try it!') }}</a></p>
+            <p style="margin:0"><a class="btn btn-primary project-btn" href="{{ url_for('project.presenter', short_name = project.short_name) }}"><i class="icon icon-white icon-ok"></i> {{ _('Try it!') }}</a></p>
             {% endif %}
+            </div>
         </div> <!-- end of id=data class=span8 -->
-    </div> <!--end of class=row -->
 </div><!-- end of class=row -->
 {%- endmacro %}
 
