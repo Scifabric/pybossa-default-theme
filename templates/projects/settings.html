@@ -4,13 +4,13 @@
 {% import "projects/_helpers.html" as helper %}
 
 {% block content %}
-<div class="row">
+<div class="container">
     {% if project %}
-    <div class="col-md-3">
+    <div class="col-sm-3 col-md-3">
         {{ helper.render_project_local_nav(project, 'settings', current_user, pro_features) }}
     </div>
     <!-- Project -->
-    <div class="col-md-9">
+    <div class="col-sm-9 col-md-9">
         <h1><strong>{{ project.name }}</strong>: {{ _('Settings') }}</h1>
         {{ helper.render_project_summary(project, n_tasks, overall_progress, last_activity, current_user, upload_method) }}
         <h2>{{ _('Project Settings') }}</h2>

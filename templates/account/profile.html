@@ -7,18 +7,17 @@
 {% block content %}
 <section class="account profile">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-3 col-md-offset-1 col-md-2">
+      
+            <div class="col-sm-3 col-md-3">
                 {{ helper.render_account_local_nav(current_user, active_link) }}
             </div>
-            <div class="col-sm-9 col-md-8">
+            <div class="col-sm-9 col-md-9">
                 <h2>{{ _('Your Account') }}: {{current_user.fullname}}</h2>
                 {{ helper.render_user_profile(current_user, upload_method, "settings") }} 
                 {% if projects_contrib | count > 0 %}
                 {{ project_helper.render_grid_projects(projects_contrib,  _('Your Contributions'), upload_method, title_class="col-md-12", container=False)}}
                 {% endif %}
             </div>
-        </div>
     </div>
 </section>
 {% endblock %}

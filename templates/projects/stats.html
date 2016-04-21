@@ -22,10 +22,10 @@
     var projectStats = {{projectStats|safe}};
 </script>
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-sm-3 col-md-3">
         {{helper.render_project_local_nav(project, 'stats', current_user, pro_features)}}
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 col-md-9">
         {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
         {{ privacy.render_lock_page() }}
         {% else %}

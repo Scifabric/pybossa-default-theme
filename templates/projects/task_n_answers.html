@@ -6,11 +6,11 @@
 
 {% block content %}
 {% if project %}
-        <div class="row">
-            <div class="col-md-3">
+     <div class="container">
+    <div class="col-sm-3 col-md-3">
                 {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features) }}
             </div>
-            <div class="col-md-9">
+            <div class="col-sm-9 col-md-9">
                 {{ helper.render_project_title(project, subtitle=_('Task Redundancy')) }}
                 <form id="task_redundancy" class="form-horizontal" method="post" action="{{ url_for('project.task_n_answers', short_name=project.short_name) }}">
                     {{ form.hidden_tag() }}
