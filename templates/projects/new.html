@@ -6,12 +6,12 @@
 {% block content %}
 {% from "_formhelpers.html" import render_field %}
 <div id="app-form" class="row"> 
-    <div class="col-md-3">
+    <div class=" col-sm-3 col-md-2 col-md-offset-1">
         {{ helper.render_account_local_nav(current_user, active_link) }}
     </div>
-    <div class="col-md-9">
-        <h1><strong>{{ _('Project') }}</strong>: {{ _('Create a new project') }}</h1>
-        <form class="form-horizontal" method="post" action="{{ url_for('project.new')}}" enctype="multipart/form-data"}}>
+    <div class="col-sm-9 col-md-8">
+        <h2><strong>{{ _('Project') }}</strong>: {{ _('Create a new project') }}</h2>
+        <form class="" method="post" action="{{ url_for('project.new')}}" enctype="multipart/form-data"}}>
         {{ form.hidden_tag() }}
         <fieldset>
             {{ render_field(form.name, class_="span4", placeholder=_('The name of the project')) }}
