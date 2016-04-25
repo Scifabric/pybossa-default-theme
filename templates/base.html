@@ -70,6 +70,8 @@
               %}
               <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
+    {% block extrajs %}
+    {% endblock %}
     {% include "_flash_messages.html" %}
   </body>
 </html>
