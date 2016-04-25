@@ -7,8 +7,7 @@
 {% block content %}
 <section class="account projects">
     <div class="container">
-        <div class="row">
-            <div class="col-md-2">
+            <div class="col-sm-3 col-md-3">
                 {{ helper.render_account_local_nav(current_user, active_link) }}
             </div>
             <div class="col-md-8" style="min-height:400px">
@@ -25,7 +24,6 @@
                  {% endif %}
 
             </div>
-        </div>
     </div>
 </section>
 {% endblock %}
