@@ -2,97 +2,47 @@
 {% set active_page = "projects" %}
 
 {% import "projects/_helpers.html" as helper %}
+{% import "account/_helpers.html" as helper_account %}
 
 {% block content %}
-<script src="{{url_for('static', filename='js/vendor/isotope.pkgd.min.js')}}"></script>
-<div class="container">
-<div class="col-md-10 col-md-offset-1 hidden-xs hidden-sm">
-            <ul  class="nav nav-pills categories">
-                {% for c in categories %}
-                <li {% if active_cat.short_name==c.short_name%}class="active"{% endif %}><a href="{{url_for('project.project_cat_index', category=c.short_name)}}"><i class="icon-chevron-right"></i> {{ c.name }}</a></li>
-                {% endfor %}
-                {% if current_user.is_authenticated() and current_user.admin %}
-                <li {% if active_cat.short_name=="draft"%}class="active"{% endif %}><a href="{{url_for('project.draft')}}"><i class="icon-chevron-right"></i> {{ _('Draft') }}</a></li>
-                {% endif %}
-            </ul>
-    </div>
-    <div class="col-md-10 col-md-offset-1">
-
-               
-
+<section class="project categories selector">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 hidden-xs hidden-sm">
+                <ul class="nav nav-pills nav-justified categories">
+                    {% for c in categories %}
+                    <li {% if active_cat.short_name==c.short_name%}class="active"{% endif %}><a href="{{url_for('project.project_cat_index', category=c.short_name)}}"><i class="icon-chevron-right"></i> {{ c.name }}</a></li>
+                    {% endfor %}
+                    {% if current_user.is_authenticated() and current_user.admin %}
+                    <li {% if active_cat.short_name=="draft"%}class="active"{% endif %}><a href="{{url_for('project.draft')}}"><i class="icon-chevron-right"></i> {{ _('Draft') }}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
         {% if projects %}
             {% if active_cat.short_name=="featured"%} 
-            <h2>{{pagination.total_count}} {{ _('Featured Projects') }}</h2>
-            <h3>{{ _('A special selection of the most interesting projects') }}</h3>
+                {% set title = _('Featured Projects') %}
+                {% set subheading =_('A special selection of the most interesting projects') %}
             {% elif active_cat.short_name=='draft' %}
-            <h2> {{pagination.total_count}} {{ _('Draft Projects')}}</h2>
-            <h3>{{ _('Work in progress projects') }}</h3>
+                {% set title = _('Draft Projects') %}
+                {% set subheading = _('Work in progress projects') %}
             {% else %}
-            <h2>{{pagination.total_count}} {{ active_cat.name }} Projects</h2>
-            <h3>{{ active_cat.description }}</h3>
+                {% set title = active_cat.name + ' ' + _('Projects') %}
+                {% set subheading = active_cat.description %}
             {% endif %}
-
-             <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-sort-value="original-order">Order by <span id="order">name</span> <span class="caret"></span></button>
-                <ul class="dropdown-menu" style="top:35px;">
-                  <li><a href="#" data-sort-value="original-order">name</a></li>
-                  <li><a href="#" data-sort-value="date">date</a></li>
-                  <li><a href="#" data-sort-value="activity">activity</a></li>
-                  <li><a href="#" data-sort-value="progress">progress</a></li>
-                </ul>
-
-            <div class="projects">
-            {% for project in projects %}
-            {{ helper.show_project(project, active_cat.short_name, current_user, upload_method) }}
-            {% endfor %}
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10">
+                    {{ helper.render_grid_projects(projects, title, upload_method, title_class="col-md-12", container=False, active_cat = active_cat.short_name, subheading=subheading)}}
+                </div>
             </div>
             {% if pagination.pages > 1 %}
-                {{ helper.render_pagination(pagination) }}
+            <div class="col-md-offset-2 col-md-8 text-center">
+                {{ helper_account.render_pagination(pagination) }}
+            </div>
             {% endif %}
         {% else %}
-            <h2>{{pagination.total_count}} {{ active_cat.name }} Projects</h2>
             <h3>{{_('Sorry, there are no published projects for this category yet')}}</h3>
         {% endif %}
     </div>
-</div>
-{{ helper.broken_image() }}
-<script>
-$( function() {
-  // init Isotope
-  var $container = $('.projects').isotope({
-    itemSelector: '.project-item',
-    layoutMode: 'fitRows',
-    getSortData: {
-      date: '.date',
-      activity: '.activity',
-      progress: '.progress parseInt',
-    },
-    sortAscending: {
-        progress: false,
-        activity: false,
-    }
-  });
-
-  // bind sort button click
-  $('#sorts').on( 'click', 'a', function() {
-    var sortValue = $(this).attr('data-sort-value');
-    $container.isotope({ sortBy: sortValue });
-    if (sortValue == 'original-order') {
-        $("#order").text('name');
-    }
-    else {
-        $("#order").text(sortValue);
-    }
-  });
-
-  // change is-checked class on buttons
-  $('.dropdown-toggle').each( function( i, buttonGroup ) {
-    var $buttonGroup = $( buttonGroup );
-    $buttonGroup.on( 'click', 'button', function() {
-      $buttonGroup.find('.is-checked').removeClass('is-checked');
-      $( this ).addClass('is-checked');
-    });
-  });
-
-});
-</script>
+</section>
 {% endblock %}
