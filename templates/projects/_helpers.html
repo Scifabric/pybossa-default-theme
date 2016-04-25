@@ -257,11 +257,17 @@
 {% endif -%}
 {% endmacro -%}
 
-{%- macro render_project_card_option(project, upload_method, title, explanation, link, link_action_text) %}
+{%- macro render_project_card_option(project, upload_method, title, explanation, link, link_action_text, background=False) %}
 <div class="thumbnail card">
-    <div class="post-pic" style="background: rgb(0, 151, 167) url({{render_url_thumbnail(project, upload_method)}}) no-repeat center top; background-size: cover;"></div>
-    <div class="caption">
+    <div class="post-pic" style="background: rgb(0, 151, 167) url({{render_url_thumbnail(project, upload_method)}}) no-repeat center top; background-size: cover;">
+        {% if not background %}
         <h3>{{title}}</h3>
+        {% endif %}
+    </div>
+    <div class="caption">
+        {% if background %}
+        <h3>{{title}}</h3>
+        {% endif %}
         <p>{{explanation}}</p>
         <p class="readmore"><a rel="nofollow" href={{link}}>{{link_action_text}}</a></p>
     </div>

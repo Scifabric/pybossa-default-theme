@@ -1,39 +1,19 @@
-{% extends "/base.html" %}
+{% extends "projects/base.html" %}
+{% from "projects/_helpers.html" import render_project_card_option %}
 {% set active_page = "projects" %}
-{% set active_project  = "all" %}
-{% import "projects/_helpers.html" as helper %}
+{% set active_link = "blog" %}
 
-{% block content %}
-<div class="container">
-    {% if project %}
-    <div class="col-md-3">
-        {{ helper.render_project_local_nav(project, 'blog', current_user, pro_features) }}
-    </div>
-    <div class="col-md-9" style="min-height:400px">
-        {{ helper.render_project_title(project, upload_method) }}
-        <hr>
+{% block projectcontent %}
         {% if blogposts %}
-        <hr>
+        <div class="row">
+            {% for blogpost in blogposts %}
+            <div class="col-sm-6">
+                {{ render_project_card_option(project, upload_method, title=blogpost.title, explanation=blogpost.body | markdown | truncate(200) | striptags, link=url_for('project.show_blogpost', short_name=project.short_name, id=blogpost.id), link_action_text=_('Read more'))}}
+            </div>
+            {% endfor %}
             <ul>
-                {% for blogpost in blogposts %}
-                    <li>
-                        <div>
-                            <a href="{{url_for('project.show_blogpost', short_name=project.short_name, id=blogpost.id)}}">{{ blogpost.title }}</a>
-                        </div>
-                    </li>
-                {% endfor %}
-            </ul>
         {% else %}
             <h1>{{ _('Sorry! No posts so far.') }}</h1>
         {% endif %}
-        <hr>
-    </div>
-    {% else %}
-    <div class="page-header">
-        <h1>{{ _('Sorry! This project does not exist.') }}</h1>
-    </div>
-    {% endif %}
 </div>
-{{ helper.broken_image() }}
-{{ helper.knob() }}
 {% endblock %}

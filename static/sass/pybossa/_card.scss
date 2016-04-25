@@ -28,6 +28,13 @@
         }
 
     }
+
+    .post-pic h3 {
+        padding-top: 100px;
+        padding-left: 20px;
+        padding-right: 20px;
+        color: white;
+    }
 }
 
 $font-size: 20px;
@@ -36,7 +43,7 @@ $lines-to-show: 2;
 
 .card {
     background-color: $white;
-    h3 {
+    .caption h3 {
         color: $grey;
         font-weight: 600;
         font-size: 20px;
