@@ -217,31 +217,6 @@
     </div>
     {% endif %}
 </section>
-
-
-<!--   <div class="banner">
-        <div class="row">
-            <div class="col-md-4">
-                <h1>{{title}}</h1>
-            </div>
-            <div class="col-md-8">
-              <ul class="featured">
-                  {% for project in projects %}
-                  <li><a href={{ url_for('project.details', short_name=project.short_name)}}>
-                      {{ render_project_thumbnail(project, upload_method, class='img-thumbnail', style="min-height:100px; min-width:100px;")}}
-                      <h3>{{project.name}}</h3>
-                      <span class="label label-info">{{ _('Info') }}</span>
-                      </a>
-                  </li>
-                  {% endfor %}
-                  {% for number in range(18 - projects |count) %}
-                  <li></li>
-                  {% endfor %}
-              </ul>
-            </div>
-        </div>
-    </div>
-    -->
 {% endmacro %}
 
 {% macro render_loading(text) %}
