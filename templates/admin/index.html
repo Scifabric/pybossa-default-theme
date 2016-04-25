@@ -8,7 +8,7 @@
     <div class="col-sm-3 col-md-3">
         {{ helper.render_account_local_nav(current_user, active_link) }}
     </div>
-    <div class="col-sm-3 col-md-9" style="min-height:400px;">
+    <div class="col-sm-9 col-md-9" style="min-height:400px;">
         <h2>{{ _('Admin Site') }}</h2>
         <div class="row">
             <div id="dashboard" class="col-md-8 project-item">
@@ -28,14 +28,14 @@
         </div>
         <div class="row">
             <div id="featured-apps" class="col-md-8 project-item">
-                <h2><i class="icon-star"></i> {{_('Featured Projects')}}</h2>
+                <h4><i class="icon-star"></i> {{_('Featured Projects')}}</h4>
                 <p>{{_('Show projects on the front page')}}</p>
                 <a href="{{url_for('admin.featured')}}" class="btn btn-primary">
                     {{ _('Manage') }} <i class="icon-chevron-right"></i>
                 </a>
             </div>
             <div id="categories" class="col-md-8 project-item">
-                <h2><i class="icon-check"></i> {{_('Categories')}}</h2>
+                <h4><i class="icon-check"></i> {{_('Categories')}}</h4>
                 <p>{{_('Manage project categories')}}</p>
                 <a href="{{url_for('admin.categories')}}" class="btn btn-primary">
                     {{ _('Manage') }} <i class="icon-chevron-right"></i>
@@ -44,14 +44,14 @@
         </div>
         <div class="row">
             <div id="users" class="col-md-8 project-item">
-                <h2><i class="icon-user"></i> {{_('Administrators')}}</h2>
+                <h4><i class="icon-user"></i> {{_('Administrators')}}</h4>
                 <p>{{_('Manage administrators')}}</p>
                 <a href="{{url_for('admin.users')}}" class="btn btn-primary">
                     {{ _('Manage') }} <i class="icon-chevron-right"></i>
                 </a>
             </div>
             <div id="users-list" class="col-md-8 project-item">
-                <h2><i class="icon-list"></i> {{_('Users')}}</h2>
+                <h4><i class="icon-list"></i> {{_('Users')}}</h4>
                 <p>{{_('Export a list of users')}}</p>
                 <a href="{{url_for('admin.export_users', format='json')}}" class="btn btn-primary">
                     {{ _('JSON') }}
@@ -63,7 +63,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h2>{{_('Latest news from PyBossa')}}</h2>
+                <h4>{{_('Latest news from PyBossa')}}</h4>
                 <ul class="news">
                     {% for new in news %}
                     <li><strong>{{new.updated[0:10]}}</strong> {% if 'github' in new.links[0].href %} <span class="label label-info">{{_('New PyBossa version')}}</span> {% else %} <span class="label label-default">{{_('New SciFabric Blog Post')}}</span> {% endif %}<a target="_blank" href="{{new.links[0].href}}">{{new.title}}</a></li>
