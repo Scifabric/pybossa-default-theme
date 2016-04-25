@@ -39,15 +39,4 @@
     </div>
     {% endif %}
 </div>
-<script>
-    var url = "{{ckan_url}}/api/3/action/package_show";
-    $.get(url, {id: '{{ckan_pkg_name}}'}, function(data){
-            if (data['success'] == true) {
-                $("#ckan").show();
-                if (data['result']['license_title'] != null) {
-                    $("#ckan_license").show();
-                }
-            }
-            });
-</script>
 {% endblock %}
