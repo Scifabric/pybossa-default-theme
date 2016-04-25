@@ -1,31 +1,24 @@
-{% extends "/base.html" %}
-{% set active_page = "projects" %}
-{% set active_project  = "settings" %}
-{% import "projects/_helpers.html" as helper %}
+{% extends "projects/base.html" %}
+{% set active_link = "settings" %}
+{% set subtitle = _('Project Settings')%}
+{% from "projects/_helpers.html" import render_project_card_option %}
 
-{% block content %}
-<div class="container">
-    {% if project %}
-    <div class="col-sm-3 col-md-3">
-        {{ helper.render_project_local_nav(project, 'settings', current_user, pro_features) }}
+{% block projectcontent %}
+<div class="row">
+    <div id="import_tasks" class="col-md-6">
+        {{ render_project_card_option(project, upload_method, title=_('Project details'), explanation=_('Edit the name, description, etc.'), link=url_for('project.update', short_name=project.short_name), link_action_text=_('Edit'))}}
     </div>
-    <!-- Project -->
-    <div class="col-sm-9 col-md-9">
-        <h1><strong>{{ project.name }}</strong>: {{ _('Settings') }}</h1>
-        {{ helper.render_project_summary(project, n_tasks, overall_progress, last_activity, current_user, upload_method) }}
-        <h2>{{ _('Project Settings') }}</h2>
-        <div class="btn-group">
-            <a class="btn btn-default" href="{{ url_for('project.update', short_name = project.short_name) }}"><i class="icon-edit icon-white"></i> {{ _('Edit the project details') }}</a>
-            <a class="btn btn-default" href="{{ url_for('project.task_settings', short_name = project.short_name) }}"><i class="icon-wrench icon-white"></i> {{ _('Task Settings') }}</a>
-            <a class="btn btn-default" href="{{ url_for('project.delete', short_name = project.short_name) }}"><i class="icon-trash icon-white"></i> {{ _('Delete the project') }}</a>
-            <a class="btn btn-default" href="{{ url_for('project.new_blogpost', short_name = project.short_name) }}"><i class="icon-pencil icon-white"></i> {{ _('Write a blog post') }}</a>
-        </div>
+    <div id="export_tasks" class="col-md-6">
+        {{ render_project_card_option(project, upload_method, title=_('Task Settings'), explanation=_('Change the task settings: redundancy, priority, etc.'), link=url_for('project.task_settings', short_name=project.short_name), link_action_text=_('Settings'))}}
     </div>
-    {% else %}
-    <div class="page-header">
-        <h1>{{ _('Sorry! This project does not exist.') }}</h1>
-    </div>
-    {% endif %}
 </div>
-{{ helper.broken_image() }}
+
+<div class="row">
+    <div id="import_tasks" class="col-md-6">
+        {{ render_project_card_option(project, upload_method, title=_('Delete the project'), explanation=_('Delete the project, tasks, task runs and answers.'), link=url_for('project.delete', short_name=project.short_name), link_action_text=_('Delete'))}}
+    </div>
+    <div id="export_tasks" class="col-md-6">
+        {{ render_project_card_option(project, upload_method, title=_('Blog'), explanation=_('Write a blog post about your project.'), link=url_for('project.export_to', short_name=project.short_name), link_action_text=_('Write'))}}
+    </div>
+</div>
 {% endblock %}
