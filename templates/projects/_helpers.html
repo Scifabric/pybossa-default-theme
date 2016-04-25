@@ -163,34 +163,24 @@
 {% endmacro %}
 
 {% macro render_overall_progress(project, n_tasks, overall_progress, show_contribute_btn=True, show_n_tasks=False) %}
-<div class="row">
-    <div class="col-md-1"><input type="text" value="{{overall_progress | round |int}}" class="dial"></div>
-    <h2><strong> {{_('Overall progress')}}</strong>: {{ overall_progress | round | int }}% {{_('completed')}}
-        {% if show_contribute_btn %}
-        {{ render_contribute_button(project) }}
-        {% elif show_n_tasks %}
-        <span class="pull-right"><strong>{{n_tasks}}</strong> {{_('Tasks')}}</span>
-        {% endif %}
-
-    </h2>
-</div>
+<p><em>{{ overall_progress | round | int }}% {{_('completed')}}</em></p>
 {% endmacro %}
 
 {% macro render_contribute_button(project) %}
     {% if project['contrib_button'] == 'completed' %}
-    <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="fa fa-thumbs-up" style="color:white;"></i> {{ _('Done! View results') }}</a>
+    <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-primary btn-contribute pull-right"><i class="fa fa-thumbs-up" style="color:white;"></i> {{ _('Done! View results') }}</a>
     {% endif %}
     {% if project['contrib_button'] == 'can_contribute' %}
-    <a href="{{ url_for('project.presenter', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="fa fa-thumbs-up" style="color:white;"></i> {{ _('Start Contributing Now!') }}</a>
+    <a href="{{ url_for('project.presenter', short_name=project.short_name)}}" class="btn btn-primary btn-contribute pull-right"><i class="fa fa-thumbs-up" style="color:white;"></i> {{ _('Start Contributing Now!') }}</a>
     {% endif %}
     {% if project['contrib_button'] == 'cannot_contribute' %}
-    <a href="{{url_for('project.details', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="fa fa-thumbs-up" style="color:white;"></i> {{ _('Thanks for contributing') }}</a>
+    <a href="{{url_for('project.details', short_name=project.short_name)}}" class="btn btn-primary btn-contribute pull-right"><i class="fa fa-thumbs-up" style="color:white;"></i> {{ _('Thanks for contributing') }}</a>
     {% endif %}
     {% if project['contrib_button'] == 'draft' %}
-    <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="fa fa-thumbs-up" style="color:white;"></i> {{ _('Draft project, complete it!') }}</a>
+    <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-primary btn-contribute pull-right"><i class="fa fa-thumbs-up" style="color:white;"></i> {{ _('Draft project, complete it!') }}</a>
     {% endif %}
     {% if project['contrib_button'] == 'publish' %}
-    <a href="{{url_for('project.publish', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="fa fa-thumbs-up" style="color:white;"></i> {{ _('You can now publish it!') }}</a>
+    <a href="{{url_for('project.publish', short_name=project.short_name)}}" class="btn btn-primary btn-contribute pull-right"><i class="fa fa-thumbs-up" style="color:white;"></i> {{ _('You can now publish it!') }}</a>
     {% endif %}
 {% endmacro %}
 

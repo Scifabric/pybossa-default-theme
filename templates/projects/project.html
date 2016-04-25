@@ -11,11 +11,16 @@
     </div>
     <!-- Project -->
     <div class="col-sm-9 col-md-9" style="min-height:400px">
-        {{ helper.render_project_title(project, upload_method) }}
-        <hr>
-        {{ helper.render_overall_progress(project, n_tasks, overall_progress) }}
+        <div class="row">
+            <div class="col-sm-8 col-md-8">
+                <h1>{{project.name}}</h1>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                {{helper.render_contribute_button(project)}}
+            </div>
+        </div>
+        <p><em>{{ overall_progress | round | int }}% {{_('completed')}}</em></p>
         {% if project.long_description %}
-        <hr>
             {{ project.long_description | e | markdown }}
         {% endif %}
         <hr>
