@@ -8,7 +8,7 @@
             <a id="webhooks-refresh" href="#" class="btn btn-info" style="display:none;" onclick="document.location.reload(true);"> Refresh</a>
         </div>
         <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-bordered table-condensed table-hover table-responsive">
                 <tr>
                     <td><strong>{{_('Created')}}</strong></td>
                     <td><strong>{{_('Updated')}}</strong></td>
@@ -28,7 +28,7 @@
                     <td id="response_{{response.id}}">{{response.response}}</td>
                     <td id="response_status_code_{{response.id}}">{{response.response_status_code}}</td>
                     <td>
-                        <button class="btn btn-info" onclick="run('{{project.short_name}}', {{response.id}})"><i class="icon-refresh"></i></button>
+                        <button class="btn btn-info" onclick="run('{{project.short_name}}', {{response.id}})"><i class="fa fa-refresh"></i></button>
                     </td>
                 </tr>
                 {% endfor %}
