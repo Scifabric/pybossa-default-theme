@@ -14,7 +14,7 @@
     stroke: #8BBF36 !important;
 }
 </style>
-<div class="row">
+<div class="container">
     <div class="col-md-10">
         <h1><strong>{{ _('Dashboard last 7 days') }}</strong></h1>
     </div>
@@ -23,7 +23,7 @@
     </div>
 </div>
 {% if wait == False %}
-<div class="row">
+<div class="container">
     <div class="col-md-6">
         <h2>{{ _('Active users') }}: {{active_users_last_week['series'][0] | sum}}</h2>
         <div id="dashboard_week_users" class="ct-chart ct-perfect-fourth"></div>
@@ -154,7 +154,7 @@
     </div>
 </div>
 {% else %}
-<div class="row">
+<div class="container">
     <div class="col-md-12">
         <h1>{{ _("No data available yet. You'll need to wait 24 hours.") }}</h1>
     </div>
