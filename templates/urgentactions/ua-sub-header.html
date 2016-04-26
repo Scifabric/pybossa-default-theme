@@ -1,2 +1,297 @@
-<div class="row" style="height:150px; background-color: #5B5B5B;">
+<style>
+    .sub-header-container {
+        padding: 20px 0 50px 0;
+        overflow: hidden;
+        background-color: #5B5B5B;
+    }
+
+    .individuals-container {
+        overflow: hidden;
+    }
+
+    .one-person {
+        float: left;
+        height: 50px;
+        width: 50px;
+        border: 2px solid white;
+        background-color: transparent;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .speach-bubble-container {
+        text-align: center;
+        padding-top: 20px;
+        height: 79px;
+        width: 71px;
+        margin: 0 auto;
+    }
+
+    .speach-bubble-container img {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    .one-person:hover, .more-persons:hover {
+        cursor: pointer;
+        font-weight: bolder;
+        background-color: #B6B6B6;
+        color: #000;
+    }
+
+    .one-person:focus, .more-persons:focus {
+        cursor: pointer;
+        font-weight: bolder;
+        background-color: #ffff00;
+        color: #000;
+    }
+
+    .one-person h1, .more-persons h1 {
+        font-weight: bolder;
+        margin-top: 10px;
+    }
+
+    .more-persons {
+        float: left;
+        margin-left: 10px;
+        height: 50px;
+        width: 50px;
+        border: 2px solid white;
+        background-color: transparent;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .select-persons {
+        margin-left: -5px;
+        height: 50px;
+        width: 215px;
+        border: 2px solid white;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-left: none;
+    }
+
+    @media (max-width: 991px) {
+        .sub-header-container {
+            padding-top: 100px;
+        }
+    }
+</style>
+<script type="text/javascript">
+    var click = 0;
+    var persons = 0;
+    $(function () {
+        $(".select-persons").hide();
+        $(".one-person").click(function () {
+            $(".select-persons").hide(250);
+            $(".more-persons").css("background-color", "transparent");
+            $(".more-persons").css("color", "#fff");
+            if (click == 0) {
+                // TODO: Implement the click event.
+                $(this).css("background-color", "#FFFF00");
+                $(this).css("color", "#000");
+                click = 1;
+                persons = 1;
+            } else if (click == 1) {
+                click = 0;
+                persons = 0;
+                $(this).css("background-color", "transparent");
+                $(this).css("color", "#fff");
+            } else if (click == 2) {
+
+                // TODO: Implement the click event.
+                click = 0;
+                persons = 1;
+                $(this).css("background-color", "#FFFF00");
+                $(this).css("color", "#000");
+            }
+        });
+
+        $(".more-persons").click(function () {
+            $(".one-person").css("background-color", "transparent");
+            $(".one-person").css("color", "#fff");
+            if (click == 0) {
+                $(this).css("background-color", "#FFFF00");
+                $(this).css("color", "#000");
+                for (var i = 0; i < 2; i++) {
+                    var person_head = $(".person" + i).find('.person-head');
+                    var person_body = $(".person" + i).find('.person-body');
+                    $(person_head).find('img').prop("src", "/static/img/head_selected.png");
+                    $(person_body).find('img').prop("src", "/static/img/body_selected.png");
+                }
+                $(".select-persons").animate({width: 'toggle'}, 250);
+                persons = 2;
+                click = 2;
+            } else if (click == 1) {
+                click = 2;
+                persons = 2;
+                $(".select-persons").animate({width: 'toggle'}, 250);
+                $(this).css("background-color", "#FFFF00");
+                $(this).css("color", "#000");
+            } else if (click == 2) {
+                click = 0;
+                persons = 0;
+                $(".select-persons").animate({width: 'toggle'}, 250);
+                $(this).css("background-color", "transparent");
+                $(this).css("color", "#fff");
+            }
+        });
+
+        $(".person").mouseenter(function () {
+            var class_names_array = $(this).attr("class").split(" ");
+            var class_name = class_names_array[1];
+            var person_number = class_name.substr(class_name.length - 1);
+            console.log(person_number);
+            for (var i = 0; i <= Number(person_number); i++) {
+                var person_head = $(".person" + i).find('.person-head');
+                var person_body = $(".person" + i).find('.person-body');
+                if (i < 2) {
+                    continue;
+                } else {
+                    $(person_head).find('img').prop("src", "/static/img/head_selected.png");
+                    $(person_body).find('img').prop("src", "/static/img/body_selected.png");
+                    $("#person-counter").text(i + 1);
+                }
+            }
+        }).mouseleave(function () {
+            for (var i = 0; i < 10; i++) {
+                var person_head = $(".person" + i).find('.person-head');
+                var person_body = $(".person" + i).find('.person-body');
+                if (i < 2) {
+                    $(person_head).find('img').prop("src", "/static/img/head_selected.png");
+                    $(person_body).find('img').prop("src", "/static/img/body_selected.png");
+                    persons = 2;
+                    $("#person-counter").text(i + 1);
+                } else {
+                    $(person_head).find('img').prop("src", "/static/img/head.png");
+                    $(person_body).find('img').prop("src", "/static/img/body.png");
+                }
+
+            }
+        });
+    });
+
+</script>
+<div class="row">
+    <div class="sub-header-container">
+        <div class="col-md-12" style="padding: 0;">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>Q1: How many individuals are affected by this urgent action?</h2>
+                <div class="individuals-container">
+                    <div class="one-person">
+                        <h1>1</h1>
+                    </div>
+                    <div class="more-persons">
+                        <h1>2+</h1>
+                    </div>
+                    <div class="select-persons" style="float: left;">
+                        <div class="first-five" style="float: left; margin-left: 15px;">
+                            <div class="person person0" style="float:left; height:40px; width: 14px; margin-top: 5px;">
+                                <div class="person-head" style="text-align: center;">
+                                    <img src="/static/img/head.png" style="width: 11px; height: 11px;">
+                                </div>
+                                <div class="person-body" style="margin-top: 3px; text-align: center;">
+                                    <img src="/static/img/body.png" style="width: 11px; height: 20px;">
+                                </div>
+                            </div>
+                            <div class="person person1"
+                                 style="float:left; height:40px; width: 14px; margin-top: 5px;">
+                                <div class="person-head" style="text-align: center;">
+                                    <img src="/static/img/head.png" style="width: 11px; height: 11px;">
+                                </div>
+                                <div class="person-body" style="margin-top: 3px; text-align: center;">
+                                    <img src="/static/img/body.png" style="width: 11px; height: 20px;">
+                                </div>
+                            </div>
+                            <div class="person person2"
+                                 style="float:left; height:40px; width: 14px; margin-top: 5px;">
+                                <div class="person-head" style="text-align: center;">
+                                    <img src="/static/img/head.png" style="width: 11px; height: 11px;">
+                                </div>
+                                <div class="person-body" style="margin-top: 3px; text-align: center;">
+                                    <img src="/static/img/body.png" style="width: 11px; height: 20px;">
+                                </div>
+                            </div>
+                            <div class="person person3"
+                                 style="float:left; height:40px; width: 14px; margin-top: 5px;">
+                                <div class="person-head" style="text-align: center;">
+                                    <img src="/static/img/head.png" style="width: 11px; height: 11px;">
+                                </div>
+                                <div class="person-body" style="margin-top: 3px; text-align: center;">
+                                    <img src="/static/img/body.png" style="width: 11px; height: 20px;">
+                                </div>
+                            </div>
+                            <div class="person person4"
+                                 style="float:left; height:40px; width: 14px; margin-top: 5px;">
+                                <div class="person-head" style="text-align: center;">
+                                    <img src="/static/img/head.png" style="width: 11px; height: 11px;">
+                                </div>
+                                <div class="person-body" style="margin-top: 3px; text-align: center;">
+                                    <img src="/static/img/body.png" style="width: 11px; height: 20px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="last-five" style="float: left;">
+                            <div class="person person5"
+                                 style="float:left; padding-right:2px; height:40px; width: 20px; margin-top: 5px;">
+                                <div class="person-head" style="text-align: right;">
+                                    <img src="/static/img/head.png" style="width: 11px; height: 11px;">
+                                </div>
+                                <div class="person-body" style="margin-top: 3px; text-align: right;">
+                                    <img src="/static/img/body.png" style="width: 11px; height: 20px;">
+                                </div>
+                            </div>
+                            &nbsp;&nbsp;
+                            <div class="person person6"
+                                 style="float:left; height:40px; width: 14px; margin-top: 5px;">
+                                <div class="person-head" style="text-align: center;">
+                                    <img src="/static/img/head.png" style="width: 11px; height: 11px;">
+                                </div>
+                                <div class="person-body" style="margin-top: 3px; text-align: center;">
+                                    <img src="/static/img/body.png" style="width: 11px; height: 20px;">
+                                </div>
+                            </div>
+                            <div class="person person7"
+                                 style="float:left; height:40px; width: 14px; margin-top: 5px;">
+                                <div class="person-head" style="text-align: center;">
+                                    <img src="/static/img/head.png" style="width: 11px; height: 11px;">
+                                </div>
+                                <div class="person-body" style="margin-top: 3px; text-align: center;">
+                                    <img src="/static/img/body.png" style="width: 11px; height: 20px;">
+                                </div>
+                            </div>
+                            <div class="person person8"
+                                 style="float:left; height:40px; width: 14px; margin-top: 5px;">
+                                <div class="person-head" style="text-align: center;">
+                                    <img src="/static/img/head.png" style="width: 11px; height: 11px;">
+                                </div>
+                                <div class="person-body" style="margin-top: 3px; text-align: center;">
+                                    <img src="/static/img/body.png" style="width: 11px; height: 20px;">
+                                </div>
+                            </div>
+                            <div class="person person9"
+                                 style="float:left; height:40px; width: 14px; margin-top: 5px;">
+                                <div class="person-head" style="text-align: center;">
+                                    <img src="/static/img/head.png" style="width: 11px; height: 11px;">
+                                </div>
+                                <div class="person-body" style="margin-top: 3px; text-align: center;">
+                                    <img src="/static/img/body.png" style="width: 11px; height: 20px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="persons-counter" style="float: left; padding: 1px 0 0 5px;">
+                            <label id="person-counter" style="font-size: 28px;">2</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2" style="text-align: center">
+                <div class="speach-bubble-container">
+                    <img src="/static/img/speech_bubble.png" class="img img-responsive">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -9,11 +9,23 @@
     .navbar {
         background-color: #000000;
         height: 79px !important;
-        border-radius: 0;
+        border-radius: 0 !important;
+    }
+
+    .right-nav {
+        padding: 0 50px 0 10px;
+        height: 80px;
+        margin-top: -8px;
+    }
+
+    #menu {
+        padding: 0 40px 0 10px;
     }
 
     img {
         margin: 0 auto;
+        height: 100%;
+        width: 200px;
     }
 
     .collapse ul li a:hover, .collapse ul li a:focus {
@@ -30,9 +42,19 @@
         margin-top: 20px;
     }
 
-    @media (min-width: 480px) and (max-width: 990px) {
+    @media (min-width: 320px) and (max-width: 990px) {
         .collapse {
-            padding-top: 15px;
+            padding: 15px -10px 0 30px;
+        }
+
+        .right-nav {
+            padding: 0 40px 0 10px;
+        }
+
+        .navbar-collapse {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding-right: 20px;
         }
     }
 
@@ -42,6 +64,7 @@
             height: 104% !important;
         }
     }
+
     @media (min-width: 990px) and (max-width: 1024px) {
         #menu {
             background-color: #2D2D2D !important;
@@ -52,15 +75,17 @@
 
 <div class="row">
     <div class="col-xs-12 col-md-12" style="height: 80px; padding: 0;">
-        <div class="col-xs-12 col-md-2" id="amnesty-logo" style="background-color: #FFF003; height: 80px; padding: 0; text-align: center;">
+        <div class="col-xs-12 col-md-2" id="amnesty-logo"
+             style="background-color: #FFF003; height: 80px; padding: 0; text-align: center;">
             <a href="#" style="text-align: center;">
-                <img src="/static/img/amnesty-international.png" class="img-responsive" style="height: 100%; width: 200px;">
+                <img src="/static/img/amnesty-international.png" class="img-responsive">
             </a>
         </div>
         <div class="col-xs-12 col-md-10" id="header-content">
-            <nav class="navbar navbar-inverse">
+            <nav class="navbar navbar-inverse navbar-static-top">
                 <div class="navbar-header">
-                    <a style="margin-top: 13px; color: #fff; font-size: 16px; font-weight: bold;" class="navbar-brand" href="">DECODE OUR URGENT ACTIONS</a>
+                    <a style="margin-top: 13px; color: #fff; font-size: 16px; font-weight: bold;" class="navbar-brand"
+                       href="">DECODE OUR URGENT ACTIONS</a>
                     <button type="button" class="navbar-toggle" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
@@ -72,21 +97,59 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right" id="menu">
-                        <li><a href="#">Shqip</a></li>
-                        <li><a href="#">English</a></li>
-                        <li><a href="#">Srpski</a></li>
-                        <li><a href="#">Shkarko</a></li>
+                        <li><a href="#">Item 1</a></li>
+                        <li><a href="#">Item 2</a></li>
+                        <li><a href="#">Item 3</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right" style="margin-right:50px; height: 80px; margin-top: -8px;">
+                    <ul class="nav navbar-nav navbar-right right-nav" style="">
+                        <li style="display: none;">
+                            {% if current_user.is_authenticated() %}
+                            <ul class="nav secondary-nav pull-right">
+                                <li {% if active_page==
+                                'profile' %} class="active" {% endif %}><a href="#" data-toggle="dropdown"
+                                                                           class="dropdown-toggle"><i
+                                    class="icon icon-user"></i> {{ current_user.name | truncate(6,true) }} <span
+                                    class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ url_for('account.profile', name=current_user.name) }}"><i
+                                            class="icon icon-user"></i> {{
+                                        _('My Profile') }}</a></li>
+                                    <li><a href="{{ url_for('account.projects', name=current_user.name) }}"><i
+                                            class="icon icon-th-large"></i> {{ _('My Projects') }}</a></li>
+                                    <li><a href="{{ url_for('account.update_profile', name=current_user.name) }}"><i
+                                            class="icon icon-cog"></i> {{ _('My Settings') }}</a></li>
+                                    {% if current_user.admin == 1 %}
+                                    <li class="divider"></li>
+                                    <li><a href="{{ url_for('admin.index') }}">{% if notify_admin %} <span
+                                            class="label label-info ">{{ news |count }}</span>{%
+                                        else %}<i class="icon icon-cog"></i> {% endif %} {{ _('Admin Site') }}</a></li>
+                                    {% endif %}
+                                    <li class="divider"></li>
+                                    <li><a href="{{ url_for('account.signout') }}"><i class="icon icon-off"></i> {{
+                                        _('Sign Out') }}</a>
+                                    </li>
+                                </ul>
+                                </li>
+                            </ul>
+                            {% endif %}
+                        </li>
                         <li>
                             <a href="#" title="Facebook">
                                 <i class="fa fa-facebook-square fa-3x"
                                    aria-hidden="false"></i>
                             </a>
                         </li>
+                        <li>
+                            <a href="#" title="Instagram">
+                                <i class="fa fa-twitter-square fa-3x"
+                                   aria-hidden="false"></i>
+                            </a>
+                        </li>
                     </ul>
+                    <br><br><br>
                 </div> <!-- navbar-collapse -->
             </nav>
         </div>
+
     </div>
 </div>
