@@ -136,8 +136,8 @@ new Chartist.Bar('#dashboard_week_returning_users', data, options);
                 {{u.updated | pretty_date}}</p>
                 {% endif %}
                 {% if u.action_updated == 'User' %}
-                {{ helper.render_avatar(u, upload_method, class='img-circle', width='30px')}}
-                <p><a href="{{url_for('account.profile', name=u.name)}}">{{u.fullname}}</a> {{ _('has joined') }} {{u.updated | pretty_date}}</p>
+                <p>{{ helper.render_avatar(u, upload_method, class='img-circle', width='30px')}}
+                <a href="{{url_for('account.profile', name=u.name)}}">{{u.fullname}}</a> {{ _('has joined') }} {{u.updated | pretty_date}}</p>
                 {% endif %}
                 </li>
                 {% endfor %}
@@ -146,8 +146,8 @@ new Chartist.Bar('#dashboard_week_returning_users', data, options);
             <ul class="recent-activity">
                 {% for account in accounts %}
                 <li>
-                {{ helper.render_avatar(account, upload_method, class='img-circle', width='30px') }}
-                <p><a href="{{url_for('account.profile', name=account.name)}}">{{account['fullname']}}</a><br />{{ _('has joined') }} {{account.registered_ago}} and has contributed {{ account.task_runs }} tasks</p>
+                <p>{{ helper.render_avatar(account, upload_method, class='img-circle', width='30px') }}
+                <a href="{{url_for('account.profile', name=account.name)}}">{{account['fullname']}}</a><br />{{ _('has joined') }} {{account.registered_ago}} and has contributed {{ account.task_runs }} tasks</p>
                 </li>
                 {% endfor %}
             </ul>
