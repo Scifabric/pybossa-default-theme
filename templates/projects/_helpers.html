@@ -60,11 +60,8 @@
 
 {% macro render_project_summary(project, n_tasks, overall_progress, last_activity, current_user, upload_method) -%}
 <div class="row">
-    <div class="col-md-2">
-        {{ render_project_thumbnail(project, upload_method, class='img-thumbnail') }}
-    </div>
-    <div class="col-md-8">
-      <ul style="list-style-type: none; font-size: 16px;">
+    <div class="col-md-12">
+      <ul style="list-style-type: none;">
         {% if current_user.id == project.owner_id %}
         <li><strong><i class="fa fa-cog"></i> {{ _('ID') }}</strong>: {{ project.id }}</li>
         {% endif %}
