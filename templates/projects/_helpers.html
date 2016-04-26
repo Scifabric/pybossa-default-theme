@@ -1,34 +1,35 @@
 {% macro render_pagination(pagination, handle) %}
-            <div class="col-md-12 container-pagination text-center">
-                <ul class="pagination">
-         {% if pagination.has_prev %}
-          <li>
-          <a href="{{ url_for_other_page(pagination.page - 1)
-              }}" rel="nofollow">&laquo; {{_('Prev')}} {{handle}}</a>
-          </li>
-        {% endif %}
+<div class="container">
+<div class="col-md-offset-3 col-md-9 text-center">
+<ul class="pagination pagination-sm">
+  {% if pagination.has_prev %}
+  <li><a href="{{ url_for_other_page(pagination.page - 1)}}" rel="nofollow">&laquo; {{_('Prev')}} {{handle}}</a></li>
+  {% else %}
+  <li class="disabled"><a href="#">&laquo; {{_('Prev')}} {{handle}}</a></li>
+  {% endif %}
 
-        {%- for page in pagination.iter_pages() %}
-          {% if page %}
-            {% if page != pagination.page %}
-            <li>
-              <a href="{{ url_for_other_page(page) }}" rel="nofollow">{{ page }}</a>
-             </li>
-            {% else %}
-            <li class="active">
-                <a href="#">{{ page }}</a>
-            </li>
-            {% endif %}
-          {% endif %}
-        {%- endfor %}
-        {% if pagination.has_next %}
-          <li>
-          <a href="{{ url_for_other_page(pagination.page + 1)
-              }}" rel="nofollow">{{_('Next')}} {{handle}}&raquo;</a>
-          </li>
-        {% endif %}
-                </ul>
-            </div>
+  {%- for page in pagination.iter_pages() %}
+    {% if page %}
+      {% if page != pagination.page %}
+      <li>
+        <a href="{{ url_for_other_page(page) }}">{{ page }}</a>
+       </li>
+      {% else %}
+      <li class="active">
+          <a href="#">{{ page }}</a>
+      </li>
+      {% endif %}
+    {% endif %}
+  {%- endfor %}
+  {% if pagination.has_next %}
+    <li>
+    <a href="{{ url_for_other_page(pagination.page + 1)
+      }}" rel="nofollow">{{_('Next')}} {{handle}}&raquo;</a>
+    </li>
+  {% endif %}
+</ul>
+</div>
+</div>
 {% endmacro %}
 
 {% macro render_project_local_nav(project, active_link, current_user, pro_features) -%}
