@@ -1,6 +1,2 @@
-<div class="well">
-    <h2><i class="icon-folder-open"></i> {{_('S3')}}</h2>
-    <h3>{{_('Use files from an Amazon S3 bucket')}}</h3>
-  <p><a href="{{url_for('project.import_task', short_name=project.short_name,
-      type='s3')}}" class="btn btn-primary">{{_('Use the Amazon S3 importer')}}</a></p>
-</div>
+{% from "projects/_helpers.html" import render_project_card_option %}
+{{ render_project_card_option(project, upload_method, title=_('Amazon S3'), explanation=_('Use files from an Amazon S3 bucket'), link=url_for(target, short_name=project.short_name, type='s3'), link_action_text=_('Import data'))}}

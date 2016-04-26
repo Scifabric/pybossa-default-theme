@@ -1,7 +1,2 @@
-<div class="well">
-    <h2><i class="icon-film"></i> {{_('Video Pattern Recognition')}}</h2> 
-    <h3>{{_('Re-use the Vimeo tasks')}}</h3>
-  <p><a href="{{url_for('project.import_task', short_name=project.short_name,
-      type='gdocs', template='video')}}" class="btn btn-primary">{{_('Use the
-      Video tasks')}}</a></p>
-</div>
+{% from "projects/_helpers.html" import render_project_card_option %}
+{{ render_project_card_option(project, upload_method, title=_('Video Pattern Recognition'), explanation=_('Re-use the Vimeo tasks'), link=url_for(target, short_name=project.short_name, type='gdocs', template='video'), link_action_text=_('Use the Video tasks'))}}
