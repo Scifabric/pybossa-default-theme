@@ -23,6 +23,12 @@ function pybossaNotify(msg, showNotification, type){
         icon.addClass("fa fa-2x fa-check pull-left"); 
     }
 
+    if (type === 'loading') {
+        icon.addClass("fa fa-2x fa-circle-o-notch fa-spin pull-left"); 
+        type = 'info';
+    }
+
+
 
     var text = $("<span/>");
     text.html(msg);
