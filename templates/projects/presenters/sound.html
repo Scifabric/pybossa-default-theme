@@ -1,8 +1,2 @@
-<div class="well">
-  <h2><i class="icon-music"></i> {{ _('Sound Pattern Recognition') }}</h2> 
-  <h3>{{ _('Re-use the SoundCloud template') }}</h3>
-  <p><strong>{{ _('Complexity') }}</strong>: <i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-half"></i></p>
-  <p><strong>{{ _('Skills') }}</strong>: {{ _('HTML and JavaScript') }}</p>
-  <p><a href="{{url_for('project.task_presenter_editor', short_name=project.short_name, template='sound')}}" class="btn btn-primary">{{ _('Use the Sound template') }}</a></p>
-  <a href="https://github.com/PyBossa/project-soundcloud/archive/master.zip" class="btn btn-primary">{{ _('Download the template and work locally') }}</a>
-</div>
+{% from "projects/_helpers.html" import render_project_card_option %}
+{{ render_project_card_option(project, upload_method, title=_('Sound Pattern Recognition'), explanation=_('Re-use the sound template'), link=url_for('project.task_presenter_editor', short_name=project.short_name, template='sound'), link_action_text=_('Go'), icon='music')}}
