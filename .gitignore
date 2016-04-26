@@ -1,3 +1,4 @@
+*.DS_Store
 *.un~
 *.swp
 templates/custom_footer.html

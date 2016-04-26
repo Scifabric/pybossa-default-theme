@@ -1,8 +1,16 @@
-{% extends "/base.html" %}
+
 {% set active_page = "projects"  %}
 {% set active_project = project.short_name %}
 
+{% if project.name == "Urgent Actions" %}
+    {% extends "urgentactions/ua-base.html" %}
+    {% block body %}
+        <h1>{{project.name}}</h1>
+    {% endblock %}
+{% else %}
+{% extends "/base.html" %}
 {% block content %}
+<h1>{{project.name}}</h1>
 <script>
     Modernizr.load({
             test: window.JSON,
@@ -36,3 +44,5 @@ en
 </div>
 
 {% endblock %}
+
+{% endif %}
