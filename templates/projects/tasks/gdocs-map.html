@@ -1,7 +1,2 @@
-<div class="well">
-    <h2><i class="icon-globe"></i>{{_('Geo-coding')}}</h2> 
-    <h3>{{_('Re-use the Urban Park tasks')}}</h3>
-  <p><a href="{{url_for('project.import_task', short_name=project.short_name,
-      type='gdocs', template='map')}}" class="btn btn-primary">{{_('Use the
-      Mapping tasks')}}</a></p>
-</div>
+{% from "projects/_helpers.html" import render_project_card_option %}
+{{ render_project_card_option(project, upload_method, title=_('Geo-coding'), explanation=_('Re-use the Urban Park tasks'), link=url_for(target, short_name=project.short_name, type='gdocs', template='map'), link_action_text=_('Use the Mapping tasks'))}}
