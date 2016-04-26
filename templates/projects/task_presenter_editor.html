@@ -38,7 +38,7 @@
 
 
 
-<div id="modal-preview" class="modal big-modal fade" tabindex="-1" role="dialog">
+<div id="modal-preview" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -84,7 +84,7 @@
 
  function prepareSource(presenterSource) {
 
- var bootstrapCSS = "{{url_for('static', filename='vendor/bootstrap.min.css')}}",
+ var bootstrapCSS = "{{url_for('static', filename='css/gen/pybossa.min.css')}}",
  fontsCSS = "{{url_for('static', filename='css/fonts/stylesheet.css')}}",
  stylesCSS = "{{url_for('static', filename='css/styles.css')}}",
  jQuery = "{{url_for('static', filename='vendor/jquery.js')}}",
@@ -99,9 +99,6 @@
      "<meta charset=\"utf-8\">\n\t\t" +
      "<title></title>\n\n\t\t\n\t" +
      "<link href=\""+bootstrapCSS+"\" rel=\"stylesheet\" type=\"text/css\">" +
-     "<link href=\""+fontsCSS+"\" rel=\"stylesheet\" type=\"text/css\">" +
-     "<link href=\""+stylesCSS+"\" rel=\"stylesheet\" type=\"text/css\">" +
-     "<link href=\"//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css\" rel=\"stylesheet\">" +
      "<script type=\"text/javascript\" src=\""+jQuery+"\"></sc" + "ript>" +
      "<script type=\"text/javascript\" src=\""+bootstrapJS+"\"></sc" + "ript>" +
      "<script type=\"text/javascript\" src=\""+modernizr+"\"></sc" + "ript>" +
