@@ -1,3 +1,36 @@
+{% macro render_pagination(pagination, handle) %}
+            <div class="col-md-12 container-pagination text-center">
+                <ul class="pagination">
+         {% if pagination.has_prev %}
+          <li>
+          <a href="{{ url_for_other_page(pagination.page - 1)
+              }}" rel="nofollow">&laquo; {{_('Prev')}} {{handle}}</a>
+          </li>
+        {% endif %}
+
+        {%- for page in pagination.iter_pages() %}
+          {% if page %}
+            {% if page != pagination.page %}
+            <li>
+              <a href="{{ url_for_other_page(page) }}" rel="nofollow">{{ page }}</a>
+             </li>
+            {% else %}
+            <li class="active">
+                <a href="#">{{ page }}</a>
+            </li>
+            {% endif %}
+          {% endif %}
+        {%- endfor %}
+        {% if pagination.has_next %}
+          <li>
+          <a href="{{ url_for_other_page(pagination.page + 1)
+              }}" rel="nofollow">{{_('Next')}} {{handle}}&raquo;</a>
+          </li>
+        {% endif %}
+                </ul>
+            </div>
+{% endmacro %}
+
 {% macro render_project_local_nav(project, active_link, current_user, pro_features) -%}
 <ul class="list-group" style="margin-top: 21px;">
     {{ render_project_thumbnail(project, upload_method, class="img-thumbnail") }}
