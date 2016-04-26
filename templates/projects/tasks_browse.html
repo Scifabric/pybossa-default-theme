@@ -2,18 +2,20 @@
 {% set active_page = "projects" %}
 {% set active_project  = "all" %}
 {% set section = _('Browse tasks') %}
-{% import "projects/_helpers.html" as helper %}
 
 {% block projectcontent %}
-<p>{{_('This page shows all the available tasks for this project')}}.</p> 
-<p>{{_('For each task, you can find the following information')}}:
-<ul>
-    <li><strong>{{_('Task')}} </strong><span class="label label-info">#0000</span> {{_('This number identifies the task for the project and it is unique')}}</li>
-    <li><strong>0 of 30</strong>: {{_('The first number shows how many answers have been submitted for the task and the')}} <a data-placement="top" rel="tooltip" href="#" data-original-title="{{_('This redundancy method will help to detect errors, typos, data forging, etc. when the task has been completed')}}">{{_('second number')}}</a> {{_('how many need to be obtained to mark the task as')}} <strong>{{_('completed')}}</strong>. </li>
-    <li><strong>{{_('Progress Bar')}}</strong>: {{_('The progress progress-bar will the percentage that has been completed for the task')}}.</li>
-</ul>
-</p>
-<hr>
+<div class="row">
+    <div class="col-md-12">
+        <p>{{_('This page shows all the available tasks for this project')}}.</p> 
+        <p>{{_('For each task, you can find the following information')}}:
+        <ul>
+            <li><strong>{{_('Task')}} </strong><span class="label label-info">#0000</span> {{_('This number identifies the task for the project and it is unique')}}</li>
+            <li><strong>0 of 30</strong>: {{_('The first number shows how many answers have been submitted for the task and the')}} <a data-placement="top" rel="tooltip" href="#" data-original-title="{{_('This redundancy method will help to detect errors, typos, data forging, etc. when the task has been completed')}}">{{_('second number')}}</a> {{_('how many need to be obtained to mark the task as')}} <strong>{{_('completed')}}</strong>. </li>
+            <li><strong>{{_('Progress Bar')}}</strong>: {{_('The progress progress-bar will the percentage that has been completed for the task')}}.</li>
+        </ul>
+        </p>
+    </div>
+</div>
 {% for t in tasks %}
 {% set task_pct = t.pct_status*100 %}
 <div class="row">
@@ -47,7 +49,11 @@
     </div>
 </div>
 {% endfor %}
-    </div><!-- span9 -->
+{% if pagination.pages > 1 %}
+<div class="row">
+    <div class="col-md-12 text-center">
+        {{ render_pagination(pagination) }}
+    </div>
 </div>
-{{ helper.render_pagination(pagination, _('Tasks')) }}
+{% endif %}
 {% endblock %}
