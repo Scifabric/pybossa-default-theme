@@ -8,7 +8,6 @@
 {% from "_formhelpers.html" import render_field %}
 
 {% block projectcontent %}
-{{ helper.render_loading(loading_text) }}
 <style type="text/css">
 .selected {
     background-color: #D4D4D4;
@@ -33,7 +32,8 @@
 {% block extrajs %}
 <script>
     $("#submit").off('click').on('click', function(){
-            $("#loading").show();
+            var msg = "{{_('Importing data...')}}";
+            pybossaNotify(msg, true, "loading");
             });
 </script>
 {% endblock %}

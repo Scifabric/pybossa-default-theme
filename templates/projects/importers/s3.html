@@ -7,7 +7,6 @@
 {% from "_formhelpers.html" import render_field %}
 
 {% block projectcontent %}
-{{ helper.render_loading(loading_text) }}
 <style type="text/css">
     .selected {
         background-color: #D4D4D4;
@@ -33,6 +32,12 @@
 {% endblock %}
 
 {% block extrajs %}
+<script>
+    $("#submit").off('click').on('click', function(){
+            var msg = "{{_('Importing data...')}}";
+            pybossaNotify(msg, true, "loading");
+            });
+</script>
 <script type="text/javascript">
     $(function() {
             $('#get-bucket').on('click', function() {

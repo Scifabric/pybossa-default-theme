@@ -22,7 +22,8 @@
 {% block extrajs %}
 <script>
     $("#submit").off('click').on('click', function(){
-            $("#loading").show();
+            var msg = "{{_('Importing data...')}}";
+            pybossaNotify(msg, true, "loading");
             });
 </script>
 {% endblock %}

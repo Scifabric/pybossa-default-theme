@@ -6,7 +6,6 @@
 
 {% from "_formhelpers.html" import render_field %}
 {% block projectcontent %}
-{{ helper.render_loading(loading_text) }}
 {% if form %}
 <h3>{{_('From an EpiCollect Plus project')}}</h3>
 <form method="post" action="{{ url_for(target, short_name=project.short_name) }}">
@@ -24,9 +23,13 @@
 {% endif %}
     </div>
 </div>
+{% endblock %}
+
+{% block extrajs %}
 <script>
     $("#submit").off('click').on('click', function(){
-            $("#loading").show();
+            var msg = "{{_('Importing data...')}}";
+            pybossaNotify(msg, true, "loading");
             });
 </script>
 {% endblock %}

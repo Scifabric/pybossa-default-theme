@@ -7,7 +7,6 @@
 {% from "_formhelpers.html" import render_field %}
 
 {% block projectcontent %}
-{{ helper.render_loading(loading_text) }}
 <h3>{{_('From a Twitter hashtag or account')}}</h3>
 {% if not current_user.info.get('twitter_token') %}
 <div class="alert">
@@ -43,7 +42,8 @@
 {% block extrajs %}
 <script>
 $("#submit").off('click').on('click', function(){
-        $("#loading").show();
+        var msg = "{{_('Importing data...')}}";
+        pybossaNotify(msg, true, "loading");
         });
 $('.choice').on('click', function(evt){
         var $btn = $(this);

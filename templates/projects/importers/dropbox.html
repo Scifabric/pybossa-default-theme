@@ -6,7 +6,6 @@
 {% from "_formhelpers.html" import render_field %}
 
 {% block projectcontent %}
-{{ helper.render_loading(loading_text) }}
 <h3>{{_('From your Dropbox account')}}</h3>
 <div id="dropbox-chooser"></div>
 
@@ -32,9 +31,11 @@
 
 <script>
     $("#submit").off('click').on('click', function(){
-            $("#loading").show();
+            var msg = "{{_('Importing data...')}}";
+            pybossaNotify(msg, true, "loading");
             });
 </script>
+
 <script type="text/javascript">
 (function() {
  var options = {
