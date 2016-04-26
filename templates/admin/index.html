@@ -2,6 +2,7 @@
 {% set active_page = "admin" %}
 {% set active_link = "admin" %}
 {% import "account/_helpers.html" as helper %}
+{% from "projects/_helpers.html" import render_project_card_option %}
 
 {% block content %}
 <div class="container">
@@ -11,54 +12,27 @@
     <div class="col-sm-9 col-md-9" style="min-height:400px;">
         <h2>{{ _('Admin Site') }}</h2>
         <div class="row">
-            <div id="dashboard" class="col-md-8 project-item">
-                <h4>{{_('Dashboard')}}</h4>
-                <p>{{_('Internal Statistics')}}</p>
-                <a href="{{url_for('admin.dashboard')}}" class="btn btn-primary">
-                    {{ _('Go') }} <i class="icon-chevron-right"></i>
-                </a>
+            <div id="dashboard" class="col-md-6">
+                {{ render_project_card_option(project, upload_method, title=_('Dashboard'), explanation=_('Internal statistics'), link=url_for('admin.dashboard'), link_action_text=_('Go'), icon='info')}}
             </div>
-            <div id="dashboard" class="col-md-8 project-item">
-                <h4><i class="icon-dashboard"></i> {{_('Background Jobs')}}</h4>
-                <p>{{_('Monitor the background jobs')}}</p>
-                <a href="{{url_for('rq_dashboard.overview')}}" class="btn btn-primary">
-                    {{ _('Manage') }} <i class="icon-chevron-right"></i>
-                </a>
+            <div id="backgroundjobs" class="col-md-6">
+                {{ render_project_card_option(project, upload_method, title=_('Background Jobs'), explanation=_('Monitor background jobs'), link=url_for('rq_dashboard.overview'), link_action_text=_('Monitor'), icon='search')}}
             </div>
         </div>
         <div class="row">
-            <div id="featured-apps" class="col-md-8 project-item">
-                <h4><i class="icon-star"></i> {{_('Featured Projects')}}</h4>
-                <p>{{_('Show projects on the front page')}}</p>
-                <a href="{{url_for('admin.featured')}}" class="btn btn-primary">
-                    {{ _('Manage') }} <i class="icon-chevron-right"></i>
-                </a>
+            <div id="featured-apps" class="col-md-6">
+                {{ render_project_card_option(project, upload_method, title=_('Featured Projects'), explanation=_('Show projects on the front page'), link=url_for('admin.featured'), link_action_text=_('Manage'), icon='star')}}
             </div>
-            <div id="categories" class="col-md-8 project-item">
-                <h4><i class="icon-check"></i> {{_('Categories')}}</h4>
-                <p>{{_('Manage project categories')}}</p>
-                <a href="{{url_for('admin.categories')}}" class="btn btn-primary">
-                    {{ _('Manage') }} <i class="icon-chevron-right"></i>
-                </a>
+            <div id="categories" class="col-md-6">
+                {{ render_project_card_option(project, upload_method, title=_('Categories'), explanation=_('Manage project categories'), link=url_for('admin.categories'), link_action_text=_('Manage'), icon='check')}}
             </div>
         </div>
         <div class="row">
-            <div id="users" class="col-md-8 project-item">
-                <h4><i class="icon-user"></i> {{_('Administrators')}}</h4>
-                <p>{{_('Manage administrators')}}</p>
-                <a href="{{url_for('admin.users')}}" class="btn btn-primary">
-                    {{ _('Manage') }} <i class="icon-chevron-right"></i>
-                </a>
+            <div id="users" class="col-md-6">
+                {{ render_project_card_option(project, upload_method, title=_('Administrators'), explanation=_('Manage administrators'), link=url_for('admin.users'), link_action_text=_('Manage'), icon='user')}}
             </div>
-            <div id="users-list" class="col-md-8 project-item">
-                <h4><i class="icon-list"></i> {{_('Users')}}</h4>
-                <p>{{_('Export a list of users')}}</p>
-                <a href="{{url_for('admin.export_users', format='json')}}" class="btn btn-primary">
-                    {{ _('JSON') }}
-                </a>
-                <a href="{{url_for('admin.export_users', format='csv')}}" class="btn btn-primary">
-                    {{ _('CSV') }}
-                </a>
+            <div id="users-list" class="col-md-6">
+                {{ render_project_card_option(project, upload_method, title=_('Users'), explanation=_('Export a list of users'), link=url_for('admin.export_users', format='csv'), link_action_text=_('CSV'), link_two=url_for('admin.export_users', format='json'), link_action_text_two=_('JSON'), icon='user')}}
             </div>
         </div>
         <div class="row">
