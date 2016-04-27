@@ -65,7 +65,7 @@
         {{ render_project_card_option(project, upload_method, title=_('Task'), explanation=_('Export tasks into a CKAN server '), link=url_for('project.export_to', short_name=project.short_name, type='task', format='ckan'), link_action_text=_('Export'), download=True, nofollow=True, id="ckan_task")}}
     </div>
     <div class="col-md-6">
-        {{ render_project_card_option(project, upload_method, title=_('Task Runs'), explanation=_('Export task runs into a CKAN server'), link=url_for('project.export_to', short_name=project.short_name, type='task_run', format='ckan'), link_action_text=_('Export'), download=True, nofollow=True, id="ckan_task")}}
+        {{ render_project_card_option(project, upload_method, title=_('Task Runs'), explanation=_('Export task runs into a CKAN server'), link=url_for('project.export_to', short_name=project.short_name, type='task_run', format='ckan'), link_action_text=_('Export'), download=True, nofollow=True, id="ckan_task_run")}}
         {% else %}
         <p id="ckan_warning">{{ _("You don't have a Datahub.io API key in your") }} {{BRAND}} {{ _('account. Please,') }} <a href="http://datahub.io/user/register">{{ _('create an account') }}</a> {{ _('and copy/paste the API key in your profile in order to use this exporter') }}.</p>
         {% endif %}
