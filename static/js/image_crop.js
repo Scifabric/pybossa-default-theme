@@ -39,7 +39,7 @@
 
             });
             var cropper = new Cropper(image, {
-              aspectRatio: 1 / 1,
+              aspectRatio: pybossaAvatarAspectRatio || 1/1,
               zoomable: false,
             });
         };
