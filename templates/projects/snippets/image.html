@@ -168,6 +168,7 @@ pybossa.taskLoaded(function(task, deferred) {
         img.load(function() {
             // continue as soon as the image is loaded
             deferred.resolve(task);
+            pybossaNotify("", false, "loading");
         });
         img.attr('src', task.info.url_b).css('height', 460);
         img.addClass('img-thumbnail');
@@ -190,24 +191,24 @@ pybossa.presentTask(function(task, deferred) {
             var answer = btn.attr("value");
             if (typeof answer != 'undefined') {
                 pybossa.saveTask(task.id, answer).done(function() {
+                    pybossaNotify("Loading picture...", true, "loading");
                     deferred.resolve();
                 });
-                $("#loading").fadeIn(500);
                 if ($("#disqus_thread").is(":visible")) {
                     $('#disqus_thread').toggle();
                     $('.btn-disqus').toggle();
                 }
             }
             else {
-                $("#error").show();
+                pybossaNotify("Oops... Something went wrong.", true, "error");
             }
         });
-        $("#loading").hide();
+        pybossaNotify("Loading picture...", false, "loading");
     }
     else {
         $(".skeleton").hide();
-        $("#loading").hide();
-        $("#finish").fadeIn(500);
+        pybossaNotify("Loading picture...", false, "loading");
+        pybossaNotify("Thanks! You have participated in all available tasks. Enjoy some of your time!", true, "info");
     }
 });
 
