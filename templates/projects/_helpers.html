@@ -12,7 +12,7 @@
     {% if page %}
       {% if page != pagination.page %}
       <li>
-        <a href="{{ url_for_other_page(page) }}">{{ page }}</a>
+        <a href="{{ url_for_other_page(page) }}" rel="nofollow">{{ page }}</a>
        </li>
       {% else %}
       <li class="active">
