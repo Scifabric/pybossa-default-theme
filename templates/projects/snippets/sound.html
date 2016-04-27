@@ -90,6 +90,7 @@ pybossa.taskLoaded(function(task, deferred) {
 
 pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
+        pybossaNotify("Loading audio...", true, "loading");
         loadUserProgress();
         var player = PybossaPlayer(task.info.audio_url, 'sound-clip', true);
         $('#question').html(task.info.question);
@@ -102,7 +103,6 @@ pybossa.presentTask(function(task, deferred) {
                     player.destroy();
                     deferred.resolve();
                 });
-                pybossaNotify("Loading audio...", true, "loading");
                 if ($("#disqus_thread").is(":visible")) {
                     $('#disqus_thread').toggle();
                     $('.btn-disqus').toggle();
