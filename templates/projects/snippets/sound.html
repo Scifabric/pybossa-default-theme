@@ -1,32 +1,3 @@
-<div class="row">
-    <!-- Success and Error Messages for the user --> 
-    <div class="col-md-6 col-md-offset-2" style="height:50px">
-        <div id="success" class="alert alert-success" style="display:none;">
-            <a class="close">×</a>
-            <strong>Well done!</strong> Your answer has been saved
-        </div>
-        <div id="loading" class="alert alert-info" style="display:none;">
-            <a class="close">×</a>
-            Loading next task...
-        </div>
-        <div id="taskcompleted" class="alert alert-info" style="display:none;">
-            <strong>The task has been completed!</strong> Thanks a lot!
-        </div>
-        <div id="finish" class="alert alert-success" style="display:none;">
-            <strong>Congratulations!</strong> You have participated in all available tasks!
-            <br/>
-            <div class="alert-actions">
-                <a class="btn btn-default small" href="/">Go back</a>
-                <a class="btn btn-default small" href="/project">or, Check other projects</a>
-            </div>
-        </div>
-        <div id="error" class="alert alert-danger" style="display:none;">
-            <a class="close">×</a>
-            <strong>Error!</strong> Something went wrong, please contact the site administrators
-        </div>
-    </div> <!-- End Success and Error Messages for the user -->
-</div> <!-- End of Row -->
-
 <!--
     Task DOM for loading the Sound Cloud iframe 
     It uses the class="skeleton" to identify the elements that belong to the
@@ -131,22 +102,22 @@ pybossa.presentTask(function(task, deferred) {
                     player.destroy();
                     deferred.resolve();
                 });
-                $("#loading").fadeIn(500);
+                pybossaNotify("Loading audio...", true, "loading");
                 if ($("#disqus_thread").is(":visible")) {
                     $('#disqus_thread').toggle();
                     $('.btn-disqus').toggle();
                 }
             }
             else {
-                $("#error").show();
+                pybossaNotify("Ooops! Something went wrong!", true, "error");
             }
         });
-        $("#loading").hide();
+        pybossaNotify("Loading audio...", false, "loading");
     }
     else {
         $(".skeleton").hide();
-        $("#loading").hide();
-        $("#finish").fadeIn(500);
+        pybossaNotify("Loading audio...", false, "loading");
+        pybossaNotify("Thanks! You have participated in all available tasks. Enjoy some of your time!", true, "info");
     }
 });
 
