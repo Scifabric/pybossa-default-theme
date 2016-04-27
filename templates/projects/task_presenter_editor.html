@@ -8,11 +8,14 @@
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/codemirror.css')}}"/>
 <style>
     iframe {
-        height:800px;
+        height:400px;
         width: 100%;
     }
     .CodeMirror {
         width: 700px;
+    }
+    .modal-body {
+        padding: 0px;
     }
 </style>
 <!-- Task Presenter Editor -->
@@ -39,7 +42,7 @@
 
 
 <div id="modal-preview" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -47,7 +50,7 @@
       </div>
       <div class="modal-body">
             <section id="output">
-                <iframe></iframe>
+                <iframe frameBorder="0"></iframe>
             </section>
       </div>
       <div class="modal-footer">
@@ -91,6 +94,7 @@
  bootstrapJS = "{{url_for('static', filename='vendor/bootstrap/2.2.1/js/bootstrap.js')}}",
  modernizr = "{{url_for('static', filename='vendor/modernizr.min.js')}}",
  pybossa = "{{url_for('static', filename='js/pybossa/pybossa.js')}}",
+ defaultJs = "{{url_for('static', filename='js/gen/default.min.js')}}",
 
  baseTemplate =
      "<!doctype html>\n" +
@@ -98,13 +102,15 @@
      "<head>\n\t\t" +
      "<meta charset=\"utf-8\">\n\t\t" +
      "<title></title>\n\n\t\t\n\t" +
+    "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css\">" +
      "<link href=\""+bootstrapCSS+"\" rel=\"stylesheet\" type=\"text/css\">" +
      "<script type=\"text/javascript\" src=\""+jQuery+"\"></sc" + "ript>" +
      "<script type=\"text/javascript\" src=\""+bootstrapJS+"\"></sc" + "ript>" +
      "<script type=\"text/javascript\" src=\""+modernizr+"\"></sc" + "ript>" +
      "</head>\n\t" +
-     "<body>\n\t\n\t" +
+     "<body style=\"padding-top:0px;\">\n\t\n\t" +
      "<script type=\"text/javascript\" src=\""+pybossa+"\"></sc" + "ript>" +
+     "<script type=\"text/javascript\" src=\""+defaultJs+"\"></sc" + "ript>" +
      "<div class=\"container project col-md-12\">" +
      "<div class=\"project-content row\">" +
      presenterSource +
