@@ -11,8 +11,12 @@ function pybossaNotify(msg, showNotification, type){
     if (type === undefined) {
         type = 'info';
     }
-    if ((type === 'danger') || (type === 'error') || (type === 'warning')) {
+    if ((type === 'danger') || (type === 'error') || (type === 'warning') || (type == 'message')) {
         icon.addClass("fa fa-2x fa-exclamation-triangle pull-left"); 
+    }
+
+    if (type === 'message') {
+        type = 'warning';
     }
 
     if (type === 'info') {

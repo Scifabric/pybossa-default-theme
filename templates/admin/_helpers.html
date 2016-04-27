@@ -49,8 +49,10 @@
             {{ _('Remove from admin group') }}</a>
         </p>
         {% else %}
+        <p class="readmore">
         <a href="{{url_for('admin.add_admin', user_id=user.id)}}">
             {{ _('Add to admin group') }}</a>
+        </p>
         {% endif %}
     </div>
 </div>
