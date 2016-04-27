@@ -12,6 +12,12 @@
           %}
           <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
+<script>
+    Modernizr.load({
+        test: window.JSON,
+        nope: '{{url_for('static', filename='js/vendor/json2.min.js')}}'
+});
+</script>
 
 <div class="container">
     <div class="row">
@@ -38,20 +44,5 @@
         {% endif %}
     </div>
 </div>
-
-{% endblock %}
-
-{% block extrajs %}
-<script>
-    Modernizr.load({
-        test: window.JSON,
-        nope: '{{url_for('static', filename='js/vendor/json2.min.js')}}'
-});
-</script>
-{% assets filters="jsmin", output="js/gen/pybossa.min.js",
-"js/pybossa/pybossa.js"
-%}
-<script type="text/javascript" src="{{ ASSET_URL }}"></script>
-{% endassets %}
 
 {% endblock %}
