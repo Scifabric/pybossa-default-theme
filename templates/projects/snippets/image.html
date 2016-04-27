@@ -186,7 +186,7 @@ pybossa.presentTask(function(task, deferred) {
         $("#photo-link").attr("href", task.info.link);
         $('#task-id').html(task.id);
         $('.btn-answer').off('click').on('click', function(evt) {
-            var btn btn-default = $(this);
+            var btn = $(this);
             var answer = btn.attr("value");
             if (typeof answer != 'undefined') {
                 pybossa.saveTask(task.id, answer).done(function() {
