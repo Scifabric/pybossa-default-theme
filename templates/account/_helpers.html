@@ -75,6 +75,19 @@
 {% endif %}
 {% endmacro %}
 
+{%- macro render_user_avatar_src(user, upload_method) %}
+    {%- if user.info.avatar %}
+        {%- if upload_method == 'rackspace'%}
+        {{ url_for('rackspace', filename=user.info.avatar, container=user.info.container)}} 
+        {%- else %}
+        {{url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}
+        {% endif -%}
+    {%- else %}
+        {{ url_for('static', filename='img/placeholder.user.png')}}
+    {% endif -%}
+{% endmacro -%}
+
+
 {% macro render_user_thumbnail(user, upload_method, id, class, style) %}
     {% if user.info.avatar %}
         {% if upload_method == 'rackspace'%}
