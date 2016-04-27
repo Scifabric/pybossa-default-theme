@@ -15,7 +15,7 @@
 {% if project.info.results and n_results > 0 %}
      {{ project.info.results | safe}}
 {% else %}
-<p>{{_('The project owner has not created/published/visualized any results yet.')}}</p>
+<p id="noresult">{{_('The project owner has not created/published/visualized any results yet.')}}</p>
 {% endif %}
 
 <div id='PYBOSSA_USER_LOCALE' hidden>
