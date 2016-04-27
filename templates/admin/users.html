@@ -5,18 +5,30 @@
 {% block rightbody %}
 <h1><strong>{{ _('Admin Site') }}:</strong> {{ _('Manage Admin Users') }}</h1>
 {% from "_formhelpers.html" import render_field %}
-<form class="form-search" method="POST">
-    {{ form.hidden_tag() }}
-    <div class="input-group">
-        <input id="user" name="user" type="text" class="input-large search-query" placeholder={{ _('Try with the full name or nick') }}>
-        <button type="submit" class="btn btn-sm btn-primary "><i class="icon-search"></i> {{ _('Search') }}</button>
-    </div>
-</form>
+
+<div class="row">
+    <form class="form-search" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="col-md-12">
+            <div class="input-group">
+                <input id="user" name="user" type="text" class="form-control" placeholder={{ _('Try with the full name or nick') }}>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary "><i class="fa fa-search"></i> {{ _('Search') }}</button>
+                </span>
+            </div>
+        </div>
+    </form>
+</div>
+
 {% if found %}
 <h2>{{ _('Found Users') }}</h2>
+<div class="row">
 {% for user in found %}
-{{ render_admin_user(user, upload_method) }}
+    <div class="col-sm-4 col-md-4">
+    {{ render_project_card_user(user, upload_method, background=True)}}
+    </div>
 {% endfor %}
+</div>
 {% endif %}
 
 {% if users %}
