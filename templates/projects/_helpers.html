@@ -329,9 +329,9 @@
         {% endif %}
         <p>{{explanation}}</p>
         {% if link_two %}
-        <p class="readmore"><a {% if link_class %}class="{{link_class}}"{% endif %} {% if nofollow %}rel="nofollow"{% endif%} href={{link}} {% if download %}download{%endif%}>{{link_action_text}}</a> <a {% if link_class %}class="{{link_class}}"{% endif %} {% if nofollow %}rel="nofollow"{% endif%} href={{link_two}} {% if download %}download{%endif%}>{{link_action_text_two}}</a></p>
+        <p class="readmore"><a {% if link_class %}class="{{link_class}}"{% endif %} {% if nofollow %}rel="nofollow"{% endif%} href="{{link}}" {% if download %}download{%endif%}>{{link_action_text}}</a> <a {% if link_class %}class="{{link_class}}"{% endif %} {% if nofollow %}rel="nofollow"{% endif%} href="{{link_two}}" {% if download %}download{%endif%}>{{link_action_text_two}}</a></p>
         {% else %}
-        <p class="readmore"><a {% if link_class %}class="{{link_class}}"{% endif %} {% if nofollow %}rel="nofollow"{% endif%} href={{link}} {% if download %}download{%endif%}>{{link_action_text}}</a></p>
+        <p class="readmore"><a {% if link_class %}class="{{link_class}}"{% endif %} {% if nofollow %}rel="nofollow"{% endif%} href="{{link}}" {% if download %}download{%endif%}>{{link_action_text}}</a></p>
         {% endif %}
     </div>
 </div>
