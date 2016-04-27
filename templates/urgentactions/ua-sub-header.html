@@ -1,100 +1,3 @@
-<style>
-    .sub-header-container {
-        padding: 20px 0 20px 0;
-        overflow: hidden;
-        background-color: #5B5B5B;
-    }
-
-    .individuals-container {
-        overflow: hidden;
-    }
-
-    .one-person {
-        float: left;
-        height: 50px;
-        width: 50px;
-        border: 2px solid white;
-        background-color: transparent;
-        border-radius: 5px;
-        text-align: center;
-    }
-
-    .speach-bubble-container {
-        text-align: center;
-        padding-top: 20px;
-        height: 79px;
-        width: 71px;
-        margin: 0 auto;
-    }
-
-    .speach-bubble-container img {
-        width: 100%;
-        height: 100%;
-        margin: 0 auto;
-    }
-
-    .one-person:hover, .more-persons:hover {
-        cursor: pointer;
-        font-weight: bolder;
-        background-color: #B6B6B6;
-        color: #000;
-    }
-
-    .one-person:focus, .more-persons:focus {
-        cursor: pointer;
-        font-weight: bolder;
-        background-color: #ffff00;
-        color: #000;
-    }
-
-    .one-person h1, .more-persons h1 {
-        font-weight: bolder;
-        margin-top: 10px;
-    }
-
-    .more-persons {
-        float: left;
-        margin-left: 10px;
-        height: 50px;
-        width: 50px;
-        border: 2px solid white;
-        background-color: transparent;
-        border-radius: 5px;
-        text-align: center;
-    }
-
-    .select-persons {
-        margin-left: -5px;
-        height: 50px;
-        width: 215px;
-        border: 2px solid white;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        border-left: none;
-    }
-
-    .back-arrow-container:hover {
-        cursor: pointer;
-        background-image: url("/static/img/back_arrow_hover.png");
-    }
-
-    .back-arrow-container {
-        margin: 0 auto;
-        background-image: url("/static/img/back_arrow.png");
-        width: 29px;
-        height: 50px;
-    }
-
-    .person:hover {
-        cursor: pointer;
-    }
-
-    @media (max-width: 991px) {
-        .sub-header-container {
-            padding-top: 100px;
-        }
-    }
-</style>
 <script type="text/javascript">
     var click = 0;
     var persons = 0;
@@ -144,16 +47,6 @@
                 persons = 1;
             }
         });
-
-        function setCounterButtonActive(element) {
-            element.css("background-color", "#FFFF00");
-            element.css("color", "#000");
-        }
-
-        function setCounterButtonInactive(element) {
-            element.css("background-color", "transparent");
-            element.css("color", "#fff");
-        }
 
         $(".more-persons").click(function () {
             $(".one-person").css("background-color", "transparent");
@@ -207,6 +100,16 @@
         });
     });
 
+    function setCounterButtonActive(element) {
+        element.css("background-color", "#FFFF00");
+        element.css("color", "#000");
+    }
+
+    function setCounterButtonInactive(element) {
+        element.css("background-color", "transparent");
+        element.css("color", "#fff");
+    }
+    
     function setPersonInactive(person_head, person_body) {
         $(person_head).find('img').prop("src", "/static/img/head.png");
         $(person_body).find('img').prop("src", "/static/img/body.png");
@@ -346,7 +249,7 @@
                 </div>
                 <br>
             </div>
-            <div class="col-xs-10 col-md-8" >
+            <div class="col-xs-10 col-md-8">
                 <h2>Q2: Select the individuals name from any place in the text below. </h2>
                 <h3 style="margin-top: -5px; font-style: italic;">Click and drag, ensuring the
                     name is highlighted.</h3>
