@@ -76,6 +76,14 @@ img {
     }
 }
 
+.Q1 {
+    height: 120px;
+}
+
+.Q2 {
+    height: 120px;
+}
+
 .sub-header-container {
     padding: 20px 0 20px 0;
     overflow: hidden;
