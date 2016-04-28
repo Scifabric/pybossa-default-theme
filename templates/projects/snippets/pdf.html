@@ -61,6 +61,7 @@ PDFJS.disableWorker = true;
 //
 function renderPage(task) {
   // Using promise to fetch the page
+  $("#currentPage").text(task.pageNum);
   task.pdfDoc.getPage(task.pageNum).then(function(page) {
     var viewport = page.getViewport(task.scale);
     task.canvas.height = viewport.height;
@@ -127,6 +128,7 @@ function goPreviousPage(task) {
     task.pageNum--;
     renderPage(task);
     $("#currentPage").text(task.pageNum);
+    $("#totalPages").text(task.pdfDoc.numPages);
     enableDisabledNavButtons(task);
 }
 
@@ -136,6 +138,7 @@ function goNextPage(task) {
     task.pageNum++;
     renderPage(task);
     $("#currentPage").text(task.pageNum);
+    $("#totalPages").text(task.pdfDoc.numPages);
     enableDisabledNavButtons(task);
 }
 
@@ -165,6 +168,8 @@ function showPaginationOptions(task) {
 
 pybossa.taskLoaded(function(task, deferred){
     if ( !$.isEmptyObject(task) ) {
+    console.log(task.info.page);
+    console.log(task.id);
         if (task.state=='completed') {
             $('#answer').hide();
             $('#taskcompleted').show();
@@ -193,6 +198,7 @@ pybossa.taskLoaded(function(task, deferred){
 
         PDFJS.getDocument(task.info.pdf_url).then(function getPdfHelloWorld(_pdfDoc) {
             task.pdfDoc = _pdfDoc;
+            $("#totalPages").text(task.pdfDoc.numPages);
             deferred.resolve(task);
         });
     }
