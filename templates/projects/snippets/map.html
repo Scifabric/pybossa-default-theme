@@ -12,56 +12,17 @@
         color: white;
     }
 </style>
-<div class="row">
-    <!-- Success and Error Messages for the user --> 
-    <div class="col-md-8 col-md-offset-2" style="height:50px">
-        <!-- Success alert box -->
-        <div id="success" class="alert alert-success" style="display:none;">
-            <a class="close">×</a><strong>Well done!</strong> Your answer has been saved
-        </div>
-        <!-- Task completed alert box -->
-        <div id="taskcompleted" class="alert alert-info" style="display:none;">
-            <strong>The task has been completed!</strong> Thanks a lot!
-        </div>
-        <!-- Task loading alert box -->
-        <div id="loadingTask" class="alert alert-info">
-            <strong>Loading task...</strong>
-        </div>
-        <!-- Task completed alert box -->
-        <div id="finish" class="alert alert-success" style="display:none;">
-            <strong>Congratulations!</strong> You have participated in all available tasks!
-            <br/>
-            <div class="alert-actions">
-                <a class="btn btn-default small" href="/">Go back</a>
-                <a class="btn btn-default small" href="/project">or, Check other projects</a>
-            </div>
-        </div>
-        <!-- Error alert box -->
-        <div id="error" class="alert alert-danger" style="display:none;">
-            <a class="close">×</a>
-            <strong>Error!</strong> Something went wrong, please contact the site administrators
-        </div>
-        <!-- Old Browser alert box -->
-        <div id="oldBrowser" class="alert alert-info" style="display:none;">
-            <a class="close">×</a>
-            <p><strong>Sorry!</strong> Your web browser does not support the project.<p>
-            <div class="alert-actions">
-<a c    lass="btn btn-default small" href="/project">Please, try with another project</a>
-            </div>
-        </div>
-    </div><!-- End of span8 offset2-->
-</div><!-- End of Row-->
 
 <div class="row">
-  <div class="skeleton col-md-11 col-md-offset-1">
+  <div class="skeleton col-md-12">
     <div id="question">
       <h1>Question</h1>
       <h3 id="city">City</h3>
-      <button id="point" class="btn btn-primary">
+      <button id="point" class="btn btn-sm btn-primary">
           <i class="icon icon-white icon-map-marker"></i> Add an Urban Park Marker 
       </button>
-      <button id="noPark" class="btn btn-submit">I do not see an urban park</button>
-      <button id="noCity" class="btn btn-submit" style="display:none;">City not found!</button>
+      <button id="noPark" class="btn btn-sm btn-submit">I do not see an urban park</button>
+      <button id="noCity" class="btn btn-sm btn-submit" style="display:none;">City not found!</button>
 
       <p>Task: <span id="task-id" class="label label-warning">#</span></p>
       <div id="map"></div>
@@ -75,7 +36,7 @@
 </div>
 
 <div class="row skeleton">
-    <div id="disqus_thread" class="col-md-11 col-md-offset-1"></div>
+    <div id="disqus_thread" class="col-md-12"></div>
 </div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -179,13 +140,13 @@ pybossa.taskLoaded(function(task, deferred){
         // Icon for the City Marker
         var styleMapCity = new OpenLayers.StyleMap({
             pointRadius: 15,
-            externalGraphic: 'http://img225.imageshack.us/img225/5237/youarehere2.png'
+            externalGraphic: 'https://i.imgur.com/IYuHNue.png'
         });
 
         // Icon for the Urban Park Marker 
         var styleMapUrbanPark = new OpenLayers.StyleMap({
             pointRadius: 15,
-            externalGraphic: 'http://img594.imageshack.us/img594/1087/urbanpark.png'
+            externalGraphic: 'https://i.imgur.com/FlxUAyh.png'
         });
 
         // Layer for placing the city marker
@@ -270,7 +231,7 @@ pybossa.taskLoaded(function(task, deferred){
         task.lat = 0;
 
         addCity(task);
-        $("#loadingTask").hide();
+        pybossaNotify("Loading map..", false, "loading");
         deferred.resolve(task);
         } // End if task empty
     else {
@@ -284,9 +245,10 @@ pybossa.presentTask(function(task, deferred){
             $('#controls').hide();
             $('#answer').hide();
             $('#disqus_thread').hide();
-            $('#taskcompleted').show();
+            pybossaNotify("This task has been completed.", true, "info");
         }
 
+        pybossaNotify("Loading map...", true, "loading");
         $("#noPark").show();
         $("#answerbtn").show();
         $("#noCity").hide();
@@ -294,7 +256,7 @@ pybossa.presentTask(function(task, deferred){
         $("#question h1").text(task.info.question);
         $("#question h3").text(task.info.city);
         $("#task-id").text(task.id);
-        $("#loadingTask").hide();
+        pybossaNotify("Loading map..", false, "loading");
         $("#map_" + task.id).show();
         if ($("#point").hasClass("disabled")) {
             $("#point").removeClass("disabled");
@@ -332,17 +294,15 @@ pybossa.presentTask(function(task, deferred){
 
             pybossa.saveTask( task.id, {'city': task.info.city, 'urbanpark': urbanPark}).done( function(data) {
                 // Show the feedback div
-                $("#success").fadeIn(); 
+                pybossaNotify("Saving answer...", true, "loading");
                 $("#map_" + task.id).remove();
-                // Fade out the pop-up after a 2000 miliseconds
-                setTimeout(function() { $("#success").fadeOut() }, 2000);
                 deferred.resolve();
             });
         });
     }
     else {
         $(".skeleton").hide();
-        $("#finish").fadeIn();
+        pybossaNotify("Thanks! You have participated in all available tasks. Enjoy some of your time!", true, "info");
     }
 });
 
