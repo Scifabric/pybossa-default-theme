@@ -1,3 +1,7 @@
+body {
+    color: #ffffff;
+}
+
 #header-content {
     background-color: #000000;
     height: 80px;
@@ -11,14 +15,19 @@
     border-radius: 0 !important;
 }
 
+.divider {
+    border: 1px dashed #333333;
+    margin-left: 10px;
+}
+
 .right-nav {
-    padding: 0 50px 0 10px;
+    padding: 0 30px 0 10px;
     height: 80px;
     margin-top: -8px;
 }
 
 #menu {
-    padding: 0 40px 0 10px;
+    padding: 0 30px 0 10px;
 }
 
 img {
@@ -28,7 +37,7 @@ img {
 }
 
 .collapse ul li a:hover, .collapse ul li a:focus {
-    background-color: #FFF003 !important;
+    background-color: #FFFF00 !important;
     color: #000000 !important;
 }
 
@@ -41,39 +50,17 @@ img {
     margin-top: 20px;
 }
 
-@media (min-width: 320px) and (max-width: 990px) {
-    .collapse {
-        padding: 15px -10px 0 30px;
-    }
-
-    .right-nav {
-        padding: 0 40px 0 10px;
-    }
-
-    .navbar-collapse {
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        padding-right: 20px;
-    }
-
-    .sub-header-container {
-        padding-top: 150px;
-        margin-top: 70px;
-    }
+.admin-menu a {
+    font-size: 10px !important;
 }
 
-@media (min-width: 990px) {
-    #menu {
-        background-color: #2D2D2D !important;
-        height: 104% !important;
-    }
-}
-
-@media (min-width: 990px) and (max-width: 1024px) {
-    #menu {
-        background-color: #2D2D2D !important;
-        height: 104% !important;
-    }
+.hr {
+    display: block;
+    height: 3px;
+    border: 0;
+    background: #000000;
+    border-top: 1px solid #000000;
+    padding: 0;
 }
 
 .Q1 {
@@ -85,7 +72,7 @@ img {
 }
 
 .sub-header-container {
-    padding: 20px 0 20px 0;
+    padding: 5px 0 15px 0;
     overflow: hidden;
     background-color: #5B5B5B;
 }
@@ -172,4 +159,80 @@ img {
 
 .person:hover {
     cursor: pointer;
+}
+
+.footer {
+    height: 100px;
+    background-color: #5B5B5B;
+}
+
+@media (min-width: 320px) and (max-width: 990px) {
+    .admin-menu a {
+        font-size: 14px !important;
+    }
+
+    .sub-header-container {
+        margin-top: 70px;
+    }
+
+    .admin-menu a {
+        font-size: 15px !important;
+    }
+
+    .navbar-collapse {
+        margin: 0 auto !important;
+    }
+
+    .navbar-header {
+        float: none !important;
+    }
+
+    .navbar-toggle {
+        display: block !important;
+    }
+
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+    .navbar-collapse.collapse.in {
+        display: block !important;
+        border-bottom-left-radius: 10px !important;
+        border-bottom-right-radius: 10px !important;
+        padding-left: 10px !important;
+    }
+
+    .navbar-nav {
+        float: none !important;
+        margin: 7.5px -15px;
+    }
+
+    .navbar-nav > li {
+        float: none !important;
+    }
+}
+
+@media (min-width: 990px) {
+    .divider {
+        display: none !important;
+    }
+}
+
+@media (min-width: 990px) and (max-width: 1172px) {
+    #menu {
+        background-color: #2D2D2D !important;
+        height: 104% !important;
+    }
+
+    .right-nav {
+        display: none !important;
+    }
+
+}
+
+@media (min-width: 1172px) {
+    #menu {
+        background-color: #2D2D2D !important;
+        height: 104% !important;
+    }
 }

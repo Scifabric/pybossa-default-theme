@@ -4,7 +4,7 @@
 {% if project.name == "Urgent Actions" %}
 {% extends "urgentactions/ua-base.html" %}
 {% block body %}
-<h1>{{project.name}}</h1>
+{% include "urgentactions/ua-presenter.html" %}
 {% endblock %}
 {% else %}
 {% extends "/base.html" %}

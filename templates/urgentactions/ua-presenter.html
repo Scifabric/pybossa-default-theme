@@ -1,0 +1,54 @@
+{% include "urgentactions/ua-sub-header.html" %}
+<div class="row" style="color: #000; background-color: #ffff00;">
+    <div class="col-md-8 col-md-offset-2" style="padding: 0 30px 0 30px;">
+        <script>
+            Modernizr.load({
+                test: window.JSON,
+                nope: "{{url_for('static', filename='js/vendor/json2.min.js')}}"
+            });
+        </script>
+        <script src="{{url_for('static', filename='js/pybossa/pybossa.js')}}" type="text/javascript"></script>
+        <div class="row">
+            <div class="span12">
+                <br>
+                <a href="{{url_for('project.details', short_name=project.short_name)}}" style="float: left;">
+                    <div class="span4">
+                        <img src="/static/img/urgent_action.png" style="margin-left: -5px;"
+                             class="img img-responsive">
+                    </div>
+                </a>
+            </div>
+            <div class="span12">
+                <br><br><br>
+                <hr class="hr" style="margin: 90px 0 0 2px;">
+            </div>
+        </div>
+        {% if invite_new_volunteers %}
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    {{ _("Sorry, you've contributed to all the tasks for this project, but this project still needs
+                    more
+                    volunteers, so please spread the word!") }}
+                </p>
+            </div>
+        </div>
+        {% endif %}
+        {{ project.info.task_presenter|safe }}
+        <div class="row">
+            <div class="span12">
+                <hr class="hr" style="width: 100%; margin: 40px 0 0 2px;">
+            </div>
+        </div>
+
+        <div id='PYBOSSA_USER_LOCALE' hidden>
+            {% if current_user.is_anonymous() %}
+            en
+            {% else %}
+            {{ current_user.locale }}
+            {% endif %}
+        </div>
+        <br><br>
+    </div>
+    <div class="col-md-2"></div>
+</div>

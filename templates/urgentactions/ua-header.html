@@ -2,7 +2,7 @@
     <div class="col-xs-12 col-md-12" style="height: 80px; padding: 0;">
         <div class="col-xs-12 col-md-2" id="amnesty-logo"
              style="background-color: #ffff00; height: 80px; padding: 0; text-align: center;">
-            <a href="#" style="text-align: center;">
+            <a target="_blank" href="https://www.amnesty.org/en/" style="text-align: center;">
                 <img src="/static/img/amnesty-international.png" class="img-responsive">
             </a>
         </div>
@@ -22,11 +22,28 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right" id="menu">
-                        <li><a href="#">Item 1</a></li>
-                        <li><a href="#">Item 2</a></li>
-                        <li><a href="#">Item 3</a></li>
+                        {% if current_user.is_authenticated() %}
+
+                            <li class="admin-menu"><a href="{{ url_for('account.profile', name=current_user.name) }}">{{ _('Account') }}</a></li>
+                            {% if current_user.admin %}
+                                <li class="admin-menu"><a href="{{ url_for('admin.index')}}">{{ _('Admin') }}</a></li>
+                            {% endif %}
+
+                            <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
+                            <li class="admin-menu"><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="admin-menu"><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li>
+                            <li class="admin-meny"><a href="{{ url_for('terms.index')}}">{{ _('Terms') }}</a></li>
+                            <li class="admin-menu"><a href="{{ url_for('account.signout') }}">Sign Out</a></li>
+                        {% else %}
+                            <li><a href="#">Community</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ url_for('home.about')}}">{{ _('About') }}</a></li>
+                            <li><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li>
+                            <li><a href="{{ url_for('terms.index')}}">{{ _('Terms') }}</a></li>
+                        {% endif %}
                     </ul>
-                    <ul class="nav navbar-nav navbar-right right-nav" style="">
+                    <ul class="nav navbar-nav navbar-right right-nav" style="padding-top:5px;">
                         <li style="display: none;">
                             {% if current_user.is_authenticated() %}
                             <ul class="nav secondary-nav pull-right">
@@ -60,13 +77,13 @@
                         </li>
                         <li>
                             <a href="#" title="Facebook">
-                                <i class="fa fa-facebook-square fa-3x"
+                                <i class="fa fa-facebook-square fa-2x"
                                    aria-hidden="false"></i>
                             </a>
                         </li>
                         <li>
                             <a href="#" title="Instagram">
-                                <i class="fa fa-twitter-square fa-3x"
+                                <i class="fa fa-twitter-square fa-2x"
                                    aria-hidden="false"></i>
                             </a>
                         </li>
