@@ -23,24 +23,23 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right" id="menu">
                         {% if current_user.is_authenticated() %}
-
                             <li class="admin-menu"><a href="{{ url_for('account.profile', name=current_user.name) }}">{{ _('Account') }}</a></li>
                             {% if current_user.admin %}
                                 <li class="admin-menu"><a href="{{ url_for('admin.index')}}">{{ _('Admin') }}</a></li>
+                                <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
                             {% endif %}
-
-                            <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
                             <li class="admin-menu"><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
                             <li role="separator" class="divider"></li>
                             <li class="admin-menu"><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li>
-                            <li class="admin-meny"><a href="{{ url_for('terms.index')}}">{{ _('Terms') }}</a></li>
+                            <li class="admin-menu"><a href="{{ url_for('terms.index')}}">{{ _('Terms') }}</a></li>
                             <li class="admin-menu"><a href="{{ url_for('account.signout') }}">Sign Out</a></li>
                         {% else %}
-                            <li><a href="#">Community</a></li>
+                            <li><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ url_for('home.about')}}">{{ _('About') }}</a></li>
                             <li><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li>
                             <li><a href="{{ url_for('terms.index')}}">{{ _('Terms') }}</a></li>
+                            <li><a href="{{ url_for('account.signin') }}">{{ _('Sign in') }}</a></li>
                         {% endif %}
                     </ul>
                     <ul class="nav navbar-nav navbar-right right-nav" style="padding-top:5px;">
