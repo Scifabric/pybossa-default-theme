@@ -56,6 +56,9 @@
     {% set active_page = active_page | default('index') -%}
     {% set active_project  = active_project | default('none') -%}
     {% include "_navbar.html" %}
+    {% if not current_user.is_anonymous() %}
+    <!-- checkpoint::logged-in::{{current_user.name}} -->
+    {% endif %}
     {% block content %}{% endblock %}
     {% include "_footer.html" %}
     <!-- Le javascript -->
