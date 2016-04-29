@@ -1,4 +1,108 @@
 {% include "urgentactions/ua-sub-header.html" %}
+<script type="text/javascript">
+    $(function () {
+        $(".one-person").click(function () {
+
+            document.onmouseup = gText;
+            if (!document.all) document.captureEvents(Event.MOUSEUP);
+        });
+
+        var t = '';
+
+        $("#close-popup").click(function () {
+            $('#detailed-individual-information').hide();
+        });
+
+        $(".right-arrow").click(function () {
+            var detailed_info_divs = $('.detailed-information');
+            console.log(detailed_info_divs.length);
+            for (var i = 0; i < detailed_info_divs.length; i++) {
+                console.log(i);
+                if ($(detailed_info_divs[i]).hasClass("active")) {
+                    $(detailed_info_divs[i]).removeClass("active");
+                    $(detailed_info_divs[i]).css("display", "none");
+                    if (i == 1) {
+                        $(".right-arrow").css("display", "none");
+                    }
+                    $(detailed_info_divs[i + 1]).css("display", "block");
+                    $(detailed_info_divs[i + 1]).addClass("active");
+                    $(".left-arrow").show();
+                    break;
+                }
+            }
+        });
+
+
+        $(".left-arrow").click(function () {
+            var detailed_info_divs = $('.detailed-information');
+            console.log(detailed_info_divs.length);
+            for (var i = 0; i < detailed_info_divs.length; i++) {
+                console.log(i);
+                if ($(detailed_info_divs[i]).hasClass("active")) {
+                    $(detailed_info_divs[i]).removeClass("active");
+                    $(detailed_info_divs[i]).css("display", "none");
+                    if (i == 1) {
+                        $(".left-arrow").css("display", "none");
+                    }
+                    $(detailed_info_divs[i - 1]).css("display", "block");
+                    $(detailed_info_divs[i - 1]).addClass("active");
+                    $(".right-arrow").show();
+                    break;
+                }
+            }
+        });
+
+        function getSelectedText() {
+            if (window.getSelection) {
+                return window.getSelection().toString();
+            } else if (document.selection) {
+                return document.selection.createRange().text;
+            }
+            return '';
+        }
+
+        function gText(e) {
+            t = (document.all) ? document.selection.createRange().text : document.getSelection();
+            var sel = getSelection(),
+                    position = sel.anchorNode.compareDocumentPosition(sel.focusNode),
+                    backward = false;
+
+            var selText = getSelectedText(),
+                    targetElem = e.target.tagName.toLowerCase();
+            if (selText && targetElem == 'p') {
+                if (click == 1) {
+                    if (t != "") {
+                        var length = t.toString().length;
+                        $('#detailed-individual-information').hide();
+                        $('#detailed-individual-information').css({
+                            'top': e.pageY - 210,
+                            'position': 'absolute',
+                            'width': 400,
+                            'color': '#fff',
+                            'border': '1px solid #333',
+                            'padding': '5px',
+                            'background-color': "#333333"
+                        });
+
+                        if (!position && sel.anchorOffset > sel.focusOffset ||
+                                position === Node.DOCUMENT_POSITION_PRECEDING) {
+                            backward = true;
+                            $('#detailed-individual-information').css({
+                                'left': e.pageX + length
+                            });
+                        } else {
+                            $('#detailed-individual-information').css({
+                                'left': e.pageX - length * 4
+                            });
+                        }
+                        $('#detailed-individual-information').show();
+                    }
+                }
+            }
+        }
+
+    });
+</script>
 <div class="row" style="color: #000; background-color: #ffff00;">
     <div class="col-md-8 col-md-offset-2" style="padding: 0 30px 0 30px;">
         <script>
@@ -51,4 +155,29 @@
         <br><br>
     </div>
     <div class="col-md-2"></div>
+</div>
+<div class="rectangle-speech-border" id="detailed-individual-information" style="display: none;">
+    <div class="popup-header"><a id="close-popup">x</a></div>
+    <div class="left-back-arrow">
+        <div class="left-arrow" style="display: none;"></div>
+    </div>
+    <div class="detailed-information step1 active">
+        <h2>What was the outcome for this individual?</h2>
+        <div class="individual-outcome">POSITIVE</div>
+        <div class="individual-outcome">NEGATIVE</div>
+        <div class="individual-outcome">UNCLEAR</div>
+    </div>
+    <div class="detailed-information step2" style="display: none;">
+        <h2>What was the outcome for this individual?</h2>
+        <div class="individual-outcome">MALE</div>
+        <div class="individual-outcome">FEMALE</div>
+        <div class="individual-outcome">UNCLEAR</div>
+    </div>
+    <div class="detailed-information step3" style="display: none;">
+        <h2>What was the outcome for this individual?</h2>
+        <div class="individual-outcome" style="width: 170px; margin-left:50px;">NEXT URGENT ACTION</div>
+    </div>
+    <div class="right-back-arrow">
+        <div class="right-arrow"></div>
+    </div>
 </div>

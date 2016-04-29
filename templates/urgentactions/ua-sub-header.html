@@ -9,10 +9,10 @@
             $(".Q1").show();
             $(".Q2").hide();
             persons = 0;
+            click = 0;
             $(".select-persons").hide();
             setCounterButtonInactive($(".one-person"));
             setCounterButtonInactive($(".more-persons"));
-            click = 0;
         });
 
         $('.person').click(function () {
@@ -30,25 +30,17 @@
         });
 
         $(".one-person").click(function () {
+            $(this).addClass("clicked");
             $(".Q2").show();
             $(".Q1").hide();
             setCounterButtonActive($(this));
             setCounterButtonInactive($(".more-persons"));
-            if (click == 0) {
-                // TODO: Implement the click event.
-                click = 1;
-                persons = 1;
-            } else if (click == 1) {
-                click = 0;
-                setCounterButtonInactive($(this));
-            } else if (click == 2) {
-                // TODO: Implement the click event.
-                click = 0;
-                persons = 1;
-            }
+            click = 1;
+            persons = 1;
         });
 
         $(".more-persons").click(function () {
+            $(this).addClass("clicked");
             $(".one-person").css("background-color", "transparent");
             $(".one-person").css("color", "#fff");
             if (click == 0) {
