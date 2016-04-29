@@ -34,7 +34,7 @@
 
 {% macro render_project_local_nav(project, active_link, current_user, pro_features) -%}
 <ul class="list-group" style="margin-top: 21px;">
-    {{ render_project_thumbnail(project, upload_method, class="img-thumbnail") }}
+    {{ render_project_thumbnail(project, upload_method, class="img-responsive thumbnail card") }}
 </ul>
 <ul class="list-group" style="margin-top: 21px;">
     <li class="list-group-item {% if active_link=="info"%}active{% endif %}"><a href="{{url_for('project.details', short_name=project.short_name)}}">{{_('Info')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
