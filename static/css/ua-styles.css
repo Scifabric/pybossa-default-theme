@@ -30,6 +30,10 @@ body {
     padding: 0 30px 0 10px;
 }
 
+#menu li a {
+    font-size: 11px;
+}
+
 img {
     margin: 0 auto;
     height: 100%;
@@ -209,7 +213,7 @@ img {
     color: #000;
 }
 
-.individual-outcome:hover{
+.individual-outcome:hover {
     cursor: pointer;
     color: #000;
     font-weight: 900;
@@ -290,6 +294,10 @@ img {
         font-size: 14px !important;
     }
 
+    .admin-navbar-header {
+        display: block !important;
+    }
+
     .sub-header-container {
         margin-top: 70px;
     }
@@ -335,23 +343,25 @@ img {
     .divider {
         display: none !important;
     }
-}
 
-@media (min-width: 990px) and (max-width: 1172px) {
-    #menu {
-        background-color: #2D2D2D !important;
-        height: 104% !important;
-    }
-
-    .right-nav {
+    .admin-navbar-header {
         display: none !important;
     }
 
-}
-
-@media (min-width: 1172px) {
     #menu {
         background-color: #2D2D2D !important;
         height: 104% !important;
+    }
+}
+
+@media (min-width: 991px) and (max-width: 1000px) {
+    .right-nav {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1239px) {
+    .admin-navbar-header {
+        display: block !important;
     }
 }
