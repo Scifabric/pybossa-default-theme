@@ -1,7 +1,2 @@
-<div class="well">
-    <h2><i class="icon-link"></i>{{_('Google Drive Spreadsheet')}}</h2> 
-    <h3>{{_('Import a Google Drive Spreadsheet')}}</h3>
-  <p><a href="{{url_for(target, short_name=project.short_name,
-      type='gdocs')}}" class="btn btn-inverse">{{_('Use the Google Drive
-      importer')}}</a></p>
-</div>
+{% from "projects/_helpers.html" import render_project_card_option %}
+{{ render_project_card_option(project, upload_method, title=_('Google Drive Spreadsheet'), explanation=_('Import a Google Drive Spreadsheet'), link=url_for(target, short_name=project.short_name, type='gdocs'), link_action_text=_('Import data'), icon='google')}}

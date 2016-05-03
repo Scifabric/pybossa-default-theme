@@ -1,6 +1,2 @@
-<div class="well">
-  <h2><i class="icon-picture"></i> Flickr</h2> 
-  <h3>{{_('Use images from a Flickr set')}}</h3>
-  <p><a href="{{url_for(target, short_name=project.short_name,
-      type='flickr')}}" class="btn btn-inverse">{{_('Use the Flickr importer')}}</a></p>
-</div>
+{% from "projects/_helpers.html" import render_project_card_option %}
+{{ render_project_card_option(project, upload_method, title=_('Flickr'), explanation=_('Use images from a Flickr set'), link=url_for(target, short_name=project.short_name, type='flickr'), link_action_text=_('Import data'), icon='flickr')}}
