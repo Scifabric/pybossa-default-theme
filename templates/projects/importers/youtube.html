@@ -1,26 +1,21 @@
-{% extends "/base.html" %}
+{% extends "projects/base.html" %}
 {% set active_page = "projects" %}
 {% set active_project = project.short_name %}
 {% import "projects/_helpers.html" as helper %}
+{% set active_link = 'tasks' %}
+{% set section = _('Import tasks') %}
 
-{% block content %}
 {% from "_formhelpers.html" import render_field %}
-{{ helper.render_loading(loading_text) }}
+
 <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
+{% block projectcontent %}
 <style type="text/css">
 .selected {
     background-color: #D4D4D4;
 }
 </style>
-<div class="row">
-    <div class="span3">
-        {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features)}}
-    </div>
-
-    <div class="span9">
-        <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
-        <h2>{{_('From Youtube')}}</h2>
-        <br>
+<h3>{{_('From Youtube')}}</h3>
+<br>
 
         <div class="alert choice">
             <p>
@@ -136,8 +131,9 @@
         newPicker();
     });
     $(".submit").off('click').on('click', function(){
-        $("#loading").show();
-    });
+            var msg = "{{_('Importing data...')}}";
+            pybossaNotify(msg, true, "loading");
+            });
     $('.choice').on('click', function(evt){
         var $btn = $(this);
         $('.choice').hide();

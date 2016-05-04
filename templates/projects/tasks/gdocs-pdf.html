@@ -1,7 +1,2 @@
-<div class="well">
-    <h2><i class="icon-pencil"></i>{{_('Transcribing documents')}}</h2> 
-    <h3>{{_('Re-use the PDF transcription tasks')}}</h3>
-  <p><a href="{{url_for('project.import_task', short_name=project.short_name,
-      type='gdocs', template='pdf')}}" class="btn btn-inverse">{{_('Use the
-      Transcription tasks')}}</a></p>
-</div>
+{% from "projects/_helpers.html" import render_project_card_option %}
+{{ render_project_card_option(project, upload_method, title=_('Trascribing documents'), explanation=_('Re-use the PDF transcription tasks'), link=url_for(target, short_name=project.short_name, type='gdocs', template='pdf'), link_action_text=_('Use the Transcription tasks'), icon='file-text')}}

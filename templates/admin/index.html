@@ -1,76 +1,40 @@
-{% extends "/base.html" %}
-{% set active_page = "admin" %}
-{% set active_link = "admin" %}
-{% import "account/_helpers.html" as helper %}
+{% extends "admin/base.html" %}
+{% from "projects/_helpers.html" import render_project_card_option %}
 
-{% block content %}
+{% block rightbody %}
+<h2>{{ _('Admin Site') }}</h2>
 <div class="row">
-    <div class="span3">
-        {{ helper.render_account_local_nav(current_user, active_link) }}
+    <div id="dashboard" class="col-md-6">
+        {{ render_project_card_option(project, upload_method, title=_('Dashboard'), explanation=_('Internal statistics'), link=url_for('admin.dashboard'), link_action_text=_('Go'), icon='info')}}
     </div>
-    <div class="span9" style="min-height:400px;">
-        <h1><strong>{{ _('Admin Site') }}</strong></h1>
-        <div class="row-fluid">
-            <div id="dashboard" class="span6 well">
-                <h2><i class="icon-dashboard"></i> {{_('Dashboard')}}</h2>
-                <p>{{_('Internal Statistics')}}</p>
-                <a href="{{url_for('admin.dashboard')}}" class="btn btn-primary">
-                    {{ _('Go') }} <i class="icon-chevron-right"></i>
-                </a>
-            </div>
-            <div id="dashboard" class="span6 well">
-                <h2><i class="icon-dashboard"></i> {{_('Background Jobs')}}</h2>
-                <p>{{_('Monitor the background jobs')}}</p>
-                <a href="{{url_for('rq_dashboard.overview')}}" class="btn btn-primary">
-                    {{ _('Manage') }} <i class="icon-chevron-right"></i>
-                </a>
-            </div>
-        </div>
-        <div class="row-fluid">
-            <div id="featured-apps" class="span6 well">
-                <h2><i class="icon-star"></i> {{_('Featured Projects')}}</h2>
-                <p>{{_('Show projects on the front page')}}</p>
-                <a href="{{url_for('admin.featured')}}" class="btn btn-primary">
-                    {{ _('Manage') }} <i class="icon-chevron-right"></i>
-                </a>
-            </div>
-            <div id="categories" class="span6 well">
-                <h2><i class="icon-check"></i> {{_('Categories')}}</h2>
-                <p>{{_('Manage project categories')}}</p>
-                <a href="{{url_for('admin.categories')}}" class="btn btn-primary">
-                    {{ _('Manage') }} <i class="icon-chevron-right"></i>
-                </a>
-            </div>
-        </div>
-        <div class="row-fluid">
-            <div id="users" class="span6 well">
-                <h2><i class="icon-user"></i> {{_('Administrators')}}</h2>
-                <p>{{_('Manage administrators')}}</p>
-                <a href="{{url_for('admin.users')}}" class="btn btn-primary">
-                    {{ _('Manage') }} <i class="icon-chevron-right"></i>
-                </a>
-            </div>
-            <div id="users-list" class="span6 well">
-                <h2><i class="icon-list"></i> {{_('Users')}}</h2>
-                <p>{{_('Export a list of users')}}</p>
-                <a href="{{url_for('admin.export_users', format='json')}}" class="btn btn-primary">
-                    {{ _('JSON') }}
-                </a>
-                <a href="{{url_for('admin.export_users', format='csv')}}" class="btn btn-primary">
-                    {{ _('CSV') }}
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="span12">
-                <h2>{{_('Latest news from PyBossa')}}</h2>
-                <ul class="news">
-                    {% for new in news %}
-                    <li><strong>{{new.updated[0:10]}}</strong> {% if 'github' in new.links[0].href %} <span class="label label-info">{{_('New PyBossa version')}}</span> {% else %} <span class="label label-default">{{_('New SciFabric Blog Post')}}</span> {% endif %}<a target="_blank" href="{{new.links[0].href}}">{{new.title}}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
+    <div id="backgroundjobs" class="col-md-6">
+        {{ render_project_card_option(project, upload_method, title=_('Background Jobs'), explanation=_('Monitor background jobs'), link=url_for('rq_dashboard.overview'), link_action_text=_('Monitor'), icon='search')}}
+    </div>
+</div>
+<div class="row">
+    <div id="featured-apps" class="col-md-6">
+        {{ render_project_card_option(project, upload_method, title=_('Featured Projects'), explanation=_('Show projects on the front page'), link=url_for('admin.featured'), link_action_text=_('Manage'), icon='star')}}
+    </div>
+    <div id="categories" class="col-md-6">
+        {{ render_project_card_option(project, upload_method, title=_('Categories'), explanation=_('Manage project categories'), link=url_for('admin.categories'), link_action_text=_('Manage'), icon='check')}}
+    </div>
+</div>
+<div class="row">
+    <div id="users" class="col-md-6">
+        {{ render_project_card_option(project, upload_method, title=_('Administrators'), explanation=_('Manage administrators'), link=url_for('admin.users'), link_action_text=_('Manage'), icon='user')}}
+    </div>
+    <div id="users-list" class="col-md-6">
+        {{ render_project_card_option(project, upload_method, title=_('Users'), explanation=_('Export a list of users'), link=url_for('admin.export_users', format='csv'), link_action_text=_('CSV'), link_two=url_for('admin.export_users', format='json'), link_action_text_two=_('JSON'), icon='user')}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h4>{{_('Latest news from PyBossa')}}</h4>
+        <ul class="news">
+            {% for new in news %}
+            <li><strong>{{new.updated[0:10]}}</strong> {% if 'github' in new.links[0].href %} <span class="label label-info">{{_('New PyBossa version')}}</span> {% else %} <span class="label label-default">{{_('New SciFabric Blog Post')}}</span> {% endif %}<a target="_blank" href="{{new.links[0].href}}">{{new.title}}</a></li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
 {% endblock %}
