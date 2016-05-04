@@ -4,10 +4,15 @@
     $(function () {
         $(".select-persons").hide();
         $(".Q2").hide();
+        $(".Q1-1").hide();
+        $(".final-step").hide();
 
         $(".back-arrow-container").click(function () {
             $(".Q1").show();
+            $(".Q1-1").hide();
             $(".Q2").hide();
+            $(".final-step").hide();
+            $(".Q3").hide();
             persons = 0;
             click = 0;
             $(".select-persons").hide();
@@ -15,24 +20,37 @@
             setCounterButtonInactive($(".more-persons"));
         });
 
+        $(".outcome-result").click(function () {
+            $(".Q2").hide();
+            $(".final-step").show();
+        });
+
         $('.person').click(function () {
             var class_names_array = $(this).attr("class").split(" ");
             var class_name = class_names_array[1];
             var person_number = class_name.substr(class_name.length - 1);
             var persons_involved = Number(person_number) + 1;
+            console.log(class_name);
             if (persons_involved < 2) {
 
             } else {
                 $(".Q1").hide();
+                $(".Q1-1").hide();
                 $(".Q2").show();
                 persons = persons_involved;
+                if (class_name == "person") {
+                    persons = 11;
+                    $(".Q2").hide();
+                    $(".Q3").show();
+                }
             }
         });
 
         $(".one-person").click(function () {
             $(this).addClass("clicked");
-            $(".Q2").show();
+            $(".Q1-1").show();
             $(".Q1").hide();
+            $(".Q2").hide();
             setCounterButtonActive($(this));
             setCounterButtonInactive($(".more-persons"));
             click = 1;
@@ -63,10 +81,19 @@
             }
         });
 
+        $("#victims-number-unclear").click(function(){
+            $("#victims-number").hide(250);
+        });
+
         $(".person").mouseenter(function () {
             var class_names_array = $(this).attr("class").split(" ");
             var class_name = class_names_array[1];
             var person_number = class_name.substr(class_name.length - 1);
+
+            if (class_name == 'person') {
+                $("#person-counter").text("11+");
+                person_number = 10;
+            }
             for (var i = 0; i <= Number(person_number); i++) {
                 var person_head = $(".person" + i).find('.person-head');
                 var person_body = $(".person" + i).find('.person-body');
@@ -77,6 +104,11 @@
                     $("#person-counter").text(i + 1);
                 }
             }
+
+            if (class_name == 'person') {
+                $("#person-counter").text("11+");
+            }
+
         }).mouseleave(function () {
             for (var i = 0; i < 10; i++) {
                 var person_head = $(".person" + i).find('.person-head');
@@ -174,7 +206,7 @@
                         </div>
                         <div class="last-five" style="float: left;">
                             <div class="person person5"
-                                 style="float:left; padding-right:2px; height:40px; width: 20px; margin-top: 5px;">
+                                 style="float:left; padding-right:-2px; height:40px; width: 20px; margin-top: 5px;">
                                 <div class="person-head" style="text-align: right;">
                                     <img src="/static/img/head.png" style="width: 11px; height: 11px;">
                                 </div>
@@ -182,7 +214,6 @@
                                     <img src="/static/img/body.png" style="width: 11px; height: 20px;">
                                 </div>
                             </div>
-                            &nbsp;&nbsp;
                             <div class="person person6"
                                  style="float:left; height:40px; width: 14px; margin-top: 5px;">
                                 <div class="person-head" style="text-align: center;">
@@ -220,8 +251,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="persons-counter" style="float: left; padding: 1px 0 0 5px;">
-                            <label id="person-counter" style="font-size: 28px;">2</label>
+                        <div class="persons-counter person">
+                            <label id="person-counter" style="font-size: 24px;">11+</label>
                         </div>
                     </div>
                 </div>
@@ -233,37 +264,92 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-md-12 Q2" style="padding: 10px 0 0 0;">
+        <div class="col-xs-12 col-md-12 Q1-1" style="padding: 10px 0 0 0;">
             <div class="col-xs-2 col-md-2" style="text-align: center">
-                <div class="back-arrow-container" style="text-align: center; margin-top:25px;">
+                <div class="back-arrow-container Q1-back-arrow" style="text-align: center; margin-top:25px;">
 
                 </div>
                 <br>
             </div>
             <div class="col-xs-10 col-md-8">
-                <h2>Q2: Select the individuals name from any place in the text below. </h2>
-                <h3 style="margin-top: -5px; font-style: italic;">Click and drag, ensuring the
-                    name is highlighted.</h3>
+                <h2>Please select the person’s full name in the text below, and answer the questions that follow. </h2>
+                <h3 style="margin-top: -5px; font-style: italic;">(To select the name, click and drag over the text,
+                    ensuring the full name is highlighted).</h3>
             </div>
             <div class="col-md-2">
 
             </div>
         </div>
-        <!--<div class="col-xs-12 col-md-12 Q3">-->
-            <!--<div class="col-xs-2 col-md-2" style="text-align: center">-->
-                <!--<div class="back-arrow-container" style="text-align: center; margin-top:25px;">-->
+        <div class="col-xs-12 col-md-12 Q2" style="display: none;">
+            <div class="col-xs-2 col-md-2" style="text-align: center">
+                <div class="back-arrow-container Q2-back-arrow" style="text-align: center; margin-top:35px;">
 
-                <!--</div>-->
-                <!--<br>-->
-            <!--</div>-->
-            <!--<div class="col-xs-10 col-md-8">-->
-                <!--<h2>Q2: Select the individuals name from any place in the text below. </h2>-->
-                <!--<h3 style="margin-top: -5px; font-style: italic;">Click and drag, ensuring the-->
-                    <!--name is highlighted.</h3>-->
-            <!--</div>-->
-            <!--<div class="col-md-2">-->
+                </div>
+                <br>
+            </div>
+            <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
+                <h2>What was the result of this Urgent Action campaign?</h2>
+                <div class="options" style="margin-left: -11px;">
+                    <div class="individual-outcome outcome-result">POSITIVE
+                    </div>
+                    <div class="individual-outcome outcome-result">NEGATIVE
+                    </div>
+                    <div class="individual-outcome outcome-result">MIXED
+                    </div>
+                    <div class="individual-outcome outcome-result">NOT CLEAR
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
 
-            <!--</div>-->
-        <!--</div>-->
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-12 Q3" style="display: none;">
+            <div class="col-xs-2 col-md-2" style="text-align: center">
+                <div class="back-arrow-container Q3-back-arrow" style="text-align: center; margin-top:35px;">
+
+                </div>
+                <br>
+            </div>
+            <div class="col-xs-10 col-md-8" style="margin-left: -11px;">
+                <h2>Please specify the exact number of victims involved?</h2>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <h1>ENTER NUMBER</h1>
+                    </div>
+                    <div class="form-group">
+                        <input style="height: 50px; margin: 5px 0 0 5px;" placeholder="How many?" type="text"
+                               class="form-control" id="victims-number" name="victims-number"><br>
+                    </div>
+                    <div class="form-group">
+                        <div class="individual-outcome" id="victims-number-unclear" style="width: 150px; height: 40px; padding-top: 10px;">NOT CLEAR
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="individual-outcome" style="width: 150px; height: 40px; padding-top: 10px;">CONTINUE
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-12 final-step" style="display: none;">
+            <div class="col-xs-2 col-md-2" style="text-align: center">
+                <div class="back-arrow-container final-step-back-arrow" style="text-align: center; margin-top:35px;">
+
+                </div>
+                <br>
+            </div>
+            <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
+                <h2>Thank you for helping us decode this action</h2>
+                <div class="next-ua">NEXT URGENT ACTION</div>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+        </div>
     </div>
 </div>

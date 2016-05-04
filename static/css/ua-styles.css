@@ -143,16 +143,37 @@ img {
 .one-person {
     float: left;
     height: 50px;
-    width: 50px;
+    width: 45px;
     border: 2px solid white;
     background-color: transparent;
     border-radius: 5px;
     text-align: center;
 }
 
+.persons-counter {
+    width: 51px;
+    float: right;
+    padding: 5px 5px 0 5px;
+}
+
+.persons-counter:hover {
+    background-color: #FFFF00;
+    color: #000;
+    cursor: pointer;
+    height: 100%;
+    padding-right: -20px;
+    border-left: 2px solid white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.persons-counter label:hover {
+    cursor: pointer;
+}
+
 .detailed-information {
     padding: 0 10px 5px 10px;
-    width: 290px;
+    width: 335px;
     height: 145px;
     float: left;
 }
@@ -183,8 +204,8 @@ img {
     float: left;
     height: 50px;
     font-weight: bolder;
-    width: 75px;
-    margin-left: 11px;
+    width: 90px;
+    margin: 5px 0 0 11px;
     border: 2px solid white;
     background-color: transparent;
     border-radius: 5px;
@@ -204,7 +225,7 @@ img {
     width: 170px;
     text-align: center;
     padding-top: 17px;
-    margin-left: 50px;
+    margin-left: 75px;
 }
 
 .next-ua:hover {
@@ -255,7 +276,7 @@ img {
     float: left;
     margin-left: 10px;
     height: 50px;
-    width: 50px;
+    width: 45px;
     border: 2px solid white;
     background-color: transparent;
     border-radius: 5px;
@@ -265,7 +286,7 @@ img {
 .select-persons {
     margin-left: -5px;
     height: 50px;
-    width: 215px;
+    width: 228px;
     border: 2px solid white;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -308,9 +329,35 @@ img {
     background-color: #5B5B5B;
 }
 
+@media (max-width: 400px) {
+    .Q1-back-arrow {
+        margin-top: 50px !important;
+    }
+
+    .Q2-back-arrow {
+        margin-top: 75px !important;
+    }
+
+    .individual-outcome {
+        margin-top: 11px !important;
+    }
+}
+
 @media (min-width: 320px) and (max-width: 990px) {
     .admin-menu a {
         font-size: 14px !important;
+    }
+
+    .next-ua {
+        margin-left: 0 !important;
+    }
+
+    .outcome-options {
+        margin-left: 0 !important;
+    }
+
+    .Q2.back-arrow-container {
+        margin-top: 50px !important;
     }
 
     .admin-navbar-header {
