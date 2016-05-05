@@ -4,14 +4,14 @@
  * To be used on top of Bootstrap
  */
  
-@primary: #8bbf36;
-@info: #4190c2;
+@primary: #FF0;
+@info: #FF0;
 
 /* Styling */
 /* ======= */
 
 body {
-	color:#484848;
+	color: #B6B6B6 !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -41,6 +41,10 @@ a[rel="popover"] {
 	cursor:pointer;
 }
 
+p > a {
+	color: #0e0e0e;
+}
+
 .btn-mini {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -68,6 +72,7 @@ a[rel="popover"] {
 .btn-primary.disabled,
 .btn-primary[disabled] {
   background-color: @primary;
+	color: #7a7a7a;
 }
 
 .btn-info {
@@ -79,7 +84,7 @@ a[rel="popover"] {
   background-image: -o-linear-gradient(top, lighten(@info, 20%), @info);
   background-image: linear-gradient(top, lighten(@info, 250%), @info);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='lighten(@info, 20%)', endColorstr='@info', GradientType=0);
-  border-color: darken(@info, 20%) darken(@info, 20%) darken(@info, 10%);
+  border-color: darken(@info, 60%) darken(@info, 60%) darken(@info, 60%);
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
@@ -88,6 +93,7 @@ a[rel="popover"] {
 .btn-info.active,
 .btn-info.disabled,
 .btn-info[disabled] {
+	color: #7a7a7a;
   background-color: @info;
 }
 
@@ -241,7 +247,8 @@ section.grey:after {
 }
 
 .box {
-	background-color: #FFF;
+	color: #000000;
+	background-color: #E5E5E5;
 	border: 1px solid #d9d9d9;
 }
 .app.box {
