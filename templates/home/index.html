@@ -69,13 +69,15 @@
       </section>
       
       {% if top_users %}
-      <section id="top_users" class="grey">
+      <section id="top_users" class="grey col-xs-12">
         <h2><i class="glyphicon glyphicon-group"></i>{{ _('Most Active Volunteers') }}</h2>
         <ul class="users">
             {% for user in top_users %}
           <li>
-          <a href="{{url_for('account.profile', name=user.name)}}" data-content="
+          <a href="{{url_for('account.profile', name=user.name)}}" style="color: #000000 !important;" data-content="
                 <strong>{{_('Joined')}}:</strong> {{user.created[0:10]}} 
+                <strong>{{_('Joined')}}:</strong> {{user.created[0:10]}}
+                <strong>{{_('Joined')}}:</strong> {{user.created[0:10]}}
                 <br/>
                 <strong>{{_('Submitted Tasks')}}:</strong> {{user.task_runs}}
                 " rel="popover" data-original-title="<strong>{{user.fullname}}</strong>">
