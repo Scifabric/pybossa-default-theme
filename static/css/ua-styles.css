@@ -330,7 +330,7 @@ img {
 
 .disabled {
     pointer-events: none !important;
-    opacity: 0.5;
+    opacity: 0.9;
 }
 
 .footer {
@@ -339,7 +339,7 @@ img {
 }
 
 .victims {
-    height: 100px;
+    height: 90px;
     border: 2px solid white;
     border-radius: 5px;
     background-color: transparent;
