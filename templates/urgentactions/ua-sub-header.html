@@ -2,6 +2,14 @@
     var click = 0;
     var persons = 0;
     var not_clear_clicked = 0;
+    var mixed_json = {
+        "positive": 0,
+        "negative": 0,
+        "unsure": 0
+    };
+
+    var is_json_empty = 0;
+
     $(function () {
         $(".select-persons").hide();
         $(".Q2").hide();
@@ -115,6 +123,8 @@
             }
         });
 
+        $("#mixed-continue").hide();
+
         $("#mixed").click(function () {
             $(".Q2").hide();
             $(".final-step").hide();
@@ -141,21 +151,33 @@
                 $(".unsure-victims-body").append(victims_html);
             }
 
-            onVictimsHover("mixed-persons", 0);
+            var last_checked = 0;
+            onVictimsHover("mixed-persons", 0, last_checked);
 
             $(".mixed-persons").on("click", function () {
                 var class_names_array = $(this).attr("class").split(" ");
                 var clas_name = class_names_array[class_names_array.length - 1];
                 var person_number = clas_name.substr(clas_name.length - 1);
+
+                setSelectedVictimsType($(this), last_checked);
+
+                var sum = 0;
+                for (var item in mixed_json){
+                    console.log(item + ": " + mixed_json[item]);
+                    sum += mixed_json[item];
+                }
+                if (sum == persons){
+                    $("#mixed-continue").show(250)
+                }
+
                 var classes_array = ["positive-victims-body", "negative-victims-body", "unsure-victims-body"];
 
-                for (var i = 0; i <= Number(person_number); i++) {
+                for (var i = last_checked; i <= Number(person_number); i++) {
                     var person_head = $(this).parent().find(".mixed-persons" + i).find('.person-head');
                     var person_body = $(this).parent().find(".mixed-persons" + i).find('.person-body');
                     var class_names = $(this).parent().attr("class").split(" ");
                     var class_name = class_names[class_names.length - 1];
-                    $(this).parent().find(".mixed-persons" + i).addClass("disabled selected");
-                    setPersonActive(person_head, person_body);
+                    $(this).parent().find(".mixed-persons" + i).addClass("disabled");
                     classes_array.remove(class_name);
                     for (var j = 0; j < classes_array.length; j++) {
                         var other_class_name = $("." + classes_array[j].replace("-body", "")).find(".mixed-persons" + i);
@@ -164,8 +186,32 @@
                         var other_person_body = other_class_name.find('.person-body');
                         setPersonDisabled(other_person_head, other_person_body);
                     }
+                    setPersonActive(person_head, person_body);
                 }
 
+                for (var k = Number(person_number) + 1; k <= persons; k++) {
+                    var person_head = $(this).parent().find(".mixed-persons" + k).find('.person-head');
+                    var person_body = $(this).parent().find(".mixed-persons" + k).find('.person-body');
+//                    var class_names = $(this).parent().attr("class").split(" ");
+                    setPersonDisabled(person_head, person_body);
+                    $(this).parent().addClass('disabled');
+                    $(this).parent().find(".mixed-persons" + k).addClass("disabled");
+                }
+
+                for (var c = 0; c < class_names_array.length; c++) {
+                    var val = class_names_array[c];
+                    var matches = val.match(/\d+/g);
+                    if (matches != null) {
+                    }
+                    var last_checked_person_number = val.substr(val.length - 1);
+                    last_checked = Number(last_checked_person_number) + 1;
+                }
+
+                $(".mixed-persons").off("mouseleave");
+                $(".mixed-persons").off("mouseenter");
+                onVictimsHover("mixed-persons", 0, last_checked);
+                $(".disabled").off("mouseleave");
+                $(".disabled").off("mouseenter");
             });
         });
 
@@ -175,20 +221,48 @@
             $(".Q2").addClass("Q4");
         });
 
-        onVictimsHover("person", 1);
+        onVictimsHover("person", 1, 0);
+
+        $("#reset").click(function () {
+            $(".disabled").removeClass("disabled");
+            onVictimsHover("mixed-persons", 0, 0);
+            $(".mixed-persons").each(function () {
+                var person_head = $(this).find('.person-head');
+                var person_body = $(this).find('.person-body');
+                setPersonInactive(person_head, person_body);
+                mixed_json = {
+                    "positive": 0,
+                    "negative": 0,
+                    "unsure": 0
+                }
+            });
+        });
     });
 
-    function onVictimsHover(person_class, flag) {
+    function setSelectedVictimsType(element, person_number) {
+        var mixed_types_array = ["positive", "negative", "unsure"];
+        var mixed_types = element.parent().attr("class");
+        for (var item = 0; item < mixed_types_array.length; item++) {
+            if (mixed_types.indexOf(mixed_types_array[item]) > -1) {
+                if (is_json_empty == 0) {
+                    mixed_json[mixed_types_array[item]] = Number(person_number) + 1
+                } else {
+
+                }
+            }
+        }
+    }
+
+    function onVictimsHover(person_class, flag, last_checked) {
         $("." + person_class).mouseenter(function () {
             var class_names_array = $(this).attr("class").split(" ");
             var class_name = class_names_array[class_names_array.length - 1];
             var person_number = class_name.substr(class_name.length - 1);
-
             if (class_name == person_class) {
                 $("#person-counter").text("11+");
                 person_number = 10;
             }
-            for (var i = 0; i <= Number(person_number); i++) {
+            for (var i = last_checked; i <= Number(person_number); i++) {
                 var person_head = $("." + person_class + i).find('.person-head');
                 var person_body = $("." + person_class + i).find('.person-body');
                 if (flag == 1) {
@@ -218,7 +292,7 @@
             }
 
         }).mouseleave(function () {
-            for (var i = 0; i < 10; i++) {
+            for (var i = last_checked; i < 10; i++) {
                 var person_head = $("." + person_class + i).find('.person-head');
                 var person_body = $("." + person_class + i).find('.person-body');
                 if (flag == 1) {
@@ -231,7 +305,6 @@
                 } else {
                     setPersonInactive(person_head, person_body);
                 }
-
             }
         });
     }
@@ -485,16 +558,25 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="victims negative-victims">
+                        <div class="victims negative-victims" style="margin-left: 10px;">
                             <h5>NEGATIVE</h5>
                             <div class="victims-body negative-victims-body"></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="victims unsure-victims">
+                        <div class="victims unsure-victims" style="margin-left: 10px;">
                             <h5>UNSURE</h5>
                             <div class="victims-body unsure-victims-body"></div>
                         </div>
+                    </div>
+                </div>
+                <br>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <div class="individual-outcome" id="reset" style="margin-left: 150px;">RESET</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="individual-outcome" id="mixed-continue">CONTINUE</div>
                     </div>
                 </div>
             </div>
