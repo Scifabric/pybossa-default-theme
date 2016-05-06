@@ -121,7 +121,7 @@
 
 
 {% macro show_project(project, active_cat, current_user, upload_method) %}
-<div class="project-item row-fluid {{class}} well">
+<div class="project-item col-md-6 col-sm-6 col-xs-12 {{class}} well">
     <h2><a href="{{ url_for('project.details', short_name = project.short_name) }}">{{ project.name }}</a></h2>
     <div class="row-fluid">
         <div class="col-md-3 col-sm-3">

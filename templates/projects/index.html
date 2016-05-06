@@ -44,7 +44,7 @@
             {% endif %}
 
 
-            <div class="projects col-md-9 col-sm-9">
+            <div class="projects">
             {% for project in projects %}
             {{ helper.show_project(project, active_cat.short_name, current_user, upload_method) }}
             {% endfor %}
