@@ -1,6 +1,7 @@
 <script type="text/javascript">
     var click = 0;
     var persons = 0;
+    var not_clear_clicked = 0;
     $(function () {
         $(".select-persons").hide();
         $(".Q2").hide();
@@ -8,12 +9,23 @@
         $(".final-step").hide();
 
         $(".back-arrow-container").click(function () {
-            $(".Q1").show();
+            var class_names = $(this).parent().parent().attr("class").split(" ");
+            var class_name = class_names[class_names.length - 1];
             $(".Q1-1").hide();
             $(".Q2").hide();
             $(".final-step").hide();
             $(".Q3").hide();
-            persons = 0;
+            $(".mixed").hide();
+            if (class_name == 'final-step') {
+                $(".Q2").show();
+            } else if (class_name == "Q4") {
+                $(".Q3").show();
+            } else if (class_name == "mixed") {
+                $(".Q2").show();
+                $(".Q2").addClass("Q4");
+            } else {
+                $(".Q1").show();
+            }
             click = 0;
             $(".select-persons").hide();
             setCounterButtonInactive($(".one-person"));
@@ -30,7 +42,6 @@
             var class_name = class_names_array[1];
             var person_number = class_name.substr(class_name.length - 1);
             var persons_involved = Number(person_number) + 1;
-            console.log(class_name);
             if (persons_involved < 2) {
 
             } else {
@@ -44,6 +55,11 @@
                     $(".Q3").show();
                 }
             }
+        });
+
+        $(".next-ua").click(function () {
+            $(".btn-submit").click();
+            window.location.href = "/project/urgent_actions/newtask";
         });
 
         $(".one-person").click(function () {
@@ -81,48 +97,155 @@
             }
         });
 
-        $("#victims-number-unclear").click(function(){
-            $("#victims-number").hide(250);
+        $("#victims-number-unclear").click(function () {
+            if (not_clear_clicked == 0) {
+                $("#victims-number").hide(250);
+                $("#victims-number-unclear").css({
+                    "background-color": "#ffff00",
+                    "color": "#000"
+                });
+                not_clear_clicked = 1;
+            } else {
+                $("#victims-number").show(250);
+                $("#victims-number-unclear").css({
+                    "background-color": "transparent",
+                    "color": "#fff"
+                });
+                not_clear_clicked = 0;
+            }
         });
 
-        $(".person").mouseenter(function () {
+        $("#mixed").click(function () {
+            $(".Q2").hide();
+            $(".final-step").hide();
+            $(".mixed").show();
+            $(".victims-body").empty();
+            var screen_width = window.screen.width;
+            for (var i = 0; i < persons; i++) {
+                var victims_html = "";
+                if (screen_width > 767) {
+                    victims_html = "<div class='form-group mixed-persons mixed-persons" + i + "' style='height:40px; width: 14px; margin-top: 5px; text-align: center;'><div class='person-head' style='text-align: center;'><img src='/static/img/head.png' style='width: 11px; height: 11px;'></div><div class='person-body' style='margin-top: 3px; text-align: center;'><img src='/static/img/body.png' style='width: 11px; height: 20px;'></div></div>";
+                } else {
+                    victims_html = "<div class='mixed-persons mixed-persons" + i + "' style='float: left; height:40px; width: 14px; margin-top: 5px;'><div class='person-head' style='text-align: center;'><img src='/static/img/head.png' style='width: 11px; height: 11px;'></div><div class='person-body' style='margin-top: 3px; text-align: center;'><img src='/static/img/body.png' style='width: 11px; height: 20px;'></div></div>";
+                    var victims_body_left_margin = "";
+                    if (persons < 5) {
+                        victims_body_left_margin = "80px";
+                    } else {
+                        victims_body_left_margin = "50px";
+                    }
+                    $(".victims-body").css("margin-left", victims_body_left_margin);
+                }
+
+                $(".positive-victims-body").append(victims_html);
+                $(".negative-victims-body").append(victims_html);
+                $(".unsure-victims-body").append(victims_html);
+            }
+
+            onVictimsHover("mixed-persons", 0);
+
+            $(".mixed-persons").on("click", function () {
+                var class_names_array = $(this).attr("class").split(" ");
+                var clas_name = class_names_array[class_names_array.length - 1];
+                var person_number = clas_name.substr(clas_name.length - 1);
+                var classes_array = ["positive-victims-body", "negative-victims-body", "unsure-victims-body"];
+
+                for (var i = 0; i <= Number(person_number); i++) {
+                    var person_head = $(this).parent().find(".mixed-persons" + i).find('.person-head');
+                    var person_body = $(this).parent().find(".mixed-persons" + i).find('.person-body');
+                    var class_names = $(this).parent().attr("class").split(" ");
+                    var class_name = class_names[class_names.length - 1];
+                    $(this).parent().find(".mixed-persons" + i).addClass("disabled selected");
+                    setPersonActive(person_head, person_body);
+                    classes_array.remove(class_name);
+                    for (var j = 0; j < classes_array.length; j++) {
+                        var other_class_name = $("." + classes_array[j].replace("-body", "")).find(".mixed-persons" + i);
+                        other_class_name.addClass("disabled");
+                        var other_person_head = other_class_name.find('.person-head');
+                        var other_person_body = other_class_name.find('.person-body');
+                        setPersonDisabled(other_person_head, other_person_body);
+                    }
+                }
+
+            });
+        });
+
+        $(".continue-vno").click(function () {
+            $(".Q3").hide();
+            $(".Q2").show();
+            $(".Q2").addClass("Q4");
+        });
+
+        onVictimsHover("person", 1);
+    });
+
+    function onVictimsHover(person_class, flag) {
+        $("." + person_class).mouseenter(function () {
             var class_names_array = $(this).attr("class").split(" ");
-            var class_name = class_names_array[1];
+            var class_name = class_names_array[class_names_array.length - 1];
             var person_number = class_name.substr(class_name.length - 1);
 
-            if (class_name == 'person') {
+            if (class_name == person_class) {
                 $("#person-counter").text("11+");
                 person_number = 10;
             }
             for (var i = 0; i <= Number(person_number); i++) {
-                var person_head = $(".person" + i).find('.person-head');
-                var person_body = $(".person" + i).find('.person-body');
-                if (i < 2) {
-                    continue;
+                var person_head = $("." + person_class + i).find('.person-head');
+                var person_body = $("." + person_class + i).find('.person-body');
+                if (flag == 1) {
+                    if (i < 2) {
+                        continue;
+                    } else {
+                        setPersonActive(person_head, person_body);
+                        $("#person-counter").text(i + 1);
+                    }
                 } else {
                     setPersonActive(person_head, person_body);
-                    $("#person-counter").text(i + 1);
+                    var classes_array = ["positive-victims-body", "negative-victims-body", "unsure-victims-body"];
+                    var class_names = $(this).parent().attr("class").split(" ");
+                    var class_name = class_names[class_names.length - 1];
+                    classes_array.remove(class_name);
+                    for (var j = 0; j < classes_array.length; j++) {
+                        var other_class_name = $("." + classes_array[j].replace("-body", "")).find("." + person_class + i);
+                        var other_person_head = other_class_name.find('.person-head');
+                        var other_person_body = other_class_name.find('.person-body');
+                        setPersonDisabled(other_person_head, other_person_body);
+                    }
                 }
             }
 
-            if (class_name == 'person') {
+            if (class_name == person_class) {
                 $("#person-counter").text("11+");
             }
 
         }).mouseleave(function () {
             for (var i = 0; i < 10; i++) {
-                var person_head = $(".person" + i).find('.person-head');
-                var person_body = $(".person" + i).find('.person-body');
-                if (i < 2) {
-                    setPersonActive(person_head, person_body);
-                    $("#person-counter").text(i + 1);
+                var person_head = $("." + person_class + i).find('.person-head');
+                var person_body = $("." + person_class + i).find('.person-body');
+                if (flag == 1) {
+                    if (i < 2) {
+                        setPersonActive(person_head, person_body);
+                        $("#person-counter").text(i + 1);
+                    } else {
+                        setPersonInactive(person_head, person_body);
+                    }
                 } else {
                     setPersonInactive(person_head, person_body);
                 }
 
             }
         });
-    });
+    }
+
+    Array.prototype.remove = function () {
+        var what, a = arguments, L = a.length, ax;
+        while (L && this.length) {
+            what = a[--L];
+            while ((ax = this.indexOf(what)) !== -1) {
+                this.splice(ax, 1);
+            }
+        }
+        return this;
+    };
 
     function setCounterButtonActive(element) {
         element.css("background-color", "#FFFF00");
@@ -142,6 +265,11 @@
     function setPersonActive(person_head, person_body) {
         $(person_head).find('img').prop("src", "/static/img/head_selected.png");
         $(person_body).find('img').prop("src", "/static/img/body_selected.png");
+    }
+
+    function setPersonDisabled(person_head, person_body) {
+        $(person_head).find('img').prop("src", "/static/img/head_disabled.png");
+        $(person_body).find('img').prop("src", "/static/img/body_disabled.png");
     }
 
 </script>
@@ -290,13 +418,13 @@
             <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
                 <h2>What was the result of this Urgent Action campaign?</h2>
                 <div class="options" style="margin-left: -11px;">
-                    <div class="individual-outcome outcome-result">POSITIVE
+                    <div class="individual-outcome outcome-result" id="positive">POSITIVE
                     </div>
-                    <div class="individual-outcome outcome-result">NEGATIVE
+                    <div class="individual-outcome outcome-result" id="negative">NEGATIVE
                     </div>
-                    <div class="individual-outcome outcome-result">MIXED
+                    <div class="individual-outcome outcome-result" id="mixed">MIXED
                     </div>
-                    <div class="individual-outcome outcome-result">NOT CLEAR
+                    <div class="individual-outcome outcome-result" id="not-clear">NOT CLEAR
                     </div>
                 </div>
             </div>
@@ -322,12 +450,14 @@
                         <input style="height: 50px; margin: 5px 0 0 5px;" placeholder="How many?" type="text"
                                class="form-control" id="victims-number" name="victims-number"><br>
                     </div>
-                    <div class="form-group">
-                        <div class="individual-outcome" id="victims-number-unclear" style="width: 150px; height: 40px; padding-top: 10px;">NOT CLEAR
+                    <div class="form-group outcome-btns">
+                        <div class="individual-outcome" id="victims-number-unclear"
+                             style="width: 150px; height: 40px; padding-top: 10px;">NOT CLEAR
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="individual-outcome" style="width: 150px; height: 40px; padding-top: 10px;">CONTINUE
+                    <div class="form-group outcome-btns">
+                        <div class="individual-outcome continue-vno"
+                             style="width: 150px; height: 40px; padding-top: 10px;">CONTINUE
                         </div>
                     </div>
                 </div>
@@ -336,7 +466,8 @@
 
             </div>
         </div>
-        <div class="col-xs-12 col-md-12 final-step" style="display: none;">
+
+        <div class="col-xs-12 col-md-12 mixed" style="display: none;">
             <div class="col-xs-2 col-md-2" style="text-align: center">
                 <div class="back-arrow-container final-step-back-arrow" style="text-align: center; margin-top:35px;">
 
@@ -344,10 +475,44 @@
                 <br>
             </div>
             <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
-                <h2>Thank you for helping us decode this action</h2>
-                <div class="next-ua">NEXT URGENT ACTION</div>
+                <h2>Please specify how many people had positive and negative outcomes.</h2>
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <div class="victims positive-victims">
+                            <h5>POSITIVE</h5>
+                            <div class="victims-body positive-victims-body"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="victims negative-victims">
+                            <h5>NEGATIVE</h5>
+                            <div class="victims-body negative-victims-body"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="victims unsure-victims">
+                            <h5>UNSURE</h5>
+                            <div class="victims-body unsure-victims-body"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2"></div>
+        </div>
+
+        <div class="col-xs-12 col-md-12 final-step" style="display: none;">
+            <div class="col-xs-2 col-md-2" style="text-align: center">
+                <div class="back-arrow-container final-step-back-arrow" style="text-align: center; margin-top:35px;">
+
+                </div>
+                <br>
+            </div>
+            <div class="col-xs-10 col-md-7 outcome-options" style="margin-left: -11px;">
+                <h2>Thank you for helping us decode this action</h2>
+                <div class="next-ua" style="margin-left: 0 !important;">NEXT URGENT ACTION</div>
+            </div>
+            <div class="col-md-3">
 
             </div>
         </div>

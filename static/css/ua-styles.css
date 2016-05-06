@@ -210,7 +210,7 @@ img {
     background-color: transparent;
     border-radius: 5px;
     text-align: center;
-    padding-top: 17px;
+    padding-top: 15px;
 }
 
 .next-ua {
@@ -324,12 +324,35 @@ img {
     cursor: pointer;
 }
 
+.mixed-persons:hover {
+    cursor: pointer;
+}
+
+.disabled {
+    pointer-events: none !important;
+    opacity: 0.5;
+}
+
 .footer {
     height: 100px;
     background-color: #5B5B5B;
 }
 
-@media (max-width: 400px) {
+.victims {
+    height: 100px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    min-width: 150px;
+    text-align: center;
+    padding-top: -10px;
+}
+
+.victims-body {
+    text-align: center !important;
+}
+
+@media (max-width: 480px) {
     .Q1-back-arrow {
         margin-top: 50px !important;
     }
@@ -338,8 +361,20 @@ img {
         margin-top: 75px !important;
     }
 
+    .Q3-back-arrow {
+        margin-top: 100px !important;
+    }
+
     .individual-outcome {
         margin-top: 11px !important;
+    }
+
+    #victims-number {
+        margin-left: 0 !important;
+    }
+
+    .outcome-btns {
+        margin: -25px 0 0 -10px !important;
     }
 }
 
@@ -348,7 +383,7 @@ img {
         font-size: 14px !important;
     }
 
-    .next-ua {
+    #victims-number {
         margin-left: 0 !important;
     }
 
@@ -358,6 +393,10 @@ img {
 
     .Q2.back-arrow-container {
         margin-top: 50px !important;
+    }
+
+    .Q3-back-arrow {
+        /*margin-top: 70px !important;*/
     }
 
     .admin-navbar-header {
