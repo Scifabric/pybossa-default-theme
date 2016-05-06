@@ -134,7 +134,7 @@
             <p style="margin:0"><strong><i class="glyphicon glyphicon-time"></i> {{ _('Last Activity') }}</strong>: {{ project.last_activity}}</p>
             <span class="activity" style="display:none;">{{project.last_activity_raw}}</span>
             {% endif %}
-            <p style="margin:0"><strong><i class="glyphicon glyphicon-cogs"></i> {{ _('Overall progress') }}</strong>: <span class="progress">{{ project.overall_progress | round | int }}</span>% completed</p>
+            <p style="margin:0"><strong><i class="glyphicon glyphicon-list-alt"></i> {{ _('Overall progress') }}</strong>: <span class="progress">{{ project.overall_progress | round | int }}</span>% completed</p>
             {% if project.owner == current_user.fullname %}
             <p style="margin:0"><strong><i class="glyphicon glyphicon-user"></i> {{ _('Created by') }}</strong>: {{ _('Me') }}</p>
             {% else %}
