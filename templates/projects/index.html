@@ -18,7 +18,7 @@
     </div>
     <div class="col-sm-9 col-md-9">
             <div id="sorts" class="btn-group pull-right" style="margin-top:12px;">
-                <button class="btn dropdown-toggle" data-toggle="dropdown" data-sort-value="original-order">Order by <span id="order">name</span> <span class="caret"></span></button>
+                <button class="btn btn-default" data-toggle="dropdown" data-sort-value="original-order">Order by <span id="order">name</span> <span class="caret"></span></button>
               <ul class="dropdown-menu" style="top:35px;">
                   <li><a href="#" data-sort-value="original-order">name</a></li>
                   <li><a href="#" data-sort-value="date">date</a></li>
@@ -44,7 +44,7 @@
             {% endif %}
 
 
-            <div class="projects">
+            <div class="projects col-md-9 col-sm-9">
             {% for project in projects %}
             {{ helper.show_project(project, active_cat.short_name, current_user, upload_method) }}
             {% endfor %}

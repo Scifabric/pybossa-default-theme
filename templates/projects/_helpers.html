@@ -125,9 +125,9 @@
     <h2><a href="{{ url_for('project.details', short_name = project.short_name) }}">{{ project.name }}</a></h2>
     <div class="row-fluid">
         <div class="col-md-3 col-sm-3">
-            {{ render_project_thumbnail(project, upload_method, class='thumbnail', style='max-width:100px; max-height:100px;') }}
+            {{ render_project_thumbnail(project, upload_method, class='img-responsive img-thumbnail', style='max-width:80px; max-height:80px;') }}
         </div> <!-- End of col-md-3 col-sm-3 -->
-        <div id="data" class="span9">
+        <div id="data" class="col-md-9 col-sm-9 pull-right">
             <p style="margin:0"><strong><i class="glyphicon glyphicon-info-sign"></i> {{ _('Description') }}</strong>: {{ project.description }}</p>
             <p style="margin:0"><strong><i class="glyphicon glyphicon-ok"></i> {{ _('Creation Date') }}</strong>: <span class="date">{{ project.created[0:10] }}</span></p>
             {% if project.last_activity_raw != None %}

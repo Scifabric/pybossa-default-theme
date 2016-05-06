@@ -69,8 +69,9 @@
       </section>
       
       {% if top_users %}
+      <br><br>
       <section id="top_users" class="grey col-xs-12">
-        <h2><i class="glyphicon glyphicon-group"></i>{{ _('Most Active Volunteers') }}</h2>
+        <h2><i class="glyphicon glyphicon-user"></i>{{ _('Most Active Volunteers') }}</h2>
         <ul class="users">
             {% for user in top_users %}
           <li>
