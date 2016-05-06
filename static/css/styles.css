@@ -418,11 +418,7 @@ body > footer .container {
   color: #000000;
   margin-top: -10px;
 }
-<<<<<<< HEAD
-.get-started .span8 .btn {
-=======
 .get-started .spand8 .btn {
->>>>>>> 30e149737eb55f5a700e64d3982d61d7a9e04bd6
   color: #0e0e0e;
   margin: 18px 0px 18px 10px;
 }
@@ -658,27 +654,6 @@ ul.users li a {
       margin-left:-300px;
       margin-top: -60%;
   }
-<<<<<<< HEAD
-  .navbar-fixed-top{
-    width: 100% !important;
-  }
-  .navbar-fixed-top, .navbar-fixed-top > div{
-    height: 70px !important;
-  }
-  .navbar-logo{
-    width: 25% !important;
-  }
-  .navbar-menus{
-    float: left;
-    height: 80px !important;
-    width: 75% !important;
-    display: inline-block;
-    margin-left: 0;
-    margin-bottom: 10px!important;
-  }
-  .navbar .brand img {
-    height: 60px !important;
-=======
   #menu{
 
     overflow-y: hidden !important;
@@ -686,7 +661,6 @@ ul.users li a {
   .nav .navbar-nav .navbar-right .right-nav{
     overflow: hidden !important;
     background: #000000 !important;
->>>>>>> 30e149737eb55f5a700e64d3982d61d7a9e04bd6
   }
 
 }
@@ -704,32 +678,7 @@ ul.users li a {
     width: auto;
     top: auto;
   }
-<<<<<<< HEAD
-  .navbar-fixed-top{
-    width: 767px !important;
-  }
-  .navbar-fixed-top, .navbar-fixed-top > div{
-    height: 70px !important;
-  }
-  .navbar-logo{
-    display: inline;
-    position: static;
-    width: 25% !important;
-  }
 
-  .navbar-menus{
-    float: left;
-    height: 50px;
-    width: 75% !important;
-    display: inline;
-  }
-
-  .horizontal-nav-list{
-    float: left !important;
-  }
-=======
-
->>>>>>> 30e149737eb55f5a700e64d3982d61d7a9e04bd6
 }
 
 /* Phone
@@ -756,56 +705,8 @@ body > footer li > a {
 body > footer li > a:hover {
     color: rgb(205, 205, 205);
 }
-.navbar-menus{
-  height: 80px;
-  float: right;
-  margin: 0 auto;
-  width: 80%;
-  background: #262626;;
-}
-/*
-_______COSTUME_________*/
-a {
-  color: #0e0e0e;
-  text-decoration: underline;
-}
-a:hover{
-  color: #0e0e0e;
-  text-decoration: wavy;
-}
-li> a {
-  text-decoration: none;
-}
 
-.nav-list>.active>a:hover {
-  background: #FF0 !important;
-  color: #000000;
-}
-.nav-list>.active>a:hover {
-  background: #FF0 !important;
-  color: #000000;
-}
-.bs-docs-sidenav > li > a:hover {
-  color: #000000;
-}
 
-.btn{
-  text-decoration: none !important;
-}
-
-i[class^="icon-trophy"]{
-  color: #0e0e0e !important;
-}
-
-i[class^="icon-thumbs-up"]{
-  color: #0e0e0e !important;
-}
-
-<<<<<<< HEAD
-.dropdown-menu > li :hover{
-  background: #FF0 !important;
-  color: #000000 !important;
-=======
 /* _______ Costume _______*/
 
 .form-actions {
@@ -873,5 +774,4 @@ li> a {
   .banner:after {
     left: 90% !important;
   }
->>>>>>> 30e149737eb55f5a700e64d3982d61d7a9e04bd6
 }

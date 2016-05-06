@@ -1,7 +1,7 @@
 {% import "account/_helpers.html" as helper %}
 
 {% macro render_admin_user(user, upload_method) %}
-<div class="row well">
+<div class="row well well-small">
     <div class="col-sm-2 col-md-2">
         {{ helper.render_user_thumbnail(user, upload_method, style="height:100px; width:100px;")}}
     </div>

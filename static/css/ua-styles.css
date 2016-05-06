@@ -1,5 +1,5 @@
 body {
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 #header-content {
@@ -330,7 +330,7 @@ img {
 
 .disabled {
     pointer-events: none !important;
-    opacity: 0.9;
+    opacity: 0.5;
 }
 
 .footer {
@@ -339,7 +339,7 @@ img {
 }
 
 .victims {
-    height: 90px;
+    height: 100px;
     border: 2px solid white;
     border-radius: 5px;
     background-color: transparent;
