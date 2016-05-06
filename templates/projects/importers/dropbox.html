@@ -10,10 +10,10 @@
 <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="{{ config.get('DROPBOX_APP_KEY') }}"></script>
 
 <div class="row">
-    <div class="span3">
+    <div class="col-sm-3 col-md-3">
         {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features)}}
     </div>
-    <div class="span9">
+    <div class="col-sm-9 col-md-9">
        <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
        <h2>{{_('From your Dropbox account')}}</h2>
         <div id="dropbox-chooser"></div>
@@ -28,7 +28,7 @@
                 {{ form.files(style="display: none;") }}
                 <div>
                     <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-                    <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
+                    <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn btn-default">{{_('Cancel')}}</a>
                 </div>
             </fieldset>
         </form>

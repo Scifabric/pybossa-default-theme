@@ -7,10 +7,10 @@
 <script src="{{url_for('static', filename='js/vendor/jquery.Jcrop.min.js')}}"></script>
 <link rel="stylesheet" href="{{url_for('static', filename='css/jquery.Jcrop.min.css')}}" type="text/css" />
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3 col-sm-3">
         {{ helper.render_project_local_nav(project, 'settings', current_user, pro_features) }}
     </div>
-  <div class="span9">
+  <div class="col-md-9 col-sm-9">
       <legend><strong>{{project.name}}</strong>: {{_('Update the project')}}</legend>
       <!-- Update form for project thumbnail -->
       <form method="post" class="form-horizontal" action="{{ url_for('project.update', short_name=project.short_name) }}" enctype="multipart/form-data">
@@ -34,18 +34,18 @@
     <form class="form-horizontal" method="post" action="{{ url_for('project.update', short_name = project.short_name) }}">
       <fieldset>
         {{ form.hidden_tag() }}
-        {{ render_field(form.name, class_="input-xlarge", placeholder=_('The name of the project')) }}
-        {{ render_field(form.short_name, class_="input-xlarge", placeholder=_('Short name or slug for the project'), label_text=_('Project slug:')) }}
-        {{ render_field(form.description, class_="input-xlarge", placeholder=_('Give some details about the project')) }}
-        {{ render_field(form.long_description, class_="input-xlarge", placeholder=_('Explain the project (use Markdown!)')) }}
-        {{ render_field(form.category_id) }}
-        {{ render_field(form.allow_anonymous_contributors, tooltip=_('Check if you want to allow anonymous users contribute to your project')) }}
+        {{ render_field(form.name, class_="col-xs-12  col-sm-12 col-md-12 ", placeholder=_('The name of the project')) }}
+        {{ render_field(form.short_name, class_="col-xs-12  col-sm-12 col-md-12", placeholder=_('Short name or slug for the project'), label_text=_('Project slug:')) }}
+        {{ render_field(form.description, class_="col-xs-12  col-sm-12 col-md-12", placeholder=_('Give some details about the project')) }}
+        {{ render_field(form.long_description, class_="col-xs-12  col-sm-12 col-md-12", placeholder=_('Explain the project (use Markdown!)')) }}
+        {{ render_field(form.category_id, class_="col-xs-12  col-sm-6 col-md-6 form-control",) }}
+        {{ render_field(form.allow_anonymous_contributors,tooltip=_('Check if you want to allow anonymous users contribute to your project')) }}
         {{ render_field(form.protect, id='protect') }}
         <div id='password'>{{ render_field(form.password) }}</div>
         {{ render_field(form.webhook) }}
         <div class="form-actions">
           <button type="submit" name='btn' value="Save the changes" class="btn btn-primary">{{_('Save te changes')}}</button>
-          <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn">{{_('Cancel')}}</a>
+          <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
         </div>
       </fieldset>
     </form>

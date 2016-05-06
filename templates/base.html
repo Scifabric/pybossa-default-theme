@@ -12,11 +12,11 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="{{url_for('static', filename='vendor/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="{{url_for('static', filename='bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link href="{{url_for('static', filename='css/fonts/stylesheet.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
-
+    <link href="{{url_for('static', filename='css/ua-styles.css')}}" rel="stylesheet">
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -26,8 +26,8 @@
     <link rel="shortcut icon" href="/static/img/favicon.ico">
 
     <!-- Le javascript -->
-    <script type="text/javascript" src="{{url_for('static', filename='vendor/jquery.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static', filename='vendor/bootstrap/2.2.1/js/bootstrap.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='bootstrap/js/bootstrap.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='vendor/modernizr.min.js')}}"></script>
     <!-- Google Analytics or similar solutions -->
     {% include '_ga.html' ignore missing %}
@@ -54,44 +54,48 @@
     </div> <!-- /container -->
     {% if show_cookies_warning %}
     <div id="cookies_warning">
+<<<<<<< HEAD
         <p>Cookies help us deliver our services. By using our services, you agree to our use of cookies. <a href="{{url_for('help.cookies_policy')}}">Learn more.</a> <button class="btn btn-mini" onclick="accept_cookies()" style="float: right; margin-right: 5%;"></i> OK, Got it!</button></p>
+=======
+        <p>Cookies help us deliver our services. By using our services, you agree to our use of cookies. <a href="{{url_for('help.cookies_policy')}}">Learn more.</a> <button class="btn btn-sm btn-default" onclick="accept_cookies()" style="float: right; margin-right: 5%;text-transform:uppercase;font-weight: 300"></i> OK, Got it!</button></p>
+>>>>>>> 30e149737eb55f5a700e64d3982d61d7a9e04bd6
     </div>
     {% endif %}
     <footer>
     {% if not enforce_privacy %}
     <div id="footer_links" class="container">
         <div class="row">
-            <div class="span3">
+            <div class="col-xs-12 col-sm-3 col-md-3">
                 <ul>
                     <li><strong>{{ _('Resources') }}</strong></li>
-                    <li><i class="icon-link"></i> <a href="http://docs.pybossa.com">{{ _('Docs') }}</a></li>
-                    <li><i class="icon-link"></i> <a href="{{url_for('help.api')}}">API</a></li>
-                    <li><i class="icon-link"></i> <a href="{{url_for('help.tos')}}">{{ _('Terms of Use') }}</a></li>
-                    <li><i class="icon-link"></i> <a href="{{url_for('help.cookies_policy')}}">{{ _('Cookies Policy') }}</a></li>
-                    <li><i class="icon-link"></i> <a href="{{url_for('stats.index')}}">{{ _('Stats') }}</a></li>
+                    <li><i class="glyphicon glyphicon-link"></i> <a href="http://docs.pybossa.com">{{ _('Docs') }}</a></li>
+                    <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('help.api')}}">API</a></li>
+                    <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('help.tos')}}">{{ _('Terms of Use') }}</a></li>
+                    <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('help.cookies_policy')}}">{{ _('Cookies Policy') }}</a></li>
+                    <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('stats.index')}}">{{ _('Stats') }}</a></li>
                 </ul>
             </div>
-            <div class="span3">
+            <div class="col-xs-12 col-sm-3 col-md-3">
                 <ul>
                     <li><strong>{{ _('Licenses') }}</strong></li>
-                    <li><i class="icon-link"></i> <a href="{{url_for('help.license')}}">{{ _('Overview') }}</a></li>
-                    <li><i class="icon-link"></i> <a href="{{url_for('help.license', _anchor='projects')}}">{{ _('Projects') }}</a></li>
-                    <li><i class="icon-link"></i> <a href="{{url_for('help.license', _anchor='data')}}">{{ _('Data') }}</a></li>
-                    <li><i class="icon-link"></i> <a href="{{url_for('help.license', _anchor='content')}}">{{ _('Content') }}</a></li>
+                    <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('help.license')}}">{{ _('Overview') }}</a></li>
+                    <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('help.license', _anchor='projects')}}">{{ _('Projects') }}</a></li>
+                    <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('help.license', _anchor='data')}}">{{ _('Data') }}</a></li>
+                    <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('help.license', _anchor='content')}}">{{ _('Content') }}</a></li>
                 </ul>
             </div>
-            <div class="span3">
+            <div class="col-xs-12 col-sm-3 col-md-3">
                 <ul>
                     <li><strong>{{ _('Technologies') }}</strong></li>
-                    <li><i class="icon-link"></i> <a href="http://ckan.org">{{ _('CKAN') }}</a></li>
-                    <li><i class="icon-link"></i> <a href="http://www.epicollect.net">{{ _('EpiCollect') }}</a></li>
+                    <li><i class="glyphicon glyphicon-link"></i> <a href="http://ckan.org">{{ _('CKAN') }}</a></li>
+                    <li><i class="glyphicon glyphicon-link"></i> <a href="http://www.epicollect.net">{{ _('EpiCollect') }}</a></li>
                 </ul>
             </div>
-            <div class="span3">
+            <div class="col-xs-12 col-sm-3 col-md-3">
                 <ul>
                     <li><strong>{{ _('Contact') }}</strong></li>
-                    <li><i class="icon-envelope"></i> <a href="mailto:{{contact_email}}">{{ _('Email') }}</a></li>
-                    <li><i class="icon-twitter"></i> <a href="http://twitter.com/{{contact_twitter}}">{{ _('Twitter') }}</a></li>
+                    <li><i class="glyphicon glyphicon-envelope"></i> <a href="mailto:{{contact_email}}">{{ _('Email') }}</a></li>
+                    <li><i class="fa fa-twitter-square fa-sm"></i> <a href="http://twitter.com/{{contact_twitter}}">{{ _('Twitter') }}</a></li>
                 </ul>
             </div>
         </div>

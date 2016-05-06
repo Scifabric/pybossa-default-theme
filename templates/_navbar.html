@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-header navbar-logo pull-left">
         <a class="brand" href="{{ url_for('home.home') }}"><img id="logo-img" align="middle" class="img-responsive" style="height: 60px; margin-left: 20%" src="{{url_for('static',filename='img/amnesty-international.png')}}" alt="{{brand}}"></a>
@@ -34,3 +35,125 @@
         {% endif %}
   	</div>
 </div>
+=======
+<div class="row navbar-fixed-top" id="nav-head">
+    <div class="col-xs-12 col-md-12" style="height: 80px; padding: 0;">
+        <div class="col-xs-12 col-md-2" id="amnesty-logo"
+             style="background-color: #ffff00; height: 80px; padding: 0; text-align: center;">
+            <a target="_blank" href="https://www.amnesty.org/en/" style="text-align: center;">
+                <img src="/static/img/amnesty-international.png" class="img-responsive">
+            </a>
+        </div>
+        <div class="col-xs-12 col-md-10" id="header-content">
+            <nav class="navbar navbar-inverse navbar-static-top">
+                <div class="navbar-header">
+                    {% if current_user.is_authenticated() %}
+                    <a style="text-decoration:none;margin-top: 13px; color: #fff; font-size: 16px; font-weight: bold;"
+                       class="admin-navbar-header navbar-brand"
+                       href="">DECODE OUR URGENT ACTIONS</a>
+                    {% else %}
+                    <a style="text-decoration:none;margin-top: 13px; color: #fff; font-size: 16px; font-weight: bold;"
+                       class="navbar-brand"
+                       href="">DECODE OUR URGENT ACTIONS</a>
+                    {% endif %}
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right" id="menu">
+                        {% if current_user.is_authenticated() %}
+                        <li class="admin-menu"><a href="{{ url_for('account.profile', name=current_user.name) }}">{{
+                            _('Account') }}</a></li>
+                        {% if current_user.admin %}
+                        <li class="admin-menu"><a href="{{ url_for('admin.index')}}">{{ _('Admin') }}</a></li>
+                        <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
+                        {% endif %}
+                        <li class="admin-menu"><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
+                        <li class="admin-menu"><a href="{{ url_for('home.about')}}">{{ _('About') }}</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="admin-menu"><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li>
+                        <li class="admin-menu"><a href="{{ url_for('terms.index')}}">{{ _('Terms') }}</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="admin-menu"><a href="{{ url_for('account.signout') }}">Sign Out</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ url_for('home.about')}}">{{ _('About') }}</a></li>
+                        <li><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li>
+                        <li><a href="{{ url_for('terms.index')}}">{{ _('Terms') }}</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ url_for('account.signin') }}">{{ _('Sign in') }}</a></li>
+                        {% endif %}
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right right-nav" style="padding-top:5px;">
+                        <li style="display: none;">
+                            {% if current_user.is_authenticated() %}
+                            <ul class="nav secondary-nav pull-right">
+                                <li {% if active_page==
+                                'profile' %} class="active" {% endif %}><a href="#" data-toggle="dropdown"
+                                                                           class="dropdown-toggle"><i
+                                    class="icon icon-user"></i> {{ current_user.name | truncate(6,true) }} <span
+                                    class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ url_for('account.profile', name=current_user.name) }}"><i
+                                            class="icon icon-user"></i> {{
+                                        _('My Profile') }}</a></li>
+                                    <li><a href="{{ url_for('account.projects', name=current_user.name) }}"><i
+                                            class="icon icon-th-large"></i> {{ _('My Projects') }}</a></li>
+                                    <li><a href="{{ url_for('account.update_profile', name=current_user.name) }}"><i
+                                            class="icon icon-cog"></i> {{ _('My Settings') }}</a></li>
+                                    {% if current_user.admin == 1 %}
+                                    <li class="divider"></li>
+                                    <li><a href="{{ url_for('admin.index') }}">{% if notify_admin %} <span
+                                            class="label label-info ">{{ news |count }}</span>{%
+                                        else %}<i class="icon icon-cog"></i> {% endif %} {{ _('Admin Site') }}</a></li>
+                                    {% endif %}
+                                    <li class="divider"></li>
+                                    <li><a href="{{ url_for('account.signout') }}"><i class="icon icon-off"></i> {{
+                                        _('Sign Out') }}</a>
+                                    </li>
+                                </ul>
+                                </li>
+                            </ul>
+                            {% endif %}
+                        </li>
+                        <li>
+                            <a href="#" title="Facebook">
+                                <i class="fa fa-facebook-square fa-2x"
+                                   aria-hidden="false"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="Instagram">
+                                <i class="fa fa-twitter-square fa-2x"
+                                   aria-hidden="false"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <br><br><br>
+                </div> <!-- navbar-collapse -->
+            </nav>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $( window ).resize(function() {
+            if($( window ).width() < 980){
+                $('#nav-head').removeClass('navbar-fixed-top');
+            }
+            else{
+                $('#nav-head').addClass('navbar-fixed-top');
+            }
+
+        });
+    });
+</script>
+>>>>>>> 30e149737eb55f5a700e64d3982d61d7a9e04bd6

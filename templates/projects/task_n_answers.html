@@ -7,10 +7,10 @@
 {% block content %}
 {% if project %}
         <div class="row">
-            <div class="span3">
+            <div class="col-sm-3 col-md-3">
                 {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features) }}
             </div>
-            <div class="span9">
+            <div class="col-sm-9 col-md-9">
                 {{ helper.render_project_title(project, subtitle=_('Task Redundancy')) }}
                 <form id="task_redundancy" class="form-horizontal" method="post" action="{{ url_for('project.task_n_answers', short_name=project.short_name) }}">
                     {{ form.hidden_tag() }}
@@ -18,11 +18,11 @@
                         {{ render_field(form.n_answers, class_="input-block-level", placeholder= _('The number of answers per tasks that you want for the project')) }}
                         <div class="form-actions">
                             <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
-                            <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn">{{_('Cancel')}}</a>
+                            <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
                         </div>
                     </fieldset>
                 </form>
-            </div><!-- span9 -->
+            </div><!-- col-sm-9 col-md-9 -->
         </div>
 {% else %}
   <div class="page-header">

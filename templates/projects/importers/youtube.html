@@ -12,11 +12,11 @@
 }
 </style>
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3 col-sm-3">
         {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features)}}
     </div>
 
-    <div class="span9">
+    <div class="col-md-9 col-sm-9">
         <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
         <h2>{{_('From Youtube')}}</h2>
         <br>
@@ -33,7 +33,7 @@
                 {{ render_field(form.playlist_url, class="input-block-level", placeholder=_("URL of a Youtube Playlist")) }}
             </fieldset>
             <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
+            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn btn-default">{{_('Cancel')}}</a>
         </form>
         {% endif %}
     </div>

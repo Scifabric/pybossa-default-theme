@@ -6,19 +6,19 @@
 {% block content %}
 <div class="row">
     {% if project %}
-    <div class="span3">
+    <div class="col-md-3 col-sm-3">
         {{ helper.render_project_local_nav(project, 'settings', current_user, pro_features) }}
     </div>
     <!-- Project -->
-    <div class="span9">
+    <div class="col-md-9 col-sm-9">
         <h1><strong>{{ project.name }}</strong>: {{ _('Settings') }}</h1>
         {{ helper.render_project_summary(project, n_tasks, overall_progress, last_activity, current_user, upload_method) }}
-        <h2>{{ _('Project Settings') }}</h2>
-        <div class="btn-group">
-            <a class="btn" href="{{ url_for('project.update', short_name = project.short_name) }}"><i class="icon-edit icon-white"></i> {{ _('Edit the project details') }}</a>
-            <a class="btn" href="{{ url_for('project.task_settings', short_name = project.short_name) }}"><i class="icon-wrench icon-white"></i> {{ _('Task Settings') }}</a>
-            <a class="btn" href="{{ url_for('project.delete', short_name = project.short_name) }}"><i class="icon-trash icon-white"></i> {{ _('Delete the project') }}</a>
-            <a class="btn" href="{{ url_for('project.new_blogpost', short_name = project.short_name) }}"><i class="icon-pencil icon-white"></i> {{ _('Write a blog post') }}</a>
+        <h2 class="col-sm-12 col-md-12">{{ _('Project Settings') }}</h2>
+        <div class="col-xs-4 col-sm-6 col-md-12">
+            <a class="btn btn-default" href="{{ url_for('project.update', short_name = project.short_name) }}"><i class="icon-edit icon-white"></i> {{ _('Edit the project details') }}</a>
+            <a class="btn btn-default" href="{{ url_for('project.task_settings', short_name = project.short_name) }}"><i class="icon-wrench icon-white"></i> {{ _('Task Settings') }}</a>
+            <a class="btn btn-default" href="{{ url_for('project.delete', short_name = project.short_name) }}"><i class="icon-trash icon-white"></i> {{ _('Delete the project') }}</a>
+            <a class="btn btn-default" href="{{ url_for('project.new_blogpost', short_name = project.short_name) }}"><i class="icon-pencil icon-white"></i> {{ _('Write a blog post') }}</a>
         </div>
     </div>
     {% else %}

@@ -6,22 +6,25 @@
 {% block content %}
 <div class="row">
     {% if project %}
-    <div class="span3">
+    <div class="col-sm-3 col-md-3">
         {{ helper.render_project_local_nav(project, 'info', current_user, pro_features) }}
     </div>
     <!-- Project -->
-    <div class="span9" style="min-height:400px">
+    <div class="col-sm-9 col-md-9" style="min-height:400px">
         {{ helper.render_project_title(project, upload_method) }}
-        <hr>
+        <hr class="col-sm-12 col-md-12">
         {{ helper.render_overall_progress(project, n_tasks, overall_progress) }}
         {% if project.long_description %}
-        <hr>
+        <hr class="col-sm-12 col-md-12">
+        <div class="col-sm-12 col-md-12">
             {{ project.long_description | e | markdown }}
+        </div>
+
         {% endif %}
-        <hr>
+        <hr class="col-sm-12 col-md-12">
         <div id="ckan" style="display:none">
         <h2>Data repository: {{ ckan_name | default('CKAN server') }}</h2>
-        <p><i class="icon-bar-chart" style="font-size:16px;"></i> <a href="{{ckan_url}}/dataset/{{project.short_name}}">Preview the data</a>
+        <p><i class="glyphicon glyphicon-bar-chart" style="font-size:16px;"></i> <a href="{{ckan_url}}/dataset/{{project.short_name}}">Preview the data</a>
         </p>
         <p id="ckan_license" style="display:none"><strong>Data License</strong>: <span id="ckan_license_value"></span></p>
         </div>

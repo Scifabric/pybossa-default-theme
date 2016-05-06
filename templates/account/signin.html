@@ -43,13 +43,17 @@
       {{ render_field(form.password, placeholder="") }}
     <div class="form-actions">
       <input type="submit" value="{{ _('Sign in') }}" class="btn btn-primary btn-large" />
-      <input type="reset" value="{{ _('Cancel') }}" class="btn" />
+      <input type="reset" value="{{ _('Cancel') }}" class="btn btn-default" />
     </div>
   </form>
 
 <div class="row">
     <div class="span12" style="text-align:center">
+<<<<<<< HEAD
         <a href="{{ url_for('account.register') }}" class="btn btn-primary"><i class="icon icon-white icon-user"></i>{{ _(' Create a new account!') }}</a>
+=======
+        <a href="{{ url_for('account.register') }}" class="btn btn-primary"><i class="glyphicon glyphicon-user"></i>{{ _(' Create a new account!') }}</a>
+>>>>>>> 30e149737eb55f5a700e64d3982d61d7a9e04bd6
         <a href="{{ url_for('account.forgot_password') }}" class="btn btn-primary">{{ _('Forgot Password') }}</a>
     </div>
 </div>

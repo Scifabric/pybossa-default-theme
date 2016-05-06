@@ -6,10 +6,10 @@
 {% block content %}
 {% if project %}
         <div class="row">
-            <div class="span3">
+            <div class="col-sm-3 col-md-3">
                 {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features) }}
             </div>
-            <div class="span9">
+            <div class="col-sm-9 col-md-9">
                 {{ helper.render_project_title(project, upload_method, subtitle=_('Browse tasks')) }}
                 <hr>
                 <p>{{_('This page shows all the available tasks for this project')}}.</p> 
@@ -24,7 +24,7 @@
                 {% for t in tasks %}
                 {% set task_pct = t.pct_status*100 %}
                 <div class="row-fluid">
-                        <div class="span3">
+                        <div class="col-sm-3 col-md-3">
                             {% if task_pct >= 100 %}
                             {{_('Task')}} <span class="label label-success">#{{ t.id }}</span>
                             {% else %}
@@ -57,7 +57,7 @@
                         </div>
                 </div>
                 {% endfor %}
-            </div><!-- span9 -->
+            </div><!-- col-sm-9 col-md-9 -->
         </div>
                 {{ helper.render_pagination(pagination, _('Tasks')) }}
 {% else %}
