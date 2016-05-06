@@ -33,46 +33,46 @@
 
 {% macro render_project_local_nav(project, active_link, current_user, pro_features) -%}
 <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
-    <li {% if active_link=="info"%}class="active"{% endif %}><a href="{{url_for('project.details', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Info')}}</a></li>
-    <li {% if active_link=="contribute"%}class="active"{% endif %}><a href="{{url_for('project.presenter', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Contribute')}}</a></li>
-    <li {% if active_link=="results"%}class="active"{% endif %}><a href="{{url_for('project.results', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Results')}}</a></li>
-    <li {% if active_link=="tasks"%}class="active"{% endif %}><a href="{{url_for('project.tasks', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Tasks')}}</a></li>
-    <li {% if active_link=="stats"%}class="active"{% endif %}><a href="{{url_for('project.show_stats', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Statistics')}}</a></li>
+    <li {% if active_link=="info"%}class="active"{% endif %}><a href="{{url_for('project.details', short_name=project.short_name)}}"><i class="glyphicon glyphicon-chevron-right"></i> {{_('Info')}}</a></li>
+    <li {% if active_link=="contribute"%}class="active"{% endif %}><a href="{{url_for('project.presenter', short_name=project.short_name)}}"><i class="glyphicon glyphicon-chevron-right"></i> {{_('Contribute')}}</a></li>
+    <li {% if active_link=="results"%}class="active"{% endif %}><a href="{{url_for('project.results', short_name=project.short_name)}}"><i class="glyphicon glyphicon-chevron-right"></i> {{_('Results')}}</a></li>
+    <li {% if active_link=="tasks"%}class="active"{% endif %}><a href="{{url_for('project.tasks', short_name=project.short_name)}}"><i class="glyphicon glyphicon-chevron-right"></i> {{_('Tasks')}}</a></li>
+    <li {% if active_link=="stats"%}class="active"{% endif %}><a href="{{url_for('project.show_stats', short_name=project.short_name)}}"><i class="glyphicon glyphicon-chevron-right"></i> {{_('Statistics')}}</a></li>
     {% if ( current_user.is_authenticated() and current_user.id == project.owner_id ) or current_user.admin %}
-    <li {% if active_link=="settings"%}class="active"{% endif %}><a href="{{url_for('project.settings', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Settings')}}</a></li>
+    <li {% if active_link=="settings"%}class="active"{% endif %}><a href="{{url_for('project.settings', short_name=project.short_name)}}"><i class="glyphicon glyphicon-chevron-right"></i> {{_('Settings')}}</a></li>
     {% endif %}
     {% if ( current_user.is_authenticated() and current_user.id == project.owner_id
     and current_user.pro) or current_user.admin %}
         {% if pro_features.get('auditlog_enabled') %}
         <li {% if active_link=="auditlog"%}class="active"{% endif %}><a
             href="{{url_for('project.auditlog', short_name=project.short_name)}}"><i
-        class="icon-chevron-right"></i> {{_('Audit Logs')}}</a></li>
+        class="glyphicon glyphicon-chevron-right"></i> {{_('Audit Logs')}}</a></li>
         {% endif %}
         {% if pro_features.get('webhooks_enabled') %}
         <li {% if active_link=="webhook"%}class="active"{% endif %}><a
             href="{{url_for('project.webhook_handler', short_name=project.short_name)}}"><i
-        class="icon-chevron-right"></i> {{_('Webhooks')}}</a></li>
+        class="glyphicon glyphicon-chevron-right"></i> {{_('Webhooks')}}</a></li>
         {% endif %}
     {% endif %}
-    <li {% if active_link=="blog"%}class="active"{% endif %}><a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}"><i class="icon-chevron-right"></i> {{_('Blog')}}</a></li>
+    <li {% if active_link=="blog"%}class="active"{% endif %}><a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}"><i class="glyphicon glyphicon-chevron-right"></i> {{_('Blog')}}</a></li>
 </ul>
 {% endmacro %}
 
 {% macro render_project_summary(project, n_tasks, overall_progress, last_activity, current_user, upload_method) -%}
 <div class="row-fluid">
-    <div class="span2">
-        {{ render_project_thumbnail(project, upload_method, class='img-polaroid') }}
+    <div class="col-md-2 col-sm-2">
+        {{ render_project_thumbnail(project, upload_method, class='img-thumbnail') }}
     </div>
-    <div class="span8">
+    <div class="col-sm-8 col-md-8">
       <ul style="list-style-type: none; font-size: 16px;">
         {% if current_user.id == project.owner_id %}
-        <li><strong><i class="icon-cog"></i> {{ _('ID') }}</strong>: {{ project.id }}</li>
+        <li><strong><i class="glyphicon glyphicon-cog"></i> {{ _('ID') }}</strong>: {{ project.id }}</li>
         {% endif %}
-        <li><strong><i class="icon-info-sign"></i> {{ _('Description') }}</strong>: {{ project['description'] }}</li>
-        <li><strong><i class="icon-ok"></i> {{ _('Creation Date') }}</strong>: {{ project.created[0:10] }}</li>
-        <li><strong><i class="icon-time"></i> {{ _('Last Activity') }}</strong>: {{ last_activity}}</li>
-        <li><strong><i class="icon-cogs"></i> {{ _('Overall progress') }}</strong>: {{ overall_progress | round | int }}% {{ _('completed') }}</li>
-        <li><strong><i class="icon-tasks"></i> <a href="{{url_for('project.tasks',short_name=project.short_name)}}">{{ _('Tasks') }}</strong></a> ({{ n_tasks }})</li>
+        <li><strong><i class="glyphicon glyphicon-info-sign"></i> {{ _('Description') }}</strong>: {{ project['description'] }}</li>
+        <li><strong><i class="glyphicon glyphicon-ok"></i> {{ _('Creation Date') }}</strong>: {{ project.created[0:10] }}</li>
+        <li><strong><i class="glyphicon glyphicon-time"></i> {{ _('Last Activity') }}</strong>: {{ last_activity}}</li>
+        <li><strong><i class="glyphicon glyphicon-list-alt"></i> {{ _('Overall progress') }}</strong>: {{ overall_progress | round | int }}% {{ _('completed') }}</li>
+        <li><strong><i class="glyphicon glyphicon-tasks"></i> <a href="{{url_for('project.tasks',short_name=project.short_name)}}">{{ _('Tasks') }}</strong></a> ({{ n_tasks }})</li>
       </ul>
     </div>
 </div>
@@ -80,39 +80,39 @@
 
 {% macro render_project_short_summary(project, upload_method) -%}
 <div class="row-fluid well well-small">
-    <div class="span3">
+    <div class="col-md-3 col-sm-3">
         {{ render_project_thumbnail(project, upload_method, class="img-polaroid", style="max-width:100px") }}
     </div>
     <div class="span9">
         <h2><a href="{{url_for('project.settings', short_name=project.short_name)}}">{{project.name}}</a></h2>
         <p>{{ project['description'] }}</p>
-        <a class="btn btn-inverse" href="{{url_for('project.settings', short_name=project.short_name)}}"><i class="icon-wrench"></i> {{ _('Settings') }}</a>
+        <a class="btn btn-primary" href="{{url_for('project.settings', short_name=project.short_name)}}"><i class="glyphicon glyphglyphicon glyphicon-wrench"></i> {{ _('Settings') }}</a>
     </div>
 </div>
 {% endmacro %}
 
 {% macro render_project_admin_featured(project, upload_method) -%}
 <div class="row-fluid well well-small">
-    <div class="span3">
+    <div class="col-md-3 col-sm-3">
         {{ render_project_thumbnail(project, upload_method, class="img-polaroid", style="max-width:100px") }}
     </div>
     <div class="span9">
         <h2><a href="{{url_for('project.settings', short_name=project.short_name)}}">{{project.name}}</a></h2>
         <p>{{ project['description'] }}</p>
-        <a class="btn btn-inverse" href="{{url_for('project.settings', short_name=project.short_name)}}"><i class="icon-wrench"></i> {{ _('Settings') }}</a>
+        <a class="btn btn-inverse" href="{{url_for('project.settings', short_name=project.short_name)}}"><i class="glyphicon glyphicon-wrench"></i> {{ _('Settings') }}</a>
         {% if project.featured %}
         <button id="projectBtnDel{{project.id}}" class="btn btn-danger" onclick="del({{project.id}})">
-                <i id="project{{project.id}}" class="icon-remove"></i> {{ _('Remove from Featured!') }}
+                <i id="project{{project.id}}" class="glyphicon glyphicon-remove"></i> {{ _('Remove from Featured!') }}
         </button>
         <button id="projectBtnAdd{{project.id}}" class="btn btn-primary" onclick="add({{project.id}})" style="display:none;">
-                <i id="project{{project.id}}" class="icon-plus"></i> {{ _('Add to Featured!') }}
+                <i id="project{{project.id}}" class="glyphicon glyphicon-plus"></i> {{ _('Add to Featured!') }}
         </button>
         {% else %}
         <button id="projectBtnAdd{{project.id}}" class="btn btn-primary" onclick="add({{project.id}})">
-                <i id="project{{project.id}}" class="icon-plus"></i> {{ _('Add to Featured!') }}
+                <i id="project{{project.id}}" class="glyphicon glyphicon-plus"></i> {{ _('Add to Featured!') }}
         </button>
         <button id="projectBtnDel{{project.id}}" class="btn btn-danger" onclick="del({{project.id}})" style="display:none;">
-                <i id="project{{project.id}}" class="icon-remove"></i> {{ _('Remove from Featured!') }}
+                <i id="project{{project.id}}" class="glyphicon glyphicon-remove"></i> {{ _('Remove from Featured!') }}
         </button>
         {% endif %}
     </div>
@@ -124,26 +124,26 @@
 <div class="project-item row-fluid {{class}} well">
     <h2><a href="{{ url_for('project.details', short_name = project.short_name) }}">{{ project.name }}</a></h2>
     <div class="row-fluid">
-        <div class="span3">
+        <div class="col-md-3 col-sm-3">
             {{ render_project_thumbnail(project, upload_method, class='thumbnail', style='max-width:100px; max-height:100px;') }}
-        </div> <!-- End of span3 -->
+        </div> <!-- End of col-md-3 col-sm-3 -->
         <div id="data" class="span9">
-            <p style="margin:0"><strong><i class="icon-info-sign"></i> {{ _('Description') }}</strong>: {{ project.description }}</p>
-            <p style="margin:0"><strong><i class="icon-ok"></i> {{ _('Creation Date') }}</strong>: <span class="date">{{ project.created[0:10] }}</span></p>
+            <p style="margin:0"><strong><i class="glyphicon glyphicon-info-sign"></i> {{ _('Description') }}</strong>: {{ project.description }}</p>
+            <p style="margin:0"><strong><i class="glyphicon glyphicon-ok"></i> {{ _('Creation Date') }}</strong>: <span class="date">{{ project.created[0:10] }}</span></p>
             {% if project.last_activity_raw != None %}
-            <p style="margin:0"><strong><i class="icon-time"></i> {{ _('Last Activity') }}</strong>: {{ project.last_activity}}</p>
+            <p style="margin:0"><strong><i class="glyphicon glyphicon-time"></i> {{ _('Last Activity') }}</strong>: {{ project.last_activity}}</p>
             <span class="activity" style="display:none;">{{project.last_activity_raw}}</span>
             {% endif %}
-            <p style="margin:0"><strong><i class="icon-cogs"></i> {{ _('Overall progress') }}</strong>: <span class="progress">{{ project.overall_progress | round | int }}</span>% completed</p>
+            <p style="margin:0"><strong><i class="glyphicon glyphicon-cogs"></i> {{ _('Overall progress') }}</strong>: <span class="progress">{{ project.overall_progress | round | int }}</span>% completed</p>
             {% if project.owner == current_user.fullname %}
-            <p style="margin:0"><strong><i class="icon-user"></i> {{ _('Created by') }}</strong>: {{ _('Me') }}</p>
+            <p style="margin:0"><strong><i class="glyphicon glyphicon-user"></i> {{ _('Created by') }}</strong>: {{ _('Me') }}</p>
             {% else %}
-            <p style="margin:0"><strong><i class="icon-user"></i> {{ _('Created by') }}</strong>: {{ project.owner }}</p>
+            <p style="margin:0"><strong><i class="glyphicon glyphicon-user"></i> {{ _('Created by') }}</strong>: {{ project.owner }}</p>
             {% endif %}
             {% if active_cat != "draft" %}
-            <p style="margin:0"><a class="btn btn-primary" href="{{ url_for('project.presenter', short_name = project.short_name) }}"><i class="icon icon-white icon-ok"></i> {{ _('Try it!') }}</a></p>
+            <p style="margin:0"><a class="btn btn-primary" href="{{ url_for('project.presenter', short_name = project.short_name) }}"><i class="icon glyphicon glyphicon-white glyphicon glyphicon-ok"></i> {{ _('Try it!') }}</a></p>
             {% endif %}
-        </div> <!-- end of id=data class=span8 -->
+        </div> <!-- end of id=data class=col-md-8 col-sm-8 -->
     </div> <!--end of class=row -->
 </div><!-- end of class=row -->
 {%- endmacro %}
@@ -195,8 +195,8 @@ function imgError(image) {
 
 {% macro render_overall_progress(project, n_tasks, overall_progress, show_contribute_btn=True, show_n_tasks=False) %}
 <div class="row-fluid">
-    <div class="span1"><input type="text" value="{{overall_progress | round |int}}" class="dial"></div>
-    <h2><strong> {{_('Overall progress')}}</strong>: {{ overall_progress | round | int }}% {{_('completed')}}
+    <div class="col-md-1 col-sm-1"><input type="text" value="{{overall_progress | round |int}}" class="dial"></div>
+    <h2 ><strong> {{_('Overall progress')}}</strong>: {{ overall_progress | round | int }}% {{_('completed')}}
         {% if show_contribute_btn %}
         {{ render_contribute_button(project) }}
         {% elif show_n_tasks %}
@@ -209,29 +209,29 @@ function imgError(image) {
 
 {% macro render_contribute_button(project) %}
     {% if project['contrib_button'] == 'completed' %}
-    <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Done! View results') }}</a>
+    <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-thumbs-up" ></i> {{ _('Done! View results') }}</a>
     {% endif %}
     {% if project['contrib_button'] == 'can_contribute' %}
-    <a href="{{ url_for('project.presenter', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Start Contributing Now!') }}</a>
+    <a href="{{ url_for('project.presenter', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-thumbs-up" ></i> {{ _('Start Contributing Now!') }}</a>
     {% endif %}
     {% if project['contrib_button'] == 'cannot_contribute' %}
-    <a href="{{url_for('project.details', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Thanks for contributing') }}</a>
+    <a href="{{url_for('project.details', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-thumbs-up" ></i> {{ _('Thanks for contributing') }}</a>
     {% endif %}
     {% if project['contrib_button'] == 'draft' %}
-    <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Draft project, complete it!') }}</a>
+    <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-thumbs-up" ></i> {{ _('Draft project, complete it!') }}</a>
     {% endif %}
     {% if project['contrib_button'] == 'publish' %}
-    <a href="{{url_for('project.publish', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('You can now publish it!') }}</a>
+    <a href="{{url_for('project.publish', short_name=project.short_name)}}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-thumbs-up" ></i> {{ _('You can now publish it!') }}</a>
     {% endif %}
 {% endmacro %}
 
 {% macro render_grid_projects(projects, title, upload_method) %}
     <div class="banner">
         <div class="row-fluid">
-            <div class="span4">
+            <div class="col-md-4 col-sm-4">
                 <h1>{{title}}</h1>
             </div>
-            <div class="span8">
+            <div class="col-md-8 col-sm-8">
               <ul class="featured">
                   {% for project in projects %}
                   <li><a href={{ url_for('project.details', short_name=project.short_name)}}>
@@ -252,7 +252,7 @@ function imgError(image) {
 
 {% macro render_loading(text) %}
 <div class="row">
-    <div class="span12">
+    <div class="col-md-12 col-sm-12">
         <div id="loading" class="alert alert-info" style="display:none;">
             <img src="{{url_for('static', filename='img/loading.gif')}}"/> {{text}}
         </div>

@@ -31,7 +31,7 @@ h3 > small {
 </style>
 
 <div class="row-fluid">
-    <div class="span12">
+    <div class="col-sm-12 col-md-12">
         {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
         {{ privacy.render_lock_page() }}
         {% else %}
@@ -39,17 +39,17 @@ h3 > small {
         <br/>
             <!-- Users Stats CARD -->
             <div id="card" class="row-fluid">
-                <div id="userStats" class="span12 well">
+                <div id="userStats" class="col-sm-12 col-md-12 well">
                     <h2>Users</h2>
                     <div class="row-fluid">
                         <div class="span6">
                             <h3>{{ _('Anonymous users') }}: <small>{{stats.n_anon}}</small></h3>
                             <h3>{{ _('Authenticated users') }}: <small>{{stats.n_auth}}</small></h3>
                             <h3>{{ _('Total') }}: {{stats.n_total_users}}</h3>
-                            <a class="btn btn-primary btn-large" href="{{url_for('leaderboard.index')}}"><i class="icon-trophy" style="color:white"></i> {{ _('Leaderboard') }}</a>
+                            <a class="btn btn-primary btn-large" href="{{url_for('leaderboard.index')}}"><i class="glyphicon glyphicon-trophy" style="color:white"></i> {{ _('Leaderboard') }}</a>
                             {% if top5_users_24_hours %}
                             <hr>
-                            <h4><i class="icon-group"></i> {{ _('Top 5 Users in the last 24 hours') }}</h4>
+                            <h4><i class="glyphicon glyphicon-group"></i> {{ _('Top 5 Users in the last 24 hours') }}</h4>
                                 <ol>
                                 {% for user in top5_users_24_hours %}
                                 <li><a href="{{url_for('account.profile', name=user.name)}}" >{{user.fullname}}</a> {{ _('with') }} {{user.n_answers}} {{ _('contributed answers') }}</li>
@@ -85,7 +85,7 @@ h3 > small {
 
             <!-- Project Stats CARD -->
             <div id="card" class="row-fluid">
-                <div id="projectStats" class="span12 well">
+                <div id="projectStats" class="col-sm-12 col-md-12 well">
                     <h2>{{ _('Projects') }}</h2>
                     <div class="row-fluid">
                         <div class="span6">
@@ -94,7 +94,7 @@ h3 > small {
                             <h3>{{ _('Total') }}: {{stats.n_total_projects}}</h3>
                             {% if top5_projects_24_hours %}
                             <hr>
-                            <h4><i class="icon-th-large"></i> {{ _('Top 5 projects in the last 24 hours') }}</h4>
+                            <h4><i class="glyphicon glyphicon-th-large"></i> {{ _('Top 5 projects in the last 24 hours') }}</h4>
                                 <ol>
                                 {% for project in top5_projects_24_hours %}
                                 <li><a href="{{url_for('project.details', short_name=project.short_name)}}">{{project.name}}</a></li>
@@ -131,7 +131,7 @@ h3 > small {
 
             <!-- Projects Task and TaskRuns CARD -->
             <div id="card" class="row-fluid">
-                <div id="taskStats" class="span12 well">
+                <div id="taskStats" class="col-sm-12 col-md-12 well">
                     <h2>{{ _('Tasks and Answers') }}</h2>
                     <div class="row-fluid">
                         <div class="span6">
@@ -163,7 +163,7 @@ h3 > small {
             <!-- START Anonymous Users Map CARD -->
             {% if show_locs %}
             <div id="card" class="row-fluid">
-                <div class="span12 well">
+                <div class="col-sm-12 col-md-12 well">
                     <h2>{{ _('Anonymous Volunteers') }}</h2>
                     <div id="map" style="height:250px;"></div>
                     <p class="note">{{_('This page includes GeoLite data created by MaxMind, available from')}}

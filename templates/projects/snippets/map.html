@@ -14,7 +14,7 @@
 </style>
 <div class="row">
     <!-- Success and Error Messages for the user --> 
-    <div class="span8 offset2" style="height:50px">
+    <div class="col-sm-8 col-md-8 col-xs-offset-2" style="height:50px">
         <!-- Success alert box -->
         <div id="success" class="alert alert-success" style="display:none;">
             <a class="close">×</a><strong>Well done!</strong> Your answer has been saved
@@ -49,33 +49,33 @@
 <a c    lass="btn small" href="/project">Please, try with another project</a>
             </div>
         </div>
-    </div><!-- End of span8 offset2-->
+    </div><!-- End of col-sm-8 col-md-8 col-xs-offset-2-->
 </div><!-- End of Row-->
 
 <div class="row">
-  <div class="skeleton span11 offset1">
+  <div class="skeleton col-sm-11 col-md-11 col-xs-offset-1">
     <div id="question">
       <h1>Question</h1>
       <h3 id="city">City</h3>
       <button id="point" class="btn btn-inverse">
-          <i class="icon icon-white icon-map-marker"></i> Add an Urban Park Marker 
+          <i class="glyphicon glyphicon-map-marker"></i> Add an Urban Park Marker 
       </button>
       <button id="noPark" class="btn btn-submit">I do not see an urban park</button>
       <button id="noCity" class="btn btn-submit" style="display:none;">City not found!</button>
 
       <p>Task: <span id="task-id" class="label label-warning">#</span></p>
       <div id="map"></div>
-      <i class="icon-map-marker"></i> Urban park position: <strong> Longitude:</strong> <span id="lon"></span>, 
+      <i class="glyphicon glyphicon-map-marker"></i> Urban park position: <strong> Longitude:</strong> <span id="lon"></span>, 
       <strong>Latitude:</strong> <span id="lat"></span>
     </div>
     <div id="answer">
-        <button id="answerbtn" class="btn btn-success btn-submit"><i class="icon-check icon-white"></i> Save these coordinates for the urban park</button>
+        <button id="answerbtn" class="btn btn-success btn-submit"><i class="glyphicon glyphicon-check "></i> Save these coordinates for the urban park</button>
     </div>
   </div>
 </div>
 
 <div class="row skeleton">
-    <div id="disqus_thread" class="span11 offset1"></div>
+    <div id="disqus_thread" class="col-sm-11 col-md-11 col-xs-offset-1"></div>
 </div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

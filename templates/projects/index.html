@@ -6,17 +6,17 @@
 {% block content %}
 <script src="{{url_for('static', filename='js/vendor/isotope.pkgd.min.js')}}"></script>
 <div class="row">
-    <div class="span3">
+    <div class="col-sm-3 col-md-3">
             <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
                 {% for c in categories %}
-                <li {% if active_cat.short_name==c.short_name%}class="active"{% endif %}><a href="{{url_for('project.project_cat_index', category=c.short_name)}}"><i class="icon-chevron-right"></i> {{ c.name }}</a></li>
+                <li {% if active_cat.short_name==c.short_name%}class="active"{% endif %}><a href="{{url_for('project.project_cat_index', category=c.short_name)}}"><i class="glyphicon glyphicon-chevron-right"></i> {{ c.name }}</a></li>
                 {% endfor %}
                 {% if current_user.is_authenticated() and current_user.admin %}
-                <li {% if active_cat.short_name=="draft"%}class="active"{% endif %}><a href="{{url_for('project.draft')}}"><i class="icon-chevron-right"></i> {{ _('Draft') }}</a></li>
+                <li {% if active_cat.short_name=="draft"%}class="active"{% endif %}><a href="{{url_for('project.draft')}}"><i class="glyphicon glyphicon-chevron-right"></i> {{ _('Draft') }}</a></li>
                 {% endif %}
             </ul>
     </div>
-    <div class="span9">
+    <div class="col-sm-9 col-md-9">
             <div id="sorts" class="btn-group pull-right" style="margin-top:12px;">
                 <button class="btn dropdown-toggle" data-toggle="dropdown" data-sort-value="original-order">Order by <span id="order">name</span> <span class="caret"></span></button>
               <ul class="dropdown-menu" style="top:35px;">
@@ -30,16 +30,16 @@
         {% if projects %}
             {% if active_cat.short_name=="featured"%} 
             <h1>
-                <i class="icon-star"></i> {{pagination.total_count}} {{ _('Featured Projects') }}
+                <i class="glyphicon glyphicon-star"></i> {{pagination.total_count}} {{ _('Featured Projects') }}
             </h1>
             <h2>{{ _('A special selection of the most interesting projects') }}</h2>
             {% elif active_cat.short_name=='draft' %}
             <h1>
-                <i class="icon-wrench"></i> {{pagination.total_count}} {{ _('Draft Projects')}}</h1>
+                <i class="glyphicon glyphicon-wrench"></i> {{pagination.total_count}} {{ _('Draft Projects')}}</h1>
             <h2>{{ _('Work in progress projects') }}</h2>
             {% else %}
             <h1>
-                <i class="icon-th"></i> {{pagination.total_count}} {{ active_cat.name }} Projects</h1>
+                <i class="glyphicon glyphicon-th"></i> {{pagination.total_count}} {{ active_cat.name }} Projects</h1>
             <h2>{{ active_cat.description }}</h2>
             {% endif %}
 
@@ -54,7 +54,7 @@
             {% endif %}
         {% else %}
             <h1>
-                <i class="icon-th"></i> {{pagination.total_count}} {{ active_cat.name }} Projects</h1>
+                <i class="glyphicon glyphicon-th"></i> {{pagination.total_count}} {{ active_cat.name }} Projects</h1>
             <h2>{{_('Sorry, there are no published projects for this category yet')}}</h2>
         {% endif %}
     </div>

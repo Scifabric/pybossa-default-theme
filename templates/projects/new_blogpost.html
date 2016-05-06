@@ -6,20 +6,21 @@
 {% block content %}
 {% from "_formhelpers.html" import render_field %}
 <div id="project-form" class="row"> 
-    <div class="span3">
+    <div class="col-sm-3 col-md-3">
         {{ helper.render_project_local_nav(project, 'blog', current_user, pro_features) }}
     </div>
-    <div class="span9">
+    <div class="col-sm-9 col-md-9 ">
         {{ helper.render_project_title(project) }}
         <h2>{{ _('Write a new blog post for ad') }} {{ project.name }}</h2>
     <form class="form-horizontal" method="post" action="{{ url_for('project.new_blogpost', short_name=project.short_name) }}">
         {{ form.hidden_tag() }}
         <fieldset>
-            {{ render_field(form.title, class_="span9", placeholder= _('The title of your post')) }}
-            {{ render_field(form.body, class_="span9", placeholder= _('Write your post here. You can use Markdown!')) }}
-            <div class="form-actions">
+            {{ render_field(form.title, class_="col-xs-12  col-sm-9 col-md-9 ", placeholder= _('The title of your post')) }}
+            <br><br>
+            {{ render_field(form.body, class_="col-xs-12  col-sm-9 col-md-9 ", placeholder= _('Write your post here. You can use Markdown!')) }}
+            <div class="form-actions col-xs-12  col-sm-12 col-md-12">
                 <input type="submit" value={{_('Create')}} class="btn btn-primary" />
-                <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn">{{_('Cancel')}}</a>
+                <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
             </div>
         </fieldset>
     </form>

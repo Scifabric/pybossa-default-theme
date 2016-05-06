@@ -7,10 +7,10 @@
 {% from "_formhelpers.html" import render_field %}
 {{ helper.render_loading(loading_text) }}
 <div class="row">
-    <div class="span3">
+    <div class="col-sm-3 col-md-3">
         {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features)}}
     </div>
-    <div class="span9">
+    <div class="col-sm-9 col-md-9">
         <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
       {% if form %}
       <h2>{{_('From a CSV file')}}</h2>
@@ -21,7 +21,7 @@
           {{ render_field(form.csv_url, class_="input-block-level", placeholder=_('The URL of the CSV file')) }}
           <div class="form-actions">
             <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
-            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
+            <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn-default">{{_('Cancel')}}</a>
           </div>
         </fieldset>
       </form>

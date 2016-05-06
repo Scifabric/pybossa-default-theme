@@ -2,19 +2,19 @@
 
 {% macro render_admin_user(user, upload_method) %}
 <div class="row-fluid well well-small">
-    <div class="span2">
+    <div class="col-sm-2 col-md-2">
         {{ helper.render_user_thumbnail(user, upload_method, style="height:100px; width:100px;")}}
     </div>
-    <div class="span10">
-        <h2>{{user.fullname}} <small>({{ _('nick') }}: {{user.name}})</small></h2>
+    <div class="col-sm-10 col-md-10">
+        <h2>{{user.fullname}} <em>({{ _('nick') }}: {{user.name}})</em></h2>
         <h3>{{ _('Member since') }}: {{user.created[0:10]}}</h3>
         {% if user.admin %}
         <a href="{{url_for('admin.del_admin', user_id=user.id)}}" class="btn btn-danger">
-            <i class="icon-remove"></i>
+            <i class="glyphicon glyphicon-remove"></i>
             {{ _('Remove from admin group') }}</a>
         {% else %}
         <a href="{{url_for('admin.add_admin', user_id=user.id)}}" class="btn btn-primary">
-            <i class="icon-plus"></i>
+            <i class="glyphicon glyphicon-plus"></i>
             {{ _('Add to admin group') }}</a>
         {% endif %}
     </div>

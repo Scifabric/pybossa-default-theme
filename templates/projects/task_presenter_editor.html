@@ -20,10 +20,10 @@
       }
 </style>
 <div class="row">
-    <div class="span3">
+    <div class="col-sm-3 col-md-3">
         {{ helper.render_project_local_nav(project, 'tasks', current_user, pro_features) }}
     </div>
-    <div class="span9">
+    <div class="col-sm-9 col-md-9">
         <!-- Task Presenter Editor -->
         <h1><strong>{{project.name}}</strong>: {{ _('Task Presenter Editor') }} <a class="btn btn-large pull-right" href="http://docs.pybossa.com/en/latest/overview.html#task-presenter"><i class="icon-book"></i> {{ _('Help') }}</a></h1>
         <form class="form-inline" method="post" action="{{ url_for('project.task_presenter_editor', short_name=project.short_name) }}">
@@ -33,7 +33,7 @@
                 <div class="form-actions">
                     <input type="submit" value={{ _('Update the project task presenter') }} class="btn btn-primary" />
                     <a href="#" class="btn btn-preview" value="preview">{{ _('Preview the task presenter') }}</a>
-                    <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn">{{ _('Cancel') }}</a>
+                    <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn btn-default">{{ _('Cancel') }}</a>
                 </div>
             </fieldset>
         </form>
@@ -51,7 +51,7 @@
         </section>
     </div>
     <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">{{ _('Close') }}</button>
+        <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">{{ _('Close') }}</button>
     </div>
 </div>
 

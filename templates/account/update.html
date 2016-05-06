@@ -10,10 +10,10 @@
 <link rel="stylesheet" href="{{url_for('static', filename='css/jquery.Jcrop.min.css')}}" type="text/css" />
 
 <div class="row">
-    <div class="span3">
+    <div class="col-md-3 col-sm-3">
         {{ helper.render_account_local_nav(current_user, active_link) }}
     </div>
-    <div class="span9">
+    <div class="col-md-9 col-sm-9">
         <h1><strong>{{current_user.fullname}}</strong>: {{ _('Update your profile') }}</h1>
         <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile', name=current_user.name) }}" enctype="multipart/form-data">
             <fieldset>
@@ -45,7 +45,7 @@
             {{ render_field(form.subscribed) }}
             <div class="form-actions">
                 <button type="submit" name='btn' value="Profile" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
-              <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
+              <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn btn-default">{{ _('Cancel') }}</a>
             </div>
             </fieldset>
         </form>
@@ -62,7 +62,7 @@
                 {{ render_field(password_form.confirm) }}
                 <div class="form-actions">
                     <button type="submit" name="btn" value="Password" class="btn btn-primary btn-large">{{ _('Save the Changes')}}</button>
-                    <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
+                    <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn btn-default">{{ _('Cancel') }}</a>
                 </div>
             </fieldset>
         </form>
@@ -75,7 +75,7 @@
             {{ render_field(form.ckan_api) }}
             <div class="form-actions">
                 <button type="submit" name='btn' value="External" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
-              <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn">{{ _('Cancel') }}</a>
+              <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn btn-default">{{ _('Cancel') }}</a>
             </div>
             </fieldset>
         </form>
