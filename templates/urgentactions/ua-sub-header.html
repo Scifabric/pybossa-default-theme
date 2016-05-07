@@ -28,7 +28,7 @@
             if (class_name == 'final-step') {
                 $(".Q2").show();
             } else if (class_name == "Q4") {
-                $(".Q3").show();
+                $(".Q1").show();
             } else if (class_name == "mixed") {
                 $(".Q2").show();
                 $(".Q2").addClass("Q4");
@@ -36,6 +36,7 @@
                 $(".Q1").show();
             }
             click = 0;
+            $("#reset").click();
             $(".select-persons").hide();
             setCounterButtonInactive($(".one-person"));
             setCounterButtonInactive($(".more-persons"));
@@ -136,7 +137,6 @@
                 var victims_html = "";
                 if (screen_width > 767) {
                     $(".victims-body").css("padding", "0 20px 0 20px");
-                    $(".victims").css("margin-left", "25px");
                     victims_html = "<div class='form-group mixed-persons mixed-persons" + i + "' style='height:40px; width: 14px; margin-top: 5px; text-align: center;'><div class='person-head' style='text-align: center;'><img src='/static/img/head.png' style='width: 11px; height: 11px;'></div><div class='person-body' style='margin-top: 3px; text-align: center;'><img src='/static/img/body.png' style='width: 11px; height: 20px;'></div></div>";
                 } else {
                     victims_html = "<div class='mixed-persons mixed-persons" + i + "' style='float: left; height:40px; width: 14px; margin-top: 5px; text-align: center;'><div class='person-head' style='text-align: center;'><img src='/static/img/head.png' style='width: 11px; height: 11px;'></div><div class='person-body' style='margin-top: 3px; text-align: center;'><img src='/static/img/body.png' style='width: 11px; height: 20px;'></div></div>";
@@ -571,10 +571,10 @@
                 <br>
                 <div class="form-inline">
                     <div class="form-group">
-                        <div class="individual-outcome" id="reset" style="margin-left: 150px;">RESET</div>
+                        <div class="individual-outcome" id="reset" style="margin-left: 0;">RESET</div>
                     </div>
                     <div class="form-group">
-                        <div class="next-ua" style="margin-left: 5px !important;" id="mixed-continue">NEXT URGENT ACTION</div>
+                        <div class="individual-outcome next-ua" style="margin-left: 10px !important;" id="mixed-continue">NEXT URGENT ACTION</div>
                     </div>
                 </div>
             </div>
