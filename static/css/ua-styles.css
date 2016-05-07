@@ -336,7 +336,7 @@ img {
 }
 
 .victims {
-    height: 90px;
+    height: 85px;
     border: 2px solid white;
     border-radius: 5px;
     background-color: transparent;
@@ -350,6 +350,10 @@ img {
 }
 
 @media (max-width: 480px) {
+    #reset, .victims {
+        margin-left: 0!important;
+    }
+
     .Q1-back-arrow {
         margin-top: 50px !important;
     }
@@ -376,6 +380,12 @@ img {
 }
 
 @media (min-width: 320px) and (max-width: 990px) {
+
+    #reset, .victims {
+        margin-left: 0!important;
+        min-width: 0 !important;
+    }
+
     .admin-menu a {
         font-size: 14px !important;
     }
