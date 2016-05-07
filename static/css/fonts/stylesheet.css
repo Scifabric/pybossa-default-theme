@@ -1,36 +1,108 @@
-/*
- * Web Fonts from fontspring.com
- *
- * All OpenType features and all extended glyphs have been removed.
- * Fully installable fonts can be purchased at http://www.fontspring.com
- *
- * The fonts included in this stylesheet are subject to the End User License you purchased
- * from Fontspring. The fonts are protected under domestic and international trademark and 
- * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
- * distributing this font software.
- *
- * (c) 2010-2012 Fontspring
- *
- *
- *
- *
- * The fonts included are copyrighted by the vendor listed below.
- *
- * Vendor:      exljbris
- * License URL: http://www.fontspring.com/fflicense/exljbris
- *
- *
- */
 
-@font-face {
-    font-family: 'MuseoSlab500Regular';
-    src: url('Museo_Slab_500-webfont.eot');
-    src: url('Museo_Slab_500-webfont.eot?#iefix') format('embedded-opentype'),
-         url('Museo_Slab_500-webfont.woff') format('woff'),
-         url('Museo_Slab_500-webfont.ttf') format('truetype'),
-         url('Museo_Slab_500-webfont.svg#MuseoSlab500Regular') format('svg');
-    font-weight: normal;
-    font-style: normal;
 
+@font-face{
+font-family:"Amnesty Trade Gothic W01 Light";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Light.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Light.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Light.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Light.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Light.svg#AmnestyTradeGothicW01Light") format("svg");
+}
+@font-face{
+font-family:"Amnesty Trade Gothic W04 Light";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Light.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Light.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Light.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Light.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Light.svg#AmnestyTradeGothicW04Light") format("svg");
+}
+@font-face{
+font-family:"Amnesty Trade Gothic W01 LtObl";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01LtObl.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01LtObl.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01LtObl.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01LtObl.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01LtObl.svg#AmnestyTradeGothicW01LtObl") format("svg");
+}
+@font-face{
+font-family:"Amnesty Trade Gothic W04 LtObl";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04LtObl.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04LtObl.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04LtObl.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04LtObl.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04LtObl.svg#AmnestyTradeGothicW04LtObl") format("svg");
+}
+@font-face{
+font-family:"Amnesty Trade Gothic W01 Roman";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Roman.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Roman.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Roman.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Roman.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Roman.svg#AmnestyTradeGothicW01Roman") format("svg");
+}
+@font-face{
+font-family:"Amnesty Trade Gothic W04 Roman";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Roman.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Roman.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Roman.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Roman.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Roman.svg#AmnestyTradeGothicW04Roman") format("svg");
+}
+@font-face{
+font-family:"Amnesty Trade Gothic W01 Obl";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Obl.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Obl.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Obl.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Obl.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Obl.svg#AmnestyTradeGothicW01Obl") format("svg");
+}
+@font-face{
+font-family:"Amnesty Trade Gothic W04 Obl";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Obl.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Obl.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Obl.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Obl.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Obl.svg#AmnestyTradeGothicW04Obl") format("svg");
+}
+@font-face{
+font-family:"Amnesty Trade Gothic W01BdNo-2";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdNo-2.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdNo-2.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdNo-2.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdNo-2.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdNo-2.svg#AmnestyTradeGothicW01BdNo-2") format("svg");
+}
+@font-face{
+font-family:"Amnesty Trade Gothic W04BdNo-2";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdNo-2.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdNo-2.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdNo-2.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdNo-2.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdNo-2.svg#AmnestyTradeGothicW04BdNo-2") format("svg");
+}
+@font-face{
+font-family:"AmnestyTradeGothicW01BdNo-2Obl";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdNo-2Obl.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdNo-2Obl.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdNo-2Obl.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdNo-2Obl.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdNo-2Obl.svg#AmnestyTradeGothicW01BdNo-2Obl") format("svg");
+}
+@font-face{
+font-family:"AmnestyTradeGothicW04BdNo-2Obl";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdNo-2Obl.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdNo-2Obl.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdNo-2Obl.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdNo-2Obl.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdNo-2Obl.svg#AmnestyTradeGothicW04BdNo-2Obl") format("svg");
+}
+@font-face{
+font-family:"Amnesty Trade GothicW01CnNo-18";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01CnNo-18.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01CnNo-18.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01CnNo-18.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01CnNo-18.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01CnNo-18.svg#AmnestyTradeGothicW01CnNo-18") format("svg");
+}
+@font-face{
+font-family:"Amnesty Trade GothicW04CnNo-18";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04CnNo-18.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04CnNo-18.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04CnNo-18.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04CnNo-18.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04CnNo-18.svg#AmnestyTradeGothicW04CnNo-18") format("svg");
+}
+@font-face{
+font-family:"AmnestyTradeGothicW01Cn1493000";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Cn1493000.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Cn1493000.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Cn1493000.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Cn1493000.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Cn1493000.svg#AmnestyTradeGothicW01Cn1493000") format("svg");
+}
+@font-face{
+font-family:"AmnestyTradeGothicW04Cn1493002";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Cn1493002.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Cn1493002.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Cn1493002.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Cn1493002.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Cn1493002.svg#AmnestyTradeGothicW04Cn1493002") format("svg");
+}
+@font-face{
+font-family:"AmnestyTradeGothicW01BdCnNo-20";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdCnNo-20.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdCnNo-20.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdCnNo-20.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdCnNo-20.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01BdCnNo-20.svg#AmnestyTradeGothicW01BdCnNo-20") format("svg");
+}
+@font-face{
+font-family:"AmnestyTradeGothicW04BdCnNo-20";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdCnNo-20.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdCnNo-20.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdCnNo-20.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdCnNo-20.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04BdCnNo-20.svg#AmnestyTradeGothicW04BdCnNo-20") format("svg");
+}
+@font-face{
+font-family:"AmnestyTradeGothicW01Bd1493008";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Bd1493008.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Bd1493008.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Bd1493008.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Bd1493008.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW01Bd1493008.svg#AmnestyTradeGothicW01Bd1493008") format("svg");
+}
+@font-face{
+font-family:"AmnestyTradeGothicW04Bd1493010";
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Bd1493010.eot?#iefix");
+src:url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Bd1493010.eot?#iefix") format("eot"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Bd1493010.woff") format("woff"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Bd1493010.ttf") format("truetype"),url("AmnestyTradeGothic/Fonts/AmnestyTradeGothicW04Bd1493010.svg#AmnestyTradeGothicW04Bd1493010") format("svg");
 }
 
+@font-face{
+font-family:"FrutigerLTW20-77BlackCn";
+src:url("FrutigerArabic/Fonts/FrutigerLTW20-77BlackCn.eot?#iefix");
+src:url("FrutigerArabic/Fonts/FrutigerLTW20-77BlackCn.eot?#iefix") format("eot"),url("FrutigerArabic/Fonts/FrutigerLTW20-77BlackCn.woff") format("woff"),url("FrutigerArabic/Fonts/FrutigerLTW20-77BlackCn.ttf") format("truetype"),url("FrutigerArabic/Fonts/FrutigerLTW20-77BlackCn.svg#FrutigerLTW20-77BlackCn") format("svg");
+}
