@@ -2,6 +2,7 @@
     var click = 0;
     var persons = 0;
     var not_clear_clicked = 0;
+    var last_checked = 0;
     var mixed_json = {
         "positive": 0,
         "negative": 0,
@@ -27,7 +28,7 @@
             if (class_name == 'final-step') {
                 $(".Q2").show();
             } else if (class_name == "Q4") {
-                $(".Q3").show();
+                $(".Q1").show();
             } else if (class_name == "mixed") {
                 $(".Q2").show();
                 $(".Q2").addClass("Q4");
@@ -35,6 +36,7 @@
                 $(".Q1").show();
             }
             click = 0;
+            $("#reset").click();
             $(".select-persons").hide();
             setCounterButtonInactive($(".one-person"));
             setCounterButtonInactive($(".more-persons"));
@@ -134,24 +136,17 @@
             for (var i = 0; i < persons; i++) {
                 var victims_html = "";
                 if (screen_width > 767) {
+                    $(".victims-body").css("padding", "0 20px 0 20px");
                     victims_html = "<div class='form-group mixed-persons mixed-persons" + i + "' style='height:40px; width: 14px; margin-top: 5px; text-align: center;'><div class='person-head' style='text-align: center;'><img src='/static/img/head.png' style='width: 11px; height: 11px;'></div><div class='person-body' style='margin-top: 3px; text-align: center;'><img src='/static/img/body.png' style='width: 11px; height: 20px;'></div></div>";
                 } else {
-                    victims_html = "<div class='mixed-persons mixed-persons" + i + "' style='float: left; height:40px; width: 14px; margin-top: 5px;'><div class='person-head' style='text-align: center;'><img src='/static/img/head.png' style='width: 11px; height: 11px;'></div><div class='person-body' style='margin-top: 3px; text-align: center;'><img src='/static/img/body.png' style='width: 11px; height: 20px;'></div></div>";
-                    var victims_body_left_margin = "";
-                    if (persons < 5) {
-                        victims_body_left_margin = "80px";
-                    } else {
-                        victims_body_left_margin = "50px";
-                    }
-                    $(".victims-body").css("margin-left", victims_body_left_margin);
+                    victims_html = "<div class='mixed-persons mixed-persons" + i + "' style='float: left; height:40px; width: 14px; margin-top: 5px; text-align: center;'><div class='person-head' style='text-align: center;'><img src='/static/img/head.png' style='width: 11px; height: 11px;'></div><div class='person-body' style='margin-top: 3px; text-align: center;'><img src='/static/img/body.png' style='width: 11px; height: 20px;'></div></div>";
                 }
 
                 $(".positive-victims-body").append(victims_html);
                 $(".negative-victims-body").append(victims_html);
                 $(".unsure-victims-body").append(victims_html);
             }
-
-            var last_checked = 0;
+            $('.victims').css({"width": 20 * (persons + 1) + "px", "float": "left"});
             onVictimsHover("mixed-persons", 0, last_checked);
 
             $(".mixed-persons").on("click", function () {
@@ -159,14 +154,16 @@
                 var clas_name = class_names_array[class_names_array.length - 1];
                 var person_number = clas_name.substr(clas_name.length - 1);
 
-                setSelectedVictimsType($(this), last_checked);
+                setSelectedVictimsType($(this), Number(person_number) - last_checked);
 
                 var sum = 0;
-                for (var item in mixed_json){
+                for (var item in mixed_json) {
                     sum += mixed_json[item];
                 }
-                if (sum == persons){
+                if (sum == persons) {
                     $("#mixed-continue").show(250)
+                } else {
+                    $("#mixed-continue").hide(250)
                 }
 
                 var classes_array = ["positive-victims-body", "negative-victims-body", "unsure-victims-body"];
@@ -224,8 +221,10 @@
 
         $("#reset").click(function () {
             $(".disabled").removeClass("disabled");
+            $("#mixed-continue").hide(250)
             onVictimsHover("mixed-persons", 0, 0);
             $(".mixed-persons").each(function () {
+                last_checked = 0;
                 var person_head = $(this).find('.person-head');
                 var person_body = $(this).find('.person-body');
                 setPersonInactive(person_head, person_body);
@@ -572,10 +571,10 @@
                 <br>
                 <div class="form-inline">
                     <div class="form-group">
-                        <div class="individual-outcome" id="reset" style="margin-left: 150px;">RESET</div>
+                        <div class="individual-outcome" id="reset" style="margin-left: 0;">RESET</div>
                     </div>
                     <div class="form-group">
-                        <div class="individual-outcome" id="mixed-continue">CONTINUE</div>
+                        <div class="individual-outcome next-ua" style="margin-left: 10px !important;" id="mixed-continue">NEXT URGENT ACTION</div>
                     </div>
                 </div>
             </div>
