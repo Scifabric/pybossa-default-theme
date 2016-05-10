@@ -836,6 +836,13 @@ li> a {
     padding-top: 180px !important;
   }
 }
+@media (min-width: 990px ) and (max-width: 1220px){
+  #amnesty-logo a img{
+    margin-left: 15px !important;
+    padding-right:15px !important;
+  }
+
+}
 
 @media (min-width: 1199px) {
   .banner .featured{
