@@ -15,14 +15,16 @@
         {{ form.hidden_tag() }}
         <fieldset>
             {{ render_field(form.name, class_="col-sm-4 col-md-4", placeholder=_('The name of the project')) }}
-            {{ render_field(form.short_name, class_="col-sm-4 col-md-4", placeholder=_('Short name or slug for the project'), label_text=_('Project slug:')) }}
-            {{ render_field(form.long_description, class_="col-sm-4 col-md-4", rows="13", placeholder=_('Explain your project                                                             
+            <br><br>
+            {{ render_field(form.short_name, class_="col-sm-4 col-md-4", placeholder=_('Short name or slug for the project'), label_text=_('Project slug')) }}
+            <br><br>
+            {{ render_field(form.long_description, class_="col-sm-4 col-md-4", rows="13", placeholder=_('Explain your project
                 · Why? Why you are creating this project, what you want to achieve with it                                                             
                 · How? Explain how your project works                                                             
                 · How you can help: Explain to the volunteers how they can help and contribute to the goal of your project                                                             
                 · Will you help make a difference? Explain to the volunteers why their contribution is essential and how the result of your project can help change things!                                                             
             (you can use Markdown to give format to your description!)')) }}
-            <div class="form-actions">
+            <div class="form-actions col-xs-12">
                 <input type="submit" value={{_('Create the project')}} class="btn btn-primary" />
                 <a href="{{url_for('account.profile', name=current_user.name)}}" class="btn btn-default">{{_('Cancel')}}</a>
             </div>
