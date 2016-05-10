@@ -42,8 +42,6 @@
                 <i class="glyphicon glyphicon-th"></i> {{pagination.total_count}} {{ active_cat.name }} Projects</h1>
             <h2>{{ active_cat.description }}</h2>
             {% endif %}
-
-
             <div class="projects">
             {% for project in projects %}
             {{ helper.show_project(project, active_cat.short_name, current_user, upload_method) }}
