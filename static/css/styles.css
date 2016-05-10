@@ -717,9 +717,17 @@ ul.users li a {
     overflow: hidden !important;
     background: #000000 !important;
   }
+  .navbar-header a {
+    margin-left: 35% !important;
+  }
 
 }
 
+@media (min-width: 979px) and (max-width: 990px) {
+  .navbar-header a {
+    margin-left: 35% !important;
+  }
+}
 /* Tablet
 ------------------------- */
 @media (max-width: 767px) {
@@ -733,6 +741,9 @@ ul.users li a {
     width: auto;
     top: auto;
   }
+  .navbar-header a {
+    margin-left: 30% !important;
+  }
 
 }
 
@@ -742,6 +753,10 @@ ul.users li a {
     #cookies_warning {
         padding: 2px 10px 2px;
     }
+  .navbar-header a {
+    margin-left: 1% !important;
+    float: left !important;
+  }
 }
 
 body > footer {

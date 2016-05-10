@@ -116,5 +116,11 @@
             }
 
         });
+        if($( window ).width() < 980){
+            $('#nav-head').removeClass('navbar-fixed-top');
+        }
+        else{
+            $('#nav-head').addClass('navbar-fixed-top');
+        }
     });
 </script>
