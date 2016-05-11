@@ -17,13 +17,14 @@
           <fieldset>
               <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
               <div>
-              {{ helper.render_project_thumbnail(project, upload_method, id="uploadPreview") }}
+              {{ helper.render_project_thumbnail(project, upload_method) }}
               </div>
               {{ render_field(upload_form.avatar, onchange="previewImage()") }}
               {{ upload_form.x1 }}
               {{ upload_form.y1 }}
               {{ upload_form.x2 }}
               {{ upload_form.y2 }}
+              <img id="uploadPreview">
           <div class="form-actions">
             <button type="submit" name='btn' value="Upload" class="btn btn-primary btn-large">{{ _('Upload') }}</button>
           </div>
