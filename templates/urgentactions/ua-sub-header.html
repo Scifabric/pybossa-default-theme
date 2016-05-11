@@ -23,14 +23,12 @@
             var class_names = $(this).parent().parent().attr("class").split(" ");
             var class_name = class_names[class_names.length - 1];
 
-            console.log(class_name);
             var matches = class_name.match(/\d+/g);
             if (matches[0] > 1) {
                 $("." + class_name).hide();
                 $("." + class_name.replace(matches[0], Number(matches[0]) - 1)).show(250);
             } else {
                 $(this).parent().parent().parent().hide();
-                console.log($(this).parent().parent().parent().attr("class"));
                 $(".question").show(250);
                 $(".individuals-container").parent().show(250);
                 $(".individuals-container").show(250);
@@ -47,10 +45,8 @@
             $(this).parent().parent().parent().hide();
             var class_names = $(this).parent().parent().parent().attr("class").split(" ");
             var class_name = class_names[class_names.length - 1];
-            console.log(class_name);
             if (class_name == "single-2"){
                 $("#person-name-question").text("Is " + person_name + "?");
-                console.log(person_name);
             }
             var matches = class_name.match(/\d+/g);
             $("." + class_name.replace(matches[0], Number(matches[0]) + 1)).show(250);
@@ -59,7 +55,6 @@
         $('.person').click(function () {
             var class_names_array = $(this).attr("class").split(" ");
             var class_name = class_names_array[1];
-            console.log(class_name);
             var person_number = class_name.substr(class_name.length - 1);
             var persons_involved = Number(person_number) + 1;
             if (persons_involved < 2) {
@@ -226,7 +221,6 @@
             parent_div.hide();
             var class_name = class_names[class_names.length - 1];
             var matches = class_name.match(/\d+/g);
-            console.log(matches[0]);
             $("." + class_name.replace(matches[0], Number(matches[0]) + 1)).show(250);
         });
 
