@@ -5,6 +5,10 @@
     color: #fff;
 }
 
+body {
+    font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
+}
+
 .navbar {
     background-color: #000000;
     height: 79px !important;
@@ -106,7 +110,11 @@ img {
 }
 
 .admin-menu a {
-    font-size: 10px !important;
+    font-size: 13px !important;
+}
+
+p {
+    font-size: 15px !important;
 }
 
 .hr {
@@ -142,7 +150,7 @@ img {
 .one-person {
     float: left;
     height: 50px;
-    width: 45px;
+    width: 49px;
     border: 2px solid white;
     background-color: transparent;
     border-radius: 5px;
@@ -152,7 +160,11 @@ img {
 .persons-counter {
     width: 51px;
     float: right;
-    padding: 5px 5px 0 5px;
+    font-size: 30px;
+    padding: 7px 5px 0 7px;
+    border-left: 2px solid white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .persons-counter:hover {
@@ -172,7 +184,6 @@ img {
 
 .detailed-information {
     padding: 0 10px 5px 10px;
-    width: 335px;
     height: 145px;
     float: left;
 }
@@ -202,6 +213,7 @@ img {
 .individual-outcome {
     float: left;
     height: 50px;
+    font-size: 18px;
     font-weight: bolder;
     width: 90px;
     margin: 5px 0 0 11px;
@@ -209,12 +221,13 @@ img {
     background-color: transparent;
     border-radius: 5px;
     text-align: center;
-    padding-top: 15px;
+    padding-top: 12px;
 }
 
 .next-ua {
     cursor: pointer;
     font-weight: bolder;
+    font-size: 15px;
     float: left;
     height: 50px;
     border-radius: 5px;
@@ -268,14 +281,15 @@ img {
 
 .one-person h1, .more-persons h1 {
     font-weight: bolder;
-    margin-top: 10px;
+    font-size: 30px;
+    margin-top: 7px;
 }
 
 .more-persons {
     float: left;
     margin-left: 10px;
     height: 50px;
-    width: 45px;
+    width: 49px;
     border: 2px solid white;
     background-color: transparent;
     border-radius: 5px;
@@ -285,7 +299,7 @@ img {
 .select-persons {
     margin-left: -5px;
     height: 50px;
-    width: 228px;
+    width: 220px;
     border: 2px solid white;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -353,7 +367,7 @@ img {
 
 @media (max-width: 480px) {
     #reset, .victims {
-        margin-left: 0!important;
+        margin-left: 0 !important;
     }
 
     .Q1-back-arrow {
@@ -384,7 +398,7 @@ img {
 @media (min-width: 320px) and (max-width: 990px) {
 
     #reset, .victims {
-        margin-left: 0!important;
+        margin-left: 0 !important;
         min-width: 0 !important;
     }
 
