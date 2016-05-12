@@ -402,6 +402,11 @@ p {
         min-width: 0 !important;
     }
 
+    .next-ua {
+        float: left !important;
+        margin-left: 0 !important;
+    }
+
     .admin-menu a {
         font-size: 14px !important;
     }
@@ -464,6 +469,10 @@ p {
 
     .navbar-nav > li {
         float: none !important;
+    }
+
+    .outcome-options {
+        text-align: left !important;
     }
 }
 
