@@ -856,3 +856,9 @@ li> a {
 #msg_error{
   border-color: #000000 !important;
 }
+
+#uploadPreview {
+    width:  auto;
+    height: auto;
+    border: none;
+}

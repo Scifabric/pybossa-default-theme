@@ -6,7 +6,7 @@
 
     function _previewImage(){
         var oFReader = new FileReader();
-        var avatar = $("#avatar")
+        var avatar = $("#avatar");
         var avatar_file = avatar[0].files[0];
         if (avatar_file.size > MAX_FILE_SIZE) {
             alert("This file is too large. Max size allowed is 2MB. Please, select another file.");
@@ -18,7 +18,7 @@
         oFReader.onload = function (oFREvent) {
 
             document.getElementById("uploadPreview").src = oFREvent.target.result;
-            var img = document.getElementById('uploadPreview'); 
+            var img = document.getElementById('uploadPreview');
             //or however you get a handle to the IMG
             var width = img.clientWidth;
             var height = img.clientHeight;
@@ -36,9 +36,9 @@
                     bgColor:     'black',
                     bgOpacity:   .4,
                     minSize: [100, 100],
-                    setSelect:   [  0, 
-                                    0, 
-                                    (width / 2), 
+                    setSelect:   [  0,
+                                    0,
+                                    (width / 2),
                                     (height/ 2)],
                     aspectRatio: 1,
                     boxWidth: 450
