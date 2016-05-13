@@ -58,7 +58,9 @@
 
                         $("#person-name").html(t + "<br><i>Is this the full and correct name?</i>")
 
-                        $('#detailed-individual-information').show();
+                        if (screen_width > 768) {
+                            $('#detailed-individual-information').show();
+                        }
                     }
                 }
             }
