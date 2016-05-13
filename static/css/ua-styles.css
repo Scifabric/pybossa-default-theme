@@ -117,6 +117,44 @@ p {
     font-size: 15px !important;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.continue-vno {
+    background-color: #999999;
+    color: #666666;
+    text-align: center;
+    font-size: 18px;
+    margin: 5px 0 0 -5px;
+    width: 100px;
+    height: 50px;
+    padding-top: 12px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    float: left;
+}
+
+::-webkit-input-placeholder{
+    padding-top: 10px !important;
+    font-size: 18px;
+    color: #000;
+}
+
+.form-control {
+    font-size: 18px !important;
+}
+
+.continue-vno:hover {
+    cursor: pointer;
+    color: #000;
+    background-color: #B6B6B6;
+}
+
 .hr {
     display: block;
     height: 3px;
@@ -150,7 +188,7 @@ p {
 .one-person {
     float: left;
     height: 50px;
-    width: 49px;
+    width: 50px;
     border: 2px solid white;
     background-color: transparent;
     border-radius: 5px;
@@ -158,10 +196,10 @@ p {
 }
 
 .persons-counter {
-    width: 51px;
+    width: 46px;
     float: right;
     font-size: 30px;
-    padding: 7px 5px 0 7px;
+    padding: 4px 5px 0 7px;
     border-left: 2px solid white;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -289,7 +327,7 @@ p {
     float: left;
     margin-left: 10px;
     height: 50px;
-    width: 49px;
+    width: 50px;
     border: 2px solid white;
     background-color: transparent;
     border-radius: 5px;
@@ -299,7 +337,7 @@ p {
 .select-persons {
     margin-left: -5px;
     height: 50px;
-    width: 220px;
+    width: 195px;
     border: 2px solid white;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -363,6 +401,48 @@ p {
 
 .victims-body {
     text-align: center !important;
+}
+
+.finish-scene {
+    width: 250px;
+    text-align: center;
+    background: transparent;
+    color: #FFF;
+    position: absolute;
+    margin-left: -125px;
+    left: 50%;
+    z-index: 2;
+}
+
+.circle-base {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* IE 8 */
+}
+
+.circle1 {
+    margin: 15px auto;
+    width: 250px;
+    text-align: center;
+    padding: 20px;
+    font-weight: lighter !important;
+    height: 250px;
+    background: rgba(0, 0, 0, 1);
+}
+
+.task-counter {
+    width: 100%;
+    height: 40px;
+    background: #000;
+    color: #FFF;
+    font-size: 20px;
+    padding-top: 7px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+i:hover {
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 @media (max-width: 480px) {
