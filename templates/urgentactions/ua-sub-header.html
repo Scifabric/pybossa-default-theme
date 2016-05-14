@@ -34,11 +34,6 @@
             var matches = class_name.match(/\d+/g);
             if (matches[0] > 1) {
                 $("." + class_name).hide();
-                if (screen_width <= 768) {
-                    if (class_name == "single-2") {
-                        displayFirstQuestion($(this));
-                    }
-                }
                 $("." + class_name.replace(matches[0], Number(matches[0]) - 1)).show(250);
                 $(".presenter-container").css("background", "rgba(255, 255, 0, 1)");
                 $(".finish-scene").hide();
@@ -49,31 +44,51 @@
             $(".more-persons h1").text("2+");
             $("#reset").click();
             $(".select-persons").hide();
-            setCounterButtonInactive($(".one-person"));
-            setCounterButtonInactive($(".more-persons"));
         });
 
         $(".outcome-result").click(function () {
+            var value = $(this).attr("id");
             $(this).parent().parent().parent().hide();
             var class_names = $(this).parent().parent().parent().attr("class").split(" ");
             var class_name = class_names[class_names.length - 1];
-            if (class_name == "single-2") {
-                if (person_name != "") {
-                    $("#person-name-question").text("Is " + person_name + "?");
-                } else {
-                    $("#person-name-question").text("Is victim?");
-                }
+            if (person_name != "") {
+                $(".person-name-question").text("Is " + person_name + "?");
+            } else {
+                $(".person-name-question").text("Is victim?");
             }
+
+            if (class_name == "outcome-options") {
+                class_name = "under-ten-1";
+                $(this).parent().parent().parent().parent().hide();
+            }
+
             var matches = class_name.match(/\d+/g);
 
-            var next_class_names = $("." + class_name.replace(matches[0], Number(matches[0]) + 1));
+            var counter;
+            if (class_name == "under-ten-1" && value != "mixed") {
+                counter = 2;
+            } else {
+                counter = 1;
+            }
+            var next_class_names = $("." + class_name.replace(matches[0], Number(matches[0]) + counter));
+            var parent_id = next_class_names.parent().attr("id");
+
             next_class_names.show(250);
+
             if (next_class_names.attr("class").split(" ").indexOf("end-scene") > -1) {
                 $(".presenter-container").css("background", "rgba(0, 0, 0, 0.8)");
                 $(".finish-scene").show(250);
             } else {
                 $(".presenter-container").css("background", "rgba(255, 255, 0, 1)");
                 $(".finish-scene").hide();
+            }
+
+            if (class_name == 'single-2') {
+                if ($("#" + parent_id).css("display") == "none") {
+                    console.log("NONE");
+                    $(".presenter-container").css("background", "rgba(0, 0, 0, 0.8)");
+                    $(".finish-scene").show(250);
+                }
             }
         });
 
@@ -104,16 +119,21 @@
         });
 
         $(".one-person").click(function () {
-            if (screen_width <= 768) {
-                $("#confirm-name").click();
-            }
             $(this).addClass("clicked");
             $(".question").hide();
-            $(".single-individual").show(250);
+            $("#single-individual-large").show(250);
             $(".under-10-individuals").hide();
             $(".ten-plus-individuals").hide();
-            setCounterButtonActive($(this));
-            setCounterButtonInactive($(".more-persons"));
+            click = 1;
+            persons = 1;
+        });
+
+        $(".one-person-small").click(function () {
+            $(this).addClass("clicked");
+            $(".question").hide();
+            $("#single-individual-small").show(250);
+            $(".under-10-individuals").hide();
+            $(".ten-plus-individuals").hide();
             click = 1;
             persons = 1;
         });
@@ -390,6 +410,9 @@
                 <div class="col-md-offset-2 col-md-8">
                     <div class="individuals-container">
                         <h2>How many human rights victims were campaigned for in the below Urgent Action?</h2>
+                        <div class="one-person-small" style="display: none;">
+                            <h1>1</h1>
+                        </div>
                         <div class="one-person">
                             <h1>1</h1>
                         </div>
@@ -488,7 +511,7 @@
             </div>
         </div>
 
-        <div class="single-individual">
+        <div class="single-individual" id="single-individual-large">
             <div class="col-xs-12 col-md-12 single-1" style="padding: 10px 0 0 0;">
                 <div class="col-xs-2 col-md-2" style="text-align: center">
                     <div class="back-arrow-container Q1-back-arrow" style="text-align: center; margin-top:25px;">
@@ -536,7 +559,7 @@
                     <br>
                 </div>
                 <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
-                    <h2 id="person-name-question"></h2>
+                    <h2 class="person-name-question"></h2>
                     <div class="options" style="margin-left: -11px;">
                         <div class="individual-outcome outcome-result">MALE
                         </div>
@@ -555,11 +578,61 @@
             </div>
         </div>
 
+        <div class="single-individual" id="single-individual-small">
+            <div class="col-xs-12 col-md-12 single-1" style="padding: 10px 0 0 0;">
+                <div class="col-xs-2 col-md-2" style="text-align: center">
+                    <div class="back-arrow-container" style="text-align: center; margin-top:35px;">
+
+                    </div>
+                    <br>
+                </div>
+                <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
+                    <h2>What was the result of this Urgent Action campaign?</h2>
+                    <div class="options" style="margin-left: -11px;">
+                        <div class="individual-outcome outcome-result">POSITIVE
+                        </div>
+                        <div class="individual-outcome outcome-result">NEGATIVE
+                        </div>
+                        <div class="individual-outcome outcome-result">NOT CLEAR
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-12 single-2" style="display: none;">
+                <div class="col-xs-2 col-md-2" style="text-align: center">
+                    <div class="back-arrow-container" style="text-align: center; margin-top:40px;">
+                    </div>
+                    <br>
+                </div>
+                <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
+                    <h2 class="person-name-question"></h2>
+                    <div class="options" style="margin-left: -11px;">
+                        <div class="individual-outcome outcome-result">MALE
+                        </div>
+                        <div class="individual-outcome outcome-result">FEMALE
+                        </div>
+                        <div class="individual-outcome outcome-result">NOT CLEAR
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-12 end-scene single-3" style="display: none;">
+                {% include "urgentactions/ua-sub-header-final-step.html" %}
+            </div>
+        </div>
+
         <div class="under-10-individuals">
             <div class="col-xs-12 col-md-12 under-ten-1">
                 {% include "urgentactions/ua-results.html" %}
             </div>
-            <div class="col-xs-12 col-md-12 mixed under-ten-2" style="display: none;">
+            <div class="col-xs-12 col-md-12 under-ten-2" style="display: none;">
                 <div class="col-xs-2 col-md-2" style="text-align: center">
                     <div class="back-arrow-container"
                          style="text-align: center; margin-top:35px;">
@@ -596,8 +669,8 @@
                             <div class="individual-outcome" id="reset" style="margin-left: 0;">RESET</div>
                         </div>
                         <div class="form-group">
-                            <div class="individual-outcome next-ua" style="margin-left: 10px !important;"
-                                 id="mixed-continue">NEXT URGENT ACTION
+                            <div class="individual-outcome outcome-result" style="margin-left: 10px !important;"
+                                 id="mixed-continue">CONFIRM
                             </div>
                         </div>
                     </div>
