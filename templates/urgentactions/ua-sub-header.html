@@ -15,6 +15,11 @@
     var is_10_plus_clicked = null;
 
     function displayFirstQuestion(element) {
+        $(".continue-under-ten").hide();
+        $(".more-persons").css({
+            'background-color': "transparent",
+            "color": "#fff"
+        });
         element.parent().parent().parent().hide();
         $(".question").show(250);
         $(".individuals-container").parent().show(250);
@@ -41,7 +46,6 @@
                 displayFirstQuestion($(this));
             }
             click = 0;
-            $(".more-persons h1").text("2+");
             $("#reset").click();
             $(".select-persons").hide();
         });
@@ -94,21 +98,38 @@
 
         $('.person').click(function () {
             var class_names_array = $(this).attr("class").split(" ");
-            var class_name = class_names_array[1];
+            var class_name = class_names_array[class_names_array.length - 1];
             var person_number = class_name.substr(class_name.length - 1);
+
             var persons_involved = Number(person_number) + 1;
             if (persons_involved < 2) {
 
             } else {
-                $(this).parent().parent().parent().hide();
                 is_10_plus_clicked = null;
                 persons = persons_involved;
                 if (class_name == "person") {
+                    $(this).parent().parent().parent().hide();
                     is_10_plus_clicked = 1;
-                    persons = 11;
+                    persons = 9;
                     $(".ten-plus-individuals").show(250);
                 } else {
-                    $(".under-10-individuals").show(250);
+                    for (var i = 0; i <= Number(person_number); i++) {
+                        var person_head = $(this).parent().find(".person" + i).find('.person-head');
+                        var person_body = $(this).parent().find(".person" + i).find('.person-body');
+                        setPersonActive(person_head, person_body);
+                    }
+
+                    for (var k = Number(person_number) + 1; k <= 8; k++) {
+                        var person_head = $(this).parent().find(".person" + k).find('.person-head');
+                        var person_body = $(this).parent().find(".person" + k).find('.person-body');
+                        setPersonInactive(person_head, person_body);
+                    }
+
+                    $(".more-persons h1").text(Number(person_number) + 1);
+                    $(".person").off("mouseleave");
+                    $(".person").off("mouseenter");
+                    $(".continue-under-ten").show(250);
+                    persons = Number(person_number) + 1;
                 }
             }
         });
@@ -152,10 +173,15 @@
                 click = 2;
             } else {
                 click = 0;
-                $(".more-persons h1").text("2+");
+                $(".continue-under-ten").hide();
                 setCounterButtonInactive($(this));
             }
             $(".select-persons").animate({width: 'toggle'}, 250);
+        });
+
+        $(".continue-under-ten").click(function () {
+            $(this).parent().parent().parent().parent().hide();
+            $(".under-10-individuals").show(250);
         });
 
         $("#victims-number-unclear").click(function () {
@@ -420,7 +446,7 @@
                             <h1>2+</h1>
                         </div>
                         <div class="select-persons" style="display: none; float: left;">
-                            <div class="first-four" style="float: left; margin-left: 15px;">
+                            <div class="eight-persons" style="float: left; margin-left: 15px;">
                                 <div class="person person0"
                                      style="float:left; height:40px; width: 14px; margin-top: 5px;">
                                     <div class="person-head" style="text-align: center;">
@@ -457,8 +483,6 @@
                                         <img src="/static/img/body.png" style="width: 11px; height: 20px;">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="last-four" style="float: left;">
                                 <div class="person person4"
                                      style="float:left; padding-right: 1px; height:40px; width: 20px; margin-top: 5px;">
                                     <div class="person-head" style="text-align: right;">
@@ -500,6 +524,7 @@
                                 <label id="person-counter" style="font-size: 28px;">9+</label>
                             </div>
                         </div>
+                        <div class="individual-outcome continue-under-ten" style="display: none;">CONTINUE</div>
                     </div>
 
                 </div>

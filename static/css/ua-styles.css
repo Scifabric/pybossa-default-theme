@@ -403,6 +403,10 @@ a:hover {
     text-align: center !important;
 }
 
+.continue-under-ten {
+    margin: 0 0 0 10px;
+}
+
 .finish-scene {
     width: 250px;
     text-align: center;
@@ -463,7 +467,11 @@ i:hover {
     }
 
     .individual-outcome {
-        margin-top: 11px !important;
+        margin-top: 11px;
+    }
+
+    .continue-under-ten {
+        margin: 0 0 0 0;
     }
 
     #victims-number {
@@ -472,6 +480,12 @@ i:hover {
 
     .outcome-btns {
         margin: -25px 0 0 -10px !important;
+    }
+}
+
+@media (max-width: 385px) {
+    .continue-under-ten {
+        margin: 10px 0 0 0;
     }
 }
 
