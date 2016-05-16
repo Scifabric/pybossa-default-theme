@@ -992,6 +992,10 @@ li > a {
     margin-top: -200px !important;
 }
 
+#footer_links ul {
+    list-style-type: none;
+    text-align: center !important;
+}
 #footer_links ul li a:hover {
     color: #fff;
 }
