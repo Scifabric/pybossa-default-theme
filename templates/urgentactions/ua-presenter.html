@@ -82,12 +82,18 @@
                 <div class="circle-base circle1">
                     <h1>YOU'RE AWESOME</h1>
                     <hr class="hr" style="margin-top: 0; width: 90%; background-color: #fff;">
-                    <div class="sharing-buttons">
+                    <div class="sharing-buttons rrssb-buttons">
                         <h3 style="margin-top: -5px;">Please share</h3>
-                        <i style="color: #fff;" class="fa fa-facebook-square fa-3x"
-                           aria-hidden="false"></i>
-                        <i style="color: #fff; margin-left:10px;" class="fa fa-twitter-square fa-3x"
-                           aria-hidden="false"></i>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=http://altclick-test.focallabs.co.uk/"
+                           class="popup" style="height: 65px;">
+                            <i class="fa fa-facebook-square fa-4x"
+                               aria-hidden="false"></i>
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?text=Lorem%20Ipsum%20%2Fplacehold.it/350x150"
+                           class="popup" style="margin-left: 5px !important">
+                            <i class="fa fa-twitter-square fa-4x"
+                               aria-hidden="false"></i>
+                        </a>
                     </div>
                 </div>
                 {% if current_user.is_authenticated() %}
