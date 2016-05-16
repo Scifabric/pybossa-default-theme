@@ -3,6 +3,11 @@
     var persons = 0;
     var not_clear_clicked = 0;
     var last_checked = 0;
+    var select_json = {
+        "positive-select": "0",
+        "negative-select": "0",
+        "unclear-select": "0"
+    };
     var person_name = "";
     var mixed_json = {
         "positive": 0,
@@ -134,9 +139,26 @@
             }
         });
 
+//        $(".selectbox").change(function () {
+//            var id = $(this).attr("id");
+//            var value = $(this).val().toString();
+//            console.log(value);
+//            select_json[id] = value;
+//            var values = [];
+//            for (var item in select_json) {
+//                var val = select_json[item];
+//                values.push(val);
+//            }
+//            console.log(values);
+//            if (values.indexOf("0") > -1) {
+//                $(".mixed-continue").hide();
+//            } else {
+//                $(".mixed-continue").show(250);
+//            }
+//        });
+
         $(".next-ua").click(function () {
             $(".btn-submit").click();
-            window.location.href = "/project/urgent_actions/newtask";
         });
 
         $(".one-person").click(function () {
@@ -193,6 +215,7 @@
 
         $("#mixed").click(function () {
             if (!is_10_plus_clicked) {
+                bindSelectBoxes();
                 $(".Q2").hide();
                 $(".final-step").hide();
                 $(".mixed").show();
@@ -402,6 +425,21 @@
         }
         return this;
     };
+
+    function bindSelectBoxes() {
+        var mixed_selects = ["positive-select", "negative-select", "unclear-select"];
+        for (var idx = 0; idx < mixed_selects.length; idx++) {
+            $("#" + mixed_selects[idx]).empty();
+            $("#" + mixed_selects[idx]).append("<option value='0'>No.</option>")
+        }
+
+        for (var i = 1; i <= persons; i++) {
+            var option = "<option value='" + i + "'>" + i + "</option>";
+            for (var j = 0; j < mixed_selects.length; j++) {
+                $("#" + mixed_selects[j]).append(option);
+            }
+        }
+    }
 
     function setCounterButtonActive(element) {
         element.css("background-color", "#FFFF00");
@@ -667,13 +705,30 @@
                 </div>
                 <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
                     <h2>Please specify how many people had positive and negative outcomes.</h2>
-                    <!--<div class="form-inline mixed-small">-->
-                        <!--<div class="form-group">-->
-                            <!--<h2>POSITIVE</h2>-->
-                            <!--<select class="form-control" id="">-->
-                            <!--</select>-->
-                        <!--</div>-->
-                    <!--</div>-->
+                    <div class="mixed-small">
+                        <br>
+                        <div class="form-group">
+                            <h2 class="mixed-h2">POSITIVE</h2>
+                            <select class="form-control selectbox" id="positive-select">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <h2 class="mixed-h2">NEGATIVE</h2>
+                            <select class="form-control selectbox" id="negative-select">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <h2 class="mixed-h2">UNCLEAR</h2>
+                            <select class="form-control selectbox" id="unclear-select">
+                            </select>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="individual-outcome outcome-result mixed-continue"
+                                 style="margin-left: 0;">CONFIRM
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-inline mixed-large">
                         <div class="form-group">
                             <div class="victims positive-victims">
@@ -693,14 +748,12 @@
                                 <div class="victims-body unsure-victims-body"></div>
                             </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="form-inline">
+                        <br><br>
                         <div class="form-group">
                             <div class="individual-outcome" id="reset" style="margin-left: 0;">RESET</div>
                         </div>
                         <div class="form-group">
-                            <div class="individual-outcome outcome-result" style="margin-left: 10px !important;"
+                            <div class="individual-outcome outcome-result mixed-continue" style="margin-left: 10px !important;"
                                  id="mixed-continue">CONFIRM
                             </div>
                         </div>

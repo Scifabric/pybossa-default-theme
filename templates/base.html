@@ -11,6 +11,25 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+
+    <!-- Facebook meta -->
+    <meta property="og:title" content="Lorem Ipsum"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://altclick-test.focallabs.co.uk"/>
+    <meta property="og:image" content="http://altclick-test.focallabs.co.uk/static/img/dummy-image.png"/>
+    <meta property="og:description"
+          content="Lorem Ipsum dolor sit amet"/>
+
+    <!-- Twitter meta -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PyBossa">
+    <meta name="twitter:creator" content="@OpenDataKosovo">
+    <meta name="twitter:title" content="Lorem ipsum">
+    <meta name="twitter:description"
+          content="Lorem Ipsum Dolor Sit Amet">
+    <meta name="twitter:image" content="http://altclick-test.focallabs.co.uk/static/img/dummy-image.png">
+
+
     <!-- Le styles -->
     <link href="{{url_for('static', filename='bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -36,6 +55,7 @@
     <link rel="icon" type="image/png" href="/static/img/fav_icons/android-chrome-192x192.png" sizes="192x192" />
     <link rel="icon" type="image/png" href="/static/img/fav_icons/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/png" href="/static/img/fav_icons/favicon-16x16.png" sizes="16x16" />
+    <link rel="stylesheet" href="/static/rrssb/css/rrssb.css" />
     <link rel="shortcut icon" type="image/x-icon" href="/static/img/fav_icons/favicon.ico" />
     <meta name="msapplication-TileColor" content="#ffff00" />
     <meta name="theme-color" content="#ffffff" />
@@ -73,6 +93,14 @@
     </div>
     {% endif %}
     <footer>
+        <div style="margin: 0 auto; text-align: center;">
+            <br><br>
+            <h3 style="margin-top: -5px;">Please share</h3>
+            <i style="color: #fff;" class="fa fa-facebook-square fa-3x"
+               aria-hidden="false"></i>
+            <i style="color: #fff; margin-left:10px;" class="fa fa-twitter-square fa-3x"
+               aria-hidden="false"></i>
+        </div>
     {% if not enforce_privacy %}
     <div id="footer_links" class="container">
         <div class="row">
