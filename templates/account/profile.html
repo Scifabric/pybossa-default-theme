@@ -17,7 +17,7 @@
         <hr class="col-xs-12">
         <h2 class="col-xs-12">{{ _('Your Contributions') }}</h2>
         {% for project in projects_contrib %}
-        <div class="row-fluid well well-small">
+        <div class="row">
             <div class="col-xs-12 col-sm-3 col-md-3">
                 {{ project_helper.render_project_thumbnail(project, upload_method, class='img-polaroid', style='max-width:100px; max-height:100px;') }}
             </div>
