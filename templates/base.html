@@ -64,6 +64,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript" src="{{url_for('static', filename='bootstrap/js/bootstrap.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='vendor/modernizr.min.js')}}"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('.rrssb-buttons').rrssb({
+                // required:
+                title: 'This is the facebook and/or tweet text',
+                url: 'http://altclick-test.focallabs.co.uk/'
+            });
+        });
+    </script>
     <!-- Google Analytics or similar solutions -->
     {% include '_ga.html' ignore missing %}
     <!-- Google Custom Search -->
