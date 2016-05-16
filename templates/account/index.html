@@ -13,7 +13,7 @@
       {% else %}
       <h1>{{ _('Community') }} <em>{{total}} {{ _('registered users') }}</em><a class="pull-right btn btn-primary" href="{{url_for('leaderboard.index')}}"><i class="icon-trophy" style="color:white"></i> {{ _('Leaderboard') }}</a></h1>
       {% if accounts %}
-      <ul class="thumbnails">
+      <ul class="thumbnails" style="list-style-type: none !important;">
       {% for account in accounts %}
           <li>
               <a href="{{url_for('account.profile', name=account.name)}}" class="thumbnail" rel='popover' title="<strong>{{account['fullname']}}</strong>" data-content="
