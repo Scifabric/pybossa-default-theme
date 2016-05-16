@@ -43,6 +43,7 @@
             {{ render_field(form.locale) }}
             {{ render_field(form.privacy_mode) }}
             {{ render_field(form.subscribed) }}
+            {{ render_field(form.country, placeholder= _('Country') ) }}
             <div class="form-actions">
                 <button type="submit" name='btn' value="Profile" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
               <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn btn-default">{{ _('Cancel') }}</a>
