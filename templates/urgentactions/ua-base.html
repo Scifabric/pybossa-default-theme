@@ -6,9 +6,28 @@
     {% else %}
     <title>{{ brand }} &middot; {{ title | safe}}</title>
     {% endif %}
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <!-- Facebook meta -->
+    <meta property="og:title" content="Lorem Ipsum"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://altclick-test.focallabs.co.uk"/>
+    <meta property="og:image" content="http://placehold.it/350x300"/>
+    <meta property="og:description"
+          content="Lorem Ipsum dolor sit amet"/>
+
+    <!-- Twitter meta -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PyBossa">
+    <meta name="twitter:creator" content="@OpenDataKosovo">
+    <meta name="twitter:title" content="Lorem ipsum">
+    <meta name="twitter:description"
+          content="Lorem Ipsum Dolor Sit Amet">
+    <meta name="twitter:image" content="http://placehold.it/350x300">
+
     <!-- Le styles -->
     <link href="{{url_for('static', filename='bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -21,32 +40,130 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="apple-touch-icon" sizes="57x57" href="/static/img/fav_icons/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="/static/img/fav_icons/apple-touch-icon-60x60.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="/static/img/fav_icons/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/static/img/fav_icons/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="/static/img/fav_icons/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="/static/img/fav_icons/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="/static/img/fav_icons/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/static/img/fav_icons/apple-touch-icon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/img/fav_icons/apple-touch-icon-180x180.png" />
-    <link rel="icon" type="image/png" href="/static/img/fav_icons/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="/static/img/fav_icons/android-chrome-192x192.png" sizes="192x192" />
-    <link rel="icon" type="image/png" href="/static/img/fav_icons/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="/static/img/fav_icons/favicon-16x16.png" sizes="16x16" />
-    <link rel="shortcut icon" type="image/x-icon" href="/static/img/fav_icons/favicon.ico" />
-    <meta name="msapplication-TileColor" content="#ffff00" />
-    <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/static/img/fav_icons/apple-touch-icon-57x57.png"/>
+    <link rel="apple-touch-icon" sizes="60x60" href="/static/img/fav_icons/apple-touch-icon-60x60.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/img/fav_icons/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="/static/img/fav_icons/apple-touch-icon-76x76.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/img/fav_icons/apple-touch-icon-114x114.png"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/img/fav_icons/apple-touch-icon-120x120.png"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/img/fav_icons/apple-touch-icon-144x144.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/img/fav_icons/apple-touch-icon-152x152.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/img/fav_icons/apple-touch-icon-180x180.png"/>
+    <link rel="icon" type="image/png" href="/static/img/fav_icons/favicon-32x32.png" sizes="32x32"/>
+    <link rel="stylesheet" href="/static/rrssb/css/rrssb.css"/>
+    <link rel="icon" type="image/png" href="/static/img/fav_icons/android-chrome-192x192.png" sizes="192x192"/>
+    <link rel="icon" type="image/png" href="/static/img/fav_icons/favicon-96x96.png" sizes="96x96"/>
+    <link rel="icon" type="image/png" href="/static/img/fav_icons/favicon-16x16.png" sizes="16x16"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/img/fav_icons/favicon.ico"/>
+    <meta name="msapplication-TileColor" content="#ffff00"/>
+    <meta name="theme-color" content="#ffffff"/>
 
     <!-- Le javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript" src="{{url_for('static', filename='bootstrap/js/bootstrap.js')}}"></script>
 </head>
+
+<script type="text/javascript">
+    $(function () {
+        $('.rrssb-buttons').rrssb({
+            // required:
+            title: 'This is the facebook and/or tweet text',
+            url: 'http://altclick-test.focallabs.co.uk/',
+        });
+    });
+</script>
+
 <body style="background-color: #fff; padding: 0;">
-<div class="container-fluid main-container">
-    {% include "urgentactions/ua-header.html" %}
-    {% block body %}{% endblock %}
-    {% include "urgentactions/ua-footer.html" %}
+<div class="main-container">
+    {% include "_navbar.html" %}
+    <div id="main-content-container">
+        {% block body %}{% endblock %}
+    </div>
+    <footer>
+        <div style="margin: 0 auto; text-align: center;">
+            <br><br>
+            <h3 style="margin-top: -5px;">Please share</h3>
+            <ul class="rrssb-buttons clearfix"
+                style="margin: 0 auto !important; width: 150px !important; height: 80px !important;">
+
+                <li class="rrssb-facebook">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://altclick-test.focallabs.co.uk/"
+                       class="popup">
+                        <span class="rrssb-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29">
+                            <path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"/>
+                        </svg></span>
+                        <span class="rrssb-text">facebook</span>
+                    </a>
+
+                </li>
+                <li class="rrssb-twitter">
+                    <!-- Replace href with your Meta and URL information  -->
+                    <a href="https://twitter.com/intent/tweet?text=Lorem%20Ipsum%20%2Fplacehold.it/350x150"
+                       class="popup">
+                        <span class="rrssb-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
+                            <path d="M24.253 8.756C24.69 17.08 18.297 24.182 9.97 24.62a15.093 15.093 0 0 1-8.86-2.32c2.702.18 5.375-.648 7.507-2.32a5.417 5.417 0 0 1-4.49-3.64c.802.13 1.62.077 2.4-.154a5.416 5.416 0 0 1-4.412-5.11 5.43 5.43 0 0 0 2.168.387A5.416 5.416 0 0 1 2.89 4.498a15.09 15.09 0 0 0 10.913 5.573 5.185 5.185 0 0 1 3.434-6.48 5.18 5.18 0 0 1 5.546 1.682 9.076 9.076 0 0 0 3.33-1.317 5.038 5.038 0 0 1-2.4 2.942 9.068 9.068 0 0 0 3.02-.85 5.05 5.05 0 0 1-2.48 2.71z"/>
+                        </svg></span>
+                        <span class="rrssb-text">twitter</span>
+                    </a>
+                </li>
+                <br><br>
+            </ul>
+        </div>
+        {% if not enforce_privacy %}
+        <div id="footer_links" class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul>
+                        <li><strong>{{ _('Resources') }}</strong></li>
+                        <li><i class="glyphicon glyphicon-link"></i> <a href="http://docs.pybossa.com">{{ _('Docs')
+                            }}</a></li>
+                        <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('help.api')}}">API</a></li>
+                        <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('help.tos')}}">{{ _('Terms of
+                            Use') }}</a></li>
+                        <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('help.cookies_policy')}}">{{
+                            _('Cookies Policy') }}</a></li>
+                        <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('stats.index')}}">{{ _('Stats')
+                            }}</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul>
+                        <li><strong>{{ _('Licenses') }}</strong></li>
+                        <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('help.license')}}">{{
+                            _('Overview') }}</a></li>
+                        <li><i class="glyphicon glyphicon-link"></i> <a
+                                href="{{url_for('help.license', _anchor='projects')}}">{{ _('Projects') }}</a></li>
+                        <li><i class="glyphicon glyphicon-link"></i> <a
+                                href="{{url_for('help.license', _anchor='data')}}">{{ _('Data') }}</a></li>
+                        <li><i class="glyphicon glyphicon-link"></i> <a
+                                href="{{url_for('help.license', _anchor='content')}}">{{ _('Content') }}</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul>
+                        <li><strong>{{ _('Technologies') }}</strong></li>
+                        <li><i class="glyphicon glyphicon-link"></i> <a href="http://ckan.org">{{ _('CKAN') }}</a></li>
+                        <li><i class="glyphicon glyphicon-link"></i> <a href="http://www.epicollect.net">{{
+                            _('EpiCollect') }}</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul>
+                        <li><strong>{{ _('Contact') }}</strong></li>
+                        <li><i class="glyphicon glyphicon-envelope"></i> <a href="mailto:{{contact_email}}">{{
+                            _('Email') }}</a></li>
+                        <li><i class="fa fa-twitter-square fa-sm"></i> <a href="http://twitter.com/{{contact_twitter}}">{{
+                            _('Twitter') }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="row">
+            {% include ['custom/_footer.html', '_footer.html'] ignore missing %}
+        </div>
+    </footer>
+    <script src="/static/rrssb/js/rrssb.min.js"></script>
 </div>
 </body>
 </html>
