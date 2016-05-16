@@ -291,7 +291,17 @@ footer a {
 }
 
 .popup {
-    border-radius: 5px !important;
+    border-radius: 7px !important;
+    background-color: #666666 !important;
+    margin: 0 !important;
+}
+
+.clearfix li a:hover {
+    color: #FFF !important;
+}
+
+.clearfix li a:active {
+    color: #FFF !important;
 }
 
 footer,
@@ -488,6 +498,16 @@ footer .container {
 i:hover {
     cursor: pointer;
     border-radius: 5px;
+    color: #fff !important;
+}
+
+.clearfix i {
+    margin-left: -15px;
+!important;
+}
+
+.clearfix i:hover {
+    color: #fff !important;
 }
 
 .mixed-small {
@@ -631,6 +651,7 @@ i:hover {
     .outcome-options {
         text-align: left !important;
     }
+
     .right-nav {
         display: none !important;
     }
