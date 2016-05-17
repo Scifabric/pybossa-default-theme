@@ -224,6 +224,10 @@ a:hover {
     float: left;
 }
 
+.ua-sidebar {
+    background-color: #dadada;
+}
+
 .left-back-arrow, .right-back-arrow {
     float: left;
     width: 35px;
@@ -681,6 +685,10 @@ i:hover {
 }
 
 @media (max-width: 769px) {
+    .ua-sidebar {
+        display: none;
+    }
+
     .one-person-small {
         display: block !important;
     }
@@ -699,6 +707,10 @@ i:hover {
 }
 
 @media (min-width: 769px) {
+    .ua-sidebar {
+        display: block;
+    }
+
     .one-person-small {
         display: none !important;
     }

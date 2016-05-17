@@ -46,7 +46,7 @@
                 $("." + class_name).hide();
                 $("." + class_name.replace(matches[0], Number(matches[0]) - 1)).show(250);
                 $(".presenter-container").removeClass("disabled");
-                $(".presenter-container").css("background", "rgba(255, 255, 0, 1)");
+                $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
                 $(".finish-scene").hide();
             } else {
                 displayFirstQuestion($(this));
@@ -87,19 +87,17 @@
             next_class_names.show(250);
 
             if (next_class_names.attr("class").split(" ").indexOf("end-scene") > -1) {
-                $(".presenter-container").addClass("disabled");
                 $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
                 $(".finish-scene").show(250);
             } else {
                 $(".presenter-container").removeClass("disabled");
-                $(".presenter-container").css("background", "rgba(255, 255, 0, 1)");
+                $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
                 $(".finish-scene").hide();
             }
 
             if (class_name == 'single-2') {
                 if ($("#" + parent_id).css("display") == "none") {
                     console.log("NONE");
-                    $(".presenter-container").addClass("disabled");
                     $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
                     $(".finish-scene").show(250);
                 }

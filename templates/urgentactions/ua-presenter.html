@@ -8,6 +8,13 @@
 
         var t = '';
 
+        var content_div_height = $('#task-presenter-div').height();
+        $(".ua-sidebar").css("height", content_div_height + "px");
+        setTimeout(function(){
+            var content_div_height = $('#task-presenter-div').height();
+            $(".ua-sidebar").css("height", content_div_height + "px");
+        }, 1200);
+
         $("#close-popup").click(function () {
             $('#detailed-individual-information').hide();
         });
@@ -68,8 +75,9 @@
 
     });
 </script>
-<div class="row presenter-container" style="color: #000; background-color: #ffff00;">
-    <div class="col-md-8 col-md-offset-2" style="padding: 0 14px 0 14px;">
+<div class="row presenter-container" style="color: #000; background-color: #fff;">
+    <div class="col-md-2 ua-sidebar"></div>
+    <div class="col-xs-12 col-md-8" id="task-presenter-div" style="padding: 0 14px 0 14px;">
         <script>
             Modernizr.load({
                 test: window.JSON,
@@ -146,7 +154,7 @@
         </div>
         <br><br>
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-2 ua-sidebar"></div>
 </div>
 <div class="rectangle-speech-border" id="detailed-individual-information" style="display: none;">
     <div class="detailed-information">
