@@ -177,7 +177,7 @@ a:hover {
     vertical-align: middle !important;
     color: #ffffff;
     margin-top: 80px;
-    background-color: #5B5B5B;
+    background-color: #333333;
 }
 
 .individuals-container {
@@ -221,7 +221,6 @@ a:hover {
 
 .detailed-information {
     padding: 0 10px 5px 10px;
-    height: 145px;
     float: left;
 }
 
@@ -525,6 +524,21 @@ i:hover {
 
 .country-date {
     margin: 83px 0 0 200px;
+}
+
+.skip {
+    float: right;
+    height: 32px;
+    width: 150px;
+    text-align: center;
+    padding-top: -5px;
+    background-color: #8F949A;
+    color: #fff;
+}
+
+.skip:hover {
+    cursor: pointer;
+    background-color: #666666;
 }
 
 @media (max-width: 480px) {

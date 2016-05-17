@@ -45,6 +45,7 @@
             if (matches[0] > 1) {
                 $("." + class_name).hide();
                 $("." + class_name.replace(matches[0], Number(matches[0]) - 1)).show(250);
+                $(".presenter-container").removeClass("disabled");
                 $(".presenter-container").css("background", "rgba(255, 255, 0, 1)");
                 $(".finish-scene").hide();
             } else {
@@ -86,9 +87,11 @@
             next_class_names.show(250);
 
             if (next_class_names.attr("class").split(" ").indexOf("end-scene") > -1) {
-                $(".presenter-container").css("background", "rgba(0, 0, 0, 0.8)");
+                $(".presenter-container").addClass("disabled");
+                $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
                 $(".finish-scene").show(250);
             } else {
+                $(".presenter-container").removeClass("disabled");
                 $(".presenter-container").css("background", "rgba(255, 255, 0, 1)");
                 $(".finish-scene").hide();
             }
@@ -96,7 +99,8 @@
             if (class_name == 'single-2') {
                 if ($("#" + parent_id).css("display") == "none") {
                     console.log("NONE");
-                    $(".presenter-container").css("background", "rgba(0, 0, 0, 0.8)");
+                    $(".presenter-container").addClass("disabled");
+                    $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
                     $(".finish-scene").show(250);
                 }
             }
@@ -145,7 +149,7 @@
             var value = $(this).val().toString();
             select_json[id] = Number(value);
             var sum = 0;
-            for (var item in select_json){
+            for (var item in select_json) {
                 sum += Number(select_json[item]);
             }
             if (sum == persons) {
@@ -750,7 +754,8 @@
                             <div class="individual-outcome" id="reset" style="margin-left: 0;">RESET</div>
                         </div>
                         <div class="form-group">
-                            <div class="individual-outcome outcome-result mixed-continue" style="margin-left: 10px !important;"
+                            <div class="individual-outcome outcome-result mixed-continue"
+                                 style="margin-left: 10px !important;"
                                  id="mixed-continue">CONFIRM
                             </div>
                         </div>
