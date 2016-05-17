@@ -1,5 +1,22 @@
 {% include "urgentactions/ua-sub-header.html" %}
+
+<script type="text/javascript" src="{{url_for('static', filename='js/attrchange.js')}}"></script>
 <script type="text/javascript">
+    function onElementHeightChange(elm, callback) {
+        var lastHeight = elm.clientHeight, newHeight;
+        (function run() {
+            newHeight = elm.clientHeight;
+            if (lastHeight != newHeight)
+                callback();
+            lastHeight = newHeight;
+
+            if (elm.onElementHeightChangeTimer)
+                clearTimeout(elm.onElementHeightChangeTimer);
+
+            elm.onElementHeightChangeTimer = setTimeout(run, 200);
+        })();
+    }
+
     $(function () {
         $(".one-person").click(function () {
             document.onmouseup = gText;
@@ -7,13 +24,18 @@
         });
 
         var t = '';
-
         var content_div_height = $('#task-presenter-div').height();
         $(".ua-sidebar").css("height", content_div_height + "px");
-        setTimeout(function(){
-            var content_div_height = $('#task-presenter-div').height();
-            $(".ua-sidebar").css("height", content_div_height + "px");
-        }, 800);
+        var refreshIntervalId = setInterval(function () {
+            var content_div_height_changed = $('#task-presenter-div').height();
+            if (content_div_height == content_div_height_changed) {
+                $(".ua-sidebar").css("height", content_div_height_changed + "px");
+            } else {
+                content_div_height = content_div_height_changed;
+                $(".ua-sidebar").css("height", content_div_height + "px");
+                clearInterval(refreshIntervalId);
+            }
+        }, 200);
 
         $("#close-popup").click(function () {
             $('#detailed-individual-information').hide();
