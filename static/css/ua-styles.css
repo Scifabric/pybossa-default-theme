@@ -682,12 +682,12 @@ i:hover {
     .right-nav {
         display: none !important;
     }
-}
-
-@media (max-width: 769px) {
     .ua-sidebar {
         display: none;
     }
+}
+
+@media (max-width: 769px) {
 
     .one-person-small {
         display: block !important;
@@ -707,9 +707,6 @@ i:hover {
 }
 
 @media (min-width: 769px) {
-    .ua-sidebar {
-        display: block;
-    }
 
     .one-person-small {
         display: none !important;
@@ -729,6 +726,11 @@ i:hover {
 }
 
 @media (min-width: 990px) {
+
+    .ua-sidebar {
+        display: block;
+    }
+
     .divider {
         display: none !important;
     }
