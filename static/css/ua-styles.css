@@ -523,6 +523,10 @@ i:hover {
     display: block;
 }
 
+.country-date {
+    margin: 83px 0 0 200px;
+}
+
 @media (max-width: 480px) {
     #reset, .victims {
         margin-left: 0 !important;
@@ -674,6 +678,10 @@ i:hover {
     #detailed-individual-information {
         display: none;
     }
+
+    .country-date {
+        display: none;
+    }
 }
 
 @media (min-width: 769px) {
@@ -686,6 +694,10 @@ i:hover {
     }
 
     #detailed-individual-information {
+        display: block;
+    }
+
+    .country-date {
         display: block;
     }
 }

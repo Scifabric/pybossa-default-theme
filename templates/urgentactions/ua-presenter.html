@@ -111,10 +111,14 @@
                              class="img img-responsive">
                     </div>
                 </a>
+                <div>
+                    <h1 class="country-date">Burundi - 16 Sept 1997</h1>
+                </div>
             </div>
+        </div>
+        <div class="row">
             <div class="span12">
-                <br><br><br>
-                <hr class="hr" style="margin: 90px 0 0 2px;">
+                <hr class="hr" style="margin: 20px 0 0 2px;">
             </div>
         </div>
         {% if invite_new_volunteers %}
@@ -129,11 +133,6 @@
         </div>
         {% endif %}
         {{ project.info.task_presenter|safe }}
-        <div class="row">
-            <div class="span12">
-                <hr class="hr" style="width: 100%; margin: 40px 0 0 2px;">
-            </div>
-        </div>
 
         <div id='PYBOSSA_USER_LOCALE' hidden>
             {% if current_user.is_anonymous() %}
