@@ -26,9 +26,7 @@
         $(".ua-sidebar").css("height", content_div_height + "px");
         var refreshIntervalId = setInterval(function () {
             var content_div_height_changed = $('#task-presenter-div').height();
-            if (content_div_height == content_div_height_changed) {
-                $(".ua-sidebar").css("height", content_div_height_changed + "px");
-            } else {
+            if (content_div_height != content_div_height_changed) {
                 content_div_height = content_div_height_changed;
                 $(".ua-sidebar").css("height", content_div_height + "px");
                 clearInterval(refreshIntervalId);
