@@ -4,13 +4,13 @@
 {% import "projects/_helpers.html" as helper %}
 
 {% block content %}
-<div class="row" style="min-height:400px;">
+<div class="row">
     <div class="col-md-3 col-sm-3">
         {{helper.render_project_local_nav(project, 'stats', current_user, pro_features)}}
     </div>
     <div class="col-md-9 col-sm-9">
         {{helper.render_project_title(project, upload_method, subtitle='Statistics') }}
-        <span class="alert alert-warning"><strong>Ooops</strong> Sorry, the project does not have tasks to process and show some statistics</span>
+        <span class="alert alert-warning col-xs-12"><strong>Ooops!</strong> Sorry, the project does not have tasks to process and show some statistics</span>
     </div>
 </div>
 {{ helper.broken_image() }}
