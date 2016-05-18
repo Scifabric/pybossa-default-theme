@@ -737,7 +737,7 @@ i:hover {
     }
 
     .admin-navbar-header {
-        display: none !important;
+        display: block !important;
     }
 
     #menu {
