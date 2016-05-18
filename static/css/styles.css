@@ -825,16 +825,7 @@ ul.users li a {
         background: #000000 !important;
     }
 
-    .navbar-header a {
-        margin-left: 40% !important;
-    }
 
-}
-
-@media (min-width: 979px) and (max-width: 990px) {
-    .navbar-header a {
-        margin-left: 35% !important;
-    }
 }
 
 /* Tablet
@@ -850,10 +841,6 @@ ul.users li a {
         position: static;
         width: auto;
         top: auto;
-    }
-
-    .navbar-header a {
-        margin-left: 37% !important;
     }
     .container > .banner:before,
     .container > .banner:after,
@@ -875,22 +862,8 @@ ul.users li a {
         padding: 2px 10px 2px;
     }
 
-    .navbar-header a {
-        margin-left: 26% !important;
-    }
 }
 
-@media (max-width: 360px) {
-    .navbar-header a {
-        margin-left: 24% !important;
-    }
-}
-@media (max-width: 320px) {
-    .navbar-header a {
-        margin-left: 4% !important;
-        float: left !important;
-    }
-}
 
 body > footer {
     margin-top: 10px;
