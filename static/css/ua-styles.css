@@ -532,6 +532,7 @@ i:hover {
 
 .skip {
     float: right;
+    margin-right: -14px;
     height: 32px;
     width: 150px;
     text-align: center;

@@ -45,7 +45,6 @@
             if (matches[0] > 1) {
                 $("." + class_name).hide();
                 $("." + class_name.replace(matches[0], Number(matches[0]) - 1)).show(250);
-                $(".presenter-container").removeClass("disabled");
                 $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
                 $(".finish-scene").hide();
             } else {
@@ -159,6 +158,17 @@
 
         $(".next-ua").click(function () {
             $(".btn-submit").click();
+            $(".question").show(250);
+            $(".question").children().children().show();
+            $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
+            $(".finish-scene").hide();
+            $(".end-scene").hide();
+            $(".more-persons h1").text("2+");
+            setCounterButtonInactive($(".more-persons"));
+            $("#reset").click();
+            $(".select-persons").hide();
+            $(".continue-under-ten").hide();
+            resetPersons();
         });
 
         $(".one-person").click(function () {
@@ -204,6 +214,7 @@
         $(".continue-under-ten").click(function () {
             $(this).parent().parent().parent().parent().hide();
             $(".under-10-individuals").show(250);
+            $(".under-ten-1").show();
         });
 
         $("#victims-number-unclear").click(function () {
@@ -338,6 +349,16 @@
             });
         });
     });
+
+    function resetPersons() {
+        $(".person").each(function () {
+            var person_head = $(this).find('.person-head');
+            var person_body = $(this).find('.person-body');
+            console.log(person_head);
+            setPersonInactive(person_head, person_body);
+        });
+        onVictimsHover("person", 1, 0)
+    }
 
     function setSelectedVictimsType(element, person_number) {
         var mixed_types_array = ["positive", "negative", "unsure"];
