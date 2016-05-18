@@ -855,6 +855,16 @@ ul.users li a {
     .navbar-header a {
         margin-left: 30% !important;
     }
+    .container > .banner:before,
+    .container > .banner:after,
+    section.grey:before,
+    section.grey:after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        bottom: -1px;
+        width: 0px;
+    }
 
 }
 
@@ -954,7 +964,7 @@ li > a {
 
 @media (max-width: 990px) {
     body .container {
-        padding-top: 180px;
+        padding-top: 100px !important;
     }
 }
 
