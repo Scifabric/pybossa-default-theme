@@ -499,7 +499,7 @@
     }
 
     function setOtherButtonsInactive(element) {
-        $(".single-1").find(".outcome-result").each(function () {
+        $(".single-1 ,.single-2").find(".outcome-result").each(function () {
             if ($(this).text() != element.text()) {
                 setCounterButtonInactive($(this));
             } else {
