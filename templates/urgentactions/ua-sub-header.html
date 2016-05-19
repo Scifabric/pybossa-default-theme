@@ -18,13 +18,10 @@
 
     var is_json_empty = 0;
     var is_10_plus_clicked = null;
+    var is_mixed_clicked = null;
 
     function displayFirstQuestion(element) {
-        $(".continue-under-ten").hide();
-        $(".more-persons").css({
-            'background-color': "transparent",
-            "color": "#fff"
-        });
+        setCounterButtonInactive($(".more-persons"));
         element.parent().parent().parent().hide();
         $(".question").show(250);
         $(".individuals-container").parent().show(250);
@@ -36,10 +33,18 @@
         $(".under-10-individuals").hide();
         $(".ten-plus-individuals").hide();
         $(".finish").hide();
-
+        $(".forward-arrow-container").hide();
         $(".back-arrow-container").click(function () {
             var class_names = $(this).parent().parent().attr("class").split(" ");
             var class_name = class_names[class_names.length - 1];
+            if (class_name == "under-ten-2") {
+                is_mixed_clicked = 1;
+            }
+
+            if (class_name == "ten-plus-1") {
+                resetPersons("active");
+                $('.more-persons h1').text("9+");
+            }
 
             var matches = class_name.match(/\d+/g);
             if (matches[0] > 1) {
@@ -51,13 +56,14 @@
                 displayFirstQuestion($(this));
             }
             click = 0;
-            $("#reset").click();
-            $(".select-persons").hide();
         });
 
         $(".outcome-result").click(function () {
             var value = $(this).attr("id");
-            $(this).parent().parent().parent().hide();
+            setCounterButtonActive($(this));
+            var parent = $(this).parent().parent().parent();
+            parent.hide();
+            setOtherButtonsInactive($(this));
             var class_names = $(this).parent().parent().parent().attr("class").split(" ");
             var class_name = class_names[class_names.length - 1];
             if (person_name != "") {
@@ -96,14 +102,13 @@
 
             if (class_name == 'single-2') {
                 if ($("#" + parent_id).css("display") == "none") {
-                    console.log("NONE");
                     $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
                     $(".finish-scene").show(250);
                 }
             }
         });
 
-        $('.person').click(function () {
+        $(".person").click(function () {
             var class_names_array = $(this).attr("class").split(" ");
             var class_name = class_names_array[class_names_array.length - 1];
             var person_number = class_name.substr(class_name.length - 1);
@@ -168,6 +173,7 @@
             $("#reset").click();
             $(".select-persons").hide();
             $(".continue-under-ten").hide();
+            resetButtonsStyle();
             resetPersons();
         });
 
@@ -185,6 +191,7 @@
             $(this).addClass("clicked");
             $(".question").hide();
             $("#single-individual-small").show(250);
+            $(".single-1").show(250);
             $(".under-10-individuals").hide();
             $(".ten-plus-individuals").hide();
             click = 1;
@@ -219,17 +226,21 @@
 
         $("#victims-number-unclear").click(function () {
             $(this).parent().parent().parent().parent().hide();
+            setCounterButtonActive($(this));
+            $(".continue-vno").css({
+                "background-color": "#999999",
+                "color": "#666"
+            });
             $(".ten-plus-2").show(250);
         });
 
         $("#mixed-continue").hide();
 
         $("#mixed").click(function () {
-            if (!is_10_plus_clicked) {
+            if (!is_10_plus_clicked && !is_mixed_clicked) {
                 bindSelectBoxes();
-                $(".Q2").hide();
                 $(".final-step").hide();
-                $(".mixed").show();
+                $(".outcome-options").show();
                 $(".victims-body").empty();
                 for (var i = 0; i < persons; i++) {
                     var victims_html = "";
@@ -244,7 +255,7 @@
                     $(".negative-victims-body").append(victims_html);
                     $(".unsure-victims-body").append(victims_html);
                 }
-                $('.victims').css({"width": 20 * (persons + 1) + "px", "float": "left"});
+
                 onVictimsHover("mixed-persons", 0, last_checked);
 
                 $(".mixed-persons").on("click", function () {
@@ -254,15 +265,7 @@
 
                     setSelectedVictimsType($(this), Number(person_number) - last_checked);
 
-                    var sum = 0;
-                    for (var item in mixed_json) {
-                        sum += mixed_json[item];
-                    }
-                    if (sum == persons) {
-                        $("#mixed-continue").show(250)
-                    } else {
-                        $("#mixed-continue").hide()
-                    }
+                    checkForSum();
 
                     var classes_array = ["positive-victims-body", "negative-victims-body", "unsure-victims-body"];
 
@@ -307,10 +310,14 @@
                     $(".disabled").off("mouseleave");
                     $(".disabled").off("mouseenter");
                 });
+            } else {
+                checkForSum();
             }
         });
 
         $(".continue-vno").click(function () {
+            setCounterButtonActive($(this));
+            setCounterButtonInactive($("#victims-number-unclear"));
             var parent_div = $(this).parent().parent().parent().parent();
             var victims_number = $('#victims-number').val();
             if (victims_number == "") {
@@ -350,14 +357,38 @@
         });
     });
 
-    function resetPersons() {
+    function resetPersons(active) {
         $(".person").each(function () {
             var person_head = $(this).find('.person-head');
             var person_body = $(this).find('.person-body');
-            console.log(person_head);
-            setPersonInactive(person_head, person_body);
+            if (active) {
+                setPersonActive(person_head, person_body);
+            } else {
+                setPersonInactive(person_head, person_body);
+            }
         });
         onVictimsHover("person", 1, 0)
+    }
+
+    function checkForSum() {
+        var sum = 0;
+        for (var item in mixed_json) {
+            sum += mixed_json[item];
+        }
+        if (sum == persons) {
+            $("#mixed-continue").show(250)
+        } else {
+            $("#mixed-continue").hide()
+        }
+    }
+
+    function resetButtonsStyle() {
+        setCounterButtonInactive($(".individual-outcome"));
+        $(".continue-vno").css({
+            "background-color": "#999999",
+            "color": "#666"
+        });
+        setCounterButtonInactive($(".continue-under-ten"));
     }
 
     function setSelectedVictimsType(element, person_number) {
@@ -465,6 +496,16 @@
     function setCounterButtonActive(element) {
         element.css("background-color", "#FFFF00");
         element.css("color", "#000");
+    }
+
+    function setOtherButtonsInactive(element) {
+        $(".single-1").find(".outcome-result").each(function () {
+            if ($(this).text() != element.text()) {
+                setCounterButtonInactive($(this));
+            } else {
+                setCounterButtonActive($(this));
+            }
+        });
     }
 
     function setCounterButtonInactive(element) {
@@ -603,14 +644,18 @@
                     </div>
                     <br>
                 </div>
-                <div class="col-xs-10 col-md-8">
+                <div class="col-xs-8 col-md-8">
                     <h2>Please select the person’s full name in the text below, and answer the questions that
                         follow. </h2>
                     <h3 style="margin-top: -5px; font-style: italic;">(To select the name, click and drag over the text,
                         ensuring the full name is highlighted).</h3>
                 </div>
-                <div class="col-md-2">
+                <div class="col-xs-2 col-md-2">
 
+                    <div class="forward-arrow-container" style="text-align: center; margin-top:35px;">
+
+                    </div>
+                    <br>
                 </div>
             </div>
             <div class="col-xs-12 col-md-12 single-2" style="display: none; padding: 10px 0 0 0;">
@@ -670,7 +715,7 @@
                     </div>
                     <br>
                 </div>
-                <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
+                <div class="col-xs-8 col-md-8 outcome-options" style="margin-left: -11px;">
                     <h2>What was the result of this Urgent Action campaign?</h2>
                     <div class="options" style="margin-left: -11px;">
                         <div class="individual-outcome outcome-result">POSITIVE
@@ -681,8 +726,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-xs-2 col-md-2">
+                    <div class="forward-arrow-container" style="text-align: center; margin-top:35px;">
 
+                    </div>
+                    <br>
                 </div>
             </div>
 
@@ -692,7 +740,7 @@
                     </div>
                     <br>
                 </div>
-                <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
+                <div class="col-xs-8 col-md-8 outcome-options" style="margin-left: -11px;">
                     <h2 class="person-name-question"></h2>
                     <div class="options" style="margin-left: -11px;">
                         <div class="individual-outcome outcome-result">MALE
@@ -703,8 +751,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-xs-2 col-md-2">
+                    <div class="forward-arrow-container" style="text-align: center; margin-top:35px;">
 
+                    </div>
+                    <br>
                 </div>
             </div>
             <div class="col-xs-12 col-md-12 end-scene single-3" style="display: none;">
@@ -796,7 +847,7 @@
                 </div>
                 <div class="col-xs-10 col-md-8" style="margin-left: -11px;">
                     <h2>Can you specify the exact number of victims involved?</h2>
-                    <div class="form-inline" style="margin-top: 25px !important;">
+                    <div class="form-inline">
                         <div class="form-group">
                             <input style="float: left; width: 150px; height: 50px; margin: 5px 0 0 5px;"
                                    placeholder="ENTER NUMBER"
