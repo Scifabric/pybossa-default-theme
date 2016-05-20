@@ -108,7 +108,7 @@ a {
 
                             <p class="lead" style="font-size: 26px !important;">Join hundreds of Digital Decoders helping us expose human rights violations, one click at a time.</p>
 
-                            <a href="http://altclick-test.focallabs.co.uk/project/urgent_actions/newtask" class="btn btn-lg btn-rj">Get Started</a>
+                            <a href="{{url_for('project.presenter', short_name='urgent_actions')}}" class="btn btn-lg btn-rj">Get Started</a>
                             <p style="padding: 20px;"><button type="button" id="skrolId" style="color: #3277B1;">learn more</button></p>
                         </div>
                         <!-- //.intro-text -->
@@ -214,7 +214,7 @@ a {
                     <div id="tryNow" style="margin-top: 40%">
                         <div class="col-md-12">
                             <div class="section-button text-center">
-                                <a href="http://google.com" class="btn btn-rj">Try now</a>
+                                <a href="{{url_for('project.presenter', short_name='urgent_actions')}}" class="btn btn-rj">Try now</a>
                             </div>
                         </div>
                     </div>
