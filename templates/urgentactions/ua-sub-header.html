@@ -23,9 +23,14 @@
 
     function displayFirstQuestion(element) {
         element.parent().parent().parent().hide();
+        onVictimsHover("person", 1, 0)
         $(".question").show(250);
         $(".individuals-container").parent().show(250);
         $(".individuals-container").show(250);
+    }
+
+    function backAndForwardFunctionality() {
+
     }
 
     $(function () {
@@ -36,6 +41,7 @@
         $(".forward-arrow-container").hide();
         $(".back-arrow-container").click(function () {
             back_clicked += 1;
+            $(".forward-arrow-container").show(250);
             var class_names = $(this).parent().parent().attr("class").split(" ");
             var class_name = class_names[class_names.length - 1];
             if (class_name == "under-ten-2") {
@@ -57,8 +63,10 @@
             }
 
             var matches = class_name.match(/\d+/g);
+            $(this).parent().parent().prop("title", "previous-select");
             if (matches[0] > 1) {
                 $("." + class_name).hide();
+                $(this).parent().parent().hide();
                 $("." + class_name.replace(matches[0], Number(matches[0]) - 1)).show(250);
                 $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
                 $(".finish-scene").hide();
@@ -67,20 +75,45 @@
             }
         });
 
+        $(".forward-arrow-container").click(function () {
+            $("div[title=\"not-selected\"]").hide();
+            if (back_clicked > 0) {
+                back_clicked -= 1;
+            }
+            var class_names = $(this).parent().parent().attr("class").split(" ");
+            var class_name = class_names[class_names.length - 1];
+            var matches = class_name.match(/\d+/g);
+            if (matches[0] != "12") {
+                $("." + class_name).hide();
+                $("." + class_name.replace(matches[0], Number(matches[0]) + 1)).show(250);
+                $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
+            } else {
+                $(".question").hide();
+                $("div[title=\"previous-select\"]").parent().show(250);
+                $("div[title=\"previous-select\"]").attr("title", "not-selected");
+            }
+
+            if (back_clicked == 0) {
+                $(".forward-arrow-container").hide();
+            } else {
+                $(".forward-arrow-container").show(250);
+            }
+        });
+
         $(".outcome-result").click(function () {
             var value = $(this).attr("id");
-            setCounterButtonActive($(this));
+            if (back_clicked != 0) {
+                setCounterButtonActive($(this));
+            }
             var parent = $(this).parent().parent().parent();
             parent.hide();
             setOtherButtonsInactive($(this));
             var class_names = $(this).parent().parent().parent().attr("class").split(" ");
             var class_name = class_names[class_names.length - 1];
             if (person_name != "") {
-                $(".person-name-question").text("Is " + person_name + '?');
-                $(".person-name-question").append('&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
+                $(".person-name-question").text("Is " + person_name + "?");
             } else {
-                $(".person-name-question").text('Is victim?');
-                $(".person-name-question").append('&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
+                $(".person-name-question").text("Is victim?");
             }
 
             if (class_name == "outcome-options") {
@@ -134,6 +167,9 @@
                     $(this).parent().parent().parent().hide();
                     is_10_plus_clicked = 1;
                     persons = 9;
+                    back_clicked = 0;
+                    $('.forward-arrow-container').hide();
+                    $("div[title=\"previous-select\"]").prop("title", "not-selected");
                     $(".ten-plus-individuals").show(250);
                 } else {
                     for (var i = 0; i <= Number(person_number); i++) {
@@ -196,6 +232,9 @@
             $(".ten-plus-individuals").hide();
             click = 1;
             persons = 1;
+            back_clicked = 0;
+            $('.forward-arrow-container').hide();
+            $("div[title=\"previous-select\"]").prop("title", "not-selected");
         });
 
         $(".one-person-small").click(function () {
@@ -207,6 +246,9 @@
             $(".ten-plus-individuals").hide();
             click = 1;
             persons = 1;
+            back_clicked = 0;
+            $('.forward-arrow-container').hide();
+            $("div[title=\"previous-select\"]").prop("title", "not-selected");
         });
 
         $(".more-persons").click(function () {
@@ -236,17 +278,22 @@
         $(".continue-under-ten").click(function () {
             $(this).parent().parent().parent().parent().hide();
             click = 2;
+            back_clicked = 0;
+            $('.forward-arrow-container').hide();
             $(".under-10-individuals").show(250);
             $(".under-ten-1").show();
+            $("div[title=\"previous-select\"]").prop("title", "not-selected");
         });
 
         $("#victims-number-unclear").click(function () {
             $(this).parent().parent().parent().parent().hide();
-            setCounterButtonActive($(this));
-            $(".continue-vno").css({
-                "background-color": "#999999",
-                "color": "#666"
-            });
+            if (back_clicked != 0) {
+                setCounterButtonActive($(this));
+                $(".continue-vno").css({
+                    "background-color": "#999999",
+                    "color": "#666"
+                });
+            }
             $("#victims-number").val("");
             $(".ten-plus-2").show(250);
         });
@@ -543,41 +590,15 @@
         $(person_head).find('img').prop("src", "/static/img/head_disabled.png");
         $(person_body).find('img').prop("src", "/static/img/body_disabled.png");
     }
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+
 </script>
-<style>
-    .tooltip {
-        z-index:100020 !important;
-        position: fixed !important;
-    }
-    .tooltip.bottom .tooltip-arrow {
-      top: 0;
-      left: 50%;
-      margin-left: -5px;
-      border-bottom-color: white;
-      border-width: 0 5px 5px;
-    }
-    .tooltip .tooltip-inner{
-        opacity: 1.0;
-        padding: 5px;
-        background-color: white;
-        width: 250px;
-        height: 100px;
-        color: #0e0e0e;
-        text-align: left;
-        font-family: sans-serif;
-        z-index:100020 !important;
-    }
-</style>
 <div class="row">
     <div class="sub-header-container">
         <div class="question">
-            <div class="col-md-12" style="padding: 0;">
-                <div class="col-md-offset-2 col-md-8">
+            <div class="col-xs-12 col-md-12" style="padding: 0;">
+                <div class="col-md-offset-2 col-xs-10 col-md-8">
                     <div class="individuals-container">
-                        <h2 style="margin-right: 5px">How many human rights victims were campaigned for in the below Urgent Action?&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a></h2>
+                        <h2>How many human rights victims were campaigned for in the below Urgent Action?</h2>
                         <div class="one-person-small" style="display: none;">
                             <h1>1</h1>
                         </div>
@@ -670,10 +691,11 @@
                     </div>
 
                 </div>
-                <div class="col-md-2" style="text-align: center">
-                    <div class="speach-bubble-container" style="display: none;">
-                        <img src="/static/img/speech_bubble.png" class="img img-responsive">
+                <div class="col-xs-2 col-md-2" style="text-align: center">
+                    <div class="forward-arrow-container" style="text-align: center; margin-top:35px;">
+
                     </div>
+                    <br>
                 </div>
             </div>
         </div>
@@ -688,7 +710,7 @@
                 </div>
                 <div class="col-xs-8 col-md-8">
                     <h2>Please select the person’s full name in the text below, and answer the questions that
-                        follow.&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a></h2>
+                        follow. </h2>
                     <h3 style="margin-top: -5px; font-style: italic;">(To select the name, click and drag over the text,
                         ensuring the full name is highlighted).</h3>
                 </div>
@@ -708,9 +730,9 @@
                     <br>
                 </div>
                 <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
-                    <h2>What was the result of this Urgent Action campaign?&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a></h2>
+                    <h2>What was the result of this Urgent Action campaign?</h2>
                     <div class="options" style="margin-left: -11px;">
-                       <div class="individual-outcome outcome-result">POSITIVE
+                        <div class="individual-outcome outcome-result">POSITIVE
                         </div>
                         <div class="individual-outcome outcome-result">NEGATIVE
                         </div>
@@ -736,7 +758,7 @@
                         </div>
                         <div class="individual-outcome outcome-result">FEMALE
                         </div>
-                        <div class="individual-outcome outcome-result">NOT CLEAR
+                        <div class="individual-outcome outcome-result">UNCLEAR
                         </div>
                     </div>
                 </div>
@@ -760,14 +782,14 @@
                     </div>
                     <br>
                 </div>
-                <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
-                    <h2>What was the result of this Urgent Action campaign?&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a></h2>
+                <div class="col-xs-8 col-md-8 outcome-options" style="margin-left: -11px;">
+                    <h2>What was the result of this Urgent Action campaign?</h2>
                     <div class="options" style="margin-left: -11px;">
                         <div class="individual-outcome outcome-result">POSITIVE
                         </div>
                         <div class="individual-outcome outcome-result">NEGATIVE
                         </div>
-                        <div class="individual-outcome outcome-result">NOT CLEAR
+                        <div class="individual-outcome outcome-result">UNCLEAR
                         </div>
                     </div>
                 </div>
@@ -820,7 +842,7 @@
                     <br>
                 </div>
                 <div class="col-xs-8 col-md-8 outcome-options" style="margin-left: -11px;">
-                    <h2>Please specify how many people had positive and negative outcomes.&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a></h2>
+                    <h2>Please specify how many people had positive and negative outcomes.</h2>
                     <div class="mixed-small">
                         <br>
                         <div class="form-group">
@@ -895,10 +917,10 @@
                     </div>
                     <br>
                 </div>
-                <div class="col-xs-10 col-md-8" style="margin-left: -11px;">
-                    <h2>Can you specify the exact number of victims involved?&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a></h2>
-                    <div class="form-inline" style="margin-top: 25px !important;">
-                        <div class="form-group">
+                <div class="col-xs-8 col-md-8" style="margin-left: -11px;">
+                    <h2>Can you specify the exact number of victims involved?</h2>
+                    <div class="form-inline">
+                        <div class="form-group ten-plus-input">
                             <input style="float: left; width: 150px; height: 50px; margin: 5px 0 0 5px;"
                                    placeholder="ENTER NUMBER"
                                    type="text"
