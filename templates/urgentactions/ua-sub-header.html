@@ -113,6 +113,9 @@
             parent.hide();
             setOtherButtonsInactive($(this));
             var class_names = $(this).parent().parent().parent().attr("class").split(" ");
+            back_clicked = 0;
+            $("div[title=\"previous-select\"]").prop("title", "not-selected");
+            $('.forward-arrow-container').hide();
             var class_name = class_names[class_names.length - 1];
             if (person_name != "") {
                 $(".person-name-question").text("Is " + person_name + "?");
@@ -961,7 +964,7 @@
                     <br>
                 </div>
                 <div class="col-xs-8 col-md-8" style="margin-left: -11px;">
-                    <h2>Can you specify the exact number of victims involved?</h2>
+                    <h2>Can you specify the exact number of victims involved?&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a></h2>
                     <div class="form-inline">
                         <div class="form-group ten-plus-input">
                             <input style="float: left; width: 150px; height: 50px; margin: 5px 0 0 5px;"
