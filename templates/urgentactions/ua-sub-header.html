@@ -76,7 +76,7 @@
             var class_names = $(this).parent().parent().parent().attr("class").split(" ");
             var class_name = class_names[class_names.length - 1];
             if (person_name != "") {
-                $(".person-name-question").text("Is " + person_name + "?" + '&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
+                $(".person-name-question").text("Is " + person_name + '?');
                 $(".person-name-question").append('&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
             } else {
                 $(".person-name-question").text('Is victim?');
