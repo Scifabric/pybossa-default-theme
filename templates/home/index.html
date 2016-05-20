@@ -3,100 +3,446 @@
 {% import "account/_helpers.html" as account_helper %}
 
 {% block content %}
-      <div class="banner">
-        <div class="row">
-          <div class="col-xs-12 col-sm-4" style="min-height: 250px !important;">
-              <h1>{{ brand }}</h1>
-              {% include ['custom/front_page_text.html', 'home/_pybossa_text.html'] ignore missing %}
-          </div>
-          <div class="col-sm-6 col-md-6" >
-            <ul class="featured" style="padding: 0">
-                {% for f in categories_projects['featured'] %}
-                <li><a href="{{ url_for('project.details', short_name=f.short_name)}}">
-                    {{ helper.render_project_thumbnail(f, upload_method) }}
-                    <h3>{{f.name}}</h3>
-                    <span class="label label-info">{{ _('Info') }}</span>
-                    </a>
-                </li>
-                {% endfor %}
-                {% for number in range(21 - categories_projects['featured']|count) %}
-                <li></li>
-                {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </div>
+<!-- Plugins CSS -->
+    <link href="{{url_for('static', filename='landing_assets/plugins/animate-css/animate.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='landing_assets/plugins/owl-carousel/owl.carousel.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='landing_assets/plugins/owl-carousel/owl.theme.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='landing_assets/plugins/jquery-magnificPopup/magnific-popup.css')}}" rel="stylesheet" type="text/css">
 
-      <section class="grey get-started">
-        <div class="row">
-          <div class="col-md-3 col-xs-12" >
-              <h2><i class="glyphicon glyphicon-play-circle"></i> {{ _('Get Started') }}</h2>
-            <p>{{ _('It\'s really simple to start contributing.') }}</p>
-          </div>
-          <div class="col-md-8 col-xs-12 spand8">
-              <a href="{{url_for('project.index')}}" class="btn btn-info btn-large"><i class="glyphicon glyphicon-ok-sign"></i>{{ _(' Start Contributing') }}</a> <a href="{{url_for('project.new')}}" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-plus-sign"></i> {{ _('Create a Project') }}</a>
-          </div>
-      </section>
-      
-      <section>
-        <h2><i class="glyphicon glyphicon-th"></i>{{ _('Most Active Projects') }}</h2>
-        <div class="row">
-          {% for project in top_projects %}
-          <div class="col-md-3 col-xs-12">
-            <div class="project box">
-                {% if project.info.thumbnail %}
-                <a href="{{url_for('project.details', short_name=project.short_name)}}" class="image" style="background-image:url({{helper.render_url_thumbnail(project, upload_method)}})"></a>
-                {% else %}
-                <a href="{{url_for('project.details', short_name=project.short_name)}}" class="image" style="background-image:url({{url_for('static',filename='img/placeholder.project.png')}})"></a>
-                {% endif %}
-                <h3>{{project.name | truncate(20, true)}}</h3>
-                <p>{{project.description | truncate(32, true)}}</p>
-                <p><a href="{{url_for('project.details',short_name=project.short_name)}}" class="btn  btn-info">Info</a> <a href="{{url_for('project.presenter',short_name=project.short_name)}}" class="btn  btn-primary">{{ _('Start') }}</a></p>
+<!-- Component CSS -->
+    <link href="{{url_for('static', filename='landing_assets/css/component/component.css')}}" rel="stylesheet" type="text/css">
+    <!--<link href="assets/css/component/colors/blue.css" rel="stylesheet" type="text/css">-->
+
+    <!-- Main CSS -->
+    <link href="{{url_for('static', filename='landing_assets/css/rinjani.css')}}" rel="stylesheet" type="text/css">
+<style>
+
+    /* ----- Landing PAGE ----- */
+@media (min-width: 1200px){
+    body .container {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+@media (min-width: 990px){
+    body .container {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    body .container .intro {
+        margin-top: -10px;
+    }
+}
+
+
+@media (min-width: 768px){
+    body .container {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    #intro .intro-body .intro-text{
+        padding-top: 100px;
+    }
+}
+body{
+    margin: 0;
+    padding:0;
+}
+#intro{
+    margin-top: 40px !important;
+    text-decoration:none !important;
+    height: 80% !important;
+    position: relative;
+    display: table;
+    width: 100%;
+    color: #fff;
+    background-image: url("{{url_for('static', filename='landing_assets/img/bg-intro.jpg')}}") !important;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+body .container {
+    width: 100% !important;
+    height: 100% !important;
+    padding:0;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+
+}
+body > footer {
+    margin-top: 0;
+}
+.section > .section-inner .section-content {
+    padding-top: 30px;
+}
+a {
+    color: #3277B1;
+}
+
+#skrolId{
+    background:none!important;
+     border:none;
+     padding:0!important;
+     font: inherit;
+     cursor: pointer;
+}
+.imgPortofolio{
+    width: 100%;
+    height: auto;
+}
+
+</style>
+    <!-- Begin Intro Section -->
+    <section id="intro">
+        <div class="intro-body text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 intro-content">
+
+                        <div class="intro-text text-center">
+
+                            <h2>Amnesty Decoders</h2>
+
+                            <p class="lead" style="font-size: 26px !important;">Join hundreds of Digital Decoders helping us expose human rights violations, one click at a time.</p>
+
+                            <a href="http://altclick-test.focallabs.co.uk/project/urgent_actions/newtask" class="btn btn-lg btn-rj">Get Started</a>
+                            <p style="padding: 20px;"><button type="button" id="skrolId" style="color: #3277B1;">learn more</button></p>
+                        </div>
+                        <!-- //.intro-text -->
+
+                    </div>
+                    <!-- //.intro-content -->
+                </div>
+                <!-- //.row -->
+                <div id="aboutSection"></div>
             </div>
-          </div>
-          {% endfor %}
-          {% for i in range(4-top_projects|count)%}
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="project box">
-                <a href="#" class="image" style="background-image:url({{url_for('static',filename='img/placeholder.project.png')}})"></a>
-                <h3>{{ _('Your project') }}</h3>
-                <p>{{ _('could be here!') }}</p>
-                <p><a href="{{url_for('project.new')}}" class="btn  btn-primary">{{ _('Create a project') }}</a></p>
-            </div>
-          </div>
-          {% endfor %}
+            <!-- //.container -->
         </div>
-      </section>
-      
-      {% if top_users %}
-      <br><br>
-      <section id="top_users" class="grey col-xs-12">
-        <h2><i class="glyphicon glyphicon-user"></i>{{ _('Most Active Volunteers') }}</h2>
-        <ul class="users" >
-            {% for user in top_users %}
-          <li>
-          <a href="{{url_for('account.profile', name=user.name)}}" style="color: #000000 !important;" data-content="
-                <strong>{{_('Joined')}}:</strong> {{user.created[0:10]}} 
-                <strong>{{_('Joined')}}:</strong> {{user.created[0:10]}}
-                <strong>{{_('Joined')}}:</strong> {{user.created[0:10]}}
-                <br/>
-                <strong>{{_('Submitted Tasks')}}:</strong> {{user.task_runs}}
-                " rel="popover" data-original-title="<strong>{{user.fullname}}</strong>">
-                {{ account_helper.render_user_thumbnail(user, upload_method, style="height:90px; width:90px;") }}
-           </a>
-           <span class="label" style="background:#FFFF00;color: #0e0e0e !important;">{{user.score}}</span> <small>{{_('Tasks')}}</small>
-          </li>
-          {% endfor %}
-        </ul>
-      </section>
-      {% endif %}
-<script>
-$("a[rel=popover]").popover({
-        html: true,
-        animation: true,
-        trigger: 'hover',
-        placement: 'top'
-                });
-</script>
+        <!-- //.intro-body -->
+    </section>
+    <!-- //End Intro Section -->
+
+
+    <!-- Begin About Project Section -->
+    <section id="about-project" class="section">
+        <div class="section-inner" style="padding: 0 30px 0 30px ">
+            <div class="container section-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center">
+                            <h3 class="main-title">Decode Urgent Actions</h3>
+
+                            <h4 class="sub-title">Help us improve the effectiveness of our campaigns for individuals</h4>
+
+                            <span class="section-line"></span>
+
+                        </div>
+
+                        <div class="about-project-text">
+
+                            <p>Since 1976, Amnesty activists (like you) have helped us respond to more than 25,000 Urgent Action campaigns aimed at defending hundreds of thousands of individuals at risk worldwide. By contributing less than 5 minutes of your time, you can help us to decode an Urgent Action, analyse results and contribute to our ongoing research.</p>
+
+                            <p>It's simple to take part, and become a Digital Decoder.  Here’s how:</p>
+
+                        </div>
+                        <!-- //.section-title -->
+                    </div>
+                    <!-- //.col-md-12 -->
+                </div>
+                <!-- //.row -->
+
+                <div class="row">
+                    <div class="col-sm-4 col-md-4">
+                        <div class="funny-boxes float-shadow not-right-column text-center  col-xs-12">
+
+                            <div class="funny-boxes-text">
+                                <h4>1. Read your first Urgent Action</h4>
+
+                                <img src="/static/landing_assets/img/project/project-image-1.jpg" alt="" class="img-responsive imgPortofolio"/>
+
+                                <p>When you launch the project you are presented with a random Urgent Action document to review. Often the first section contains all the information you need.</p>
+
+                                <p>Check out our <a href="#">Glossary page</a> if you need help with any of the terms used.</p>
+
+                            </div>
+                            <!-- //.funny-boxes-text -->
+                        </div>
+                        <!-- //.funny-boxes -->
+                    </div>
+                    <!-- //.col-sm-4 col-md-4 -->
+
+                    <div class="col-sm-4 col-md-4">
+                        <div class="funny-boxes float-shadow not-right-column text-center  col-xs-12">
+
+                            <div class="funny-boxes-text">
+                                <h4>2. Answer a few simple questions</h4>
+
+                                <img src="/static/landing_assets/img/project/project-image-2.jpg" alt="" class="img-responsive imgPortofolio"/>
+
+                                <p>Next, answer a few questions to identify details about the <strong>individuals involved</strong> (e.g. how many, and in some instances, their name and gender) and analyse the <strong>results</strong> of the Urgent Action.</p>
+
+                                <p>See our <a href="#">"how to guide"</a> for more details.</p>
+
+                            </div>
+                            <!-- //.funny-boxes-text -->
+                        </div>
+                        <!-- //.funny-boxes -->
+                    </div>
+                    <!-- //.col-sm-4 col-md-4 -->
+
+                    <div class="col-sm-4 col-md-4">
+                        <div class="funny-boxes float-shadow text-center col-xs-12">
+
+                            <div class="funny-boxes-text">
+                                <h4>3. Contribute to our research</h4>
+
+                                <img src="/static/landing_assets/img/project/project-image-3.jpg" alt="" class="img-responsive imgPortofolio"/>
+
+                                <p>Your answers combine with those from thousands of volunteers from around the world, and contribute to real, front-line research that is helping Amnesty improve the way we campaign for individuals.</p>
+
+                                <p><a href="#">Get decoding now.</a></p>
+
+                            </div>
+                            <!-- //.funny-boxes-text -->
+                        </div>
+                        <!-- //.funny-boxes -->
+                    </div>
+                    <!-- //.col-sm-4 col-md-4 -->
+                    <div id="tryNow" style="margin-top: 40%">
+                        <div class="col-md-12">
+                            <div class="section-button text-center">
+                                <a href="http://google.com" class="btn btn-rj">Try now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //.row -->
+            </div>
+            <!-- //.section-content -->
+        </div>
+        <!-- //.section-inner -->
+    </section>
+    <!-- //End About Project Section -->
+
+
+    <!-- Begin Targets Section -->
+    <section id="targets" class="section section-bgimage-yes">
+        <div class="section-inner">
+            <div class="section-overlay"></div>
+
+            <div class="container section-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center">
+                            <h2 class="main-title">Project Targets</h2>
+
+                            <span class="section-line"></span>
+
+                            <div class="targets-text">
+
+                            <p>With your help, we can achieve our Decode Urgent Actions target of:</p>
+
+                            </div>
+
+                        </div>
+                        <!-- //.section-title -->
+                    </div>
+                    <!-- //.col-md-12 -->
+                </div>
+                <!-- //.row -->
+
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+                        <div class="counter-item not-right-column top-column">
+                            <p>Decoding</p>
+
+                            <div class="inner-content">
+                                <span class="number" data-from="1999" data-to="2800" data-refresh-interval="10">
+                                    1999
+                                </span>
+                            </div>
+                            <!-- //.inner-content -->
+
+                            <p>Urgent Actions</p>
+                        </div>
+                        <!-- //.counter-item -->
+                    </div>
+                    <!-- //.col-xs-6 col-sm-6 col-md-3 -->
+
+                    <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+                        <div class="counter-item not-right-column top-column">
+                            <p>with help from</p>
+
+                            <div class="inner-content">
+                                <span class="number" data-from="1999" data-to="3000" data-refresh-interval="10">
+                                    1999
+                                </span>
+                            </div>
+                            <!-- //.inner-content -->
+
+                            <p>digtal decoders</p>
+                        </div>
+                        <!-- //.counter-item -->
+                    </div>
+                    <!-- //.col-xs-6 col-sm-6 col-md-3 -->
+
+                    <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+                        <div class="counter-item not-right-column">
+                            <p>volunteering</p>
+
+                            <div class="inner-content">
+                                <span class="number" data-from="1" data-to="15" data-refresh-interval="10">
+                                    1
+                                </span>
+                            </div>
+                            <!-- //.inner-content -->
+
+                            <p>minutes each</p>
+                        </div>
+                        <!-- //.counter-item -->
+                    </div>
+                    <!-- //.col-xs-6 col-sm-6 col-md-3 -->
+
+                    <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+                        <div class="counter-item">
+                            <p>within</p>
+
+                            <div class="inner-content">
+                                <span class="number" data-from="1" data-to="30" data-refresh-interval="10">
+                                    1
+                                </span>
+                            </div>
+                            <!-- //.inner-content -->
+
+                            <p>days</p>
+                        </div>
+                        <!-- //.counter-item -->
+                    </div>
+                    <!-- //.col-xs-6 col-sm-6 col-md-3 -->
+                </div>
+                <!-- //.row -->
+            </div>
+            <!-- //.section-content -->
+        </div>
+        <!-- //.section-inner -->
+    </section>
+    <!-- //End Targets Section -->
+
+
+    <!-- Begin Background Section -->
+    <section id="background" class="section">
+        <div class="section-inner">
+            <div class="container section-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center">
+                            <h3 class="main-title">About the Project</h3>
+
+                            <h4 class="sub-title">Why we're looking to Decode Urgent Actions</h4>
+
+                            <span class="section-line"></span>
+
+                        </div>
+
+                        <div class="background-text" style="padding:5px 40px 5px 40px">
+
+                            <p>Our Urgent Action campaigning protects people from torture, helps free men and women who are wrongly - and sometimes secretly - detained, and secures access to medical treatment or legal counsel for prisoners. It even saves lives.</p>
+
+                            <p>Since 1976 we have issued over 25,000 Urgent Actions and mobilised over 150,000 people to stand up against injustices. This campaigning is based on a very simple idea: when someone is in immediate danger of serious human rights abuse, those responsible receive thousands of letters, faxes and telegrams from all over the world demanding it to stop. This shows the authorities that the world is watching and has the potential to protect that person from further abuse.</p>
+
+                            <p>We are proud of the effectiveness of these campaigns, and now is the time to analyse the results and finds ways to be more effective in the future.</p>
+
+                            <p>With your contributions, we want to decode the result of Urgent Actions from the early ‘70s to date. This will help us understand when and where our campaigning is more likely to be effective. Help us improve our this vital part of our campaigning for individuals, families or communities at risk by dedicating just 15 minutes to reviewing these documents.</p>
+
+                            <p>For us, this is just the start of the journey. We believe that anyone with an internet connection and a drive to make a difference could contribute in real time to core human rights research. We are already planning future projects to document levels of destruction by analysing satellite imagery, to categorize and verify thousands of hours of video footage documenting the war in Syria, or even to alert international decision-makers about possible threats by monitoring hate speech on social media.</p>
+
+                            <p>Our vision is to inspire this new generation of tech-savvy activists to become human rights monitors and help document human rights violations using technology. We invite you to join us in this, and become an Amnesty Digital Decoder.</p>
+
+                        </div>
+                        <!-- //.section-title -->
+                    </div>
+                    <!-- //.col-md-12 -->
+                </div>
+                <!-- //.row -->
+
+            </div>
+            <!-- //.section-content -->
+        </div>
+        <!-- //.section-inner -->
+    </section>
+    <!-- //End Background Section -->
+
+
+    <!-- Begin Follow Us Section -->
+    <section id="follow-us" class="section section-bgimage-yes col-xs-12" style="width: 100% !important;padding: 0;margin: 0">
+        <div class="section-inner">
+            <div class="section-overlay"></div>
+
+            <div class="container section-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center">
+                            <h3 class="main-title">Stay in touch    </h3>
+
+                            <h4 class="sub-title">Subscribe now to receive updates and hear about our future projects</h4>
+
+                            <span class="section-line"></span>
+                        </div>
+                        <!-- //.section-title -->
+                    </div>
+                    <!-- //.col-md-12 -->
+                </div>
+                <!-- //.row -->
+
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="follow-us-form">
+                            <form role="form">
+                                <div class="input-group">
+                                    <input type="text" class="form-control input-lg" placeholder="example@email.com">
+
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-lg btn-rj">Subscribe</button>
+                                    </span>
+                                </div>
+                                <!-- //.input-group -->
+                            </form>
+                        </div>
+                        <!-- //.countdown-form -->
+                    </div>
+                    <!-- //.col-md-4 col-md-offset-4 -->
+                </div>
+                <!-- //.row -->
+
+            </div>
+            <!-- //.section-content -->
+        </div>
+        <!-- //.section-inner -->
+    </section>
+    <!-- //End Follow Us Section -->
+    <script>
+        $(document).ready(function(){
+            $('#skrolId').click(function(){
+                window.location.href = "/#aboutSection";
+            });
+        });
+    </script>
+    <!-- JS Plugins -->
+    <script src="{{url_for('static', filename='landing_assets/plugins/smartresize/smartresize.js')}}"></script>
+    <script src="{{url_for('static', filename='landing_assets/plugins/jquery-sticky/jquery.sticky.js')}}"></script>
+    <script src="{{url_for('static', filename='landing_assets/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <!-- Main JS -->
+    <script src="{{url_for('static', filename='landing_assets/js/main.js')}}"></script>
+
+    <!-- Animation JS (Optional) -->
+    <script src="{{url_for('static', filename='landing_assets/js/animation.js')}}"></script>
+
+    <!-- Component JS -->
+    <script src="{{url_for('static', filename='landing_assets/js/component/portfolio.js')}}"></script>
+    <script src="{{url_for('static', filename='landing_assets/js/component/animation.js')}}"></script>
+</body>
 {{ helper.broken_image() }}
 {% endblock %}

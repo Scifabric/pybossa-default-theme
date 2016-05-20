@@ -1,0 +1,90 @@
+/*-----------------------------------------------------------------------
+/*  BLUE
+/*  assets/css/colors/blue.css
+/*-----------------------------------------------------------------------
+
+1. NAVBAR
+
+2. QUOTE SECTION
+
+3. KEEP IN TOUCH SECTION
+
+4. CONTACT US SECTION
+
+5. FOOTER
+
+-----------------------------------------------------------------------*/
+
+
+/*---------------------------------------------------------------------*/
+/*  1. NAVBAR
+/*---------------------------------------------------------------------*/
+.navbar.navbar-fixed-top .navbar-toggle {
+  background-color: #3996cc;
+}
+.navbar.navbar-fixed-top .navbar-nav > li > a:hover {
+  color: #3996cc;
+}
+.navbar.navbar-fixed-top .navbar-nav > li.active a,
+.navbar.navbar-fixed-top .navbar-nav > li.active a:hover {
+  background-color: #3996cc;
+}
+@media (min-width: 992px) {
+  .navbar.navbar-fixed-top .navbar-nav > li.active a,
+  .navbar.navbar-fixed-top .navbar-nav > li.active a:hover {
+    background-color: #3996cc;
+  }
+}
+.navbar-trigger-open a {
+  background-color: #3996cc;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  2. QUOTE SECTION
+/*---------------------------------------------------------------------*/
+#quote > .section-inner > .section-content .quote-text > .quote-icon > i {
+  color: #3996cc;
+}
+#quote > .section-inner > .section-content .quote-text > h2.quote-by {
+  color: #3996cc;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  3. KEEP IN TOUCH SECTION
+/*---------------------------------------------------------------------*/
+#keep-in-touch .social-icon-item > a:hover {
+  color: #3996cc;
+}
+#keep-in-touch .social-icon-item > a:hover .social-icon > i {
+  color: #3996cc;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  4. CONTACT US SECTION
+/*---------------------------------------------------------------------*/
+#contact-us > .section-inner > .section-content .content-message {
+  background-color: #3996cc;
+}
+#contact-us > .section-inner > .section-content .form-group input,
+#contact-us > .section-inner > .section-content .form-group textarea {
+  border-left-color: #3996cc;
+}
+#contact-us > .section-inner > .section-content .form-group span {
+  background-color: #3996cc;
+  border-color: #3996cc;
+}
+#contact-us > .section-inner > .section-content .social-icon-text > h2 {
+  background-color: #3996cc;
+  border: 1px solid #2b79a7;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  5. FOOTER
+/*---------------------------------------------------------------------*/
+footer.footer {
+  border-top: 2px solid #3996cc;
+}

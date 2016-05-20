@@ -1,0 +1,445 @@
+/*-----------------------------------------------------------------------
+/*  RED
+/*  assets/less/component/colors/red.less
+/*-----------------------------------------------------------------------
+
+1. BUTTON
+
+2. ACCORDION
+	2.1 ACCORDION - STYLE THREE
+	2.2 ACCORDION - STYLE FOUR
+
+3. BAR CHART
+
+4. CONTENT BOXES
+	4.1 CONTENT BOXES - STYLE TWO
+	4.2 CONTENT BOXES - STYLE THREE
+
+5. COUNTDOWN
+
+6. COUNTERS
+
+7. FANCY TABLE
+
+8. FUNNY BOXES
+	8.1 FUNNY BOXES HOVER EFFECT 1 - OUTLINE INWARD
+	8.2 FUNNY BOXES HOVER EFFECT 2 - OUTLINE OUTWARD
+	
+9. PIE CHART
+
+10. PRICING TABLES
+	10.1 PRICING TABLES - STYLE FOUR
+	10.2 PRICING TABLES - STYLE FIVE
+	10.3 PRICING TABLES - STYLE SIX
+
+11. TABULAR CONTENT
+
+12. TESTIMONIALS
+
+13. TIMELINE
+
+-----------------------------------------------------------------------*/
+
+
+/* IMPORT VARIABLES */
+@import "../../variables";
+
+
+/*---------------------------------------------------------------------*/
+/*  1. BUTTON
+/*---------------------------------------------------------------------*/
+.btn.btn-rj {
+    background-color: @red;
+    border-color: lighten(@red, 5%);
+
+    &:hover,
+    &:focus {
+        background-color: darken(@red, 5%);
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  2. ACCORDION
+/*---------------------------------------------------------------------*/
+.accordion.accordion-rj {
+    .panel-group {
+        > .panel {
+            border-color: @red;
+            
+            > .panel-heading {
+                background-color: @red;
+                border-color: @red;
+            }
+
+            > .panel-collapse {
+                > .panel-body {
+                    border-color: lighten(@red, 10%);
+                }
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  2.1. ACCORDION - STYLE THREE
+/*---------------------------------------------------------------------*/
+.accordion.accordion-rj.style-three {
+    .panel-group {
+        border-top: 1px solid @red;
+
+        > .panel {
+            border-bottom: 1px solid @red;
+
+            > .panel-heading {
+                > .panel-title {
+                    > a {   
+                        &:after {
+                            color: @red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  2.2. ACCORDION - STYLE FOUR
+/*---------------------------------------------------------------------*/
+.accordion.accordion-rj.style-four {
+    .panel-group {
+        border-top: 1px solid @red;
+
+        > .panel {
+            border-bottom: 1px solid @red;
+
+            > .panel-heading {
+                > .panel-title {
+                    > a {
+                        &:before {
+                            color: @red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  3. BAR CHART
+/*---------------------------------------------------------------------*/
+.bar-chart {
+    .bar-chart-item {    
+        background: @red;
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  4. CONTENT BOXES
+/*---------------------------------------------------------------------*/
+.content-boxes {
+    > .content-boxes-icon {
+        > i {
+            color: @red;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  4.1. CONTENT BOXES - STYLE TWO
+/*---------------------------------------------------------------------*/
+.content-boxes.style-two {
+    > .content-boxes-icon {
+        > i {
+            background-color: @red;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  4.2. CONTENT BOXES - STYLE THREE
+/*---------------------------------------------------------------------*/
+.content-boxes.style-three {
+    > .content-boxes-icon {
+        > i {
+            background-color: @red;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  5. COUNTDOWN
+/*---------------------------------------------------------------------*/
+.countdown {
+    .cd-content {
+        .cd-element {
+            border-bottom: 1px solid @red;
+
+            > .cd-value {
+                color: @red;
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  6. COUNTERS
+/*---------------------------------------------------------------------*/
+.counter-item {
+    > i {
+        color: @red;
+    }
+    
+    > p {
+        color: @red;
+    }
+}
+
+.counter-item.bubble {
+    .inner-content {
+        background-color: @red;
+        
+        &:before {
+            border-top-color: @red;
+        }
+    }
+
+    > p {
+        border-bottom: 1px solid @red;
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  7. FANCY TABLE
+/*---------------------------------------------------------------------*/
+.table.table-rj {
+    border-bottom: 2px solid @red;
+   
+    > thead {
+        background-color: @red;
+        
+        > tr {
+            > th {
+                border-bottom: 2px solid darken(@red, 5%);
+            }
+        }
+    }
+}
+
+.table.table-bordered.table-rj {
+    > thead {
+        > tr {
+            > th {
+                border: 1px solid lighten(@red, 8%);
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  8. FUNNY BOXES
+/*---------------------------------------------------------------------*/
+.funny-boxes {     
+    &:hover {
+        > .funny-boxes-icon {
+            background-color: @red;
+        }
+    }
+
+    > .funny-boxes-icon {
+        border: 1px solid @red;
+        color: @red;
+    }
+
+    > .funny-boxes-text {
+        > h4 {
+            &:after {
+                background-color: @red;
+            }
+        }
+    }
+}
+
+.funny-boxes.not-right-column {
+    &:before {
+        @media(min-width:1023px) {
+            background: -moz-linear-gradient(top, fade(@red, 0%) 0%, fade(@red, 90%) 15%, fade(@red, 90%) 85%, fade(@red, 0%) 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, fade(@red, 0%)), color-stop(15%, fade(@red, 90%)), color-stop(85%, rgba(221,221,221,1)), color-stop(100%, fade(@red, 0%)));
+            background: -webkit-linear-gradient(top, fade(@red, 0%) 0%, fade(@red, 90%) 15%, fade(@red, 90%) 85%, fade(@red, 0%) 100%);
+            background: -o-linear-gradient(top, fade(@red, 0%) 0%, fade(@red, 90%) 15%, fade(@red, 90%) 85%, fade(@red, 0%) 100%);
+            background: -ms-linear-gradient(top, fade(@red, 0%) 0%, fade(@red, 90%) 15%, fade(@red, 90%) 85%, fade(@red, 0%) 100%);
+            background: linear-gradient(to bottom, fade(@red, 0%) 0%, fade(@red, 90%) 15%, fade(@red, 90%) 85%, fade(@red, 0%) 100%);
+        }            
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  8.1. FUNNY BOXES HOVER EFFECT 1 - OUTLINE INWARD
+/*---------------------------------------------------------------------*/
+.funny-boxes.outline-inward {
+    > .funny-boxes-icon {
+        &:before {
+            border: @red solid 4px;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  8.2. FUNNY BOXES HOVER EFFECT 2 - OUTLINE OUTWARD
+/*---------------------------------------------------------------------*/
+.funny-boxes.outline-outward {
+    > .funny-boxes-icon {
+        &:before {
+            border: @red solid 4px;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  9. PIE CHART
+/*---------------------------------------------------------------------*/
+.pie-chart-item {
+    .pie-chart-text {
+        > h4 {
+            color: @red;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  10. PRICING TABLES
+/*---------------------------------------------------------------------*/
+.pricing-table {
+    .pricing-wrapper {
+        > .pricing-column {
+            > .plan-title {
+                > h2 {
+                    background-color: @red;
+                }
+
+                > .pricing-box {
+                    border-bottom: 3px solid @red;
+                }
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  10.1. PRICING TABLES - STYLE FOUR
+/*---------------------------------------------------------------------*/
+.pricing-table.style-four {
+    .pricing-wrapper.features {
+        > .pricing-column {
+            > .item-list {
+                border-top: 3px solid @red;
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  10.2. PRICING TABLES - STYLE FIVE
+/*---------------------------------------------------------------------*/
+.pricing-table.style-five {
+    .pricing-wrapper {
+        > .pricing-column {
+            border-top: 6px solid @red;
+            
+            > .plan-footer {
+                background-color: @red;
+                border-right: 1px solid darken(@red, 2%);
+                border-bottom: 1px solid darken(@red, 2%);
+                border-left: 1px solid darken(@red, 2%);
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  10.3. PRICING TABLES - STYLE SIX
+/*---------------------------------------------------------------------*/
+.pricing-table.style-six {
+    .pricing-wrapper {
+        > .pricing-column {
+            border-top: 6px solid @red;
+            
+            > .plan-footer {
+                background-color: @red;
+                border-right: 1px solid darken(@red, 2%);
+                border-bottom: 1px solid darken(@red, 2%);
+                border-left: 1px solid darken(@red, 2%);
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  11. TABULAR CONTENT
+/*---------------------------------------------------------------------*/
+.tabular-content {
+    > ul.nav-tabs {
+        > li.active {
+            > a {
+                border-top: 5px solid @red;
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  12. TESTIMONIALS
+/*---------------------------------------------------------------------*/
+.testimonial-item {
+    > .testimonial-content {
+        background: @red;
+
+        &:after {
+            border-top-color: @red;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  13. TIMELINE
+/*---------------------------------------------------------------------*/
+.timeline {
+    > li {
+        > .timeline-panel {
+            &:after {
+                @media(min-width:767px) {    
+                    border-right: 0 solid @red;
+                    border-left: 14px solid @red;
+                }
+            }
+
+            > .timeline-heading {
+                > .timeline-title {
+                    background: @red;
+                }
+            }
+        }
+    }
+}

@@ -486,15 +486,42 @@
         $(person_head).find('img').prop("src", "/static/img/head_disabled.png");
         $(person_body).find('img').prop("src", "/static/img/body_disabled.png");
     }
-
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>
+<style>
+    .tooltip {
+        z-index:100020 !important;
+        position: fixed;
+    }
+    .tooltip.bottom .tooltip-arrow {
+      top: 0;
+      left: 50%;
+      margin-left: -5px;
+      border-bottom-color: white;
+      border-width: 0 5px 5px;
+    }
+    .tooltip .tooltip-inner{
+        opacity: 1.0;
+        padding: 5px;
+        background-color: white;
+        width: 250px;
+        height: 100px;
+        color: #0e0e0e;
+        text-align: left;
+        font-family: sans-serif;
+        z-index:100020 !important;
+    }
+
+</style>
 <div class="row">
     <div class="sub-header-container">
         <div class="question">
             <div class="col-md-12" style="padding: 0;">
                 <div class="col-md-offset-2 col-md-8">
                     <div class="individuals-container">
-                        <h2>How many human rights victims were campaigned for in the below Urgent Action?</h2>
+                        <h2>How many human rights victims were campaigned for in the below Urgent Action?<a href="#" data-toggle="tooltip" data-placement="bottom" title="Lorem Ipsum is simply dummy text of the printing and typesetting industry." style="color: white"><i class="glyphicon glyphicon-info-sign"></i></a></h2>
                         <div class="one-person-small" style="display: none;">
                             <h1>1</h1>
                         </div>
@@ -621,9 +648,9 @@
                     <br>
                 </div>
                 <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
-                    <h2>What was the result of this Urgent Action campaign?</h2>
+                    <h2>What was the result of this Urgent Action campaign?<button type="button" href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white"><i class="glyphicon glyphicon-info-sign"></i></button></h2>
                     <div class="options" style="margin-left: -11px;">
-                        <div class="individual-outcome outcome-result">POSITIVE
+                  =     <div class="individual-outcome outcome-result">POSITIVE
                         </div>
                         <div class="individual-outcome outcome-result">NEGATIVE
                         </div>
@@ -671,7 +698,7 @@
                     <br>
                 </div>
                 <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
-                    <h2>What was the result of this Urgent Action campaign?</h2>
+                    <h2>What was the result of this Urgent Action campaign?<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white"><i class="glyphicon glyphicon-info-sign"></i></a></h2>
                     <div class="options" style="margin-left: -11px;">
                         <div class="individual-outcome outcome-result">POSITIVE
                         </div>
@@ -795,7 +822,7 @@
                     <br>
                 </div>
                 <div class="col-xs-10 col-md-8" style="margin-left: -11px;">
-                    <h2>Can you specify the exact number of victims involved?</h2>
+                    <h2>Can you specify the exact number of victims involved?<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white"><i class="glyphicon glyphicon-info-sign"></i></a></h2>
                     <div class="form-inline" style="margin-top: 25px !important;">
                         <div class="form-group">
                             <input style="float: left; width: 150px; height: 50px; margin: 5px 0 0 5px;"

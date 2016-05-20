@@ -1,0 +1,306 @@
+/*-----------------------------------------------------------------------
+/*  YELLOW
+/*  assets/css/component/colors/yellow.css
+/*-----------------------------------------------------------------------
+
+1. BUTTON
+
+2. ACCORDION
+	2.1 ACCORDION - STYLE THREE
+	2.2 ACCORDION - STYLE FOUR
+
+3. BAR CHART
+
+4. CONTENT BOXES
+	4.1 CONTENT BOXES - STYLE TWO
+	4.2 CONTENT BOXES - STYLE THREE
+
+5. COUNTDOWN
+
+6. COUNTERS
+
+7. FANCY TABLE
+
+8. FUNNY BOXES
+	8.1 FUNNY BOXES HOVER EFFECT 1 - OUTLINE INWARD
+	8.2 FUNNY BOXES HOVER EFFECT 2 - OUTLINE OUTWARD
+	
+9. PIE CHART
+
+10. PRICING TABLES
+	10.1 PRICING TABLES - STYLE FOUR
+	10.2 PRICING TABLES - STYLE FIVE
+	10.3 PRICING TABLES - STYLE SIX
+
+11. TABULAR CONTENT
+
+12. TESTIMONIALS
+
+13. TIMELINE
+
+-----------------------------------------------------------------------*/
+
+
+/*---------------------------------------------------------------------*/
+/*  1. BUTTON
+/*---------------------------------------------------------------------*/
+.btn.btn-rj {
+  background-color: #f89d29;
+  border-color: #f9a842;
+}
+.btn.btn-rj:hover,
+.btn.btn-rj:focus {
+  background-color: #f79210;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  2. ACCORDION
+/*---------------------------------------------------------------------*/
+.accordion.accordion-rj .panel-group > .panel {
+  border-color: #f89d29;
+}
+.accordion.accordion-rj .panel-group > .panel > .panel-heading {
+  background-color: #f89d29;
+  border-color: #f89d29;
+}
+.accordion.accordion-rj .panel-group > .panel > .panel-collapse > .panel-body {
+  border-color: #fab45a;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  2.1. ACCORDION - STYLE THREE
+/*---------------------------------------------------------------------*/
+.accordion.accordion-rj.style-three .panel-group {
+  border-top: 1px solid #f89d29;
+}
+.accordion.accordion-rj.style-three .panel-group > .panel {
+  border-bottom: 1px solid #f89d29;
+}
+.accordion.accordion-rj.style-three .panel-group > .panel > .panel-heading > .panel-title > a:after {
+  color: #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  2.2. ACCORDION - STYLE FOUR
+/*---------------------------------------------------------------------*/
+.accordion.accordion-rj.style-four .panel-group {
+  border-top: 1px solid #f89d29;
+}
+.accordion.accordion-rj.style-four .panel-group > .panel {
+  border-bottom: 1px solid #f89d29;
+}
+.accordion.accordion-rj.style-four .panel-group > .panel > .panel-heading > .panel-title > a:before {
+  color: #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  3. BAR CHART
+/*---------------------------------------------------------------------*/
+.bar-chart .bar-chart-item {
+  background: #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  4. CONTENT BOXES
+/*---------------------------------------------------------------------*/
+.content-boxes > .content-boxes-icon > i {
+  color: #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  4.1. CONTENT BOXES - STYLE TWO
+/*---------------------------------------------------------------------*/
+.content-boxes.style-two > .content-boxes-icon > i {
+  background-color: #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  4.2. CONTENT BOXES - STYLE THREE
+/*---------------------------------------------------------------------*/
+.content-boxes.style-three > .content-boxes-icon > i {
+  background-color: #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  5. COUNTDOWN
+/*---------------------------------------------------------------------*/
+.countdown .cd-content .cd-element {
+  border-bottom: 1px solid #f89d29;
+}
+.countdown .cd-content .cd-element > .cd-value {
+  color: #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  6. COUNTERS
+/*---------------------------------------------------------------------*/
+.counter-item > i {
+  color: #f89d29;
+}
+.counter-item > p {
+  color: #f89d29;
+}
+.counter-item.bubble .inner-content {
+  background-color: #f89d29;
+}
+.counter-item.bubble .inner-content:before {
+  border-top-color: #f89d29;
+}
+.counter-item.bubble > p {
+  border-bottom: 1px solid #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  7. FANCY TABLE
+/*---------------------------------------------------------------------*/
+.table.table-rj {
+  border-bottom: 2px solid #f89d29;
+}
+.table.table-rj > thead {
+  background-color: #f89d29;
+}
+.table.table-rj > thead > tr > th {
+  border-bottom: 2px solid #f79210;
+}
+.table.table-bordered.table-rj > thead > tr > th {
+  border: 1px solid #f9af51;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  8. FUNNY BOXES
+/*---------------------------------------------------------------------*/
+.funny-boxes:hover > .funny-boxes-icon {
+  background-color: #f89d29;
+}
+.funny-boxes > .funny-boxes-icon {
+  border: 1px solid #f89d29;
+  color: #f89d29;
+}
+.funny-boxes > .funny-boxes-text > h4:after {
+  background-color: #f89d29;
+}
+@media (min-width: 1023px) {
+  .funny-boxes.not-right-column:before {
+    background: -moz-linear-gradient(top, rgba(248, 157, 41, 0) 0%, rgba(248, 157, 41, 0.9) 15%, rgba(248, 157, 41, 0.9) 85%, rgba(248, 157, 41, 0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(248, 157, 41, 0)), color-stop(15%, rgba(248, 157, 41, 0.9)), color-stop(85%, #dddddd), color-stop(100%, rgba(248, 157, 41, 0)));
+    background: -webkit-linear-gradient(top, rgba(248, 157, 41, 0) 0%, rgba(248, 157, 41, 0.9) 15%, rgba(248, 157, 41, 0.9) 85%, rgba(248, 157, 41, 0) 100%);
+    background: -o-linear-gradient(top, rgba(248, 157, 41, 0) 0%, rgba(248, 157, 41, 0.9) 15%, rgba(248, 157, 41, 0.9) 85%, rgba(248, 157, 41, 0) 100%);
+    background: -ms-linear-gradient(top, rgba(248, 157, 41, 0) 0%, rgba(248, 157, 41, 0.9) 15%, rgba(248, 157, 41, 0.9) 85%, rgba(248, 157, 41, 0) 100%);
+    background: linear-gradient(to bottom, rgba(248, 157, 41, 0) 0%, rgba(248, 157, 41, 0.9) 15%, rgba(248, 157, 41, 0.9) 85%, rgba(248, 157, 41, 0) 100%);
+  }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  8.1. FUNNY BOXES HOVER EFFECT 1 - OUTLINE INWARD
+/*---------------------------------------------------------------------*/
+.funny-boxes.outline-inward > .funny-boxes-icon:before {
+  border: #f89d29 solid 4px;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  8.2. FUNNY BOXES HOVER EFFECT 2 - OUTLINE OUTWARD
+/*---------------------------------------------------------------------*/
+.funny-boxes.outline-outward > .funny-boxes-icon:before {
+  border: #f89d29 solid 4px;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  9. PIE CHART
+/*---------------------------------------------------------------------*/
+.pie-chart-item .pie-chart-text > h4 {
+  color: #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  10. PRICING TABLES
+/*---------------------------------------------------------------------*/
+.pricing-table .pricing-wrapper > .pricing-column > .plan-title > h2 {
+  background-color: #f89d29;
+}
+.pricing-table .pricing-wrapper > .pricing-column > .plan-title > .pricing-box {
+  border-bottom: 3px solid #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  10.1. PRICING TABLES - STYLE FOUR
+/*---------------------------------------------------------------------*/
+.pricing-table.style-four .pricing-wrapper.features > .pricing-column > .item-list {
+  border-top: 3px solid #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  10.2. PRICING TABLES - STYLE FIVE
+/*---------------------------------------------------------------------*/
+.pricing-table.style-five .pricing-wrapper > .pricing-column {
+  border-top: 6px solid #f89d29;
+}
+.pricing-table.style-five .pricing-wrapper > .pricing-column > .plan-footer {
+  background-color: #f89d29;
+  border-right: 1px solid #f8981f;
+  border-bottom: 1px solid #f8981f;
+  border-left: 1px solid #f8981f;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  10.3. PRICING TABLES - STYLE SIX
+/*---------------------------------------------------------------------*/
+.pricing-table.style-six .pricing-wrapper > .pricing-column {
+  border-top: 6px solid #f89d29;
+}
+.pricing-table.style-six .pricing-wrapper > .pricing-column > .plan-footer {
+  background-color: #f89d29;
+  border-right: 1px solid #f8981f;
+  border-bottom: 1px solid #f8981f;
+  border-left: 1px solid #f8981f;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  11. TABULAR CONTENT
+/*---------------------------------------------------------------------*/
+.tabular-content > ul.nav-tabs > li.active > a {
+  border-top: 5px solid #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  12. TESTIMONIALS
+/*---------------------------------------------------------------------*/
+.testimonial-item > .testimonial-content {
+  background: #f89d29;
+}
+.testimonial-item > .testimonial-content:after {
+  border-top-color: #f89d29;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  13. TIMELINE
+/*---------------------------------------------------------------------*/
+@media (min-width: 767px) {
+  .timeline > li > .timeline-panel:after {
+    border-right: 0 solid #f89d29;
+    border-left: 14px solid #f89d29;
+  }
+}
+.timeline > li > .timeline-panel > .timeline-heading > .timeline-title {
+  background: #f89d29;
+}

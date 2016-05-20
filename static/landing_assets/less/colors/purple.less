@@ -1,0 +1,140 @@
+/*-----------------------------------------------------------------------
+/*  PURPLE
+/*  assets/less/colors/purple.less
+/*-----------------------------------------------------------------------
+
+1. NAVBAR
+
+2. QUOTE SECTION
+
+3. KEEP IN TOUCH SECTION
+
+4. CONTACT US SECTION
+
+5. FOOTER
+
+-----------------------------------------------------------------------*/
+
+
+/* IMPORT VARIABLES */
+@import "../variables";
+
+
+/*---------------------------------------------------------------------*/
+/*  1. NAVBAR
+/*---------------------------------------------------------------------*/
+.navbar.navbar-fixed-top {
+    .navbar-toggle {        
+        background-color: @purple;
+    }
+
+    .navbar-nav {
+        > li {
+            > a {
+                &:hover {
+                    color: @purple;
+                }
+            }
+        }
+
+        > li.active {
+            a, a:hover {
+                background-color: @purple;
+
+                @media(min-width:992px) {
+                    background-color: @purple;
+                }
+            }
+        }
+    }
+}
+
+.navbar-trigger-open {
+    a {
+        background-color: @purple;
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  2. QUOTE SECTION
+/*---------------------------------------------------------------------*/
+#quote {
+    > .section-inner {
+        > .section-content {
+            .quote-text {
+                > .quote-icon {
+                    > i {
+                        color: @purple;
+                       
+                    }
+                }
+
+                > h2.quote-by {
+                    color: @purple;
+                }
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  3. KEEP IN TOUCH SECTION
+/*---------------------------------------------------------------------*/
+#keep-in-touch {
+    .social-icon-item {    
+        > a {
+            &:hover {
+                color: @purple;
+                
+                .social-icon {
+                    > i {
+                        color: @purple;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  4. CONTACT US SECTION
+/*---------------------------------------------------------------------*/
+#contact-us {
+    > .section-inner {
+        > .section-content {
+            .content-message {
+                background-color: @purple;
+            }
+
+            .form-group {
+                input, 
+                textarea {
+                    border-left-color: @purple;
+                }
+
+                span {
+                    background-color: @purple;
+                    border-color: @purple;
+                }
+            }
+
+            .social-icon-text {
+                > h2 {
+                    background-color: @purple;
+                    border: 1px solid darken(@purple, 10%);
+                }
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  5. FOOTER
+/*---------------------------------------------------------------------*/
+footer.footer {
+    border-top: 2px solid @purple;
+}

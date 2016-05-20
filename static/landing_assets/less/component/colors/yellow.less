@@ -1,0 +1,445 @@
+/*-----------------------------------------------------------------------
+/*  YELLOW
+/*  assets/less/component/colors/yellow.less
+/*-----------------------------------------------------------------------
+
+1. BUTTON
+
+2. ACCORDION
+	2.1 ACCORDION - STYLE THREE
+	2.2 ACCORDION - STYLE FOUR
+
+3. BAR CHART
+
+4. CONTENT BOXES
+	4.1 CONTENT BOXES - STYLE TWO
+	4.2 CONTENT BOXES - STYLE THREE
+
+5. COUNTDOWN
+
+6. COUNTERS
+
+7. FANCY TABLE
+
+8. FUNNY BOXES
+	8.1 FUNNY BOXES HOVER EFFECT 1 - OUTLINE INWARD
+	8.2 FUNNY BOXES HOVER EFFECT 2 - OUTLINE OUTWARD
+	
+9. PIE CHART
+
+10. PRICING TABLES
+	10.1 PRICING TABLES - STYLE FOUR
+	10.2 PRICING TABLES - STYLE FIVE
+	10.3 PRICING TABLES - STYLE SIX
+
+11. TABULAR CONTENT
+
+12. TESTIMONIALS
+
+13. TIMELINE
+
+-----------------------------------------------------------------------*/
+
+
+/* IMPORT VARIABLES */
+@import "../../variables";
+
+
+/*---------------------------------------------------------------------*/
+/*  1. BUTTON
+/*---------------------------------------------------------------------*/
+.btn.btn-rj {
+    background-color: @yellow;
+    border-color: lighten(@yellow, 5%);
+
+    &:hover,
+    &:focus {
+        background-color: darken(@yellow, 5%);
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  2. ACCORDION
+/*---------------------------------------------------------------------*/
+.accordion.accordion-rj {
+    .panel-group {
+        > .panel {
+            border-color: @yellow;
+            
+            > .panel-heading {
+                background-color: @yellow;
+                border-color: @yellow;
+            }
+
+            > .panel-collapse {
+                > .panel-body {
+                    border-color: lighten(@yellow, 10%);
+                }
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  2.1. ACCORDION - STYLE THREE
+/*---------------------------------------------------------------------*/
+.accordion.accordion-rj.style-three {
+    .panel-group {
+        border-top: 1px solid @yellow;
+
+        > .panel {
+            border-bottom: 1px solid @yellow;
+
+            > .panel-heading {
+                > .panel-title {
+                    > a {   
+                        &:after {
+                            color: @yellow;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  2.2. ACCORDION - STYLE FOUR
+/*---------------------------------------------------------------------*/
+.accordion.accordion-rj.style-four {
+    .panel-group {
+        border-top: 1px solid @yellow;
+
+        > .panel {
+            border-bottom: 1px solid @yellow;
+
+            > .panel-heading {
+                > .panel-title {
+                    > a {
+                        &:before {
+                            color: @yellow;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  3. BAR CHART
+/*---------------------------------------------------------------------*/
+.bar-chart {
+    .bar-chart-item {    
+        background: @yellow;
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  4. CONTENT BOXES
+/*---------------------------------------------------------------------*/
+.content-boxes {
+    > .content-boxes-icon {
+        > i {
+            color: @yellow;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  4.1. CONTENT BOXES - STYLE TWO
+/*---------------------------------------------------------------------*/
+.content-boxes.style-two {
+    > .content-boxes-icon {
+        > i {
+            background-color: @yellow;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  4.2. CONTENT BOXES - STYLE THREE
+/*---------------------------------------------------------------------*/
+.content-boxes.style-three {
+    > .content-boxes-icon {
+        > i {
+            background-color: @yellow;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  5. COUNTDOWN
+/*---------------------------------------------------------------------*/
+.countdown {
+    .cd-content {
+        .cd-element {
+            border-bottom: 1px solid @yellow;
+
+            > .cd-value {
+                color: @yellow;
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  6. COUNTERS
+/*---------------------------------------------------------------------*/
+.counter-item {
+    > i {
+        color: @yellow;
+    }
+    
+    > p {
+        color: @yellow;
+    }
+}
+
+.counter-item.bubble {
+    .inner-content {
+        background-color: @yellow;
+        
+        &:before {
+            border-top-color: @yellow;
+        }
+    }
+
+    > p {
+        border-bottom: 1px solid @yellow;
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  7. FANCY TABLE
+/*---------------------------------------------------------------------*/
+.table.table-rj {
+    border-bottom: 2px solid @yellow;
+   
+    > thead {
+        background-color: @yellow;
+        
+        > tr {
+            > th {
+                border-bottom: 2px solid darken(@yellow, 5%);
+            }
+        }
+    }
+}
+
+.table.table-bordered.table-rj {
+    > thead {
+        > tr {
+            > th {
+                border: 1px solid lighten(@yellow, 8%);
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  8. FUNNY BOXES
+/*---------------------------------------------------------------------*/
+.funny-boxes {     
+    &:hover {
+        > .funny-boxes-icon {
+            background-color: @yellow;
+        }
+    }
+
+    > .funny-boxes-icon {
+        border: 1px solid @yellow;
+        color: @yellow;
+    }
+
+    > .funny-boxes-text {
+        > h4 {
+            &:after {
+                background-color: @yellow;
+            }
+        }
+    }
+}
+
+.funny-boxes.not-right-column {
+    &:before {
+        @media(min-width:1023px) {
+            background: -moz-linear-gradient(top, fade(@yellow, 0%) 0%, fade(@yellow, 90%) 15%, fade(@yellow, 90%) 85%, fade(@yellow, 0%) 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, fade(@yellow, 0%)), color-stop(15%, fade(@yellow, 90%)), color-stop(85%, rgba(221,221,221,1)), color-stop(100%, fade(@yellow, 0%)));
+            background: -webkit-linear-gradient(top, fade(@yellow, 0%) 0%, fade(@yellow, 90%) 15%, fade(@yellow, 90%) 85%, fade(@yellow, 0%) 100%);
+            background: -o-linear-gradient(top, fade(@yellow, 0%) 0%, fade(@yellow, 90%) 15%, fade(@yellow, 90%) 85%, fade(@yellow, 0%) 100%);
+            background: -ms-linear-gradient(top, fade(@yellow, 0%) 0%, fade(@yellow, 90%) 15%, fade(@yellow, 90%) 85%, fade(@yellow, 0%) 100%);
+            background: linear-gradient(to bottom, fade(@yellow, 0%) 0%, fade(@yellow, 90%) 15%, fade(@yellow, 90%) 85%, fade(@yellow, 0%) 100%);
+        }            
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  8.1. FUNNY BOXES HOVER EFFECT 1 - OUTLINE INWARD
+/*---------------------------------------------------------------------*/
+.funny-boxes.outline-inward {
+    > .funny-boxes-icon {
+        &:before {
+            border: @yellow solid 4px;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  8.2. FUNNY BOXES HOVER EFFECT 2 - OUTLINE OUTWARD
+/*---------------------------------------------------------------------*/
+.funny-boxes.outline-outward {
+    > .funny-boxes-icon {
+        &:before {
+            border: @yellow solid 4px;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  9. PIE CHART
+/*---------------------------------------------------------------------*/
+.pie-chart-item {
+    .pie-chart-text {
+        > h4 {
+            color: @yellow;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  10. PRICING TABLES
+/*---------------------------------------------------------------------*/
+.pricing-table {
+    .pricing-wrapper {
+        > .pricing-column {
+            > .plan-title {
+                > h2 {
+                    background-color: @yellow;
+                }
+
+                > .pricing-box {
+                    border-bottom: 3px solid @yellow;
+                }
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  10.1. PRICING TABLES - STYLE FOUR
+/*---------------------------------------------------------------------*/
+.pricing-table.style-four {
+    .pricing-wrapper.features {
+        > .pricing-column {
+            > .item-list {
+                border-top: 3px solid @yellow;
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  10.2. PRICING TABLES - STYLE FIVE
+/*---------------------------------------------------------------------*/
+.pricing-table.style-five {
+    .pricing-wrapper {
+        > .pricing-column {
+            border-top: 6px solid @yellow;
+            
+            > .plan-footer {
+                background-color: @yellow;
+                border-right: 1px solid darken(@yellow, 2%);
+                border-bottom: 1px solid darken(@yellow, 2%);
+                border-left: 1px solid darken(@yellow, 2%);
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  10.3. PRICING TABLES - STYLE SIX
+/*---------------------------------------------------------------------*/
+.pricing-table.style-six {
+    .pricing-wrapper {
+        > .pricing-column {
+            border-top: 6px solid @yellow;
+            
+            > .plan-footer {
+                background-color: @yellow;
+                border-right: 1px solid darken(@yellow, 2%);
+                border-bottom: 1px solid darken(@yellow, 2%);
+                border-left: 1px solid darken(@yellow, 2%);
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  11. TABULAR CONTENT
+/*---------------------------------------------------------------------*/
+.tabular-content {
+    > ul.nav-tabs {
+        > li.active {
+            > a {
+                border-top: 5px solid @yellow;
+            }
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  12. TESTIMONIALS
+/*---------------------------------------------------------------------*/
+.testimonial-item {
+    > .testimonial-content {
+        background: @yellow;
+
+        &:after {
+            border-top-color: @yellow;
+        }
+    }
+}
+
+
+/*---------------------------------------------------------------------*/
+/*  13. TIMELINE
+/*---------------------------------------------------------------------*/
+.timeline {
+    > li {
+        > .timeline-panel {
+            &:after {
+                @media(min-width:767px) {    
+                    border-right: 0 solid @yellow;
+                    border-left: 14px solid @yellow;
+                }
+            }
+
+            > .timeline-heading {
+                > .timeline-title {
+                    background: @yellow;
+                }
+            }
+        }
+    }
+}

@@ -842,16 +842,6 @@ ul.users li a {
         width: auto;
         top: auto;
     }
-    .container > .banner:before,
-    .container > .banner:after,
-    section.grey:before,
-    section.grey:after {
-        content: "";
-        position: absolute;
-        top: -1px;
-        bottom: -1px;
-        width: 0px;
-    }
 
 }
 
@@ -946,12 +936,6 @@ li > a {
     color: #000000 !important;
 }
 
-@media (max-width: 990px) {
-    body .container {
-        padding-top: 100px !important;
-    }
-}
-
 @media (min-width: 990px ) and (max-width: 1220px) {
     #amnesty-logo a img {
         margin-left: 15px !important;
@@ -967,6 +951,9 @@ li > a {
 
     .banner:after {
         left: 90% !important;
+    }
+    body .container{
+        margin-bottom: 30px;
     }
 }
 
@@ -990,4 +977,21 @@ li > a {
 }
 #footer_links ul li a:hover {
     color: #fff;
+}
+
+@media (min-width: 768px ) and (max-width: 882px) {
+
+    #tryNow{
+        vertical-align: bottom;
+        margin-top: 70% !important;
+    }
+
+}
+@media (min-width: 883px ) and (max-width: 1080px) {
+
+    #tryNow{
+        vertical-align: bottom;
+        margin-top: 60% !important;
+    }
+
 }
