@@ -3,6 +3,7 @@
     var persons = 0;
     var not_clear_clicked = 0;
     var last_checked = 0;
+    var back_clicked = 0;
     var select_json = {
         "positive-select": 0,
         "negative-select": 0,
@@ -21,7 +22,6 @@
     var is_mixed_clicked = null;
 
     function displayFirstQuestion(element) {
-        setCounterButtonInactive($(".more-persons"));
         element.parent().parent().parent().hide();
         $(".question").show(250);
         $(".individuals-container").parent().show(250);
@@ -35,6 +35,7 @@
         $(".finish").hide();
         $(".forward-arrow-container").hide();
         $(".back-arrow-container").click(function () {
+            back_clicked += 1;
             var class_names = $(this).parent().parent().attr("class").split(" ");
             var class_name = class_names[class_names.length - 1];
             if (class_name == "under-ten-2") {
@@ -44,6 +45,15 @@
             if (class_name == "ten-plus-1") {
                 resetPersons("active");
                 $('.more-persons h1').text("9+");
+                $(".continue-under-ten").hide();
+            }
+
+            if (click == 1) {
+                $(".select-persons").hide();
+                resetPersons("active");
+                setCounterButtonInactive($(".more-persons"));
+                $(".continue-under-ten").hide();
+                $(".more-persons h1").text("2+");
             }
 
             var matches = class_name.match(/\d+/g);
@@ -55,7 +65,6 @@
             } else {
                 displayFirstQuestion($(this));
             }
-            click = 0;
         });
 
         $(".outcome-result").click(function () {
@@ -202,17 +211,21 @@
             $(this).addClass("clicked");
             $(".one-person").css("background-color", "transparent");
             $(".one-person").css("color", "#fff");
-            if (click == 0) {
+            $(".continue-under-ten").hide();
+            if (click == 0 || click == 1) {
                 setCounterButtonActive($(this));
-                for (var i = 0; i < 2; i++) {
+                for (var i = 0; i < 8; i++) {
                     var person_head = $(".person" + i).find('.person-head');
                     var person_body = $(".person" + i).find('.person-body');
-                    setPersonActive(person_head, person_body);
+                    if (i < 2) {
+                        setPersonActive(person_head, person_body);
+                    } else {
+                        setPersonInactive(person_head, person_body);
+                    }
                 }
                 click = 2;
             } else {
                 click = 0;
-                $(".continue-under-ten").hide();
                 setCounterButtonInactive($(this));
             }
             $(".select-persons").animate({width: 'toggle'}, 250);
@@ -220,6 +233,7 @@
 
         $(".continue-under-ten").click(function () {
             $(this).parent().parent().parent().parent().hide();
+            click = 2;
             $(".under-10-individuals").show(250);
             $(".under-ten-1").show();
         });
@@ -231,6 +245,7 @@
                 "background-color": "#999999",
                 "color": "#666"
             });
+            $("#victims-number").val("");
             $(".ten-plus-2").show(250);
         });
 
@@ -250,7 +265,6 @@
                     } else {
                         victims_html = "<div class='mixed-persons mixed-persons" + i + "' style='float: left; height:40px; width: 14px; margin-top: 5px; text-align: center;'><div class='person-head' style='text-align: center;'><img src='/static/img/head.png' style='width: 11px; height: 11px;'></div><div class='person-body' style='margin-top: 3px; text-align: center;'><img src='/static/img/body.png' style='width: 11px; height: 20px;'></div></div>";
                     }
-
                     $(".positive-victims-body").append(victims_html);
                     $(".negative-victims-body").append(victims_html);
                     $(".unsure-victims-body").append(victims_html);
@@ -681,7 +695,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-md-12 single-3" style="display: none;">
+            <div class="col-xs-10 col-md-12 single-3" style="display: none;">
                 <div class="col-xs-2 col-md-2" style="text-align: center">
                     <div class="back-arrow-container" style="text-align: center; margin-top:40px;">
                     </div>
@@ -698,8 +712,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-xs-2 col-md-2">
+                    <div class="forward-arrow-container" style="text-align: center; margin-top:35px;">
 
+                    </div>
+                    <br>
                 </div>
             </div>
             <div class="col-xs-12 col-md-12 end-scene single-4" style="display: none;">
@@ -774,7 +791,7 @@
                     </div>
                     <br>
                 </div>
-                <div class="col-xs-10 col-md-8 outcome-options" style="margin-left: -11px;">
+                <div class="col-xs-8 col-md-8 outcome-options" style="margin-left: -11px;">
                     <h2>Please specify how many people had positive and negative outcomes.</h2>
                     <div class="mixed-small">
                         <br>
@@ -831,7 +848,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-xs-2 col-md-2">
+                    <div class="forward-arrow-container" style="text-align: center; margin-top:35px;">
+
+                    </div>
+                    <br>
+                </div>
             </div>
             <div class="col-xs-12 col-md-12 end-scene under-ten-3" style="display:none;">
                 {% include "urgentactions/ua-sub-header-final-step.html" %}
@@ -845,10 +867,10 @@
                     </div>
                     <br>
                 </div>
-                <div class="col-xs-10 col-md-8" style="margin-left: -11px;">
+                <div class="col-xs-8 col-md-8" style="margin-left: -11px;">
                     <h2>Can you specify the exact number of victims involved?</h2>
                     <div class="form-inline">
-                        <div class="form-group">
+                        <div class="form-group ten-plus-input">
                             <input style="float: left; width: 150px; height: 50px; margin: 5px 0 0 5px;"
                                    placeholder="ENTER NUMBER"
                                    type="text"
@@ -863,7 +885,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-xs-2 col-md-2">
+                    <div class="forward-arrow-container" style="text-align: center; margin-top:35px;">
+
+                    </div>
+                    <br>
                 </div>
             </div>
 

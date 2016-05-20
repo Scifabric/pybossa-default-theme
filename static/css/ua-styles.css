@@ -233,7 +233,7 @@ a:hover {
     height: 50px;
     font-size: 18px;
     font-weight: bolder;
-    width: 90px;
+    width: 85px;
     margin: 5px 0 0 11px;
     border: 2px solid white;
     background-color: transparent;
@@ -563,6 +563,18 @@ i:hover {
 
     #victims-number {
         margin-left: 0 !important;
+    }
+
+    .ten-plus-input {
+        margin-top: 28px !important;
+    }
+
+    .continue-vno {
+        width: 80px !important;
+    }
+
+    #victims-number {
+        width: 100px !important;
     }
 
     .outcome-btns {
