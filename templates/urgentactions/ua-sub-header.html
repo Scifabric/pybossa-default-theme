@@ -211,10 +211,11 @@
                 sum += Number(select_json[item]);
             }
             if (sum == persons) {
+                $('.errAlertMessage').hide();
                 $(".mixed-continue").show(250);
             } else {
                 $("#personNumber").empty().append(persons);
-                $('#alertModal').modal("show");
+                $('.errAlertMessage').show();
                 $(".mixed-continue").hide();
             }
         });
@@ -909,6 +910,9 @@
                             </select>
                         </div>
                         <br>
+                        <div class="form-group errAlertMessage">
+                            <p>The selected numbers needs to add up to <span id="personNumber"></span></p>
+                        </div>
                         <div class="form-group">
                             <div class="individual-outcome outcome-result mixed-continue"
                                  style="margin-left: 0;">CONFIRM
@@ -999,22 +1003,4 @@
             </div>
         </div>
     </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="alertModal" role="dialog">
-<div class="modal-dialog modal-sm">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">Error!</h4>
-    </div>
-    <div class="modal-body">
-      <p>The selected numbers needs to add up to <span id="personNumber"></span></p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div>
-  </div>
-</div>
 </div>
