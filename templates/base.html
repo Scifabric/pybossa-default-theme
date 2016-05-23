@@ -127,9 +127,9 @@
                         <li><i class="glyphicon glyphicon-link"></i> <a href="">{{ _('Docs')
                             }}</a></li>
                         <li><i class="glyphicon glyphicon-link"></i> <a href="{#{url_for('help.api')}#}">API</a></li>
-                        <li><i class="glyphicon glyphicon-link"></i> <a href="{#{url_for('help.tos')}#}">{{ _('Terms of
+                        <li><i class="glyphicon glyphicon-link"></i> <a href="{{ url_for('terms.index')}}">{{ _('Terms of
                             Use') }}</a></li>
-                        <li><i class="glyphicon glyphicon-link"></i> <a href="{#{url_for('help.cookies_policy')}#}">{{
+                        <li><i class="glyphicon glyphicon-link"></i> <a href="{{url_for('help.cookies_policy')}}">{{
                             _('Cookies Policy') }}</a></li>
                         <li><i class="glyphicon glyphicon-link"></i> <a href="{#{url_for('stats.index')}#}">{{ _('Stats')
                             }}</a></li>
