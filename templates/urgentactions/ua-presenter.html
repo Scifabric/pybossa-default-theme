@@ -56,7 +56,8 @@
                             });
                         }
 
-                        $("#person-name").html(t.capitalize() + "<br><i>Is this the full and correct name?</i>" + '&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
+                        var formatted_str = t.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+                        $("#person-name").html(formatted_str + "<br><i>Is this the full and correct name?</i>" + '&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
 
                         if (screen_width > 768) {
                             $('#detailed-individual-information').show();
@@ -67,10 +68,6 @@
         }
 
     });
-
-String.prototype.capitalize = function() {
-    return this.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
-};
 
 </script>
 <div class="row presenter-container" style="color: #000; background-color: #fff;">
