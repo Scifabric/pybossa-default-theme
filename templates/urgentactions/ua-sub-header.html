@@ -458,7 +458,9 @@
         if (sum == persons) {
             $("#mixed-continue").show(250)
         } else {
-            $("#mixed-continue").hide()
+            $("#personNumber").empty().append(persons);
+            $('#alertModal').modal("show");
+            $("#mixed-continue").hide();
         }
     }
 
@@ -997,4 +999,22 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="alertModal" role="dialog">
+<div class="modal-dialog modal-sm">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Error!</h4>
+    </div>
+    <div class="modal-body">
+      <p>The selected numbers needs to add up to <span id="personNumber"></span></p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
 </div>
