@@ -55,9 +55,8 @@
                                 'left': e.pageX - length * 4
                             });
                         }
-                        console.log(t);
-                        //var formatted_str = t.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-                        $("#person-name").html(t + "<br><i>Is this the full and correct name?</i>" + '&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
+                        
+                        $("#person-name").html("<span style='text-transform: capitalize !important;'>" + t +"</spant>" + "<br><i>Is this the full and correct name?</i>" + '&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
 
                         if (screen_width > 768) {
                             $('#detailed-individual-information').show();
