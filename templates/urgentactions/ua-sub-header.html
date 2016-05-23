@@ -74,6 +74,7 @@
                 $("." + class_name.replace(matches[0], Number(matches[0]) - 1)).show(250);
                 $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
                 $(".finish-scene").hide();
+                $(".skip").show(250);
             } else {
                 displayFirstQuestion($(this));
             }
@@ -91,6 +92,7 @@
                 $("." + class_name).hide();
                 $("." + class_name.replace(matches[0], Number(matches[0]) + 1)).show(250);
                 $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
+                $(".skip").show(250);
             } else {
                 $(".question").hide();
                 $("div[title=\"previous-select\"]").parent().show(250);
@@ -147,6 +149,7 @@
             if (next_class_names.attr("class").split(" ").indexOf("end-scene") > -1) {
                 $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
                 $(".finish-scene").show(250);
+                $(".skip").hide();
             } else {
                 $(".presenter-container").removeClass("disabled");
                 $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
@@ -157,6 +160,7 @@
                 if ($("#" + parent_id).css("display") == "none") {
                     $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
                     $(".finish-scene").show(250);
+                    $(".skip").hide();
                 }
             }
         });
@@ -222,6 +226,7 @@
 
         $(".next-ua").click(function () {
             $(".btn-submit").click();
+            $(".skip").show(250);
             $(".question").show(250);
             $(".question").children().children().show();
             $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
@@ -252,6 +257,7 @@
         $(".one-person-small").click(function () {
             $(this).addClass("clicked");
             $(".question").hide();
+            setPersonName();
             $("#single-individual-small").show(250);
             $(".single-1").show(250);
             $(".under-10-individuals").hide();
@@ -282,6 +288,7 @@
                 click = 2;
             } else {
                 click = 0;
+                $(".more-persons h1").text("2+");
                 setCounterButtonInactive($(this));
             }
             $(".select-persons").animate({width: 'toggle'}, 250);
@@ -391,6 +398,9 @@
                     $(".disabled").off("mouseleave");
                     $(".disabled").off("mouseenter");
                 });
+                if (back_clicked == 0) {
+                    $("#reset").click();
+                }
             } else {
                 checkForSum();
             }
@@ -409,17 +419,31 @@
                 });
                 $("input::-webkit-input-placeholder").css({"color": "red"});
             } else {
-                $("#victims-number").css({
-                    'border': "none"
-                });
-                var class_names = parent_div.attr("class").split(" ");
-                parent_div.hide();
-                var class_name = class_names[class_names.length - 1];
-                var matches = class_name.match(/\d+/g);
-                $("." + class_name.replace(matches[0], Number(matches[0]) + 1)).show(250);
-                back_clicked = 0;
-                $('.forward-arrow-container').hide();
-                $("div[title=\"previous-select\"]").prop("title", "not-selected");
+                if (isNaN(victims_number)) {
+                    $("#victims-number").css({
+                        'border': "2px solid red"
+                    });
+                    $("input::-webkit-input-placeholder").css({"color": "red"});
+                } else {
+                    if (Number(victims_number) < 9) {
+                        $("#victims-number").css({
+                            'border': "2px solid red"
+                        });
+                        $("input::-webkit-input-placeholder").css({"color": "red"});
+                    } else {
+                        $("#victims-number").css({
+                            'border': "none"
+                        });
+                        var class_names = parent_div.attr("class").split(" ");
+                        parent_div.hide();
+                        var class_name = class_names[class_names.length - 1];
+                        var matches = class_name.match(/\d+/g);
+                        $("." + class_name.replace(matches[0], Number(matches[0]) + 1)).show(250);
+                        back_clicked = 0;
+                        $('.forward-arrow-container').hide();
+                        $("div[title=\"previous-select\"]").prop("title", "not-selected");
+                    }
+                }
             }
         });
 
@@ -454,6 +478,16 @@
             }
         });
         onVictimsHover("person", 1, 0)
+    }
+
+    function setPersonName() {
+        if (person_name != "") {
+            $(".person-name-question").text("Is " + person_name + "?");
+            $(".person-name-question").append('&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
+        } else {
+            $(".person-name-question").text('Is victim?');
+            $(".person-name-question").append('&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
+        }
     }
 
     function checkForSum() {
@@ -547,6 +581,7 @@
         });
 
         $("#confirm-name").click(function () {
+            setPersonName();
             $(".single-1").hide();
             $(".single-2").show(250);
             $("#close-popup").click();
@@ -778,7 +813,31 @@
                     <br>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-12 single-2" style="display: none; padding: 10px 0 0 0;">
+            <div class="col-xs-12 col-md-12 single-2" style="display: none;">
+                <div class="col-xs-2 col-md-2" style="text-align: center">
+                    <div class="back-arrow-container" style="text-align: center; margin-top:40px;">
+                    </div>
+                    <br>
+                </div>
+                <div class="col-xs-8 col-md-8 outcome-options" style="margin-left: -11px;">
+                    <h2 class="person-name-question"></h2>
+                    <div class="options" style="margin-left: -11px;">
+                        <div class="individual-outcome outcome-result">MALE
+                        </div>
+                        <div class="individual-outcome outcome-result">FEMALE
+                        </div>
+                        <div class="individual-outcome outcome-result">UNCLEAR
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2">
+                    <div class="forward-arrow-container" style="text-align: center; margin-top:35px;">
+
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-12 single-3" style="display: none; padding: 10px 0 0 0;">
                 <div class="col-xs-2 col-md-2" style="text-align: center">
                     <div class="back-arrow-container" style="text-align: center; margin-top:35px;">
 
@@ -806,9 +865,15 @@
                     </div>
                     <br>
                 </div>
+            <div class="col-xs-12 col-md-12 end-scene single-4" style="display: none;">
             </div>
 
-            <div class="col-xs-12 col-md-12 single-3" style="display: none;">
+                {% include "urgentactions/ua-sub-header-final-step.html" %}
+            </div>
+        </div>
+
+        <div class="single-individual" id="single-individual-small">
+            <div class="col-xs-12 col-md-12 single-1">
                 <div class="col-xs-2 col-md-2" style="text-align: center">
                     <div class="back-arrow-container" style="text-align: center; margin-top:40px;">
                     </div>
@@ -821,7 +886,7 @@
                         </div>
                         <div class="individual-outcome outcome-result">FEMALE
                         </div>
-                        <div class="individual-outcome outcome-result">UNCLEAR
+                        <div class="individual-outcome outcome-result">NOT CLEAR
                         </div>
                     </div>
                 </div>
@@ -832,7 +897,7 @@
                     <br>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-12 end-scene single-4" style="display: none;">
+            <div class="col-xs-12 col-md-12 single-2" style="display: none; padding: 10px 0 0 0;">
                 {% include "urgentactions/ua-sub-header-final-step.html" %}
             </div>
         </div>
@@ -934,7 +999,7 @@
                         </div>
                         <br>
                         <div class="form-group errAlertMessage" style="display: none">
-                            <p><i class="fa fa-info-circle fa-2"></i>The selected numbers needs to add up to <span
+                            <p><i class="fa fa-info-circle fa-2">&nbsp;</i>The selected numbers needs to add up to <span
                                     id="personNumber"></span>!</p>
                         </div>
                         <div class="form-group">
