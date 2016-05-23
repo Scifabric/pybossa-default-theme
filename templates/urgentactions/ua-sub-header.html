@@ -202,6 +202,9 @@
             }
         });
 
+        // Add the number of persons to identicate how many persons where previously selected
+        $("#personNumber").empty().append(persons);
+        $('.errAlertMessage').show();
         $(".selectbox").change(function () {
             var id = $(this).attr("id");
             var value = $(this).val().toString();
@@ -910,7 +913,7 @@
                             </select>
                         </div>
                         <br>
-                        <div class="form-group errAlertMessage">
+                        <div class="form-group errAlertMessage" style="display: none">
                             <p>The selected numbers needs to add up to <span id="personNumber"></span></p>
                         </div>
                         <div class="form-group">
