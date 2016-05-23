@@ -213,6 +213,8 @@
             if (sum == persons) {
                 $(".mixed-continue").show(250);
             } else {
+                $("#personNumber").empty().append(persons);
+                $('#alertModal').modal("show");
                 $(".mixed-continue").hide();
             }
         });
@@ -458,8 +460,6 @@
         if (sum == persons) {
             $("#mixed-continue").show(250)
         } else {
-            $("#personNumber").empty().append(persons);
-            $('#alertModal').modal("show");
             $("#mixed-continue").hide();
         }
     }
