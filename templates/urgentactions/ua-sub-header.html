@@ -284,7 +284,6 @@
         });
 
         $("#smallConfirmBtn").click(function(){
-            $(".back-arrow-container").hide();
             var select_json = {};
             $(".selectbox").each(function () {
                 var id = $(this).attr("id");
@@ -297,6 +296,7 @@
             }
             if (sum == persons) {
                 $(this).parent().parent().parent().hide();
+                $(".back-arrow-container").hide();
                 $(".under-ten-3").show(250);
                 displayFinishScene();
             } else {
@@ -1086,7 +1086,7 @@
                                     id="personNumber"></span>.</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" id="dismissModalBtn" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
