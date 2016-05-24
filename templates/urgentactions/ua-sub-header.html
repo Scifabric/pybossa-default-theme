@@ -296,7 +296,8 @@
                 sum += Number(select_json[item]);
             }
             if (sum == persons) {
-                $(this).parent().parent().parent().parent().hide();
+                $(this).parent().parent().parent().hide();
+                $(".back-arrow-container").hide();
                 $(".under-ten-3").show(250);
                 displayFinishScene();
             } else {
@@ -336,7 +337,6 @@
 
         $("#mixed").click(function () {
             // Add the number of persons to indicate how many persons where previously selected
-            // Add the number of persons to identicate how many persons where previously selected
             $("#personNumber").empty().append(persons);
             $('.mixed-continue', '.mixed-small').show();
             if (!is_10_plus_clicked && !is_mixed_clicked) {
@@ -979,10 +979,6 @@
                             </select>
                         </div>
                         <br>
-                        <div class="form-group errAlertMessage" style="display: none">
-                            <p><i class="fa fa-info-circle fa-2">&nbsp;</i>The selected numbers needs to add up to <span
-                                    id="personNumber"></span>!</p>
-                        </div>
                         <div class="form-group">
                             <div class="individual-outcome mixed-continue" id="smallConfirmBtn" style="margin-left: 0;">CONFIRM
                             </div>
@@ -1091,7 +1087,7 @@
                                     id="personNumber"></span>.</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" id="dismissModalBtn" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
