@@ -187,6 +187,7 @@
                     is_10_plus_clicked = 1;
                     persons = 9;
                     back_clicked = 0;
+                    $("input.numeric").numeric();
                     $('.forward-arrow-container').hide();
                     $("div[title=\"previous-select\"]").prop("title", "not-selected");
                     $(".ten-plus-individuals").show(250);
@@ -295,8 +296,7 @@
                 sum += Number(select_json[item]);
             }
             if (sum == persons) {
-                $(this).parent().parent().parent().hide();
-                $(".back-arrow-container").hide();
+                $(this).parent().parent().parent().parent().hide();
                 $(".under-ten-3").show(250);
                 displayFinishScene();
             } else {
@@ -336,6 +336,7 @@
 
         $("#mixed").click(function () {
             // Add the number of persons to indicate how many persons where previously selected
+            // Add the number of persons to identicate how many persons where previously selected
             $("#personNumber").empty().append(persons);
             $('.mixed-continue', '.mixed-small').show();
             if (!is_10_plus_clicked && !is_mixed_clicked) {
@@ -978,6 +979,10 @@
                             </select>
                         </div>
                         <br>
+                        <div class="form-group errAlertMessage" style="display: none">
+                            <p><i class="fa fa-info-circle fa-2">&nbsp;</i>The selected numbers needs to add up to <span
+                                    id="personNumber"></span>!</p>
+                        </div>
                         <div class="form-group">
                             <div class="individual-outcome mixed-continue" id="smallConfirmBtn" style="margin-left: 0;">CONFIRM
                             </div>
@@ -1044,7 +1049,7 @@
                             <input style="float: left; width: 150px; height: 50px; margin: 5px 0 0 5px;"
                                    placeholder="ENTER NUMBER"
                                    type="text"
-                                   class="form-control" id="victims-number" name="victims-number">
+                                   class="form-control numeric" id="victims-number" name="victims-number">
                             <div class="continue-vno">CONFIRM
                             </div>
                         </div>
@@ -1086,7 +1091,7 @@
                                     id="personNumber"></span>.</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="dismissModalBtn" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
