@@ -137,7 +137,7 @@
 
             var counter;
             if (class_name == "under-ten-1" && value != "mixed") {
-                counter = 2;s
+                counter = 2;
             } else {
                 counter = 1;
                 $(".mixed-continue").hide();
@@ -149,9 +149,7 @@
             next_class_names.show(250);
 
             if (next_class_names.attr("class").split(" ").indexOf("end-scene") > -1) {
-                $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
-                $(".finish-scene").show(250);
-                $(".skip").hide();
+                displayFinishScene();
             } else {
                 $(".presenter-container").removeClass("disabled");
                 $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
@@ -166,6 +164,12 @@
                 }
             }
         });
+
+        function displayFinishScene() {
+            $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
+            $(".finish-scene").show(250);
+            $(".skip").hide();
+        }
 
         $(".person").click(function () {
             var class_names_array = $(this).attr("class").split(" ");
@@ -183,7 +187,6 @@
                     is_10_plus_clicked = 1;
                     persons = 9;
                     back_clicked = 0;
-                    $("input.numeric").numeric();
                     $('.forward-arrow-container').hide();
                     $("div[title=\"previous-select\"]").prop("title", "not-selected");
                     $(".ten-plus-individuals").show(250);
@@ -209,23 +212,6 @@
             }
         });
 
-        $(".selectbox").change(function () {
-            var id = $(this).attr("id");
-            var value = $(this).val().toString();
-            select_json[id] = Number(value);
-            var sum = 0;
-            for (var item in select_json) {
-                sum += Number(select_json[item]);
-            }
-            if (sum == persons) {
-                $('.errAlertMessage').hide();
-                $(".mixed-continue").show(250);
-            } else {
-                $("#personNumber").empty().append(persons);
-                $('.errAlertMessage').show();
-                $(".mixed-continue").hide();
-            }
-        });
 
         $(".next-ua").click(function () {
             $(".btn-submit").click();
@@ -297,6 +283,29 @@
             $(".select-persons").animate({width: 'toggle'}, 250);
         });
 
+        $("#smallConfirmBtn").click(function(){
+            $(".back-arrow-container").hide();
+            var select_json = {};
+            $(".selectbox").each(function () {
+                var id = $(this).attr("id");
+                var value = $(this).val().toString();
+                select_json[id] = Number(value);
+            });
+            var sum = 0;
+            for (var item in select_json) {
+                sum += Number(select_json[item]);
+            }
+            if (sum == persons) {
+                $(this).parent().parent().parent().hide();
+                $(".under-ten-3").show(250);
+                displayFinishScene();
+            } else {
+                $('#alertMsgModal').modal('show');
+            }
+
+
+        });
+
         $(".continue-under-ten").click(function () {
             $(this).parent().parent().parent().parent().hide();
             click = 2;
@@ -326,9 +335,9 @@
         $("#mixed-continue").hide();
 
         $("#mixed").click(function () {
-            // Add the number of persons to identicate how many persons where previously selected
+            // Add the number of persons to indicate how many persons where previously selected
             $("#personNumber").empty().append(persons);
-            $('.errAlertMessage').show();
+            $('.mixed-continue', '.mixed-small').show();
             if (!is_10_plus_clicked && !is_mixed_clicked) {
                 bindSelectBoxes();
                 $(".final-step").hide();
@@ -969,13 +978,8 @@
                             </select>
                         </div>
                         <br>
-                        <div class="form-group errAlertMessage" style="display: none">
-                            <p><i class="fa fa-info-circle fa-2">&nbsp;</i>The selected numbers needs to add up to <span
-                                    id="personNumber"></span>!</p>
-                        </div>
                         <div class="form-group">
-                            <div class="individual-outcome outcome-result mixed-continue"
-                                 style="margin-left: 0;">CONFIRM
+                            <div class="individual-outcome mixed-continue" id="smallConfirmBtn" style="margin-left: 0;">CONFIRM
                             </div>
                         </div>
                     </div>
@@ -1040,7 +1044,7 @@
                             <input style="float: left; width: 150px; height: 50px; margin: 5px 0 0 5px;"
                                    placeholder="ENTER NUMBER"
                                    type="text"
-                                   class="form-control numeric" id="victims-number" name="victims-number">
+                                   class="form-control" id="victims-number" name="victims-number">
                             <div class="continue-vno">CONFIRM
                             </div>
                         </div>
@@ -1064,6 +1068,25 @@
             </div>
             <div class="col-xs-12 col-md-12 end-scene ten-plus-3" style="display: none;">
                 {% include "urgentactions/ua-sub-header-final-step.html" %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="alertMsgModal" role="dialog">
+    <div class="modal-dialog modal-sm modal-inverse">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4><i class="fa fa-info-circle fa-2">&nbsp;</i>The selected numbers needs to add up to <span
+                                    id="personNumber"></span>.</h4>
+            </div>
+            <div class="modal-body">
+                <h4>This is a small modal.</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
