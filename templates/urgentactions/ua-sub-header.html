@@ -1,3 +1,4 @@
+<script src="/static/js/numeric.js"></script>
 <script type="text/javascript">
     var click = 0;
     var persons = 0;
@@ -47,7 +48,7 @@
             if (class_name == "under-ten-2") {
                 is_mixed_clicked = 1;
             }
-            console.log(class_name);
+
             if (class_name == "ten-plus-1") {
                 resetPersons("active");
                 $('.more-persons h1').text("9+");
@@ -136,11 +137,12 @@
 
             var counter;
             if (class_name == "under-ten-1" && value != "mixed") {
-                counter = 2;
+                counter = 2;s
             } else {
                 counter = 1;
                 $(".mixed-continue").hide();
             }
+
             var next_class_names = $("." + class_name.replace(matches[0], Number(matches[0]) + counter));
             var parent_id = next_class_names.parent().attr("id");
 
@@ -181,6 +183,7 @@
                     is_10_plus_clicked = 1;
                     persons = 9;
                     back_clicked = 0;
+                    $("input.numeric").numeric();
                     $('.forward-arrow-container').hide();
                     $("div[title=\"previous-select\"]").prop("title", "not-selected");
                     $(".ten-plus-individuals").show(250);
@@ -1037,7 +1040,7 @@
                             <input style="float: left; width: 150px; height: 50px; margin: 5px 0 0 5px;"
                                    placeholder="ENTER NUMBER"
                                    type="text"
-                                   class="form-control" id="victims-number" name="victims-number">
+                                   class="form-control numeric" id="victims-number" name="victims-number">
                             <div class="continue-vno">CONFIRM
                             </div>
                         </div>
