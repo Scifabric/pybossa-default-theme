@@ -120,13 +120,8 @@
             $("div[title=\"previous-select\"]").prop("title", "not-selected");
             $('.forward-arrow-container').hide();
             var class_name = class_names[class_names.length - 1];
-            if (person_name != "") {
-                $(".person-name-question").text("Is " + person_name + "?");
-                $(".person-name-question").append('&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
-            } else {
-                $(".person-name-question").text('Is this person?');
-                $(".person-name-question").append('&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
-            }
+
+            setPersonName();
 
             if (class_name == "outcome-options") {
                 class_name = "under-ten-1";
@@ -284,7 +279,7 @@
             $(".select-persons").animate({width: 'toggle'}, 250);
         });
 
-        $("#smallConfirmBtn").click(function(){
+        $("#smallConfirmBtn").click(function () {
             var select_json = {};
             $(".selectbox").each(function () {
                 var id = $(this).attr("id");
@@ -478,6 +473,10 @@
                 }
             });
         });
+
+        $('[data-toggle="tooltip"]').tooltip({
+            html: true
+        });
     });
 
     function resetPersons(active) {
@@ -496,11 +495,14 @@
     function setPersonName() {
         if (person_name != "") {
             $(".person-name-question").text("Is " + person_name + "?");
-            $(".person-name-question").append('&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
+            $(".person-name-question").append('&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="We know the gender of a person isn’t always clear from the name, but sometimes you can find other clues such as gender pronouns (he, she, his, her, him, etc.) or a direct mention of the gender (f, m)." style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
         } else {
             $(".person-name-question").text('Is this person?');
-            $(".person-name-question").append('&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="Some tooltip text!" style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
+            $(".person-name-question").append('&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom" title="We know the gender of a person isn’t always clear from the name, but sometimes you can find other clues such as gender pronouns (he, she, his, her, him, etc.) or a direct mention of the gender (f, m)." style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2"></i></a>');
         }
+        $('[data-toggle="tooltip"]').tooltip({
+            html: true
+        });
     }
 
     function checkForSum() {
@@ -661,9 +663,6 @@
         $(person_head).find('img').prop("src", "/static/img/head_disabled.png");
         $(person_body).find('img').prop("src", "/static/img/body_disabled.png");
     }
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
 </script>
 <style>
     .tooltip {
@@ -680,11 +679,10 @@
     }
 
     .tooltip .tooltip-inner {
-        opacity: 1.0;
+        opacity: 1.0 !important;
         padding: 5px;
         background-color: white;
-        width: 250px;
-        height: 100px;
+        width: 300px;
         color: #0e0e0e;
         text-align: left;
         font-family: sans-serif;
@@ -697,9 +695,10 @@
             <div class="col-xs-12 col-md-12" style="padding: 0;">
                 <div class="col-md-offset-2 col-xs-10 col-md-8">
                     <div class="individuals-container">
-                        <h2 style="margin-right: 5px">How many human rights victims were campaigned for in the below
-                            Urgent Action?&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom"
-                                                   title="Some tooltip text!" style="color: white;font-size: 18px"><i
+                        <h2 style="margin-right: 5px">How many people suffering human rights abuse were campaigned for
+                            in the below Urgent Action?&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom"
+                                                                title="Look for the subjects of the Urgent Action, who will be the <b>main</b> victims of injustices. Often the first section contains all the information you need. If the document talks about large groups, families, communities, or an unspecified number of people just select “9+”."
+                                                                style="color: white;font-size: 18px"><i
                                     class="fa fa-info-circle fa-2"></i></a></h2>
                         <div class="one-person-small" style="display: none;">
                             <h1>1</h1>
@@ -811,10 +810,11 @@
                     <br>
                 </div>
                 <div class="col-xs-8 col-md-8">
-                    <h2>Please select the person’s full name in the text below, and answer the questions that
-                        follow.&nbsp;<a href="#" data-toggle="tooltip" data-placement="bottom"
-                                        title="Some tooltip text!" style="color: white;font-size: 18px"><i
-                                class="fa fa-info-circle fa-2"></i></a></h2>
+                    <h2>Please select the person’s full name in the text below, and answer the questions that follow.&nbsp;<a
+                            href="#" data-toggle="tooltip" data-placement="bottom"
+                            title="If the document is about one person, we also want to record names so that we can match with other information we have in Amnesty. To select the name, click the text and ensure the entire name is highlighted. "
+                            style="color: white;font-size: 18px"><i
+                            class="fa fa-info-circle fa-2"></i></a></h2>
                     <h3 style="margin-top: -5px; font-style: italic;">(To select the name, click and drag over the text,
                         ensuring the full name is highlighted).</h3>
                 </div>
@@ -860,7 +860,11 @@
                 <div class="col-xs-8 col-md-8 outcome-options" style="margin-left: -11px;">
                     <h2>What was the result of this Urgent Action campaign?&nbsp;<a href="#" data-toggle="tooltip"
                                                                                     data-placement="bottom"
-                                                                                    title="Some tooltip text!"
+                                                                                    title="<ul>
+                                                                                        <li><b>Positive</b> results will typically include words such as released, sentence commuted, stay of execution, freed, pardoned or acquitted.</li>
+                                                                                        <li><b>Negative</b> results are when someone has been executed, unlawfully detained, their sentence has been upheld having lost their appeal.</li>
+                                                                                        <li><b>Not clear</b> is when the result is ambiguous, positive on the one side and negative on the other.</li>
+                                                                                    </ul>"
                                                                                     style="color: white;font-size: 18px"><i
                             class="fa fa-info-circle fa-2"></i></a></h2>
                     <div class="options" style="margin-left: -11px;">
@@ -918,7 +922,11 @@
                 <div class="col-xs-8 col-md-8 outcome-options" style="margin-left: -11px;">
                     <h2>What was the result of this Urgent Action campaign?&nbsp;<a href="#" data-toggle="tooltip"
                                                                                     data-placement="bottom"
-                                                                                    title="Some tooltip text!"
+                                                                                    title="<ul>
+                                                                                        <li><b>Positive</b> results will typically include words such as released, sentence commuted, stay of execution, freed, pardoned or acquitted.</li>
+                                                                                        <li><b>Negative</b> results are when someone has been executed, unlawfully detained, their sentence has been upheld having lost their appeal.</li>
+                                                                                        <li><b>Not clear</b> is when the result is ambiguous, positive on the one side and negative on the other.</li>
+                                                                                    </ul>"
                                                                                     style="color: white;font-size: 18px"><i
                             class="fa fa-info-circle fa-2"></i></a></h2>
                     <div class="options" style="margin-left: -11px;">
@@ -958,7 +966,11 @@
                     <h2>Please specify how many people had positive and negative outcomes.&nbsp;<a href="#"
                                                                                                    data-toggle="tooltip"
                                                                                                    data-placement="bottom"
-                                                                                                   title="Some tooltip text!"
+                                                                                                   title="<ul>
+                                                                                                        <li><b>Positive</b> results will typically include words such as released, sentence commuted, stay of execution, freed, pardoned or acquitted.</li>
+                                                                                                        <li><b>Negative</b> results are when someone has been executed, unlawfully detained, their sentence has been upheld having lost their appeal.</li>
+                                                                                                        <li><b>Not clear</b> is when the result is ambiguous, positive on the one side and negative on the other.</li>
+                                                                                                    </ul>"
                                                                                                    style="color: white;font-size: 18px"><i
                             class="fa fa-info-circle fa-2"></i></a></h2>
                     <div class="mixed-small">
@@ -980,7 +992,8 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <div class="individual-outcome mixed-continue" id="smallConfirmBtn" style="margin-left: 0;">CONFIRM
+                            <div class="individual-outcome mixed-continue" id="smallConfirmBtn" style="margin-left: 0;">
+                                CONFIRM
                             </div>
                         </div>
                     </div>
@@ -1035,10 +1048,11 @@
                     <br>
                 </div>
                 <div class="col-xs-8 col-md-8" style="margin-left: -11px;">
-                    <h2>Can you specify the exact number of victims involved?&nbsp;<a href="#" data-toggle="tooltip"
-                                                                                      data-placement="bottom"
-                                                                                      title="Some tooltip text!"
-                                                                                      style="color: white;font-size: 18px"><i
+                    <h2>Can you specify the exact number of people suffering human rights abuse?&nbsp;<a href="#"
+                                                                                                         data-toggle="tooltip"
+                                                                                                         data-placement="bottom"
+                                                                                                         title="Look for the subjects of the Urgent Action, who will be the <b>main</b> victims of injustices. Often the first section contains all the information you need. Don’t get distracted by the additional information you sometimes find at the end of the document which may mention other people suffering similar injustices."
+                                                                                                         style="color: white;font-size: 18px"><i
                             class="fa fa-info-circle fa-2"></i></a></h2>
                     <div class="form-inline">
                         <div class="form-group ten-plus-input">
@@ -1084,7 +1098,7 @@
             </div>
             <div class="modal-body">
                 <h4><i class="fa fa-info-circle fa-2">&nbsp;</i>The selected numbers needs to add up to <span
-                                    id="personNumber"></span>.</h4>
+                        id="personNumber"></span>.</h4>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="dismissModalBtn" data-dismiss="modal">Close</button>
