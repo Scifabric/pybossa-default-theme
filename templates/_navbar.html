@@ -1,10 +1,11 @@
 <div class="row navbar-fixed-top" id="nav-head">
     <div class="col-xs-12 col-md-12 sub-navbar-fixed" style="height: 80px; padding: 0;">
-        <div class="col-xs-12 col-md-2" id="amnesty-logo"
+        <div class="col-xs-2 col-md-2" id="amnesty-logo"
              style="background-color: #ffff00; height: 80px; padding: 0; text-align: center;">
-            <img style="" src="/static/img/amnesty-international.png" class="img-responsive">
+            <img style="" src="/static/img/amnesty-international.png" id="amnestyLargeLogo" class="img-responsive">
+            <img style="display: none" src="/static/img/amnesty-small-logo.png" id="amnestySmallLogo" class="img-responsive">
         </div>
-        <div class="col-xs-12 col-md-10" id="header-content">
+        <div class="col-xs-10 col-md-10" id="header-content">
             <nav class="navbar navbar-inverse navbar-static-top">
                 <div class="navbar-header">
                     {% if current_user.is_authenticated() %}

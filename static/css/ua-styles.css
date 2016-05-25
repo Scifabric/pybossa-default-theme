@@ -176,7 +176,6 @@ a:hover {
     min-height: 150px;
     vertical-align: middle !important;
     color: #ffffff;
-    margin-top: 80px;
     background-color: #333333;
 }
 
@@ -658,10 +657,6 @@ i:hover {
         display: block !important;
     }
 
-    .sub-header-container {
-        margin-top: 78px;
-    }
-
     .admin-menu a {
         font-size: 15px !important;
     }
@@ -727,6 +722,15 @@ i:hover {
     .country-date {
         display: none;
     }
+
+    #amnestyLargeLogo{
+        display: none !important;
+    }
+    #amnestySmallLogo{
+        display: block !important;
+        width: auto !important;
+        height: 80px !important;
+    }
 }
 
 @media (min-width: 769px) {
@@ -765,6 +769,10 @@ i:hover {
     #menu {
         background-color: #2D2D2D !important;
         height: 104% !important;
+    }
+
+    .sub-header-container {
+        margin-top: 78px;
     }
 }
 
