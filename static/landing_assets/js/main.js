@@ -89,7 +89,7 @@ $(function() {
     /*---------------------------------------*/
     /*  CONTACT FORM REQUEST
     /*---------------------------------------*/
-    $('.validate').validate();
+
     
     $(document).on('submit', '#contact-us-form', function(e){
         e.preventDefault();
