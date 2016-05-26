@@ -1,32 +1,12 @@
 {% include "urgentactions/ua-sub-header.html" %}
+
 <script type="text/javascript">
     $(function () {
 
-        $(window).resize(function(){
+        $(window).resize(function() {
             var mainDiv = document.getElementById("presenterContainer");
             var coord_sel = getSelectionCharOffsetsWithin(mainDiv);
-
-            $('#detailed-individual-information').css({
-                position:'absolute',
-                  top: coord_sel.start,
-                  left:coord_sel.end
-            });
-//            if ($(window).width() < 980) {
-//                $('#nav-head').removeClass('navbar-fixed-top');
-//            }
-//            else {
-//                $('#nav-head').addClass('navbar-fixed-top');
-//            }
-
         });
-//        if ($(window).width() < 980) {
-//            $('#nav-head').removeClass('navbar-fixed-top');
-//        }
-//        else {
-//            $('#nav-head').addClass('navbar-fixed-top');
-//        }
-
-
 
         $(".one-person").click(function () {
             document.onmouseup = gText;
@@ -207,7 +187,7 @@ function capitalizeCase(str)
     </div>
     <div class="col-md-2 ua-sidebar"></div>
 </div>
-<div class="rectangle-speech-border" id="detailed-individual-information" style="display: none;">
+<div class="rectangle-speech-border" id="detailed-individual-information" style="display: none;position: relative !important;">
     <div class="detailed-information">
         <h3 style="margin-top: 3px;" id="person-name"></h3>
         <div class="individual-outcome" id="confirm-name">CORRECT</div>
