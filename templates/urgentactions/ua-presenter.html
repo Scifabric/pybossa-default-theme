@@ -36,7 +36,7 @@
                         $('#detailed-individual-information').hide();
                         $('#detailed-individual-information').css({
                             'top': e.pageY - 195,
-                            'position': 'fixed',
+                            'position': 'absolute',
                             'width': 240,
                             'color': '#fff',
                             'border': '1px solid #333',
@@ -49,7 +49,7 @@
                             backward = true;
                             $('#detailed-individual-information').css({
                                 'left': e.pageX + length
-                            });rectangle-speech-border
+                            });
                         } else {
                             $('#detailed-individual-information').css({
                                 'left': e.pageX - length * 4
@@ -153,7 +153,7 @@ function capitalizeCase(str)
     </div>
     <div class="col-md-2 ua-sidebar"></div>
 </div>
-<div class="rectangle-speech-border col-xs-5" id="detailed-individual-information" style="display: none;">
+<div class="rectangle-speech-border" id="detailed-individual-information" style="display: none;">
     <div class="detailed-information">
         <h3 style="margin-top: 3px;" id="person-name"></h3>
         <div class="individual-outcome" id="confirm-name">CORRECT</div>

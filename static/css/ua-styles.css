@@ -720,12 +720,6 @@ i:hover {
     }
 }
 
-@media only screen and (max-width: 768px) {
-    #detailed-individual-information {
-        width: auto;
-    }
-
-}
 @media (max-width: 768px) {
 
     .back-arrow-container {
