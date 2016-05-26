@@ -41,6 +41,7 @@
         $(".finish").hide();
         $(".forward-arrow-container").hide();
         $(".back-arrow-container").click(function () {
+            $('#detailed-individual-information').hide();
             back_clicked += 1;
             $(".forward-arrow-container").show(250);
             var class_names = $(this).parent().parent().attr("class").split(" ");
