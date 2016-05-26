@@ -5,18 +5,7 @@
         $(window).resize(function(){
             var mainDiv = document.getElementById("presenterContainer");
             var coord_sel = getSelectionCharOffsetsWithin(mainDiv);
-
-            $('#detailed-individual-information').css({
-                top: coord_sel.start,
-                left:coord_sel.end,
-                'top': e.pageY - 195,
-                'position': 'absolute',
-                'width': 240,
-                'color': '#fff',
-                'border': '1px solid #333',
-                'padding': '5px',
-                'background-color': "#333333"
-            });
+            
 
         $(".one-person").click(function () {
             document.onmouseup = gText;
