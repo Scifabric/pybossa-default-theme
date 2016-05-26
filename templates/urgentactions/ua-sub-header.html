@@ -688,6 +688,22 @@
         font-family: sans-serif;
         z-index: 100020 !important;
     }
+    ::-webkit-input-placeholder {
+       vertical-align: top !important;
+
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+       vertical-align: top !important;
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+       vertical-align: top !important;
+    }
+
+    :-ms-input-placeholder {
+       vertical-align: top !important;
+    }
 </style>
 <div class="row">
     <div class="sub-header-container">
@@ -1059,6 +1075,8 @@
                             <input style="float: left; width: 150px; height: 50px; margin: 5px 0 0 5px;"
                                    placeholder="ENTER NUMBER"
                                    type="text"
+                                    onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = 'ENTER NUMBER'"
                                    class="form-control numeric" id="victims-number" name="victims-number">
                             <div class="continue-vno">CONFIRM
                             </div>
