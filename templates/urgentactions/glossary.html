@@ -1,6 +1,665 @@
 {% extends "urgentactions/ua-base.html" %}
 {% block body %}
-    <div class="row" style="height: 400px; color: #000;">
-        <h1>GLOSSARY</h1>
+<style>
+    body {
+        font-family: sans-serif;
+    }
+
+    p.normal {
+        font-weight: 900 !important;
+    }
+
+    .glossary-container ol {
+        font-size: 14px !important;
+    }
+
+    .glossary-container a {
+        color: #0b79e5;
+    }
+
+    .glossary-container h3 {
+        font-weight: 900 !important;
+        color: #000000;
+    }
+
+    .glossary-container a:hover {
+        color: #0000cc;
+        text-decoration: underline;
+    }
+
+    @media (min-width: 990px ) {
+        .glossary-container {
+            margin-top: 80px !important;
+        }
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $("a").click(function () {
+            var id = $(this).attr("href");
+            $(id).css("color", "red");
+            setTimeout(function () {
+                $(id).css("color", "#000");
+            }, 3000);
+
+            $('html, body').animate({
+                scrollTop: $(id).offset().top - 150
+            }, 1000);
+        })
+    });
+</script>
+<div class="row glossary-container">
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>A-Z OF TERMS</h1>
+            <h1>A</h1>
+            <br>
+            <h3 id="abduction">abduction</h3>
+            <p class="normal">The forceful and unlawful seizure and detention of someone by government agents or armed
+                groups.<b>See</b>: <a href="#enforced-disappearance">enforced disappearance</a></p>
+            <br>
+            <h3 id="administrative-detention">administrative detention</h3>
+            <p class="normal">Detention by order of an executive authority rather than a court or judge, often with no
+                intention of charging or bringing the detainee to trial.<br>
+                Amnesty International calls for any person in administrative detention to be charged or released, and
+                for an end to all such systems of detention. </p>
+            <br>
+            <h3 id="arbitrary-detention">arbitrary detention</h3>
+            <p>The UN Working Group on Arbitrary Detention uses the term arbitrary detention to describe any of the
+                following three situations:</p>
+            <ol>
+                <li>Where there is no legal basis for detention. This includes people held without charge or trial or
+                    despite a judicial order for their release, or those still in prison after the expiry of their
+                    sentence.
+                </li>
+                <li>An arrest or detention that is legal under national law but arbitrary under international
+                    standards, for example, if the relevant national law is vague, excessively broad, or violates human
+                    rights such as the right to freedom of expression.
+                </li>
+                <li>When there has been a grave violation of the detainee’s right to a fair trial.</li>
+            </ol>
+            <br>
+            <h3 id="asylum-seeker">asylum-seeker</h3>
+            <p>An asylum-seeker is someone who has left their country in search of international protection, but is yet
+                to be recognized as a refugee.</p>
+            <p><b>See</b>: <a href="#non-refoulement">non-refoulement</a>; <a href="#refoulement">refoulement</a>; <a
+                    href="#refugee">refugee</a></p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
     </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>C</h1>
+            <br>
+            <h3 id="capital-punishment">capital punishment</h3>
+            <p class="normal">See: <a href="#death-penalty">death penalty</a></p>
+            <br>
+            <h3 id="clemency">clemency</h3>
+            <p class="normal">An act, usually by the executive, showing mercy or leniency by lessening punishment (known
+                as commuting a sentence), or even ending further punishment (that is, issuing a pardon). Clemency is
+                used as a general term covering both commutations and pardons.</p>
+            <p class="normal">See: <a href="#commute">commute</a></p>
+            <br>
+            <h3 id="commute">commute</h3>
+            <p><a href="https://www.amnesty.org/en/search/?q=commute&sort=date" target="_blank">Commute</a> means to
+                replace a punishment, usually a death sentence, with a less severe one. For example,
+                Amnesty called for the USA to commute to time served the 35-year jail sentence of whistleblower Chelsea
+                Manning, who had been arrested after leaking classified government material.
+            </p>
+            <br>
+            <h3 id="conscientious-objection">conscientious objection</h3>
+            <p>Refusal to perform military service on the grounds of conscience or profound personal conviction. This
+                can include refusal to participate in a particular war (selective objection); it does not require that a
+                person be opposed to taking part in all wars. Generally, anyone imprisoned for exercising this right
+                will be considered by Amnesty International to be a prisoner of conscience, provided they have not
+                rejected an alternative non-military service that is not punitive or discriminatory in length or nature.
+            </p>
+            <p><b>See</b>: <a href="#prisoner-of-conscience">prisoner of conscience</a></p>
+            <br>
+            <h3 id="corporal-punishment">corporal punishment</h3>
+            <p>Physical punishment – punishment that is inflicted on the body – imposed by judicial order or as an
+                administrative sanction. It includes amputation, branding, caning, flogging and whipping. Corporal
+                punishment always constitutes cruel, inhuman or degrading punishment and, in some cases, amounts to
+                torture.
+            </p>
+            <p><b>See</b>: <a href="#cruel-inhuman-or-degrading-treatment-or-punishment">cruel, inhuman or degrading
+                treatment or punishment</a>; <a href="#torture">torture</a></p>
+            <br>
+            <h3 id="crimes-against-humanity">crimes against humanity</h3>
+            <p>When certain acts – including murder, torture and slavery – form part of a widespread attack on a
+                civilian population by a state or organization. Unlike war crimes, they can take place at times of peace
+                as well as during conflict. The Rwandan genocide of 1994 is one example of a crime against humanity.
+            </p>
+            <p><b>See</b>: <a href="#genocide">genocide</a>; <a href="#war-crimes">war crimes</a></p>
+            <br>
+            <h3 id="cruel-inhuman-or-degrading-treatment-or-punishment">cruel, inhuman or degrading treatment or
+                punishment </h3>
+            <p>Torture and other cruel, inhuman or degrading treatment or punishment should not be seen as separate
+                categories. They are all equally prohibited under international law.
+            </p>
+            <p>When referring to the whole range of prohibited treatment, use initially the term torture and other
+                cruel, inhuman or degrading treatment or punishment.
+            </p>
+            <p><b>See</b>: <a href="#torture">torture</a></p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>D</h1>
+            <br>
+            <h3 id="death-in-custody">death in custody</h3>
+            <p class="normal">Death in custody is used to describe deaths in prisons, other official or unofficial
+                places of detention, or in hospitals or other situations where detainees are in the custody of law
+                enforcement officials or military or security personnel.
+            </p>
+            <br>
+            <h3 id="death-penalty">death penalty</h3>
+            <p class="normal">State-imposed death as punishment for a crime, following a judicial process in a
+                recognized court.
+            </p>
+            <p class="normal">Amnesty International opposes the death penalty in all cases, without exception, as a
+                violation of the right to life and as the ultimate cruel, inhuman or degrading punishment.
+            </p>
+            <p class="normal">See: <a href="#cruel-inhuman-or-degrading-treatment-or-punishment">cruel, inhuman or
+                degrading treatment or punishment</a></p>
+            <br>
+            <h3 id="death-row">death row</h3>
+            <p>Death row is a particular part of a prison where prisoners under sentence of death are held.</p>
+            <br>
+            <h3 id="deportation-expulsion">deportation, expulsion</h3>
+            <p>If a person (or a group of people) is being lawfully removed from a country, after a decision reached
+                with adequate procedural safeguards, use the term deportation.
+            </p>
+            <p>If the removal is unlawful, use the term expulsion. For a group, use collective expulsion or mass
+                expulsion.
+            </p>
+            <p>In accordance with international humanitarian law, Amnesty International opposes the deportation of
+                people from territories under military occupation in all cases.
+            </p>
+            <br>
+            <h3 id="detention-without-charge-trial">detention without charge/trial</h3>
+            <p><b>See</b>: <a href="#administrative-detention">administrative detention</a></p>
+            <br>
+            <h3 id="disappearances">disappearances</h3>
+            <p><b>See</b>: <a href="#enforced-disappearance">enforced disappearances</a></p>
+            <br>
+            <h3 id="discrimination">discrimination</h3>
+            <p>Discrimination occurs when a person is unable to enjoy his or her human rights or other legal rights on
+                an equal basis with others because of an unjustified distinction made in policy, law, or treatment based
+                on any of the prohibited grounds. The prohibited grounds include: race, colour, sex, language, religion,
+                political or other opinion, national or social origin, property, birth or other status (International
+                Covenant on Civil and Political Rights).</p>
+            <br>
+            <h3 id="displaced-people">displaced people</h3>
+            <p>Mixed populations of internally displaced people and refugees may be described as displaced. For example,
+                the number of displaced Iraqis is 4.2 million, of whom 2 million are refugees and 2.2 million are
+                internally displaced.</p>
+            <p><b>See</b>: <a href="#asylum-seeker">asylum-seekers</a>; <a href="#internally-displaced-people">internally
+                displaced people</a>; <a href="#refugee">refugees</a></p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>E</h1>
+            <br>
+            <h3 id="economic-social–and-cultural-rights">economic, social and cultural rights</h3>
+            <p class="normal">A broad category of human rights including the right to education; the right to an
+                adequate standard of living, including the rights to adequate food, housing, water and sanitation; and
+                the right to the highest attainable standard of health. It also includes the right to work, rights at
+                work, the right to take part in cultural life and the cultural rights of members of minorities and
+                Indigenous Peoples.
+            </p>
+            <br>
+            <h3 id="enforced-disappearance">enforced disappearance</h3>
+            <p class="normal">The term enforced disappearance is used when there are reasonable grounds to believe that
+                someone has been apprehended by the authorities or their agents, or people acting with their
+                acquiescence, but the authorities refuse to acknowledge this or conceal the person’s fate or
+                whereabouts, placing them outside the protection of the law.
+            </p>
+            <br>
+            <h3 id="excessive-or-unnecessary-use-of-force">excessive or unnecessary use of force</h3>
+            <p>Excessive use of force means that which is excessive or disproportionate to the legitimate objective to
+                be achieved or to the threat posed in a particular situation.</p>
+            <br>
+            <h3 id="exoneration">exoneration</h3>
+            <p><b>See</b>: <a href="#deportation-expulsion">deportation</a></p>
+            <br>
+            <h3 id="extradition">extradition</h3>
+            <p class="normal">The official process, generally regulated by treaty, whereby one country surrenders to
+                another country an individual charged or convicted of a crime.
+            </p>
+            <br>
+            <h3 id="extrajudicial-executions">extrajudicial executions</h3>
+            <p class="normal">Unlawful killings ordered by a government, or committed with its knowledge and support.
+                They can be carried out by the military, police, or by civilians working with government forces. For
+                example, <a href="https://www.amnesty.org/en/documents/mde21/1643/2015/en/">Hamas forces in Gaza
+                    committed serious human rights abuses</a>, including extrajudicial executions,
+                torture and abductions, during the 2014 Gaza/Israel conflict.</p>
+            <p><b>See</b>: <a href="#enforced-disappearance">enforced disappearances</a></p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>F</h1>
+            <br>
+            <h3 id="fair-trial">fair trial</h3>
+            <p class="normal">In both criminal and civil matters, courts must be independent and impartial. Everyone
+                must be fully equal before the courts. With limited exceptions all hearings and judgments must be
+                public.</p>
+            <p class="normal">Anyone accused of a crime has specific rights, including: to be informed promptly of the
+                allegations against them; the presumption of innocence; adequate time, facilities, and means to prepare
+                and present a defence; the assistance of independent legal counsel of their own choosing, including
+                through confidential communications; to be present at their trial; to call relevant witnesses and to be
+                able to cross-examine any witness against them; not to be compelled to testify against themselves or to
+                confess guilt.
+            </p>
+            <br>
+            <h3 id="forced-eviction">forced eviction</h3>
+            <p class="normal">Forced eviction is the permanent or temporary removal against their will of individuals,
+                families or communities from their homes or from land that they occupy, without the provision of, or
+                access to, appropriate forms of legal or other protection.</p>
+            <p class="normal">Forced eviction has been recognized as a gross violation of a range of human rights,
+                including the right to adequate housing. It is also often associated with other human rights violations
+                including abuses of physical and mental integrity in the process of eviction and denial of the right to
+                education as a result of eviction.
+            </p>
+            <br>
+            <h3 id="forcible-repatriation">forcible repatriation</h3>
+            <p>Normally refers to the return of a person against their will to their country of origin or habitual
+                residence.</p>
+            <p><b>See</b>: <a href="#non-refoulement">non-refoulement</a>; <a href="#refoulement">refoulement</a>; <a
+                    href="#forcible-return">forcible return</a>; <a href="#deportation-expulsion">deportation</a></p>
+            <br>
+            <h3 id="forcible-return">forcible return</h3>
+            <p class="normal">The return against one’s will from one state to another. Forcible return is a broader term
+                than forcible repatriation as it does not necessarily have to be to the country of origin or habitual
+                residence. For example, a person may be sent to a third country through which they have travelled.
+            </p>
+            <p><b>See</b>: <a href="#deportation-expulsion">deportation</a>; <a href="#forcible-repatriation">forcible
+                repatriation</a>; <a href="#non-refoulement">non-refoulement</a>; <a href="#refoulement">refoulement</a>
+            </p>
+            <br>
+            <h3 id="freedom-of-expression">freedom of expression</h3>
+            <p class="normal">The right to seek, receive and share information and ideas, without fear or interference.
+                It is closely linked with freedom of association (the right to meet with anyone you choose, for example,
+                to form and join clubs, societies or trade unions) and the right to take part in a peaceful assembly,
+                such as a demonstration or public meeting.</p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>G</h1>
+            <br>
+            <h3 id="gender-based-violence">gender-based violence</h3>
+            <p class="normal">Gender-based violence against women is violence directed against a woman because she is a
+                woman or that affects women disproportionately. In other words, not all acts that harm a woman are
+                gender-based. Men can suffer gender-based violence, for example, gay men who are attacked because they
+                do not conform to socially approved views of masculinity. However, most gender-based violence is
+                committed by men, and is directed against women and girls and linked to discrimination.
+            </p>
+            <br>
+            <h3 id="genocide">genocide</h3>
+            <p class="normal">Genocide means any of the following acts when they are carried out “with intent to
+                destroy, in whole or in part”, a national, ethnic, racial or religious group: killing or causing serious
+                bodily or mental harm to members of a group, deliberately inflicting conditions of life on a group
+                calculated to bring about its physical destruction in whole or in part, preventing births, or forcibly
+                transferring children to another group.
+            </p><br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>H</h1>
+            <br>
+            <h3 id="hate-speech">hate speech</h3>
+            <p class="normal">Hate speech is advocacy of national, racial or religious hatred that constitutes
+                incitement to discrimination, hostility or violence. It should not be used as a synonym for implied or
+                actual threats against individuals; it must have the two elements of advocacy of hatred and incitement.
+            </p>
+            <br>
+            <h3 id="human-rights">human rights</h3>
+            <p class="normal">All human rights are indivisible and universal. Avoid singling out a specific human right
+                or group of rights to describe as fundamental or basic. If the intent is to point out that a particular
+                right is non-derogable, explain what this means.
+            </p>
+            <p><b>See</b>: <a href="#violations">violations</a></p>
+            <br>
+            <h3 id="human-rights-defenders">human rights defenders</h3>
+            <p class="normal">Human rights defenders are individuals who take non-violent actions to defend and protect
+                human rights. While their own activities might focus on a specific area of human rights or on the human
+                rights of a specific group, they must accept the universality of human rights as defined in the
+                Universal Declaration of Human Rights; a person cannot claim to be a human rights defender if they deny
+                some human rights or take any action that undermines the rights of others.
+            </p>
+            <p class="normal">To determine whether a person is a human rights defender, the critical test is whether the
+                person’s actions are based on concerns for human rights.
+            </p>
+            <p class="normal">Human rights defenders can be journalists, lawyers, members of human rights organizations,
+                trade unionists, health professionals or other service providers who fulfil essential medical or
+                educational needs, or politicians who promote human rights and speak out against human rights
+                violations. They may be friends or relatives of victims of human rights violations who stand by their
+                loved ones despite threats and intimidation.
+            </p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>I</h1>
+            <br>
+            <h3 id="ill-treatment">ill-treatment</h3>
+            <p><b>See</b>: <a href="#cruel-inhuman-or-degrading-treatment-or-punishment">cruel, inhuman or degrading
+                treatment or punishment</a>; <a href="#torture">torture</a></p>
+            <br>
+            <h3 id="immediate-release">immediate release</h3>
+            <p class="normal">Amnesty International calls for the immediate and unconditional release of prisoners of
+                conscience. For other prisoners, we call for prompt and fair trial or release.
+            </p>
+            <p><b>See</b>: <a href="#prisoner-of-conscience">prisoner of conscience</a></p>
+            <br>
+            <h3 id="immunity">immunity (from prosecution)</h3>
+            <p class="normal">Allows an accused person to avoid prosecution for a crime because of their job or office.
+                Amnesty International is opposed to immunity. For example, Amnesty has called for the rejection of
+                immunity in the Central African Republic so that people who committed crimes during conflict there are
+                brought to justice.
+            </p>
+            <br>
+            <h3 id="impunity">impunity</h3>
+            <p class="normal">Impunity is when people who have committed crimes avoid punishment. For example, there is
+                a ‘culture of impunity’ among police in the Philippines, who are able to torture people without fear of
+                being punished. Amnesty calls for these people to be tried and sentenced fairly, according to the law.
+            </p>
+            <p><b>See</b>: <a href="#immunity">immunity</a></p>
+            <br>
+            <h3 id="incommunicado-detention">incommunicado detention</h3>
+            <p class="normal">When a detainee is denied any access to people outside the place of detention, in
+                particular legal counsel, family members and an independent court.
+            </p>
+            <p class="normal">Incommunicado detention is the context in which torture or other ill-treatment and
+                enforced disappearances most frequently occur. If prolonged, it is in itself a form of torture or other
+                cruel, inhuman or degrading treatment or punishment.
+            </p>
+            <p><b>See</b>: <a href="#enforced-disappearance">enforced disappearance</a>; <a
+                    href="#solitary-confinement">solitary confinement</a></p>
+            <br>
+            <h3 id="internally-displaced-people">internally displaced people</h3>
+            <p class="normal">People forced to flee their homes because of armed conflict, generalized violence, human
+                rights abuses or natural or human-made disasters, and who have sought safety elsewhere in the same
+                country (they have not crossed an international border). Internally displaced people have the same
+                rights as other citizens of their country.
+            </p>
+            <p><b>See</b>: <a href="#displaced-people">displaced people</a>; <a href="#refugee">refugee</a></p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>J</h1>
+            <br>
+            <h3 id="juvenile-offender">juvenile offender</h3>
+            <p class="normal">In the context of the imposition of the death penalty, a juvenile offender is a person
+                aged under 18 at the time the alleged capital offence was committed. Sentencing juvenile offenders to
+                death is prohibited under international law.
+            </p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>M</h1>
+            <br>
+            <h3 id="migrant">migrant</h3>
+            <p class="normal">A migrant moves around within their own country, or from one country to another, usually
+                to find work, although there may be other reasons such as to join family. Some move voluntarily, while
+                others are forced to leave because of economic hardship or other problems. People can migrate
+                ‘regularly’, with legal permission to work and live in a country, or ‘irregularly’, without permission
+                from the country they wish to live and work in.
+            </p>
+            <p class="normal">Most international migrants live in Europe (72 million) followed by Asia (71 million) and
+                North America (53 million).
+            </p>
+            <p><b>See</b>: <a href="#asylum-seeker">asylum-seeker</a>; <a href="#refugee">refugee</a></p>
+            <br>
+            <h3 id="moratorium">moratorium</h3>
+            <p class="normal">With regard to the death penalty, a public commitment made by the highest authorities,
+                officially suspending either executions or the imposition and carrying out of all death sentences.
+            </p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>N</h1>
+            <br>
+            <h3 id="non-refoulement"><i>non-refoulement</i></h3>
+            <p class="normal">The principle which obliges states not to return anyone to a country where he or she would
+                risk serious human rights violations or abuses.
+            </p>
+            <p><b>See</b>: <a href="#refugee">refugee</a>; <a href="#asylum-seeker">asylum-seeker</a>; <a
+                    href="#refoulement">refoulement</a></p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>P</h1>
+            <br>
+            <h3 id="prisoner-of-conscience">prisoner of conscience</h3>
+            <p class="normal">A prisoner of conscience is someone who is imprisoned because of who they are (sexual
+                orientation, ethnic, national or social origin, language, birth, colour, sex or economic status) or
+                their religious, political or other beliefs, and who hasn’t used or advocated violence. For example, <a
+                        href="https://www.amnesty.org/en/latest/campaigns/2015/04/1000-days-in-prison-how-mohammed-al-roken-is-sacrificing-his-freedom-for-human-rights-in-the-uae/">Dr
+                    Mohammed al-Roken is a current prisoner of conscience in the United Arab Emirates</a>, jailed for 10
+                years
+                following a deeply unfair trial.</p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>R</h1>
+            <br>
+            <h3 id="refoulement"><i>refoulement</i></h3>
+            <p class="normal">Any measure (for example, expulsion, deportation, extradition, removal, rejection,
+                interception) that forces an individual to return to a country where he or she would risk serious human
+                rights violations or abuses. Refoulement is prohibited under international law.</p>
+            <p><b>See</b>: <a href="#asylum-seeker">asylum-seeker</a>; <a href="#non-refoulement">non-refoulement</a>;
+                <a
+                        href="#refugee">refugee</a></p>
+            <br>
+            <h3 id="refugee">refugee</h3>
+            <p class="normal">A refugee is a person who has fled their country of origin and is unable or unwilling to
+                return because of a well-founded fear of being persecuted because of their race, religion, nationality,
+                membership of a particular social group or political opinion.
+            </p>
+            <p><b>See</b>: <a href="#asylum-seeker">asylum-seeker</a>; <a href="#displaced-people">displaced people</a>;
+                <a href="#internally-displaced-people">internally displaced people</a>; <a href="#non-refoulement">non-refoulement</a>;
+                <a href="#refoulement">refoulement</a></p>
+            <br>
+            <h3 id="rendition">rendition</h3>
+            <p class="normal">The transfer of people from one state to another or into the custody of another state
+                by
+                state agents or others working on behalf of a government, using means that bypass judicial and
+                administrative due process.
+            </p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>S</h1>
+            <br>
+            <h3 id="safe-third-country">“safe third country”</h3>
+            <p class="normal">Term used to justify denying asylum-seekers access to a country or its asylum procedures
+                because they are expected to seek protection in another (third) country, usually because they have spent
+                time there or travelled through it after fleeing the country of persecution.</p>
+            <br>
+            <h3 id="solitary-confinement">solitary confinement</h3>
+            <p class="normal">Isolation of a prisoner or detainee from other prisoners, usually involving minimal
+                contact with staff.
+            </p>
+            <p class="normal">Depending on the length and other conditions of solitary confinement, or the reduced
+                sensory stimulation that can result from solitary confinement, it may amount to cruel, inhuman or
+                degrading treatment or punishment or to torture, and it may facilitate other ill-treatment and torture.
+                Moreover, it can have serious detrimental effects on prisoners’ physical and mental health. Solitary
+                confinement is not the same as incommunicado detention. A prisoner held in isolation from other
+                prisoners may still have access to, for example, lawyers, family and independent medical care.</p>
+            <p class="normal">Amnesty International believes that no prisoner should be confined to prolonged solitary
+                confinement and reduced sensory stimulation.
+            </p>
+            <p><b>See</b>: <a href="#incommunicado-detention">incommunicado detention</a></p>
+            <br>
+            <h3 id="sodomy">“sodomy”</h3>
+            <p class="normal">Laws which criminalize people for having same-sex relations in private are sometimes
+                referred to as “sodomy” or “buggery” laws.
+            </p>
+            <br>
+            <h3 id="summary-trials-summary-proceedings">summary trials, summary proceedings</h3>
+            <p class="normal">Short trials or proceedings, often conducted without some or all of the normal procedural
+                safeguards and therefore raising concerns about respect for fair trial rights.</p>
+            <br>
+            <h3 id="summary-executions">summary executions</h3>
+            <p class="normal">Executions carried out after speedy and grossly unfair trials or without any judicial
+                proceedings at all.</p>
+            <p><b>See</b>: <a href="#extrajudicial-executions">extrajudicial executions</a></p>
+            <br>
+            <h3 id="stay of execution">stay of execution</h3>
+            <p class="normal">A stay of execution is a court order to temporarily suspend the execution of a court
+                judgment or other court order.</p>
+            <p class="normal">In cases of death penalty, a stay of execution is often sought to defer the execution of
+                the convicted person. This may occur if new evidence is discovered that will exonerate the convicted
+                person or in attempts to have the sentence commuted. One example of a stay of execution in the death
+                penalty context was the case of <a href="https://www.amnesty.org/en/documents/amr51/089/2012/en/">Anthony
+                    Haynes</a>, when the US Supreme Court granted a stay of execution
+                about two-and-a-half hours before he was scheduled to be put to death in Texas</p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>T</h1>
+            <br>
+            <h3 id="torture">torture</h3>
+            <p class="normal">Torture is when someone in authority intentionally causes severe pain or suffering for a
+                specific purpose. Such as to get information or a confession out of you, to punish, intimidate or
+                threaten you.</p>
+            <p class="normal">It can be physical, such as beating, forcing into a painful position or sexual, such as
+                rape. It can be psychological, such as sleep deprivation or public humiliation. Torture is illegal.</p>
+            <p><b>See</b>: <a href="#corporal-punishment">corporal punishment</a>; <a
+                    href="#cruel-inhuman-or-degrading-treatment-or-punishment">cruel, inhuman or degrading treatment or
+                punishment.</a></p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>U</h1>
+            <br>
+            <h3 id="unlawful-detention">unlawful detention</h3>
+            <p><b>See</b>: <a href="#arbitrary-detention">arbitrary detention</a></p>
+            <br>
+            <h3 id="unlawful-killings">unlawful killings</h3>
+            <p class="normal">Killings that are unlawful by international human rights or humanitarian law and
+                standards, whether committed by or on the authority of security or armed forces under the control of a
+                government or by armed groups. The term includes killings resulting from excessive use of force by law
+                enforcement officials, and, in armed conflict, deliberate killings of civilians and other non-combatants
+                by government forces or armed groups, and killings resulting from disproportionate or indiscriminate
+                attacks.</p>
+            <p><b>See</b>: <a href="#extrajudicial-executions">extrajudicial executions</a></p>
+            <br>
+            <h3 id="urgent-action">urgent action</h3>
+            <p class="normal">Urgent Actions are a type of campaign used by Amnesty International to help and protect
+                individuals suffering human rights violations.</p>
+            <p class="normal">This campaigning is based on a very simple idea: when someone is in immediate danger of
+                serious human rights abuse, those responsible receive thousands of letters, faxes and telegrams from all
+                over the world demanding action. This pressure has the potential to protect that person from further
+                abuse. Since 1976 Amnesty International has issued over 25,000 Urgent Actions and mobilised over 150,000
+                people to stand up against injustice.</p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>V</h1>
+            <br>
+            <h3 id="violations">violations</h3>
+            <p class="normal">As a general rule use the term human rights violations to refer to acts by state agents
+                (violating the state’s obligations under international human rights law). This term can also be used to
+                describe acts as experienced by victims. Armed groups, who have direct obligations under international
+                humanitarian law in situations of armed conflict, can be described as committing violations of
+                international humanitarian law. Otherwise, use the term human rights abuses to describe acts by armed
+                groups and other non-state actors. Use the term abuses generally to cover acts by both state and
+                non-state actors.</p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" style="padding: 0;">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1>W</h1>
+            <br>
+            <h3 id="war-crimes">war crimes</h3>
+            <p class="normal">War crimes are serious crimes committed during armed conflicts, which could include
+                murdering prisoners of war, killing hostages, torture and destroying towns and villages. A recent
+                example is in the Ukraine, where there is overwhelming evidence of ongoing war crimes, including torture
+                and summary killings of prisoners.</p>
+            <br>
+            <hr class="hr" style="width: 100%;">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
 {% endblock %}
