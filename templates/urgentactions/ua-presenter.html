@@ -1,6 +1,34 @@
 {% include "urgentactions/ua-sub-header.html" %}
 <script type="text/javascript">
     $(function () {
+
+        $(window).resize(function(){
+            var mainDiv = document.getElementById("presenterContainer");
+            var coord_sel = getSelectionCharOffsetsWithin(mainDiv);
+            alert(coord_sel.start + ": " + coord_sel.end);
+
+            $('#detailed-individual-information').css({
+                position:'absolute',
+                  top: coord_sel.start,
+                  left:0
+            });
+//            if ($(window).width() < 980) {
+//                $('#nav-head').removeClass('navbar-fixed-top');
+//            }
+//            else {
+//                $('#nav-head').addClass('navbar-fixed-top');
+//            }
+
+        });
+//        if ($(window).width() < 980) {
+//            $('#nav-head').removeClass('navbar-fixed-top');
+//        }
+//        else {
+//            $('#nav-head').addClass('navbar-fixed-top');
+//        }
+
+
+
         $(".one-person").click(function () {
             document.onmouseup = gText;
             if (!document.all) document.captureEvents(Event.MOUSEUP);
@@ -26,6 +54,7 @@
             var sel = getSelection(),
                     position = sel.anchorNode.compareDocumentPosition(sel.focusNode),
                     backward = false;
+
 
             var selText = getSelectedText(),
                     targetElem = e.target.tagName.toLowerCase();
@@ -67,12 +96,38 @@
         }
 
     });
+
+
+    function getSelectionCharOffsetsWithin(element) {
+        var start = 0, end = 0;
+        var sel, range, priorRange;
+        if (typeof window.getSelection != "undefined") {
+            range = window.getSelection().getRangeAt(0);
+            priorRange = range.cloneRange();
+            priorRange.selectNodeContents(element);
+            priorRange.setEnd(range.startContainer, range.startOffset);
+            start = priorRange.toString().length;
+            end = start + range.toString().length;
+        } else if (typeof document.selection != "undefined" &&
+                (sel = document.selection).type != "Control") {
+            range = sel.createRange();
+            priorRange = document.body.createTextRange();
+            priorRange.moveToElementText(element);
+            priorRange.setEndPoint("EndToStart", range);
+            start = priorRange.text.length;
+            end = start + range.text.length;
+        }
+        return {
+            start: start,
+            end: end
+        };
+    }
 function capitalizeCase(str)
 {
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 </script>
-<div class="row presenter-container" style="color: #000; background-color: #fff;">
+<div class="row presenter-container" id="presenterContainer" style="color: #000; background-color: #fff;">
     <div class="col-md-2 ua-sidebar"></div>
     <div class="col-xs-12 col-md-8" id="task-presenter-div" style="padding: 0 14px 0 14px;">
         <script>
