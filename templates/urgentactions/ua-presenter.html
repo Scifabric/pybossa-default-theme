@@ -2,10 +2,10 @@
 <script type="text/javascript">
     $(function () {
 
-        $(window).resize(function(){
+        $(window).resize(function() {
             var mainDiv = document.getElementById("presenterContainer");
             var coord_sel = getSelectionCharOffsetsWithin(mainDiv);
-            
+        });
 
         $(".one-person").click(function () {
             document.onmouseup = gText;
