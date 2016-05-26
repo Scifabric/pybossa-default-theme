@@ -796,6 +796,13 @@ ul.users li a {
     }
 }
 
+@media (min-width: 980px) and (max-width: 989px){
+    .sub-header-container{
+        margin-top: 120px !important;
+    }
+
+}
+
 /* Tablet to desktop
 ------------------------- */
 @media (min-width: 768px) and (max-width: 979px) {
