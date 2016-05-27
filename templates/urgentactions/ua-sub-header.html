@@ -335,7 +335,7 @@
             // Add the number of persons to indicate how many persons where previously selected
             $("#personNumber").empty().append(persons);
             $('.mixed-continue', '.mixed-small').show();
-            if (!is_10_plus_clicked && !is_mixed_clicked) {
+            if (!is_10_plus_clicked) {
                 bindSelectBoxes();
                 $(".final-step").hide();
                 $(".outcome-options").show();
