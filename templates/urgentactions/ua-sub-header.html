@@ -193,6 +193,7 @@
                 persons = persons_involved;
                 if (class_name == "person") {
                     setCounterButtonInactive($(".individual-outcome"));
+                    setContinueButtonIncative();
                     $(this).parent().parent().parent().hide();
                     is_10_plus_clicked = 1;
                     back_clicked = 0;
@@ -341,10 +342,7 @@
             $(this).parent().parent().parent().parent().hide();
             if (back_clicked == 0) {
                 setCounterButtonActive($(this));
-                $(".continue-vno").css({
-                    "background-color": "#999999",
-                    "color": "#666"
-                });
+                setContinueButtonIncative();
             }
             persons = "not clear";
             back_clicked = 0;
@@ -504,6 +502,15 @@
         });
     });
 
+    function setContinueButtonIncative(){
+        $(".continue-vno").css({
+            "background-color": "#999999",
+            "color": "#666666"
+        });
+        $()
+        $("#victims-number").val("");
+    }
+
     function resetPersons(active) {
         $(".person").each(function () {
             var person_head = $(this).find('.person-head');
@@ -544,10 +551,7 @@
 
     function resetButtonsStyle() {
         setCounterButtonInactive($(".individual-outcome"));
-        $(".continue-vno").css({
-            "background-color": "#999999",
-            "color": "#666"
-        });
+        setContinueButtonIncative();
         setCounterButtonInactive($(".continue-under-ten"));
     }
 
