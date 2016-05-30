@@ -92,7 +92,7 @@
     </div> <!-- /container -->
     {% if show_cookies_warning %}
     <div id="cookies_warning">
-        <p>Cookies help us deliver our services. By using our services, you agree to our use of cookies. <a href="{{url_for('help.cookies_policy')}}">Learn more.</a> <button class="btn btn-sm btn-default" onclick="accept_cookies()" style="float: right; margin-right: 5%;text-transform:uppercase;font-weight: 300"></i> OK, Got it!</button></p>
+        <p>Cookies help us deliver our services. By using our services, you agree to our use of cookies. <a target="_blank" href="https://www.amnesty.org/en/about-us/cookie-statement/" style="text-decoration: underline !important;">Learn more.</a> <button class="btn btn-sm btn-default" onclick="accept_cookies()" style="float: right; margin-right: 5%;text-transform:uppercase;font-weight: 300"></i> OK, Got it!</button></p>
     </div>
     {% endif %}
     <footer class="col-xs-12" >
@@ -128,7 +128,7 @@
                             Use') }}</a></li>
                         <li><i class="glyphicon glyphicon-link"></i><a href="{{ url_for('glossary.index')}}">{{ _('Glossary')
                             }}</a></li>
-                        <li><i class="glyphicon glyphicon-link"></i><a href="{{url_for('help.cookies_policy')}}">{{
+                        <li><i class="glyphicon glyphicon-link"></i><a target="_blank" href="https://www.amnesty.org/en/about-us/cookie-statement/">{{
                             _('Cookies Policy') }}</a></li>
                     </ul>
                 </div>
