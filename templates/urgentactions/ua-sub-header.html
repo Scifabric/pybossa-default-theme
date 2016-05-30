@@ -5,6 +5,20 @@
     var not_clear_clicked = 0;
     var last_checked = 0;
     var back_clicked = 0;
+    var urgent_action_json = {
+        "single-individual": {
+            "region": "",
+            "index": ""
+        },
+        "under-10-individuals": {
+            "region": "",
+            "index": ""
+        },
+        "ten-plus-individuals": {
+            "region": "",
+            "index": ""
+        }
+    };
     var select_json = {
         "positive-select": 0,
         "negative-select": 0,
@@ -24,21 +38,13 @@
 
     function displayFirstQuestion(element) {
         element.parent().parent().parent().hide();
-        onVictimsHover("person", 1, 0)
+        onVictimsHover("person", 1, 0);
         $(".question").show(250);
         $(".individuals-container").parent().show(250);
         $(".individuals-container").show(250);
     }
 
-    function backAndForwardFunctionality() {
-
-    }
-
     $(function () {
-        $(".single-individual").hide();
-        $(".under-10-individuals").hide();
-        $(".ten-plus-individuals").hide();
-        $(".finish").hide();
         $(".forward-arrow-container").hide();
         $(".back-arrow-container").click(function () {
             $('#detailed-individual-information').hide();
@@ -109,11 +115,19 @@
         });
 
         $(".outcome-result").click(function () {
-            var value = $(this).attr("id");
-            if (back_clicked != 0) {
+            var value = $(this).text().trim().toLowerCase();
+            console.log($(this).text());
+            if (back_clicked == 0) {
                 setCounterButtonActive($(this));
             }
             var parent = $(this).parent().parent().parent();
+            var title = $(this).attr("title");
+            var workflow_id = parent.parent().attr("class");
+
+            if (value == "unclear") {
+                value = "not clear";
+            }
+            urgent_action_json[workflow_id][title] = value;
             parent.hide();
             setOtherButtonsInactive($(this));
             var class_names = $(this).parent().parent().parent().attr("class").split(" ");
@@ -136,7 +150,6 @@
                 counter = 2;
             } else {
                 counter = 1;
-                $(".mixed-continue").hide();
             }
 
             var next_class_names = $("." + class_name.replace(matches[0], Number(matches[0]) + counter));
@@ -145,7 +158,7 @@
             next_class_names.show(250);
 
             if (next_class_names.attr("class").split(" ").indexOf("end-scene") > -1) {
-                displayFinishScene();
+                displayFinishScene(workflow_id);
             } else {
                 $(".presenter-container").removeClass("disabled");
                 $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
@@ -154,17 +167,17 @@
 
             if (class_name == 'single-2') {
                 if ($("#" + parent_id).css("display") == "none") {
-                    $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
-                    $(".finish-scene").show(250);
-                    $(".skip").hide();
+                    displayFinishScene(workflow_id);
                 }
             }
         });
 
-        function displayFinishScene() {
+        function displayFinishScene(workflow_id) {
             $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
             $(".finish-scene").show(250);
             $(".skip").hide();
+            urgent_action_json[workflow_id]['count'] = persons;
+            console.log(urgent_action_json[workflow_id]);
         }
 
         $(".person").click(function () {
@@ -179,15 +192,17 @@
                 is_10_plus_clicked = null;
                 persons = persons_involved;
                 if (class_name == "person") {
+                    setCounterButtonInactive($(".individual-outcome"));
                     $(this).parent().parent().parent().hide();
                     is_10_plus_clicked = 1;
-                    persons = 9;
                     back_clicked = 0;
                     $("input.numeric").numeric();
                     $('.forward-arrow-container').hide();
                     $("div[title=\"previous-select\"]").prop("title", "not-selected");
                     $(".ten-plus-individuals").show(250);
+                    $(".ten-plus-1").show(250);
                 } else {
+                    setCounterButtonInactive($(".individual-outcome"));
                     for (var i = 0; i <= Number(person_number); i++) {
                         var person_head = $(this).parent().find(".person" + i).find('.person-head');
                         var person_body = $(this).parent().find(".person" + i).find('.person-body');
@@ -230,8 +245,10 @@
 
         $(".one-person").click(function () {
             $(this).addClass("clicked");
+            setCounterButtonInactive($(".individual-outcome"));
             $(".question").hide();
             $("#single-individual-large").show(250);
+            $("#single-individual-large .single-1").show(250);
             $(".under-10-individuals").hide();
             $(".ten-plus-individuals").hide();
             click = 1;
@@ -243,10 +260,11 @@
 
         $(".one-person-small").click(function () {
             $(this).addClass("clicked");
+            setCounterButtonInactive($(".individual-outcome"));
             $(".question").hide();
             setPersonName();
             $("#single-individual-small").show(250);
-            $(".single-1").show(250);
+            $("#single-individual-small .single-1").show(250);
             $(".under-10-individuals").hide();
             $(".ten-plus-individuals").hide();
             click = 1;
@@ -292,11 +310,16 @@
             for (var item in select_json) {
                 sum += Number(select_json[item]);
             }
+            console.log(persons);
             if (sum == persons) {
                 $(this).parent().parent().parent().hide();
+                for (var item in select_json) {
+                    var item_text = item.replace("-select", "");
+                    urgent_action_json['under-10-individuals'][item_text] = select_json[item];
+                }
                 $(".back-arrow-container").hide();
                 $(".under-ten-3").show(250);
-                displayFinishScene();
+                displayFinishScene('under-10-individuals');
             } else {
                 $('#alertMsgModal').modal('show');
             }
@@ -310,19 +333,20 @@
             back_clicked = 0;
             $('.forward-arrow-container').hide();
             $(".under-10-individuals").show(250);
-            $(".under-ten-1").show();
+            $(".under-ten-1").show(250);
             $("div[title=\"previous-select\"]").prop("title", "not-selected");
         });
 
         $("#victims-number-unclear").click(function () {
             $(this).parent().parent().parent().parent().hide();
-            if (back_clicked != 0) {
+            if (back_clicked == 0) {
                 setCounterButtonActive($(this));
                 $(".continue-vno").css({
                     "background-color": "#999999",
                     "color": "#666"
                 });
             }
+            persons = "not clear";
             back_clicked = 0;
             $("div[title=\"previous-select\"]").prop("title", "not-selected");
             $('.forward-arrow-container').hide();
@@ -417,9 +441,7 @@
         });
 
         $(".continue-vno").click(function () {
-            if (back_clicked != 0) {
-                setCounterButtonActive($(this));
-            }
+            setCounterButtonActive($(this));
             setCounterButtonInactive($("#victims-number-unclear"));
             var parent_div = $(this).parent().parent().parent().parent();
             var victims_number = $('#victims-number').val();
@@ -450,6 +472,7 @@
                         var matches = class_name.match(/\d+/g);
                         $("." + class_name.replace(matches[0], Number(matches[0]) + 1)).show(250);
                         back_clicked = 0;
+                        persons = Number(victims_number);
                         $('.forward-arrow-container').hide();
                         $("div[title=\"previous-select\"]").prop("title", "not-selected");
                     }
@@ -799,7 +822,7 @@
 
                 </div>
                 <div class="col-xs-2 col-md-2" style="text-align: center">
-                    <div class="forward-arrow-container" style="margin-top: 30px; text-align: center;">
+                    <div class="forward-arrow-container" style="display: none; margin-top: 30px; text-align: center;">
 
                     </div>
                     <br>
@@ -807,15 +830,15 @@
             </div>
         </div>
 
-        <div class="single-individual" id="single-individual-large">
-            <div class="col-xs-12 col-md-12 single-1" style="padding: 0;">
+        <div class="single-individual" id="single-individual-large" style="display: none;">
+            <div class="col-xs-12 col-md-12 single-1" style="display: none; padding: 0;">
                 <div class="col-xs-2 col-md-2" style="text-align: center">
                     <div class="back-arrow-container" style="margin-top: 30px; text-align: center;">
 
                     </div>
                     <br>
                 </div>
-                <div class="col-xs-8 col-md-8">
+                <div class="col-xs-8 col-md-8" style="margin-top:10px;">
                     <h2>Please select the person’s full name in the text below, and answer the questions that follow.&nbsp;<a
                             href="#" data-toggle="tooltip" data-placement="bottom"
                             title="If the document is about one person, we also want to record names so that we can match with other information we have in Amnesty. To select the name, click the text and ensure the entire name is highlighted. "
@@ -826,7 +849,7 @@
                 </div>
                 <div class="col-xs-2 col-md-2">
 
-                    <div class="forward-arrow-container" style="margin-top: 30px; text-align: center;">
+                    <div class="forward-arrow-container" style="display: none; margin-top: 30px; text-align: center;">
 
                     </div>
                     <br>
@@ -841,16 +864,16 @@
                 <div class="col-xs-8 col-md-8 outcome-options" style="margin-left: -11px;">
                     <h2 class="person-name-question"></h2>
                     <div class="options" style="margin-left: -11px;">
-                        <div class="individual-outcome outcome-result">MALE
+                        <div class="individual-outcome outcome-result" title="gender">MALE
                         </div>
-                        <div class="individual-outcome outcome-result">FEMALE
+                        <div class="individual-outcome outcome-result" title="gender">FEMALE
                         </div>
-                        <div class="individual-outcome outcome-result">UNCLEAR
+                        <div class="individual-outcome outcome-result" title="gender">UNCLEAR
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-2 col-md-2">
-                    <div class="forward-arrow-container" style="margin-top: 30px; text-align: center;">
+                    <div class="forward-arrow-container" style="display: none; margin-top: 30px; text-align: center;">
 
                     </div>
                     <br>
@@ -865,25 +888,25 @@
                 </div>
                 <div class="col-xs-8 col-md-8 outcome-options" style="margin-left: -11px;">
                     <h2>What was the result of this Urgent Action?&nbsp;<a href="#" data-toggle="tooltip"
-                                                                                    data-placement="bottom"
-                                                                                    title="<ul>
+                                                                           data-placement="bottom"
+                                                                           title="<ul>
                                                                                         <li><b>Positive</b> results will typically include words such as released, sentence commuted, stay of execution, freed, pardoned or acquitted.</li>
                                                                                         <li><b>Negative</b> results are when someone has been executed, unlawfully detained, their sentence has been upheld having lost their appeal.</li>
                                                                                         <li><b>Not clear</b> is when the result is ambiguous, positive on the one side and negative on the other.</li>
                                                                                     </ul>"
-                                                                                    style="color: white;font-size: 18px"><i
+                                                                           style="color: white;font-size: 18px"><i
                             class="fa fa-info-circle fa-2"></i></a></h2>
                     <div class="options" style="margin-left: -11px;">
-                        <div class="individual-outcome outcome-result">POSITIVE
+                        <div class="individual-outcome outcome-result" title="result">POSITIVE
                         </div>
-                        <div class="individual-outcome outcome-result">NEGATIVE
+                        <div class="individual-outcome outcome-result" title="result">NEGATIVE
                         </div>
-                        <div class="individual-outcome outcome-result">NOT CLEAR
+                        <div class="individual-outcome outcome-result" title="result">NOT CLEAR
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-2 scol-md-2">
-                    <div class="forward-arrow-container" style="margin-top: 30px; text-align: center;">
+                    <div class="forward-arrow-container" style="display: none; margin-top: 30px; text-align: center;">
 
                     </div>
                     <br>
@@ -893,8 +916,8 @@
                 {% include "urgentactions/ua-sub-header-final-step.html" %}
             </div>
         </div>
-        <div class="single-individual" id="single-individual-small">
-            <div class="col-xs-12 col-md-12 single-1">
+        <div class="single-individual" id="single-individual-small" style="display: none;">
+            <div class="col-xs-12 col-md-12 single-1" style="display: none;">
                 <div class="col-xs-2 col-md-2" style="text-align: center">
                     <div class="back-arrow-container" style="margin-top: 30px; text-align: center; ">
                     </div>
@@ -903,16 +926,16 @@
                 <div class="col-xs-8 col-md-8 outcome-options" style="margin-left: -11px;">
                     <h2 class="person-name-question"></h2>
                     <div class="options" style="margin-left: -11px;">
-                        <div class="individual-outcome outcome-result">MALE
+                        <div class="individual-outcome outcome-result" title="gender">MALE
                         </div>
-                        <div class="individual-outcome outcome-result">FEMALE
+                        <div class="individual-outcome outcome-result" title="gender">FEMALE
                         </div>
-                        <div class="individual-outcome outcome-result">NOT CLEAR
+                        <div class="individual-outcome outcome-result" title="gender">NOT CLEAR
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-2 col-md-2">
-                    <div class="forward-arrow-container" style="margin-top: 30px; text-align: center;">
+                    <div class="forward-arrow-container" style="display: none; margin-top: 30px; text-align: center;">
 
                     </div>
                     <br>
@@ -927,25 +950,25 @@
                 </div>
                 <div class="col-xs-8 col-md-8 outcome-options" style="margin-left: -11px;">
                     <h2>What was the result of this Urgent Action?&nbsp;<a href="#" data-toggle="tooltip"
-                                                                                    data-placement="bottom"
-                                                                                    title="<ul>
+                                                                           data-placement="bottom"
+                                                                           title="<ul>
                                                                                         <li><b>Positive</b> results will typically include words such as released, sentence commuted, stay of execution, freed, pardoned or acquitted.</li>
                                                                                         <li><b>Negative</b> results are when someone has been executed, unlawfully detained, their sentence has been upheld having lost their appeal.</li>
                                                                                         <li><b>Not clear</b> is when the result is ambiguous, positive on the one side and negative on the other.</li>
                                                                                     </ul>"
-                                                                                    style="color: white;font-size: 18px"><i
+                                                                           style="color: white;font-size: 18px"><i
                             class="fa fa-info-circle fa-2"></i></a></h2>
                     <div class="options" style="margin-left: -11px;">
-                        <div class="individual-outcome outcome-result">POSITIVE
+                        <div class="individual-outcome outcome-result" title="result">POSITIVE
                         </div>
-                        <div class="individual-outcome outcome-result">NEGATIVE
+                        <div class="individual-outcome outcome-result" title="result">NEGATIVE
                         </div>
-                        <div class="individual-outcome outcome-result">UNCLEAR
+                        <div class="individual-outcome outcome-result" title="result">UNCLEAR
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-2 col-md-2">
-                    <div class="forward-arrow-container" style="margin-top: 30px; text-align: center;">
+                    <div class="forward-arrow-container" style="display: none; margin-top: 30px; text-align: center;">
 
                     </div>
                     <br>
@@ -958,7 +981,7 @@
         </div>
 
         <div class="under-10-individuals">
-            <div class="col-xs-12 col-md-12 under-ten-1">
+            <div class="col-xs-12 col-md-12 under-ten-1" style="display: none;">
                 {% include "urgentactions/ua-results.html" %}
             </div>
             <div class="col-xs-12 col-md-12 under-ten-2" style="display: none;">
@@ -1029,13 +1052,13 @@
                         <div class="form-group">
                             <div class="individual-outcome outcome-result mixed-continue"
                                  style="margin-left: 10px !important;"
-                                 id="mixed-continue">CONFIRM
+                                 id="mixed-continue" title="mixed">CONFIRM
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-2 col-md-2">
-                    <div class="forward-arrow-container" style="margin-top: 30px; text-align: center;">
+                    <div class="forward-arrow-container" style="display: none; margin-top: 30px; text-align: center;">
 
                     </div>
                     <br>
@@ -1046,7 +1069,7 @@
             </div>
         </div>
         <div class="ten-plus-individuals">
-            <div class="col-xs-12 col-md-12 ten-plus-1">
+            <div class="col-xs-12 col-md-12 ten-plus-1" style="display: none;">
                 <div class="col-xs-2 col-md-2" style="text-align: center">
                     <div class="back-arrow-container" style="margin-top: 30px; text-align: center;">
 
@@ -1079,7 +1102,7 @@
                     </div>
                 </div>
                 <div class="col-xs-2 col-md-2">
-                    <div class="forward-arrow-container" style="margin-top: 30px; text-align: center;">
+                    <div class="forward-arrow-container" style="display: none; margin-top: 30px; text-align: center;">
 
                     </div>
                     <br>
