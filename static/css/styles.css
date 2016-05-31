@@ -995,3 +995,7 @@ li > a {
     }
 
 }
+
+.funder-img:hover{
+    opacity: 0.5;
+}
