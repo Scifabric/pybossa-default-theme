@@ -177,6 +177,9 @@
             $(".finish-scene").show(250);
             $(".skip").hide();
             urgent_action_json[workflow_id]['count'] = persons;
+            if (workflow_id == "single-individual"){
+                urgent_action_json[workflow_id]['name'] = person_name;
+            }
             console.log(urgent_action_json[workflow_id]);
         }
 
@@ -340,10 +343,8 @@
 
         $("#victims-number-unclear").click(function () {
             $(this).parent().parent().parent().parent().hide();
-            if (back_clicked == 0) {
-                setCounterButtonActive($(this));
-                setContinueButtonIncative();
-            }
+            setCounterButtonActive($(this));
+            setContinueButtonIncative();
             persons = "not clear";
             back_clicked = 0;
             $("div[title=\"previous-select\"]").prop("title", "not-selected");
@@ -507,7 +508,6 @@
             "background-color": "#999999",
             "color": "#666666"
         });
-        $()
         $("#victims-number").val("");
     }
 
