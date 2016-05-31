@@ -162,6 +162,7 @@
         });
 
         function displayFinishScene() {
+            $('#footer-UA').hide();
             $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
             $(".finish-scene").show(250);
             $(".skip").hide();
@@ -211,7 +212,7 @@
 
 
         $(".next-ua").click(function () {
-            $(".btn-submit").click();
+            $('#footer-UA').show();
             $(".skip").show(250);
             $(".question").show(250);
             $(".question").children().children().show();
