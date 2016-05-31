@@ -3,6 +3,7 @@
 <script type="text/javascript">
     $(function () {
 
+
         $(window).resize(function() {
             var mainDiv = document.getElementById("presenterContainer");
             var coord_sel = getSelectionCharOffsetsWithin(mainDiv);
@@ -119,7 +120,7 @@ function capitalizeCase(str)
         <div class="row" style="position: relative;">
             <div class="finish-scene" style="display: none;">
                 <div class="circle-base circle1">
-                    <h1>YOU'RE AWESOME</h1>
+                    <h1 style="text-transform: uppercase;" id="feedbackHeader">You’re pretty brilliant</h1>
                     <hr class="hr" style="margin-top: 0; width: 90%; background-color: #fff;">
                     <div class="sharing-buttons rrssb-buttons">
                         <h3 style="margin-top: -5px;">Please share</h3>

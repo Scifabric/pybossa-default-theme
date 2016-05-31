@@ -173,6 +173,24 @@
         });
 
         function displayFinishScene(workflow_id) {
+            var fdb_text = [
+                "You're awesome",
+                "Great job",
+                "Keep’em coming",
+                "You rock",
+                "You rule",
+                "You’re changing lives",
+                //"You’re fighting for human rights",
+                "Nice one",
+                "You’re the best",
+                //"You’re a human rights decoder",
+                //"You’re pretty brilliant",
+                "Time for one more?",
+                "You’re our favourite",
+                "High fives all round"
+            ];
+
+            $('#feedbackHeader').empty().text(fdb_text[Math.floor(Math.random() * fdb_text.length)]);
             $('#footer-UA').hide();
             $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
             $(".finish-scene").show(250);
