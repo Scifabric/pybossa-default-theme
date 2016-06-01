@@ -107,6 +107,16 @@ function capitalizeCase(str)
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 </script>
+<style>
+    @media (max-width: 768px) {
+        #presenterHr{
+            display: none !important;
+        }
+        #presenterLogo{
+            display: none !important;
+        }
+    }
+</style>
 <div class="row presenter-container" id="presenterContainer" style="color: #000; background-color: #fff;">
     <div class="col-md-2 ua-sidebar"></div>
     <div class="col-xs-12 col-md-8" id="task-presenter-div" style="padding: 0 14px 0 14px;">
@@ -148,7 +158,7 @@ function capitalizeCase(str)
                     <h5>Skip this urgent action</h5>
                 </div>
                 <br>
-                <a href="{{url_for('project.details', short_name=project.short_name)}}" style="float: left;">
+                <a href="{{url_for('project.details', short_name=project.short_name)}}" id="presenterLogo" style="float: left;">
                     <div class="span4">
                         <img src="/static/img/urgent_action.png" style="margin-left: -5px;"
                              class="img img-responsive">
@@ -161,7 +171,7 @@ function capitalizeCase(str)
         </div>
         <div class="row">
             <div class="span12">
-                <hr class="hr" style="margin: 20px 0 0 2px;">
+                <hr class="hr" style="margin: 20px 0 0 2px;" id="presenterHr">
             </div>
         </div>
         {% if invite_new_volunteers %}
