@@ -14,62 +14,11 @@
     <!--<link href="assets/css/component/colors/blue.css" rel="stylesheet" type="text/css">-->
 
     <!-- Main CSS -->
+    <link href="{{url_for('static', filename='css/fonts/stylesheet.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='landing_assets/css/rinjani.css')}}" rel="stylesheet" type="text/css">
 <style>
 
     /* ----- Landing PAGE ----- */
-@media (min-width: 1200px){
-    body .container {
-        width: 100% !important;
-        height: 100% !important;
-    }
-}
-@media (min-width: 990px){
-    body .container {
-        width: 100% !important;
-        height: 100% !important;
-    }
-    body .container .intro {
-        margin-top: -10px;
-    }
-
-}
-
-
-@media (min-width: 768px){
-    body .container {
-        width: 100% !important;
-        height: 100% !important;
-    }
-    #intro .intro-body .intro-text{
-        padding-top: 100px;
-    }
-}
-body{
-    margin: 0;
-    padding:0;
-}
-#intro{
-    text-decoration:none !important;
-    height: 80% !important;
-}
-body .container {
-    width: 100% !important;
-    height: 100% !important;
-    padding:0;
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-
-}
-body > footer {
-    margin-top: 0;
-}
-.section > .section-inner .section-content {
-    padding-top: 30px;
-}
-a {
-    color: #3277B1;
-}
 
 #skrolId{
     background:none!important;
@@ -369,39 +318,11 @@ a {
             <div class="container section-content">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="section-title text-center">
-                            <h3 class="main-title">Stay in touch    </h3>
-
-                            <h4 class="sub-title">Get updates about Amnesty Decoders and hear about our future projects</h4>
-
-                            <span class="section-line"></span>
-                        </div>
-                        <!-- //.section-title -->
+                        <style>.embed-container { position: relative; padding-bottom: 40%; margin: 0 auto; height: 0; overflow: hidden; max-width: 40%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='http://join.amnesty.org/ea-action/action?ea.client.id=1924&ea.campaign.id=51630' frameBorder="0"></iframe></div>
                     </div>
                     <!-- //.col-md-12 -->
                 </div>
                 <!-- //.row -->
-
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="follow-us-form">
-                            <form role="form">
-                                <div class="input-group">
-                                    <input type="text" class="form-control input-lg" placeholder="example@email.com">
-
-                                    <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-lg btn-rj">Subscribe</button>
-                                    </span>
-                                </div>
-                                <!-- //.input-group -->
-                            </form>
-                        </div>
-                        <!-- //.countdown-form -->
-                    </div>
-                    <!-- //.col-md-4 col-md-offset-4 -->
-                </div>
-                <!-- //.row -->
-
             </div>
             <!-- //.section-content -->
         </div>
