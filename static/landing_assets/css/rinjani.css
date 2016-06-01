@@ -45,9 +45,12 @@ body {
   font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
   color: #222222;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 a {
   outline: none;
+  color: #3277B1;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -80,6 +83,31 @@ p {
   -o-transition: all 0.2s ease 0s;
   transition: all 0.2s ease 0s;
 }
+body .container {
+    width: 100% !important;
+    height: 100% !important;
+    padding:0;
+    margin: 0;
+    font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
+}
+@media (min-width: 768px){
+    body .container {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    #intro .intro-body .intro-text{
+        padding-top: 100px;
+    }
+}
+@media (min-width: 990px){
+    body .container {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    body .container .intro {
+        margin-top: -10px;
+    }
+}
 @media (min-width: 992px) {
   .push.pushed-left {
     margin-left: 250px;
@@ -97,7 +125,7 @@ p {
   position: relative;
 }
 .section > .section-inner .section-content {
-  padding-top: 50px;
+  padding-top: 30px;
   padding-bottom: 60px;
 }
 @media (min-width: 1024px) {
@@ -158,6 +186,12 @@ p {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+}
+@media (min-width: 1200px){
+    body .container {
+        width: 100% !important;
+        height: 100% !important;
+    }
 }
 @media (min-width: 1280px) {
   .section.section-bgimage-yes {
@@ -292,8 +326,9 @@ p {
   position: relative;
   display: table;
   width: 100%;
-  height: auto;
   color: #fff;
+  text-decoration:none !important;
+  height: 80% !important;
   background-image: url("../img/bg-intro.jpg");
   background-repeat: no-repeat;
   background-position: center center;
@@ -543,4 +578,8 @@ p {
 }
 #follow-us > .section-inner .section-content .social-icon-text > ul.social-icon-list > li a:hover {
   border-color: #ffffff;
+}
+
+body > footer {
+    margin-top: 0;
 }
