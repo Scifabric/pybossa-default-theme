@@ -2,7 +2,6 @@
 <script type="text/javascript">
     var click = 0;
     var persons = 0;
-    var not_clear_clicked = 0;
     var last_checked = 0;
     var back_clicked = 0;
     var urgent_action_json = {
@@ -31,8 +30,6 @@
         "unsure": 0
     };
     var screen_width = window.screen.width;
-
-    var is_json_empty = 0;
     var is_10_plus_clicked = null;
     var is_mixed_clicked = null;
 
@@ -116,7 +113,6 @@
 
         $(".outcome-result").click(function () {
             var value = $(this).text().trim().toLowerCase();
-            console.log($(this).text());
             if (back_clicked == 0) {
                 setCounterButtonActive($(this));
             }
@@ -127,7 +123,6 @@
             if (value == "unclear") {
                 value = "not clear";
             }
-            urgent_action_json[workflow_id][title] = value;
             parent.hide();
             setOtherButtonsInactive($(this));
             var class_names = $(this).parent().parent().parent().attr("class").split(" ");
@@ -141,6 +136,8 @@
             if (class_name == "outcome-options") {
                 class_name = "under-ten-1";
                 $(this).parent().parent().parent().parent().hide();
+            } else {
+                urgent_action_json[workflow_id][title] = value;
             }
 
             var matches = class_name.match(/\d+/g);
@@ -158,7 +155,11 @@
             next_class_names.show(250);
 
             if (next_class_names.attr("class").split(" ").indexOf("end-scene") > -1) {
-                displayFinishScene(workflow_id);
+                if (workflow_id.indexOf("under-ten-2") > -1) {
+                    workflow_id = "under-10-individuals";
+                } else {
+                    displayFinishScene(workflow_id);
+                }
             } else {
                 $(".presenter-container").removeClass("disabled");
                 $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
@@ -196,10 +197,10 @@
             $(".finish-scene").show(250);
             $(".skip").hide();
             urgent_action_json[workflow_id]['count'] = persons;
-            if (workflow_id == "single-individual"){
+            if (workflow_id == "single-individual") {
                 urgent_action_json[workflow_id]['name'] = person_name;
             }
-            console.log(urgent_action_json[workflow_id]);
+            postRequest(urgent_action_json[workflow_id]);
         }
 
         $(".person").click(function () {
@@ -322,6 +323,13 @@
             $(".select-persons").animate({width: 'toggle'}, 250);
         });
 
+        $("#mixed-continue").click(function () {
+            for (var item in mixed_json) {
+                urgent_action_json['under-10-individuals'][item] = mixed_json[item];
+            }
+            displayFinishScene('under-10-individuals');
+        });
+
         $("#smallConfirmBtn").click(function () {
             var select_json = {};
             $(".selectbox").each(function () {
@@ -333,7 +341,7 @@
             for (var item in select_json) {
                 sum += Number(select_json[item]);
             }
-            console.log(persons);
+
             if (sum == persons) {
                 $(this).parent().parent().parent().hide();
                 for (var item in select_json) {
@@ -522,7 +530,7 @@
         });
     });
 
-    function setContinueButtonIncative(){
+    function setContinueButtonIncative() {
         $(".continue-vno").css({
             "background-color": "#999999",
             "color": "#666666"
@@ -556,6 +564,23 @@
         });
     }
 
+    function postRequest(data) {
+        $.support.cors = true;
+        $.ajax({
+            url: 'http://0.0.0.0:5050/save-result',
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: 'json',
+            success: function (data, textStatus, xhr) {
+                console.log(data);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log(xhr);
+            }
+        });
+    }
+
     function checkForSum() {
         var sum = 0;
         for (var item in mixed_json) {
@@ -579,11 +604,7 @@
         var mixed_types = element.parent().attr("class");
         for (var item = 0; item < mixed_types_array.length; item++) {
             if (mixed_types.indexOf(mixed_types_array[item]) > -1) {
-                if (is_json_empty == 0) {
-                    mixed_json[mixed_types_array[item]] = Number(person_number) + 1
-                } else {
-
-                }
+                mixed_json[mixed_types_array[item]] = Number(person_number) + 1
             }
         }
     }
