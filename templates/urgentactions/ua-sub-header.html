@@ -175,6 +175,7 @@
         });
 
         function displayFinishScene(workflow_id) {
+            $(".btn-submit").click();
             var fdb_text = [
                 "You're awesome",
                 "Great job",
@@ -356,6 +357,8 @@
             } else {
                 $('#alertMsgModal').modal('show');
             }
+
+
         });
 
         $(".continue-under-ten").click(function () {
