@@ -1,7 +1,11 @@
 {% include "urgentactions/ua-sub-header.html" %}
 <script type="text/javascript">
+    var parent_paragraph;
     $(function () {
 
+        $(window).resize(function () {
+            calculationPosition(parent_paragraph);
+        });
         $(".one-person").click(function () {
             document.onmouseup = gText;
             if (!document.all) document.captureEvents(Event.MOUSEUP);
@@ -34,10 +38,11 @@
             if (selText && targetElem == 'p') {
                 if (click == 1) {
                     if (t != "") {
+                        parent_paragraph = getSelectionParentElement(t);
                         var length = t.toString().length;
                         $('#detailed-individual-information').hide();
                         $('#detailed-individual-information').css({
-                            'top': e.pageY - 195,
+                            'top': e.pageY - 205,
                             'position': 'absolute',
                             'width': 240,
                             'color': '#fff',
@@ -58,7 +63,7 @@
                             });
                         }
 
-                        $("#person-name").html("<i>" +'"'+ capitalizeCase(person_name.trim()) +'"' +"</i>" + "<br><i>Is this the correct name?</i>");
+                        $("#person-name").html("<i>" + '"' + capitalizeCase(person_name.trim()) + '"' + "</i>" + "<br><i>Is this the correct name?</i>");
 
                         if (screen_width > 768) {
                             $('#detailed-individual-information').show();
@@ -69,6 +74,31 @@
         }
 
     });
+
+    function calculationPosition(el) {
+        var location = $("." + el).offset();
+        var width = $(".presenter-container").width();
+        var top = location.top;
+
+        $('#detailed-individual-information').css({
+            'top': top - 165,
+            'left': (width / 2) - 150
+        });
+        $(".rectangle-speech-border .rectangle-speech-border:before").css("display", "none");
+        $(".rectangle-speech-border .rectangle-speech-border:after").css("display", "none");
+
+    }
+
+    function getSelectionParentElement(sel) {
+        var parentEl = null;
+        if (sel.rangeCount) {
+            parentEl = sel.getRangeAt(0).commonAncestorContainer;
+            if (parentEl.nodeType != 1) {
+                parentEl = parentEl.parentNode;
+            }
+        }
+        return $(parentEl).attr("class");
+    }
 
     function getSelectionCharOffsetsWithin(element) {
         var start = 0, end = 0;
@@ -190,7 +220,8 @@ function capitalizeCase(str){
     </div>
     <div class="col-md-2 ua-sidebar"></div>
 </div>
-<div class="rectangle-speech-border" id="detailed-individual-information" style="display: none;position: relative !important;">
+<div class="rectangle-speech-border" id="detailed-individual-information"
+     style="display: none;position: relative !important;">
     <div class="detailed-information">
         <h3 style="margin-top: 3px;" id="person-name"></h3>
         <div class="individual-outcome" id="confirm-name">CORRECT</div>

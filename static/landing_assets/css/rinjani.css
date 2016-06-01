@@ -17,7 +17,7 @@
 5. ABOUT PROJECT
 
 6. TARGETS SECTION
-
+ 
 7. BACKGROUND SECTION
 
 8. FOLLOW US SECTION
@@ -42,7 +42,7 @@ html {
 }
 body {
   background-color: #f2f4f4;
-  font-family: 'Lato', sans-serif;
+  font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
   color: #222222;
   overflow-x: hidden;
 }
@@ -338,7 +338,7 @@ p {
 }
 #intro .intro-body .intro-text {
   margin-top: 40px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
 }
 #intro .intro-body .intro-text h2 {
   color: #fff;
@@ -370,7 +370,7 @@ p {
   }
 }
 #intro .intro-body a.btn {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
   margin-top: 20px;
 }
 @media (min-width: 768px) {
@@ -487,6 +487,10 @@ p {
   #follow-us > .section-inner .section-content .follow-us-form {
     margin-top: 12px;
   }
+}
+#follow-us > .section-inner .section-content .follow-us-form .iframe {
+  width: 100%;
+  padding-bottom: 130%;
 }
 #follow-us > .section-inner .section-content .follow-us-form form > .input-group > span.input-group-btn > .btn {
   padding-top: 10px;
