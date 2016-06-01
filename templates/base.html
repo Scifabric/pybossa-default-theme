@@ -117,20 +117,15 @@
         </div>
         {% if not enforce_privacy %}
         <div id="footer_links" class="container">
-            <div class="row">
-                <div class="col-xs-offset-3 col-xs-9 col-sm-4 col-sm-offset-5">
-                    <ul>
-                        <li><strong>{{ _('Resources') }}</strong></li>
-                        <li><i class="glyphicon glyphicon-link"></i><a href="{{ url_for('home.about')}}">{{ _('About')
-                            }}</a></li>
-                        <li><i class="glyphicon glyphicon-link"></i><a href="{{ url_for('terms.index')}}">{{ _('Terms of
-                            Use') }}</a></li>
-                        <li><i class="glyphicon glyphicon-link"></i><a href="{{ url_for('glossary.index')}}">{{ _('Glossary')
-                            }}</a></li>
-                        <li><i class="glyphicon glyphicon-link"></i><a target="_blank" href="https://www.amnesty.org/en/about-us/cookie-statement/">{{
-                            _('Cookies Policy') }}</a></li>
-                    </ul>
-                </div>
+            <div class="row" style="font-size:16px; text-align: center;margin: 0 auto;">
+                <a href="{{ url_for('home.about')}}">{{ _('About')
+                            }}</a><span style="padding: 10px">|</span>
+                <a href="{{ url_for('terms.index')}}">{{ _('Terms of
+                    Use') }}</a><span style="padding: 10px">|</span>
+                <a href="{{ url_for('glossary.index')}}">{{ _('Glossary')
+                    }}</a><span style="padding: 10px">|</span>
+                <a target="_blank" href="https://www.amnesty.org/en/about-us/cookie-statement/">{{
+                    _('Cookies Policy') }}</a>
             </div>
         </div>
         {% endif %}

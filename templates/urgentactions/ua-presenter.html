@@ -1,13 +1,6 @@
 {% include "urgentactions/ua-sub-header.html" %}
-
 <script type="text/javascript">
     $(function () {
-
-
-        $(window).resize(function() {
-            var mainDiv = document.getElementById("presenterContainer");
-            var coord_sel = getSelectionCharOffsetsWithin(mainDiv);
-        });
 
         $(".one-person").click(function () {
             document.onmouseup = gText;
@@ -77,7 +70,6 @@
 
     });
 
-
     function getSelectionCharOffsetsWithin(element) {
         var start = 0, end = 0;
         var sel, range, priorRange;
@@ -102,8 +94,8 @@
             end: end
         };
     }
-function capitalizeCase(str)
-{
+
+function capitalizeCase(str){
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 </script>
