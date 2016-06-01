@@ -488,6 +488,10 @@ p {
     margin-top: 12px;
   }
 }
+#follow-us > .section-inner .section-content .follow-us-form .iframe {
+  width: 100%;
+  padding-bottom: 130%;
+}
 #follow-us > .section-inner .section-content .follow-us-form form > .input-group > span.input-group-btn > .btn {
   padding-top: 10px;
   padding-bottom: 10px;
