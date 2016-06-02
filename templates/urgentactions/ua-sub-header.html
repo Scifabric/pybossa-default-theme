@@ -2,7 +2,7 @@
 <script type="text/javascript">
     var click = 0;
     var persons = 0;
-    var final_urgent_action_json = {};
+    window.final_urgent_action_json = {};
     var last_checked = 0;
     var back_clicked = 0;
     var urgent_action_json = {
@@ -570,7 +570,7 @@
     function postRequest(data) {
         $.support.cors = true;
         $.ajax({
-            url: '/api/ua/save-result',
+            url: 'http://0.0.0.0:5050/save-result',
             type: 'POST',
             data: JSON.stringify(data),
             contentType: "application/json",
