@@ -479,12 +479,17 @@
 }
 .counter-item > .inner-content {
   padding-top: 10px;
+  margin-bottom: 20px;
 }
 .counter-item > .inner-content .number {
   color: #fff;
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 400;
+  letter-spacing: -6px;
+  line-height: 1.2;
   text-transform: uppercase;
+  border-bottom: 8px solid #fff;
+  padding-bottom: 1px;
 }
 @media (min-width: 480px) {
   .counter-item > .inner-content .number {
@@ -493,23 +498,25 @@
 }
 @media (min-width: 768px) {
   .counter-item > .inner-content .number {
-    font-size: 60px;
+    font-size: 80px;
   }
 }
-.counter-item > p {
-  color: #1abc9c;
-  font-size: 12px;
-  font-weight: 300;
+.counter-item > p.top {
+  color: #b6b6b6;
+  font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 400;
   text-transform: uppercase;
+}
+.counter-item > p {
+  color: #fff;
 }
 @media (min-width: 480px) {
   .counter-item > p {
-    font-size: 15px;
   }
 }
 @media (min-width: 768px) {
   .counter-item > p {
-    font-size: 20px;
   }
 }
 .counter-item.not-right-column.top-column {
