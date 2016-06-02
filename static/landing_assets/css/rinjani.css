@@ -539,6 +539,10 @@ body .container {
 /*---------------------------------------------------------------------*/
 #follow-us {
   background-image: url("../img/bg-follow-us.jpg");
+  background-color: #000;
+  background opacity: 0.2;
+  filter: alpha(opacity=20);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=20)";
 }
 #follow-us > .section-inner .section-content .section-title {
   color: #b7ada4;
