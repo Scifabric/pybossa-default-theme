@@ -11,22 +11,11 @@
     <meta name="description" content="Amnesty Decoders: The Amnesty International global network of digital volunteers.">
     <meta name="author" content="">
 
-    <!-- Facebook meta -->
-    <meta property="og:title" content="Become an Amnesty Decoder now!"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="{{ config.get('HOST') }}"/>
-    <meta property="og:image" content="{{ config.get('HOST') }}/static/img/alt-click-sharing.jpg"/>
-    <meta property="og:description"
-          content="Join hundreds of digital volunteers helping us expose human rights violations, one click at a time. By spending as little as five minutes reading part of our online archive of Urgent Actions, you can help us improve our campaigns."/>
+    <!-- Facebook meta tags-->
+    {% include '_fb.html' ignore missing %}
 
-
-    <!-- Twitter meta -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@amnesty">
-    <meta name="twitter:title" content="Become an Amnesty Decoder now!">
-    <meta name="twitter:description"
-          content="Join hundreds of digital volunteers helping us expose human rights violations http://decoders.amnesty.org">
-    <meta name="twitter:image" content="{{ config.get('HOST') }}/static/img/alt-click-sharing.jpg">
+    <!-- Twitter meta tags-->
+    {% include '_tw.html' ignore missing %}
 
     <!-- Le styles -->
     <link href="{{url_for('static', filename='bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
@@ -61,6 +50,10 @@
     <!-- Le javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript" src="{{url_for('static', filename='bootstrap/js/bootstrap.js')}}"></script>
+
+
+    <!-- Google Analytics or similar solutions -->
+    {% include '_ga.html' ignore missing %}
 </head>
 
 <script type="text/javascript">
