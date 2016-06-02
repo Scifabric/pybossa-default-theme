@@ -137,11 +137,9 @@ body .container {
 .section > .section-inner .section-content .section-title {
   color: #222;
   text-transform: uppercase;
-  padding-bottom: 40px;
 }
 @media (min-width: 1024px) {
   .section > .section-inner .section-content .section-title {
-    padding-bottom: 60px;
   }
 }
 .section > .section-inner .section-content .section-title > .main-title {
@@ -447,7 +445,6 @@ body .container {
   padding-bottom: 20px;
 }
 #about-project .about-project-text > p {
-  font-size: 18px;
   text-align: center;
   left: 0;
   margin: auto;
@@ -514,8 +511,16 @@ body .container {
   padding-bottom: 20px;
 }
 #background .background-text > p {
-  font-size: 18px;
+  left: 0;
+  margin: auto;
   padding-bottom: 20px;
+  width: 60%;
+}
+#background .background-text > h2 {
+  left: 0;
+  margin: auto;
+  padding-bottom: 20px;
+  width: 60%;
 }
 #background .section-inner .section-content .section-button a.btn {
   font-size: 14px;
