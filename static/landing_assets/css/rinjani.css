@@ -389,13 +389,16 @@ body .container {
 }
 #intro .intro-body .intro-text p.lead {
   color: #fff;
+  font-size: 30px !important;
+  font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
+  text-transform: uppercase;
   line-height: 1.85;
-  font-weight: 400;
+  font-weight: 200;
   font-feature-settings: 'kern';
   font-kerning: normal;
   position: relative;
   display: inline-block;
-  max-width: 405px;
+  width: 90%;
   margin: 0;
   padding: 1.42857rem 1.71429rem;
   background-color: #000;
