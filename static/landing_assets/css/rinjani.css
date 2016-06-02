@@ -461,6 +461,9 @@ body .container {
 @media (min-width: 768px) {
   #about-project .section-inner .section-content .section-button a.btn {
     font-size: 18px;
+    line-height: 1.1;
+    font-weight: 400;
+    padding: 1.57143rem 3rem;
   }
 }
 .imgPortofolio{
