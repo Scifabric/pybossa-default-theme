@@ -146,7 +146,7 @@ body .container {
 }
 .section > .section-inner .section-content .section-title > .main-title {
   font-size: 35px;
-  font-weight: 300;
+  font-weight: 400;
 }
 @media (min-width: 480px) {
   .section > .section-inner .section-content .section-title > .main-title {
@@ -486,9 +486,18 @@ body .container {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+#targets .section-inner .section-content .section-title > h2.main-title {
+  color: #fff;
+  line-height: 1.1;
+  font-weight: 300;
+  font-size: 40px;
+  margin: 0;
+}
 #targets .section-inner .section-content .section-title .targets-text > p {
   font-size: 16px;
   text-transform: none;
+  color: #fff;
+  margin: 0;
 }
 @media (min-width: 1024px) {
   #targets .section-inner .section-content .section-title .targets-text > p {
