@@ -443,9 +443,16 @@ body .container {
 #about-project > .section-inner .section-content .section-title {
   padding-bottom: 20px;
 }
+#about-project .about-project-text {
+  padding-bottom: 20px;
+}
 #about-project .about-project-text > p {
   font-size: 18px;
-  padding-bottom: 20px;
+  text-align: center;
+  left: 0;
+  margin: auto;
+  padding-bottom: 30px;
+  width: 60%;
 }
 #about-project .section-inner .section-content .section-button a.btn {
   font-size: 14px;
