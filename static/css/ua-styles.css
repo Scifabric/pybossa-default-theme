@@ -251,7 +251,7 @@ a:hover {
     padding-top: 12px;
 }
 
-.next-ua {
+.next-ua, .sign-up {
     cursor: pointer;
     font-weight: bolder;
     font-size: 15px;
