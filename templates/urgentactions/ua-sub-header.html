@@ -175,7 +175,6 @@
         });
 
         function displayFinishScene(workflow_id) {
-            $(".btn-submit").click();
             var fdb_text = [
                 "You're awesome",
                 "Great job",
@@ -253,6 +252,7 @@
 
 
         $(".next-ua").click(function () {
+            $(".btn-submit").click();
             $('#footer-UA').show();
             $(".skip").show(250);
             $(".question").show(250);
