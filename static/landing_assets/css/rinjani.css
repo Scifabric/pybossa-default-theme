@@ -71,6 +71,7 @@ h6 {
 }
 p {
   font-size: 15px;
+  font-family: sans-serif !important;
   font-weight: 400;
   line-height: 1.6;
   margin: 0 0 15px;
@@ -86,7 +87,7 @@ p {
 body .container {
     width: 100% !important;
     height: 100% !important;
-    padding:0;
+    padding: 0;
     margin: 0;
     font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
 }
@@ -94,15 +95,14 @@ body .container {
     body .container {
         width: 100% !important;
         height: 100% !important;
-    }
-    #intro .intro-body .intro-text{
-        padding-top: 100px;
+        padding: 0;
     }
 }
 @media (min-width: 990px){
     body .container {
         width: 100% !important;
         height: 100% !important;
+        padding: 80px 0 0 0;
     }
     body .container .intro {
         margin-top: -10px;
@@ -349,12 +349,13 @@ body .container {
   content: " ";
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6);
 }
 #intro .intro-body {
   position: relative;
-  display: table-cell;
-  vertical-align: middle;
+  margin: 0 8.33333%;
+  width: 57%;
+  display: table;
   padding-top: 70px;
   padding-bottom: 70px;
 }
@@ -364,21 +365,21 @@ body .container {
     padding-bottom: 20px;
   }
 }
-#intro .intro-body .logo > img {
-  display: block;
-  width: 200px;
-  height: 90px;
-  text-align: center;
-  margin: auto;
-}
 #intro .intro-body .intro-text {
-  margin-top: 40px;
+  padding-top: 7%;
   font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
 }
 #intro .intro-body .intro-text h2 {
-  color: #fff;
-  font-size: 50px;
-  font-weight: 700;
+  color: #000;
+  font-size: 2em;
+  line-height: 1.7;
+  font-weight: 400;
+  font-feature-settings: 'kern';
+  font-kerning: normal;
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
+  box-shadow: 1.42857rem 0 0 #fff,-1.42857rem 0 0 #fff;
 }
 @media (min-width: 768px) {
   #intro .intro-body .intro-text h2 {
@@ -388,12 +389,20 @@ body .container {
 }
 #intro .intro-body .intro-text p.lead {
   color: #fff;
-  font-size: 22px;
+  line-height: 1.85;
   font-weight: 400;
+  font-feature-settings: 'kern';
+  font-kerning: normal;
+  position: relative;
+  display: inline-block;
+  max-width: 405px;
+  margin: 0;
+  padding: 1.42857rem 1.71429rem;
+  background-color: #000;
+  box-shadow: 1.42857rem 0 0 #000,-1.42857rem 0 0 #000;
 }
 @media (min-width: 768px) {
   #intro .intro-body .intro-text p.lead {
-    font-size: 26px;
   }
 }
 #intro .intro-body .page-scroll {
@@ -404,15 +413,14 @@ body .container {
     margin-top: 50px;
   }
 }
+#intro .intro-body .btn {
+  display: table;
+}
 #intro .intro-body a.btn {
   font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
-  margin-top: 20px;
 }
 @media (min-width: 768px) {
   #intro .intro-body a.btn {
-    padding: 20px 25px;
-    margin-top: 20px;
-    font-size: 22px;
   }
 }
 #intro .intro-body p.page-scroll {

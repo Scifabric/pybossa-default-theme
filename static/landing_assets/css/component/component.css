@@ -69,15 +69,21 @@
 /*  1. BUTTON
 /*---------------------------------------------------------------------*/
 .btn.btn-rj {
-  background-color: #1abc9c;
-  color: #fff;
-  border-color: #1dd2af;
+  background-color: #ff0;
+  color: #000;
+  border-color: #ff0;
+  border: 1px solid #ff0;
   text-transform: uppercase;
+  border-radius: 0;
+  cursor: pointer;
+  margin-top: 3.42857rem;
+  margin-left: -14px;
+  transition: background-color .25s,border-color .25s,color .25s;
 }
 .btn.btn-rj:hover,
 .btn.btn-rj:focus {
-  color: #fff;
-  background-color: #17a689;
+  color: #000;
+  background-color: #FFD500;
 }
 
 
