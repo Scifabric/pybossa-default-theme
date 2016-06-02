@@ -2,9 +2,10 @@
 <script type="text/javascript">
     var parent_paragraph;
     $(function () {
-
         $(window).resize(function () {
-            calculationPosition(parent_paragraph);
+            if (person_name != "") {
+                calculationPosition(parent_paragraph);
+            }
         });
         $(".one-person").click(function () {
             document.onmouseup = gText;
