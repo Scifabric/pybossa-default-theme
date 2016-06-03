@@ -569,7 +569,7 @@
     function postRequest(data) {
         $.support.cors = true;
         $.ajax({
-            url: 'http://0.0.0.0:5050/save-result',
+            url: '/api/ua/save-result',
             type: 'POST',
             data: JSON.stringify(data),
             contentType: "application/json",
