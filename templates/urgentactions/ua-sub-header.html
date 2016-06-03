@@ -528,10 +528,10 @@
     }
 
     function onRequestError() {
+        $(".finish-scene").hide();
         $('#error-popup').modal('show');
         $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
         $(".ua-sidebar").css("background", "rgba(0, 0, 0, 0.5)");
-        $(".finish-scene").hide();
     }
 
     function resetPersons(active) {
