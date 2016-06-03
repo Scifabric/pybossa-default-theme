@@ -201,8 +201,8 @@
             if (workflow_id == "single-individual") {
                 urgent_action_json[workflow_id]['name'] = person_name;
             }
-            final_urgent_action_json = urgent_action_json[workflow_id];
-            postRequest(final_urgent_action_json);
+            window.final_urgent_action_json = urgent_action_json[workflow_id];
+            $(".btn-submit").click();
         }
 
         $(".person").click(function () {
@@ -252,7 +252,6 @@
 
 
         $(".next-ua").click(function () {
-            $(".btn-submit").click();
             $('#footer-UA').show();
             $(".skip").show(250);
             $(".question").show(250);
