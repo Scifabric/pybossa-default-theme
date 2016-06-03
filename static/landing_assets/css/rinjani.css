@@ -363,7 +363,7 @@ body .container {
   font-kerning: normal;
   position: relative;
   display: inline-block;
-  width: 90%;
+  width: 95%;
   margin: 0;
   padding: 1.42857rem 1.71429rem;
   background-color: #000;
@@ -410,9 +410,12 @@ body .container {
   padding-bottom: 30px;
   width: 60%;
 }
+#about-project .section-inner .section-content #tryNow {
+  margin-top: 0 !important;
+}
 #about-project .section-inner .section-content .section-button a.btn {
   font-size: 14px;
-  margin-top: 20px;
+  margin-top: 30%;
 }
 @media (min-width: 768px) {
   #about-project .section-inner .section-content .section-button a.btn {
@@ -502,6 +505,32 @@ body .container {
   background opacity: 0.2;
   filter: alpha(opacity=20);
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=20)";
+}
+#follow-us > .section-inner .section-content .embed-container {
+  position: relative;
+  padding-bottom: 55%;
+  margin: 0 auto;
+  height: 0;
+  overflow:
+  hidden;
+  max-width: 50%;
+}
+@media (min-width: 992px) {
+  #follow-us > .section-inner .section-content .embed-container {
+  }
+} 
+@media (min-width: 1280px) {
+  #follow-us > .section-inner .section-content .embed-container {
+    padding-bottom: 40%;
+    max-width: 40%;
+  }
+}
+#follow-us > .section-inner .section-content .embed-container iframe {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
 }
 #follow-us > .section-inner .section-content .section-title {
   color: #b7ada4;
