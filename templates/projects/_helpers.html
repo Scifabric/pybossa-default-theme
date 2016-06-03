@@ -1,6 +1,6 @@
 {% macro render_pagination(pagination, handle) %}
-  <div class="pagination pagination-centered">
-      <ul>
+  <nav>
+      <ul class="pagination">
         {% if pagination.has_prev %}
           <li>
           <a href="{{ url_for_other_page(pagination.page - 1)
@@ -28,7 +28,7 @@
           </li>
         {% endif %}
     </ul>
-  </div>
+  </nav>
 {% endmacro %}
 
 {% macro render_project_local_nav(project, active_link, current_user, pro_features) -%}
