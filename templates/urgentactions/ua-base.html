@@ -56,16 +56,6 @@
     {% include '_ganalytics.html' ignore missing %}
 </head>
 
-<script type="text/javascript">
-    $(function () {
-        $('.rrssb-buttons').rrssb({
-            // required:
-            title: 'This is the facebook and/or tweet text',
-            url: '{{ config.get("HOST") }}'
-        });
-    });
-</script>
-
 <body style="background-color: #fff; padding: 0;">
 <div class="main-container">
     {% include "_navbar.html" %}
