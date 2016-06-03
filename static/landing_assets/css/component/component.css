@@ -491,8 +491,8 @@
   color: #fff;
   font-size: 24px;
   font-weight: 400;
-  letter-spacing: -6px;
   line-height: 1.2;
+  letter-spacing: -2px;
   text-transform: uppercase;
   border-bottom: 8px solid #fff;
   padding-bottom: 1px;
@@ -505,6 +505,7 @@
 @media (min-width: 768px) {
   .counter-item > .inner-content .number {
     font-size: 80px;
+    letter-spacing: -6px;
   }
 }
 .counter-item > p.top {
