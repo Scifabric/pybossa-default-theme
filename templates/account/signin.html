@@ -1,6 +1,10 @@
 {% extends "base.html" %}
-
 {% block content %}
+<style>
+  label{
+    font-size: 18px;
+  }
+</style>
 <p style="padding-top:5px;">
 <p style="padding-top:5px;">
 <span class="label label-warning"><i class="icon-bullhorn"></i> {{ _('Note') }}</span>
@@ -39,8 +43,10 @@
     {% else %}
     <legend>{{ _('Sign in with your PyBossa account') }}</legend>
     {% endif %}
-      {{ render_field(form.email, placeholder="") }}
-      {{ render_field(form.password, placeholder="") }}
+      {{ render_field(form.email, placeholder="", class="form-control", style="width:280px !important") }}
+      <br/>
+      {{ render_field(form.password, placeholder="", class="form-control", style="width:280px !important") }}
+     <br/>
     <div class="form-actions">
       <input type="submit" value="{{ _('Sign in') }}" class="btn btn-primary btn-large" />
       <input type="reset" value="{{ _('Cancel') }}" class="btn btn-default" />
@@ -53,4 +59,5 @@
         <a href="{{ url_for('account.forgot_password') }}" class="btn btn-primary">{{ _('Forgot Password') }}</a>
     </div>
 </div>
+ <br/>
 {% endblock %}

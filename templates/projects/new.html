@@ -5,6 +5,29 @@
 
 {% block content %}
 {% from "_formhelpers.html" import render_field %}
+<style>
+    label{
+        font-size: 16px !important;
+    }
+    input{
+        padding: 5px !important;
+        font-size: 12px !important;
+    }
+    ::-webkit-input-placeholder {
+        padding: 5px !important;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+        padding: 5px !important;
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+        padding-top: 5px !important;
+    }
+
+    :-ms-input-placeholder {
+        padding-top: 5px !important;
+    }
+</style>
 <div id="app-form" class="row"> 
     <div class="col-sm-3 col-md-3 ">
         {{ helper.render_account_local_nav(current_user, active_link) }}
@@ -14,15 +37,15 @@
         <form class="form-horizontal" method="post" action="{{ url_for('project.new')}}" enctype="multipart/form-data"}}>
         {{ form.hidden_tag() }}
         <fieldset>
-            {{ render_field(form.name, class_="col-sm-4 col-md-4", placeholder=_('The name of the project')) }}
-            <br><br>
-            {{ render_field(form.short_name, class_="col-sm-4 col-md-4", placeholder=_('Short name or slug for the project'), label_text=_('Project slug')) }}
-            <br><br>
-            {{ render_field(form.long_description, class_="col-xs-10 col-sm-8 col-md-8", rows="13", placeholder=_('Explain your project
+            {{ render_field(form.name, class_="form-control", placeholder=_('The name of the project')) }}
+            <br>
+            {{ render_field(form.short_name, class_="form-control", placeholder=_('Short name or slug for the project'), label_text=_('Project slug')) }}
+            <br>
+            {{ render_field(form.long_description, class_="form-control", rows="13", placeholder=_('Explain your project
                 · Why? Why you are creating this project, what you want to achieve with it                                                             
-                · How? Explain how your project works                                                             
-                · How you can help: Explain to the volunteers how they can help and contribute to the goal of your project                                                             
-                · Will you help make a difference? Explain to the volunteers why their contribution is essential and how the result of your project can help change things!                                                             
+                · How? Explain how your project works
+                · How you can help: Explain to the volunteers how they can help and contribute to the goal of your project
+                · Will you help make a difference? Explain to the volunteers why their contribution is essential and how the result of your project can help change things!
             (you can use Markdown to give format to your description!)')) }}
             <div class="form-actions col-xs-12">
                 <input type="submit" value={{_('Create the project')}} class="btn btn-primary" />
