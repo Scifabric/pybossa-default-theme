@@ -506,6 +506,27 @@ body .container {
   filter: alpha(opacity=20);
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=20)";
 }
+#follow-us > .section-inner .section-content .embed-container {
+  position: relative;
+  padding-bottom: 55%;
+  margin: 0 auto;
+  height: 0;
+  overflow:
+  hidden;
+  max-width: 40%;
+}
+@media (min-width: 1280px) {
+  #follow-us > .section-inner .section-content .embed-container {
+    padding-bottom: 40%;
+  }
+} 
+#follow-us > .section-inner .section-content .embed-container iframe {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+}
 #follow-us > .section-inner .section-content .section-title {
   color: #b7ada4;
   padding-bottom: 30px;
