@@ -252,20 +252,7 @@
 
 
         $(".next-ua").click(function () {
-            $('#footer-UA').show();
-            $(".skip").show(250);
-            $(".question").show(250);
-            $(".question").children().children().show();
             $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
-            $(".finish-scene").hide();
-            $(".end-scene").hide();
-            $(".more-persons h1").text("2+");
-            setCounterButtonInactive($(".more-persons"));
-            $("#reset").click();
-            $(".select-persons").hide();
-            $(".continue-under-ten").hide();
-            resetButtonsStyle();
-            resetPersons();
         });
 
 
@@ -540,6 +527,13 @@
         $("#victims-number").val("");
     }
 
+    function onRequestError() {
+        $('#error-popup').modal('show');
+        $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
+        $(".ua-sidebar").css("background", "rgba(0, 0, 0, 0.5)");
+        $(".finish-scene").hide();
+    }
+
     function resetPersons(active) {
         $(".person").each(function () {
             var person_head = $(this).find('.person-head');
@@ -762,19 +756,7 @@
 
     ::-webkit-input-placeholder {
         padding-top: 0 !important;
-
     }
-    /*:-moz-placeholder { !* Firefox 18- *!*/
-       /*font-size: 10px;*/
-    /*}*/
-
-    /*::-moz-placeholder {  !* Firefox 19+ *!*/
-       /*font-size: 10px;*/
-    /*}*/
-
-    /*:-ms-input-placeholder {*/
-       /*font-size: 10px;*/
-    /*}*/
 </style>
 <div class="row">
     <div class="sub-header-container">

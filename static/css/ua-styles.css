@@ -251,7 +251,7 @@ a:hover {
     padding-top: 12px;
 }
 
-.next-ua, .sign-up {
+.next-ua, .sign-up, .next-ua-error {
     cursor: pointer;
     font-weight: bolder;
     font-size: 15px;
@@ -309,7 +309,7 @@ footer .container {
     padding-bottom: 20px;
 }
 
-.next-ua:hover {
+.next-ua:hover ,.sign-up:hover , .next-ua-error:hover {
     background-color: #FFD500;
 }
 
