@@ -481,6 +481,12 @@
   padding-top: 10px;
   margin-bottom: 20px;
 }
+@media (min-width: 992px) {
+  .counter-item > .inner-content {
+    padding-top: 0px;
+    margin: 0;
+  }
+}
 .counter-item > .inner-content .number {
   color: #fff;
   font-size: 24px;
@@ -506,6 +512,8 @@
   font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
   font-size: 22px !important;
   font-weight: 400;
+  margin-top: 40px;
+  margin-bottom: 0;
   text-transform: uppercase;
 }
 .counter-item > p {
