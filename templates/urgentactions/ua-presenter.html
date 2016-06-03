@@ -101,41 +101,19 @@
         return $(parentEl).attr("class");
     }
 
-    function getSelectionCharOffsetsWithin(element) {
-        var start = 0, end = 0;
-        var sel, range, priorRange;
-        if (typeof window.getSelection != "undefined") {
-            range = window.getSelection().getRangeAt(0);
-            priorRange = range.cloneRange();
-            priorRange.selectNodeContents(element);
-            priorRange.setEnd(range.startContainer, range.startOffset);
-            start = priorRange.toString().length;
-            end = start + range.toString().length;
-        } else if (typeof document.selection != "undefined" &&
-                (sel = document.selection).type != "Control") {
-            range = sel.createRange();
-            priorRange = document.body.createTextRange();
-            priorRange.moveToElementText(element);
-            priorRange.setEndPoint("EndToStart", range);
-            start = priorRange.text.length;
-            end = start + range.text.length;
-        }
-        return {
-            start: start,
-            end: end
-        };
+    function capitalizeCase(str) {
+        return str.replace(/\w\S*/g, function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
     }
-
-function capitalizeCase(str){
-    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-}
 </script>
 <style>
     @media (max-width: 768px) {
-        #presenterHr{
+        #presenterHr {
             display: none !important;
         }
-        #presenterLogo{
+
+        #presenterLogo {
             display: none !important;
         }
     }
@@ -177,11 +155,12 @@ function capitalizeCase(str){
                 {% endif %}
             </div>
             <div class="span12">
-                <div class="skip btn-submit" id="skip">
+                <div class="skip" id="skip">
                     <h5>Skip this urgent action</h5>
                 </div>
                 <br>
-                <a href="{{url_for('project.details', short_name=project.short_name)}}" id="presenterLogo" style="float: left;">
+                <a href="{{url_for('project.details', short_name=project.short_name)}}" id="presenterLogo"
+                   style="float: left;">
                     <div class="span4">
                         <img src="/static/img/urgent_action.png" style="margin-left: -5px;"
                              class="img img-responsive">
