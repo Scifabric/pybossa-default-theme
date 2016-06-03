@@ -15,7 +15,7 @@
                 <p>{{_('This page shows all the available tasks for this project')}}.</p> 
                 <p>{{_('For each task, you can find the following information')}}:
                   <ul>
-                      <li><strong>{{_('Task')}} </strong><span class="label label-info">#0000</span> {{_('This number identifies the task for the project and it is unique')}}</li>
+                      <li><strong>{{_('Task')}} </strong><span class="label" style="color: #0b0b0b">#0000</span> {{_('This number identifies the task for the project and it is unique')}}</li>
                       <li><strong>0 of 30</strong>: {{_('The first number shows how many answers have been submitted for the task and the')}} <a data-placement="top" rel="tooltip" href="#" data-original-title="{{_('This redundancy method will help to detect errors, typos, data forging, etc. when the task has been completed')}}">{{_('second number')}}</a> {{_('how many need to be obtained to mark the task as')}} <strong>{{_('completed')}}</strong>. </li>
                       <li><strong>{{_('Progress Bar')}}</strong>: {{_('The progress bar will the percentage that has been completed for the task')}}.</li>
                   </ul>
@@ -32,16 +32,12 @@
                             {% endif %}
                             {{ t.n_task_runs }} {{_('of')}} {{ t.n_answers }}
                         </div>
-                        {% if task_pct >= 100 %}
-                        <div class="progress progress-success progress-striped span5"> 
-                                <div class="bar" style="width:{{ task_pct }}%;"></div>
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" aria-valuenow="{{ task_pct }}" aria-valuemin="0" aria-valuemax="100">
+                            {{ task_pct }}%
+                          </div>
                         </div>
-                        {% else %}
-                        <div class="progress progress-info progress-striped span5"> 
-                                <div class="bar" style="width:{{ task_pct }}%;"></div>
-                        </div>
-                        {% endif %}
-                        <div class="span4">
+                        <div class="col-xs-4">
                         {% if task_pct >= 100 %}
                             <a id="fulldownload" rel="nofollow" class="btn btn-success" href="{{ url_for('project.export', 
                                 short_name=project.short_name,
