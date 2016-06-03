@@ -23,32 +23,23 @@
                 <hr>
                 {% for t in tasks %}
                 {% set task_pct = t.pct_status*100 %}
-                <div class="row-fluid">
-                        <div class="col-sm-3 col-md-3">
-                            {% if task_pct >= 100 %}
-                            {{_('Task')}} <span class="label label-success">#{{ t.id }}</span>
-                            {% else %}
-                            {{_('Task')}} <span class="label label-info">#{{ t.id }}</span>
-                            {% endif %}
+                <div class="row">
+                        <div class="col-xs-3">
+                            {{_('Task')}} <span class="label label-success" style="color: #0b0b0b">#{{ t.id }}</span>
                             {{ t.n_task_runs }} {{_('of')}} {{ t.n_answers }}
                         </div>
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" aria-valuenow="{{ task_pct }}" aria-valuemin="0" aria-valuemax="100">
-                            {{ task_pct }}%
+                        <div class="progress col-xs-6">
+                          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ task_pct }}" aria-valuemin="0" aria-valuemax="100"  style="width:{{ task_pct }}%;">
                           </div>
                         </div>
-                        <div class="col-xs-4">
-                        {% if task_pct >= 100 %}
-                            <a id="fulldownload" rel="nofollow" class="btn btn-success" href="{{ url_for('project.export', 
+                        <div class="col-xs-3">
+                        {% if task_pct > 0 %}
+                            <a id="fulldownload" rel="nofollow" class="btn btn-sm btn-info" href="{{ url_for('project.export',
                                 short_name=project.short_name,
-                                task_id=t.id) }}"><i class="icon-cloud-download"></i> {{_('Download Task Results')}}</a>
-                        {% elif task_pct > 0 and task_pct < 100 %}
-                            <a id="partialdownload" rel="nofollow" class="btn btn-info" href="{{ url_for('project.export', 
-                                short_name=project.short_name,
-                                task_id=t.id) }}"><i class="icon-cloud-download"></i> {{_('Download Partial results')}}</a>
-
+                                task_id=t.id) }}"><i class="icon-cloud-download"></i> {{_('Download Task Results')}}
+                            </a>
                          {% else %}
-                            <a id="nothingtodownload" rel="nofollow" class="btn btn-info disabled" href="#"><i class="icon-cloud-download"></i> {{_('Nothing to download yet')}}</a>
+                            <a id="nothingtodownload" rel="nofollow" class="btn btn-sm btn-info disabled" href="#"><i class="icon-cloud-download"></i> {{_('Nothing to download yet')}}</a>
                          {% endif %}
                         </div>
                 </div>
