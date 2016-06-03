@@ -513,13 +513,18 @@ body .container {
   height: 0;
   overflow:
   hidden;
-  max-width: 40%;
+  max-width: 50%;
 }
+@media (min-width: 992px) {
+  #follow-us > .section-inner .section-content .embed-container {
+  }
+} 
 @media (min-width: 1280px) {
   #follow-us > .section-inner .section-content .embed-container {
     padding-bottom: 40%;
+    max-width: 40%;
   }
-} 
+}
 #follow-us > .section-inner .section-content .embed-container iframe {
   position: absolute; 
   top: 0;
