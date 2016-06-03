@@ -261,23 +261,23 @@ body {
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
-    color: #FFF;
+    color: #000;
+    text-transform: uppercase;
     text-shadow: none;
+    transition: background-color .25s,color .25s;
 }
 
 .navbar .nav > li > a:hover,
 .navbar .nav > li > a:focus {
-    background-color: #FF0;
-    color: #000000;
+    color: #fff;
 }
 
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus {
-    background-color: #FF0;
     -webkit-box-shadow: none;
     box-shadow: none;
-    color: #000000;
+    text-decoration: underline;
 }
 
 .nav .dropdown-toggle .caret,
@@ -448,11 +448,11 @@ section.grey:after {
 
 body > footer,
 html {
-    background-color: #666666;
+    background-color: #000;
 }
 
 body > footer {
-    border-top: 1px solid #686868;
+    border-top: 1px solid #000;
 }
 
 body > footer .container {
@@ -858,16 +858,16 @@ body > footer {
 }
 
 body > footer ul {
-    color: rgb(205, 205, 205);
+    color: #fff;
     list-style: none;
 }
 
 body > footer li > a {
-    color: rgb(205, 205, 205);
+    color: #fff;
 }
 
 body > footer li > a:hover {
-    color: rgb(205, 205, 205);
+    text-transform: underline;
 }
 
 /* _______ Costume _______*/
@@ -970,9 +970,12 @@ li > a {
     list-style-type: none;
 }
 #footer_links ul li a:hover {
-    color: #fff;
+    color: #fff !important;
 }
-
+#footer_links a:hover {
+    color: #fff !important;
+    text-decoration: underline !important;
+}
 @media (min-width: 768px ) and (max-width: 882px) {
 
     #tryNow{
