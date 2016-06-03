@@ -11,11 +11,11 @@
                     {% if current_user.is_authenticated() %}
                     <a style="text-decoration:none;margin-top: 13px; color: #000; font-size: 16px; font-weight: bold;"
                        class="admin-navbar-header navbar-brand"
-                       href="{{url_for('project.presenter', short_name='urgent_actions')}}">DECODE URGENT ACTIONS</a>
+                       href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}">DECODE URGENT ACTIONS</a>
                     {% else %}
                     <a style="text-decoration:none;margin-top: 13px; color: #000; font-size: 16px; font-weight: bold;"
                        class="navbar-brand"
-                       href="{{url_for('project.presenter', short_name='urgent_actions')}}">DECODE URGENT ACTIONS</a>
+                       href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}">DECODE URGENT ACTIONS</a>
                     {% endif %}
                     <button type="button" class="navbar-toggle" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1">
