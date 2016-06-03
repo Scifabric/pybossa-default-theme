@@ -14,7 +14,7 @@ body {
 }
 
 .navbar {
-    background-color: #000000;
+    background-color: #fff;
     height: 79px !important;
     border-radius: 0 !important;
 }
@@ -29,7 +29,8 @@ body {
 }
 
 #menu li a {
-    font-size: 13px !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
 }
 
 img {
@@ -99,7 +100,7 @@ img {
 }
 
 .collapse {
-    background-color: #000000 !important;
+    background-color: #fff !important;
     font-weight: bold;
 }
 
@@ -268,7 +269,7 @@ a:hover {
 }
 
 footer a {
-    color: #CDCDCD;
+    color: #fff;
 }
 
 .col-sm-4 {
@@ -282,7 +283,7 @@ footer a {
 
 .popup {
     border-radius: 7px !important;
-    background-color: #666666 !important;
+    background-color: #000 !important;
     margin: 0 !important;
 }
 
@@ -296,8 +297,8 @@ footer a {
 
 footer,
 html {
-    background: #666666;
-    color: #CDCDCD;
+    background: #000;
+    color: #b6b6b6;
 }
 
 footer {
@@ -812,7 +813,7 @@ i:hover {
     }
 
     #menu {
-        background-color: #2D2D2D !important;
+        background-color: #fff !important;
         height: 104% !important;
     }
 

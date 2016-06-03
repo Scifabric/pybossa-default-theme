@@ -6,14 +6,14 @@
             <a href="/"><img style="display: none" src="/static/img/amnesty-small-logo.png" id="amnestySmallLogo" class="img-responsive"></a>
         </div>
         <div class="col-xs-10 col-sm-9 col-md-10 col-lg-10 pull-right" id="header-content">
-            <nav class="navbar navbar-inverse navbar-static-top" id="amnestyDecoderText">
+            <nav class="navbar navbar-default navbar-static-top" id="amnestyDecoderText" style="background-color: white; color">
                 <div class="navbar-header">
                     {% if current_user.is_authenticated() %}
-                    <a style="text-decoration:none;margin-top: 13px; color: #fff; font-size: 16px; font-weight: bold;"
+                    <a style="text-decoration:none;margin-top: 13px; color: #000; font-size: 16px; font-weight: bold;"
                        class="admin-navbar-header navbar-brand"
                        href="{{url_for('project.presenter', short_name='urgent_actions')}}">DECODE URGENT ACTIONS</a>
                     {% else %}
-                    <a style="text-decoration:none;margin-top: 13px; color: #fff; font-size: 16px; font-weight: bold;"
+                    <a style="text-decoration:none;margin-top: 13px; color: #000; font-size: 16px; font-weight: bold;"
                        class="navbar-brand"
                        href="{{url_for('project.presenter', short_name='urgent_actions')}}">DECODE URGENT ACTIONS</a>
                     {% endif %}
@@ -36,7 +36,7 @@
                         <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
                         <li class="admin-menu"><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
                         {% endif %}
-                        <li class="admin-menu"><a href="{{ url_for('home.about')}}">{{ _('About') }}</a></li>
+                        <li class="admin-menu"><a href="/#aboutSection">{{ _('About') }}</a></li>
                         <li role="separator" class="divider"></li>
                         <li class="admin-menu"><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li>
                         <li class="admin-menu"><a href="{{ url_for('terms.index')}}">{{ _('Terms') }}</a></li>
@@ -44,7 +44,7 @@
                         <li class="admin-menu"><a href="{{ url_for('account.signout') }}">Sign Out</a></li>
                         {% else %}
                         <li role="separator" class="divider"></li>
-                        <li><a href="{{ url_for('home.about')}}">{{ _('About') }}</a></li>
+                        <li><a href="/#aboutSection">{{ _('About') }}</a></li>
                         <li><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li>
                         <li><a href="{{ url_for('terms.index')}}">{{ _('Terms') }}</a></li>
                         <li role="separator" class="divider"></li>
