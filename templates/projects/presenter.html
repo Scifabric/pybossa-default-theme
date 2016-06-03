@@ -1,15 +1,15 @@
 {% set active_page = "projects"  %}
 {% set active_project = project.short_name %}
 
-{% if project.name == "Urgent Actions" %}
+{% if project.short_name == config.get("PROJECT_SHORT_NAME") %}
 {% extends "urgentactions/ua-base.html" %}
 {% block body %}
 {% include "urgentactions/ua-presenter.html" %}
+
 {% endblock %}
 {% else %}
 {% extends "base.html" %}
 {% block content %}
-<h1>{{project.name}}</h1>
 <script>
     Modernizr.load({
         test: window.JSON,
