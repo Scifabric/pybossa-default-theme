@@ -402,26 +402,56 @@ body .container {
 }
 #about-project .about-project-text {
   padding-bottom: 20px;
-}
-#about-project .about-project-text > p {
-  text-align: center;
+  width: 90%;
   left: 0;
   margin: auto;
-  padding-bottom: 30px;
-  width: 60%;
+}
+@media (min-width: 768px) {
+    #about-project .about-project-text {
+    width: 700px;
+  }
+}
+@media (min-width: 992px) {
+    #about-project .about-project-text {
+    width: 700px;
+  }
+}
+@media (min-width: 1280px) {
+    #about-project .about-project-text {
+    width: 700px;
+  }
+}
+#about-project .about-project-text > p {
+  text-align: left;
+  padding-bottom: 10px;
+}
+@media (min-width: 1280px) {
+    #about-project .about-project-text > p {
+    font-size: 16px !important;
+    line-height: 1.4;
+  }
 }
 #about-project .section-inner .section-content #tryNow {
   margin-top: 0 !important;
 }
 #about-project .section-inner .section-content .section-button a.btn {
   font-size: 14px;
-  margin-top: 30%;
+  margin-top: 40%;
 }
 @media (min-width: 768px) {
   #about-project .section-inner .section-content .section-button a.btn {
     font-size: 18px;
     line-height: 1.1;
     font-weight: 400;
+    padding: 1.57143rem 3rem;
+  }
+}
+@media (min-width: 992px) {
+  #about-project .section-inner .section-content .section-button a.btn {
+    font-size: 18px;
+    line-height: 1.1;
+    font-weight: 400;
+    margin-top: 28%;
     padding: 1.57143rem 3rem;
   }
 }
@@ -472,17 +502,37 @@ body .container {
 #bacgkround > .section-inner .section-content .section-title {
   padding-bottom: 20px;
 }
-#background .background-text > p {
+#background .background-text {
+  width: 90%;
   left: 0;
   margin: auto;
-  padding-bottom: 20px;
-  width: 60%;
+}
+@media (min-width: 768px) {
+    #background .background-text {
+    width: 700px;
+  }
+}
+@media (min-width: 992px) {
+    #background .background-text {
+    width: 700px;
+  }
+}
+@media (min-width: 1280px) {
+    #background .background-text {
+    width: 700px;
+  }
+}
+#background .background-text > p {
+  padding-bottom: 10px;
+}
+@media (min-width: 1280px) {
+    #background .background-text > p{
+    font-size: 16px !important;
+    line-height: 1.4;
+  }
 }
 #background .background-text > h2 {
-  left: 0;
-  margin: auto;
   padding-bottom: 20px;
-  width: 60%;
 }
 #background .section-inner .section-content .section-button a.btn {
   font-size: 14px;
@@ -508,23 +558,19 @@ body .container {
 }
 #follow-us > .section-inner .section-content .embed-container {
   position: relative;
-  padding-bottom: 55%;
+  min-height: 500px;
+  padding-bottom: 0;
   margin: 0 auto;
   height: 0;
   overflow:
   hidden;
-  max-width: 50%;
+  max-width: 700px;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   #follow-us > .section-inner .section-content .embed-container {
+    max-width: 700px;
   }
 } 
-@media (min-width: 1280px) {
-  #follow-us > .section-inner .section-content .embed-container {
-    padding-bottom: 40%;
-    max-width: 40%;
-  }
-}
 #follow-us > .section-inner .section-content .embed-container iframe {
   position: absolute; 
   top: 0;
