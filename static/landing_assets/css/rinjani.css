@@ -321,8 +321,14 @@ body .container {
   margin: 0 8.33333%;
   width: 57%;
   display: table;
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+@media (min-width: 768px) {
+  #intro .intro-body {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
 }
 @media (min-width: 1280px) {
   #intro .intro-body {
@@ -336,7 +342,8 @@ body .container {
 }
 #intro .intro-body .intro-text h2 {
   color: #000;
-  font-size: 2em;
+  text-transform: uppercase;
+  font-size: 30px;
   line-height: 1.7;
   font-weight: 400;
   font-feature-settings: 'kern';
@@ -354,7 +361,7 @@ body .container {
 }
 #intro .intro-body .intro-text p.lead {
   color: #fff;
-  font-size: 30px !important;
+  font-size: 16px !important;
   font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
   text-transform: uppercase;
   line-height: 1.85;
@@ -368,6 +375,11 @@ body .container {
   padding: 1.42857rem 1.71429rem;
   background-color: #000;
   box-shadow: 1.42857rem 0 0 #000,-1.42857rem 0 0 #000;
+}
+@media (min-width: 768px) {
+  #intro .intro-body .intro-text p.lead {
+  font-size: 30px !important;
+  }
 }
 #intro .intro-body .page-scroll {
   margin-top: 30px;
