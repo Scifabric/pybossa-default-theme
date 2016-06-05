@@ -8,7 +8,6 @@
 /* Define a custom web font */
 
 /* Use that font in a page */
-/* Ben adding a comment */
 body {
     font-family: sans-serif !important;
 }
@@ -243,7 +242,6 @@ body {
     border: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-    box-shadow: 0 1px 0 rgba(0,0,0,.1);
     color: #FFF;
     font-size: 14px;
     font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
