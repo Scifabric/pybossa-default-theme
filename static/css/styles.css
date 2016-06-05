@@ -235,16 +235,18 @@ body {
 }
 
 .navbar-fixed-top {
-    height: 80px;
+    height: 72px;
     background-color: #FFFF00;
     display: inline-block;
     filter: none;
     border: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-    box-shadow: none;
+    box-shadow: 0 1px 0 rgba(0,0,0,.1);
     color: #FFF;
     font-size: 14px;
+    font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
+    padding: 0;
 }
 
 .navbar .brand {
@@ -258,12 +260,10 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     margin: 20px 3px 20px 0px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
     color: #000;
     text-transform: uppercase;
     text-shadow: none;
+    letter-spacing: .02rem;
     transition: background-color .25s,color .25s;
 }
 

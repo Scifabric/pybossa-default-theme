@@ -1,7 +1,15 @@
 {% extends "urgentactions/ua-base.html" %}
 {% block body %}
 <style>
+
     body {
+    }
+
+    .glossary-container p {
+        font-family: sans-serif;
+    }
+
+    .glossary-container li {
         font-family: sans-serif;
     }
 
@@ -25,7 +33,7 @@
 
     @media (min-width: 990px ) {
         .glossary-container {
-            margin-top: 80px !important;
+            margin-top: 72px !important;
         }
     }
 </style>
@@ -45,9 +53,9 @@
     });
 </script>
 <div class="row glossary-container">
-    <div class="col-xs-12 col-md-12" style="padding: 0;">
+    <div class="col-xs-12 col-md-12" style="padding: 0; margin-top: 20px;">
         <div class="col-xs-12 col-md-8 col-md-offset-2">
-            <h1>A-Z OF TERMS</h1>
+            <h1 style="text-decoration: underline; text-transform: uppercase;">Glossary of Terms</h1>
             <h1>A</h1>
             <br>
             <h3 id="abduction">abduction</h3>

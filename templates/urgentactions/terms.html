@@ -1,16 +1,27 @@
 {% extends "urgentactions/ua-base.html" %}
 {% block body %}
 <style>
-    @media (min-width: 990px ) {
+    .terms-container {
+        margin: 72px auto !important;
+        left: 0;
+        width: 90%
+    }
+
+    @media (min-width: 768px ) {
         .terms-container {
-            margin-top: 80px !important;
+            width: 700px;
+            margin: 72px auto !important;
         }
     }
+
+    .terms-container p {
+        font-family: sans-serif;
+    }
 </style>
-<div class="row terms-container" style="padding: 20px;">
+<div class="row terms-container">
     <div class="col-xs-12 col-md-12" style="padding: 0;">
         <br/>
-        <h1>Terms of Use</h1>
+        <h1 style="text-transform: uppercase; text-decoration: underline;">Terms of Use</h1>
         <br/>
         <p>Amnesty Decoders is Amnesty International&rsquo;s global network of digital volunteers, contributing real-time to ground breaking human rights research. Our vision is to inspire a new generation of tech-savvy activists to become human rights monitors and help document human rights violations using technology.  In our first project &ldquo;Decode Urgent Actions&rdquo; we will ask digital volunteers to spend five minutes reading and analysing part of our online archive of Urgent Actions, and answer some quick and simple questions. This will enable us to analyse our successes with Urgent Actions campaigns since the &lsquo;70&rsquo;s. </p>
 

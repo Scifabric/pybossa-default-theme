@@ -15,8 +15,7 @@ body {
 
 .navbar {
     background-color: #fff;
-    height: 79px !important;
-    border-radius: 0 !important;
+    height: 72px;
 }
 
 .divider {
@@ -33,10 +32,34 @@ body {
     font-weight: 400 !important;
 }
 
+#amnestyDecoderText a {
+    color: #000;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 16px 3px 0px 0px;
+    text-transform: uppercase;
+    text-shadow: none;
+    transition: background-color .25s,color .25s;
+}
+
+#amnestyDecoderText a:hover, #amnestyDecoderText a:focus {
+    text-decoration: none;
+}
+
 img {
-    margin: 0 auto;
-    height: 100%;
-    width: 200px;
+    margin: 0;
+    height: 72px;
+    width: 169px;
+    background-color: #ff0;
+}
+
+.navbar-brand {
+    padding: 0 20px 0 0;
+}
+
+.navbar-fixed-top .navbar-collapse {
+    max-height: 72px;
 }
 
 .rectangle-speech-border {
@@ -95,7 +118,9 @@ img {
 }
 
 .collapse ul li a:hover, .collapse ul li a:focus {
-    background-color: #FFFF00 !important;
+    background-color: #e5e5e5 !important;
+    margin: 0;
+    padding: 30px 18px 22px 15px;
     color: #000000 !important;
 }
 
@@ -814,7 +839,7 @@ i:hover {
 
     #menu {
         background-color: #fff !important;
-        height: 104% !important;
+        height: 72px;
     }
 
     .sub-header-container {
