@@ -223,7 +223,7 @@ html {
 }
 
 body {
-    padding-top: 100px;
+    padding-top:0;
     /* Allow for Header */
 
     font-size: 13px;
@@ -851,9 +851,8 @@ ul.users li a {
 
 }
 
-
 body > footer {
-    margin-top: 10px;
+    margin-top: 0;
 }
 
 body > footer ul {
@@ -947,7 +946,9 @@ li > a {
         left: 90% !important;
     }
     body .container{
-        margin-bottom: 30px;
+        /*REMOVED TO FIX SIGN-UP PAGE PADDING*/
+        /*margin-bottom: 30px;*/
+        padding-bottom: 20px;
     }
 }
 
