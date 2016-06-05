@@ -78,6 +78,11 @@ p {
   line-height: 1.6;
   margin: 15px 0;
 }
+@media (max-width: 767px){
+  img {
+    width: 90%;
+  }
+}
 .push {
   margin-left: 0px;
   -webkit-transition: all 0.2s ease 0s;
@@ -323,29 +328,28 @@ body .container {
   margin: 0 8.33333%;
   width: 57%;
   display: table;
-  padding-top: 0px;
-  padding-bottom: 20px;
+  padding-top: 20%;
+  padding-bottom: 20%;
 }
 @media (min-width: 768px) {
   #intro .intro-body {
-    padding-top: 70px;
+    padding-top: 90px;
     padding-bottom: 70px;
   }
 }
 @media (min-width: 1280px) {
   #intro .intro-body {
-    padding-top: 80px;
-    padding-bottom: 20px;
+    padding-top: 200px;
+    padding-bottom: 80px;
   }
 }
 #intro .intro-body .intro-text {
-  padding-top: 7%;
   font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
 }
 #intro .intro-body .intro-text h2 {
   color: #000;
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 40px;
   line-height: 1.7;
   font-weight: 400;
   font-feature-settings: 'kern';
@@ -363,7 +367,7 @@ body .container {
 }
 #intro .intro-body .intro-text p.lead {
   color: #fff;
-  font-size: 16px !important;
+  font-size: 25px !important;
   font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
   text-transform: uppercase;
   line-height: 1.85;

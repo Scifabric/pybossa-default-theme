@@ -19,10 +19,13 @@ body {
 }
 
 img {
-    margin: 0;
+    margin: 0 auto;
+    height: 100%;
+    width: 200px;
+    /*margin: 0;
     height: 72px;
     width: 169px;
-    background-color: #ff0;
+    background-color: #ff0;*/
 }
 
 .navbar {
@@ -76,6 +79,9 @@ img {
 .navbar-brand> img {
   height: 100%;
   width: 100%;
+  height: 72px;
+  width: 169px;
+  background-color: #ff0;
 }
 
 #menu {
