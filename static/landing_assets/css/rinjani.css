@@ -574,6 +574,26 @@ body .container {
   filter: alpha(opacity=20);
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=20)";
 }
+
+@media (min-width: 768px) {
+  .embed-container {
+    padding-bottom: 600px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .embed-container {
+    padding-bottom: 600px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .embed-container {
+    padding-bottom: 500px !important;
+  }
+}
+
+/*
 #follow-us > .section-inner .section-content .embed-container {
   position: relative;
   min-height: 500px;
@@ -672,7 +692,7 @@ body .container {
 }
 #follow-us > .section-inner .section-content .social-icon-text > ul.social-icon-list > li a:hover {
   border-color: #ffffff;
-}
+}*/
 
 body > footer {
     margin-top: 0;
