@@ -13,41 +13,9 @@ body {
     font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif !important;
 }
 
-.navbar {
-    background-color: #fff;
-    height: 72px;
-    margin-bottom: 0;
-    border: none;
-    box-shadow: 0 1px 0 rgba(0,0,0,.1);
-}
-
 .divider {
     border: 1px dashed #333333;
     margin-left: 10px;
-}
-
-#menu {
-    padding: 0 30px 0 10px;
-}
-
-#menu li a {
-    font-size: 14px !important;
-    font-weight: 400 !important;
-}
-
-#amnestyDecoderText a {
-    color: #000;
-    font-size: 18px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin: 16px 3px 0px 0px;
-    text-transform: uppercase;
-    text-shadow: none;
-    transition: background-color .25s,color .25s;
-}
-
-#amnestyDecoderText a:hover, #amnestyDecoderText a:focus {
-    text-decoration: none;
 }
 
 img {
@@ -57,10 +25,99 @@ img {
     background-color: #ff0;
 }
 
+.navbar {
+    margin: 0;
+    border: none;
+}
 
+#header-container {
+    padding: 0;
+    box-shadow: 0 1px 0 rgba(0,0,0,.1);
+}
+
+.container-fluid > .navbar-header {
+    margin: 0;
+}
+
+.navbar-header a {
+
+}
+
+.navbar-header a:hover, .navbar-header a:focus {
+    text-decoration: none;
+}
+
+.amnesty-decoder-text h2 {
+    color: #000;
+    font-size: 16px;
+    margin: 0 0 0 169px;
+    padding: 28px 0px 26px 28px;
+    font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+.admin-navbar-header {
+
+}
 
 .navbar-brand {
-    padding: 0 20px 0 0;
+  display: inline-block;
+  align-items: center;
+  height: 72px;
+  padding: 0;
+  width: 169px;
+}
+
+.navbar > .container-fluid .navbar-brand {
+    margin: 0;
+}
+
+.navbar-brand> img {
+  height: 100%;
+  width: 100%;
+}
+
+#menu {
+    padding-right: 20px;
+}
+
+#menu li a {
+    color: #000;
+    font-family: 'AmnestyTradeGothicW01BdCnNo-20', 'HelveticaNeue-CondensedBold', 'Franklin Gothic Medium', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 26px 18px 26px 15px;
+    transition: background-color .25s,color .25s;
+}
+
+.collapse ul li a:hover, .collapse ul li a:focus {
+    background-color: #e5e5e5 !important;
+    margin: 0;
+    padding: 26px 18px 26px 15px;
+    color: #000000 !important;
+    white-space: nowrap;
+}
+
+.collapse {
+    background-color: #fff !important;
+    font-weight: bold;
+}
+
+.navbar-toggle {
+    margin: 20px 30px 8px 0;
+    padding: 9px 10px 9px 10px;
+}
+
+.navbar-collapse.collapse.in {
+    display: block !important;
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    padding-left: 10px !important;
+}
+
+.navbar-collapse {
+    margin: 0 auto !important;
 }
 
 .navbar-fixed-top .navbar-collapse {
@@ -120,22 +177,6 @@ img {
     border-bottom-right-radius: 40px 50px;
     /* reduce the damage in FF3.0 */
     display: block;
-}
-
-.collapse ul li a:hover, .collapse ul li a:focus {
-    background-color: #e5e5e5 !important;
-    margin: 0;
-    padding: 30px 18px 22px 15px;
-    color: #000000 !important;
-}
-
-.collapse {
-    background-color: #fff !important;
-    font-weight: bold;
-}
-
-.navbar-toggle {
-    margin-top: 20px;
 }
 
 .admin-menu a {
@@ -725,7 +766,7 @@ i:hover {
     }
 
     .navbar-header {
-        float: left !important;
+        float: none !important;
     }
 
     .navbar-toggle {
@@ -744,7 +785,7 @@ i:hover {
     }
 
     .navbar-nav {
-        float: left !important;
+        float: none !important;
         margin: 7.5px -15px;
     }
 
@@ -797,12 +838,19 @@ i:hover {
 
     #amnestySmallLogo {
         display: block !important;
-        width: auto !important;
-        height: 80px !important;
+        width: 72px !important;
+        height: 72px !important;
+        margin: 0;
+        width: 72px;
+        background-color: #ff0;
     }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
+    .divider {
+        display: none !important;
+    }
+
     .one-person-small {
         display: none !important;
     }
@@ -826,6 +874,10 @@ i:hover {
     .country-date {
         display: block;
     }
+    
+    #amnestySmallLogo {
+        display: none !important;
+    }
 }
 
 @media (min-width: 990px) {
@@ -839,27 +891,26 @@ i:hover {
     }
 
     .admin-navbar-header {
-        display: block !important;
+
     }
 
     #menu {
-        background-color: #fff !important;
-        height: 72px;
     }
 
     .sub-header-container {
-        margin-top: 78px;
+    }
+
+    #amnestySmallLogo {
+        display: none !important;
     }
 }
 
 @media (min-width: 991px) and (max-width: 1000px) {
     .right-nav {
-        display: none !important;
     }
 }
 
 @media (min-width: 1239px) {
     .admin-navbar-header {
-        display: block !important;
     }
 }
