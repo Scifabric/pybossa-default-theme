@@ -347,6 +347,10 @@ a:hover {
 
 footer a {
     color: #fff;
+    font-family: sans-serif;
+    font-size: 11px;
+    font-weight: 400px;
+    line-height: 1.5;
 }
 
 .col-sm-4 {
@@ -379,7 +383,7 @@ html {
 }
 
 footer {
-    border-top: 1px solid #686868;
+
 }
 
 footer .container {
