@@ -13,7 +13,7 @@
             <a class="admin-navbar-header navbar-nav" href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}">Decode Urgent Actions</a>
                     
             {% else %}
-            <a class="navbar-nav" href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}">Decode Urgent Actions</a>
+            <a class="navbar-header navbar-nav" href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}">Decode Urgent Actions</a>
             
             {% endif %}
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
