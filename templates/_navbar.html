@@ -10,7 +10,7 @@
         </button>
         <a class="navbar-brand" href="/"><img src="/static/img/amnesty-main-logo.png" alt="Amnesty Decoders"></a>
         {% if current_user.is_authenticated() %}
-            <a class="admin-navbar-header navbar-nav" href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}"><h2>Decode Urgent Actions</h2></a>
+            <a class="amnesty-decoder-text" href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}"><h2>Decode Urgent Actions</h2></a>
         {% else %}
             <a class="amnesty-decoder-text" href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}"><h2>Decode Urgent Actions</h2></a>
         {% endif %}
