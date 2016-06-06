@@ -1,7 +1,16 @@
 {% include "urgentactions/ua-sub-header.html" %}
+
+<script src="/static/js/sticky-kit.js"></script>
 <script type="text/javascript">
     var parent_paragraph;
     $(function () {
+        var screen_width = window.screen.width;
+
+        if (screen_width > 800){
+            console.log("DESKTOPPPP");
+            $("#text-container").stick_in_parent();
+        }
+
         $(window).resize(function () {
             if (person_name != "") {
                 calculationPosition(parent_paragraph);
