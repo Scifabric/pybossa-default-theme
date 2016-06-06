@@ -62,9 +62,6 @@ img {
     vertical-align: middle;
 }
 
-.admin-navbar-header {
-}
-
 .navbar-brand {
   display: inline-block;
   align-items: center;
@@ -114,22 +111,6 @@ img {
 .collapse {
     background-color: #fff !important;
     font-weight: bold;
-}
-
-.navbar-toggle {
-    margin: 20px 30px 8px 0;
-    padding: 9px 10px 9px 10px;
-}
-
-.navbar-collapse.collapse.in {
-    display: block !important;
-    border-bottom-left-radius: 10px !important;
-    border-bottom-right-radius: 10px !important;
-    padding-left: 10px !important;
-}
-
-.navbar-collapse {
-    margin: 0 auto !important;
 }
 
 .navbar-fixed-top .navbar-collapse {
@@ -773,10 +754,6 @@ i:hover {
         display: block !important;
     }
 
-    .admin-menu a {
-        font-size: 15px !important;
-    }
-
     .navbar-collapse {
         margin: 0 auto !important;
     }
@@ -787,22 +764,30 @@ i:hover {
 
     .navbar-toggle {
         display: block !important;
+        margin: 20px 30px 8px 0;
+        padding: 9px 10px 9px 10px;
     }
 
     .navbar-collapse.collapse {
         display: none !important;
+
     }
 
     .navbar-collapse.collapse.in {
         display: block !important;
-        border-bottom-left-radius: 10px !important;
-        border-bottom-right-radius: 10px !important;
-        padding-left: 10px !important;
+
+    }
+
+    .collapse ul li a:hover, .collapse ul li a:focus {
+        background-color: #e5e5e5 !important;
+        margin: 5px 0 0 0;
+        padding: 26px 18px 26px 15px;
+        color: #000000 !important;
+        white-space: nowrap;
     }
 
     .navbar-nav {
         float: none !important;
-        margin: 7.5px -15px;
     }
 
     .navbar-nav > li {
@@ -919,10 +904,6 @@ i:hover {
         display: none !important;
     }
 
-    .admin-navbar-header {
-
-    }
-
     #menu {
     }
 
@@ -933,10 +914,5 @@ i:hover {
 
 @media (min-width: 991px) and (max-width: 1000px) {
     .right-nav {
-    }
-}
-
-@media (min-width: 1239px) {
-    .admin-navbar-header {
     }
 }
