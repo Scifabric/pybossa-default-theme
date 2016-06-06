@@ -775,13 +775,16 @@ i:hover {
 
     .navbar-collapse.collapse.in {
         display: block !important;
-        border-top: 1px solid rgba(0,0,0,.1);
-        box-shadow: 0 1px 0 rgba(0,0,0,.1);
+        background-color: #1a1a1a !important;
+        box-shadow: 0 1px 0 rgba(0,0,0,.1) !important;
+    }
 
+    #menu li a {
+        color: white !important;
     }
 
     .collapse ul li a:hover, .collapse ul li a:focus {
-        background-color: #e5e5e5 !important;
+        background-color: #262626 !important;
         margin: 0;
         padding: 26px 18px 26px 15px;
         color: #000000 !important;
