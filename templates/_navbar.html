@@ -27,17 +27,13 @@
                 <li class="admin-menu"><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
             {% endif %}
                 <li class="admin-menu"><a href="/#aboutSection">{{ _('About') }}</a></li>
-                <li role="separator" class="divider"></li>
                 <li class="admin-menu"><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li>
                 <li class="admin-menu"><a href="{{ url_for('terms.index')}}">{{ _('Terms') }}</a></li>
-                <li role="separator" class="divider"></li>
                 <li class="admin-menu"><a href="{{ url_for('account.signout') }}">Sign Out</a></li>
             {% else %}
-                <li role="separator" class="divider"></li>
                 <li><a href="/#aboutSection">{{ _('About') }}</a></li>
                 <li><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li>
                 <li><a href="{{ url_for('terms.index')}}">{{ _('Terms') }}</a></li>
-                <li role="separator" class="divider"></li>
                 <li><a href="{{ url_for('account.signin') }}">{{ _('Sign in') }}</a></li>
             {% endif %}
         </ul>

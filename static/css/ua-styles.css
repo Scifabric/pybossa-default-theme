@@ -775,23 +775,27 @@ i:hover {
 
     .navbar-collapse.collapse.in {
         display: block !important;
+        border-top: 1px solid rgba(0,0,0,.1);
+        box-shadow: 0 1px 0 rgba(0,0,0,.1);
 
     }
 
     .collapse ul li a:hover, .collapse ul li a:focus {
         background-color: #e5e5e5 !important;
-        margin: 5px 0 0 0;
+        margin: 0;
         padding: 26px 18px 26px 15px;
         color: #000000 !important;
         white-space: nowrap;
     }
 
     .navbar-nav {
-        float: none !important;
+        float: right !important;
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
     }
 
     .navbar-nav > li {
-        float: none !important;
+        float: left !important;
     }
 
     .outcome-options {
