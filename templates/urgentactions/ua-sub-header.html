@@ -60,6 +60,13 @@
                 $(".continue-under-ten").hide();
             }
 
+            if (class_name == "single-1") {
+                $(".one-person, .one-person-small").css({
+                    "background-color": "#ffff00",
+                    "color": "#000000"
+                })
+            }
+
             if (class_name == 'ten-plus-2') {
                 $(".question").find(".forward-arrow-container").hide();
             }
@@ -289,8 +296,10 @@
 
         $(".more-persons").click(function () {
             $(this).addClass("clicked");
-            $(".one-person").css("background-color", "transparent");
-            $(".one-person").css("color", "#fff");
+            $(".one-person , .one-person-small").css({
+                "background-color": "transparent",
+                "color": "#fff"
+            });
             $(".continue-under-ten").hide();
             if (click == 0 || click == 1) {
                 setCounterButtonActive($(this));
