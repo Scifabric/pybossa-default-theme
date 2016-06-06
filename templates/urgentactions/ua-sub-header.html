@@ -455,10 +455,9 @@
             }
         });
 
-        $("i").click(function () {
+        $("i").on("click", function () {
             var content = $(this).attr("content");
-            $('#tooltip-modal').modal('show');
-            $("#tooltip-modal-text").html(content);
+            onInfoClick(content);
         });
 
         $(".continue-vno").click(function () {
@@ -557,6 +556,10 @@
             $(".person-name-question").text('Is this person?');
             $(".person-name-question").append('&nbsp;<a style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2" content="We know the gender of a person isn’t always clear from the name, but sometimes you can find other clues such as gender pronouns (he, she, his, her, him, etc.) or a direct mention of the gender (f, m)."</i></a>');
         }
+        $("i").on("click", function () {
+            var content = $(this).attr("content");
+            onInfoClick(content);
+        });
     }
 
     function postRequest(data) {
@@ -602,6 +605,11 @@
                 mixed_json[mixed_types_array[item]] = Number(person_number) + 1
             }
         }
+    }
+
+    function onInfoClick(content) {
+        $('#tooltip-modal').modal('show');
+        $("#tooltip-modal-text").html(content);
     }
 
     function onVictimsHover(person_class, flag, last_checked) {
@@ -732,6 +740,12 @@
     ::-webkit-input-placeholder {
         padding-top: 0 !important;
     }
+
+
+    #tooltip-modal-text {
+        font-family: 'sans-serif' !important;
+        font-size: 17px !important;
+    }
 </style>
 <div class="row">
     <div class="sub-header-container">
@@ -742,7 +756,8 @@
                         <h3><em>Read the document below and answer the quick questions at the top of the page.
                         </em></h3>
                         <h2 style="margin-right: 5px">How many people suffering human rights abuse were campaigned for
-                            in the below Urgent Action?&nbsp;<a style="color: white;font-size: 18px"><i content="Look for the subjects of the Urgent Action, who will be the <b>main</b> victims of injustices. Often the first section contains all the information you need. If the document talks about large groups, families, communities, or an unspecified number of people just select “9+”."
+                            in the below Urgent Action?&nbsp;<a style="color: white;font-size: 18px"><i
+                                    content="Look for the subjects of the Urgent Action, who will be the <b>main</b> victims of injustices. Often the first section contains all the information you need. If the document talks about large groups, families, communities, or an unspecified number of people just select “9+”."
                                     class="fa fa-info-circle fa-2"></i></a></h2>
                         <div class="one-person-small" style="display: none;">
                             <h1>1</h1>
@@ -1149,7 +1164,7 @@
     <div class="modal-dialog modal-sm modal-inverse">
         <div class="modal-content">
             <div class="modal-body">
-                <h5 style="font-size: 15px !important;" id="tooltip-modal-text"></h5>
+                <h5 id="tooltip-modal-text"></h5>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="" data-dismiss="modal">Close</button>

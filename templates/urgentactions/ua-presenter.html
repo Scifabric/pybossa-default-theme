@@ -1,6 +1,6 @@
 {% include "urgentactions/ua-sub-header.html" %}
 
-<script src="/static/js/sticky-kit.js"></script>
+<script src="/static/js/jquery.sticky.js"></script>
 <script type="text/javascript">
     var parent_paragraph;
     $(function () {
@@ -8,7 +8,7 @@
 
         if (screen_width > 800){
             console.log("DESKTOPPPP");
-            $("#text-container").stick_in_parent();
+//            $("#text-container").sticky({topSpacing:0});
         }
 
         $(window).resize(function () {
