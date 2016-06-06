@@ -22,13 +22,13 @@
     var select_json = {
         "positive-select": 0,
         "negative-select": 0,
-        "unclear-select": 0
+        "notClear-select": 0
     };
     var person_name = "";
     var mixed_json = {
         "positive": 0,
         "negative": 0,
-        "unsure": 0
+        "notClear": 0
     };
     var screen_width = window.screen.width;
     var is_10_plus_clicked = null;
@@ -399,7 +399,7 @@
                     }
                     $(".positive-victims-body").append(victims_html);
                     $(".negative-victims-body").append(victims_html);
-                    $(".unsure-victims-body").append(victims_html);
+                    $(".notClear-victims-body").append(victims_html);
                 }
 
                 onVictimsHover("mixed-persons", 0, last_checked);
@@ -413,7 +413,7 @@
 
                     checkForSum();
 
-                    var classes_array = ["positive-victims-body", "negative-victims-body", "unsure-victims-body"];
+                    var classes_array = ["positive-victims-body", "negative-victims-body", "notClear-victims-body"];
 
                     for (var i = last_checked; i <= Number(person_number); i++) {
                         var person_head = $(this).parent().find(".mixed-persons" + i).find('.person-head');
@@ -523,7 +523,7 @@
                 mixed_json = {
                     "positive": 0,
                     "negative": 0,
-                    "unsure": 0
+                    "notClear": 0
                 }
             });
         });
@@ -607,7 +607,7 @@
     }
 
     function setSelectedVictimsType(element, person_number) {
-        var mixed_types_array = ["positive", "negative", "unsure"];
+        var mixed_types_array = ["positive", "negative", "notClear"];
         var mixed_types = element.parent().attr("class");
         for (var item = 0; item < mixed_types_array.length; item++) {
             if (mixed_types.indexOf(mixed_types_array[item]) > -1) {
@@ -642,7 +642,7 @@
                     }
                 } else {
                     setPersonActive(person_head, person_body);
-                    var classes_array = ["positive-victims-body", "negative-victims-body", "unsure-victims-body"];
+                    var classes_array = ["positive-victims-body", "negative-victims-body", "notClear-victims-body"];
                     var class_names = $(this).parent().attr("class").split(" ");
                     var class_name = class_names[class_names.length - 1];
                     classes_array.remove(class_name);
@@ -696,7 +696,7 @@
     };
 
     function bindSelectBoxes() {
-        var mixed_selects = ["positive-select", "negative-select", "unclear-select"];
+        var mixed_selects = ["positive-select", "negative-select", "notClear-select"];
         for (var idx = 0; idx < mixed_selects.length; idx++) {
             $("#" + mixed_selects[idx]).empty();
             $("#" + mixed_selects[idx]).append("<option value='0'>No.</option>")
@@ -1047,7 +1047,7 @@
                         </div>
                         <div class="form-group">
                             <h2 class="mixed-h2">UNCLEAR</h2>
-                            <select class="form-control selectbox" id="unclear-select">
+                            <select class="form-control selectbox" id="notClear-select">
                             </select>
                         </div>
                         <br>
@@ -1071,9 +1071,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="victims unsure-victims" style="margin-left: 10px;">
-                                <h5>UNSURE</h5>
-                                <div class="victims-body unsure-victims-body"></div>
+                            <div class="victims notClear-victims" style="margin-left: 10px;">
+                                <h5>NOT CLEAR</h5>
+                                <div class="victims-body notClear-victims-body"></div>
                             </div>
                         </div>
                         <br><br>
