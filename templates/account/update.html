@@ -37,13 +37,13 @@
                 <h2 {% if form.errors %}name="profile"{%endif%}>Your profile</h2>
             {{ form.id }}
             {{ form.hidden_tag() }}
-            {{ render_field(form.fullname, placeholder= _('my full name') ) }}
-            {{ render_field(form.name, placeholder= _('myusername') ) }}
-            {{ render_field(form.email_addr, placeholder= _('hello@mywebsite.org') ) }}
-            {{ render_field(form.locale) }}
+            {{ render_field(form.fullname, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('my full name') ) }}<br><br>
+            {{ render_field(form.name, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('myusername') ) }}<br><br>
+            {{ render_field(form.email_addr, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('hello@mywebsite.org') ) }}<br><br>
+            {{ render_field(form.locale, class="col-xs-6 form-control", style="width: 280px !important") }} <br><br>
             {{ render_field(form.privacy_mode) }}
             {{ render_field(form.subscribed) }}
-            {{ render_field(form.country, placeholder= _('Country') ) }}
+            {{ render_field(form.country, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('Country') ) }}<br><br>
             <div class="form-actions">
                 <button type="submit" name='btn' value="Profile" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
               <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn btn-default">{{ _('Cancel') }}</a>
@@ -58,9 +58,9 @@
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                 {{ password_form.id }}
                 {{ password_form.hidden_tag() }}
-                {{ render_field(password_form.current_password) }}
-                {{ render_field(password_form.new_password) }}
-                {{ render_field(password_form.confirm) }}
+                {{ render_field(password_form.current_password, class="col-xs-6 form-control", style="width: 280px !important") }}<br><br>
+                {{ render_field(password_form.new_password, class="col-xs-6 form-control", style="width: 280px !important") }}<br><br>
+                {{ render_field(password_form.confirm, class="col-xs-6 form-control", style="width: 280px !important") }}<br><br>
                 <div class="form-actions">
                     <button type="submit" name="btn" value="Password" class="btn btn-primary btn-large">{{ _('Save the Changes')}}</button>
                     <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn btn-default">{{ _('Cancel') }}</a>
@@ -73,7 +73,7 @@
             <hr>
             <h2>External Services</h2>
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-            {{ render_field(form.ckan_api) }}
+            {{ render_field(form.ckan_api, class="col-xs-6 form-control", style="width: 280px !important") }}<br><br>
             <div class="form-actions">
                 <button type="submit" name='btn' value="External" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
               <a href="{{ url_for('account.update_profile', name=current_user.name) }}" class="btn btn-default">{{ _('Cancel') }}</a>

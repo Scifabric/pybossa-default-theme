@@ -15,12 +15,12 @@
   <form method="post" class="form-horizontal" action="{{ url_for('account.register') }}">
       {{ form.hidden_tag() }}
       <fieldset>
-      {{ render_field(form.fullname, class="col-xs-6", placeholder= _('my full name')) }}<br><br>
-      {{ render_field(form.name, class="col-xs-6",placeholder= _('myusername')) }}<br><br>
-      {{ render_field(form.email_addr, class="col-xs-6",placeholder= _('hello@mywebsite.org')) }}<br><br>
-      {{ render_field(form.country, class="col-xs-6",placeholder= _('Country')) }}<br><br>
-      {{ render_field(form.password, class="col-xs-6",placeholder= _('my secret password')) }}<br><br>
-      {{ render_field(form.confirm, class="col-xs-6",placeholder= _('my secret password')) }}<br><br>
+      {{ render_field(form.fullname, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('my full name')) }}<br><br>
+      {{ render_field(form.name, class="col-xs-6 form-control", style="width: 280px !important",placeholder= _('myusername')) }}<br><br>
+      {{ render_field(form.email_addr, class="col-xs-6 form-control", style="width: 280px !important",placeholder= _('hello@mywebsite.org')) }}<br><br>
+      {{ render_field(form.country, class="col-xs-6 form-control", style="width: 280px !important",placeholder= _('Country')) }}<br><br>
+      {{ render_field(form.password, class="col-xs-6 form-control", style="width: 280px !important",placeholder= _('my secret password')) }}<br><br>
+      {{ render_field(form.confirm, class="col-xs-6 form-control", style="width: 280px !important",placeholder= _('my secret password')) }}<br><br>
       <div class="form-actions">
         <input type="submit" value="{{ _('Create an account') }}" class="btn btn-primary btn-large" />
         <input type="reset" value="{{ _('Cancel') }}" class="btn btn-default" />

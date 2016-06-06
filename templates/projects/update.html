@@ -35,15 +35,15 @@
     <form class="form-horizontal" method="post" action="{{ url_for('project.update', short_name = project.short_name) }}">
       <fieldset>
         {{ form.hidden_tag() }}
-        {{ render_field(form.name, class_="col-xs-12  col-sm-12 col-md-12 ", placeholder=_('The name of the project')) }}
-        {{ render_field(form.short_name, class_="col-xs-12  col-sm-12 col-md-12", placeholder=_('Short name or slug for the project'), label_text=_('Project slug:')) }}
-        {{ render_field(form.description, class_="col-xs-12  col-sm-12 col-md-12", placeholder=_('Give some details about the project')) }}
-        {{ render_field(form.long_description, class_="col-xs-12  col-sm-12 col-md-12", placeholder=_('Explain the project (use Markdown!)')) }}
-        {{ render_field(form.category_id, class_="col-xs-12  col-sm-6 col-md-6 form-control",) }}
-        {{ render_field(form.allow_anonymous_contributors,tooltip=_('Check if you want to allow anonymous users contribute to your project')) }}
-        {{ render_field(form.protect, id='protect') }}
+        {{ render_field(form.name, class="col-xs-12 col-md-8 form-control", style="width: 280px !important", placeholder=_('The name of the project')) }}<br><br>
+        {{ render_field(form.short_name, class="col-xs-12 col-md-8 form-control", style="width: 280px !important",  placeholder=_('Short name or slug for the project'), label_text=_('Project slug:')) }}<br><br>
+        {{ render_field(form.description, class="col-xs-12 col-md-8 form-control", style="width: 280px !important", placeholder=_('Give some details about the project')) }}<br><br><br><br>
+        {{ render_field(form.long_description, class="col-xs-12 col-md-8 form-control", style="width: 280px !important", placeholder=_('Explain the project (use Markdown!)')) }}<br><br><br><br>
+        {{ render_field(form.category_id, class="col-xs-12 col-md-8 form-control", style="width: 280px !important") }}<br><br>
+        {{ render_field(form.allow_anonymous_contributors,tooltip=_('Check if you want to allow anonymous users contribute to your project')) }}<br><br>
+        {{ render_field(form.protect, id='protect') }}<br><br>
         <div id='password'>{{ render_field(form.password) }}</div>
-        {{ render_field(form.webhook) }}
+        {{ render_field(form.webhook, class="col-xs-12 col-md-8 form-control", style="width: 280px !important", ) }}<br><br>
         <div class="form-actions">
           <button type="submit" name='btn' value="Save the changes" class="btn btn-primary">{{_('Save te changes')}}</button>
           <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
