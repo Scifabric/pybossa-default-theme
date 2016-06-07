@@ -737,6 +737,7 @@ ul.users li a {
 }
 
 .bs-docs-sidenav.affix {
+    margin-top: 20px;
     top: auto;
 }
 
