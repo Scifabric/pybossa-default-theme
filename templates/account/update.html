@@ -68,7 +68,7 @@
             </fieldset>
         </form>
         {% endif %}
-
+        {% if current_user.admin %}
         <form method="post" class="form-horizontal" action="{{ url_for('account.update_profile', name=current_user.name) }}">
             <hr>
             <h2>External Services</h2>
@@ -80,6 +80,7 @@
             </div>
             </fieldset>
         </form>
+        {% endif %}
         <hr>
         <form class="form-horizontal" method="post" action="{{ url_for('account.reset_api_key', name=current_user.name)}}">
         <fieldset>
