@@ -98,7 +98,7 @@
 
 {% macro render_pagination(pagination) %}
   <div class="pagination pagination-centered">
-      <ul>
+      <ul class="pagination">
         {% if pagination.has_prev %}
           <li>
           <a href="{{ url_for_other_page(pagination.page - 1)
