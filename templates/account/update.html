@@ -80,7 +80,6 @@
             </div>
             </fieldset>
         </form>
-        {% endif %}
         <hr>
         <form class="form-horizontal" method="post" action="{{ url_for('account.reset_api_key', name=current_user.name)}}">
         <fieldset>
@@ -92,6 +91,8 @@
             </div>
         </fieldset>
         </form>
+
+        {% endif %}
         <hr>
     </div>
 </div>
