@@ -1,0 +1,750 @@
+<script type="text/javascript">
+    var click = 0;
+    var persons = 0;
+    window.final_urgent_action_json = {};
+    var last_checked = 0;
+    var back_clicked = 0;
+    var urgent_action_json = {
+        "single-individual": {
+            "region": "",
+            "index": ""
+        },
+        "under-10-individuals": {
+            "region": "",
+            "index": ""
+        },
+        "ten-plus-individuals": {
+            "region": "",
+            "index": ""
+        }
+    };
+    var select_json = {
+        "positive-select": 0,
+        "negative-select": 0,
+        "notClear-select": 0
+    };
+    var person_name = "";
+    var mixed_json = {
+        "positive": 0,
+        "negative": 0,
+        "notClear": 0
+    };
+    var screen_width = window.screen.width;
+    var is_10_plus_clicked = null;
+    var is_mixed_clicked = null;
+
+    function displayFirstQuestion(element) {
+        element.parent().parent().parent().hide();
+        onVictimsHover("person", 1, 0);
+        $(".question").show(250);
+        $(".individuals-container").parent().show(250);
+        $(".individuals-container").show(250);
+    }
+
+    $(function () {
+        $(".forward-arrow-container").hide();
+        $(".back-arrow-container").click(function () {
+            $('#detailed-individual-information').hide();
+            back_clicked += 1;
+            $(".forward-arrow-container").show(250);
+            var class_names = $(this).parent().parent().attr("class").split(" ");
+            var class_name = class_names[class_names.length - 1];
+            if (class_name == "under-ten-2") {
+                is_mixed_clicked = 1;
+            }
+
+            if (class_name == "ten-plus-1") {
+                resetPersons("active");
+                $('.more-persons h1').text("9+");
+                $(".continue-under-ten").hide();
+            }
+
+            if (class_name == "single-1") {
+                $(".one-person, .one-person-small").css({
+                    "background-color": "#ffff00",
+                    "color": "#000000"
+                })
+            }
+
+            if (class_name == 'ten-plus-2') {
+                $(".question").find(".forward-arrow-container").hide();
+            }
+
+            if (click == 1) {
+                $(".select-persons").hide();
+                resetPersons("active");
+                setCounterButtonInactive($(".more-persons"));
+                $(".continue-under-ten").hide();
+                $(".more-persons h1").text("2+");
+            }
+
+            var matches = class_name.match(/\d+/g);
+            $(this).parent().parent().prop("title", "previous-select");
+            if (matches[0] > 1) {
+                $("." + class_name).hide();
+                $(this).parent().parent().hide();
+                $("." + class_name.replace(matches[0], Number(matches[0]) - 1)).show(250);
+                $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
+                $(".finish-scene").hide();
+                $(".skip").show(250);
+            } else {
+                displayFirstQuestion($(this));
+            }
+        });
+
+        $(".forward-arrow-container").click(function () {
+            $("div[title=\"not-selected\"]").hide();
+            if (back_clicked > 0) {
+                back_clicked -= 1;
+            }
+            var class_names = $(this).parent().parent().attr("class").split(" ");
+            var class_name = class_names[class_names.length - 1];
+            var matches = class_name.match(/\d+/g);
+            if (matches[0] != "12") {
+                $("." + class_name).hide();
+                $("." + class_name.replace(matches[0], Number(matches[0]) + 1)).show(250);
+                $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
+                $(".skip").show(250);
+            } else {
+                $(".question").hide();
+                $("div[title=\"previous-select\"]").parent().show(250);
+                $("div[title=\"previous-select\"]").attr("title", "not-selected");
+            }
+
+            if (back_clicked == 0) {
+                $(".forward-arrow-container").hide();
+            } else {
+                $(".forward-arrow-container").show(250);
+            }
+        });
+
+        $(".outcome-result").click(function () {
+            var value = $(this).text().trim().toLowerCase();
+            if (back_clicked == 0) {
+                setCounterButtonActive($(this));
+            }
+            var parent = $(this).parent().parent().parent();
+            var title = $(this).attr("title");
+            var workflow_id = parent.parent().attr("class");
+
+            if (value == "unclear") {
+                value = "not clear";
+            }
+            parent.hide();
+            setOtherButtonsInactive($(this));
+            var class_names = $(this).parent().parent().parent().attr("class").split(" ");
+            back_clicked = 0;
+            $("div[title=\"previous-select\"]").prop("title", "not-selected");
+            $('.forward-arrow-container').hide();
+            var class_name = class_names[class_names.length - 1];
+
+            setPersonName();
+
+            if (class_name == "outcome-options") {
+                class_name = "under-ten-1";
+                $(this).parent().parent().parent().parent().hide();
+            } else {
+                urgent_action_json[workflow_id][title] = value;
+            }
+
+            var matches = class_name.match(/\d+/g);
+
+            var counter;
+            if (class_name == "under-ten-1" && value != "mixed") {
+                counter = 2;
+            } else {
+                counter = 1;
+            }
+
+            var next_class_names = $("." + class_name.replace(matches[0], Number(matches[0]) + counter));
+            var parent_id = next_class_names.parent().attr("id");
+
+            next_class_names.show(250);
+
+            if (next_class_names.attr("class").split(" ").indexOf("end-scene") > -1) {
+                if (workflow_id.indexOf("under-ten-2") > -1) {
+                    workflow_id = "under-10-individuals";
+                } else {
+                    displayFinishScene(workflow_id);
+                }
+            } else {
+                $(".presenter-container").removeClass("disabled");
+                $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
+                $(".finish-scene").hide();
+            }
+
+            if (class_name == 'single-2') {
+                if ($("#" + parent_id).css("display") == "none") {
+                    displayFinishScene(workflow_id);
+                }
+            }
+        });
+
+        function displayFinishScene(workflow_id) {
+            var fdb_text = [
+                "You're awesome",
+                "Great job",
+                "Keep’em coming",
+                "You rock",
+                "You rule",
+                "You’re changing lives",
+                //"You’re fighting for human rights",
+                "Nice one",
+                "You’re the best",
+                //"You’re a human rights decoder",
+                "You’re brilliant",
+                "Time for one more?",
+                "You’re our favourite",
+                "High fives all round"
+            ];
+
+            $('#feedbackHeader').empty().text(fdb_text[Math.floor(Math.random() * fdb_text.length)]);
+            $('#footer-UA').hide();
+            $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
+            $(".finish-scene").show(250);
+            $(".skip").hide();
+            urgent_action_json[workflow_id]['count'] = persons;
+            if (workflow_id == "single-individual") {
+                urgent_action_json[workflow_id]['name'] = person_name;
+            }
+            window.final_urgent_action_json = urgent_action_json[workflow_id];
+            $(".btn-submit").click();
+        }
+
+        $(".person").click(function () {
+            var class_names_array = $(this).attr("class").split(" ");
+            var class_name = class_names_array[class_names_array.length - 1];
+            var person_number = class_name.substr(class_name.length - 1);
+
+            var persons_involved = Number(person_number) + 1;
+            if (persons_involved < 2) {
+
+            } else {
+                is_10_plus_clicked = null;
+                persons = persons_involved;
+                if (class_name == "person") {
+                    setCounterButtonInactive($(".individual-outcome"));
+                    setContinueButtonIncative();
+                    $(this).parent().parent().parent().hide();
+                    is_10_plus_clicked = 1;
+                    back_clicked = 0;
+                    $("input.numeric").numeric();
+                    $('.forward-arrow-container').hide();
+                    $("div[title=\"previous-select\"]").prop("title", "not-selected");
+                    $(".ten-plus-individuals").show(250);
+                    $(".ten-plus-1").show(250);
+                } else {
+                    setCounterButtonInactive($(".individual-outcome"));
+                    for (var i = 0; i <= Number(person_number); i++) {
+                        var person_head = $(this).parent().find(".person" + i).find('.person-head');
+                        var person_body = $(this).parent().find(".person" + i).find('.person-body');
+                        setPersonActive(person_head, person_body);
+                    }
+
+                    for (var k = Number(person_number) + 1; k <= 8; k++) {
+                        var person_head = $(this).parent().find(".person" + k).find('.person-head');
+                        var person_body = $(this).parent().find(".person" + k).find('.person-body');
+                        setPersonInactive(person_head, person_body);
+                    }
+
+                    $(".more-persons h1").text(Number(person_number) + 1);
+                    $(".person").off("mouseleave");
+                    $(".person").off("mouseenter");
+                    $(".continue-under-ten").show(250);
+                    persons = Number(person_number) + 1;
+                }
+            }
+        });
+
+
+        $(".next-ua").click(function () {
+            $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
+        });
+
+
+        $(".one-person").click(function () {
+            $(this).addClass("clicked");
+            setCounterButtonInactive($(".individual-outcome"));
+            $(".question").hide();
+            $("#single-individual-large").show(250);
+            $("#single-individual-large .single-1").show(250);
+            $(".under-10-individuals").hide();
+            $(".ten-plus-individuals").hide();
+            click = 1;
+            persons = 1;
+            back_clicked = 0;
+            $('.forward-arrow-container').hide();
+            $("div[title=\"previous-select\"]").prop("title", "not-selected");
+        });
+
+        $(".one-person-small").click(function () {
+            $(this).addClass("clicked");
+            setCounterButtonInactive($(".individual-outcome"));
+            $(".question").hide();
+            setPersonName();
+            $("#single-individual-small").show(250);
+            $("#single-individual-small .single-1").show(250);
+            $(".under-10-individuals").hide();
+            $(".ten-plus-individuals").hide();
+            click = 1;
+            persons = 1;
+            back_clicked = 0;
+            $('.forward-arrow-container').hide();
+            $("div[title=\"previous-select\"]").prop("title", "not-selected");
+        });
+
+        $(".more-persons").click(function () {
+            $(this).addClass("clicked");
+            $(".one-person , .one-person-small").css({
+                "background-color": "transparent",
+                "color": "#fff"
+            });
+            $(".continue-under-ten").hide();
+            if (click == 0 || click == 1) {
+                setCounterButtonActive($(this));
+                for (var i = 0; i < 8; i++) {
+                    var person_head = $(".person" + i).find('.person-head');
+                    var person_body = $(".person" + i).find('.person-body');
+                    if (i < 2) {
+                        setPersonActive(person_head, person_body);
+                    } else {
+                        setPersonInactive(person_head, person_body);
+                    }
+                }
+                click = 2;
+            } else {
+                click = 0;
+                $(".more-persons h1").text("2+");
+                setCounterButtonInactive($(this));
+            }
+            $(".select-persons").animate({width: 'toggle'}, 250);
+        });
+
+        $("#mixed-continue").click(function () {
+            for (var item in mixed_json) {
+                urgent_action_json['under-10-individuals'][item] = mixed_json[item];
+            }
+            displayFinishScene('under-10-individuals');
+        });
+
+        $("#smallConfirmBtn").click(function () {
+            var select_json = {};
+            $(".selectbox").each(function () {
+                var id = $(this).attr("id");
+                var value = $(this).val().toString();
+                select_json[id] = Number(value);
+            });
+            var sum = 0;
+            for (var item in select_json) {
+                sum += Number(select_json[item]);
+            }
+
+            if (sum == persons) {
+                $(this).parent().parent().parent().hide();
+                for (var item in select_json) {
+                    var item_text = item.replace("-select", "");
+                    urgent_action_json['under-10-individuals'][item_text] = select_json[item];
+                }
+                $(".back-arrow-container").hide();
+                $(".under-ten-3").show(250);
+                displayFinishScene('under-10-individuals');
+            } else {
+                $('#alertMsgModal').modal('show');
+            }
+
+
+        });
+
+        $(".continue-under-ten").click(function () {
+            $(this).parent().parent().parent().parent().hide();
+            click = 2;
+            back_clicked = 0;
+            $('.forward-arrow-container').hide();
+            $(".under-10-individuals").show(250);
+            $(".under-ten-1").show(250);
+            $("div[title=\"previous-select\"]").prop("title", "not-selected");
+        });
+
+        $("#victims-number-unclear").click(function () {
+            $(this).parent().parent().parent().parent().hide();
+            setCounterButtonActive($(this));
+            setContinueButtonIncative();
+            persons = "not clear";
+            back_clicked = 0;
+            $("div[title=\"previous-select\"]").prop("title", "not-selected");
+            $('.forward-arrow-container').hide();
+            $("#victims-number").val("");
+            $(".ten-plus-2").show(250);
+        });
+
+        $("#mixed-continue").hide();
+
+        $("#mixed").click(function () {
+            // Add the number of persons to indicate how many persons where previously selected
+            $("#personNumber").empty().append(persons);
+            $('.mixed-continue', '.mixed-small').show();
+            if (!is_10_plus_clicked) {
+                bindSelectBoxes();
+                $(".final-step").hide();
+                $(".outcome-options").show();
+                $(".victims-body").empty();
+                for (var i = 0; i < persons; i++) {
+                    var victims_html = "";
+                    if (screen_width > 767) {
+                        $(".victims-body").css("padding", "0 20px 0 20px");
+                        victims_html = "<div class='form-group mixed-persons mixed-persons" + i + "' style='height:40px; width: 14px; margin-top: 5px; text-align: center;'><div class='person-head' style='text-align: center;'><img src='/static/img/head.png' style='width: 11px; height: 11px;'></div><div class='person-body' style='margin-top: 3px; text-align: center;'><img src='/static/img/body.png' style='width: 11px; height: 20px;'></div></div>";
+                    } else {
+                        victims_html = "<div class='mixed-persons mixed-persons" + i + "' style='float: left; height:40px; width: 14px; margin-top: 5px; text-align: center;'><div class='person-head' style='text-align: center;'><img src='/static/img/head.png' style='width: 11px; height: 11px;'></div><div class='person-body' style='margin-top: 3px; text-align: center;'><img src='/static/img/body.png' style='width: 11px; height: 20px;'></div></div>";
+                    }
+                    $(".positive-victims-body").append(victims_html);
+                    $(".negative-victims-body").append(victims_html);
+                    $(".notClear-victims-body").append(victims_html);
+                }
+
+                onVictimsHover("mixed-persons", 0, last_checked);
+
+                $(".mixed-persons").on("click", function () {
+                    var class_names_array = $(this).attr("class").split(" ");
+                    var clas_name = class_names_array[class_names_array.length - 1];
+                    var person_number = clas_name.substr(clas_name.length - 1);
+
+                    setSelectedVictimsType($(this), Number(person_number) - last_checked);
+
+                    checkForSum();
+
+                    var classes_array = ["positive-victims-body", "negative-victims-body", "notClear-victims-body"];
+
+                    for (var i = last_checked; i <= Number(person_number); i++) {
+                        var person_head = $(this).parent().find(".mixed-persons" + i).find('.person-head');
+                        var person_body = $(this).parent().find(".mixed-persons" + i).find('.person-body');
+                        var class_names = $(this).parent().attr("class").split(" ");
+                        var class_name = class_names[class_names.length - 1];
+                        $(this).parent().find(".mixed-persons" + i).addClass("disabled");
+                        classes_array.remove(class_name);
+                        for (var j = 0; j < classes_array.length; j++) {
+                            var other_class_name = $("." + classes_array[j].replace("-body", "")).find(".mixed-persons" + i);
+                            other_class_name.addClass("disabled");
+                            var other_person_head = other_class_name.find('.person-head');
+                            var other_person_body = other_class_name.find('.person-body');
+                            setPersonDisabled(other_person_head, other_person_body);
+                        }
+                        setPersonActive(person_head, person_body);
+                    }
+
+                    for (var k = Number(person_number) + 1; k <= persons; k++) {
+                        var person_head = $(this).parent().find(".mixed-persons" + k).find('.person-head');
+                        var person_body = $(this).parent().find(".mixed-persons" + k).find('.person-body');
+                        //                    var class_names = $(this).parent().attr("class").split(" ");
+                        setPersonDisabled(person_head, person_body);
+                        $(this).parent().addClass('disabled');
+                        $(this).parent().find(".mixed-persons" + k).addClass("disabled");
+                    }
+
+                    for (var c = 0; c < class_names_array.length; c++) {
+                        var val = class_names_array[c];
+                        var matches = val.match(/\d+/g);
+                        if (matches != null) {
+                        }
+                        var last_checked_person_number = val.substr(val.length - 1);
+                        last_checked = Number(last_checked_person_number) + 1;
+                    }
+
+                    $(".mixed-persons").off("mouseleave");
+                    $(".mixed-persons").off("mouseenter");
+                    onVictimsHover("mixed-persons", 0, last_checked);
+                    $(".disabled").off("mouseleave");
+                    $(".disabled").off("mouseenter");
+                });
+                if (back_clicked == 0) {
+                    $("#reset").click();
+                }
+            } else {
+                checkForSum();
+            }
+        });
+
+        $("i").on("click", function () {
+            var class_name = $(this).attr("class");
+            if (class_name.indexOf("fa-4x") == -1) {
+                var content = $(this).attr("content");
+                onInfoClick(content);
+            }
+        });
+
+        $(".continue-vno").click(function () {
+            setCounterButtonActive($(this));
+            setCounterButtonInactive($("#victims-number-unclear"));
+            var parent_div = $(this).parent().parent().parent().parent();
+            var victims_number = $('#victims-number').val();
+            if (victims_number == "") {
+                $("#victims-number").css({
+                    'border': "2px solid red"
+                });
+                $("input::-webkit-input-placeholder").css({"color": "red"});
+            } else {
+                if (isNaN(victims_number)) {
+                    $("#victims-number").css({
+                        'border': "2px solid red"
+                    });
+                    $("input::-webkit-input-placeholder").css({"color": "red"});
+                } else {
+                    if (Number(victims_number) < 9) {
+                        $("#victims-number").css({
+                            'border': "2px solid red"
+                        });
+                        $("input::-webkit-input-placeholder").css({"color": "red"});
+                    } else {
+                        $("#victims-number").css({
+                            'border': "none"
+                        });
+                        var class_names = parent_div.attr("class").split(" ");
+                        parent_div.hide();
+                        var class_name = class_names[class_names.length - 1];
+                        var matches = class_name.match(/\d+/g);
+                        $("." + class_name.replace(matches[0], Number(matches[0]) + 1)).show(250);
+                        back_clicked = 0;
+                        persons = Number(victims_number);
+                        $('.forward-arrow-container').hide();
+                        $("div[title=\"previous-select\"]").prop("title", "not-selected");
+                    }
+                }
+            }
+        });
+
+        onVictimsHover("person", 1, 0);
+
+        $("#reset").click(function () {
+            $(".disabled").removeClass("disabled");
+            $("#mixed-continue").hide();
+            onVictimsHover("mixed-persons", 0, 0);
+            $(".mixed-persons").each(function () {
+                last_checked = 0;
+                var person_head = $(this).find('.person-head');
+                var person_body = $(this).find('.person-body');
+                setPersonInactive(person_head, person_body);
+                mixed_json = {
+                    "positive": 0,
+                    "negative": 0,
+                    "notClear": 0
+                }
+            });
+        });
+    });
+
+    function setContinueButtonIncative() {
+        $(".continue-vno").css({
+            "background-color": "#999999",
+            "color": "#666666"
+        });
+        $("#victims-number").val("");
+    }
+
+    function onRequestError() {
+        $(".finish-scene").hide();
+        $('#error-popup').modal('show');
+        $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
+        $(".ua-sidebar").css("background", "rgba(0, 0, 0, 0.5)");
+    }
+
+    function resetPersons(active) {
+        $(".person").each(function () {
+            var person_head = $(this).find('.person-head');
+            var person_body = $(this).find('.person-body');
+            if (active) {
+                setPersonActive(person_head, person_body);
+            } else {
+                setPersonInactive(person_head, person_body);
+            }
+        });
+        onVictimsHover("person", 1, 0)
+    }
+
+    function setPersonName() {
+        if (person_name != "") {
+            $(".person-name-question").text("Is " + person_name + "?");
+            $(".person-name-question").append('&nbsp;<a style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2" content="We know the gender of a person isn’t always clear from the name, but sometimes you can find other clues such as gender pronouns (he, she, his, her, him, etc.) or a direct mention of the gender (f, m)."</i></a>');
+        } else {
+            $(".person-name-question").text('Is this person?');
+            $(".person-name-question").append('&nbsp;<a style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2" content="We know the gender of a person isn’t always clear from the name, but sometimes you can find other clues such as gender pronouns (he, she, his, her, him, etc.) or a direct mention of the gender (f, m)."</i></a>');
+        }
+        $("i").click(function () {
+            var class_name = $(this).attr("class");
+            if (class_name.indexOf("fa-4x") == -1) {
+                var content = $(this).attr("content");
+                onInfoClick(content);
+            }
+        });
+    }
+
+    function postRequest(data) {
+        $.support.cors = true;
+        $.ajax({
+            url: '/api/ua/save-result',
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: 'json',
+            success: function (data, textStatus, xhr) {
+            },
+            error: function (xhr, textStatus, errorThrown) {
+            }
+        });
+    }
+
+    function checkForSum() {
+        var sum = 0;
+        for (var item in mixed_json) {
+            sum += mixed_json[item];
+        }
+        if (sum == persons) {
+            $("#mixed-continue").show(250)
+        } else {
+            $("#mixed-continue").hide();
+        }
+    }
+
+    function resetButtonsStyle() {
+        setCounterButtonInactive($(".individual-outcome"));
+        setContinueButtonIncative();
+        setCounterButtonInactive($(".continue-under-ten"));
+    }
+
+    function setSelectedVictimsType(element, person_number) {
+        var mixed_types_array = ["positive", "negative", "notClear"];
+        var mixed_types = element.parent().attr("class");
+        for (var item = 0; item < mixed_types_array.length; item++) {
+            if (mixed_types.indexOf(mixed_types_array[item]) > -1) {
+                mixed_json[mixed_types_array[item]] = Number(person_number) + 1
+            }
+        }
+    }
+
+    function onInfoClick(content) {
+        $('#tooltip-modal').modal('show');
+        $("#tooltip-modal-text").html(content);
+    }
+
+    function onVictimsHover(person_class, flag, last_checked) {
+        $("." + person_class).mouseenter(function () {
+            var class_names_array = $(this).attr("class").split(" ");
+            var class_name = class_names_array[class_names_array.length - 1];
+            var person_number = class_name.substr(class_name.length - 1);
+            if (class_name == person_class) {
+                $(".more-persons h1").text("9+");
+                person_number = 10;
+            }
+            for (var i = last_checked; i <= Number(person_number); i++) {
+                var person_head = $("." + person_class + i).find('.person-head');
+                var person_body = $("." + person_class + i).find('.person-body');
+                if (flag == 1) {
+                    if (i < 1) {
+                        continue;
+                    } else {
+                        setPersonActive(person_head, person_body);
+                        $(".more-persons h1").text(i + 1);
+                    }
+                } else {
+                    setPersonActive(person_head, person_body);
+                    var classes_array = ["positive-victims-body", "negative-victims-body", "notClear-victims-body"];
+                    var class_names = $(this).parent().attr("class").split(" ");
+                    var class_name = class_names[class_names.length - 1];
+                    classes_array.remove(class_name);
+                    for (var j = 0; j < classes_array.length; j++) {
+                        var other_class_name = $("." + classes_array[j].replace("-body", "")).find("." + person_class + i);
+                        var other_person_head = other_class_name.find('.person-head');
+                        var other_person_body = other_class_name.find('.person-body');
+                        setPersonDisabled(other_person_head, other_person_body);
+                    }
+                }
+            }
+
+            if (class_name == person_class) {
+                $(".more-persons h1").text("9+");
+            }
+
+        }).mouseleave(function () {
+            for (var i = last_checked; i < 10; i++) {
+                var person_head = $("." + person_class + i).find('.person-head');
+                var person_body = $("." + person_class + i).find('.person-body');
+                if (flag == 1) {
+                    if (i < 2) {
+                        setPersonActive(person_head, person_body);
+                        $(".more-persons h1").text(i + 1);
+                    } else {
+                        setPersonInactive(person_head, person_body);
+                    }
+                } else {
+                    setPersonInactive(person_head, person_body);
+                }
+            }
+        });
+
+        $("#confirm-name").click(function () {
+            setPersonName();
+            $(".single-1").hide();
+            $(".single-2").show(250);
+            $("#close-popup").click();
+        });
+    }
+
+    Array.prototype.remove = function () {
+        var what, a = arguments, L = a.length, ax;
+        while (L && this.length) {
+            what = a[--L];
+            while ((ax = this.indexOf(what)) !== -1) {
+                this.splice(ax, 1);
+            }
+        }
+        return this;
+    };
+
+    function bindSelectBoxes() {
+        var mixed_selects = ["positive-select", "negative-select", "notClear-select"];
+        for (var idx = 0; idx < mixed_selects.length; idx++) {
+            $("#" + mixed_selects[idx]).empty();
+            $("#" + mixed_selects[idx]).append("<option value='0'>No.</option>")
+        }
+
+        for (var i = 1; i <= persons; i++) {
+            var option = "<option value='" + i + "'>" + i + "</option>";
+            for (var j = 0; j < mixed_selects.length; j++) {
+                $("#" + mixed_selects[j]).append(option);
+            }
+        }
+    }
+
+    function setCounterButtonActive(element) {
+        element.css("background-color", "#FFFF00");
+        element.css("color", "#000");
+    }
+
+    function setOtherButtonsInactive(element) {
+        $(".single-1 ,.single-2").find(".outcome-result").each(function () {
+            if ($(this).text() != element.text()) {
+                setCounterButtonInactive($(this));
+            } else {
+                setCounterButtonActive($(this));
+            }
+        });
+    }
+
+    function setCounterButtonInactive(element) {
+        element.css("background-color", "transparent");
+        element.css("color", "#fff");
+    }
+
+    function setPersonInactive(person_head, person_body) {
+        $(person_head).find('img').prop("src", "/static/img/head.png");
+        $(person_body).find('img').prop("src", "/static/img/body.png");
+    }
+
+    function setPersonActive(person_head, person_body) {
+        $(person_head).find('img').prop("src", "/static/img/head_selected.png");
+        $(person_body).find('img').prop("src", "/static/img/body_selected.png");
+    }
+
+    function setPersonDisabled(person_head, person_body) {
+        $(person_head).find('img').prop("src", "/static/img/head_disabled.png");
+        $(person_body).find('img').prop("src", "/static/img/body_disabled.png");
+    }
+</script>
