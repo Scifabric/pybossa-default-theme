@@ -39,14 +39,12 @@ img {
 
 #header-container {
     padding: 0;
-    box-shadow: 0 1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
 }
 
 .container-fluid > .navbar-header {
     margin: 0;
 }
-
-
 
 .navbar-header a:hover, .navbar-header a:focus {
     text-decoration: none;
@@ -63,24 +61,24 @@ img {
 }
 
 .navbar-brand {
-  display: inline-block;
-  align-items: center;
-  height: 72px;
-  padding: 0;
-  width: 72px;
-  background-color: #ff0;
+    display: inline-block;
+    align-items: center;
+    height: 72px;
+    padding: 0;
+    width: 72px;
+    background-color: #ff0;
 }
 
-.navbar-brand> img {
-  margin-top: 11px;
-  height: 48px;
-  width: 30px;
-  background-color: #ff0; 
-  
+.navbar-brand > img {
+    margin-top: 11px;
+    height: 48px;
+    width: 30px;
+    background-color: #ff0;
+
 }
 
 .navbar-default .navbar-brand:hover {
-      background-color: #ff0; 
+    background-color: #ff0;
 }
 
 .navbar > .container-fluid .navbar-brand {
@@ -97,7 +95,7 @@ img {
     font-size: 14px;
     text-transform: uppercase;
     padding: 26px 18px 26px 15px;
-    transition: background-color .25s,color .25s;
+    transition: background-color .25s, color .25s;
 }
 
 .collapse ul li a:hover, .collapse ul li a:focus {
@@ -378,7 +376,7 @@ footer .container {
     padding-bottom: 20px;
 }
 
-.next-ua:hover ,.sign-up:hover , .next-ua-error:hover {
+.next-ua:hover, .sign-up:hover, .next-ua-error:hover {
     background-color: #FFD500;
 }
 
@@ -549,6 +547,11 @@ footer .container {
     font-weight: lighter !important;
     height: 250px;
     background: rgba(0, 0, 0, 1);
+}
+
+.presenter-main-container {
+    max-width: 700px;
+    margin: 0 auto !important;
 }
 
 .sharing-buttons a {
@@ -776,7 +779,7 @@ i:hover {
     .navbar-collapse.collapse.in {
         display: block !important;
         background-color: #1a1a1a !important;
-        box-shadow: 0 1px 0 rgba(0,0,0,.1) !important;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, .1) !important;
     }
 
     #menu li a {
@@ -880,18 +883,18 @@ i:hover {
     }
 
     .navbar-brand {
-      display: inline-block;
-      align-items: center;
-      height: 72px;
-      padding: 0;
-      width: 169px;
+        display: inline-block;
+        align-items: center;
+        height: 72px;
+        padding: 0;
+        width: 169px;
     }
 
-    .navbar-brand> img {
-      height: 72px;
-      width: 169px;
-      margin-top: 0;
-      background-color: #ff0;
+    .navbar-brand > img {
+        height: 72px;
+        width: 169px;
+        margin-top: 0;
+        background-color: #ff0;
     }
 
     .amnesty-decoder-text h2 {

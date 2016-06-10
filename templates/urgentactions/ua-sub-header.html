@@ -465,8 +465,11 @@
         });
 
         $("i").on("click", function () {
-            var content = $(this).attr("content");
-            onInfoClick(content);
+            var class_name = $(this).attr("class");
+            if (class_name.indexOf("fa-4x") == -1){
+                var content = $(this).attr("content");
+                onInfoClick(content);
+            }
         });
 
         $(".continue-vno").click(function () {
@@ -565,7 +568,7 @@
             $(".person-name-question").text('Is this person?');
             $(".person-name-question").append('&nbsp;<a style="color: white;font-size: 18px"><i class="fa fa-info-circle fa-2" content="We know the gender of a person isn’t always clear from the name, but sometimes you can find other clues such as gender pronouns (he, she, his, her, him, etc.) or a direct mention of the gender (f, m)."</i></a>');
         }
-        $("i").on("click", function () {
+        $("i").click(function () {
             var content = $(this).attr("content");
             onInfoClick(content);
         });
@@ -580,10 +583,8 @@
             contentType: "application/json",
             dataType: 'json',
             success: function (data, textStatus, xhr) {
-                console.log(data);
             },
             error: function (xhr, textStatus, errorThrown) {
-                console.log(xhr);
             }
         });
     }
