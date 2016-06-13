@@ -10,9 +10,24 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
 <style>
-.ct-bar, .ct-line, .ct-point {
-    stroke: #8BBF36 !important;
-}
+    .ct-bar, .ct-line, .ct-point {
+        stroke: #8BBF36 !important;
+    }
+
+    .recent-activity a {
+        color: #0b79e5;
+        cursor: pointer;
+    }
+
+    .recent-activity a:hover {
+        color: #0000cc;
+        text-decoration: underline;
+    }
+
+    .recent-activity li img {
+        width: 30px;
+        height: 30px;
+    }
 </style>
 <div class="row">
     <div class="col-sm-10 col-md-10">
@@ -128,15 +143,15 @@
                 {% endif %}
                 {% if u.action_updated == 'UserContribution' %}
                 <p>{{ helper.render_avatar(u, upload_method, class='img-circle', width='30px')}}
-                <a href="{{url_for('account.profile', name=u.name)}}">{{u.fullname}}</a> {{ _('has contributed to') }} 
+                <a href="{{url_for('account.profile', name=u.name)}}">{{u.fullname}}</a> {{ _('has contributed to') }}
                 <a href="{{url_for('project.details', short_name=u.project_short_name)}}">
                     <span class="hidden-xs">{{u.project_name | truncate(28)}}</span>
-                    <span class="visible-xs-fullnames">{{u.project_name | truncate(10)}}</span></a> 
+                    <span class="visible-xs-fullnames">{{u.project_name | truncate(10)}}</span></a>
                     {{u.updated | pretty_date}}</p>
                 {% endif %}
                 {% if u.action_updated == 'User' %}
-                {{ helper.render_avatar(u, upload_method, class='img-circle', width='30px')}}
-                <p><a href="{{url_for('account.profile', name=u.name)}}">{{u.fullname}}</a> {{ _('has joined') }} {{u.updated | pretty_date}}</p>
+                <p>{{ helper.render_avatar(u, upload_method, class='img-circle', width='30px')}}
+                <a href="{{url_for('account.profile', name=u.name)}}">{{u.fullname}}</a> {{ _('has joined') }} {{u.updated | pretty_date}}</p>
                 {% endif %}
             </li>
             {% endfor %}
