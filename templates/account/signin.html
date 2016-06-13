@@ -39,9 +39,9 @@
   <form id="signin" method="post" class="form-horizontal" action="">
     {{ form.hidden_tag() }}
     {% if auth.twitter or auth.facebook%}
-    <legend>{{ _('Or Sign in with your PyBossa account') }}</legend>
+    <legend>{{ _('Or Sign in with your Amnesty Decoders account') }}</legend>
     {% else %}
-    <legend>{{ _('Sign in with your PyBossa account') }}</legend>
+    <legend>{{ _('Sign in with your Amnesty Decoders account') }}</legend>
     {% endif %}
       {{ render_field(form.email, placeholder="", class="form-control", style="width:280px !important") }}
       <br/>

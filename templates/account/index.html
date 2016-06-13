@@ -7,16 +7,17 @@
 {% block content %}
 
 <div class="row">
-  <div class=" col-sm-9 col-md-9 col-md-offset-1">
-      {% if enforce_privacy and (current_user.is_anonymous())%}
-        {{ privacy.render_lock_page() }}
-      {% else %}
-      <h1>{{ _('Community') }} <em>{{total}} {{ _('registered users') }}</em><a class="pull-right btn btn-primary" href="{{url_for('leaderboard.index')}}"></i>{{ _('Leaderboard') }}</a></h1><br><br>
-      {% if accounts %}
-      <ul class="thumbnails" style="padding: 0 !important; list-style-type: none !important;">
-      {% for account in accounts %}
-          <li class="col-xs-12 col-sm-3 col-md-2">
-              <a href="{{url_for('account.profile', name=account.name)}}" class="thumbnail" rel='popover' title="<strong>{{account['fullname']}}</strong>" data-content="
+    <div class=" col-sm-9 col-md-9 col-md-offset-1">
+        {% if enforce_privacy or current_user.admin %}
+        <h1>{{ _('Community') }} <em>{{total}} {{ _('registered users') }}</em><a class="pull-right btn btn-primary"
+                                                                                  href="{{url_for('leaderboard.index')}}"></i>
+            {{ _('Leaderboard') }}</a></h1><br><br>
+        {% if accounts %}
+        <ul class="thumbnails" style="padding: 0 !important; list-style-type: none !important;">
+            {% for account in accounts %}
+            <li class="col-xs-12 col-sm-3 col-md-2">
+                <a href="{{url_for('account.profile', name=account.name)}}" class="thumbnail" rel='popover'
+                   title="<strong>{{account['fullname']}}</strong>" data-content="
                       <ul style='list-style-type:none; margin-left:0px;'>
                         <li><strong><i class='icon-calendar'></i> Joined</strong> {{account['created'][0:10]}}</li>
                         <li><strong><i class='icon-tasks'></i> Contributed Tasks</strong> {{ account.task_runs }}</li>
@@ -32,27 +33,29 @@
                       </ul>
                       ">
                     {{ helper.render_user_thumbnail(account, upload_method, style="height:90px; width:90px;") }}
-            </a>
-          </li>
-          {% endfor %}
-      </ul>
-    {% endif %}
-    <div class=" col-sm-9 col-md-9">
-        {% if pagination.pages > 1 %}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class=" col-sm-9 col-md-9">
+            {% if pagination.pages > 1 %}
             {{ helper.render_pagination(pagination) }}
+            {% endif %}
+        </div>
+        {% else %}
+        {{ privacy.render_lock_page() }}
         {% endif %}
     </div>
-    {% endif %}
-  </div>
 </div>
 
 <script>
-$("a[rel=popover]").popover({
+    $("a[rel=popover]").popover({
         html: true,
         animate: true,
         trigger: 'hover',
         placement: 'bottom'
-                });
+    });
 
 </script>
 {{ broken_image() }}
