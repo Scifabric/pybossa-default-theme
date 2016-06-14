@@ -92,6 +92,11 @@
             }
         });
 
+        if (screen_width > 800){
+//            planned for making Urgent action text div sticky for Desktop.
+            $(".sub-header-container").sticky({topSpacing:0,zIndex: 1});
+        }
+
         $(".forward-arrow-container").click(function () {
             $("div[title=\"not-selected\"]").hide();
             if (back_clicked > 0) {
