@@ -243,6 +243,10 @@ a:hover {
     min-height: 120px;
 }
 
+.sticky-wrapper {
+    height: auto !important;
+}
+
 .sub-header-container {
     padding: 5px 0 15px 0;
     overflow: hidden;

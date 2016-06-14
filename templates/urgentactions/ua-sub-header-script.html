@@ -92,9 +92,9 @@
             }
         });
 
-        if (screen_width > 800){
+        if (screen_width > 800) {
 //            planned for making Urgent action text div sticky for Desktop.
-            $(".sub-header-container").sticky({topSpacing:0,zIndex: 1});
+            $(".sub-header-container").sticky({topSpacing: 0, zIndex: 1});
         }
 
         $(".forward-arrow-container").click(function () {
@@ -240,12 +240,15 @@
                     $(".ten-plus-1").show(250);
                 } else {
                     setCounterButtonInactive($(".individual-outcome"));
+
+                    // highlighting persons to n-selected person.
                     for (var i = 0; i <= Number(person_number); i++) {
                         var person_head = $(this).parent().find(".person" + i).find('.person-head');
                         var person_body = $(this).parent().find(".person" + i).find('.person-body');
                         setPersonActive(person_head, person_body);
                     }
 
+                    // unhighlighting persons from n-selected person.
                     for (var k = Number(person_number) + 1; k <= 8; k++) {
                         var person_head = $(this).parent().find(".person" + k).find('.person-head');
                         var person_body = $(this).parent().find(".person" + k).find('.person-body');
