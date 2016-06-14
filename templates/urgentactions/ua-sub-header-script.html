@@ -94,7 +94,7 @@
 
         if (screen_width > 800) {
 //            planned for making Urgent action text div sticky for Desktop.
-            $(".sub-header-container").sticky({topSpacing: 0, zIndex: 1});
+            $(".sub-header-container").parent().stick_in_parent();
         }
 
         $(".forward-arrow-container").click(function () {
@@ -186,6 +186,8 @@
         });
 
         function displayFinishScene(workflow_id) {
+            var finish_scene_options = ["#circle-finish-scene", "#anonymous-finish-scene"];
+
             var fdb_text = [
                 "You're awesome",
                 "Great job",
@@ -207,6 +209,16 @@
             $('#footer-UA').hide();
             $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
             $(".finish-scene").show(250);
+
+
+            var logged_status = $("#logged-status").data();
+            if (logged_status['is_anonymous'] == "False"){
+                $("#circle-finish-scene").show(250);
+            } else {
+                var random_number = Math.floor(Math.random() * 2);
+                $(finish_scene_options[random_number]).show(250);
+            }
+
             $(".skip").hide();
             urgent_action_json[workflow_id]['count'] = persons;
             if (workflow_id == "single-individual") {

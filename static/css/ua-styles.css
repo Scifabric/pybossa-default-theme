@@ -243,8 +243,8 @@ a:hover {
     min-height: 120px;
 }
 
-.sticky-wrapper {
-    height: auto !important;
+.is_stuck {
+    z-index: 1 !important;
 }
 
 .sub-header-container {

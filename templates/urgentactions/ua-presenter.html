@@ -1,6 +1,6 @@
 {% include "urgentactions/ua-sub-header.html" %}
 
-<script src="/static/js/jquery.sticky.js"></script>
+<script src="/static/js/sticky-kit.js"></script>
 <script type="text/javascript">
     var parent_paragraph;
     $(function () {
@@ -131,8 +131,9 @@
         </script>
         <script src="{{url_for('static', filename='js/pybossa/pybossa.js')}}" type="text/javascript"></script>
         <div class="row" style="position: relative;">
+            <meta id="logged-status" data-is_anonymous="{{current_user.is_anonymous()}}">
             <div class="finish-scene" style="display: none;">
-                <div id="circle-finish-scene">
+                <div id="circle-finish-scene" style="display: none;">
                     <div class="circle-base circle1">
                         <h1 style="text-transform: uppercase;" id="feedbackHeader">You’re pretty brilliant</h1>
                         <hr class="hr" style="margin-top: 0; width: 90%; background-color: #fff;">
@@ -157,8 +158,9 @@
                         track your progress.</a></div>
                     {% endif %}
                 </div>
-                <div id="anonymous-finish-scene">
-
+                <div id="anonymous-finish-scene" style="display: none;">
+                    <div class="task-counter"><a style="color: #fff;" href="{{ url_for('account.signin') }}">Sign in to
+                        track your progress.</a></div>
                 </div>
             </div>
             <div class="span12">
