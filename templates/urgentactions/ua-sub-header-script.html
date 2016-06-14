@@ -187,6 +187,8 @@
 
         function displayFinishScene(workflow_id) {
             var finish_scene_options = ["#circle-finish-scene", "#anonymous-finish-scene"];
+            var anonymous_signin_options = ["<a class='sign-in-finish' href='/account/signin'>Sign in</a> to help us make the most out of your hard work.",
+                "<a class='sign-in-finish' href='/account/signin'>Signing in helps</a> you track your progress, gives you credit for your work, and helps the research team make the best use of the data you provide."];
 
             var fdb_text = [
                 "You're awesome",
@@ -207,16 +209,18 @@
 
             $('#feedbackHeader').empty().text(fdb_text[Math.floor(Math.random() * fdb_text.length)]);
             $('#footer-UA').hide();
-            $(".presenter-container").css("background", "rgba(0, 0, 0, 0.7)");
             $(".finish-scene").show(250);
 
 
             var logged_status = $("#logged-status").data();
-            if (logged_status['is_anonymous'] == "False"){
+            if (logged_status['is_anonymous'] == "False") {
+                $(".presenter-container, .ua-sidebar").css("background", "rgba(0, 0, 0, 0.7)");
                 $("#circle-finish-scene").show(250);
             } else {
+                $(".presenter-container, .ua-sidebar").css("background", "rgba(0, 0, 0, 1)");
                 var random_number = Math.floor(Math.random() * 2);
                 $(finish_scene_options[random_number]).show(250);
+                $("#anonymous-sign-in").html(anonymous_signin_options[Math.floor(Math.random() * 2)]);
             }
 
             $(".skip").hide();
@@ -275,12 +279,6 @@
                 }
             }
         });
-
-
-        $(".next-ua").click(function () {
-            $(".presenter-container").css("background", "rgba(255, 255, 255, 1)");
-        });
-
 
         $(".one-person").click(function () {
             $(this).addClass("clicked");

@@ -247,6 +247,15 @@ a:hover {
     z-index: 1 !important;
 }
 
+.sign-in-finish {
+    color: #fff;
+    cursor: pointer;
+}
+
+.sign-in-finish:hover {
+    color: #fff;
+}
+
 .sub-header-container {
     padding: 5px 0 15px 0;
     overflow: hidden;
