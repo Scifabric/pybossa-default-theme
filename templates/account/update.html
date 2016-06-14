@@ -39,7 +39,7 @@
             {{ form.hidden_tag() }}
             {{ render_field(form.fullname, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('my full name') ) }}<br><br>
             {{ render_field(form.name, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('myusername') ) }}<br><br>
-            <!--{{ render_field(form.email_addr, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('hello@mywebsite.org') ) }}<br><br>-->
+            {# render_field(form.email_addr, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('hello@mywebsite.org') ) #}
             {{ render_field(form.locale, class="col-xs-6 form-control", style="width: 280px !important") }} <br><br>
             {{ render_field(form.privacy_mode) }}
             {{ render_field(form.subscribed) }}
