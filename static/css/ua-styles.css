@@ -597,7 +597,7 @@ h2 {
     margin-top: 2px;
 }
 
-i:hover {
+i:not(.inohover):hover {
     cursor: pointer;
     border-radius: 5px;
     color: #fff !important;

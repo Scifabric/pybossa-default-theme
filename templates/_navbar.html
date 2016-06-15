@@ -35,12 +35,11 @@
                 <li><a href="{{ url_for('account.signin') }}">{{ _('Sign in') }}</a></li>
             {% endif %}
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right ">
             <li style="display: none;">
                 {% if current_user.is_authenticated() %}
-                <ul class="nav secondary-nav pull-right">
-                    <li {% if active_page==
-                    'profile' %} class="active" {% endif %}><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i
+                <ul class="nav secondary-nav pull-right ul-top-position">
+                    <li {% if active_page=='profile' %} class="active" {% endif %}><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i
                         class="icon icon-user"></i> {{ current_user.name | truncate(6,true) }} <span
                         class="caret"></span></a>
                     <ul class="dropdown-menu">
