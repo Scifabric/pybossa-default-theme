@@ -598,9 +598,9 @@ h2 {
 }
 
 i:not(.inohover):hover {
-    cursor: pointer;
     /*color: #fff !important;
-    border-radius: 5px;*/
+    border-radius: 5px;
+    cursor: pointer;*/
 }
 
 .clearfix i {
