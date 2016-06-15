@@ -39,10 +39,11 @@
             {{ form.hidden_tag() }}
             {{ render_field(form.fullname, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('my full name') ) }}<br><br>
             {{ render_field(form.name, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('myusername') ) }}<br><br>
-            {# render_field(form.email_addr, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('hello@mywebsite.org') ) #}
-            {{ render_field(form.locale, class="col-xs-6 form-control", style="width: 280px !important") }} <br><br>
+            {{ render_field(form.email_addr, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('hello@mywebsite.org') ) }}<br><br>
+            {# render_field(form.locale, class="col-xs-6 form-control", style="width: 280px !important") #}
             {{ render_field(form.privacy_mode) }}
             {{ render_field(form.subscribed) }}
+            {{ render_field(form.newsletter_subscribe) }}
             {{ render_field(form.country, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('Country') ) }}<br><br>
             <div class="form-actions">
                 <button type="submit" name='btn' value="Profile" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
