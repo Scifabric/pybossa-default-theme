@@ -117,12 +117,13 @@ img {
 
 .rectangle-speech-border {
     position: relative;
+    z-index: 99999;
     padding: 50px 15px;
     margin: 1em 0 3em;
-    border: 10px solid #333333;
+    border: 1px solid #848990 !important;
     text-align: center;
     color: #333;
-    background: #333333;
+    background: #848990 !important;
     /* css3 */
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -139,7 +140,7 @@ img {
     height: 20px;
     border-style: solid;
     border-width: 0 7px 7px 0;
-    border-color: #333333;
+    border-color: #848990;
     background: transparent;
     /* css3 */
     -webkit-border-bottom-right-radius: 80px 50px;
@@ -160,7 +161,7 @@ img {
     height: 20px;
     border-style: solid;
     border-width: 0 7px 7px 0;
-    border-color: #333333;
+    border-color: #848990;
     background: transparent;
     /* css3 */
     -webkit-border-bottom-right-radius: 40px 50px;
