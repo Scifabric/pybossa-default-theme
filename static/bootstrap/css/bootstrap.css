@@ -274,6 +274,7 @@ th {
   font-style: normal;
   font-weight: normal;
   line-height: 1;
+  cursor: text;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -6571,7 +6572,7 @@ button.close {
   display: none !important;
 }
 .ul-top-position{
-  padding-top: 1em;
+  padding-top: 2em;
 }
 @media (max-width: 767px) {
   .visible-xs {

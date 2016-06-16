@@ -597,12 +597,6 @@ h2 {
     margin-top: 2px;
 }
 
-i:not(.inohover):hover {
-    /*color: #fff !important;
-    border-radius: 5px;
-    cursor: pointer;*/
-}
-
 .clearfix i {
     margin-left: -15px;
 !important;
