@@ -87,6 +87,7 @@
 {% endmacro %}
 
 {% macro render_user_thumbnail(user, upload_method, id, class, style) %}
+<div class="profile-img-cursor">
     {% if user.info.avatar %}
         {% if upload_method == 'rackspace'%}
         <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('rackspace', filename=user.info.avatar, container=user.info.container)}}" onerror="imgError(this, 'user');">
@@ -96,6 +97,7 @@
     {% else %}
         <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('static', filename='img/placeholder.user.png')}}">
     {% endif %}
+</div>
 {% endmacro %}
 
 {% macro render_pagination(pagination) %}

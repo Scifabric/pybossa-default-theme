@@ -996,3 +996,7 @@ li > a {
 .funder-img:hover{
     opacity: 0.5;
 }
+
+.profile-img-cursor{
+    cursor: text !important;
+}
