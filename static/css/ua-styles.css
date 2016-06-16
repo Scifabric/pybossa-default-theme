@@ -861,10 +861,9 @@ h2 {
     .country-date {
         display: block;
     }
-
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
     .anonymous-sign-in {
         width: 150% !important;
         margin-left: -70px !important;
