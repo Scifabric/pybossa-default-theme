@@ -6,6 +6,7 @@
 {% block content %}
 <script src="{{url_for('static', filename='js/vendor/isotope.pkgd.min.js')}}"></script>
 <div class="row">
+    <div class="top-padding-style">
     <div class="col-sm-3 col-md-3" style="z-index: 9999">
             <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
                 {% for c in categories %}
@@ -15,6 +16,7 @@
                 <li {% if active_cat.short_name=="draft"%}class="active"{% endif %}><a href="{{url_for('project.draft')}}"><i class="glyphicon glyphicon-chevron-right"></i> {{ _('Draft') }}</a></li>
                 {% endif %}
             </ul>
+    </div>
     </div>
     <div class="col-sm-9 col-md-9">
             <div id="sorts" class="btn-group pull-right" style="margin-top:12px;">

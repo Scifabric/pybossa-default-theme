@@ -32,6 +32,7 @@
 {% endmacro %}
 
 {% macro render_project_local_nav(project, active_link, current_user, pro_features) -%}
+<div class="top-padding-style">
 <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top" style="z-index: 9999">
     <li {% if active_link=="info"%}class="active"{% endif %}><a href="{{url_for('project.details', short_name=project.short_name)}}"><i class="glyphicon glyphicon-chevron-right"></i> {{_('Info')}}</a></li>
     <li {% if active_link=="contribute"%}class="active"{% endif %}><a href="{{url_for('project.presenter', short_name=project.short_name)}}"><i class="glyphicon glyphicon-chevron-right"></i> {{_('Contribute')}}</a></li>
@@ -56,6 +57,7 @@
     {% endif %}
     <li {% if active_link=="blog"%}class="active"{% endif %}><a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}"><i class="glyphicon glyphicon-chevron-right"></i> {{_('Blog')}}</a></li>
 </ul>
+</div>
 {% endmacro %}
 
 {% macro render_project_summary(project, n_tasks, overall_progress, last_activity, current_user, upload_method) -%}
@@ -79,7 +81,7 @@
 {% endmacro %}
 
 {% macro render_project_short_summary(project, upload_method) -%}
-<div class="row-fluid well well-small">
+<div class="row-fluid well well-small top-padding-style">
     <div class="col-md-3 col-sm-3">
         {{ render_project_thumbnail(project, upload_method, class="img-polaroid", style="max-width:100px") }}
     </div>
