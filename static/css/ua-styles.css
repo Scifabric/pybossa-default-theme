@@ -537,12 +537,13 @@ footer .container {
 }
 
 .finish-scene {
-    width: 250px;
+    width: 300px;
     text-align: center;
     background: transparent;
     color: #FFF;
-    position: absolute;
-    margin-left: -125px;
+    position: fixed;
+    margin-top: 50px;
+    margin-left: -155px;
     left: 50%;
     z-index: 2;
 }
@@ -554,11 +555,11 @@ footer .container {
 
 .circle1 {
     margin: 15px auto;
-    width: 250px;
+    width: 260px !important;
     text-align: center;
-    padding: 20px;
+    padding: 25px;
     font-weight: lighter !important;
-    height: 250px;
+    height: 250px !important;
     background: rgba(0, 0, 0, 1);
 }
 
@@ -604,6 +605,13 @@ h2 {
 
 .clearfix i:hover {
     color: #fff !important;
+}
+
+.anonymous-sign-in {
+    font-size: 19px;
+    margin-top: 60px;
+    height: auto;
+    padding: 10px;
 }
 
 .mixed-small {
@@ -825,6 +833,9 @@ h2 {
 }
 
 @media (max-width: 768px) {
+    .anonymous-sign-in {
+        width: 100% !important;
+    }
 
     .back-arrow-container {
         transform: translateY(50%);
@@ -853,6 +864,11 @@ h2 {
 }
 
 @media (min-width: 768px) {
+    .anonymous-sign-in {
+        width: 150% !important;
+        margin-left: -70px !important;
+    }
+
     .divider {
         display: none !important;
     }

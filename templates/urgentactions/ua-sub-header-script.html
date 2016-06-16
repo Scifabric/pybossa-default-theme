@@ -29,7 +29,7 @@
         "negative": 0,
         "notClear": 0
     };
-    var screen_width = window.screen.width;
+    var screen_width = $(window).width();
     var is_10_plus_clicked = null;
     var is_mixed_clicked = null;
 
@@ -95,6 +95,7 @@
         if (screen_width > 800) {
 //            planned for making Urgent action text div sticky for Desktop.
             $(".sub-header-container").parent().stick_in_parent();
+            $(".finish-scene").parent().stick_in_parent();
         }
 
         $(".forward-arrow-container").click(function () {
@@ -186,9 +187,9 @@
         });
 
         function displayFinishScene(workflow_id) {
-            var finish_scene_options = ["#circle-finish-scene", "#anonymous-finish-scene"];
-            var anonymous_signin_options = ["<a class='sign-in-finish' href='/account/signin'>Sign in</a> to help us make the most out of your hard work.",
-                "<a class='sign-in-finish' href='/account/signin'>Signing in helps</a> you track your progress, gives you credit for your work, and helps the research team make the best use of the data you provide."];
+            var finish_scene_options = [".circle-finish-scene", ".anonymous-finish-scene"];
+            var anonymous_signin_options = ["<a class='sign-in-finish' href='/account/signin'><i>Sign in</i></a> to help us make the most out of your hard work.",
+                "<a class='sign-in-finish' href='/account/signin'><i>Signing in</i></a> helps you track your progress, gives you credit for your work, and helps the research team make the best use of the data you provide."];
 
             var fdb_text = [
                 "You're awesome",
@@ -207,20 +208,25 @@
                 "High fives all round"
             ];
 
-            $('#feedbackHeader').empty().text(fdb_text[Math.floor(Math.random() * fdb_text.length)]);
+            $('.feedbackHeader').empty().text(fdb_text[Math.floor(Math.random() * fdb_text.length)]);
             $('#footer-UA').hide();
             $(".finish-scene").show(250);
 
 
             var logged_status = $("#logged-status").data();
-            if (logged_status['is_anonymous'] == "False") {
+            if (logged_status['is_anonymous'] == "True") {
                 $(".presenter-container, .ua-sidebar").css("background", "rgba(0, 0, 0, 0.7)");
-                $("#circle-finish-scene").show(250);
+                $(".circle-finish-scene").show(250);
             } else {
                 $(".presenter-container, .ua-sidebar").css("background", "rgba(0, 0, 0, 1)");
                 var random_number = Math.floor(Math.random() * 2);
-                $(finish_scene_options[random_number]).show(250);
-                $("#anonymous-sign-in").html(anonymous_signin_options[Math.floor(Math.random() * 2)]);
+                if (finish_scene_options[random_number] == ".circle-finish-scene"){
+                    $(".presenter-container, .ua-sidebar").css("background", "rgba(0, 0, 0, 0.7)");
+                } else {
+                    $(".presenter-container, .ua-sidebar").css("background", "rgba(0, 0, 0, 1)");
+                }
+                $(finish_scene_options[random_number]).show();
+                $(".anonymous-sign-in").html(anonymous_signin_options[Math.floor(Math.random() * 2)]);
             }
 
             $(".skip").hide();

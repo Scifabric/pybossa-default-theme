@@ -1,6 +1,43 @@
 <div class="col-md-offset-2 col-xs-12 col-md-8 outcome-options" style="text-align: center;">
     <h2 style="text-align: center;">Thank you for helping us decode this action</h2>
     <div class="next-ua" id="submit" style="margin: 0 auto; float: none;">NEXT URGENT ACTION</div>
+    <div style="position: relative">
+        <div class="finish-scene" style="display: none;">
+            <div id="circle-finish-scene" class="circle-finish-scene" style="display: none;">
+                <div class="circle-base circle1">
+                    <h1 style="text-transform: uppercase;" class="feedbackHeader" id="feedbackHeader">You’re pretty brilliant</h1>
+                    <hr class="hr" style="margin-top: 0; width: 90%; background-color: #fff;">
+                    <div class="sharing-buttons rrssb-buttons">
+                        <h3 style="margin-top: -5px;">Please share</h3>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ config.get('HOST')}}"
+                           class="popup" style="height: 65px;">
+                            <i class="fa fa-facebook-square fa-4x"
+                               aria-hidden="false"></i>
+                        </a>
+                        <a href="http://twitter.com/share?url={{ config.get('HOST')}}/&amp;text=Join hundreds of digital volunteers helping us expose human rights violations"
+                           class="popup" style="margin-left: 5px !important">
+                            <i class="fa fa-twitter-square fa-4x"
+                               aria-hidden="false"></i>
+                        </a>
+                    </div>
+                </div>
+                {% if current_user.is_authenticated() %}
+                <div class="task-counter action-counter" style="width: 260px; margin:20px auto;">2 ACTIONS COMPLETED</div>
+                {% else %}
+                <div class="task-counter" style="width: 260px; margin:20px auto;"><a style="color: #fff;" href="{{ url_for('account.signin') }}">Sign in to
+                    track your progress.</a></div>
+                {% endif %}
+            </div>
+            <div id="anonymous-finish-scene" class="anonymous-finish-scene" style="display: none;">
+                <div class="task-counter anonymous-sign-in"><h5
+                        id="anonymous-sign-in"
+                        style="color: #fff;"
+                        href="{{ url_for('account.signin') }}">
+                    Sign in to
+                    track your progress.</h5></div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="col-md-2">
 </div>
