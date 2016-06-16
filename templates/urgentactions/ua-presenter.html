@@ -8,6 +8,14 @@
             if (person_name != "") {
                 calculationPosition(parent_paragraph);
             }
+
+            var resized_screen_width = $(window).width();
+
+            if (resized_screen_width < 992){
+                $(".sub-header-container").parent().trigger("sticky_kit:detach");
+            } else {
+                $(".sub-header-container").parent().stick_in_parent();
+            }
         });
         $(".one-person").click(function () {
             document.onmouseup = gText;

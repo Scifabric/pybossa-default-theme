@@ -886,6 +886,15 @@ body > footer li > a:hover {
     line-height: 0;
 }
 
+/*.control-label {*/
+    /*margin-left: 8px;*/
+/*}*/
+
+/*input[type="checkbox"] {*/
+    /*float: left;*/
+    /*margin-top: 10px;*/
+/*}*/
+
 .form-actions:after {
     clear: both;
 }
