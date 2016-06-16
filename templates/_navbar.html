@@ -34,7 +34,7 @@
 
                 <li><a href="{{ url_for('account.signin') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
             {% endif %}
-        </ul>;
+        </ul>
         <ul class="nav navbar-nav navbar-right ">
             <li style="display: none;">
                 {% if current_user.is_authenticated() %}
