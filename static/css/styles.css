@@ -998,5 +998,5 @@ li > a {
 }
 
 .profile-img-cursor{
-    cursor: text !important;
+    cursor: default !important;
 }

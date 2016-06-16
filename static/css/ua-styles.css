@@ -859,7 +859,7 @@ h2 {
     }
 
     .country-date {
-        display: none;
+        display: block;
     }
 
 }
