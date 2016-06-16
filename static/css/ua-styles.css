@@ -858,6 +858,10 @@ h2 {
         display: none;
     }
 
+    .hr-container {
+        display: none;
+    }
+
     .country-date {
         font-size: 22px;
         display: block;
@@ -865,7 +869,7 @@ h2 {
     }
 
     .country-date-small {
-        margin: 0 auto;
+        margin: -50px auto;
         width: 700px;
     }
 }
