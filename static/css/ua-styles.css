@@ -860,6 +860,12 @@ h2 {
 
     .country-date {
         display: block;
+        margin-left: 0;
+    }
+
+    .country-date-small {
+        margin: 0 auto;
+        width: 700px;
     }
 }
 
