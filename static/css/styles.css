@@ -736,9 +736,8 @@ ul.users li a {
     opacity: 1;
 }
 
-.bs-docs-sidenav.affix {
-    margin-top: 20px;
-    top: auto;
+.top-padding-style {
+    margin-top: 25px;
 }
 
 .bs-docs-sidenav.affix-bottom {
