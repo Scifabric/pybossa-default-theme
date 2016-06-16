@@ -15,7 +15,7 @@
         <h2>{{ _('Your Profile') }}</h2>
         {{ helper.render_user_profile(current_user, upload_method, "settings") }}
         <hr class="col-xs-12">
-        {% if projects_contrib is sameas '[]' %}
+        {% if projects_contrib|length > 0 %}
         <h2 class="col-xs-12">{{ _('Your Contributions') }}</h2>
         {%endif %}
         {% for project in projects_contrib %}
