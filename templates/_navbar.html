@@ -1,5 +1,4 @@
-<div class="amnesty-header">
-  <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
     <div class="container-fluid" id="header-container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar5">
@@ -32,9 +31,10 @@
             {% else %}
                 <li class="admin-menu"><a href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}">{{ _('Launch') }}</a></li>
                 <li><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li>
-                <li><a href="{{ url_for('account.signin') }}">{{ _('Sign in') }}</a></li>
+
+                <li><a href="{{ url_for('account.signin') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
             {% endif %}
-        </ul>
+        </ul>;
         <ul class="nav navbar-nav navbar-right ">
             <li style="display: none;">
                 {% if current_user.is_authenticated() %}

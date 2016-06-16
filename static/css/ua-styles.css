@@ -833,7 +833,7 @@ h2 {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .anonymous-sign-in {
         width: 100% !important;
     }
@@ -859,12 +859,11 @@ h2 {
     }
 
     .country-date {
-        display: none;
+        display: block;
     }
-
 }
 
-@media (min-width: 768px) {
+@media (min-width: 993px) {
     .anonymous-sign-in {
         width: 150% !important;
         margin-left: -70px !important;
