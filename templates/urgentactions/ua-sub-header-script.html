@@ -218,15 +218,15 @@
                 $(".presenter-container, .ua-sidebar").css("background", "rgba(0, 0, 0, 0.7)");
                 $(".circle-finish-scene").show(250);
             } else {
-                $(".presenter-container, .ua-sidebar").css("background", "rgba(0, 0, 0, 1)");
-                var random_number = Math.floor(Math.random() * 2);
-                if (finish_scene_options[random_number] == ".circle-finish-scene"){
-                    $(".presenter-container, .ua-sidebar").css("background", "rgba(0, 0, 0, 0.7)");
-                } else {
-                    $(".presenter-container, .ua-sidebar").css("background", "rgba(0, 0, 0, 1)");
-                }
-                $(finish_scene_options[random_number]).show();
-                $(".anonymous-sign-in").html(anonymous_signin_options[Math.floor(Math.random() * 2)]);
+//                var random_number = Math.floor(Math.random() * 2);
+//                if (finish_scene_options[random_number] == ".circle-finish-scene"){
+                $(".presenter-container, .ua-sidebar").css("background", "rgba(0, 0, 0, 0.7)");
+                $(".circle-finish-scene").show(250);
+//                } else {
+//                    $(".presenter-container, .ua-sidebar").css("background", "rgba(0, 0, 0, 1)");
+//                }
+//                $(finish_scene_options[random_number]).show();
+//                $(".anonymous-sign-in").html(anonymous_signin_options[Math.floor(Math.random() * 2)]);
             }
 
             $(".skip").hide();

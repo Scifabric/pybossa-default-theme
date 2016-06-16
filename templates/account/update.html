@@ -43,7 +43,7 @@
             {# render_field(form.locale, class="col-xs-6 form-control", style="width: 280px !important") #}
             {{ render_field(form.privacy_mode) }}
             {{ render_field(form.subscribed) }}
-            {{ render_field(form.newsletter_subscribe) }}
+            {{ render_field(form.newsletter_subscribe) }}<br>
             {{ render_field(form.country, class="col-xs-6 form-control", style="width: 280px !important", placeholder= _('Country') ) }}<br><br>
             <div class="form-actions">
                 <button type="submit" name='btn' value="Profile" class="btn btn-primary btn-large" />{{ _('Save the changes') }}</button>
