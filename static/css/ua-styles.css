@@ -947,16 +947,4 @@ h2 {
     .divider {
         display: none !important;
     }
-
-    #menu {
-    }
-
-    .sub-header-container {
-    }
-
-}
-
-@media (min-width: 991px) and (max-width: 1000px) {
-    .right-nav {
-    }
 }
