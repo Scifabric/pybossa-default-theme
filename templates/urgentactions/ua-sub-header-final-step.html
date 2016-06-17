@@ -24,7 +24,7 @@
                 {% if current_user.is_authenticated() %}
                 <div class="task-counter action-counter" style="width: 260px; margin:20px auto;">2 ACTIONS COMPLETED</div>
                 {% else %}
-                <div class="task-counter" style="width: 260px; margin:20px auto;"><a style="color: #fff;" href="{{ url_for('account.signin') }}">Sign in to
+                <div class="task-counter" style="width: 260px; margin:20px auto;"><a style="color: #fff;" href="{{ url_for('account.signin') }}?next={{ request.path }}">Sign in to
                     track your progress.</a></div>
                 {% endif %}
             </div>
@@ -32,7 +32,7 @@
                 <div class="task-counter anonymous-sign-in"><h5
                         id="anonymous-sign-in"
                         style="color: #fff;"
-                        href="{{ url_for('account.signin') }}">
+                        href="{{ url_for('account.signin') }}?next={{ request.path }}">
                     Sign in to
                     track your progress.</h5></div>
             </div>
