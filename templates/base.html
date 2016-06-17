@@ -58,6 +58,14 @@
                 url: "{{ config.get('HOST') }}",
                 description: "Join hundreds of digital volunteers helping us expose human rights violations "
             });
+            $(".controls input[type='checkbox']").each(function () {
+                console.log($(this).parent().html());
+                $(this).parent().css({
+                    "float": "left",
+                    "margin-top": "10px"
+                });
+                $(this).parent().parent().find(".control-label").css("margin", "10px 0 0 7px");
+            });
         });
     </script>
     <!-- User voice -->
