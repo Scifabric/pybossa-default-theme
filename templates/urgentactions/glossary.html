@@ -49,7 +49,8 @@
 </style>
 <script type="text/javascript">
     $(function () {
-        $("a").click(function () {
+        $("a").click(function (e) {
+            e.preventDefault();
             var id = $(this).attr("href");
             $(id).css("color", "red");
             setTimeout(function () {
