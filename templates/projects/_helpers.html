@@ -3,8 +3,7 @@
       <ul class="pagination">
         {% if pagination.has_prev %}
           <li>
-          <a href="{{ url_for_other_page(pagination.page - 1)
-              }}" rel="nofollow">&laquo; {{_('Prev')}} {{handle}}</a>
+          <a href="{{ url_for_other_page(pagination.page - 1)}}" rel="nofollow">&laquo; {{_('Prev')}} {{handle}}</a>
           </li>
         {% endif %}
 
