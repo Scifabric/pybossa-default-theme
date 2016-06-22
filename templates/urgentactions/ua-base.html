@@ -50,8 +50,6 @@
     <!-- Le javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript" src="{{url_for('static', filename='bootstrap/js/bootstrap.js')}}"></script>
-    {% include 'user-voice.html' ignore missing %}
-
 
     <!-- Google Analytics or similar solutions -->
     {% include '_ganalytics.html' ignore missing %}
@@ -65,7 +63,7 @@
     </div>
     <!-- feedback link -->
     <div class="col-xs-12" style="position:fixed !important;left:0px;bottom:10px;z-index:9999;">
-        <a id="feedbackLink" href="http://e-activist.com/ea-action/action?ea.client.id=1924&ea.campaign.id=52252" style="float: right">
+        <a id="feedbackLink" href="https://e-activist.com/ea-action/action?ea.client.id=1924&ea.campaign.id=52252" style="float: right">
         <img class="img-responsive" src="{{url_for('static', filename='img/lightbulb_icon.png')}}" style="height: 32px; width: auto;"/>
         </a>
     </div>

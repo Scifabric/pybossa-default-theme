@@ -55,7 +55,7 @@
         $(function () {
             var FDBK_URL_LINK = "https://e-activist.com/ea-action/action?ea.client.id=1924&ea.campaign.id=52252";
             var current_fd_url = $('#feedbackLink').attr('href');
-            if(FDBK_URL_LINK != current_fd_url){
+            if(FDBK_URL_LINK != current_fd_url.toString()){
                 $('#feedbackLink').prop("href", FDBK_URL_LINK);
             }
             $('.rrssb-buttons').rrssb({
@@ -95,7 +95,7 @@
 
     <!-- feedback link -->
     <div class="col-xs-12" style="position:fixed !important;left:0px;bottom:10px;z-index:9999;">
-        <a id="feedbackLink" href="http://e-activist.com/ea-action/action?ea.client.id=1924&ea.campaign.id=52252" style="float: right">
+        <a id="feedbackLink" href="https://e-activist.com/ea-action/action?ea.client.id=1924&ea.campaign.id=52252" style="float: right">
         <img class="img-responsive" src="{{url_for('static', filename='img/lightbulb_icon.png')}}" style="height: 32px; width: auto;"/>
         </a>
     </div>
