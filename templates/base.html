@@ -53,6 +53,11 @@
     <script src="/static/rrssb/js/rrssb.min.js"></script>
     <script type="text/javascript">
         $(function () {
+            var FDBK_URL_LINK = "https://e-activist.com/ea-action/action?ea.client.id=1924&ea.campaign.id=52252";
+            var current_fd_url = $('#feedbackLink').attr('href');
+            if(FDBK_URL_LINK != current_fd_url){
+                $('#feedbackLink').prop("href", FDBK_URL_LINK);
+            }
             $('.rrssb-buttons').rrssb({
                 title: "Join hundreds of digital volunteers helping us expose human rights violations ",
                 url: "{{ config.get('HOST') }}",
@@ -67,8 +72,6 @@
             });
         });
     </script>
-    <!-- User voice -->
-    {% include 'user-voice.html' ignore missing %}
     <!-- Google Analytics or similar solutions -->
     {% include '_ganalytics.html' ignore missing %}
     <!-- Google Custom Search -->
@@ -89,6 +92,14 @@
     {% block content %}{% endblock %}
 
     </div> <!-- /container -->
+
+    <!-- feedback link -->
+    <div class="col-xs-12" style="position:absolute;left:0px;bottom:10px;z-index:9999;">
+        <a id="feedbackLink" href="https://e-activist.com/ea-action/action?ea.client.id=1924&ea.campaign.id=52252" style="float: right">
+        <img class="img-responsive" src="{{url_for('static', filename='img/lightbulb_icon.png')}}" style="height: 30px; width: auto;"/>
+        </a>
+    </div>
+
     {% if show_cookies_warning %}
     <div id="cookies_warning">
         <p>Cookies help us deliver our services. By using our services, you agree to our use of cookies. <a target="_blank" href="https://www.amnesty.org/en/about-us/cookie-statement/" style="text-decoration: underline !important;">Learn more.</a> <button class="btn btn-sm btn-default" onclick="accept_cookies()" style="float: right; margin-right: 5%;text-transform:uppercase;font-weight: 300"></i> OK, Got it!</button></p>

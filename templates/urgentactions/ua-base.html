@@ -63,6 +63,12 @@
     <div id="main-content-container">
         {% block body %}{% endblock %}
     </div>
+     <!-- feedback link -->
+    <div class="col-xs-12" style="position:absolute;left:0px;bottom:10px;z-index:9999;">
+        <a href="https://e-activist.com/ea-action/action?ea.client.id=1924&ea.campaign.id=52252" style="float: right">
+        <img class="img-responsive" src="{{url_for('static', filename='img/lightbulb_icon.png')}}" style="height: 30px; width: auto;"/>
+        </a>
+    </div>
     <footer id="footer-UA" style="padding-bottom: 20px;">
         <div style="margin: 0 auto; text-align: center;">
             <br><br>
@@ -74,7 +80,6 @@
                         <i class="fa fa-facebook-square fa-4x"
                            aria-hidden="true"></i>
                     </a>
-
                 </li>
                 <li>
                     <a href="http://twitter.com/share?url={{ config.get('HOST')}}/&amp;text=Join hundreds of digital volunteers helping us expose human rights violations"
