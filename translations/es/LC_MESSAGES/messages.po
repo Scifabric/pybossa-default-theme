@@ -1992,7 +1992,7 @@ msgid "Check if you want to allow anonymous users contribute to your project"
 msgstr "Comprueba si quieres que usuarios anónimos contribuyan a tu proyecto"
 
 #: themes/default/templates/projects/update.html:47
-msgid "Save te changes"
+msgid "Save the changes"
 msgstr "Guardar los cambios"
 
 #: themes/default/templates/projects/update_blogpost.html:14

@@ -2003,7 +2003,7 @@ msgstr ""
 
 #: themes/default/templates/projects/update.html:47
 #, fuzzy
-msgid "Save te changes"
+msgid "Save the changes"
 msgstr "Αποθήκευση αλλαγών"
 
 #: themes/default/templates/projects/update_blogpost.html:14
