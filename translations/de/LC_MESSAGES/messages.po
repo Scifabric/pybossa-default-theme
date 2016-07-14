@@ -2010,7 +2010,7 @@ msgid "Check if you want to allow anonymous users contribute to your project"
 msgstr ""
 
 #: themes/default/templates/projects/update.html:47
-msgid "Save te changes"
+msgid "Save the changes"
 msgstr "Änderungen speichern"
 
 #: themes/default/templates/projects/update_blogpost.html:14
