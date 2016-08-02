@@ -42,6 +42,14 @@
         </div>
     </fieldset>
 </form>
+<h3>{{_('Project secret key')}}</h3>
+<div class="input-group">
+    <input type="password" name="secret-key" class="form-control" id="project-secret-key" style="width:100%;" readonly value="{{project.secret_key}}">
+    <span class="input-group-btn"><buton id="password-toggle" class="btn btn-primary"><i class="fa fa-eye password-toggle"></i><i class="fa fa-eye-slash password-toggle" style="display:none"></i></buton></span>
+</div>
+<p style="margin-top: 15px;">
+<a class="btn btn-primary" href="#">{{_('Reset secret key')}}</a>
+</p>
 {% endblock %}
 {% block extrajs %}
 <script>
@@ -58,6 +66,21 @@ $(function() {
         }
         $('#protect').on('change', function() {
             $('#password').toggle();
+            });
+        });
+
+        //Show/hide secret key
+        $(window).load(function(){
+            $(".fa-eye-slash").hide();
+            $("#password-toggle").click(function(evt){
+                evt.preventDefault();
+                $(".password-toggle").toggle();
+                if ( $("#project-secret-key").attr("type") == 'password') {
+                    $("#project-secret-key").attr("type", 'text');
+                }
+                else {
+                    $("#project-secret-key").attr("type", 'password');
+                }
             });
         });
 </script>

@@ -15,3 +15,11 @@
 .categories{
 	margin-top: 25px;
 }
+
+.project-secret-key,
+.project-secret-key:focus {
+    border: 0;
+    outline: 0;
+    font-size: 15px;
+    padding-right: 15px;
+}
