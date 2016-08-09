@@ -1,3 +1,20 @@
+# Add style for results page from https://github.com/AltClick/amnesty-theme
+We need to install `nodejs` v4.x.x so `npm`, `gulp` can run
+```
+# Pull amnesty theme code as submodule
+cd pybossa/themes/default
+git submodule add git@github.com:AltClick/amnesty-theme.git static/amnesty-theme
+
+# copy js, css, images from amnesty theme
+cd static
+npm install
+gulp
+```
+
+new created folders in `pybossa/themes/default/static` : `results-page`, `img/results-page`
+
+
+# Pybossa default theme content
 This is the default theme for the [Pybossa
 server](https://github.com/PyBossa/pybossa).
 
