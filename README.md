@@ -5,13 +5,13 @@ We need to install `nodejs` v4.x.x so `npm`, `gulp` can run
 cd pybossa/themes/default
 git submodule add git@github.com:AltClick/amnesty-theme.git static/amnesty-theme
 
-# copy js, css, images from amnesty theme
+# prepare: copy images, compile less files, pull 3rd libs
 cd static
 npm install
 gulp
 ```
 
-new created folders in `pybossa/themes/default/static` : `results-page`, `img/results-page`
+new created folders in `pybossa/themes/default/static` : `img/results-page`
 
 
 # Pybossa default theme content

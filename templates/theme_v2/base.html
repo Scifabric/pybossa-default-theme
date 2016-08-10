@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    {% if brand == title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>{{ brand }} &middot; {{ title | safe}}</title>
+    {% endif %}
+    <meta name="description" content="Amnesty Decoders: The Amnesty International global network of digital volunteers.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Facebook meta tags-->
+    {% include '_fb.html' ignore missing %}
+
+    <!-- Twitter meta tags-->
+    {% include '_tw.html' ignore missing %}
+
+    <!-- Bootstrap -->
+    {% assets filters="cssmin", output="amnesty-theme/static/all.min.css",
+              "amnesty-theme/static/bootstrap.css",
+              "amnesty-theme/static/amnesty.css",
+              "amnesty-theme/static/results-page.css"
+              %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+    {% endassets %}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="./static/img/fav_icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="./static/img/fav_icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./static/img/fav_icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./static/img/fav_icons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./static/img/fav_icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="./static/img/fav_icons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./static/img/fav_icons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./static/img/fav_icons/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./static/img/fav_icons/apple-touch-icon-180x180.png" />
+    <link rel="icon" type="image/png" href="./static/img/fav_icons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./static/img/fav_icons/android-chrome-192x192.png" sizes="192x192" />
+    <link rel="icon" type="image/png" href="./static/img/fav_icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="./static/img/fav_icons/favicon-16x16.png" sizes="16x16" />
+    <link rel="shortcut icon" type="image/x-icon" href="./static/img/staticfav_icons/favicon.ico" />
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    <!-- Google Analytics -->
+    {% include 'theme_v2/_ganalytics.html' ignore missing %}
+    
+    <!-- Google Custom Search -->
+    {% include '_gcs.html' ignore missing %}
+  </head>
+  <body>
+    <!-- header / navigation -->
+    {% include 'theme_v2/_navbar.html' ignore missing %}
+
+    {% block content %}{% endblock %}
+
+    {% include 'theme_v2/_footer.html' ignore missing %}
+
+    {% assets filters="jsmin", output="amnesty-theme/static/all.min.js",
+                "amnesty-theme/libs/cookies-js/dist/cookies.min.js",
+                "amnesty-theme/libs/bootstrap/dist/js/bootstrap.min.js", 
+                "amnesty-theme/libs/d3/d3.min.js",
+
+                "amnesty-theme/static/js/popup-social-link.js", 
+                "amnesty-theme/static/js/navbar.js",
+
+                "amnesty-theme/static/js/accept-cookies.js",
+                "amnesty-theme/static/js/results-page/sankey.js",
+                "amnesty-theme/static/js/results-page/profile.js"
+              %}
+              <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+
+    <!-- Kandle script-->
+    <script src="https://kandle.org:1984/track"></script>    
+  </body>
+</html>
