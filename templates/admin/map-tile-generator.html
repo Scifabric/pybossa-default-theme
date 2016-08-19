@@ -1,0 +1,112 @@
+<!-- {% extends "/base.html" %} -->
+{% set active_page = "admin" %}
+{% set active_link = "admin" %}
+{% import "account/_helpers.html" as helper %}
+
+{% block content %}
+<!-- <style>
+.leaflet-areaselect-shade {
+    position: absolute;
+    background: rgba(0,0,0, 0.4);
+    z-index:99;
+}
+.leaflet-areaselect-handle {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #666;
+        z-index: 9999;
+    -moz-box-shadow: 1px 1px rgba(0,0,0, 0.2);
+    -webkit-box-shadow: 1px 1px rgba(0,0,0, 0.2);
+    box-shadow: 1px 1px rgba(0,0,0, 0.2);
+    width: 14px;
+    height: 14px;
+    cursor: move;
+}
+.leaflet-areaselect-container{
+z-index: 9999;
+}
+#map {
+    width: 600px; 
+    height: 400px;
+    z-index: 2;
+}
+</style> -->
+  
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
+
+<title>Leaflet Area Select</title>
+<!--<script type="text/javascript" src="../dist/Map.SelectArea.js"></script>-->
+<style type="text/css">
+#map {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+#map-holder{
+    height:auto;
+}
+.leaflet-select-control {
+    background: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+}
+.leaflet-select-control:active,
+.leaflet-select-control.active {
+    background: #cccccc;
+}
+.leaflet-select-control .icon {
+    width: 15px;
+    height: 15px;
+    display: block;
+    background: url('img/select.png') no-repeat;
+}
+.info {
+    font-family: Helvetica, Arial, sans-serif;
+    background: #fff;
+    z-index: 1000;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    padding: 15px;
+}
+.info .result {
+    display: block;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 130px;
+    position: relative;
+    background: #dddddd;
+    font-family: Monaco, Courier, monospace;
+    padding: 5px;
+}
+</style>
+<script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+
+<div id="map-holder" class="row">
+    <div class="col-md-3 col-sm-3">
+        {{ helper.render_account_local_nav(current_user, active_link) }}
+    </div>
+    <div  class="col-md-9 col-sm-9" >
+        <h1><strong>{{ _('Admin Site - Map Tile Generator') }}</strong></h1>
+        <div class="row-fluid">
+        Number of columns: <input type="text" id="number_of_columns" name="number_of_columns">
+        Number of rows:  <input type="text" id="number_of_rows" name="number_of_rows">
+        Zoom:  <input id="zoom" type="text" name="zoom"></div><br />
+        <button id="enable_selection">Insert values & enable selection</button> <button id="clear_map">Clear Map</button><br />
+        
+        <div class="result"></div><br />
+        <span style="color:red;"><br />Click "Insert values & enable selection" and hold SHIFT Key while selecting to select an area of the map.</span><br />
+        <br><div id="map"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{{url_for('static', filename='js/map/TileCalculator.js')}}"></script>
+<script>
+
+</script>
+<script type="text/javascript" src="{{url_for('static', filename='js/map/map-control.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/map/TileCalculator.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/map/map.select-area.js')}}"></script>
+{% endblock %}

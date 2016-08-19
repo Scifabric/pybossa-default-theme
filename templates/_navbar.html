@@ -23,6 +23,7 @@
                 {% if current_user.admin %}
                 <li class="admin-menu"><a href="{{ url_for('admin.index')}}">{{ _('Admin') }}</a></li>
                 <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
+
                 <li class="admin-menu"><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
             {% endif %}
                 <li class="admin-menu"><a href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}">{{ _('Launch') }}</a></li>
@@ -48,6 +49,7 @@
                             _('My Profile') }}</a></li>
                         <li><a href="{{ url_for('account.projects', name=current_user.name) }}"><i
                                 class="icon icon-th-large"></i> {{ _('My Projects') }}</a></li>
+                                 <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Map Tile Generator') }}</a></li>
                         <li><a href="{{ url_for('account.update_profile', name=current_user.name) }}"><i
                                 class="icon icon-cog"></i> {{ _('My Settings') }}</a></li>
                         {% if current_user.admin == 1 %}
