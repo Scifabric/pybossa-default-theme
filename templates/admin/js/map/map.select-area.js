@@ -1,3 +1,4 @@
+<script type="text/javascript">
 /**
  * L.Map.SelectArea - Area selection tool for leaflet
  *
@@ -378,3 +379,4 @@ L.Map.mergeOptions({
 L.Map.addInitHook('addHandler', 'selectArea', L.Map.SelectArea);
 
 });
+</script>
