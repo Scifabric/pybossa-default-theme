@@ -1,13 +1,11 @@
 var gulp       = require('gulp');  
-var less       = require('gulp-less');  
-var minifyCSS  = require('gulp-minify-css');  
+var less       = require('gulp-less');   
 
 var runSequence = require('run-sequence');
 
 var bower = require('gulp-bower');
 
 var amnestyThemeFolder = './amnesty-theme';
-var destFolder = './results-page';
 
 gulp.task('copy', function(){
     gulp.src([amnestyThemeFolder + '/static/img/results-page/**/*.*'], {base: amnestyThemeFolder + '/static/img/results-page'})
