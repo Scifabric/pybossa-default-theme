@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% set active_page = "admin" %}
+{% set active_link = "admin" %}
+{% import "account/_helpers.html" as helper %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
+<script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+<script>
+  var LayerGroup = undefined;
+  $(document).ready(function() {
+      var map = L.map('map').setView([42.662115143057235, 21.16320312023163], 2);
+      map.scrollWheelZoom.disable();
+      L.tileLayer('http://{s}.tiles.mapbox.com/v3/georges.jjc3k7b1/{z}/{x}/{y}.png', {
+          attribution: "{{ _('Data Source') }}:" + "<a href='http://opendatakosovo.org'>Open Data Kosovo</a>",
+          maxZoom: 10
+      }).addTo(map);
+  });
+</script>
+<div id="map-holder" class="row">
+    <div class="col-md-3 col-sm-3">
+    {{ helper.render_account_local_nav(current_user, active_link) }}
+    </div>
+    <div  class="col-md-9 col-sm-9" >
+        <h1><strong>{{ _('Admin Site - Map Result') }}</strong></h1>
+        <div class="row-fluid">
+        <div class="form-group">
+          <div class="dropdown">
+          <label>Select a project: 
+            <select class="selectpicker" data-width="100%" data-live-search="true">
+                {% for pro in all_projects %}
+                   <option> {{ pro.short_name }}</option>               
+                {% endfor %}
+            </select>
+            </label>
+        </div>
+        </div>
+      </div>
+        <div id="map" style="width: 100%; height: 100%;"></div>
+    </div>
+    </div>
+</div>
+{% endblock %}
