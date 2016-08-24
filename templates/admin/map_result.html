@@ -17,8 +17,8 @@
           <div class="dropdown">
           <label>Select a project: 
             <select class="selectpicker" data-width="100%" data-live-search="true">
-                {% for pro in all_projects %}
-                   <option> {{ pro.short_name }}</option>               
+                {% for project in all_projects %}
+                   <option> {{ project.short_name }}</option>               
                 {% endfor %}
             </select>
             </label>
