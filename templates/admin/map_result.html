@@ -6,17 +6,6 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
 <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
-<script>
-  var LayerGroup = undefined;
-  $(document).ready(function() {
-      var map = L.map('map').setView([42.662115143057235, 21.16320312023163], 2);
-      map.scrollWheelZoom.disable();
-      L.tileLayer('http://{s}.tiles.mapbox.com/v3/georges.jjc3k7b1/{z}/{x}/{y}.png', {
-          attribution: "{{ _('Data Source') }}:" + "<a href='http://opendatakosovo.org'>Open Data Kosovo</a>",
-          maxZoom: 10
-      }).addTo(map);
-  });
-</script>
 <div id="map-holder" class="row">
     <div class="col-md-3 col-sm-3">
     {{ helper.render_account_local_nav(current_user, active_link) }}
@@ -40,4 +29,5 @@
     </div>
     </div>
 </div>
+{% include "admin/js/map-result.js" %}
 {% endblock %}
