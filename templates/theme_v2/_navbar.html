@@ -22,6 +22,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="menu-container">
       <ul class="nav navbar-nav navbar-right" id="menu">
+            <li><a href="{{ config.get('DISCUSSION_SERVER_URL') }}">{{ _('Discussion') }}</a></li>
         {% if current_user.is_authenticated() %}
             <li><a href="{{ url_for('account.profile', name=current_user.name) }}">{{
                 _('Account') }}</a></li>
