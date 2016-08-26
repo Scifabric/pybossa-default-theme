@@ -1,3 +1,4 @@
+<script type="text/javascript">
 $(document).ready(function() {
   var map = L.map('map').setView([42.662115143057235, 21.16320312023163], 2);
   map.scrollWheelZoom.disable();
@@ -5,4 +6,5 @@ $(document).ready(function() {
       attribution: "{{ _('Data Source') }}:" + "<a href='http://opendatakosovo.org'>Open Data Kosovo</a>",
       maxZoom: 10
   }).addTo(map);
-});å
+});
+</script>

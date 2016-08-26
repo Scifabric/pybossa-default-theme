@@ -4,13 +4,14 @@
 {% import "account/_helpers.html" as helper %}
 
 {% block content %}
+{% include "admin/map-result/css/map-result-style.css" %}
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
 <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
 <div id="map-holder" class="row">
     <div class="col-md-3 col-sm-3">
     {{ helper.render_account_local_nav(current_user, active_link) }}
     </div>
-    <div  class="col-md-9 col-sm-9" >
+    <div class="col-md-9 col-sm-9" >
         <h1><strong>{{ _('Admin Site - Map Result') }}</strong></h1>
         <div class="row-fluid">
         <div class="form-group">
@@ -25,9 +26,9 @@
         </div>
         </div>
       </div>
-        <div id="map" style="width: 100%; height: 100%;"></div>
+        <div id="map" class="map-result"></div> 
     </div>
     </div>
 </div>
-{% include "admin/js/map-result.js" %}
+{% include "admin/map-result/js/map-result.js" %}
 {% endblock %}
