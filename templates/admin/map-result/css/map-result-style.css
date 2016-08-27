@@ -1,0 +1,10 @@
+<style type="text/css">
+#map{
+  position: relative; overflow: hidden; transform: translateZ(0px);
+  margin: 20px 0;
+  padding: 0;
+  height: 300px;
+  float: left;
+  width: 100%;
+}
+</style>
