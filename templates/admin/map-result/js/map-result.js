@@ -26,15 +26,20 @@ $(document).ready(function() {
     tileDataLayer =  new L.LayerGroup();
     //setting currently changed option value to selectedProject variable 
     var selectedProject = $(this).text()
+    $('#currentProject').html(selectedProject);
     //perform an ajax request using the .ajax() method
-    // $.ajax({
-    //     type: "POST",
-    //     url: "{{ url_for('admin.map_result_data') }}",
-    //     data: selectedProject,
-    //     success: function (respData) {
-    //         loopRespData(respData);
-    //     }
-    // });
+    $.ajax({
+            type: "GET",
+            url: "{{ url_for('admin.map_result_data') }}",
+            contentType: "application/xml; charset=utf-8",
+            data: { currentProject: selectedProject},
+            success: function(respData) {
+                loopRespData(respData);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+          });
     //loop thorugh response data which contain tiles where human presence is verified
     function loopRespData(respData) {
         for (var i = 0; i < respData.length; i++) {
