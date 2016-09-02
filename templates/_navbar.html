@@ -23,7 +23,7 @@
                 {% if current_user.admin %}
                 <li class="admin-menu"><a href="{{ url_for('admin.index')}}">{{ _('Admin') }}</a></li>
                 <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
-
+                <li class="admin-menu"><a href="{{ url_for('project.new') }}">{{ _('Create') }}</a></li>
                 <li class="admin-menu"><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
             {% endif %}
                 <li class="admin-menu"><a href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}">{{ _('Launch') }}</a></li>
