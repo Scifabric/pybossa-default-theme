@@ -18,14 +18,26 @@
     <div  class="col-md-9 col-sm-9" >
         <h1><strong>{{ _('Admin Site - Map Tile Generator') }}</strong></h1>
         <div class="row-fluid">
-        {{ _('Number of columns:') }} <input type="text" id="number_of_columns" name="number_of_columns">
-        {{ _('Number of rows:') }} <input type="text" id="number_of_rows" name="number_of_rows">
-        {{ _('Zoom:') }}  <input id="zoom" type="text" name="zoom"></div><br />
-        <button id="enable_selection">{{ _('Insert values & enable selection') }}</button> <button id="clear_map">{{ _('Clear Map') }}</button><br />
-        
-        <div class="result"></div><br />
-        <span style="color:red;"><br />{{ _('Click "Insert values & enable selection" and hold SHIFT Key while selecting to select an area of the map.') }}</span><br />
-        <br><div id="map"></div>
+
+            <div class="form-group">
+                <label for="zoom-select">{{ _('Zoom:') }}</label>
+                <select class="form-control zoom-select" id="zoom-select" name="zoom-select" style="width:60px;">
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                </select>
+            </div>
+
+            <button type="button" id="clear_map" class="btn btn-default">{{ _('Clear Map') }}</button>
+
+
+            <div class="result"></div><br />
+            <span style="color:red;"><br />{{ _('Click "Insert values & enable selection" and hold SHIFT Key while selecting to select an area of the map.') }}</span><br />
+            <br><div id="map"></div>
         </div>
     </div>
 </div>
