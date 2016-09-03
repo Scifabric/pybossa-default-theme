@@ -1,28 +1,27 @@
 <script type="text/javascript">
 	// A $( document ).ready() block.
+
+    var ZOOM_LEVEL = 12;
+    var NUM_OF_ROWS = 2;
+    var NUM_OF_COLUMNS = 6;
+
 	$( document ).ready(function() {
 
 		var map = new L.Map('map', {
 		  selectArea: true
 		}).setView([22.42658, 114.1452], 1);
 
-		var TILES_ZOOM = "";
-		var incrementX = "";
-		var incrementY = "";
 
-		$('#enable_selection').click(function() {
-			TILES_ZOOM = parseInt($("#zoom").val());
-			incrementX = parseInt($("#number_of_rows").val());
-			incrementY = parseInt($("#number_of_columns").val());
+        $('.zoom-select').on('change', function() {
+            ZOOM_LEVEL = parseInt($(".zoom-select").val());
 			map.selectArea.setShiftKey(true);
-		});
-		
+        });
+
 
 		var tiles = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			maxZoom: 19,
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 		}).addTo(map);
-
 
 
 		var result = document.querySelector('.result');
@@ -32,6 +31,7 @@
 
 		var southWestLat = '';
 		var southWestLon = '';
+
 		// on select
 		map.on({
 		  'areaselected': function areaselected(evt) {
@@ -40,7 +40,7 @@
 		  	 southWestLat = evt.bounds._southWest['lat'];
 		  	 southWestLon = evt.bounds._southWest['lng'];
 
-		  	 var generated_coordinates = generateCoordinates(northEastLat, northEastLon, southWestLat, southWestLon, number_of_rows,  number_of_columns );
+		  	 var generated_coordinates = generateCoordinates(northEastLat, northEastLon, southWestLat, southWestLon);
 
 		  	bounds  = L.bounds(northEastLat, southWestLon );
 
@@ -53,16 +53,16 @@
 
 		  	var bottomRight = L.marker([southWestLat, northEastLon]);
 
-		  	var topLeftPixelCoordinates = latLongZoomToPixelCoords(northEastLat, southWestLon,TILES_ZOOM);
-		  	var topRightPixelCoordinates = latLongZoomToPixelCoords(northEastLat, northEastLon,TILES_ZOOM);
-		  	var bottomLeftPixelCoordinates = latLongZoomToPixelCoords(southWestLat, southWestLon,TILES_ZOOM);
-		  	var bottomRightPixelCoordinates = latLongZoomToPixelCoords(southWestLat, northEastLon,TILES_ZOOM);
+		  	var topLeftPixelCoordinates = latLongZoomToPixelCoords(northEastLat, southWestLon);
+		  	var topRightPixelCoordinates = latLongZoomToPixelCoords(northEastLat, northEastLon);
+		  	var bottomLeftPixelCoordinates = latLongZoomToPixelCoords(southWestLat, southWestLon);
+		  	var bottomRightPixelCoordinates = latLongZoomToPixelCoords(southWestLat, northEastLon);
 
-		  	var topLeftPixelCoords = latLongZoomToPixelCoords(northEastLat,southWestLon,TILES_ZOOM);
-		  	var bottomRightPixelCoords = latLongZoomToPixelCoords(southWestLat, northEastLon,TILES_ZOOM);
+		  	var topLeftPixelCoords = latLongZoomToPixelCoords(northEastLat,southWestLon);
+		  	var bottomRightPixelCoords = latLongZoomToPixelCoords(southWestLat, northEastLon);
 
 		  	//After we figured out the corner coordinates, let's generate the CSV
-		  	generateTilesCsv(topLeftPixelCoords.x, topLeftPixelCoords.y,bottomRightPixelCoords.x,bottomRightPixelCoords.y, incrementX,incrementY, TILES_ZOOM );
+		  	generateTilesCsv(topLeftPixelCoords.x, topLeftPixelCoords.y,bottomRightPixelCoords.x,bottomRightPixelCoords.y);
 		  	
 		  	// Generating polylines so we can see which area we selected on the map
 		  	var upperLine = L.polyline([topRight._latlng, topLeft._latlng], {color: 'yellow'}).addTo(map),
@@ -76,7 +76,7 @@
 
 		  	// clearing the map selection when we click the Clear Map button
 		  	$('#clear_map').click(function(){
-		  		for(index in polylinesArray){
+		  		for(var index in polylinesArray){
 		  			map.removeLayer(polylinesArray[index]);
 		  		}
 			});
@@ -97,31 +97,31 @@
 
 		// updateButton();
 
-		
 
-		
+
+
 	});
 	function clearMap(map) {
-	   for (i in map._layers) {
+	   for (var i in map._layers) {
 		    if (map._layers[i].options.format == undefined) {
 		        try {
 		            map.removeLayer(map._layers[i]);
 		        } catch (e) {
-		            console.log("problem with " + e + map._layers[i]);
+		            console.error("problem with " + e + map._layers[i]);
 		        }
 		    }
 		}
 	}
 	/***
 		Generating coordinates based on the corners of the selection
-		If the we are selecting corners/bounds named as 
-		n_e_lat = northEastLat, 
-		n_e_lon = northEastLon, 
-		s_w_lat = southWestLat, 
+		If the we are selecting corners/bounds named as
+		n_e_lat = northEastLat,
+		n_e_lon = northEastLon,
+		s_w_lat = southWestLat,
 		s_w_lon = southWestLon
 
 		We first need the distance of the longitude to get the coordinates of the corners of the tiles in an horizontal view.
-		
+
 		*** Horizontal distance ***
 		h_d = horizontal_distance
 		h_d = n_e_lon(right longitude) - s_w_lon(left_longitude);
@@ -147,7 +147,7 @@
 							*														*
 		(s_w_lat,s_w_lon)   **************h_d*******SOUTH**********h_d*************** (s_w_lat, n_e_lon)
 	***/
-	function generateCoordinates(northEastLat, northEastLon, southWestLat, southWestLon, numberOfRows, numberOfColumns ){
+	function generateCoordinates(northEastLat, northEastLon, southWestLat, southWestLon){
 		// The array of the end-result we get from this method looking like:
 		var result = [];
 
@@ -158,17 +158,17 @@
 		var verticalDistance = northEastLon - southWestLon;
 
 		// The horizontal distance(width) of a single tile
-		var horizontalTileDistance = horizontalDistance/numberOfRows;
+		var horizontalTileDistance = horizontalDistance/ NUM_OF_ROWS;
 
 		// The vertical distance(height) of a single tile
-		var verticalTileDistance = verticalDistance/numberOfColumns;
+		var verticalTileDistance = verticalDistance/ NUM_OF_COLUMNS;
 
 		// Caulcate the corner coordinates of the tiles.
-		for (i = 1; i <= numberOfRows; i++) {
+		for (var i = 1; i <= NUM_OF_ROWS; i++) {
 			result[i] = [];
 
 
-			for(j = 1; j<=numberOfColumns; j++){
+			for(var j = 1; j<=NUM_OF_COLUMNS; j++){
 				var horizontalTileCoordinate = i*horizontalTileDistance + southWestLat;
 				var verticalTileCoordinate = j*verticalTileDistance + southWestLon;
 
@@ -177,18 +177,18 @@
 
 				result[i][j] = {"lat":horizontalTileCoordinate, "lon":verticalTileCoordinate , "lat2":secondHorizontalTileCoordinate,"lon2":secondVerticalTileCoordinate};
 			}
-			
+
 		}
 
 		return result;
 	}
 
 	// Convert latitude and longitude to pixel coordinates
-	function latLongZoomToPixelCoords(lat, lon, zoom){
+	function latLongZoomToPixelCoords(lat, lon){
 
 	    var sinLat = Math.sin(lat * Math.PI/180.0);
-	    var x = ((lon + 180) / 360) * 256 * Math.pow(2,zoom);
-	    var y = (0.5 - Math.log((1 + sinLat) / (1 - sinLat)) / (4 * Math.PI)) * 256 * Math.pow(2,zoom);
+	    var x = ((lon + 180) / 360) * 256 * Math.pow(2, ZOOM_LEVEL);
+	    var y = (0.5 - Math.log((1 + sinLat) / (1 - sinLat)) / (4 * Math.PI)) * 256 * Math.pow(2, ZOOM_LEVEL);
 	    var p_x = Math.floor(x);
 	    var p_y = Math.floor(y);
 	    var layerPoint = {
@@ -210,9 +210,9 @@
 	}
 
 	// Convert tile address cordinates to QuadKey if we are using BING MAPS
-	var tileCoordsAndZoomToQuadKey = function(x, y, zoom){
+	var tileCoordsAndZoomToQuadKey = function(x, y){
 		var quadKey = '';
-	    for( i=zoom;i>0;i--){
+	    for(var i=ZOOM_LEVEL; i>0; i--){
 	    	var digit = 0;
 	        var mask = 1 << (i - 1);
 	        if((x & mask) != 0){
@@ -232,19 +232,19 @@
 
 	    return tile_url
 	}
-	    
+
 	// Convert latitude and longitude to Quad Key
-	function latLongZoomToQuadKey(lat, lon, zoom){
-		var pixel = latLongZoomToPixelCoords(lat, lon, zoom);
+	function latLongZoomToQuadKey(lat, lon){
+		var pixel = latLongZoomToPixelCoords(lat, lon);
 	    var tile = pixelCoordsToTileAddress(pixel.x, pixel.y);
-	    var quadKey = tileCoordsAndZoomToQuadKey(tile.x, tile.y, zoom);
+	    var quadKey = tileCoordsAndZoomToQuadKey(tile.x, tile.y);
 	    return quadKey;
 	}
 
-	// Generate the CSV file based on the corner tile address coordinates, the increments 
+	// Generate the CSV file based on the corner tile address coordinates, the increments
 	// increementX = width
 	// incrementY = height
-	function generateTilesCsv(x, y,x1,y1,incrementX,incrementY, zoom){
+	function generateTilesCsv(x, y, x1, y1){
 
 		var cornerTile = pixelCoordsToTileAddress(x, y);
 		var bottomRightTile = pixelCoordsToTileAddress(x1, y1);
@@ -255,30 +255,28 @@
 		var maxX = bottomRightTile.x;
 		var maxY = bottomRightTile.y;
 
-		var result = buildTileCords(cornerX,cornerY,maxX,maxY,incrementX,incrementY);
+		var result = buildTileCords(cornerX,cornerY,maxX,maxY);
 		var csvArray = [];
-		var csvHeader = ",index,zoom,x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,x8,y8,x9,y9,x10,y10,x11,y11,x12,y12" + "\n";;
+		var csvHeader = "index,zoom,x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,x8,y8,x9,y9,x10,y10,x11,y11,x12,y12" + "\n";
 		csvArray[0] = csvHeader;
 
-		var row = "";
-		for(index in result){
+		for(var index in result){
 			var loopIndex = 1;
-			row += "" + index + "," + zoom + ",";
-			for(idx in result[index]){
+			var row = index + "," + ZOOM_LEVEL;
+			for(var idx in result[index]){
 				
-				for(i in result[index][idx]){
+				for(var i in result[index][idx]){
 					if(loopIndex==1){
-						row += result[index][idx][i] + ",";
+						row += "," + result[index][idx][i];
 					}
 					else if(loopIndex < result[index][idx].length - 1 && result[index][idx][i] != ""){
-						row += result[index][idx][i] + ",";
+						row += "," + result[index][idx][i];
 					}
 					loopIndex++;
 				}
 			}
-			row+= "\n";
+			row += "\n";
 			csvArray.push(row);
-			row = "";
 		}
 		downloadFile(csvArray,"download.csv");
 		return result;
@@ -317,18 +315,18 @@
 	}
 
 	// Convert X Y Tile coordinates to URL if we are using BING MAPS
-	function XYtoURL(x,y,zoom){
+	function XYtoURL(x,y){
 		var tile = pixelCoordsToTileAddress(x, y);
-		var quadKey = tileCoordsAndZoomToQuadKey(tile.x, tile.y, zoom);
+		var quadKey = tileCoordsAndZoomToQuadKey(tile.x, tile.y);
 		var tile_url = quadKeyToUrl(quadKey);
 	    return [tile_url];
 	}
 
 	// Convert Latitude, Longitude and Zoom directly to tile URL if we are using Bing Maps
-	function latLongZoomToURL(lat, lon, zoom){
-		var pixel = latLongZoomToPixelCoords(lat, lon, zoom);
+	function latLongZoomToURL(lat, lon){
+		var pixel = latLongZoomToPixelCoords(lat, lon);
 	    var tile = pixelCoordsToTileAddress(pixel.x, pixel.y);
-	    var quadKey = tileCoordsAndZoomToQuadKey(tile.x, tile.y, zoom);
+	    var quadKey = tileCoordsAndZoomToQuadKey(tile.x, tile.y);
 	    var tileUrl = quadKeyToUrl(quadKey);
 	    return tileUrl;
 	}
@@ -391,7 +389,7 @@
 	                break;
 
 	            default:
-	                console.log("Invalid QuadKey digit sequence.");
+	                console.error("Invalid QuadKey digit sequence.");
 	        }
 	    }
 
@@ -399,24 +397,24 @@
 	}
 
 	// Build tile Coordinates based on the params we give in the map tile generator page
-	function buildTileCords(x,y,maxX,maxY,incrementX,incrementY){
+	function buildTileCords(x,y,maxX,maxY){
 	  var xCoordCurrent = x;
 	  var yCoordCurrent = y;
 
 	  var result = [];
 
-	  var numberOfTasks = ((maxX-x)/incrementX) * ((maxY-y)/incrementY);
+	  var numberOfTasks = ((maxX-x)/ NUM_OF_ROWS) * ((maxY-y)/ NUM_OF_COLUMNS);
 
 	  var loopIndex = 1;
 	  while(yCoordCurrent < maxY){
 	    result[loopIndex] = [];
 	    if(xCoordCurrent<maxX){
-	      result[loopIndex].push([xCoordCurrent,yCoordCurrent],[xCoordCurrent+incrementX-1,yCoordCurrent+incrementY-1]);
-	      xCoordCurrent = xCoordCurrent + incrementX;
+	      result[loopIndex].push([xCoordCurrent,yCoordCurrent],[xCoordCurrent+NUM_OF_ROWS-1,yCoordCurrent+NUM_OF_COLUMNS-1]);
+	      xCoordCurrent = xCoordCurrent + NUM_OF_ROWS;
 	      loopIndex++;
 	    }else{
 	      xCoordCurrent = x;
-	      yCoordCurrent = yCoordCurrent + incrementY;
+	      yCoordCurrent = yCoordCurrent + NUM_OF_COLUMNS;
 	    }
 	  }
 	  var finalResult = [];
