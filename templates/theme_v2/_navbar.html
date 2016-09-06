@@ -38,7 +38,7 @@
             <li><a href="{{ url_for('results.index')}}">{{ _('Results') }}</a></li>
             <li><a href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}">{{ _('Launch') }}</a></li>
             <li><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li> 
-            <li><a href="{{ url_for('amnesty.login') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
+            <li><a href="{{ url_for('account.signin') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
         {% endif %}
 
       </ul>
