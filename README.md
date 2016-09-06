@@ -15,6 +15,7 @@ git submodule add git@github.com:AltClick/amnesty-theme.git static/amnesty-theme
 Copy images, compile less files, pull 3rd libaries
 ```
 cd pybossa/themes/default/static
+mkdir -p img/results-page js/results-page
 rm -Rf img/results-page/* js/results-page/*
 cp -R amnesty-theme/static/img/results-page/* img/results-page
 cp -R amnesty-theme/static/js/results-page/* js/results-page
