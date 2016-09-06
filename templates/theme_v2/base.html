@@ -17,13 +17,10 @@
     {% include '_tw.html' ignore missing %}
 
     <!-- Bootstrap -->
-    {% assets filters="cssmin", output="amnesty-theme/static/all.min.css",
-              "amnesty-theme/static/bootstrap.css",
-              "amnesty-theme/static/amnesty.css",
-              "amnesty-theme/static/results-page.css"
-              %}
-        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-    {% endassets %}
+    <link rel="stylesheet" type="text/css" href="/static/amnesty-theme/static/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/amnesty-theme/static/amnesty.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/amnesty-theme/static/results-page.min.css">
+
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
@@ -50,9 +47,6 @@
     <link rel="icon" type="image/png" href="./static/img/fav_icons/favicon-16x16.png" sizes="16x16" />
     <link rel="shortcut icon" type="image/x-icon" href="./static/img/staticfav_icons/favicon.ico" />
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-
     <!-- Google Analytics -->
     {% include 'theme_v2/_ganalytics.html' ignore missing %}
     
@@ -67,21 +61,7 @@
 
     {% include 'theme_v2/_footer.html' ignore missing %}
 
-    {% assets filters="jsmin", output="amnesty-theme/static/all.min.js",
-                "amnesty-theme/libs/cookies-js/dist/cookies.min.js",
-                "amnesty-theme/libs/bootstrap/dist/js/bootstrap.min.js", 
-                "amnesty-theme/libs/d3/d3.min.js",
-
-                "amnesty-theme/static/js/popup-social-link.js", 
-                "amnesty-theme/static/js/navbar.js",
-
-                "amnesty-theme/static/js/accept-cookies.js",
-                "amnesty-theme/static/js/results-page/sankey.js",
-                "amnesty-theme/static/js/results-page/profile.js"
-              %}
-              <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
-
+    <script type="text/javascript" src="/static/amnesty-theme/static/results-page.min.js"></script>
     <!-- Kandle script-->
     <script src="https://kandle.org:1984/track"></script>    
   </body>

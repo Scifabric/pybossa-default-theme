@@ -1,9 +1,6 @@
 # Results page
 The results page in this pybossa theme use style and images from https://github.com/AltClick/amnesty-theme
 
-## Environment
-- cssmin : https://pypi.python.org/pypi/cssmin . Already added into requirements.txt in https://github.com/AltClick/pybossa-amnesty-microtasking
-
 ## Git submodule
 https://github.com/AltClick/amnesty-theme is added as git submodule in this repo 
 
@@ -14,20 +11,14 @@ cd pybossa/themes/default
 git submodule add git@github.com:AltClick/amnesty-theme.git static/amnesty-theme
 ```
 
-## Installation
-We need to nodejs, gulp as build tool
-```
-curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo npm install --global gulp-cli
-```
-
 ## Build style
 Copy images, compile less files, pull 3rd libaries
 ```
 cd pybossa/themes/default/static
-npm install
-gulp
+rm -Rf img/results-page/* js/results-page/*
+cp -R amnesty-theme/static/img/results-page/* img/results-page
+cp -R amnesty-theme/static/js/results-page/* js/results-page
+cp -f amnesty-theme/dist/pybossa/* amnesty-theme/static
 ```
 
 # Pybossa default theme content
