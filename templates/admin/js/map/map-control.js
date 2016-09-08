@@ -158,17 +158,17 @@
 		var verticalDistance = northEastLon - southWestLon;
 
 		// The horizontal distance(width) of a single tile
-		var horizontalTileDistance = horizontalDistance/ NUM_OF_ROWS;
+		var horizontalTileDistance = horizontalDistance/ NUM_OF_COLUMNS;
 
 		// The vertical distance(height) of a single tile
-		var verticalTileDistance = verticalDistance/ NUM_OF_COLUMNS;
+		var verticalTileDistance = verticalDistance/ NUM_OF_ROWS;
 
 		// Caulcate the corner coordinates of the tiles.
-		for (var i = 1; i <= NUM_OF_ROWS; i++) {
+		for (var i = 1; i <= NUM_OF_COLUMNS; i++) {
 			result[i] = [];
 
 
-			for(var j = 1; j<=NUM_OF_COLUMNS; j++){
+			for(var j = 1; j<=NUM_OF_ROWS; j++){
 				var horizontalTileCoordinate = i*horizontalTileDistance + southWestLat;
 				var verticalTileCoordinate = j*verticalTileDistance + southWestLon;
 
@@ -403,18 +403,18 @@
 
 	  var result = [];
 
-	  var numberOfTasks = ((maxX-x)/ NUM_OF_ROWS) * ((maxY-y)/ NUM_OF_COLUMNS);
+	  var numberOfTasks = ((maxX-x)/ NUM_OF_COLUMNS) * ((maxY-y)/ NUM_OF_ROWS);
 
 	  var loopIndex = 1;
 	  while(yCoordCurrent < maxY){
 	    result[loopIndex] = [];
 	    if(xCoordCurrent<maxX){
-	      result[loopIndex].push([xCoordCurrent,yCoordCurrent],[xCoordCurrent+NUM_OF_ROWS-1,yCoordCurrent+NUM_OF_COLUMNS-1]);
-	      xCoordCurrent = xCoordCurrent + NUM_OF_ROWS;
+	      result[loopIndex].push([xCoordCurrent,yCoordCurrent],[xCoordCurrent+NUM_OF_COLUMNS-1,yCoordCurrent+NUM_OF_ROWS-1]);
+	      xCoordCurrent = xCoordCurrent + NUM_OF_COLUMNS;
 	      loopIndex++;
 	    }else{
 	      xCoordCurrent = x;
-	      yCoordCurrent = yCoordCurrent + NUM_OF_COLUMNS;
+	      yCoordCurrent = yCoordCurrent + NUM_OF_ROWS;
 	    }
 	  }
 	  var finalResult = [];
