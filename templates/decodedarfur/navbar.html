@@ -1,0 +1,90 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid" id="header-container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar5">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" style="display: none;" id="amnestyLargeLogo" href="/"><img src="/static/img/amnesty-main-logo.png" alt="Amnesty Decoders"></a>
+        <a class="navbar-brand" id="amnestySmallLogo" href="/"><img src="/static/img/amnesty-small-logo.png" alt="Amnesty Decoders"></a>
+        {% if current_user.is_authenticated() %}
+            <a class="amnesty-decoder-text" href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME_SATELLITE_IMAGERY'))}}"><h2>Decode Darfur</h2></a>
+        {% else %}
+            <a class="amnesty-decoder-text" href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME_SATELLITE_IMAGERY'))}}"><h2>Decode Darfur</h2></a>
+        {% endif %}
+      </div>
+      <div id="navbar5" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right" id="menu">
+            {% if current_user.is_authenticated() %}
+                <li class="admin-menu"><a href="{{ url_for('account.profile', name=current_user.name) }}">{{
+                    _('Account') }}</a></li>
+                {% if current_user.admin %}
+                <li class="admin-menu"><a href="{{ url_for('admin.index')}}">{{ _('Admin') }}</a></li>
+                <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
+                <li class="admin-menu"><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
+            {% endif %}
+                <li class="admin-menu"><a href="{{ url_for('account.signout') }}">Sign Out</a></li>
+            {% else %}
+                <li><a href="{{ url_for('account.signin') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
+            {% endif %}
+        </ul>
+        <ul class="nav navbar-nav navbar-right ">
+            <li style="display: none;">
+                {% if current_user.is_authenticated() %}
+                <ul class="nav secondary-nav pull-right ul-top-position">
+                    <li {% if active_page=='profile' %} class="active" {% endif %}><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i
+                        class="icon icon-user"></i> {{ current_user.name | truncate(6,true) }} <span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('account.profile', name=current_user.name) }}"><i
+                                class="icon icon-user"></i> {{
+                            _('My Profile') }}</a></li>
+                        <li><a href="{{ url_for('account.projects', name=current_user.name) }}"><i
+                                class="icon icon-th-large"></i> {{ _('My Projects') }}</a></li>
+                        <li><a href="{{ url_for('account.update_profile', name=current_user.name) }}"><i
+                                class="icon icon-cog"></i> {{ _('My Settings') }}</a></li>
+                        {% if current_user.admin == 1 %}
+                        <li class="divider"></li>
+                        <li><a href="{{ url_for('admin.index') }}">{% if notify_admin %} <span
+                                class="label label-info ">{{ news |count }}</span>{%
+                            else %}<i class="icon icon-cog"></i> {% endif %} {{ _('Admin Site') }}</a></li>
+                        {% endif %}
+                        <li class="divider"></li>
+                        <li><a href="{{ url_for('account.signout') }}"><i class="icon icon-off"></i> {{
+                            _('Sign Out') }}</a>
+                        </li>
+                    </ul>
+                    </li>
+                </ul>
+                {% endif %}
+            </li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!--/.container-fluid -->
+  </nav>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $(window).resize(function () {
+            if ($(window).width() < 980) {
+                $('#nav-head').removeClass('navbar-fixed-top');
+            }
+            else {
+                $('#nav-head').addClass('navbar-fixed-top');
+            }
+
+        });
+        if ($(window).width() < 980) {
+            $('#nav-head').removeClass('navbar-fixed-top');
+        }
+        else {
+            $('#nav-head').addClass('navbar-fixed-top');
+        }
+    });
+</script>
