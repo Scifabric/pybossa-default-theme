@@ -60,9 +60,9 @@
                 $('#feedbackLink').prop("href", FDBK_URL_LINK);
             }
             $('.rrssb-buttons').rrssb({
-                title: "Join hundreds of digital volunteers helping us expose human rights violations ",
+                title: "Join hundreds of digital volunteers helping us to decode Darfur.",
                 url: "{{ config.get('HOST') }}",
-                description: "Join hundreds of digital volunteers helping us expose human rights violations "
+                description: "Join hundreds of digital volunteers helping us to decode Darfur.
             });
             $(".controls input[type='checkbox']").each(function () {
                 $(this).parent().css({
@@ -125,7 +125,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://twitter.com/share?url={{ config.get('HOST')}}/&amp;text=Join hundreds of digital volunteers helping on decode Darfur project."
+                    <a href="http://twitter.com/share?url={{ config.get('HOST')}}/&amp;text=Join hundreds of digital volunteers helping to decode Darfur."
                            class="popup" style="margin-left: 5px !important">
                         <i class="fa fa-twitter-square fa-4x"
                            aria-hidden="false"></i>
@@ -143,6 +143,6 @@
     </script>
 
     <!-- Kandle script-->
-    <script src="https://kandle.org:1984/track"></script>
+    {# <script src="https://kandle.org:1984/track"></script> #}
   </body>
 </html>
