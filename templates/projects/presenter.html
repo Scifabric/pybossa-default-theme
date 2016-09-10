@@ -1,7 +1,6 @@
 {% set active_page = "projects"  %}
 {% set active_project = project.short_name %}
 
-
 <!-- Load Urgent Action template -->
 {% if project.short_name == config.get("PROJECT_SHORT_NAME") %}
     {% extends "urgentactions/ua-base.html" %}
