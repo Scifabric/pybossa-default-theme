@@ -22,6 +22,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="menu-container">
       <ul class="nav navbar-nav navbar-right" id="menu">
+            <li><a href="{{ config.get('DISCOURSE_SERVER_URL') }}">{{ _('Forum') }}</a></li>
         {% if current_user.is_authenticated() %}
             <li><a href="{{ url_for('account.profile', name=current_user.name) }}">{{
                 _('Account') }}</a></li>
@@ -38,7 +39,7 @@
             <li><a href="{{ url_for('results.index')}}">{{ _('Results') }}</a></li>
             <li><a href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME'))}}">{{ _('Launch') }}</a></li>
             <li><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li> 
-            <li><a href="{{ url_for('account.signin') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
+            <li><a href="{{ url_for('amnesty.login') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
         {% endif %}
 
       </ul>
