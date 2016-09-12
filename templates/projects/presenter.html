@@ -19,6 +19,7 @@
 {% else %}
     {% extends "base.html" %}
     {% block content %}
+
     <script>
         Modernizr.load({
             test: window.JSON,
@@ -38,6 +39,8 @@
     </div>
     {% endif %}
 
+    {# FIXME: How come this is rendered for the Decode Darfur project when it is in the else block? #}
+    {# Uncommented for now #}
     {{ project.info.task_presenter|safe }}
 
     <div id='PYBOSSA_USER_LOCALE' hidden>

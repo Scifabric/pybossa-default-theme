@@ -1,26 +1,40 @@
-{% extends "/base.html" %}
 {% set active_page = "projects"  %}
 {% set active_project = project.short_name %}
 
-{% block content %}
+<!-- Load Decode Darfur template -->
+{% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR") %}
+    {% extends "decodedarfur/base.html" %}
+    {% block subnavblock %}
+    {% include "decodedarfur/sub-header.html" %}
+    {% endblock subnavblock %}
 
-{{ project.info.tutorial | safe}}
-
-<div class="row">
-    <div class="col-xs-12" style="text-align:center;padding-top:20px;">
-        <a id="start" href={{url_for('project.presenter', short_name = project.short_name)}}
-           class="btn btn-primary btn-large"> 
-           <i class="glyphicon glyphicon-thumbs-up"></i>
-           {{_('Start contributing')}}!</a>
-    </div>
-</div>
-
-<div id='PYBOSSA_USER_LOCALE' hidden>
-{% if current_user.is_anonymous() %}
-en
 {% else %}
-{{ current_user.locale }}
-{% endif %}
-</div>
+<!-- Load Default template -->
+    {% extends "/base.html" %}
+    {% block content %}
 
-{% endblock %}
+    {{ project.info.tutorial | safe}}
+
+    {# FIXME: How come this is rendered for the Decode Darfur project when it is in the else block? #}
+    {# Uncommented for now #}
+    {#
+    <div class="row">
+        <div class="col-xs-12" style="text-align:center;padding-top:20px;">
+            <a id="start" href={{url_for('project.presenter', short_name = project.short_name)}}
+               class="btn btn-primary btn-large">
+               <i class="glyphicon glyphicon-thumbs-up"></i>
+               {{_('Start contributing')}}!</a>
+        </div>
+    </div>
+    #}
+
+    <div id='PYBOSSA_USER_LOCALE' hidden>
+    {% if current_user.is_anonymous() %}
+    en
+    {% else %}
+    {{ current_user.locale }}
+    {% endif %}
+    </div>
+
+    {% endblock content %}
+{% endif %}
