@@ -11,10 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Facebook meta tags-->
-    {% include '_fb.html' ignore missing %}
+    {% include 'decodedarfur/_fb.html' ignore missing %}
 
     <!-- Twitter meta tags-->
-    {% include '_tw.html' ignore missing %}
+    {% include 'decodedarfur/_tw.html' ignore missing %}
 
     <!-- Le styles -->
     <link href="{{url_for('static', filename='bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
@@ -59,9 +59,9 @@
                 $('#feedbackLink').prop("href", FDBK_URL_LINK);
             }
             $('.rrssb-buttons').rrssb({
-                title: "Join hundreds of digital volunteers helping us expose human rights violations ",
+                title: "Join hundreds of digital volunteers helping us to decode Darfur.",
                 url: "{{ config.get('HOST') }}",
-                description: "Join hundreds of digital volunteers helping us expose human rights violations "
+                description: "Join hundreds of digital volunteers helping us to decode Darfur."
             });
             $(".controls input[type='checkbox']").each(function () {
                 $(this).parent().css({
@@ -72,10 +72,7 @@
             });
         });
     </script>
-    <!-- Google Analytics or similar solutions -->
-    {% include '_ganalytics.html' ignore missing %}
-    <!-- Google Custom Search -->
-    {% include '_gcs.html' ignore missing %}
+
   </head>
 
   <body id="mainBody">
@@ -86,10 +83,19 @@
 
     {% set active_page = active_page | default('index') -%}
     {% set active_project  = active_project | default('none') -%}
-    {% include "_navbar.html" %}
+
+    <!--Include custom nav bar for decode darfur-->
+    {% include "decodedarfur/navbar.html" %}
 
     <div class="container">
-    {% block content %}{% endblock %}
+
+        {% block subnavblock %}
+
+        {% endblock %}
+
+        {% block content %}
+
+        {% endblock %}
 
     </div> <!-- /container -->
 
@@ -106,36 +112,26 @@
     </div>
     {% endif %}
     <footer class="col-xs-12" style="padding-bottom: 20px; min-height: 220px">
-        <div style="margin: 0 auto; text-align: center;">
+         <div style="margin: 0 auto; text-align: center;">
             <br><br>
             <ul class="rrssb-buttons clearfix"
                 style="margin: 0 auto !important; width: 150px !important; height: 65px !important;">
-                <li class="rrssb-facebook">
-                    <a href=""
+                <li>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ config.get('HOST') }}"
                        class="popup">
                         <i class="fa fa-facebook-square fa-4x"
-                           aria-hidden="false"></i>
+                           aria-hidden="true"></i>
                     </a>
-
                 </li>
-                <li class="rrssb-twitter">
-                    <a href="" class="popup"><i class="fa fa-twitter-square fa-4x" aria-hidden="false"></i>
+                <li>
+                    <a href="http://twitter.com/share?url={{ config.get('HOST')}}/&amp;text=Join hundreds of digital volunteers helping to decode Darfur."
+                           class="popup" style="margin-left: 5px !important">
+                        <i class="fa fa-twitter-square fa-4x"
+                           aria-hidden="false"></i>
                     </a>
                 </li>
             </ul>
-            <h3 style="margin-top: 10px; text-transform: uppercase;">Please share and help recruit your friends</h3>
-        </div>
-        <div id="footer_links" class="container">
-            <div class="row" style="font-family: sans-serif; font-size:11px; text-align: center; margin: 0 auto;">
-                <a href="{{ url_for('terms.index')}}">{{ _('Terms of
-                    Use') }}</a><span style="padding: 10px">|</span>
-                <a href="{{ url_for('glossary.index')}}">{{ _('Glossary')
-                    }}</a><span style="padding: 10px">|</span>
-                <a target="_blank" href="https://www.amnesty.org/en/about-us/cookie-statement/">{{
-                    _('Cookies Policy') }}</a><span style="padding: 10px">|</span>
-                <a target="_blank" href="https://www.amnesty.org/en/">{{
-                    _('amnesty.org') }}</a>
-            </div>
+            <h3 style="margin-top: 5px;">Please share and help recruit your friends</h3>
         </div>
     </footer>
     <!-- Le javascript
@@ -146,6 +142,6 @@
     </script>
 
     <!-- Kandle script-->
-    {# <script src='https://kandle.org:1984/track'></script> #}
+    {# <script src="https://kandle.org:1984/track"></script> #}
   </body>
 </html>

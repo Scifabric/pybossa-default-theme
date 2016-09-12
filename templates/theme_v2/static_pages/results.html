@@ -1,0 +1,403 @@
+{% extends "theme_v2/base.html" %}
+{% block content %}
+<!-- section text on background image -->
+<section class="section-text-on-bg-image" id="results-page-intro">
+  <div class="section-overlay"></div>
+  <div class="text-content">
+    <div class="text-content-v-center">
+      <div class="text-content-v-center-cell">
+        <h1 class="section-title"><span>URGENT ACTIONS VISUALISED</span></h1>
+        <p class="lead">
+          Explore the results of our first Amnesty Decoders project.
+        </p>
+      </div>
+    </div> 
+  </div>    
+</section>
+
+<section id="results-page-report-section" class="results-page-section-text">
+    <div class="section-title text-center">
+        <i class='amnesty-report-icon'></i>
+        <h4>The report</h4>
+        <p>
+            Below you can interact with some of the results <br/>our Decoders have helped us analyse.
+        </p>
+    </div>
+    <div class="section-body container-fluid">
+      <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="container-fluid">
+              <div class="grey-bg row">
+                <div class="col-md-6 section-cell text-center">
+                      <p class="single-quote h4">
+                      THE FINDINGS WILL HELP US TO BE MORE EFFECTIVE AT SUPPORTING PEOPLE WHO FACE HUMAN RIGHTS ABUSES IN THE FUTURE.
+                      </p>
+                      <p class="h6 author">- SAURO SCARPELLI</p>
+                      <p class="h6 grey-text">DEPUTY DIRECTOR CAMPAIGNS PROGRAMME, INDIVIDUALS AT RISK</p>
+                </div>
+                <div class="col-md-6 section-cell second-cell">
+                    <p class="h4 no-uppercase text-left">
+                    <span class="grey-text">In just under</span> 2 months, 8000 digital volunteers <span class="grey-text">from more than</span> 150 countries <span class="grey-text">spent over</span> 100 hours <span class="grey-text">to help us decode and verify</span> 2443 urgent actions <span class="grey-text">and identify trends emerging from our massive archive of data.</span>
+                    </p>
+                </div>                  
+              </div>
+            </div>                
+          </div>
+      </div>
+    </div>
+  </section>
+  <section class="results-page-section-text">
+    <div class="container-fluid section-title text-center">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 section-cell  text-center">
+                <i class='amnesty-earth-icon'></i>
+                <h4>URGENT ACTIONS GEOGRAPHY</h4>
+                <p>
+                    Amnesty Urgent Actions have increasingly taken place over the past 36 years in 160 countries.
+                </p>
+                <p>
+                    The map below shows their distribution in the world and the related outcome along this time span.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Country outcome embedded section -->
+<div class="container-fluid section-visualizing-embed" id="country-outcome">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="sideTitleCont">
+          <h4 class="sideTitle">Countries outcomes</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="positive">
+          <div class="row">
+            <div class="col-md-12 vizMap">
+              <iframe width="100%" height="625" frameborder="0" src="https://amnestydecoders.carto.com/viz/af9f01a8-7031-11e6-991e-0ef24382571b/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>    
+<!-- End Country outcome embedded section -->
+
+<!-- Visualizing > violation > text section -->
+<section class="results-page-section-text">
+    <div class="container-fluid section-title text-center">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 section-cell  text-center">
+                <i class='amnesty-flag-icon'></i>
+                <h4>HUMAN RIGHTS VIOLATIONS</h4>
+                <p>
+                    Urgent Actions are related to a wide range of human rights violations.
+                </p>
+                <p>
+                    The following visualization shows their distribution within world regions and according to their outcomes.
+                </p>
+            </div>
+        </div>
+    </div>    
+</section>
+<!-- End Visualizing > violation > text section -->
+
+<!-- Violations outcome embedded section -->
+<div class="container-fluid section-visualizing-embed" id="violations-outcome">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="sideTitleCont">
+          <h4 class="sideTitle">Violation outcomes</h4>
+        </div>
+      </div>
+      <div class="col-lg-9" id="tabCont">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a class="h5" href="#allregions" aria-controls="allregions" role="tab" data-toggle="tab">All regions</a></li>
+          <li role="presentation"><a class="h5" href="#africa" aria-controls="africa" role="tab" data-toggle="tab">Africa</a></li>
+          <li role="presentation"><a class="h5" href="#asia" aria-controls="asia" role="tab" data-toggle="tab">Asia</a></li>
+          <li role="presentation"><a class="h5" href="#southeastasia" aria-controls="southeastasia" role="tab" data-toggle="tab">South East Asia</a></li>
+          <li role="presentation"><a class="h5" href="#europe" aria-controls="europe" role="tab" data-toggle="tab">Europe</a></li>
+          <li role="presentation"><a class="h5" href="#middleeast" aria-controls="middleeast" role="tab" data-toggle="tab">Middle East</a></li>
+          <li role="presentation"><a class="h5" href="#northamerica" aria-controls="northamerica" role="tab" data-toggle="tab">North America</a></li>
+          <li role="presentation"><a class="h5" href="#centralamerica" aria-controls="centralamerica" role="tab" data-toggle="tab">Central America</a></li>
+          <li role="presentation"><a class="h5" href="#southamerica" aria-controls="southamerica" role="tab" data-toggle="tab">South America</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="allregions">
+            <div class="row">
+              <div class="col-md-12 viz hidden-xs">
+
+              </div>
+              <div class="col-md-12 viz visible-xs sankeyImgCont">
+                <img src="/static/img/results-page/all.png" class="img-responsive sankeyImg"/>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="africa">
+            <div class="row">
+              <div class="col-md-3 countryList">
+                <h4>Region countries</h4>
+                <p>
+                  Zambia, South Africa, Somalia, Kenya, Zimbabwe, Cameroon, Democratic Republic of the Congo, Guinea, Swaziland, Mauritania, Togo, Djibouti, Mali, Nigeria, Rwanda, Sudan, Malawi, Cote d'Ivoire, Sierra Leone, Ethiopia, South Sudan, Central African Republic, Equatorial Guinea, Burundi, Chad, Congo, Africa, Central Africa, East Africa, Namibia, Senegal, Uganda, Niger, Gambia, Liberia, Guinea-Bissau, Angola, Gabon, Eritrea, Tunisia, Morocco, Algeria, Libya
+                </p>
+              </div>
+              <div class="col-md-9 viz hidden-xs">
+
+              </div>
+              <div class="col-md-9 viz visible-xs sankeyImgCont">
+                <img src="/static/img/results-page/africa.png" class="img-responsive sankeyImg"/>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="asia">
+            <div class="row">
+              <div class="col-md-3 countryList">
+                <h4>Region countries</h4>
+                <p>
+                  Bangladesh, Sri Lanka, Pakistan, Singapore, India, Bhutan, Hong Kong, China, South Korea, North Korea, Maldives, Nepal, Taiwan, Japan, Afghanistan, Mongolia, Solomon Islands, Papua New Guinea
+                </p>
+              </div>
+              <div class="col-md-9 viz hidden-xs">
+
+              </div>
+              <div class="col-md-9 viz visible-xs sankeyImgCont">
+                <img src="/static/img/results-page/asia.png" class="img-responsive sankeyImg"/>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="southeastasia">
+            <div class="row">
+              <div class="col-md-3 countryList">
+                <h4>Region countries</h4>
+                <p>
+                  Philippines, Malaysia, Thailand, Indonesia, Laos, Cambodia, Myanmar, Viet Nam
+                </p>
+              </div>
+              <div class="col-md-9 viz hidden-xs">
+
+              </div>
+              <div class="col-md-9 viz visible-xs sankeyImgCont">
+                <img src="/static/img/results-page/south_east_asia.png" class="img-responsive sankeyImg"/>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="europe">
+            <div class="row">
+              <div class="col-md-3 countryList">
+                <h4>Region countries</h4>
+                <p>
+                  Turkey, Yugoslavia, Sweden, Tajikistan, France, Greece, Albania, Russian Federation, Latvia, Estonia, Romania, Uzbekistan, Azerbaijan, Serbia, Germany, Cyprus, Bosnia and Herzegovina, Croatia, Kyrgyzstan, Belarus, Slovakia, Denmark, Turkmenistan, Kazakhstan, Malta, Eurasia, Portugal, Ukraine, United Kingdom, Norway, Armenia, Moldova, Slovenia, Belgium, Bulgaria, Switzerland, Union of Soviet Socialist Republics, Spain, Italy, Lithuania, Netherlands, Montenegro, Macedonia
+                </p>
+              </div>
+              <div class="col-md-9 viz hidden-xs">
+
+              </div>
+              <div class="col-md-9 viz visible-xs sankeyImgCont">
+                <img src="/static/img/results-page/europe.png" class="img-responsive sankeyImg"/>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="middleeast">
+            <div class="row">
+              <div class="col-md-3 countryList">
+                <h4>Region countries</h4>
+                <p>
+                  Egypt, Bahrain, Saudi Arabia, Jordan, United Arab Emirates, Syria, Iran, Lebanon, Kuwait, Yemen, Israel and Occupied Palestinian Territories, Palestinian Authority, Middle East, Iraq, Oman, Qatar
+                </p>
+              </div>
+              <div class="col-md-9 viz hidden-xs">
+
+              </div>
+              <div class="col-md-9 viz visible-xs sankeyImgCont">
+                <img src="/static/img/results-page/middle_east.png" class="img-responsive sankeyImg"/>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="northamerica">
+            <div class="row">
+              <div class="col-md-3 countryList">
+                <h4>Region countries</h4>
+                <p>
+                  United States of America, Canada
+                </p>
+              </div>
+              <div class="col-md-9 viz hidden-xs">
+
+              </div>
+              <div class="col-md-9 viz visible-xs sankeyImgCont">
+                <img src="/static/img/results-page/north_america.png" class="img-responsive sankeyImg"/>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="centralamerica">
+            <div class="row">
+              <div class="col-md-3 countryList">
+                <h4>Region countries</h4>
+                <p>
+                  El Salvador, Honduras, Cuba, Haiti, Dominican Republic, Belize, Guatemala, Trinidad and Tobago, Mexico, Bahamas, Panama, Bermuda, Barbados, Costa Rica, Jamaica, Antigua and Barbuda, Saint Lucia, Nicaragua
+                </p>
+              </div>
+              <div class="col-md-9 viz hidden-xs">
+
+              </div>
+              <div class="col-md-9 viz visible-xs sankeyImgCont">
+                <img src="/static/img/results-page/central_america.png" class="img-responsive sankeyImg"/>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="southamerica">
+            <div class="row">
+              <div class="col-md-3 countryList">
+                <h4>Region countries</h4>
+                <p>
+                  Brazil, Peru, Colombia, Venezuela, Argentina, Ecuador, Bolivia, Guyana, Chile, Paraguay, Suriname
+                </p>
+              </div>
+              <div class="col-md-9 viz hidden-xs">
+
+              </div>
+              <div class="col-md-9 viz visible-xs sankeyImgCont">
+                <img src="/static/img/results-page/south_america.png" class="img-responsive sankeyImg"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tooltipFlow">
+  <p class="headline">
+
+  </p>
+  <p class="relline">
+
+  </p>
+  <p class="allline">
+
+  </p>
+</div>
+<!-- End Violations outcome embedded section -->
+
+<!-- Visualizing > OUTCOMES PROFILES > text section -->
+<section class="results-page-section-text">
+    <div class="container-fluid section-title text-center">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 section-cell  text-center">
+                <i class='amnesty-eye-icon'></i>
+                <h4>OUTCOMES PROFILES</h4>
+                <p>
+                    A greater amount of positive outcomes for the majority of violations are detectable in the decoded actions database.
+                </p>
+            </div>
+        </div>
+    </div>    
+</section>
+<!-- End Visualizing > OUTCOMES PROFILES > text section -->
+
+<!-- OUTCOMES PROFILES embedded section -->
+<div class="container-fluid section-visualizing-embed" id="violation-profiles">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="sideTitleCont">
+          <h4 class="sideTitle">Results profiles</h4>
+        </div>
+      </div>
+      <div class="col-lg-8" id="tabCont">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs pull-left" role="tablist">
+          <li role="presentation" class="active"><a class="h5" href="#overview" aria-controls="overview" role="tab" data-toggle="tab">Overview</a></li>
+          <li role="presentation"><a class="h5" href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
+        </ul>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-default active">
+            <input class="h5" type="radio" name="options" id="option1" autocomplete="off" value="all" checked>All
+          </label>
+          <label class="btn btn-default">
+            <input class="h5" type="radio" name="options" id="option2" autocomplete="off" value="positive">Positive
+          </label>
+          <label class="btn btn-default">
+            <input class="h5" type="radio" name="options" id="option3" autocomplete="off" value="negative"> Negative
+          </label>
+          <label class="btn btn-default">
+            <input class="h5" type="radio" name="options" id="option4" autocomplete="off" value="others"> Others
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="overview">
+            <div class="row">
+              <div class="col-md-12 vizProfiles">
+
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="details">
+            <div class="row">
+              <div class="col-md-12 vizProfiles hidden-xs">
+
+              </div>
+              <div class="col-xs-5 vizProfiles visible-xs">
+                <img src="/static/img/results-page/legend.png" class="pull-right"/>
+              </div>
+              <div class="col-xs-7 vizProfiles visible-xs profileImgContainer">
+                <img src="" class="profileImg" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>    
+<!-- End OUTCOMES PROFILES embedded section -->
+
+<section class="results-page-section-text" id="results-page-credit-section">
+    <div class="container-fluid section-title text-center">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 section-cell  text-center">
+                <i class='amnesty-hat-icon'></i>
+                <h4>CREDITS</h4>
+            </div>
+        </div>
+    </div>  
+    <div class="container-fluid section-body text-center">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 section-cell  text-center">
+                <h4>THE COLLABORATION</h4>
+                <p>
+                    The following research and designs were undertaken as a collaboration between the <a href='https://digitalmethods.net/' target='_blank'>Digital Methods Initiative</a>, <a href='http://www.densitydesign.org/' target='_blank'>Density Design</a> and Amnesty International at the <a href='https://wiki.digitalmethods.net/Dmi/SummerSchool2016AmnestyDecoders' target='_blank'>Digital Methods Summer School 2016</a>.</p>                        
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid section-body text-center">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 section-cell  text-center">
+                <h4>THE TEAM</h4>
+                <p>
+                    The research team included: Jonathan Gray (facilitator), Olga Boichak, Agata Brillhi, Claudia Minchilli, Coral Negrón, Mariasilvia Poltronieri, Matteo Azzi from <a href="http://www.calib.ro/" target="_blank">Calibro</a>, Chiara Riente, Gülüm Şener and Paola Verhaert. Thanks also to Liliana Bounegru and Richard Rogers.</p>                        
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

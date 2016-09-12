@@ -1,0 +1,1 @@
+A place for version 2.0 of pybossa amnesty theme. This pybossa theme will use style from https://github.com/AltClick/amnesty-theme which is pulled into this pybossa at `/static/amnesty-theme` using git submodule .

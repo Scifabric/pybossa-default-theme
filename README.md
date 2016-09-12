@@ -1,3 +1,28 @@
+# Results page
+The results page in this pybossa theme use style and images from https://github.com/AltClick/amnesty-theme
+
+## Git submodule
+https://github.com/AltClick/amnesty-theme is added as git submodule in this repo 
+
+To manually amnesty-theme as gitsumodule
+```
+# Pull amnesty theme code as submodule
+cd pybossa/themes/default
+git submodule add git@github.com:AltClick/amnesty-theme.git static/amnesty-theme
+```
+
+## Build style
+Copy images, compile less files, pull 3rd libaries
+```
+cd pybossa/themes/default/static
+mkdir -p img/results-page js/results-page
+rm -Rf img/results-page/* js/results-page/*
+cp -R amnesty-theme/static/img/results-page/* img/results-page
+cp -R amnesty-theme/static/js/results-page/* js/results-page
+cp -f amnesty-theme/dist/pybossa/* amnesty-theme/static
+```
+
+# Pybossa default theme content
 This is the default theme for the [Pybossa
 server](https://github.com/PyBossa/pybossa).
 

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% set active_page = "admin" %}
+{% set active_link = "admin" %}
+{% import "account/_helpers.html" as helper %}
+
+{% block content %}
+<link href="{{url_for('static', filename='css/map/leaflet.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='css/map/map-admin.css')}}" rel="stylesheet">
+
+<title>Map Tile Generator</title>
+
+<script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+
+<div id="map-holder" class="row">
+    <div class="col-md-3 col-sm-3">
+        {{ helper.render_account_local_nav(current_user, active_link) }}
+    </div>
+    <div  class="col-md-9 col-sm-9" >
+        <h1><strong>{{ _('Admin Site - Map Tile Generator') }}</strong></h1>
+        <div class="row-fluid">
+
+            <div class="form-group">
+                <label for="zoom-select">{{ _('Zoom:') }}</label>
+                <select class="form-control zoom-select" id="zoom-select" name="zoom-select" style="width:60px;">
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                </select>
+            </div>
+
+            <button type="button" id="clear_map" class="btn btn-default">{{ _('Clear Map') }}</button>
+
+
+            <div class="result"></div><br />
+            <span style="color:red;"><br />{{ _('Click "Insert values & enable selection" and hold SHIFT Key while selecting to select an area of the map.') }}</span><br />
+            <br><div id="map"></div>
+        </div>
+    </div>
+</div>
+{% include "admin/js/map/map-control.js" %}
+{% include "admin/js/map/map.select-area.js" %}
+{% endblock %}
