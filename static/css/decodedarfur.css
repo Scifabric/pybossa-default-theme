@@ -1,0 +1,376 @@
+<style type="text/css">
+/** CONTAINERS **/
+.container{
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+   
+.desktop-container{
+  background-color: #E5E5E5;
+}
+  
+.desktop-container .tiles-container{
+  max-width: 1080px;
+  float: none;
+}
+      
+.mobile-container{
+  max-width: 800px;
+}
+  
+.tablet-container{
+  max-width: 992px;
+}  
+  
+/** NO PADDING **/
+.no-padding{
+  padding: 0px;
+}
+   
+/** HEADER  **/
+#header-part{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.header-part-text{
+  text-align: center;
+  padding-left: 22%;
+}
+  
+.select-message{
+  font-size: 16px;
+}
+  
+.tap-message{
+  font-size: 14px;
+}
+    
+.swipe-message{
+  font-size: 12px;
+}
+
+/** CONTINUE BUTTONS **/  
+.continue-button-container{
+  padding-left: 40px;
+}
+  
+.continue{
+  background-color: hsl(160, 0%, 18%) !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+  height: 47px;
+  padding-top: 10px;
+  margin-left: -40px;
+  display: block;
+  visibility: visible ;
+  width: 500px;
+  font-size: 16px;
+}
+  
+.modal-progress-message .continue{
+  margin-left: 0px;
+  width:220px;
+}
+
+.continue:hover{
+  border-color: #2d2d2d #2d2d2d hsl(160, 0%, 14%);
+}
+
+
+/** PROGRESS TRACKER **/  
+.progress-tracker{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+p.progress-tracker-label {
+    margin: 0 0 -2px;
+    color:#ccc;
+}
+
+.progress-tracker-statistics{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-radius:3px;
+  box-shadow: 0px 2px 4px #ccc, 0px 0px 0px #ccc, 0px 1px 1px gray;
+}
+ 
+.progress-tracker-number {
+    font-weight: bold;
+}
+.progress-tracker-number {
+    font-weight: bold;
+}
+ 
+.progress-modal-message{
+    font-size: 14px;
+}
+  
+/** SELECTION TRIANGLE **/
+.triangle-topleft 
+{ 
+   width: 0; 
+   height: 0; 
+   border-top: 35px solid #2ecc71; 
+   border-right: 35px solid transparent;
+   z-index:2;
+   position: absolute;
+   top : 0px;
+   display: none; /* this should be remove when tip in image is active*/
+}
+
+.selected-triangle-span{
+  display: none;
+}
+    
+.tile-selec{
+  position : relative;
+}
+  
+.glyphicon-ok-sign{
+    top: -30px;
+    left:3px;
+    color: black;
+}
+  
+/** CAROUSEL **/
+.carousel{
+  interval: false;
+}
+    
+.carousel-control.left,
+.carousel-control.right{
+  background: none;
+}
+  
+.carousel-inner > .item {
+  -webkit-transition: 0.3s ease-in-out left;
+  transition: 0.3s ease-in-out left;
+  -webkit-transition: 0.3s, ease-in-out, left;
+  -moz-transition: .3s, ease-in-out, left;
+  -o-transition: .3s, ease-in-out, left;
+  transition: .3s, ease-in-out, left;
+}
+    
+#images img, #mobileCarousel img, #tabletCarousel img{
+  padding: 0;
+  object-fit: cover;
+  overflow: hidden;
+  background-size: cover;
+  min-height: 100% !important;
+  height:100% !important;
+}
+
+#images img:hover, #mobileCarousel img:hover, #tabletCarousel img:hover{
+  cursor: pointer;
+}
+
+.selected{
+  border: 1px solid white;
+  opacity: 0.8;
+}
+    
+.imgborder{
+  border: 1px solid white;
+}
+
+/** MODALS **/ 
+.modal-body{
+  min-height: 200px;
+}  
+  
+/** OTHER **/
+.next-task-error{
+  width: auto !important; 
+}
+  
+.right-devide-line{
+  border-right: 1px solid #ccc;
+  height: 60px;
+}
+  
+.size{
+  width:150px;
+  height:450px;
+}
+  
+.flag-mobile{
+  display: none;
+}
+  
+.swipe-message, .tap-message{
+  display: none;
+}
+  
+.next-task-error, .look-task-again{
+  padding-top: 10px !important;
+  width: 100px;
+}
+ 
+.mobile-flag-sign{
+  padding-top: 10px;
+  font-size: 14px; 
+}
+  
+/** FIXME: Is this used or copy and pasted from Urgent Action project? **/
+.next-ua{
+  margin: 0 auto;
+  float: none; 
+}
+
+  
+/** MOBILE MEDIA QUERY (320px to 768px) **/
+@media only screen and (min-width: 320px) {
+   
+  /** Stuff to hide **/
+  #top-btn,
+  .navbar,
+  .desktop-container,
+  .tablet-container,
+  .continue-button-container,
+  .select-message,
+  .subheader-flag-container{
+    display: none;
+  }
+    
+  #prev-arrow{
+      visibility: hidden;
+  }
+  
+  /** Stuff to show **/
+  .mobile-container,
+  .swipe-message,
+  .tap-message,
+  .mobile-flag-container{
+    display: block;
+  }
+  
+  /** Flag **/
+  .help, .flag{
+    visibility: hidden;
+  }
+  
+  /** Carousel **/
+  .carousel-indicators {
+      bottom: -40px;
+  }
+  
+  .carousel-indicators li {
+    background-color: #999;
+    background-color: rgba(70,70,70,.25);
+  }
+  
+  .carousel-indicators .active{
+    background-color: black;
+  }
+  
+  /** Progress Tracker **/
+  .progress-tracker{
+    visibility: hidden;
+    padding: 0px;
+  }
+  
+  .progress-tracker-statistics{
+    visibility: visible;
+    top:0px;left:0px;
+  }
+  
+  .progress-tracker-middle-div{
+    padding-top: 0px; 
+  }
+  
+  .progress-tracker-statistics{
+    padding-top: 5px;
+    padding-bottom: 20px;
+    border:0px;
+    box-shadow: none;
+  }
+  
+  .progress-tracker-number{
+      font-size: 22px;
+  }
+  
+  .progress-tracker-label{
+      font-size: 12px !important;
+  }
+}
+  
+/** TABLET MEDIA QUERY (768px to 900px) **/
+@media only screen and (min-width: 768px) {
+
+  /** Stuff to hide **/ 
+  #top-btn,
+  .navbar,
+  .desktop-container,
+  .mobile-container,
+  .continue-button-container,
+  .select-message,
+  .mobile-flag-container{
+    display: none;
+  }
+  
+  #prev-arrow{
+    visibility: hidden;
+  }
+    
+  /** Stuff to show **/
+  .tablet-container,
+  .swipe-message,
+  .tap-message,
+  .subheader-flag-container{
+    display: block;
+  }
+   
+  /** Progress Tracker **/
+  .progress-tracker-number {
+      font-size: 40px;
+  }
+  
+  .progress-tracker-label {
+      font-size: 14px;
+  }
+    
+}
+
+/** DESKTOP MEDIA QUERY (992px+) **/
+@media only screen and (min-width: 992px){
+    
+  /** Stuff to hide **/
+  .mobile-container,
+  .tablet-container,
+  .swipe-message,
+  .tap-message,
+  .mobile-flag-container{
+    display: none;
+  }
+    
+  /** Stuff to show **/ 
+  #top-btn,
+  .navbar,
+  .desktop-container,
+  .continue-button-container,
+  .select-message,
+  .subheader-flag-container{
+    display: block;
+  } 
+  
+  /** Progress Tracker **/
+  .progress-tracker-number {
+      font-size: 40px;
+  }
+  
+  .progress-tracker-label {
+      font-size: 14px;
+  }
+}
+</style></style> 
