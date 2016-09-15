@@ -21,13 +21,13 @@
 }
 
 .mobile-container{
-  max-width: 800px;
-  height: 652px;
+    max-width: 800px;
+    /* set height */
 }
 
 .tablet-container{
-  max-width: 992px;
-  height:480px;
+    max-width: 992px;
+    /* set height */
 }
 
 /** NO PADDING **/
@@ -36,12 +36,14 @@
 }
 
 /** HEADER  **/
-#header-part{
+.subheader-container,
+.navbar-task-subheader{
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-.header-part-text{
+.subheader-container,
+.navbar-task-subheader-text{
   text-align: center;
 }
 
@@ -185,6 +187,11 @@ p.progress-tracker-label {
   border: 1px solid white;
 }
 
+.crsl-img{
+  max-height: 256px;
+  max-width: 256px;
+}
+
 /** MODALS **/
 .modal-body{
   min-height: 200px;
@@ -226,6 +233,7 @@ p.progress-tracker-label {
   /** Stuff to hide **/
   #top-btn,
   .navbar-header,
+  .subheader-container,
   .desktop-container,
   .tablet-container,
   .continue-button-container,
@@ -308,7 +316,8 @@ p.progress-tracker-label {
 
   /** Stuff to hide **/
   #top-btn,
-  .navbar,
+  .navbar-header,
+  .subheader-container,
   .desktop-container,
   .mobile-container,
   .continue-button-container,
@@ -351,7 +360,7 @@ p.progress-tracker-label {
 @media only screen and (min-width: 992px){
 
   /** Stuff to hide **/
-  .subheader-navbar-button-container,
+  .navbar-task-subheader,
   .mobile-container,
   .tablet-container,
   .swipe-message,
@@ -362,7 +371,8 @@ p.progress-tracker-label {
 
   /** Stuff to show **/
   #top-btn,
-  .navbar,
+  .navbar-header,
+  .subheader-container,
   .desktop-container,
   .continue-button-container,
   .select-message,
