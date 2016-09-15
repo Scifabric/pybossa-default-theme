@@ -12,6 +12,7 @@
 
 .desktop-container{
   background-color: #E5E5E5;
+  height: 360px;
 }
 
 .desktop-container .tiles-container{
@@ -21,10 +22,12 @@
 
 .mobile-container{
   max-width: 800px;
+  height: 652px;
 }
 
 .tablet-container{
   max-width: 992px;
+  height:480px;
 }
 
 /** NO PADDING **/
