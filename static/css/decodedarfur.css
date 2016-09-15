@@ -43,7 +43,6 @@
 
 .header-part-text{
   text-align: center;
-  padding-left: 22%;
 }
 
 .select-message{
@@ -226,7 +225,7 @@ p.progress-tracker-label {
 
   /** Stuff to hide **/
   #top-btn,
-  .navbar,
+  .navbar-header,
   .desktop-container,
   .tablet-container,
   .continue-button-container,
@@ -245,6 +244,13 @@ p.progress-tracker-label {
   .tap-message,
   .mobile-flag-container{
     display: block;
+  }
+
+  /** Overwrite navbar toggle styling, because we are displaying a different one **/
+  .subheader-navbar-button-container .navbar-toggle{
+      float: none;
+      margin: 0 0 0 0;
+      padding: 9px 10px;
   }
 
   /** Flag **/
@@ -323,6 +329,13 @@ p.progress-tracker-label {
     display: block;
   }
 
+  /** Overwrite navbar toggle styling, because we are displaying a different one **/
+  .subheader-navbar-button-container .navbar-toggle{
+      float: none;
+      margin: 0 0 0 0;
+      padding: 9px 10px;
+  }
+
   /** Progress Tracker **/
   .progress-tracker-number {
       font-size: 40px;
@@ -338,6 +351,7 @@ p.progress-tracker-label {
 @media only screen and (min-width: 992px){
 
   /** Stuff to hide **/
+  .subheader-navbar-button-container,
   .mobile-container,
   .tablet-container,
   .swipe-message,
