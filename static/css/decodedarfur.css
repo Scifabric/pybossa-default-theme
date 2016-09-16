@@ -182,7 +182,7 @@ p.progress-tracker-label {
    position: absolute;
    top : 0px;
    left:0px;
-  /*display: none;*/
+   display: none;
 }
 
 .selected-triangle-span{
