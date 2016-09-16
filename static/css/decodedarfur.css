@@ -292,7 +292,7 @@ p.progress-tracker-label {
   .tablet-container,
   .continue-button-container,
   .select-message,
-  .subheader-flag-container{
+  .subheader-flag-container .mobile-flag-text{
     display: none;
   }
 
