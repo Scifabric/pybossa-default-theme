@@ -7,40 +7,94 @@
 <link href="{{url_for('static', filename='css/map/leaflet.css')}}" rel="stylesheet">
 <link href="{{url_for('static', filename='css/map/map-admin.css')}}" rel="stylesheet">
 
+<link href="{{url_for('static', filename='leaflet-plugins/leaflet-areaselect/leaflet-areaselect.css')}}" rel="stylesheet">
+
+<link href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" rel="stylesheet">
 <title>Map Tile Generator</title>
 
-<script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
+<script src="{{url_for('static', filename='leaflet-plugins/leaflet-areaselect/leaflet-areaselect.js')}}"></script>
+<script src="//api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
 
-<div id="map-holder" class="row">
-    <div class="col-md-3 col-sm-3">
-        {{ helper.render_account_local_nav(current_user, active_link) }}
-    </div>
-    <div  class="col-md-9 col-sm-9" >
-        <h1><strong>{{ _('Admin Site - Map Tile Generator') }}</strong></h1>
-        <div class="row-fluid">
-
-            <div class="form-group">
-                <label for="zoom-select">{{ _('Zoom:') }}</label>
-                <select class="form-control zoom-select" id="zoom-select" name="zoom-select" style="width:60px;">
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                </select>
-            </div>
-
-            <button type="button" id="clear_map" class="btn btn-default">{{ _('Clear Map') }}</button>
-
-
-            <div class="result"></div><br />
-            <span style="color:red;"><br />{{ _('Click "Insert values & enable selection" and hold SHIFT Key while selecting to select an area of the map.') }}</span><br />
-            <br><div id="map"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            {{ helper.render_account_local_nav(current_user, active_link) }}
+        </div>
+        <div class="col-md-9">
+            <div id="map"></div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-4">
+            <label>{{ _('NE coordinates:') }}</label> <span class="ne-bounds">...</span>
+        </div>
+        <div class="col-md-4">
+            <label>{{ _('SW coordinates:') }}</label> <span class="sw-bounds">...</span>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-4">
+            <label>{{ _('Area:') }}</label> <span class="selected-area">...</span> sq/km
+        </div>
+        <div class="col-md-4">
+            <label>{{ _('Tasks:') }}</label> <span class="task-count">...</span>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+
+    <div class="row map-controls" style="padding-top:20px;">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-9" align="right">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="zoom-select">{{ _('Zoom:') }}</label>
+                    <!-- The values correspond to the Ground Resolution (meters / pixel) for the given zoom level -->
+                    <!-- taken from here: https://msdn.microsoft.com/en-us/library/bb259689.aspx -->
+                    <select class="form-control zoom-select" id="zoom-select" name="zoom-select" style="width:60px;">
+                        <option value="38.2185">12</option>
+                        <option value="19.1093">13</option>
+                        <option value="9.5546">14</option>
+                        <option value="4.7773">15</option>
+                        <option value="2.3887">16</option>
+                        <option value="1.1943" selected>17</option>
+                        <option value="0.5972">18</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary btn-download-csv disabled">Download CSV</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal - Error Message -->
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="too-many-tasks-error-modal" role="dialog">
+        <div class="modal-dialog modal-sm modal-inverse">
+            <div class="modal-content">
+                <div class="modal-body" style="text-align: center;">
+                    <p>
+                        Total number of tasks should be kept under 10,000.
+                        Play around some more with the selected area and the zoom level.
+                    </p>
+                    <button class="btn btn-default btn-md" data-dismiss="modal" aria-label="Close">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
+
 {% include "admin/js/map/map-control.js" %}
 {% include "admin/js/map/map.select-area.js" %}
 {% endblock %}
