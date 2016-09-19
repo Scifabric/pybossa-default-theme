@@ -57,7 +57,7 @@
   font-size: 12px;
 }
 #images , #mobileCarousel, #tabletCarousel{
-  background: green;
+  background: #2ECC71;
 }
 .carousel-inner > .item > img {
   margin: 0 auto;
@@ -170,35 +170,51 @@ p.progress-tracker-label {
 	border-bottom: 0 solid transparent;
 	border-left: 0 solid transparent;
 }
+.popupArea {
+    background-color: yellow;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+}
 
 /** SELECTION TRIANGLE **/
-.triangle-topleft
+.tile-triangle-div .triangle-topleft
 {
    width: 0;
    height: 0;
-   border-top: 35px solid #2ecc71;
-   border-right: 35px solid transparent;
-   z-index:2;
+   border-top: 37px solid #2ecc71;
+   border-right: 37px solid transparent;
    position: absolute;
-   top : 0px;
-   left:0px;
-   display: none;
+   top: 1px;
+   margin-left: 1px;
 }
 
-.selected-triangle-span{
-  display: none;
+.tile-triangle-div2 .triangle-topleft
+{
+   width: 0;
+   height: 0;
+   border-top: 37px solid #2ECC71;
+   border-right: 37px solid transparent;
+   position: absolute;
+   top: 50.2%;
+   margin-left: 1px;
 }
 
-.tile-selec{
+.triangle-topleft-show{
+   z-index: 2 !important;
+}
+
+.tile-triangle-div{
   position : relative;
 }
 
 .glyphicon-ok-sign{
-    top: -30px;
-    left:3px;
+    top: -32px;
+    left: 4px;
     color: black;
 }
-
+/* Great sign*/
 
 /** CAROUSEL **/
 .carousel{
@@ -414,8 +430,8 @@ p.progress-tracker-label {
 @media only screen and (min-width: 992px){
 
   .container{
-      margin: 0px;
-  padding: 0px;
+    margin: 0px;
+    padding: 0px;
   }
   /** Stuff to hide **/
   .navbar-task-subheader,
