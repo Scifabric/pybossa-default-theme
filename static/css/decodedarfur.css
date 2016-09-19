@@ -179,40 +179,29 @@ p.progress-tracker-label {
 }
 
 /** SELECTION TRIANGLE **/
-.tile-triangle-div .triangle-topleft
-{
+.tile-triangle-div .triangle-topleft {
    width: 0;
    height: 0;
-   border-top: 37px solid #2ecc71;
-   border-right: 37px solid transparent;
+   border-top: 38px solid #2ecc71;
+   border-right: 38px solid transparent;
    position: absolute;
    top: 1px;
    margin-left: 1px;
 }
 
-.tile-triangle-div2 .triangle-topleft
-{
-   width: 0;
-   height: 0;
-   border-top: 37px solid #2ECC71;
-   border-right: 37px solid transparent;
-   position: absolute;
-   top: 50.2%;
-   margin-left: 1px;
-}
-
-.triangle-topleft-show{
-   z-index: 2 !important;
+.triangle-top-left-show {
+   z-index: 999;
 }
 
 .tile-triangle-div{
-  position : relative;
+  position: relative;
 }
 
 .glyphicon-ok-sign{
-    top: -32px;
-    left: 4px;
+    top: -33px;
+    left: 3px;
     color: black;
+    font-size: 14px;
 }
 /* Great sign*/
 
