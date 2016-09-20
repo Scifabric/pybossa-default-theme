@@ -16,11 +16,11 @@
 </section>
 
 <section id="results-page-report-section" class="results-page-section-text">
-    <div class="section-title text-center">
+    <div class="container-fluid section-title text-center">
         <i class='amnesty-report-icon'></i>
         <h4>The report</h4>
         <p>
-            Below you can interact with some of the results <br/>our Decoders have helped us analyse.
+            Below you can interact with some of the results <br class="rwd-break"/>our Decoders have helped us analyse.
         </p>
     </div>
     <div class="section-body container-fluid">
@@ -51,7 +51,7 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4 section-cell  text-center">
                 <i class='amnesty-earth-icon'></i>
-                <h4>URGENT ACTIONS GEOGRAPHY</h4>
+                <h4>What does the decoded data tell us about the outcomes of Amnesty’s actions around the world?</h4>
                 <p>
                     Amnesty Urgent Actions have increasingly taken place over the past 36 years in 160 countries.
                 </p>
@@ -65,22 +65,14 @@
 
 <!-- Country outcome embedded section -->
 <div class="container-fluid section-visualizing-embed" id="country-outcome">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="sideTitleCont">
-          <h4 class="sideTitle">Countries outcomes</h4>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="row">
     <div class="col-md-12">
       <!-- Tab panes -->
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="positive">
+        <div role="tabpanel" class="tab-pane active">
           <div class="row">
             <div class="col-md-12 vizMap">
+              <div class="overlay"></div>
               <iframe width="100%" height="625" frameborder="0" src="https://amnestydecoders.carto.com/viz/af9f01a8-7031-11e6-991e-0ef24382571b/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
             </div>
           </div>
@@ -97,7 +89,7 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4 section-cell  text-center">
                 <i class='amnesty-flag-icon'></i>
-                <h4>HUMAN RIGHTS VIOLATIONS</h4>
+                <h4>Which human rights violations and which regions were associated with positive outcomes?</h4>
                 <p>
                     Urgent Actions are related to a wide range of human rights violations.
                 </p>
@@ -114,12 +106,7 @@
 <div class="container-fluid section-visualizing-embed" id="violations-outcome">
   <div class="container">
     <div class="row">
-      <div class="col-lg-3">
-        <div class="sideTitleCont">
-          <h4 class="sideTitle">Violation outcomes</h4>
-        </div>
-      </div>
-      <div class="col-lg-9" id="tabCont">
+      <div class="col-lg-9 col-lg-offset-1" id="tabCont">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a class="h5" href="#allregions" aria-controls="allregions" role="tab" data-toggle="tab">All regions</a></li>
@@ -300,7 +287,7 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4 section-cell  text-center">
                 <i class='amnesty-eye-icon'></i>
-                <h4>OUTCOMES PROFILES</h4>
+                <h4>What were the profiles of people associated with positive outcomes?</h4>
                 <p>
                     A greater amount of positive outcomes for the majority of violations are detectable in the decoded actions database.
                 </p>
@@ -314,17 +301,15 @@
 <div class="container-fluid section-visualizing-embed" id="violation-profiles">
   <div class="container">
     <div class="row">
-      <div class="col-lg-4">
-        <div class="sideTitleCont">
-          <h4 class="sideTitle">Results profiles</h4>
-        </div>
-      </div>
-      <div class="col-lg-8" id="tabCont">
+      <div class="col-lg-8 col-lg-offset-4" id="tabCont">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs pull-left" role="tablist">
-          <li role="presentation" class="active"><a class="h5" href="#overview" aria-controls="overview" role="tab" data-toggle="tab">Overview</a></li>
-          <li role="presentation"><a class="h5" href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
+          <li role="presentation" class="active"><a href="#all" aria-controls="all" role="tab" data-toggle="tab">All</a></li>
+          <li role="presentation"><a href="#positive" aria-controls="positive" role="tab" data-toggle="tab">Positive</a></li>
+          <li role="presentation"><a href="#negative" aria-controls="negative" role="tab" data-toggle="tab">Negative</a></li>
+          <li role="presentation"><a href="#others" aria-controls="others" role="tab" data-toggle="tab">Others</a></li>
         </ul>
+        <!--- 
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-default active">
             <input class="h5" type="radio" name="options" id="option1" autocomplete="off" value="all" checked>All
@@ -339,19 +324,42 @@
             <input class="h5" type="radio" name="options" id="option4" autocomplete="off" value="others"> Others
           </label>
         </div>
+        -->
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <!-- Tab panes -->
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="overview">
+          <div role="tabpanel" class="tab-pane active" id="all">
             <div class="row">
               <div class="col-md-12 vizProfiles">
 
               </div>
             </div>
           </div>
+          <div role="tabpanel" class="tab-pane" id="positive">
+            <div class="row">
+              <div class="col-md-12 vizProfiles">
+
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="negative">
+            <div class="row">
+              <div class="col-md-12 vizProfiles">
+
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="others">
+            <div class="row">
+              <div class="col-md-12 vizProfiles">
+
+              </div>
+            </div>
+          </div>
+          <!-- 
           <div role="tabpanel" class="tab-pane" id="details">
             <div class="row">
               <div class="col-md-12 vizProfiles hidden-xs">
@@ -365,6 +373,7 @@
               </div>
             </div>
           </div>
+          -->
         </div>
       </div>
     </div>
