@@ -206,19 +206,23 @@ p.progress-tracker-label {
 /* Great sign*/
 .feedback {
    display: block;
-   padding-top: 20px;
+   padding-top: 30px;
 }
 .feedback-text {
   background-color:rgba(16,16,16,0.5);
   color: white;
   display: inline;
-  margin-left: 60px;
+  margin-left: 75px;
   padding: 0.9rem;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   font-size: 20px;
 }
+.w3-animate-fading{
+  -webkit-animation: fading 10s 1 !important;
+  animation: fading 10s 1 !important;
 
+}
 /** CAROUSEL **/
 .carousel{
   interval: false;
@@ -298,11 +302,6 @@ p.progress-tracker-label {
 .mobile-flag-sign{
   padding-top: 10px;
   font-size: 14px;
-}
-.w3-animate-fading{
-  -webkit-animation: fading 10s 1 !important;
-  animation: fading 10s 1 !important;
-
 }
 
 /** MOBILE MEDIA QUERY (320px to 768px) **/
@@ -431,6 +430,12 @@ p.progress-tracker-label {
   .progress-tracker-label {
       font-size: 14px;
   }
+  .feedback-text {
+    margin-left: 72px;
+  }
+  .feedback{
+    padding-top: 20px;
+  }
 
 }
 
@@ -469,5 +474,11 @@ p.progress-tracker-label {
 
   .progress-tracker-label {
       font-size: 14px;
+  }
+  .feedback-text {
+    margin-left: 50px;
+  }
+  .feedback{
+    padding-top: 20px;
   }
 }
