@@ -57,7 +57,7 @@
   font-size: 12px;
 }
 #images , #mobileCarousel, #tabletCarousel{
-  background: green;
+  background: #2ECC71;
 }
 .carousel-inner > .item > img {
   margin: 0 auto;
@@ -170,36 +170,61 @@ p.progress-tracker-label {
 	border-bottom: 0 solid transparent;
 	border-left: 0 solid transparent;
 }
+.popupArea {
+    background-color: yellow;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+}
 
 /** SELECTION TRIANGLE **/
-.triangle-topleft
-{
+.tile-triangle-div .triangle-topleft {
    width: 0;
    height: 0;
-   border-top: 35px solid #2ecc71;
-   border-right: 35px solid transparent;
-   z-index:2;
+   border-top: 38px solid #2ecc71;
+   border-right: 38px solid transparent;
    position: absolute;
-   top : 0px;
-   left:0px;
+   top: 1px;
+   margin-left: 1px;
    display: none;
 }
 
-.selected-triangle-span{
-  display: none;
+.triangle-top-left-show {
+   z-index: 999;
+   display: inline !important;
 }
 
-.tile-selec{
-  position : relative;
+.tile-triangle-div{
+  position: relative;
 }
 
 .glyphicon-ok-sign{
-    top: -30px;
-    left:3px;
+    top: -33px;
+    left: 3px;
     color: black;
+    font-size: 14px;
 }
+/* Great sign*/
+.feedback {
+   display: block;
+   padding-top: 30px;
+}
+.feedback-text {
+  background-color:rgba(16,16,16,0.5);
+  color: white;
+  display: inline;
+  margin-left: 75px;
+  padding: 0.9rem;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  font-size: 20px;
+}
+.w3-animate-fading{
+  -webkit-animation: fading 10s 1 !important;
+  animation: fading 10s 1 !important;
 
-
+}
 /** CAROUSEL **/
 .carousel{
   interval: false;
@@ -363,6 +388,29 @@ p.progress-tracker-label {
   .progress-tracker-label{
       font-size: 12px !important;
   }
+  /** Feedback message **/
+  .great-text , .super-text{
+    margin-left: 60px;
+  }
+  .awesome-text {
+    margin-left: 55px;
+  }
+  .feedback{
+    padding-top: 40px !important;
+  }
+}
+/** Feedback message on mobile devices **/
+@media only screen and (min-width: 500px) and (max-height: 768px) {
+  /** Feedback message **/
+  .great-text , .super-text{
+    margin-left: 90px;
+  }
+  .awesome-text {
+    margin-left: 75px;
+  }
+  .feedback{
+    padding-top: 50px !important;
+  }
 }
 
 /** TABLET MEDIA QUERY (768px to 900px) **/
@@ -407,15 +455,24 @@ p.progress-tracker-label {
   .progress-tracker-label {
       font-size: 14px;
   }
-
+  /** Feedback message **/
+  .great-text , .super-text{
+    margin-left: 85px;
+  }
+  .awesome-text {
+    margin-left: 70px;
+  }
+  .feedback{
+    padding-top: 50px !important;
+  }
 }
 
 /** DESKTOP MEDIA QUERY (992px+) **/
 @media only screen and (min-width: 992px){
 
   .container{
-      margin: 0px;
-  padding: 0px;
+    margin: 0px;
+    padding: 0px;
   }
   /** Stuff to hide **/
   .navbar-task-subheader,
@@ -446,4 +503,15 @@ p.progress-tracker-label {
   .progress-tracker-label {
       font-size: 14px;
   }
+  /** Feedback message **/
+  .great-text , .super-text{
+    margin-left: 58px;
+  }
+  .awesome-text {
+    margin-left: 43px;
+  }
+  .feedback{
+    padding-top: 25px !important;
+  }
+
 }
