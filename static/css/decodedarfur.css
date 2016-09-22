@@ -513,5 +513,14 @@ p.progress-tracker-label {
   .feedback{
     padding-top: 25px !important;
   }
-
+  .progress-tracker-statistics{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-radius:3px;
+    box-shadow: 0px 2px 4px #ccc, 0px 0px 0px #ccc, 0px 1px 1px gray;
+  }
 }
