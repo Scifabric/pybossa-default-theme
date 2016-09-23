@@ -33,6 +33,7 @@
                     <li><a href="{{ url_for('amnesty.login') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
                     {% else %}
                     <li><a href="{{ url_for('account.signin') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
+                    {% endif %}
                 {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right ">
