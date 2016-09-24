@@ -6,4 +6,4 @@
 	url = https://github.com/PyBossa/pybossa-player.js.git
 [submodule "static/amnesty-theme"]
 	path = static/amnesty-theme
-	url = git@github.com:AltClick/amnesty-theme.git
+	url = https://github.com/AltClick/amnesty-theme.git
