@@ -12,7 +12,7 @@
       </div>
       <div id="navbar5" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right" id="menu">
-            <li class="admin-menu"><a href="{{ config.get('DISCOURSE_SERVER_URL') }}">{{ _('Forum') }}</a></li>
+            {#<li class="admin-menu"><a href="{{ config.get('DISCOURSE_SERVER_URL') }}">{{ _('Forum') }}</a></li>#}
             {% if current_user.is_authenticated() %}
                 <li class="admin-menu"><a href="{{ url_for('account.profile', name=current_user.name) }}">{{
                     _('Account') }}</a></li>
