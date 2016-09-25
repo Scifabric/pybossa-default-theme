@@ -44,9 +44,9 @@ $(document).ready(function() {
         tileDataLayer =  new L.LayerGroup();
 
         //Setting currently changed options for project and redundancy
-        var selectedProjectId = $( "#project-select option:selected" ).val();
+        var selectedProjectName = $( "#project-select option:selected" ).val();
         var selectedRedundancy = $( "#redundancy-select option:selected" ).val();
-        var data = { project_id: selectedProjectId , redundancy: selectedRedundancy};
+        var data = { project_short_name: selectedProjectName , redundancy: selectedRedundancy};
 
         var csrftoken = "{{ csrf_token() }}";
 

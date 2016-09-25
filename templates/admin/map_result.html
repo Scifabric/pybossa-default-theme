@@ -18,7 +18,7 @@
                 <label for="project-select">{{ _('Project:') }}</label>
                 <select class="form-control " id="project-select" name="project-select" style="width:90px;">
                     {% for project in all_projects %}
-                       <option value="{{ project.id }}"> {{ project.short_name }}</option>
+                       <option value="{{ project.short_name }}"> {{ project.short_name }}</option>
                     {% endfor %}
                     </ul>
                 </select>
