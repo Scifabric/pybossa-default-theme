@@ -7,4 +7,17 @@
   float: left;
   width: 100%;
 }
+.form-inline .form-control {
+    width: auto !important;
+    min-width: 50px;
+}
+.form-control {
+    font-size: 15px !important;
+}
+.left-margin{
+     margin-left: 15px
+}
+.form-top{
+    padding-top: 15px;
+}
 </style>

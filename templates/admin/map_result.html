@@ -5,7 +5,7 @@
 
 {% block content %}
 {% include "admin/map-result/css/map-result-style.css" %}
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
+<link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
 <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
 <div id="map-holder" class="row">
     <div class="col-md-3 col-sm-3">
@@ -13,21 +13,26 @@
     </div>
     <div class="col-md-9 col-sm-9" >
         <h1><strong>{{ _('Admin Site - Map Result') }}</strong></h1>
-        <div class="row-fluid">
-        <div class="form-group">
-          <div class="dropdown">
-          <label>Select a project: 
-            <select class="selectpicker" data-width="100%" data-live-search="true">
-                {% for project in all_projects %}
-                   <option> {{ project.short_name }}</option>               
-                {% endfor %}
-            </select>
-            </label>
-        </div>
-        </div>
-      </div>
-        <div id="map" class="map-result"></div> 
-    </div>
+        <form class="form-inline form-top">
+            <div class="form-group">
+                <label for="project-select">{{ _('Project:') }}</label>
+                <select class="form-control " id="project-select" name="project-select" style="width:90px;">
+                    {% for project in all_projects %}
+                       <option value="{{ project.id }}"> {{ project.short_name }}</option>
+                    {% endfor %}
+                    </ul>
+                </select>
+            </div>
+            <div class="form-group left-margin" >
+                <label for="redundancy-select">{{ _('Redundancy:') }}</label>
+                <select class="form-control redundancy-select" id="redundancy-select" name="redundancy-select" style="width:90px;">
+                </select>
+            </div>
+            <div class="form-group left-margin">
+                <button type="button" class="btn btn-primary btn-download-validated-data" align="right">Export Validated Data</button>
+            </div>
+        </form>
+        <div id="map" class="map-result"></div>
     </div>
 </div>
 {% include "admin/map-result/js/map-result.js" %}
