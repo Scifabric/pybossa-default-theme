@@ -66,7 +66,7 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(respData) {
                 loopRespData(respData);
-                $(".btn-download-validated-data").attr("data-button", respData);
+                $(".btn-download-validated-data").attr("data-button", JSON.stringify(respData));
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert(errorThrown);
@@ -118,12 +118,12 @@ $(document).ready(function() {
         });
     });
     $(".btn-download-validated-data").click(function(){
-        var data = $.parseJSON($(this).attr('data-button'));
+        var data = $(this).attr('data-button');
         exportJson(this, data);
     });
 
     function exportJson(element, data)  {
-        var results = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+        var results = "text/json;charset=utf-8," + encodeURIComponent(data);
         element.setAttribute("href", "data:"+results);
         element.setAttribute("download", "data.json");
     }
