@@ -46,29 +46,41 @@ $(document).ready(function() {
         //Setting currently changed options for project and redundancy
         var selectedProjectId = $( "#project-select option:selected" ).val();
         var selectedRedundancy = $( "#redundancy-select option:selected" ).val();
+        var data = { project_id: selectedProjectId , redundancy: selectedRedundancy};
 
+        var csrftoken = "{{ csrf_token() }}";
+
+        $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+        });
         //Ajax request to get data on project selection
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "{{ url_for('admin.map_result_data') }}",
-            contentType: "application/xml; charset=utf-8",
-            data: { currentProjectId: selectedProjectId , currentRedundancy: selectedRedundancy},
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            dataType: 'json',
             success: function(respData) {
                 loopRespData(respData);
+                $(".btn-download-validated-data").attr("data-button", respData);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert(errorThrown);
             }
           });
 
+
         //Loop through response data
         function loopRespData(respData) {
-            var data = JSON.parse(respData);
-            for (var i = 0; i < data.length; i++) {
-                var item = data[i];
-                    var zoom =item['zoom'];
-                    var x = parseInt(item['x']); //FIX: remove converting to int
-                    var y = parseInt(item['y']); //FIX: remove converting to int
+            for (var i = 0; i < respData.length; i++) {
+                var item = respData[i];
+                    var zoom = item['zoom'];
+                    var x = item['x'];
+                    var y = item['y'];
                     var hp = item['true'];
                     tilesOnTheMap(x, y, zoom, hp);
             }
