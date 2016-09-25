@@ -117,4 +117,14 @@ $(document).ready(function() {
 
         });
     });
+    $(".btn-download-validated-data").click(function(){
+        var data = $.parseJSON($(this).attr('data-button'));
+        exportJson(this, data);
+    });
+
+    function exportJson(element, data)  {
+        var results = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+        element.setAttribute("href", "data:"+results);
+        element.setAttribute("download", "data.json");
+    }
 </script>
