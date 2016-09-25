@@ -21,7 +21,8 @@ $(document).ready(function() {
     var streets   = L.tileLayer(mbUrl, {id: 'mapbox.streets', attribution: mbAttr});
 
     //Initialize map
-    var map = L.map('map', {center: [42, 21],zoom: 3,layers: [satellite]});
+    //Darfur: 14.3783° N, 24.9042°
+    var map = L.map('map', {center: [14.3783, 24.9042],zoom: 5,layers: [satellite]});
 
     //Base layers container for layer control
     var baseLayers = {
