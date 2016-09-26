@@ -115,7 +115,7 @@ $(document).ready(function() {
         map.addLayer(tileDataLayer);
         layerControl.addOverlay(tileDataLayer, "Human Presence");
 
-        });
+        }).change();
     });
     $(".btn-download-validated-data").click(function(){
         var data = $(this).attr('data-button');
