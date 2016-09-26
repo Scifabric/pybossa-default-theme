@@ -109,7 +109,7 @@ $(document).ready(function() {
             var bounds = getCoordinates(x, y, z);
 
             //Rectangle  is defined and added on the tile layer
-            L.rectangle(bounds, { weight: 0.5, color:  "red", fill:"True",stroke: "none" ,opacity: 0.1, fillOpacity:0.3}).bindPopup('Human Presence is:'+ hp).addTo(tileDataLayer);
+            L.rectangle(bounds, { weight: 0.5, color:  "red", fill:"True",stroke: "none" ,opacity: 0.1, fillOpacity:0.3}).bindPopup('Human Presence is verified by '+ hp + ' users.').addTo(tileDataLayer);
         }
         //Tile layer on the map and layer control
         map.addLayer(tileDataLayer);
