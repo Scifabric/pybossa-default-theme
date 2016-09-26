@@ -393,13 +393,27 @@ p.progress-tracker-label {
     margin-left: 60px;
   }
   .awesome-text {
-    margin-left: 55px;
+    margin-left: 45px;
   }
   .feedback{
-    padding-top: 40px !important;
+    padding-top: 25px;
   }
 }
-/** Feedback message on mobile devices **/
+/** Feedback message on mobile devices 400px to 500px **/
+@media only screen and (min-width: 400px) and (max-height: 500px) {
+  /** Feedback message **/
+  .great-text , .super-text{
+    margin-left: 80px;
+  }
+  .awesome-text {
+    margin-left: 65px;
+  }
+  .feedback{
+    padding-top: 40px ;
+  }
+}
+
+/** Feedback message on mobile devices 500px to 768 **/
 @media only screen and (min-width: 500px) and (max-height: 768px) {
   /** Feedback message **/
   .great-text , .super-text{
@@ -409,7 +423,7 @@ p.progress-tracker-label {
     margin-left: 75px;
   }
   .feedback{
-    padding-top: 50px !important;
+    padding-top: 50px ;
   }
 }
 
