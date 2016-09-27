@@ -29,7 +29,7 @@
                 {% endif %}
                     <li class="admin-menu"><a href="{{ url_for('account.signout') }}">Sign Out</a></li>
                 {% else %}
-                    {% if config['AMNESTY_SSO_CONSUMER_KEY'] %}
+                    {% if config['AMNESTY_SSO_ENABLE'] %}
                     <li><a href="{{ url_for('amnesty.login') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
                     {% else %}
                     <li><a href="{{ url_for('account.signin') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
