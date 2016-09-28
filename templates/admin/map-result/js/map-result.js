@@ -34,7 +34,7 @@ $(document).ready(function() {
     var layerControl = L.control.layers(baseLayers).addTo(map);
 
     //On project selection change, add tiles on the map
-    $("#project-select").change(function () {
+    $(".redundancy-project-select").change(function () {
 
         // If tile layer is defined delete it and remove from map control
         if (tileDataLayer != undefined) {

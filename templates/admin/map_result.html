@@ -16,7 +16,7 @@
         <form class="form-inline form-top">
             <div class="form-group">
                 <label for="project-select">{{ _('Project:') }}</label>
-                <select class="form-control " id="project-select" name="project-select" style="width:90px;">
+                <select class="form-control redundancy-project-select" id="project-select" name="project-select" style="width:90px;">
                     {% for project in all_projects %}
                        <option value="{{ project.short_name }}"> {{ project.short_name }}</option>
                     {% endfor %}
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group left-margin" >
                 <label for="redundancy-select">{{ _('Redundancy:') }}</label>
-                <select class="form-control redundancy-select" id="redundancy-select" name="redundancy-select" style="width:90px;">
+                <select class="form-control redundancy-select redundancy-project-select" id="redundancy-select" name="redundancy-select" style="width:90px;">
                 </select>
             </div>
             <div class="form-group left-margin">
