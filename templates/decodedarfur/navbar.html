@@ -20,8 +20,6 @@
         <div id="navbar5" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right" id="menu">
                 {% if current_user.is_authenticated() %}
-                    <li class="admin-menu"><a href="{{ url_for('account.profile', name=current_user.name) }}">{{
-                        _('Account') }}</a></li>
                     {% if current_user.admin %}
                     <li class="admin-menu"><a href="{{ url_for('admin.index')}}">{{ _('Admin') }}</a></li>
                     <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
@@ -33,6 +31,7 @@
                     {% if config['AMNESTY_SSO_ENABLE'] %}
                     <li class="admin-menu"><a href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}/account/profile"><i class="fa fa-user" aria-hidden="true"></i> {{ current_user.name }}</a></li>
                     {% else %}
+                    <li class="admin-menu"><a href="{{ url_for('account.profile', name=current_user.name) }}">{{ _('Account') }}</a></li>                    
                     <li class="admin-menu"><a href="{{ url_for('account.signout') }}">Signout</a></li>
                     {% endif %}
                 {% else %}
