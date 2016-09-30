@@ -445,6 +445,9 @@ p.progress-tracker-label {
   #prev-arrow{
     visibility: hidden;
   }
+  .help{
+    visibility: visible;
+  }
 
   /** Stuff to show **/
   .tablet-container,
@@ -507,6 +510,9 @@ p.progress-tracker-label {
   .select-message,
   .subheader-flag-container{
     display: block;
+  }
+  .help{
+    visibility: visible;
   }
 
   /** Progress Tracker **/
