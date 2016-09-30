@@ -84,6 +84,10 @@
   padding-right: 0px;
   padding-left: 0px;
 }
+a{
+  color: black !important;
+  text-decoration: none !important;
+}
 
 @media only screen and (min-width: 500px) and (max-height: 768px) {
 #mobileCarousel {
@@ -211,7 +215,7 @@ p.progress-tracker-label {
 }
 
 .glyphicon-ok-sign{
-    top: -33px;
+    top: -33px !important;
     left: 3px;
     color: black;
     font-size: 14px;
@@ -260,8 +264,6 @@ p.progress-tracker-label {
   object-fit: cover;
   overflow: hidden;
   background-size: cover;
-  min-height: 100% !important;
-  height:100% !important;
 }
 
 #images img:hover, #mobileCarousel img:hover, #tabletCarousel img:hover{
