@@ -319,6 +319,48 @@ p.progress-tracker-label {
   font-size: 14px;
 }
 
+/* Key modal*/
+.key-img {
+  height: 160px;
+  width: 166px;
+}
+.key-modal-header {
+  padding: 10px;
+  border-bottom: none;
+}
+
+.features-confused , .features-ok{
+  font-size: 11px;
+  letter-spacing: 0.3px
+}
+.features{
+  padding-bottom: 10px;
+  margin-top: -30px;
+}
+
+.features-glyphicon{
+  font-style: italic !important;
+  padding-right: 5px;
+}
+.tooltip{
+  top: -5px !important;
+  width: 120px;
+}
+.tooltip-inner{
+  padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.features-easily-confused{
+  padding-top: 45px;
+}
+.key-img-div{
+  margin-right: -15px !important;
+}
+.key-div-first{
+  margin-left: 15px;
+}
+
 /** MOBILE MEDIA QUERY (320px to 768px) **/
 @media only screen and (min-width: 320px) {
 
