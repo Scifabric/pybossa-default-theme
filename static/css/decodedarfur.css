@@ -211,7 +211,7 @@ p.progress-tracker-label {
 }
 
 .glyphicon-ok-sign{
-    top: -33px;
+    top: -33px !important;
     left: 3px;
     color: black;
     font-size: 14px;
@@ -260,8 +260,6 @@ p.progress-tracker-label {
   object-fit: cover;
   overflow: hidden;
   background-size: cover;
-  min-height: 100% !important;
-  height:100% !important;
 }
 
 #images img:hover, #mobileCarousel img:hover, #tabletCarousel img:hover{
