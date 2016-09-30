@@ -319,9 +319,9 @@ p.progress-tracker-label {
   font-size: 14px;
 }
 
-/* Key modal*/
+/* Key modal desktop*/
 .key-img {
-  height: 160px;
+  max-height: 160px;
   width: 166px;
 }
 .key-modal-header {
@@ -355,10 +355,19 @@ p.progress-tracker-label {
   padding-top: 45px;
 }
 .key-img-div{
-  margin-right: -15px !important;
+  margin-right: -15px;
 }
 .key-div-first{
   margin-left: 15px;
+}
+
+.key-modal-mobile-tablet{
+  max-width: 450px !important;
+  margin-left:-470px;
+}
+.key-img-div-mt{
+  margin-right: -35px !important;
+  margin-bottom: 2px;
 }
 
 /** MOBILE MEDIA QUERY (320px to 768px) **/
