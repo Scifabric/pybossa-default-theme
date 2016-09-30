@@ -189,6 +189,17 @@ p.progress-tracker-label {
    margin-left: 1px;
    display: none;
 }
+@-moz-document url-prefix() {
+  .desktop-container .tile-triangle-div .triangle-topleft {
+        margin-left: -16.58%;
+    }
+  .tablet-container .tile-triangle-div .triangle-topleft  {
+        margin-left: -33.2%;
+    }
+  .mobile-container .tile-triangle-div .triangle-topleft  {
+        margin-left: -49.8%;
+    }
+}
 
 .triangle-top-left-show {
    z-index: 999;
