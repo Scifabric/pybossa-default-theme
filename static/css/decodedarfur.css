@@ -536,5 +536,21 @@ p.progress-tracker-label {
     border-bottom: 1px solid #ccc;
     border-radius:3px;
     box-shadow: 0px 2px 4px #ccc, 0px 0px 0px #ccc, 0px 1px 1px gray;
+    background-color: white; 
   }
+  .div-progress-tracker{
+    background-image: linear-gradient(bottom, #E5E5E5 57%,white 50%);
+    background-image: -o-linear-gradient(bottom, #E5E5E5 57%, white 50%);
+    background-image: -moz-linear-gradient(bottom, #E5E5E5 57%, white 50%);
+    background-image: -webkit-linear-gradient(bottom, #E5E5E5 57%, white 50%);
+    background-image: -ms-linear-gradient(bottom, #E5E5E5 57%, white 50%);
+  }
+
+}
+
+@media (min-width: 1199px){
+  body .container {
+    margin-bottom: auto !important;
+    padding-bottom: 0 !important;
+  } 
 }
