@@ -148,9 +148,7 @@ p.progress-tracker-label {
 
 .progress-tracker-number {
     font-weight: bold;
-}
-.progress-tracker-number {
-    font-weight: bold;
+    margin: 26px;
 }
 
 .progress-modal-message{
@@ -531,6 +529,7 @@ p.progress-tracker-label {
   /** Progress Tracker **/
   .progress-tracker-number {
       font-size: 40px;
+      margin: 48px;
   }
 
   .progress-tracker-label {
