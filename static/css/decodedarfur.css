@@ -323,6 +323,7 @@ p.progress-tracker-label {
 .key-img {
   max-height: 160px;
   width: 166px;
+  border: 1px solid white;
 }
 .key-modal-header {
   padding: 10px;
@@ -362,11 +363,10 @@ p.progress-tracker-label {
 }
 
 .key-modal-mobile-tablet{
-  max-width: 450px !important;
+  max-width: 400px !important;
 }
 .key-img-div-mt{
-  margin-right: -35px !important;
-  margin-bottom: 2px;
+  margin-right: -30px !important;
 }
 
 /** MOBILE MEDIA QUERY (320px to 768px) **/
@@ -499,7 +499,7 @@ p.progress-tracker-label {
   }
   /* Key modal*/
   #keyModalMobileTablet{
-    left:20% !important;
+    left:21% !important;
   }
 }
 
@@ -557,6 +557,10 @@ p.progress-tracker-label {
   }
   .feedback{
     padding-top: 50px !important;
+  }
+  /* Key modal*/
+  #keyModalMobileTablet{
+    left:30% !important;
   }
 }
 
