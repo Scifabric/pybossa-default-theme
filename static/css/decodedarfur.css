@@ -323,17 +323,15 @@ p.progress-tracker-label {
 .key-img {
   max-height: 160px;
   width: 166px;
-  border: 1px solid white;
+}
+#keyModalMobileTablet .key-img{
+  border: 3px solid white;
 }
 .key-modal-header {
   padding: 10px;
   border-bottom: none;
 }
 
-.features-confused , .features-ok{
-  font-size: 11px;
-  letter-spacing: 0.3px
-}
 .features{
   padding-bottom: 10px;
   margin-top: -30px;
@@ -355,20 +353,16 @@ p.progress-tracker-label {
 .features-easily-confused{
   padding-top: 45px;
 }
-.key-img-div{
-  margin-right: -20px;
+.features-confused , .features-ok{
+  font-size: 11px;
+  letter-spacing: 0.3px
 }
-.key-div-first{
-  margin-left: 20px;
+#keyModalMobileTablet .key-img-div {
+  margin-right: -30px;
 }
-
-.key-modal-mobile-tablet{
-  max-width: 400px !important;
+#keyModal .key-img-div{
+  margin-right: -15px;
 }
-.key-img-div-mt{
-  margin-right: -30px !important;
-}
-
 /** MOBILE MEDIA QUERY (320px to 768px) **/
 @media only screen and (min-width: 320px) {
 
@@ -462,13 +456,6 @@ p.progress-tracker-label {
     padding-top: 25px;
   }
   /*Key modal*/
-  #keyModalMobileTablet{
-    left:15% !important;
-    right: 15% !important;
-  }
-  .key-img-div{
-    margin-right: -15px;
-  }
   .key-div-first{
     margin-left: 15px;
   }
@@ -485,10 +472,6 @@ p.progress-tracker-label {
   .feedback{
     padding-top: 40px ;
   }
-  /* Key modal*/
-  #keyModalMobileTablet{
-    left:20% !important;
-  }
 }
 
 /** Feedback message on mobile devices 500px to 768 **/
@@ -502,10 +485,6 @@ p.progress-tracker-label {
   }
   .feedback{
     padding-top: 50px ;
-  }
-  /* Key modal*/
-  #keyModalMobileTablet{
-    left:21% !important;
   }
 }
 
@@ -563,10 +542,6 @@ p.progress-tracker-label {
   }
   .feedback{
     padding-top: 50px !important;
-  }
-  /* Key modal*/
-  #keyModalMobileTablet{
-    left:30% !important;
   }
 }
 
@@ -637,7 +612,6 @@ p.progress-tracker-label {
     background-image: -webkit-linear-gradient(bottom, #E5E5E5 57%, white 50%);
     background-image: -ms-linear-gradient(bottom, #E5E5E5 57%, white 50%);
   }
-
 }
 
 @media (min-width: 1199px){
