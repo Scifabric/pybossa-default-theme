@@ -356,10 +356,10 @@ p.progress-tracker-label {
   padding-top: 45px;
 }
 .key-img-div{
-  margin-right: -15px;
+  margin-right: -20px;
 }
 .key-div-first{
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 .key-modal-mobile-tablet{
@@ -465,6 +465,12 @@ p.progress-tracker-label {
   #keyModalMobileTablet{
     left:15% !important;
     right: 15% !important;
+  }
+  .key-img-div{
+    margin-right: -15px;
+  }
+  .key-div-first{
+    margin-left: 15px;
   }
 }
 /** Feedback message on mobile devices 400px to 500px **/
