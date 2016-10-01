@@ -363,7 +363,6 @@ p.progress-tracker-label {
 
 .key-modal-mobile-tablet{
   max-width: 450px !important;
-  margin-left:-470px;
 }
 .key-img-div-mt{
   margin-right: -35px !important;
@@ -462,6 +461,11 @@ p.progress-tracker-label {
   .feedback{
     padding-top: 25px;
   }
+  /*Key modal*/
+  #keyModalMobileTablet{
+    left:15% !important;
+    right: 15% !important;
+  }
 }
 /** Feedback message on mobile devices 400px to 500px **/
 @media only screen and (min-width: 400px) and (max-height: 500px) {
@@ -474,6 +478,10 @@ p.progress-tracker-label {
   }
   .feedback{
     padding-top: 40px ;
+  }
+  /* Key modal*/
+  #keyModalMobileTablet{
+    left:20% !important;
   }
 }
 
@@ -488,6 +496,10 @@ p.progress-tracker-label {
   }
   .feedback{
     padding-top: 50px ;
+  }
+  /* Key modal*/
+  #keyModalMobileTablet{
+    left:20% !important;
   }
 }
 
