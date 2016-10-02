@@ -156,21 +156,21 @@ p.progress-tracker-label {
 }
 
 .right-angle-arrow {
-	display: inline-block;
-	position: relative;
+  display: inline-block;
+  position: relative;
 }
 .right-angle-arrow:after {
-	content: '';
-	display: block;
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 0;
-	height: 0;
-	border-top: 50px solid darkcyan;
-	border-right: 50px solid transparent;
-	border-bottom: 0 solid transparent;
-	border-left: 0 solid transparent;
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 50px solid darkcyan;
+  border-right: 50px solid transparent;
+  border-bottom: 0 solid transparent;
+  border-left: 0 solid transparent;
 }
 .popupArea {
     background-color: yellow;
@@ -317,6 +317,50 @@ p.progress-tracker-label {
   font-size: 14px;
 }
 
+/* Key modal */
+.key-img {
+  max-height: 160px;
+  width: 166px;
+}
+#keyModalMobileTablet .key-img{
+  border: 3px solid white;
+}
+.key-modal-header {
+  padding: 10px;
+  border-bottom: none;
+}
+
+.features{
+  padding-bottom: 10px;
+  margin-top: -30px;
+}
+
+.features-glyphicon{
+  font-style: italic !important;
+  padding-right: 5px;
+}
+.tooltip{
+  top: -5px !important;
+  width: 120px;
+}
+.tooltip-inner{
+  padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.features-easily-confused{
+  padding-top: 45px;
+}
+.features-confused , .features-ok{
+  font-size: 11px;
+  letter-spacing: 0.3px
+}
+#keyModalMobileTablet .key-img-div {
+  margin-right: -30px;
+}
+#keyModalDesktop .key-img-div{
+  margin-right: -15px;
+}
 /** MOBILE MEDIA QUERY (320px to 768px) **/
 @media only screen and (min-width: 320px) {
 
@@ -328,7 +372,8 @@ p.progress-tracker-label {
   .tablet-container,
   .continue-button-container,
   .select-message,
-  .subheader-flag-container{
+  .subheader-flag-container,
+  #keyModalDesktop{
     display: none;
   }
 
@@ -340,7 +385,8 @@ p.progress-tracker-label {
   .mobile-container,
   .swipe-message,
   .tap-message,
-  .mobile-flag-container{
+  .mobile-flag-container,
+  #keyModalMobileTablet{
     display: block;
   }
 
@@ -408,6 +454,18 @@ p.progress-tracker-label {
   }
   .feedback{
     padding-top: 25px;
+  }
+  /*Key modal*/
+  .key-div-first{
+    margin-left: 15px;
+  }
+  .key-sign{
+    font-size: 17px;
+  }
+
+  #keyModal .modal-body{
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 /** Feedback message on mobile devices 400px to 500px **/
@@ -493,6 +551,15 @@ p.progress-tracker-label {
   .feedback{
     padding-top: 50px !important;
   }
+  /* Key  sign*/
+  .key-sign{
+    font-size: 14px;
+  }
+
+  #keyModal .modal-body{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 
 /** DESKTOP MEDIA QUERY (992px+) **/
@@ -508,7 +575,8 @@ p.progress-tracker-label {
   .tablet-container,
   .swipe-message,
   .tap-message,
-  .mobile-flag-container{
+  .mobile-flag-container,
+  #keyModalMobileTablet{
     display: none;
   }
 
@@ -519,7 +587,8 @@ p.progress-tracker-label {
   .desktop-container,
   .continue-button-container,
   .select-message,
-  .subheader-flag-container{
+  .subheader-flag-container,
+  #keyModalDesktop{
     display: block;
   }
   .help{
