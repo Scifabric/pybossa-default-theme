@@ -148,9 +148,7 @@ p.progress-tracker-label {
 
 .progress-tracker-number {
     font-weight: bold;
-}
-.progress-tracker-number {
-    font-weight: bold;
+    margin: 26px;
 }
 
 .progress-modal-message{
@@ -158,21 +156,21 @@ p.progress-tracker-label {
 }
 
 .right-angle-arrow {
-	display: inline-block;
-	position: relative;
+  display: inline-block;
+  position: relative;
 }
 .right-angle-arrow:after {
-	content: '';
-	display: block;
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 0;
-	height: 0;
-	border-top: 50px solid darkcyan;
-	border-right: 50px solid transparent;
-	border-bottom: 0 solid transparent;
-	border-left: 0 solid transparent;
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 50px solid darkcyan;
+  border-right: 50px solid transparent;
+  border-bottom: 0 solid transparent;
+  border-left: 0 solid transparent;
 }
 .popupArea {
     background-color: yellow;
@@ -623,6 +621,7 @@ p.progress-tracker-label {
     background-image: -webkit-linear-gradient(bottom, #E5E5E5 57%, white 50%);
     background-image: -ms-linear-gradient(bottom, #E5E5E5 57%, white 50%);
   }
+
 }
 
 @media (min-width: 1199px){
