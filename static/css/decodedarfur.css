@@ -360,7 +360,7 @@ p.progress-tracker-label {
 #keyModalMobileTablet .key-img-div {
   margin-right: -30px;
 }
-#keyModal .key-img-div{
+#keyModalDesktop .key-img-div{
   margin-right: -15px;
 }
 /** MOBILE MEDIA QUERY (320px to 768px) **/
@@ -374,7 +374,8 @@ p.progress-tracker-label {
   .tablet-container,
   .continue-button-container,
   .select-message,
-  .subheader-flag-container{
+  .subheader-flag-container,
+  #keyModalDesktop{
     display: none;
   }
 
@@ -386,7 +387,8 @@ p.progress-tracker-label {
   .mobile-container,
   .swipe-message,
   .tap-message,
-  .mobile-flag-container{
+  .mobile-flag-container,
+  #keyModalMobileTablet{
     display: block;
   }
 
@@ -565,7 +567,8 @@ p.progress-tracker-label {
   .tablet-container,
   .swipe-message,
   .tap-message,
-  .mobile-flag-container{
+  .mobile-flag-container,
+  #keyModalMobileTablet{
     display: none;
   }
 
@@ -576,7 +579,8 @@ p.progress-tracker-label {
   .desktop-container,
   .continue-button-container,
   .select-message,
-  .subheader-flag-container{
+  .subheader-flag-container,
+  #keyModalDesktop{
     display: block;
   }
   .help{
