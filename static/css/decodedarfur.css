@@ -462,6 +462,11 @@ p.progress-tracker-label {
   .key-sign{
     font-size: 17px;
   }
+
+  #keyModal .modal-body{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 /** Feedback message on mobile devices 400px to 500px **/
 @media only screen and (min-width: 400px) and (max-height: 500px) {
@@ -549,6 +554,11 @@ p.progress-tracker-label {
   /* Key  sign*/
   .key-sign{
     font-size: 14px;
+  }
+
+  #keyModal .modal-body{
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 
