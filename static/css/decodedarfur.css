@@ -213,15 +213,15 @@ p.progress-tracker-label {
 }
 
 .glyphicon-ok-sign{
-  top: -33px !important;
-  left: 3px;
-  color: black;
-  font-size: 14px;
+    top: -33px !important;
+    left: 3px;
+    color: black;
+    font-size: 14px;
 }
 /* Great sign*/
 .feedback {
- display: block;
- padding-top: 30px;
+   display: block;
+   padding-top: 30px;
 }
 .feedback-text {
   background-color:rgba(16,16,16,0.5);
@@ -439,11 +439,11 @@ p.progress-tracker-label {
   }
 
   .progress-tracker-number{
-    font-size: 22px;
+      font-size: 22px;
   }
 
   .progress-tracker-label{
-    font-size: 12px !important;
+      font-size: 12px !important;
   }
   /** Feedback message **/
   .great-text , .super-text{
@@ -523,18 +523,18 @@ p.progress-tracker-label {
 
   /** Overwrite navbar toggle styling, because we are displaying a different one **/
   .subheader-navbar-button-container .navbar-toggle{
-    float: none;
-    margin: 0 0 0 0;
-    padding: 9px 10px;
+      float: none;
+      margin: 0 0 0 0;
+      padding: 9px 10px;
   }
 
   /** Progress Tracker **/
   .progress-tracker-number {
-    font-size: 40px;
+      font-size: 40px;
   }
 
   .progress-tracker-label {
-    font-size: 14px;
+      font-size: 14px;
   }
   /** Feedback message **/
   .great-text , .super-text{
@@ -587,11 +587,12 @@ p.progress-tracker-label {
 
   /** Progress Tracker **/
   .progress-tracker-number {
-    font-size: 40px;
+      font-size: 40px;
+      margin: 48px;
   }
 
   .progress-tracker-label {
-    font-size: 14px;
+      font-size: 14px;
   }
   /** Feedback message **/
   .great-text , .super-text{
