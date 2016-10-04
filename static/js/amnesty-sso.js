@@ -41,9 +41,14 @@
 						'csrf_token': $('#ajax_csrf_token').val()
 					})
 					.done(function(data){
-						console.log(data);
-					});
-				console.log('data:' + event.data['access_token']);
+						location.reload(); 
+					})
+					.fail(function(data){
+        				console.log('failed');
+        				console.log(data);
+        			})
+        			.always(function(){
+        			});
 			}			
 		}
 	});
