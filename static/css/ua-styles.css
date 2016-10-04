@@ -600,8 +600,7 @@ h2 {
 }
 
 .clearfix i {
-    margin-left: -15px;
-!important;
+    margin-left: -15px; !important;
 }
 
 .clearfix i:hover {
