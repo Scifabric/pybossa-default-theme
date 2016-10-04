@@ -121,6 +121,16 @@ a{
   text-transform: capitalize;
 }
 
+.btn-tutorial-key-link{
+  color: black;
+  width: 116px;
+}
+
+.btn-tutorial-flag-link{
+  color: black;
+  width: 116px;
+}
+
 /** PROGRESS TRACKER **/
 .progress-tracker{
   padding-top: 20px;

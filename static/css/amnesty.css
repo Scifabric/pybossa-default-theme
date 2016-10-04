@@ -1,3 +1,4 @@
+/** Primary yellow button **/
 .btn-primary--md--fullwidth {
     font-weight: 400;
     text-transform: uppercase;
@@ -29,6 +30,7 @@
     border-color: #ffd500
 }
 
+/** Secondary back button **/
 .btn-secondary--alt--md--fullwidth {
     font-weight: 400;
     text-transform: uppercase;
@@ -61,6 +63,8 @@
     background-color: #363636
 }
 
+
+/** Secondary white button without borders **/
 .btn-secondary--md--fullwidth {
     font-weight: 400;
     text-transform: uppercase;
