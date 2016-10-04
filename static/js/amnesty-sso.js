@@ -25,7 +25,7 @@
 			$('body').append(html);
 
 			$('#amnesty-sso-modal-login').click(function(){
-				$('#amnestySSOModal iframe').attr('src', 'http://im.amnesty.dev/login/modal');
+				$('#amnestySSOModal iframe').attr('src', imServerUrl + '/login/modal');
 				$('#amnestySSOModal').modal('show');
 			});
 
