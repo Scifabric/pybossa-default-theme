@@ -102,12 +102,12 @@ a{
   padding-left: 40px;
 }
 
-.continue{
+.continue, .btn-begin-tutorial, .btn-skip-tutorial{
   background-color: hsl(160, 0%, 18%) !important;
   color: #fff !important;
   border-radius: 0 !important;
   height: 47px;
-  padding-top: 10px;
+  padding-top: 12px;
   margin-left: -40px;
   display: block;
   visibility: visible ;
@@ -115,7 +115,7 @@ a{
   font-size: 16px;
 }
 
-.modal-progress-message .continue{
+.modal-progress-message .continue, .btn-begin-tutorial, .btn-skip-tutorial{
   margin-left: 0px;
   width:220px;
 }
@@ -452,6 +452,7 @@ p.progress-tracker-label {
   .awesome-text {
     margin-left: 45px;
   }
+
   .feedback{
     padding-top: 25px;
   }
@@ -640,4 +641,8 @@ p.progress-tracker-label {
     margin-bottom: auto !important;
     padding-bottom: 0 !important;
   } 
+}
+
+.popover-content a{
+    text-decoration: underline !important;
 }
