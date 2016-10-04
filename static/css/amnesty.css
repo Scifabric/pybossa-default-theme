@@ -1,3 +1,120 @@
+.h1 {
+    font-size: 49px;
+    font-weight: 400;
+    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-feature-settings: 'kern';
+    font-kerning: normal;
+    line-height: 1.1
+}
+
+.h2 {
+    font-size: 38px;
+    font-weight: 400;
+    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-feature-settings: 'kern';
+    font-kerning: normal;
+    line-height: 1.1
+}
+
+.h3 {
+    font-size: 28px;
+    font-weight: 400;
+    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-feature-settings: 'kern';
+    font-kerning: normal;
+    line-height: 1.1
+}
+
+.h4 {
+    font-size: 23px;
+    font-weight: 400;
+    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-feature-settings: 'kern';
+    font-kerning: normal;
+    line-height: 1.1
+}
+
+.h5 {
+    font-size: 21px;
+    font-weight: 400;
+    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-feature-settings: 'kern';
+    font-kerning: normal;
+    line-height: 1.1
+}
+
+.h6 {
+    font-size: 14px;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-feature-settings: 'kern';
+    font-kerning: normal;
+    line-height: 1.1
+}
+
+.h1--caps {
+    font-size: 49px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-feature-settings: 'kern';
+    font-kerning: normal;
+    line-height: 1.1
+}
+
+.h2--caps {
+    font-size: 38px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-feature-settings: 'kern';
+    font-kerning: normal;
+    line-height: 1.1
+}
+
+.h3--caps {
+    font-size: 28px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-feature-settings: 'kern';
+    font-kerning: normal;
+    line-height: 1.1
+}
+
+.h4--caps {
+    font-size: 23px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-feature-settings: 'kern';
+    font-kerning: normal;
+    line-height: 1.1
+}
+
+.h5--caps {
+    font-size: 21px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-feature-settings: 'kern';
+    font-kerning: normal;
+    line-height: 1.1
+}
+
+.h6--caps {
+    font-size: 14px;
+    letter-spacing: 0;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-feature-settings: 'kern';
+    font-kerning: normal;
+    line-height: 1.1
+}
+
+/** Primary yellow button **/
 .btn-primary--md--fullwidth {
     font-weight: 400;
     text-transform: uppercase;
@@ -29,6 +146,7 @@
     border-color: #ffd500
 }
 
+/** Secondary back button **/
 .btn-secondary--alt--md--fullwidth {
     font-weight: 400;
     text-transform: uppercase;
@@ -61,6 +179,8 @@
     background-color: #363636
 }
 
+
+/** Secondary white button without borders **/
 .btn-secondary--md--fullwidth {
     font-weight: 400;
     text-transform: uppercase;
