@@ -44,8 +44,9 @@ body p{
 /** HEADER  **/
 .subheader-container,
 .navbar-task-subheader{
-  padding-top: 20px;
-  padding-bottom: 10px;
+    display: none;
+    padding-top: 15px;
+    padding-bottom: 9px;
 }
 
 .subheader-container,
@@ -433,7 +434,8 @@ p.progress-tracker-label {
   .swipe-message,
   .tap-message,
   .mobile-flag-container,
-  #keyModalMobileTablet{
+  #keyModalMobileTablet,
+  .navbar-task-subheader{
     display: block;
   }
 
@@ -570,7 +572,8 @@ p.progress-tracker-label {
   .tablet-container,
   .swipe-message,
   .tap-message,
-  .subheader-flag-container{
+  .subheader-flag-container,
+  .navbar-task-subheader{
     display: block;
   }
 
