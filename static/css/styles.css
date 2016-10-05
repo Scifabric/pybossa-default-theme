@@ -94,6 +94,16 @@ h6 [class^="icon-"] {
     margin-right: 5px;
 }
 
+.tw-image {
+    width: 50px;
+    height: 50px;
+}
+
+.fb-image {
+    width: 45px;
+    height: 45px;
+}
+
 a[rel="popover"] {
     cursor: pointer;
 }
@@ -223,11 +233,12 @@ html {
 }
 
 body {
-    padding-top:0;
+    padding-top: 0;
     /* Allow for Header */
 
     font-size: 13px;
 }
+
 /*
 .nav-collapse {
     background-color: #2D2D2D !important;
@@ -651,7 +662,6 @@ ul.users li a {
     .app.box p {
         margin-left: 220px;
     }
-    
 
     body > footer .container {
         padding-left: 20px;
@@ -815,7 +825,6 @@ ul.users li a {
         background: #000000 !important;
     }
 
-
 }
 
 /* Tablet
@@ -880,12 +889,12 @@ body > footer li > a:hover {
 }
 
 /*.control-label {*/
-    /*margin-left: 8px;*/
+/*margin-left: 8px;*/
 /*}*/
 
 /*input[type="checkbox"] {*/
-    /*float: left;*/
-    /*margin-top: 10px;*/
+/*float: left;*/
+/*margin-top: 10px;*/
 /*}*/
 
 .form-actions:after {
@@ -936,7 +945,6 @@ li > a {
 
 @media (min-width: 990px ) and (max-width: 1220px) {
 
-
 }
 
 @media (min-width: 1199px) {
@@ -947,7 +955,8 @@ li > a {
     .banner:after {
         left: 90% !important;
     }
-    body .container{
+
+    body .container {
         /*REMOVED TO FIX SIGN-UP PAGE PADDING*/
         /*margin-bottom: 30px;*/
         padding-bottom: 20px;
@@ -971,34 +980,38 @@ li > a {
 #footer_links ul {
     list-style-type: none;
 }
+
 #footer_links ul li a:hover {
     color: #fff !important;
 }
+
 #footer_links a:hover {
     color: #fff !important;
     text-decoration: underline !important;
 }
+
 @media (min-width: 768px ) and (max-width: 882px) {
 
-    #tryNow{
+    #tryNow {
         vertical-align: bottom;
         margin-top: 70% !important;
     }
 
 }
+
 @media (min-width: 883px ) and (max-width: 1080px) {
 
-    #tryNow{
+    #tryNow {
         vertical-align: bottom;
         margin-top: 60% !important;
     }
 
 }
 
-.funder-img:hover{
+.funder-img:hover {
     opacity: 0.5;
 }
 
-.profile-img-cursor{
+.profile-img-cursor {
     cursor: default !important;
 }
