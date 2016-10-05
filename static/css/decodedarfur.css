@@ -466,6 +466,9 @@ p.progress-tracker-label {
   }
 
   /** Progress Tracker **/
+  .progress-tracker-number{
+      height: 24px;
+  }
   .progress-tracker{
     visibility: hidden;
     padding: 0px;
@@ -518,33 +521,6 @@ p.progress-tracker-label {
     padding-right: 0px;
   }
 }
-/** Feedback message on mobile devices 400px to 500px **/
-@media only screen and (min-width: 400px) and (max-height: 500px) {
-  /** Feedback message **/
-  .great-text , .super-text{
-    margin-left: 80px;
-  }
-  .awesome-text {
-    margin-left: 65px;
-  }
-  .feedback{
-    padding-top: 40px ;
-  }
-}
-
-/** Feedback message on mobile devices 500px to 768 **/
-@media only screen and (min-width: 500px) and (max-height: 768px) {
-  /** Feedback message **/
-  .great-text , .super-text{
-    margin-left: 90px;
-  }
-  .awesome-text {
-    margin-left: 75px;
-  }
-  .feedback{
-    padding-top: 50px ;
-  }
-}
 
 /** TABLET MEDIA QUERY (768px to 900px) **/
 @media only screen and (min-width: 768px) {
@@ -587,6 +563,10 @@ p.progress-tracker-label {
       float: none;
       margin: 0 0 0 0;
       padding: 9px 10px;
+  }
+
+  .progress-tracker-number{
+      height: 44px;
   }
 
   /** Progress Tracker **/
@@ -651,6 +631,10 @@ p.progress-tracker-label {
     visibility: visible;
   }
 
+  .progress-tracker-number{
+      height: 44px;
+  }
+
   /** Progress Tracker **/
   .progress-tracker .h2 {
       font-size: 40px;
@@ -699,6 +683,34 @@ p.progress-tracker-label {
 
 .popover-content a{
     text-decoration: underline !important;
+}
+
+/** Feedback message on mobile devices 400px to 500px **/
+@media only screen and (min-width: 400px) and (max-height: 500px) {
+  /** Feedback message **/
+  .great-text , .super-text{
+    margin-left: 80px;
+  }
+  .awesome-text {
+    margin-left: 65px;
+  }
+  .feedback{
+    padding-top: 40px ;
+  }
+}
+
+/** Feedback message on mobile devices 500px to 768 **/
+@media only screen and (min-width: 500px) and (max-height: 768px) {
+  /** Feedback message **/
+  .great-text , .super-text{
+    margin-left: 90px;
+  }
+  .awesome-text {
+    margin-left: 75px;
+  }
+  .feedback{
+    padding-top: 50px ;
+  }
 }
 
 /** Imagery container heights depending on device browser width **/
