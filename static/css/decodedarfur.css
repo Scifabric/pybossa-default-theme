@@ -402,7 +402,9 @@ p.progress-tracker-label {
   margin-bottom: 0px;
   color: black;
 }
-
+div#subheader-container {
+  padding-right: 15px;
+}
 /** MOBILE MEDIA QUERY (320px to 768px) **/
 @media only screen and (min-width: 320px) {
 
@@ -520,8 +522,17 @@ p.progress-tracker-label {
     padding-left: 0px;
     padding-right: 0px;
   }
+  .key-flag-div {
+    margin-right: 15px;
+    width: 10%;
+  }
 }
-
+/** For popular mobile devices **/
+@media screen and (min-width: 320px) and (max-width:768px) {
+    .key-div {
+      margin-right: -10%;
+    }
+}
 /** TABLET MEDIA QUERY (768px to 900px) **/
 @media only screen and (min-width: 768px) {
 
@@ -601,6 +612,7 @@ p.progress-tracker-label {
   .tabletcarousel{
     height: 465px;
   }
+
 }
 
 /** DESKTOP MEDIA QUERY (992px+) **/
@@ -676,6 +688,9 @@ p.progress-tracker-label {
     background-image: -webkit-linear-gradient(bottom, #F7F7F7 57%, white 50%);
     background-image: -ms-linear-gradient(bottom, #F7F7F7 57%, white 50%);
   }
+  div#subheader-container {
+    padding-right: 20px;
+  }
 
 }
 
@@ -684,6 +699,9 @@ p.progress-tracker-label {
     margin-bottom: auto !important;
     padding-bottom: 0 !important;
   } 
+  div#subheader-container {
+    padding-right: 5px;
+  }
 }
 
 .popover-content a{
@@ -693,12 +711,12 @@ p.progress-tracker-label {
 /** Feedback message on mobile devices 400px to 500px **/
 @media only screen and (min-width: 400px) and (max-height: 500px) {
   /** Feedback message **/
-  .great-text , .super-text{
+  /*.great-text , .super-text{
     margin-left: 80px;
   }
   .awesome-text {
     margin-left: 65px;
-  }
+  }*/
   .feedback{
     padding-top: 40px ;
   }
@@ -707,12 +725,12 @@ p.progress-tracker-label {
 /** Feedback message on mobile devices 500px to 768 **/
 @media only screen and (min-width: 500px) and (max-height: 768px) {
   /** Feedback message **/
-  .great-text , .super-text{
+  /*.great-text , .super-text{
     margin-left: 90px;
   }
   .awesome-text {
     margin-left: 75px;
-  }
+  }*/
   .feedback{
     padding-top: 50px ;
   }
