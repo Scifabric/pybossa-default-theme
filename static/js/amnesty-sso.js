@@ -12,15 +12,30 @@
 	<div class="modal fade" id="amnestySSOModal" tabindex="-1" role="dialog" aria-labelledby="amnestySSOModalLabel">\
 	  <div class="modal-dialog" role="document">\
 	    <div class="modal-content">\
-	      <div class="modal-header">\
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
-	      </div>\
-	      <div class="modal-body" style="min-height:60vh;overflow:scroll">\
-	      	<iframe></iframe>\
-	      </div>\
+			<div class="modal-header">\
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+			</div>\
+			<div class="modal-body">\
+				<iframe></iframe>\
+			</div>\
 	    </div>\
 	  </div>\
 	</div>\
+	<style>\
+		.modal-body {\
+			overflow:scroll\
+		}\
+		.modal-body {\
+		    height: 350px;\
+		    overflow: hidden;\
+		    max-width: 100%;\
+		}\
+		.modal-body iframe {\
+			height: 350px;\
+			width: 100%;\
+			border: 0px;\
+		}\
+	</style>\
 			';
 			$('body').append(html);
 
