@@ -722,40 +722,15 @@ p.progress-tracker-label {
 }
 
 /** For top 3 popular tablet devices **/
-@media screen and (min-width: 768px) and (max-width:360px) {
+@media screen and (min-width: 768px) and (max-width:768px) {
     .tablet-container{
         height: 768px;
     }
 }
 
-@media screen and (min-width: 600px) and (max-width:375px) {
+@media screen and (min-width: 600px) and (max-width:600px) {
     .tablet-container{
         height: 600px;
-    }
-}
-
-@media screen and (min-width: 800px) and (max-width:320px) {
-    .tablet-container{
-        height: 800px;
-    }
-}
-
-/** For top 3 popular mobile devices **/
-@media screen and (min-width: 360px) and (max-width:360px) {
-    .mobile-container{
-        height: 360px;
-    }
-}
-
-@media screen and (min-width: 375px) and (max-width:375px) {
-    .mobile-container{
-        height: 375px;
-    }
-}
-
-@media screen and (min-width: 320px) and (max-width:320px) {
-    .mobile-container{
-        height: 320px;
     }
 }
 
@@ -765,3 +740,31 @@ p.progress-tracker-label {
         height: 400px;
     }
 }
+
+@media screen and (min-width: 800px) and (max-width:800px) {
+    .tablet-container{
+        height: 800px;
+    }
+}
+
+/** For top 3 popular mobile devices **/
+
+@media screen and (min-width: 375px) and (max-width:375px) {
+    .mobile-container{
+        height: 375px;
+    }
+}
+
+@media screen and (min-width: 360px) and (max-width:360px) {
+    .mobile-container{
+        height: 360px;
+    }
+}
+
+
+@media screen and (min-width: 320px) and (max-width:320px) {
+    .mobile-container{
+        height: 320px;
+    }
+}
+
