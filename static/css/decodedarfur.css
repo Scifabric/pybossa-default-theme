@@ -526,6 +526,9 @@ div#subheader-container {
     margin-right: 15px;
     width: 10%;
   }
+  .tablet-mobile-nav-text{
+    padding-left: 10%;
+  }
 }
 /** For popular mobile devices **/
 @media screen and (min-width: 320px) and (max-width:768px) {
