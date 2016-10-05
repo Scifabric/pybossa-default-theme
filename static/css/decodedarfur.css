@@ -748,7 +748,6 @@ p.progress-tracker-label {
 }
 
 /** For top 3 popular mobile devices **/
-
 @media screen and (min-width: 375px) and (max-width:375px) {
     .mobile-container{
         height: 375px;
