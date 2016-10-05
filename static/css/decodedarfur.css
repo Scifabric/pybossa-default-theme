@@ -14,7 +14,7 @@ body p{
 
 .desktop-container{
   background-color: #E5E5E5;
-  min-height: 340px;
+  min-height: 320px;
 }
 
 .desktop-container .tiles-container{
@@ -32,6 +32,10 @@ body p{
   min-height: 320px;
 }
 
+.i-span:hover{
+   cursor: pointer;
+}
+
 /** NO PADDING **/
 .no-padding{
   padding: 0px;
@@ -41,14 +45,15 @@ body p{
 .subheader-container,
 .navbar-task-subheader{
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .subheader-container,
 .navbar-task-subheader-text{
-  text-align: center;
+    line-height: 1.5;
+    display: inline-block;
+    vertical-align: middle;
 }
-
 
 .select-message{
   size: 15px;
@@ -61,6 +66,9 @@ body p{
 }
 
 .swipe-message{
+  /**
+  font-family: AmnestyTradeGothicW01CnNo-18;
+  **/
   font-size: 12px;
   color: black;
 }
@@ -146,6 +154,7 @@ a{
 p.progress-tracker-label {
     margin: 0 0 -2px;
     color: #b6b6b6;
+    font-family: AmnestyTradeGothicW01BdCnNo-20;
 }
 
 .progress-tracker-statistics{
@@ -413,6 +422,12 @@ p.progress-tracker-label {
       visibility: hidden;
   }
 
+  /**
+  .subheader-help-container{
+      width:20px;
+      padding-right: 10px;
+  }**/
+
   /** Stuff to show **/
   .mobile-container,
   .swipe-message,
@@ -474,7 +489,7 @@ p.progress-tracker-label {
       font-size: 22px;
   }
 
-  .progress-tracker-label{
+  p.progress-tracker-label{
       font-size: 9px;
   }
   /** Feedback message **/
@@ -559,6 +574,11 @@ p.progress-tracker-label {
     display: block;
   }
 
+  /**
+  .subheader-help-container{
+    padding-right: 10px;
+  }**/
+
   /** Overwrite navbar toggle styling, because we are displaying a different one **/
   .subheader-navbar-button-container .navbar-toggle{
       float: none;
@@ -571,7 +591,7 @@ p.progress-tracker-label {
       font-size: 40px;
   }
 
-  .progress-tracker-label {
+  p.progress-tracker-label {
       font-size: 10px;
   }
   /** Feedback message **/
@@ -633,8 +653,8 @@ p.progress-tracker-label {
       font-size: 40px;
   }
 
-  .progress-tracker-label {
-      font-size: 9px;
+  p.progress-tracker-label {
+      font-size: 14px;
   }
   /** Feedback message **/
   .great-text , .super-text{
@@ -676,4 +696,57 @@ p.progress-tracker-label {
 
 .popover-content a{
     text-decoration: underline !important;
+}
+
+/** Imagery container heights depending on device browser width **/
+/** For desktop **/
+@media only screen and (min-width: 1080px) {
+    .desktop-container{
+        height: 360px;
+    }
+}
+
+/** For top 3 popular tablet devices **/
+@media screen and (min-width: 768px) and (max-width:360px) {
+    .tablet-container{
+        height: 768px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width:375px) {
+    .tablet-container{
+        height: 600px;
+    }
+}
+
+@media screen and (min-width: 800px) and (max-width:320px) {
+    .tablet-container{
+        height: 800px;
+    }
+}
+
+/** For top 3 popular mobile devices **/
+@media screen and (min-width: 360px) and (max-width:360px) {
+    .mobile-container{
+        height: 360px;
+    }
+}
+
+@media screen and (min-width: 375px) and (max-width:375px) {
+    .mobile-container{
+        height: 375px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width:320px) {
+    .mobile-container{
+        height: 320px;
+    }
+}
+
+/** Extra one for minimum desktop width on MacBook Pro **/
+@media screen and (min-width: 400px) and (max-width:400px) {
+    .mobile-container{
+        height: 400px;
+    }
 }

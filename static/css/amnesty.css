@@ -10,9 +10,7 @@
 .h2 {
     font-size: 38px;
     font-weight: 400;
-    /*font-family: AmnestyTradeGothicW04-BdCnNo-20;*/
-    font-family: AmnestyTradeGothicW04BdCnNo-20;
-    /**font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;**/
+    font-family: AmnestyTradeGothicW04BdCnNo-20, TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
     font-feature-settings: 'kern';
     font-kerning: normal;
     line-height: 1.1
@@ -21,7 +19,7 @@
 .h3 {
     font-size: 28px;
     font-weight: 400;
-    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-family: AmnestyTradeGothicW01BdCnNo-20, TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
     font-feature-settings: 'kern';
     font-kerning: normal;
     line-height: 1.1
@@ -49,7 +47,7 @@
     font-size: 14px;
     letter-spacing: 0;
     font-weight: 400;
-    font-family: TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
+    font-family: AmnestyTradeGothicW01BdCnNo-20, TradeGothicLT-BoldCondTwenty, HelveticaNeue-CondensedBold, 'Franklin Gothic Medium', sans-serif;
     font-feature-settings: 'kern';
     font-kerning: normal;
     line-height: 1.1
