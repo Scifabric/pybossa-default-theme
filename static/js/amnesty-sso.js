@@ -19,8 +19,13 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
 			</div>\
 			<div class="modal-body">\
-				<p class="loading">Loading ... </p>\
-				<iframe>Loading</iframe>\
+				<div class="option text-center">\
+					<button class="btn btn-primary btn-block" id="register-btn">Register</button><br/>\
+					<button class="btn btn-primary btn-block" id="login-btn">Login</button><br/>\
+					<button class="btn btn-link" id="skip-btn">Skip registration</button><br/>\
+				</div>\
+				<p class="loading" style="display:none">Loading ... </p>\
+				<iframe style="display:none">Loading</iframe>\
 			</div>\
 	    </div>\
 	  </div>\
@@ -37,20 +42,44 @@
 	</style>\
 			';
 			//only show modal when user is not logged in
-			if (window.amnestySSO.isAnonymous != 'True') {
+			if ( window.amnestySSO.isAnonymous != 'True') {
 				return;
 			}
+
+			//not valid mode
+			var validModalMode = ['login', 'register', 'all'];			
+			if ( !( validModalMode.indexOf(window.amnestySSO.loginModalMode) > -1 ) ) {
+				return;
+			}
+
 			//modal html			
 			$('body').append(html);
 
-			//link IM's login form with modal's content
-			$('#amnestySSOModal iframe').attr('src', window.amnestySSO.imServerUrl + '/login/modal');
-
-			//show modal with IM login form
 			$('#amnestySSOModal').modal('show');
 
-			$('iframe').load(function(){
-			      $(".loading").hide();
+			$('#amnestySSOModal #register-btn').click(function(){
+				showImModalContent('register')
+			});
+
+			$('#amnestySSOModal #login-btn').click(function(){
+				showImModalContent('login')
+			});
+
+			var showImModalContent = function(loginModalMode) {
+				$("#amnestySSOModal .option").hide();
+
+				var iframeLink = {
+					'login' : window.amnestySSO.imServerUrl + '/login/modal',
+					'register': window.amnestySSO.imServerUrl + '/register/modal'
+				}				
+				//link IM's login form with modal's content
+				$("#amnestySSOModal .loading").show();
+				$('#amnestySSOModal iframe').show();
+				$('#amnestySSOModal iframe').attr('src', iframeLink[loginModalMode]);
+			}
+
+			$('#amnestySSOModal iframe').load(function(){
+			      $("#amnestySSOModal .loading").hide();
 			});
 
 			//wait IM login form to return token
