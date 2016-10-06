@@ -1,10 +1,13 @@
 (function(){
 
 	$( document ).ready(function(){
+
 		if (!window.amnestySSO) {
 			window.amnestySSO = {
 				init : false
 			}
+		} else {
+			window.amnestySSO.init = false;
 		}
 
 		if (!window.amnestySSO.init) {		
@@ -16,19 +19,15 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
 			</div>\
 			<div class="modal-body">\
-				<iframe></iframe>\
+				<p class="loading">Loading ... </p>\
+				<iframe>Loading</iframe>\
 			</div>\
 	    </div>\
 	  </div>\
 	</div>\
 	<style>\
 		.modal-body {\
-			overflow:scroll\
-		}\
-		.modal-body {\
-		    height: 350px;\
 		    overflow: hidden;\
-		    max-width: 100%;\
 		}\
 		.modal-body iframe {\
 			height: 350px;\
@@ -37,18 +36,29 @@
 		}\
 	</style>\
 			';
+			//only show modal when user is not logged in
+			if (window.amnestySSO.isAnonymous != 'True') {
+				return;
+			}
+			//modal html			
 			$('body').append(html);
 
-			$('#amnesty-sso-modal-login').click(function(){
-				$('#amnestySSOModal iframe').attr('src', imServerUrl + '/login/modal');
-				$('#amnestySSOModal').modal('show');
+			//link IM's login form with modal's content
+			$('#amnestySSOModal iframe').attr('src', window.amnestySSO.imServerUrl + '/login/modal');
+
+			//show modal with IM login form
+			$('#amnestySSOModal').modal('show');
+
+			$('iframe').load(function(){
+			      $(".loading").hide();
 			});
 
+			//wait IM login form to return token
 			window.addEventListener("message", receiveMessage, false);
 			function receiveMessage(event)
 			{
 				var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
-				if (origin !== imServerUrl)
+				if (origin !== window.amnestySSO.imServerUrl)
 					return;
 				
 				$.post('/amnesty/oauth-authorized-with-password', {

@@ -51,7 +51,10 @@
     <script type="text/javascript" src="{{url_for('static', filename='bootstrap/js/bootstrap.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='vendor/modernizr.min.js')}}"></script>
     <script>
-        var imServerUrl = '{{ config.get('AMNESTY_SSO_SERVER_URL') }}';
+        window.amnestySSO = {
+            'imServerUrl': '{{ config.get('AMNESTY_SSO_SERVER_URL') }}',
+            'isAnonymous': '{{ current_user.is_anonymous() }}'
+        };
     </script>
     <script src="/static/js/amnesty-sso.js"></script>
     <script src="/static/rrssb/js/rrssb.min.js"></script>
