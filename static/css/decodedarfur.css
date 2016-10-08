@@ -73,9 +73,20 @@ body p{
   font-size: 12px;
   color: black;
 }
-#images , #mobileCarousel, #tabletCarousel{
+.green-background{
   background: #2ECC71;
 }
+.spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.spin-gif{
+  width: 30px;
+  height: 30px;
+}
+
 .carousel-inner > .item > img {
   margin: 0 auto;
 }
