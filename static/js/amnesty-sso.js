@@ -71,7 +71,6 @@
 			switch (window.amnestySSO.loginModalMode) {
 				case 'login' :
 					$('#amnestySSOModal').modal('show');
-					console.log(showImModalContent);
 					showImModalContent('login');
 
 					break;
