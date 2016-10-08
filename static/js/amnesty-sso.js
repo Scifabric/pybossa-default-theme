@@ -55,20 +55,36 @@
 			//modal html			
 			$('body').append(html);
 
-			$('#amnestySSOModal').modal('show');
+			switch (validModalMode) {
+				case 'login' :
+					$('#amnestySSOModal').modal('show');
+					showImModalContent('login');
 
-			$('#amnestySSOModal #skip-btn').click(function(){
-				$('#amnestySSOModal').modal('hide');
-			});
+					break;
 
-			$('#amnestySSOModal #register-btn').click(function(){
-				showImModalContent('register')
-			});
+				case 'register' :
+					$('#amnestySSOModal').modal('show');
+					showImModalContent('register');
 
-			$('#amnestySSOModal #login-btn').click(function(){
-				showImModalContent('login')
-			});
+					break;
+					
+				case 'all' :
+					$('#amnestySSOModal').modal('show');
+					$('#amnestySSOModal #skip-btn').click(function(){
+						$('#amnestySSOModal').modal('hide');
+					});
 
+					$('#amnestySSOModal #register-btn').click(function(){
+						showImModalContent('register');
+					});
+
+					$('#amnestySSOModal #login-btn').click(function(){
+						showImModalContent('login');
+					});
+
+					break;
+			}
+			
 			var showImModalContent = function(loginModalMode) {
 				$("#amnestySSOModal .option").hide();
 
@@ -99,6 +115,7 @@
 						'csrf_token': $('#ajax_csrf_token').val()
 					})
 					.done(function(data){
+
 						location.reload(); 
 					})
 					.fail(function(data){
