@@ -29,8 +29,7 @@
                 <li class="admin-menu"><a href="{{ url_for('results.index')}}">{{ _('Results') }}</a></li>
                 <li><a href="{{ url_for('glossary.index')}}">{{ _('Glossary') }}</a></li>
                 {% if config['AMNESTY_SSO_ENABLE'] %}
-                <li><a href="{{ url_for('amnesty.login') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
-                <li><a href="#" id="amnesty-sso-modal-login" >{{ _('Sign in with modal') }}</a></li>
+                <li><a href="{{ url_for('amnesty.login') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>                
                 {% else %}                
                 <li><a href="{{ url_for('account.signin') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
                 {% endif %}
