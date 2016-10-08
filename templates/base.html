@@ -49,15 +49,6 @@
     <script src="/static/vendor/jquery.js"></script>
     <script type="text/javascript" src="{{url_for('static', filename='bootstrap/js/bootstrap.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='vendor/modernizr.min.js')}}"></script>
-    <script>
-        window.amnestySSO = {
-            'imServerUrl': '{{ config.get('AMNESTY_SSO_SERVER_URL') }}',
-            'isAnonymous': '{{ current_user.is_anonymous() }}',
-            'loginModalMode' : '{{ request.args.get("modal") }}'
-        };
-
-    </script>
-    <script src="/static/js/amnesty-sso.js"></script>
     <script src="/static/rrssb/js/rrssb.min.js"></script>
     <script type="text/javascript">
         $(function () {
@@ -139,7 +130,6 @@
             </div>
         </div>
     </footer>
-    <input type="hidden" id="ajax_csrf_token" value="{{ csrf_token() }}" />
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
