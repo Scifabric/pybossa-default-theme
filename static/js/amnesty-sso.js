@@ -55,9 +55,23 @@
 			//modal html			
 			$('body').append(html);
 
-			switch (validModalMode) {
+			var showImModalContent = function(loginModalMode) {
+				$("#amnestySSOModal .option").hide();
+
+				var iframeLink = {
+					'login' : window.amnestySSO.imServerUrl + '/login/modal',
+					'register': window.amnestySSO.imServerUrl + '/register/modal'
+				}				
+				//link IM's login form with modal's content
+				$("#amnestySSOModal .loading").show();
+				$('#amnestySSOModal iframe').show();
+				$('#amnestySSOModal iframe').attr('src', iframeLink[loginModalMode]);
+			};
+			
+			switch (window.amnestySSO.loginModalMode) {
 				case 'login' :
 					$('#amnestySSOModal').modal('show');
+					console.log(showImModalContent);
 					showImModalContent('login');
 
 					break;
@@ -67,7 +81,7 @@
 					showImModalContent('register');
 
 					break;
-					
+
 				case 'all' :
 					$('#amnestySSOModal').modal('show');
 					$('#amnestySSOModal #skip-btn').click(function(){
@@ -84,19 +98,7 @@
 
 					break;
 			}
-			
-			var showImModalContent = function(loginModalMode) {
-				$("#amnestySSOModal .option").hide();
 
-				var iframeLink = {
-					'login' : window.amnestySSO.imServerUrl + '/login/modal',
-					'register': window.amnestySSO.imServerUrl + '/register/modal'
-				}				
-				//link IM's login form with modal's content
-				$("#amnestySSOModal .loading").show();
-				$('#amnestySSOModal iframe').show();
-				$('#amnestySSOModal iframe').attr('src', iframeLink[loginModalMode]);
-			}
 
 			$('#amnestySSOModal iframe').load(function(){
 			      $("#amnestySSOModal .loading").hide();
