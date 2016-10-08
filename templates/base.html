@@ -18,7 +18,6 @@
 
     <!-- Le styles -->
     <link href="{{url_for('static', filename='bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link href="{{url_for('static', filename='css/fonts/stylesheet.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/ua-styles.css')}}" rel="stylesheet">
@@ -47,7 +46,7 @@
     <meta name="theme-color" content="#ffffff" />
 
     <!-- Le javascript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="/static/vendor/jquery.js"></script>
     <script type="text/javascript" src="{{url_for('static', filename='bootstrap/js/bootstrap.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='vendor/modernizr.min.js')}}"></script>
     <script>
@@ -62,11 +61,6 @@
     <script src="/static/rrssb/js/rrssb.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            var FDBK_URL_LINK = "https://e-activist.com/ea-action/action?ea.client.id=1924&ea.campaign.id=52252";
-            var current_fd_url = $('#feedbackLink').attr('href');
-            if(FDBK_URL_LINK != current_fd_url.toString()){
-                $('#feedbackLink').prop("href", FDBK_URL_LINK);
-            }
             $('.rrssb-buttons').rrssb({
                 title: "Join hundreds of digital volunteers helping us expose human rights violations ",
                 url: "{{ config.get('HOST') }}",
@@ -102,48 +96,46 @@
 
     </div> <!-- /container -->
 
-    <!-- feedback link -->
-    <div class="col-xs-12" style="position:fixed !important;left:0px;bottom:10px;z-index:9999;">
-        <a id="feedbackLink" href="https://e-activist.com/ea-action/action?ea.client.id=1924&ea.campaign.id=52252" style="float: right">
-        <img class="img-responsive" src="{{url_for('static', filename='img/lightbulb_icon.png')}}" style="height: 32px; width: auto;"/>
-        </a>
-    </div>
-
     {% if show_cookies_warning %}
     <div id="cookies_warning">
         <p>Cookies help us deliver our services. By using our services, you agree to our use of cookies. <a target="_blank" href="https://www.amnesty.org/en/about-us/cookie-statement/" style="text-decoration: underline !important;">Learn more.</a> <button class="btn btn-sm btn-default" onclick="accept_cookies()" style="float: right; margin-right: 5%;text-transform:uppercase;font-weight: 300"></i> OK, Got it!</button></p>
     </div>
     {% endif %}
+
     <footer class="col-xs-12" style="padding-bottom: 20px; min-height: 220px">
-        <div style="margin: 0 auto; text-align: center;">
+         <div class="row" style="margin: 0 auto; text-align: center;">
             <br><br>
             <ul class="rrssb-buttons clearfix"
                 style="margin: 0 auto !important; width: 150px !important; height: 65px !important;">
-                <li class="rrssb-facebook">
-                    <a href=""
-                       class="popup">
-                        <i class="fa fa-facebook-square fa-4x"
-                           aria-hidden="false"></i>
+                <li>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ config.get('HOST') }}"
+                       class="popup" style="padding: 0;">
+                        <img style="width: 45px; height: 45px;" src="/static/img/facebook.png">
                     </a>
-
                 </li>
-                <li class="rrssb-twitter">
-                    <a href="" class="popup"><i class="fa fa-twitter-square fa-4x" aria-hidden="false"></i>
+                <li>
+                    <a href="http://twitter.com/share?url={{ config.get('HOST')}}/&amp;text=Join hundreds of digital volunteers and become an Amnesty Decoder."
+                           class="popup" style="padding: 0;">
+                        <img style="width: 50px; height: 50px;" src="/static/img/twitter.png">
                     </a>
                 </li>
             </ul>
-            <h3 style="margin-top: 10px; text-transform: uppercase;">Please share and help recruit your friends</h3>
         </div>
-        <div id="footer_links" class="container">
-            <div class="row" style="font-family: sans-serif; font-size:11px; text-align: center; margin: 0 auto;">
-                <a href="{{ url_for('terms.index')}}">{{ _('Terms of
-                    Use') }}</a><span style="padding: 10px">|</span>
-                <a href="{{ url_for('glossary.index')}}">{{ _('Glossary')
-                    }}</a><span style="padding: 10px">|</span>
-                <a target="_blank" href="https://www.amnesty.org/en/about-us/cookie-statement/">{{
-                    _('Cookies Policy') }}</a><span style="padding: 10px">|</span>
-                <a target="_blank" href="https://www.amnesty.org/en/">{{
-                    _('amnesty.org') }}</a>
+        <div class="row" style="text-align: center;">
+            <h3 style="margin-top: 5px;">Please share and help recruit your friends</h3>
+        </div>
+        <div class="row">
+            <div id="footer_links" class="container">
+                <div class="row" style="font-family: sans-serif; font-size:11px; text-align: center; margin: 0 auto;">
+                    <a href="{{ url_for('terms.index')}}">{{ _('Terms of
+                        Use') }}</a><span style="padding: 10px">|</span>
+                    <a href="{{ url_for('glossary.index')}}">{{ _('Glossary')
+                        }}</a><span style="padding: 10px">|</span>
+                    <a target="_blank" href="https://www.amnesty.org/en/about-us/cookie-statement/">{{
+                        _('Cookies Policy') }}</a><span style="padding: 10px">|</span>
+                    <a target="_blank" href="https://www.amnesty.org/en/">{{
+                        _('amnesty.org') }}</a>
+                </div>
             </div>
         </div>
     </footer>

@@ -1,4 +1,8 @@
 /** CONTAINERS **/
+body p{
+  font-family: sans-serif;
+}
+
 .container{
   width: 100%;
 }
@@ -10,7 +14,7 @@
 
 .desktop-container{
   background-color: #E5E5E5;
-  min-height: 340px;
+  min-height: 320px;
 }
 
 .desktop-container .tiles-container{
@@ -20,12 +24,16 @@
 
 .mobile-container{
   max-width: 800px;
-  min-height: 320pxpx;
+  min-height: 320px;
 }
 
 .tablet-container{
   max-width: 992px;
   min-height: 320px;
+}
+
+.i-span:hover{
+   cursor: pointer;
 }
 
 /** NO PADDING **/
@@ -36,27 +44,36 @@
 /** HEADER  **/
 .subheader-container,
 .navbar-task-subheader{
-  padding-top: 20px;
-  padding-bottom: 20px;
+    display: none;
+    padding-top: 15px;
+    padding-bottom: 9px;
 }
 
 .subheader-container,
 .navbar-task-subheader-text{
-  text-align: center;
+    line-height: 1.5;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .select-message{
-  font-size: 16px;
+  size: 15px;
+  color: black;
 }
 
 .tap-message{
   font-size: 14px;
+  color: black
 }
 
 .swipe-message{
+  /**
+  font-family: AmnestyTradeGothicW01CnNo-18;
+  **/
   font-size: 12px;
+  color: black;
 }
-#images , #mobileCarousel, #tabletCarousel{
+.green-background{
   background: #2ECC71;
 }
 .carousel-inner > .item > img {
@@ -84,42 +101,49 @@
   padding-right: 0px;
   padding-left: 0px;
 }
-
-@media only screen and (min-width: 500px) and (max-height: 768px) {
-#mobileCarousel {
-    width: 512px;
-    height: 512px;
+a{
+  color: black !important;
+  text-decoration: none !important;
 }
 
+@media only screen and (min-width: 500px) and (max-height: 768px) {
+  #mobileCarousel {
+      width: 512px;
+      height: 512px;
+  }
 }
 
 /** CONTINUE BUTTONS **/
-.continue-button-container{
-  padding-left: 40px;
+
+.btn-task-continue{
+    width: 500px;
+    height: 47px;
+    line-height: 18px;
 }
 
-.continue{
-  background-color: hsl(160, 0%, 18%) !important;
-  color: #fff !important;
-  border-radius: 0 !important;
+.modal-progress-message .continue, .btn-begin-tutorial, .btn-skip-tutorial{
+  width: 174px;
   height: 47px;
-  padding-top: 10px;
-  margin-left: -40px;
-  display: block;
-  visibility: visible ;
-  width: 500px;
-  font-size: 16px;
+  line-height: 18px;
 }
 
-.modal-progress-message .continue{
-  margin-left: 0px;
-  width:220px;
+.btn-flag{
+  width: 174px;
 }
 
-.continue:hover{
-  border-color: #2d2d2d #2d2d2d hsl(160, 0%, 14%);
+.btn-skip-tutorial{
+  text-transform: capitalize;
 }
 
+.btn-tutorial-key-link{
+  color: black;
+  width: 116px;
+}
+
+.btn-tutorial-flag-link{
+  color: black;
+  width: 116px;
+}
 
 /** PROGRESS TRACKER **/
 .progress-tracker{
@@ -127,9 +151,11 @@
   padding-bottom: 20px;
 }
 
+
 p.progress-tracker-label {
     margin: 0 0 -2px;
-    color:#ccc;
+    color: #b6b6b6;
+    font-family: AmnestyTradeGothicW01BdCnNo-20;
 }
 
 .progress-tracker-statistics{
@@ -142,33 +168,32 @@ p.progress-tracker-label {
   box-shadow: 0px 2px 4px #ccc, 0px 0px 0px #ccc, 0px 1px 1px gray;
 }
 
+/**
 .progress-tracker-number {
     font-weight: bold;
-}
-.progress-tracker-number {
-    font-weight: bold;
-}
+    margin: 26px;
+}**/
 
 .progress-modal-message{
     font-size: 14px;
 }
 
 .right-angle-arrow {
-	display: inline-block;
-	position: relative;
+  display: inline-block;
+  position: relative;
 }
 .right-angle-arrow:after {
-	content: '';
-	display: block;
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 0;
-	height: 0;
-	border-top: 50px solid darkcyan;
-	border-right: 50px solid transparent;
-	border-bottom: 0 solid transparent;
-	border-left: 0 solid transparent;
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 50px solid darkcyan;
+  border-right: 50px solid transparent;
+  border-bottom: 0 solid transparent;
+  border-left: 0 solid transparent;
 }
 .popupArea {
     background-color: yellow;
@@ -189,6 +214,17 @@ p.progress-tracker-label {
    margin-left: 1px;
    display: none;
 }
+@-moz-document url-prefix() {
+  .desktop-container .tile-triangle-div .triangle-topleft {
+        margin-left: -16.58%;
+    }
+  .tablet-container .tile-triangle-div .triangle-topleft  {
+        margin-left: -33.2%;
+    }
+  .mobile-container .tile-triangle-div .triangle-topleft  {
+        margin-left: -49.8%;
+    }
+}
 
 .triangle-top-left-show {
    z-index: 999;
@@ -200,7 +236,7 @@ p.progress-tracker-label {
 }
 
 .glyphicon-ok-sign{
-    top: -33px;
+    top: -33px !important;
     left: 3px;
     color: black;
     font-size: 14px;
@@ -249,8 +285,6 @@ p.progress-tracker-label {
   object-fit: cover;
   overflow: hidden;
   background-size: cover;
-  min-height: 100% !important;
-  height:100% !important;
 }
 
 #images img:hover, #mobileCarousel img:hover, #tabletCarousel img:hover{
@@ -272,11 +306,16 @@ p.progress-tracker-label {
 }
 
 /** MODALS **/
+/*
 .modal-body{
   min-height: 200px;
-}
+}*/
 
 /** OTHER **/
+
+.modal{
+  color: black;
+}
 
 .right-devide-line{
   border-right: 1px solid #ccc;
@@ -295,6 +334,13 @@ p.progress-tracker-label {
 .swipe-message, .tap-message{
   display: none;
 }
+.navbar-task-subheader .h6{
+  margin: 0;
+}
+
+.navbar-task-subheader p{
+  margin: 0;
+}
 
 .next-task-error, .look-task-again{
   padding-top: 10px !important;
@@ -306,6 +352,59 @@ p.progress-tracker-label {
   font-size: 14px;
 }
 
+/* Key modal */
+.key-img {
+  max-height: 160px;
+  width: 166px;
+}
+#keyModalMobileTablet .key-img{
+  border: 3px solid white;
+}
+.key-modal-header {
+  padding: 10px;
+  border-bottom: none;
+}
+
+.features{
+  padding-bottom: 10px;
+  margin-top: -30px;
+}
+
+.features-glyphicon{
+  font-style: italic !important;
+  padding-right: 5px;
+}
+.tooltip{
+  top: -5px !important;
+  width: 120px;
+}
+.tooltip-inner{
+  padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.features-easily-confused{
+  padding-top: 45px;
+}
+.features-confused , .features-ok{
+  font-size: 11px;
+  letter-spacing: 0.3px
+}
+#keyModalMobileTablet .key-img-div {
+  margin-right: -30px;
+}
+#keyModalDesktop .key-img-div{
+  margin-right: -15px;
+}
+
+.progress-tracker .h2{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: black;
+}
+div#subheader-container {
+  padding-right: 15px;
+}
 /** MOBILE MEDIA QUERY (320px to 768px) **/
 @media only screen and (min-width: 320px) {
 
@@ -317,7 +416,8 @@ p.progress-tracker-label {
   .tablet-container,
   .continue-button-container,
   .select-message,
-  .subheader-flag-container{
+  .subheader-flag-container,
+  #keyModalDesktop{
     display: none;
   }
 
@@ -325,11 +425,19 @@ p.progress-tracker-label {
       visibility: hidden;
   }
 
+  /**
+  .subheader-help-container{
+      width:20px;
+      padding-right: 10px;
+  }**/
+
   /** Stuff to show **/
   .mobile-container,
   .swipe-message,
   .tap-message,
-  .mobile-flag-container{
+  .mobile-flag-container,
+  #keyModalMobileTablet,
+  .navbar-task-subheader{
     display: block;
   }
 
@@ -360,6 +468,9 @@ p.progress-tracker-label {
   }
 
   /** Progress Tracker **/
+  .progress-tracker-number{
+      height: 24px;
+  }
   .progress-tracker{
     visibility: hidden;
     padding: 0px;
@@ -381,12 +492,12 @@ p.progress-tracker-label {
     box-shadow: none;
   }
 
-  .progress-tracker-number{
+  .progress-tracker .h2{
       font-size: 22px;
   }
 
-  .progress-tracker-label{
-      font-size: 12px !important;
+  p.progress-tracker-label{
+      font-size: 9px;
   }
   /** Feedback message **/
   .great-text , .super-text{
@@ -395,38 +506,36 @@ p.progress-tracker-label {
   .awesome-text {
     margin-left: 45px;
   }
+
   .feedback{
     padding-top: 25px;
   }
-}
-/** Feedback message on mobile devices 400px to 500px **/
-@media only screen and (min-width: 400px) and (max-height: 500px) {
-  /** Feedback message **/
-  .great-text , .super-text{
-    margin-left: 80px;
+  /*Key modal*/
+  .key-div-first{
+    margin-left: 15px;
   }
-  .awesome-text {
-    margin-left: 65px;
+  .key-sign{
+    font-size: 17px;
   }
-  .feedback{
-    padding-top: 40px ;
-  }
-}
 
-/** Feedback message on mobile devices 500px to 768 **/
-@media only screen and (min-width: 500px) and (max-height: 768px) {
-  /** Feedback message **/
-  .great-text , .super-text{
-    margin-left: 90px;
+  #keyModal .modal-body{
+    padding-left: 0px;
+    padding-right: 0px;
   }
-  .awesome-text {
-    margin-left: 75px;
+  .key-flag-div {
+    margin-right: 15px;
+    width: 10%;
   }
-  .feedback{
-    padding-top: 50px ;
+  .tablet-mobile-nav-text{
+    padding-left: 10%;
   }
 }
-
+/** For popular mobile devices **/
+@media screen and (min-width: 320px) and (max-width:768px) {
+    .key-div {
+      margin-right: -10%;
+    }
+}
 /** TABLET MEDIA QUERY (768px to 900px) **/
 @media only screen and (min-width: 768px) {
 
@@ -445,14 +554,23 @@ p.progress-tracker-label {
   #prev-arrow{
     visibility: hidden;
   }
+  .help{
+    visibility: visible;
+  }
 
   /** Stuff to show **/
   .tablet-container,
   .swipe-message,
   .tap-message,
-  .subheader-flag-container{
+  .subheader-flag-container,
+  .navbar-task-subheader{
     display: block;
   }
+
+  /**
+  .subheader-help-container{
+    padding-right: 10px;
+  }**/
 
   /** Overwrite navbar toggle styling, because we are displaying a different one **/
   .subheader-navbar-button-container .navbar-toggle{
@@ -461,13 +579,17 @@ p.progress-tracker-label {
       padding: 9px 10px;
   }
 
+  .progress-tracker-number{
+      height: 44px;
+  }
+
   /** Progress Tracker **/
-  .progress-tracker-number {
+  .progress-tracker .h2 {
       font-size: 40px;
   }
 
-  .progress-tracker-label {
-      font-size: 14px;
+  p.progress-tracker-label {
+      font-size: 10px;
   }
   /** Feedback message **/
   .great-text , .super-text{
@@ -479,6 +601,21 @@ p.progress-tracker-label {
   .feedback{
     padding-top: 50px !important;
   }
+  /* Key  sign*/
+  .key-sign{
+    font-size: 14px;
+  }
+
+  #keyModal .modal-body{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .tablet-container,
+  .tabletcarousel{
+    height: 465px;
+  }
+
 }
 
 /** DESKTOP MEDIA QUERY (992px+) **/
@@ -494,7 +631,8 @@ p.progress-tracker-label {
   .tablet-container,
   .swipe-message,
   .tap-message,
-  .mobile-flag-container{
+  .mobile-flag-container,
+  #keyModalMobileTablet{
     display: none;
   }
 
@@ -505,16 +643,24 @@ p.progress-tracker-label {
   .desktop-container,
   .continue-button-container,
   .select-message,
-  .subheader-flag-container{
+  .subheader-flag-container,
+  #keyModalDesktop{
     display: block;
+  }
+  .help{
+    visibility: visible;
+  }
+
+  .progress-tracker-number{
+      height: 44px;
   }
 
   /** Progress Tracker **/
-  .progress-tracker-number {
+  .progress-tracker .h2 {
       font-size: 40px;
   }
 
-  .progress-tracker-label {
+  p.progress-tracker-label {
       font-size: 14px;
   }
   /** Feedback message **/
@@ -536,5 +682,128 @@ p.progress-tracker-label {
     border-bottom: 1px solid #ccc;
     border-radius:3px;
     box-shadow: 0px 2px 4px #ccc, 0px 0px 0px #ccc, 0px 1px 1px gray;
+    background-color: white; 
+  }
+  .div-progress-tracker{
+    background-image: linear-gradient(bottom, #F7F7F7 57%,white 50%);
+    background-image: -o-linear-gradient(bottom, #F7F7F7 57%, white 50%);
+    background-image: -moz-linear-gradient(bottom, #F7F7F7 57%, white 50%);
+    background-image: -webkit-linear-gradient(bottom, #F7F7F7 57%, white 50%);
+    background-image: -ms-linear-gradient(bottom, #F7F7F7 57%, white 50%);
+  }
+  div#subheader-container {
+    padding-right: 20px;
+  }
+
+}
+
+@media (min-width: 1199px){
+  body .container {
+    margin-bottom: auto !important;
+    padding-bottom: 0 !important;
+  } 
+  div#subheader-container {
+    padding-right: 5px;
   }
 }
+
+.popover-content a{
+    text-decoration: underline !important;
+}
+
+/** Feedback message on mobile devices 400px to 500px **/
+@media only screen and (min-width: 400px) and (max-height: 500px) {
+  /** Feedback message **/
+  /*.great-text , .super-text{
+    margin-left: 80px;
+  }
+  .awesome-text {
+    margin-left: 65px;
+  }*/
+  .feedback{
+    padding-top: 40px ;
+  }
+}
+
+/** Feedback message on mobile devices 500px to 768 **/
+@media only screen and (min-width: 500px) and (max-height: 768px) {
+  /** Feedback message **/
+  /*.great-text , .super-text{
+    margin-left: 90px;
+  }
+  .awesome-text {
+    margin-left: 75px;
+  }*/
+  .feedback{
+    padding-top: 50px ;
+  }
+}
+
+/** Imagery container heights depending on device browser width **/
+/** For desktop **/
+@media only screen and (min-width: 1080px) {
+    .desktop-container{
+        height: 360px;
+    }
+}
+
+
+/** For popular mobile devices **/
+@media screen and (min-width: 432px) and (max-width:432px) {
+    .mobile-container,
+    .mobilecarousel{
+        height: 432px;
+    }
+}
+
+@media screen and (min-width: 414px) and (max-width:414px) {
+    .mobile-container,
+    .mobilecarousel{
+        height: 414px;
+    }
+}
+
+@media screen and (min-width: 412px) and (max-width:412px) {
+    .mobile-container,
+    .mobilecarousel{
+        height: 412px;
+    }
+}
+
+/** Extra one for minimum desktop width on MacBook Pro **/
+@media screen and (min-width: 400px) and (max-width:400px) {
+    .mobile-container,
+    .mobilecarousel{
+        height: 400px;
+    }
+}
+
+@media screen and (min-width: 384px) and (max-width:384px) {
+    .mobile-container,
+    .mobilecarousel{
+        height: 384px;
+    }
+}
+
+@media screen and (min-width: 375px) and (max-width:375px) {
+    .mobile-container,
+    .mobilecarousel{
+        height: 375px;
+    }
+}
+
+@media screen and (min-width: 360px) and (max-width:360px) {
+    .mobile-container,
+    .mobilecarousel{
+        height: 360px;
+    }
+}
+
+
+@media screen and (min-width: 320px) and (max-width:320px) {
+    .mobile-container,
+    .mobilecarousel{
+        height: 320px;
+    }
+}
+
