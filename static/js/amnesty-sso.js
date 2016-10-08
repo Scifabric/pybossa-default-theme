@@ -57,6 +57,10 @@
 
 			$('#amnestySSOModal').modal('show');
 
+			$('#amnestySSOModal #skip-btn').click(function(){
+				$('#amnestySSOModal').modal('hide');
+			});
+
 			$('#amnestySSOModal #register-btn').click(function(){
 				showImModalContent('register')
 			});

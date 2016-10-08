@@ -54,7 +54,7 @@
         window.amnestySSO = {
             'imServerUrl': '{{ config.get('AMNESTY_SSO_SERVER_URL') }}',
             'isAnonymous': '{{ current_user.is_anonymous() }}',
-            'loginModalMode' : '{{ request.args.get("login-modal-mode") }}'
+            'loginModalMode' : '{{ request.args.get("modal") }}'
         };
 
     </script>
