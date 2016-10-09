@@ -17,6 +17,7 @@
 	    <div class="modal-content">\
 			<div class="modal-header">\
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+				<h4 class="modal-title"></h4>\
 			</div>\
 			<div class="modal-body">\
 				<div class="option text-center">\
@@ -81,7 +82,13 @@
 
 			var showImModalContent = function(loginModalMode) {
 				$("#amnestySSOModal .option").hide();
-
+				
+				if (loginModalMode == 'register') {
+					$("#amnestySSOModal .modal-title").html('Register');
+				} else if (loginModalMode == 'login') {
+					$("#amnestySSOModal .modal-title").html('Login');
+				}
+				
 				var iframeLink = {
 					'login' : window.amnestySSO.imServerUrl + '/login/modal',
 					'register': window.amnestySSO.imServerUrl + '/register/modal'
@@ -100,9 +107,11 @@
 					break;
 
 				case 'register' :
+					//set bigger height
+					$('#amnestySSOModal .modal-body iframe').height('80vh');
+
+					//show register modal
 					$('#amnestySSOModal').modal('show');
-					//update for later redirect
-					window.amnestySSO.loginModalMode = 'register';
 					showImModalContent('register');
 
 					break;
@@ -114,6 +123,12 @@
 					});
 
 					$('#amnestySSOModal #register-btn').click(function(){
+						//update for later redirect to tutorial page
+						window.amnestySSO.loginModalMode = 'register';
+
+						//set bigger height
+						$('#amnestySSOModal .modal-body iframe').height('80vh');
+
 						showImModalContent('register');
 					});
 
