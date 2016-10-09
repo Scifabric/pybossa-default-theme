@@ -1,3 +1,6 @@
+// SSO login, register modal iframe
+// --------------------------------
+
 (function(){
 
 	$( document ).ready(function(){
@@ -36,35 +39,6 @@
 	    </div>\
 	  </div>\
 	</div>\
-	<style>\
-		/* iframe style */\
-		.modal-body {\
-		    overflow: hidden;\
-		}\
-		.modal-body iframe {\
-			height: 350px;\
-			width: 100%;\
-			border: 0px;\
-		}\
-		/* buttons style */\
-		.btn-sign-in.login-modal {\
-			background-color: white;\
-			color: black;\
-		}\
-		.btn-sign-in.login-modal:hover {\
-			background-color: #dadada;\
-		}\
-		.btn-skip-registration.login-modal {\
-			font-size: 14px;\
-			font-family: sans-serif;\
-			color: black;\
-		}\
-		.btn-register.login-modal,\
-		.btn-sign-in.login-modal,\
-		.btn-skip-registration.login-modal {\
-			width:300px;\
-		}\
-	</style>\
 			';
 			//only show modal when user is not logged in
 			if ( window.amnestySSO.isAnonymous != 'True') {
@@ -176,5 +150,110 @@
 		}
 	});
 
+
+})();
+
+// Flag modal
+// ----------
+(function(){
+
+	var html = '\
+<div class="modal fade modal-flag" id="flagModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">\
+  <div class="modal-dialog modal-md" role="document">\
+    <div class="modal-content">\
+      <div class="modal-body">\
+        <div class="text-center">\
+          <p class="modal-title h3">Flag task ..</p>\
+          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+        </div>\
+        <br/>\
+        <div class="submit-comment-container">\
+          <p class="text-danger message text-center"></p>\
+          <textarea class="form-control" rows="3" id="flag-content"></textarea>\
+          <br/>\
+          <div class="text-center">\
+            <button type="button" class="btn-primary--md--fullwidth btn-flag" id="flag-btn">\
+              <span class="glyphicon glyphicon-refresh spinning"></span>\
+              Flag this section\
+            </button>\
+            <br/><br/>\
+            <span class="text-muted">Your comment will appear in the Amnesty Decoders community forum</span>\
+          </div>\
+        </div>\
+        <div class="after-submit-sucess text-center" style="display:none">\
+          <p>Thanks for your comments and suggestions</p>\
+          <br/>\
+          <a href="" class="view-comment-on-forum">View comment on forum</a>\
+          <br/>\
+          <br/>\
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="flag-btn-close">Close</button>\
+        </div>\
+      </div>\
+    </div>\
+  </div>\
+</div>\
+		';
+
+	$('body').append(html);
+	
+	$(".btn-flag").click(function(){
+		var comment = $('#flag-content').val();
+		comment = comment.trim();
+
+		if (!comment) {
+			$("#flagModal .message").html("Please enter your comment");
+			return;
+		}
+
+		//loading button
+		$('.btn-flag .glyphicon-refresh').show();
+
+		$.get('/discourse/create-comment', {
+				"comment": comment,
+				"task-id": pybossa.task.id
+			})
+			.done(function(data){
+				$('#flagModal .view-comment-on-forum').attr('href', data.topic_url);
+				//clear error message
+				$("#flagModal .message").html("");
+				//hide comment input
+				$('#flagModal .submit-comment-container').hide();
+				//show forum link
+				$('#flagModal .after-submit-sucess').show();
+			})
+			.fail(function(data){
+				var message = "There is error";
+				if (data && data.responseText) {
+				var error = $.parseJSON(data.responseText);
+				if (error && error.errors) {
+				message = error.errors.join('<br/>');
+				}
+				}
+				$("#flagModal .message").html(message);
+			})
+			.always(function() {
+				//remove loading button
+				$('.btn-flag .glyphicon-refresh').hide();
+			});
+	});
+
+
+	$('#flagModal').on('hidden.bs.modal', function (e) {
+		//reset
+		//show comment input
+		$('#flagModal .submit-comment-container').show();
+		$('#flag-content').val("")
+		//hide forum link
+		$('#flagModal .after-submit-sucess').hide();
+		//clear error message
+		$("#flagModal .message").html("");
+	});
+
+	$('#flagModal').on('show.bs.modal', function (e) {
+		$('.btn-flag .glyphicon-refresh').hide();
+		$('#flagModal .modal-title').html("Flag task " + pybossa.task.id);
+	});
+
+	}
 
 })();
