@@ -140,8 +140,14 @@
 						'csrf_token': $('#ajax_csrf_token').val()
 					})
 					.done(function(data){
-
-						location.reload(); 
+						//after register show user pybossa's tutorial page
+						if (window.amnestySSO.loginModalMode == 'register') {
+							window.location = '/project/decode-darfur/tutorial';
+						} 
+						//with login or other case, just reload current window
+						else {
+							location.reload(); 	
+						}						
 					})
 					.fail(function(data){
         				console.log('failed');
