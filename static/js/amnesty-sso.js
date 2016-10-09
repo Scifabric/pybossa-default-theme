@@ -26,7 +26,7 @@
 				<div class="option text-center">\
 					<div class="description">\
 						<p class="h3">BECOME AN AMNESTY DECODER</p>\
-						<p> By registering you&apos;ll be able to see your progress and participate in the forum. If you&apos;d prefer you can skip registration.</p>\						
+						<p> By registering you&apos;ll be able to see your progress and participate in the forum. If you&apos;d prefer you can skip registration.</p>\
 					</div>\
 					<br/>\
 					<button class="btn-secondary--alt--md--fullwidth btn-register login-modal" id="register-btn">REGISTER</button>\
