@@ -101,6 +101,8 @@
 
 				case 'register' :
 					$('#amnestySSOModal').modal('show');
+					//update for later redirect
+					window.amnestySSO.loginModalMode = 'register';
 					showImModalContent('register');
 
 					break;
