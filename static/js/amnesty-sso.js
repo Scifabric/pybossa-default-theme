@@ -157,8 +157,9 @@
 // ----------
 (function(){
 	$( document ).ready(function(){
+		//we rename flagModal to flagModal2 so external "data-target='#flagModal'" element can't open that modal directly
 		var html = '\
-	<div class="modal fade modal-flag" id="flagModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">\
+	<div class="modal fade modal-flag" id="flagModal2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">\
 	  <div class="modal-dialog modal-md" role="document">\
 	    <div class="modal-content">\
 	      <div class="modal-body">\
@@ -196,12 +197,23 @@
 
 		$('body').append(html);
 		
+		$("[data-target='#flagModal']").click(function(){
+			//only logged-in user can comment
+			if (window.amnestySSO.isAnonymous != 'True') {
+				$('#flagModal2').modal('show');
+			} 
+			//show register/login modal for new user
+			else {
+				console.log('show login');
+			}
+		});
+
 		$(".btn-flag").click(function(){
 			var comment = $('#flag-content').val();
 			comment = comment.trim();
 
 			if (!comment) {
-				$("#flagModal .message").html("Please enter your comment");
+				$("#flagModal2 .message").html("Please enter your comment");
 				return;
 			}
 
@@ -213,13 +225,13 @@
 					"task-id": pybossa.task.id
 				})
 				.done(function(data){
-					$('#flagModal .view-comment-on-forum').attr('href', data.topic_url);
+					$('#flagModal2 .view-comment-on-forum').attr('href', data.topic_url);
 					//clear error message
-					$("#flagModal .message").html("");
+					$("#flagModal2 .message").html("");
 					//hide comment input
-					$('#flagModal .submit-comment-container').hide();
+					$('#flagModal2 .submit-comment-container').hide();
 					//show forum link
-					$('#flagModal .after-submit-sucess').show();
+					$('#flagModal2 .after-submit-sucess').show();
 				})
 				.fail(function(data){
 					var message = "There is error";
@@ -229,7 +241,7 @@
 					message = error.errors.join('<br/>');
 					}
 					}
-					$("#flagModal .message").html(message);
+					$("#flagModal2 .message").html(message);
 				})
 				.always(function() {
 					//remove loading button
@@ -238,20 +250,20 @@
 		});
 
 
-		$('#flagModal').on('hidden.bs.modal', function (e) {
+		$('#flagModal2').on('hidden.bs.modal', function (e) {
 			//reset
 			//show comment input
-			$('#flagModal .submit-comment-container').show();
+			$('#flagModal2 .submit-comment-container').show();
 			$('#flag-content').val("")
 			//hide forum link
-			$('#flagModal .after-submit-sucess').hide();
+			$('#flagModal2 .after-submit-sucess').hide();
 			//clear error message
-			$("#flagModal .message").html("");
+			$("#flagModal2 .message").html("");
 		});
 
-		$('#flagModal').on('show.bs.modal', function (e) {
+		$('#flagModal2').on('show.bs.modal', function (e) {
 			$('.btn-flag .glyphicon-refresh').hide();
-			$('#flagModal .modal-title').html("Flag task " + pybossa.task.id);
+			$('#flagModal2 .modal-title').html("Flag task " + pybossa.task.id);
 		});	
 	});
 
