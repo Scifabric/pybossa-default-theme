@@ -130,7 +130,10 @@
             <h3 style="margin-top: 5px;">Please share and help recruit your friends</h3>
         </div>
     </footer>
+
+    {# csrf token used by ajax post request in javascript #}
     <input type="hidden" id="ajax_csrf_token" value="{{ csrf_token() }}" />    
+    
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
