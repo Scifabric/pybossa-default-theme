@@ -24,8 +24,11 @@
 			</div>\
 			<div class="modal-body">\
 				<div class="option text-center">\
-					<p class="h3">BECOME AN AMNESTY DECODER</p>\
-					<p> By registering you&apos;ll be able to see your progress and participate in the forum. If you&apos;d prefer you can skip registration.</p><br/>\
+					<div class="description">\
+						<p class="h3">BECOME AN AMNESTY DECODER</p>\
+						<p> By registering you&apos;ll be able to see your progress and participate in the forum. If you&apos;d prefer you can skip registration.</p>\						
+					</div>\
+					<br/>\
 					<button class="btn-secondary--alt--md--fullwidth btn-register login-modal" id="register-btn">REGISTER</button>\
 					<br/><br/>\
 					<button class="btn-secondary--alt--md--fullwidth btn-sign-in login-modal" id="login-btn">SIGN IN</button>\
@@ -215,6 +218,12 @@
 			//show register/login modal for new user
 			else {
 				window.amnestySSO.loginModalMode = 'all';
+				var flagFormDescriptionHtml = '\
+					<p class="h3">BECOME AN AMNESTY DECODER TO FLAG</p>\
+					<p> By registering you&apos;ll be able to participate in the forum.</p>\
+				\
+				';
+				$('#amnestySSOModal .description').html(flagFormDescriptionHtml);
 				window.amnestySSO.bootstrapLoginRegister();
 			}
 		});
@@ -247,10 +256,10 @@
 				.fail(function(data){
 					var message = "There is error";
 					if (data && data.responseText) {
-					var error = $.parseJSON(data.responseText);
-					if (error && error.errors) {
-					message = error.errors.join('<br/>');
-					}
+						var error = $.parseJSON(data.responseText);
+						if (error && error.errors) {
+							message = error.errors.join('<br/>');
+						}
 					}
 					$("#flagModal2 .message").html(message);
 				})
