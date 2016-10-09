@@ -67,6 +67,10 @@
 			      $("#amnestySSOModal .loading").hide();
 			});
 
+			$('#amnestySSOModal #skip-btn').click(function(){
+				$('#amnestySSOModal').modal('hide');
+			});
+
 			//wait IM login form to return token
 			window.addEventListener("message", receiveMessage, false);
 			function receiveMessage(event)
@@ -105,56 +109,58 @@
 // Bootstrap login/register modal if query string has ?modal=login/register/all
 // ---
 (function(){
-	//only show modal when user is not logged in
-	if ( window.amnestySSO.isAnonymous != 'True') {
-		return;
-	}
 
-	//not valid mode
-	var validModalMode = ['login', 'register', 'all'];			
-	if ( !( validModalMode.indexOf(window.amnestySSO.loginModalMode) > -1 ) ) {
-		return;
-	}
+	window.amnestySSO.bootstrapLoginRegister = function() {
+		//only show modal when user is not logged in
+		if ( window.amnestySSO.isAnonymous != 'True') {
+			return;
+		}
 
-	switch (window.amnestySSO.loginModalMode) {
-		case 'login' :
-			$('#amnestySSOModal').modal('show');
-			window.amnestySSO.showImModalContent('login');
+		//not valid mode
+		var validModalMode = ['login', 'register', 'all'];			
+		if ( !( validModalMode.indexOf(window.amnestySSO.loginModalMode) > -1 ) ) {
+			return;
+		}
 
-			break;
+		switch (window.amnestySSO.loginModalMode) {
+			case 'login' :
+				$('#amnestySSOModal').modal('show');
+				window.amnestySSO.showImModalContent('login');
 
-		case 'register' :
-			//set bigger height
-			$('#amnestySSOModal .modal-body iframe').height('80vh');
+				break;
 
-			//show register modal
-			$('#amnestySSOModal').modal('show');
-			window.amnestySSO.showImModalContent('register');
-
-			break;
-
-		case 'all' :
-			$('#amnestySSOModal').modal('show');
-			$('#amnestySSOModal #skip-btn').click(function(){
-				$('#amnestySSOModal').modal('hide');
-			});
-
-			$('#amnestySSOModal #register-btn').click(function(){
-				//update for later redirect to tutorial page
-				window.amnestySSO.loginModalMode = 'register';
-
+			case 'register' :
 				//set bigger height
 				$('#amnestySSOModal .modal-body iframe').height('80vh');
 
+				//show register modal
+				$('#amnestySSOModal').modal('show');
 				window.amnestySSO.showImModalContent('register');
-			});
 
-			$('#amnestySSOModal #login-btn').click(function(){
-				window.amnestySSO.showImModalContent('login');
-			});
+				break;
 
-			break;
+			case 'all' :
+				$('#amnestySSOModal').modal('show');
+
+				$('#amnestySSOModal #register-btn').click(function(){
+					//update for later redirect to tutorial page
+					window.amnestySSO.loginModalMode = 'register';
+
+					//set bigger height
+					$('#amnestySSOModal .modal-body iframe').height('80vh');
+
+					window.amnestySSO.showImModalContent('register');
+				});
+
+				$('#amnestySSOModal #login-btn').click(function(){
+					window.amnestySSO.showImModalContent('login');
+				});
+
+				break;
+		}		
 	}
+
+	window.amnestySSO.bootstrapLoginRegister();
 
 })();
 // Flag modal
@@ -208,7 +214,8 @@
 			} 
 			//show register/login modal for new user
 			else {
-				console.log('show login');
+				window.amnestySSO.loginModalMode = 'all';
+				window.amnestySSO.bootstrapLoginRegister();
 			}
 		});
 
