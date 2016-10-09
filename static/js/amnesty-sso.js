@@ -230,8 +230,8 @@
 			else {
 				window.amnestySSO.loginModalMode = 'all';
 				var flagFormDescriptionHtml = '\
-					<p class="h3">BECOME AN AMNESTY DECODER TO FLAG</p>\
-					<p> By registering you&apos;ll be able to participate in the forum.</p>\
+					<p class="h4">Sign in to help us make the most out of your hard work.</p>\
+					<p>Signing in allows you to participate in discussions and allows us to give you credit for your work and make the best use of the data you provide.</p>\
 				\
 				';
 				$('#amnestySSOModal .description').html(flagFormDescriptionHtml);
