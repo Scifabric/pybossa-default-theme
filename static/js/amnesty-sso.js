@@ -20,9 +20,14 @@
 			</div>\
 			<div class="modal-body">\
 				<div class="option text-center">\
-					<button class="btn btn-primary btn-block" id="register-btn">Register</button><br/>\
-					<button class="btn btn-primary btn-block" id="login-btn">Login</button><br/>\
-					<button class="btn btn-link" id="skip-btn">Skip registration</button><br/>\
+					<p class="h3">BECOME AN AMNESTY DECODER</p>\
+					<p> By registering you&apos;ll be able to see your progress and participate in the forum. If you&apos;d prefer you can skip registration.</p><br/>\
+					<button class="btn-secondary--alt--md--fullwidth btn-register login-modal" id="register-btn">REGISTER</button>\
+					<br/><br/>\
+					<button class="btn-secondary--alt--md--fullwidth btn-sign-in login-modal" id="login-btn">SIGN IN</button>\
+					<br/><br/>\
+					<button class="btn-link btn-skip-registration login-modal" id="skip-btn">Skip registration</button>\
+					<br/><br/>\
 				</div>\
 				<p class="loading" style="display:none">Loading ... </p>\
 				<iframe style="display:none">Loading</iframe>\
@@ -31,6 +36,7 @@
 	  </div>\
 	</div>\
 	<style>\
+		/* iframe style */\
 		.modal-body {\
 		    overflow: hidden;\
 		}\
@@ -38,6 +44,24 @@
 			height: 350px;\
 			width: 100%;\
 			border: 0px;\
+		}\
+		/* buttons style */\
+		.btn-sign-in.login-modal {\
+			background-color: white;\
+			color: black;\
+		}\
+		.btn-sign-in.login-modal:hover {\
+			background-color: #dadada;\
+		}\
+		.btn-skip-registration.login-modal {\
+			font-size: 14px;\
+			font-family: sans-serif;\
+			color: black;\
+		}\
+		.btn-register.login-modal,\
+		.btn-sign-in.login-modal,\
+		.btn-skip-registration.login-modal {\
+			width:300px;\
 		}\
 	</style>\
 			';
