@@ -128,7 +128,7 @@ $(document).ready(function() {
 
     // Download CSV button click
     $('.btn-download-csv').on('click', function(){
-        if(numOfTasks > 10000){
+        if(numOfTasks > 35000){
             $( "#too-many-tasks-error-modal").modal('show');
         }else{
             generateAndDownloadCSV();
