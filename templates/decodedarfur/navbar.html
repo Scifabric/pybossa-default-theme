@@ -20,7 +20,7 @@
                     <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
                     <li class="admin-menu"><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
                     {% endif %}
-                    <li><a href="#" >How it works</a></li>
+                    <li><a href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}/projects/decode-darfur/how-it-works" >How it works</a></li>
                     <li><a href="{{ config.get('DISCOURSE_SERVER_URL') }}/session/sso" >Discuss</a></li>
                     
                     {% if config['AMNESTY_SSO_ENABLE'] %}
