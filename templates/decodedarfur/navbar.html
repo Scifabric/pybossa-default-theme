@@ -9,11 +9,6 @@
             </button>
             <a class="navbar-brand" style="display: none;" id="amnestyLargeLogo" href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}"><img src="/static/img/amnesty-main-logo.png" alt="Amnesty Decoders"></a>
             <a class="navbar-brand" id="amnestySmallLogo" href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}"><img src="/static/img/amnesty-small-logo.png" alt="Amnesty Decoders"></a>
-            {% if current_user.is_authenticated() %}
-                <a class="amnesty-decoder-text" href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME_DECODE_DARFUR'))}}"><h2>Decode Darfur</h2></a>
-            {% else %}
-                <a class="amnesty-decoder-text" href="{{url_for('project.presenter', short_name=config.get('PROJECT_SHORT_NAME_DECODE_DARFUR'))}}"><h2>Decode Darfur</h2></a>
-            {% endif %}
         </div>
 
 
@@ -25,7 +20,7 @@
                     <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
                     <li class="admin-menu"><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
                     {% endif %}
-                    <li><a href="#" >How it works</a></li>
+                    <li><a href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}/projects/decode-darfur/how-it-works" >How it works</a></li>
                     <li><a href="{{ config.get('DISCOURSE_SERVER_URL') }}/session/sso" >Discuss</a></li>
                     
                     {% if config['AMNESTY_SSO_ENABLE'] %}
@@ -35,16 +30,38 @@
                     <li class="admin-menu"><a href="{{ url_for('account.signout') }}">Signout</a></li>
                     {% endif %}
                 {% else %}
-                    <li><a href="#" >How it works</a></li>
+                    <li><a href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}/projects/decode-darfur/how-it-works" >How it works</a></li>
 
                     {% if config['AMNESTY_SSO_ENABLE'] %}
-                    <li><a href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}/register" >{{ _('Register') }}</a></li>
+                    <li><a href="#" id="btn-sso-register">{{ _('Register') }}</a></li>
+                    <script>
+                    $('#btn-sso-register').click(function(){
+                        var url = window.location.href;
+                        if ( window.location.href.indexOf('?') !== -1) {
+                            url +='&modal=register';
+                        } else {
+                            url +='?modal=register';
+                        }
+                        window.location = url;
+                    });
+                    </script>
                     {% else %}
                     <li><a href="{{ url_for('account.register') }}?next={{ request.path }}" >{{ _('Register') }}</a></li>
                     {% endif %}
 
                     {% if config['AMNESTY_SSO_ENABLE'] %}
-                    <li><a href="{{ url_for('amnesty.login') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
+                    <li><a href="#" id="btn-sso-login">{{ _('Sign in') }}</a></li>
+                    <script>
+                    $('#btn-sso-login').click(function(){
+                        var url = window.location.href;
+                        if ( window.location.href.indexOf('?') !== -1) {
+                            url +='&modal=login';
+                        } else {
+                            url +='?modal=login';
+                        }
+                        window.location = url;
+                    });
+                    </script>                    
                     {% else %}
                     <li><a href="{{ url_for('account.signin') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
                     {% endif %}
