@@ -176,7 +176,7 @@ p.progress-tracker-label {
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   border-radius:3px;
-  box-shadow: 0px 2px 4px #ccc, 0px 0px 0px #ccc, 0px 1px 1px gray;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.10), 0px 0px 0px rgba(0,0,0,0.10), 0px 1px 1px rgba(0,0,0,0.10);
 }
 
 /**
@@ -621,6 +621,10 @@ div#subheader-container {
     padding-left: 0px;
     padding-right: 0px;
   }
+   .key-flag-div {
+    margin-right: 15px;
+    width: 10%;
+  }
 
   .tablet-container,
   .tabletcarousel{
@@ -688,12 +692,8 @@ div#subheader-container {
     padding-top: 20px;
     padding-bottom: 20px;
     margin-bottom: 50px;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-radius:3px;
-    box-shadow: 0px 2px 4px #ccc, 0px 0px 0px #ccc, 0px 1px 1px gray;
-    background-color: white; 
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.10), 0px 0px 0px rgba(0,0,0,0.10), 0px 1px 1px rgba(0,0,0,0.10);
+    background-color: white;
   }
   .div-progress-tracker{
     background-image: linear-gradient(bottom, #F7F7F7 57%,white 50%);
