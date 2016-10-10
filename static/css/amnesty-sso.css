@@ -1,0 +1,43 @@
+/* SSO login/register modal inside iframe style */
+#amnestySSOModal .modal-body {
+    overflow: hidden;
+}
+#amnestySSOModal .modal-body iframe {
+	height: 350px;
+	width: 100%;
+	border: 0px;
+}
+/* buttons style */
+#amnestySSOModal .btn-sign-in.login-modal {
+	background-color: white;
+	color: black;
+}
+#amnestySSOModal .btn-sign-in.login-modal:hover {
+	background-color: #dadada;
+}
+#amnestySSOModal .btn-skip-registration.login-modal {
+	font-size: 14px;
+	font-family: sans-serif;
+	color: black;
+}
+#amnestySSOModal .btn-register.login-modal,
+#amnestySSOModal .btn-sign-in.login-modal,
+#amnestySSOModal .btn-skip-registration.login-modal {
+	width:300px;
+}
+
+//spinning icon
+.glyphicon.spinning {
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1) rotate(360deg); }
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
