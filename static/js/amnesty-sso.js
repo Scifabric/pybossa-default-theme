@@ -111,11 +111,11 @@
 						'csrf_token': $('#ajax_csrf_token').val()
 					})
 					.done(function(data){
-						//after register show user pybossa's tutorial page
-						if (window.amnestySSO.loginModalMode == 'register') {
+						//if user hasn't tried tutorial yet then show it
+						if (!window.pybossaTutorial.isSkippedOrComplete()) {
 							window.location = '/project/decode-darfur/tutorial';
 						} 
-						//with login or other case, just reload current window
+						//other case, just reload current window
 						else {
 							location.reload(); 	
 						}						
