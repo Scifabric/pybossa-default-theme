@@ -596,6 +596,10 @@ div#subheader-container {
       height: 44px;
   }
 
+  .progress-tracker{
+      padding-top: 18px;
+  }
+
   /** Progress Tracker **/
   .progress-tracker .h2 {
       font-size: 40px;
