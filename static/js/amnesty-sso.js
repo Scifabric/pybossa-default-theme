@@ -222,21 +222,23 @@
 		$('body').append(html);
 		
 		$("[data-target='#flagModal']").click(function(){
-			//only logged-in user can comment
-			if (window.amnestySSO.isAnonymous != 'True') {
-				$('#flagModal2').modal('show');
-			} 
-			//show register/login modal for new user
-			else {
-				window.amnestySSO.loginModalMode = 'all';
-				var flagFormDescriptionHtml = '\
-					<p class="h4">Sign in to help us make the most out of your hard work.</p>\
-					<p>Signing in allows you to participate in discussions and allows us to give you credit for your work and make the best use of the data you provide.</p>\
-				\
-				';
-				$('#amnestySSOModal .description').html(flagFormDescriptionHtml);
-				window.amnestySSO.showImModalContent('all');
-				$('#amnestySSOModal').modal('show');
+			if(!window.isInTutorial){
+				//only logged-in user can comment
+				if (window.amnestySSO.isAnonymous != 'True') {
+					$('#flagModal2').modal('show');
+				}
+				//show register/login modal for new user
+				else {
+					window.amnestySSO.loginModalMode = 'all';
+					var flagFormDescriptionHtml = '\
+						<p class="h4">Sign in to help us make the most out of your hard work.</p>\
+						<p>Signing in allows you to participate in discussions and allows us to give you credit for your work and make the best use of the data you provide.</p>\
+					\
+					';
+					$('#amnestySSOModal .description').html(flagFormDescriptionHtml);
+					window.amnestySSO.showImModalContent('all');
+					$('#amnestySSOModal').modal('show');
+				}
 			}
 		});
 
