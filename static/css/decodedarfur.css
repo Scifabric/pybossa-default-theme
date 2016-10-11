@@ -774,6 +774,13 @@ div#subheader-container {
     }
 }
 
+
+@media (max-width: 363px){
+  .navbar-task-subheader-text {
+    font-size: 12px !important;
+  }
+}
+
 @media screen and (min-width: 412px) and (max-width:412px) {
     .mobile-container,
     .mobilecarousel{
