@@ -86,7 +86,9 @@ body p{
   width: 30px;
   height: 30px;
 }
-
+.desktop-container{
+  position: relative !important;
+}
 .carousel-inner > .item > img {
   margin: 0 auto;
 }
