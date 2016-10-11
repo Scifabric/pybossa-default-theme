@@ -82,7 +82,15 @@
 	}
 
 	//we are in page tutorial
-	if (window.location.href.endsWith("/project/decode-darfur/tutorial")) {
+	if (window.location.href.indexOf("/project/decode-darfur/tutorial") !== -1) {
+		return;
+	}
+
+	//we are in login/register modal
+	if (window.location.href.indexOf("?modal=all") !== -1 
+		|| window.location.href.indexOf("?modal=login") !== -1 
+		|| window.location.href.indexOf("?modal=register") !== -1 
+		) {
 		return;
 	}
 
