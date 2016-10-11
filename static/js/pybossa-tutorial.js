@@ -71,3 +71,33 @@
 	}
 
 })();
+
+(function(){
+	// when should we open tutorial 
+	// ----------------------------
+
+	//we are in tutorial
+	if(window.isInTutorial){
+		return;
+	}
+
+	//we are in page tutorial
+	if (window.location.href.indexOf("/project/decode-darfur/tutorial") !== -1) {
+		return;
+	}
+
+	//we are in login/register modal
+	if (window.location.href.indexOf("?modal=all") !== -1 
+		|| window.location.href.indexOf("?modal=login") !== -1 
+		|| window.location.href.indexOf("?modal=register") !== -1 
+		) {
+		return;
+	}
+
+	//use already click skip or complete tutorial
+	if (window.pybossaTutorial.isSkippedOrComplete()) {
+		return;
+	}
+	window.location.href = "/project/decode-darfur/tutorial";
+	//
+})();
