@@ -250,7 +250,13 @@
 		textarea#flag-content {\
 			font-family: sans-serif;\
 			line-height: 1.6em;\
-			font-size: 14px;\
+			font-size: 14px !important;\
+		}\
+		#flagModal2 span.text-muted,\
+		#flagModal2 .after-submit-sucess p {\
+			font-family: sans-serif;\
+			line-height: 1.6em;\
+			font-size: 14px !important;\
 		}\
 	</style>\
 			';
