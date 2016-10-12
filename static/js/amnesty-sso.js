@@ -188,13 +188,13 @@
 	    <div class="modal-content">\
 	      <div class="modal-body">\
 	        <div class="text-center">\
-	          <p class="modal-title h3">Flag task ..</p>\
+	          <p class="modal-title h3">Comment on this area</p>\
 	          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
 	        </div>\
 	        <br/>\
 	        <div class="submit-comment-container">\
 	          <p class="text-danger message text-center"></p>\
-	          <textarea class="form-control" rows="3" id="flag-content"></textarea>\
+	          <textarea class="form-control" rows="3" id="flag-content" placeholder="Tell us if you see something in this area that our researchers and other Decoders should take a closer look at."></textarea>\
 	          <br/>\
 	          <div class="text-center">\
 	            <button type="button" class="btn-primary--md--fullwidth btn-flag" id="flag-btn">\
@@ -217,6 +217,48 @@
 	    </div>\
 	  </div>\
 	</div>\
+	<style>\
+		/* \
+			style in /static/css/ua-styles.css push down the place holder text, \
+			so this hot fix with padding-top for place holder.\
+		*/\
+		textarea#flag-content::-webkit-input-placeholder { /* WebKit, Blink, Edge */\
+			padding-top: 0px !important;\
+			color: #B6B6B6;\
+			line-height: 1.6em;\
+			font-size: 14px;\
+		}\
+		textarea#flag-content:-moz-placeholder { /* Mozilla Firefox 4 to 18 */\
+			padding-top: 0px !important;\
+			color: #B6B6B6;\
+			line-height: 1.6em;\
+			font-size: 14px;\
+		}\
+		textarea#flag-content::-moz-placeholder { /* Mozilla Firefox 19+ */\
+			padding-top: 0px !important;\
+			color: #B6B6B6;\
+			line-height: 1.6em;\
+			font-size: 14px;\
+		}\
+		textarea#flag-content:-ms-input-placeholder { /* Internet Explorer 10-11 */\
+			padding-top: 0px !important;\
+			color: #B6B6B6;\
+			line-height: 1.6em;\
+			font-size: 14px;\
+		}\
+		/* flag content style */\
+		textarea#flag-content {\
+			font-family: sans-serif;\
+			line-height: 1.6em;\
+			font-size: 14px !important;\
+		}\
+		#flagModal2 span.text-muted,\
+		#flagModal2 .after-submit-sucess p {\
+			font-family: sans-serif;\
+			line-height: 1.6em;\
+			font-size: 14px !important;\
+		}\
+	</style>\
 			';
 
 		$('body').append(html);
@@ -251,8 +293,8 @@
 				return;
 			}
 
-			//loading button
-			$('.btn-flag .glyphicon-refresh').show();
+			//loading effect
+			$('#flagModal2').waitMe();
 
 			$.get('/discourse/create-comment', {
 					"comment": comment,
@@ -278,8 +320,8 @@
 					$("#flagModal2 .message").html(message);
 				})
 				.always(function() {
-					//remove loading button
-					$('.btn-flag .glyphicon-refresh').hide();
+					//remove loading effect
+					$('#flagModal2').waitMe('hide');
 				});
 		});
 
@@ -297,7 +339,6 @@
 
 		$('#flagModal2').on('show.bs.modal', function (e) {
 			$('.btn-flag .glyphicon-refresh').hide();
-			$('#flagModal2 .modal-title').html("Flag task " + pybossa.task.id);
 		});	
 	});
 
