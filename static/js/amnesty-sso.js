@@ -293,8 +293,8 @@
 				return;
 			}
 
-			//loading button
-			$('.btn-flag .glyphicon-refresh').show();
+			//loading effect
+			$('#flagModal2').waitMe();
 
 			$.get('/discourse/create-comment', {
 					"comment": comment,
@@ -320,8 +320,8 @@
 					$("#flagModal2 .message").html(message);
 				})
 				.always(function() {
-					//remove loading button
-					$('.btn-flag .glyphicon-refresh').hide();
+					//remove loading effect
+					$('#flagModal2').waitMe('hide');
 				});
 		});
 
