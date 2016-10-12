@@ -86,7 +86,9 @@ body p{
   width: 30px;
   height: 30px;
 }
-
+.desktop-container{
+  position: relative !important;
+}
 .carousel-inner > .item > img {
   margin: 0 auto;
 }
@@ -594,6 +596,10 @@ div#subheader-container {
       height: 44px;
   }
 
+  .progress-tracker{
+      padding-top: 18px;
+  }
+
   /** Progress Tracker **/
   .progress-tracker .h2 {
       font-size: 40px;
@@ -772,6 +778,13 @@ div#subheader-container {
     .mobilecarousel{
         height: 414px;
     }
+}
+
+
+@media (max-width: 363px){
+  .navbar-task-subheader-text {
+    font-size: 12px !important;
+  }
 }
 
 @media screen and (min-width: 412px) and (max-width:412px) {
