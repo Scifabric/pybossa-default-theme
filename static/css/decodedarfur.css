@@ -2,7 +2,9 @@
 body p{
   font-family: sans-serif;
 }
-
+.fa-user-img{
+  width: 14px;
+}
 .container{
   width: 100%;
 }
