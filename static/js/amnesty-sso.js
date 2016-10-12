@@ -194,7 +194,7 @@
 	        <br/>\
 	        <div class="submit-comment-container">\
 	          <p class="text-danger message text-center"></p>\
-	          <textarea class="form-control" rows="3" id="flag-content"></textarea>\
+	          <textarea class="form-control" rows="3" id="flag-content" placeholder="Tell us if you see something in this area that our researchers and other Decoders should take a closer look at."></textarea>\
 	          <br/>\
 	          <div class="text-center">\
 	            <button type="button" class="btn-primary--md--fullwidth btn-flag" id="flag-btn">\
@@ -217,6 +217,28 @@
 	    </div>\
 	  </div>\
 	</div>\
+	<style>\
+		/* \
+			style in /static/css/ua-styles.css push down the place holder text, \
+			so this hot fix: \
+		*/\
+		textarea#flag-content::-webkit-input-placeholder { /* WebKit, Blink, Edge */\
+		    padding-top: 0px !important;\
+		    color: #B6B6B6;\
+		}\
+		textarea#flag-content:-moz-placeholder { /* Mozilla Firefox 4 to 18 */\
+		   padding-top: 0px !important;\
+		   color: #B6B6B6;\
+		}\
+		textarea#flag-content::-moz-placeholder { /* Mozilla Firefox 19+ */\
+			padding-top: 0px !important;\
+			color: #B6B6B6;\
+		}\
+		textarea#flag-content:-ms-input-placeholder { /* Internet Explorer 10-11 */\
+		   padding-top: 0px !important;\
+		   color: #B6B6B6;\
+		}\
+	</style>\
 			';
 
 		$('body').append(html);
