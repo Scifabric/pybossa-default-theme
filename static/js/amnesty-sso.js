@@ -188,7 +188,7 @@
 	    <div class="modal-content">\
 	      <div class="modal-body">\
 	        <div class="text-center">\
-	          <p class="modal-title h3">Flag task ..</p>\
+	          <p class="modal-title h3">Comment on this area</p>\
 	          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
 	        </div>\
 	        <br/>\
@@ -220,23 +220,37 @@
 	<style>\
 		/* \
 			style in /static/css/ua-styles.css push down the place holder text, \
-			so this hot fix: \
+			so this hot fix with padding-top for place holder.\
 		*/\
 		textarea#flag-content::-webkit-input-placeholder { /* WebKit, Blink, Edge */\
-		    padding-top: 0px !important;\
-		    color: #B6B6B6;\
+			padding-top: 0px !important;\
+			color: #B6B6B6;\
+			line-height: 1.6em;\
+			font-size: 14px;\
 		}\
 		textarea#flag-content:-moz-placeholder { /* Mozilla Firefox 4 to 18 */\
-		   padding-top: 0px !important;\
-		   color: #B6B6B6;\
+			padding-top: 0px !important;\
+			color: #B6B6B6;\
+			line-height: 1.6em;\
+			font-size: 14px;\
 		}\
 		textarea#flag-content::-moz-placeholder { /* Mozilla Firefox 19+ */\
 			padding-top: 0px !important;\
 			color: #B6B6B6;\
+			line-height: 1.6em;\
+			font-size: 14px;\
 		}\
 		textarea#flag-content:-ms-input-placeholder { /* Internet Explorer 10-11 */\
-		   padding-top: 0px !important;\
-		   color: #B6B6B6;\
+			padding-top: 0px !important;\
+			color: #B6B6B6;\
+			line-height: 1.6em;\
+			font-size: 14px;\
+		}\
+		/* flag content style */\
+		textarea#flag-content {\
+			font-family: sans-serif;\
+			line-height: 1.6em;\
+			font-size: 14px;\
 		}\
 	</style>\
 			';
@@ -319,7 +333,6 @@
 
 		$('#flagModal2').on('show.bs.modal', function (e) {
 			$('.btn-flag .glyphicon-refresh').hide();
-			$('#flagModal2 .modal-title').html("Flag task " + pybossa.task.id);
 		});	
 	});
 
