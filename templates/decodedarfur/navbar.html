@@ -24,7 +24,7 @@
                     <li><a href="{{ config.get('DISCOURSE_SERVER_URL') }}/session/sso" >Discuss</a></li>
                     
                     {% if config['AMNESTY_SSO_ENABLE'] %}
-                    <li class="admin-menu"><a href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}/account/profile"><span><img class="fa-user-img" src="/static/img/fa-user.png" /></span>  {{ current_user.name }}</a></li>
+                    <li class="admin-menu"><a href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}/account/profile"><i class="fa fa-user" aria-hidden="true"></i> {{ current_user.name }}</a></li>
                     {% else %}
                     <li class="admin-menu"><a href="{{ url_for('account.profile', name=current_user.name) }}">{{ _('Account') }}</a></li>                    
                     <li class="admin-menu"><a href="{{ url_for('account.signout') }}">Signout</a></li>
