@@ -63,9 +63,13 @@
 						'login' : window.amnestySSO.imServerUrl + '/login/modal',
 						'register': window.amnestySSO.imServerUrl + '/register/modal'
 					}				
-					//link IM's login form with modal's content
+					
 					$("#amnestySSOModal .loading").show();
-					$('#amnestySSOModal iframe').show();
+
+					//hide current iframe content
+					$('#amnestySSOModal iframe').hide();
+
+					//link IM's login form with modal's content
 					$('#amnestySSOModal iframe').attr('src', iframeLink[loginModalMode]);
 				} else {
 					//show register, login, skip options again
@@ -77,6 +81,8 @@
 
 			$('#amnestySSOModal iframe').load(function(){
 			      $("#amnestySSOModal .loading").hide();
+			      //only show iframe content after it finishes loading
+			      $('#amnestySSOModal iframe').show();
 			});
 
 			$('#amnestySSOModal #register-btn').click(function(){
