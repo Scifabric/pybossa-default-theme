@@ -37,6 +37,7 @@
                     <script>
                     $('#btn-sso-register').click(function(){
                         window.amnestySSO.showImModalContent('register');
+                        $('#amnestySSOModal').modal('show');
                     });
                     </script>
                     {% else %}
@@ -48,6 +49,7 @@
                     <script>
                     $('#btn-sso-login').click(function(){
                         window.amnestySSO.showImModalContent('login');
+                        $('#amnestySSOModal').modal('show');
                     });
                     </script>                    
                     {% else %}
