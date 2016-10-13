@@ -20,13 +20,12 @@
 	    <div class="modal-content">\
 			<div class="modal-header">\
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
-				<h4 class="modal-title"></h4>\
+				<h4 class="modal-title">BECOME AN AMNESTY DECODER</h4>\
 			</div>\
 			<div class="modal-body">\
 				<div class="option text-center">\
 					<div class="description">\
-						<p class="h3">BECOME AN AMNESTY DECODER</p>\
-						<p> By registering you&apos;ll be able to see your progress and participate in the forum. If you&apos;d prefer you can skip registration.</p>\
+						<p>Registering allows you to participate in discussions, track your progress and helps the research teams make the best use of the data you provide.</p>\
 					</div>\
 					<br/>\
 					<button class="btn-secondary--alt--md--fullwidth btn-register login-modal" id="register-btn">REGISTER</button>\
@@ -52,7 +51,7 @@
 				if (loginModalMode == 'register') {
 					$("#amnestySSOModal .modal-title").html('Register');
 				} else if (loginModalMode == 'login') {
-					$("#amnestySSOModal .modal-title").html('Login');
+					$("#amnestySSOModal .modal-title").html('Sign in');
 				} else {
 					$("#amnestySSOModal .modal-title").html('');
 				}

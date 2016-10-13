@@ -36,13 +36,8 @@
                     <li><a href="#" id="btn-sso-register">{{ _('Register') }}</a></li>
                     <script>
                     $('#btn-sso-register').click(function(){
-                        var url = window.location.href;
-                        if ( window.location.href.indexOf('?') !== -1) {
-                            url +='&modal=register';
-                        } else {
-                            url +='?modal=register';
-                        }
-                        window.location = url;
+                        window.amnestySSO.showImModalContent('register');
+                        $('#amnestySSOModal').modal('show');
                     });
                     </script>
                     {% else %}
@@ -53,13 +48,8 @@
                     <li><a href="#" id="btn-sso-login">{{ _('Sign in') }}</a></li>
                     <script>
                     $('#btn-sso-login').click(function(){
-                        var url = window.location.href;
-                        if ( window.location.href.indexOf('?') !== -1) {
-                            url +='&modal=login';
-                        } else {
-                            url +='?modal=login';
-                        }
-                        window.location = url;
+                        window.amnestySSO.showImModalContent('login');
+                        $('#amnestySSOModal').modal('show');
                     });
                     </script>                    
                     {% else %}
