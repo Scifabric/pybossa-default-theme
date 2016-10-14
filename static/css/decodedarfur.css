@@ -25,7 +25,9 @@ footer ul.social-icons-ul li a:hover {
     transition: background-color .25s;
   border-radius: 0 !important;
 }
-
+.broken-img{
+  pointer-events: none !important;
+}
 .container-fluid {
   padding-right: 0px;
   padding-left: 0px;
