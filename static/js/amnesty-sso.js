@@ -216,7 +216,7 @@
 	          <a href="" class="view-comment-on-forum">View comment on forum</a>\
 	          <br/>\
 	          <br/>\
-	          <button type="button" class="btn btn-primary" data-dismiss="modal" id="flag-btn-close">Close</button>\
+	          <button type="button" class="btn-secondary--alt--md--fullwidth" data-dismiss="modal" id="flag-btn-close" style="width: 150px;">Close</button>\
 	        </div>\
 	      </div>\
 	    </div>\
