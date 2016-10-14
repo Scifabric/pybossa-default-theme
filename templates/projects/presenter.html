@@ -29,19 +29,31 @@
     <script src="{{url_for('static', filename='js/pybossa/pybossa.js')}}" type="text/javascript"></script>
 
     {% if invite_new_volunteers %}
-    <div class="row">
+    <div class="row" align="center" style="padding:20px;">
         <div class="col-xs-12">
             <p>
-                {{ _("Sorry, you've contributed to all the tasks for this project, but this project still needs more
+                {{ _("Congratulations! You've contributed to all the tasks for this project, but we still needs more
                 volunteers, so please spread the word!") }}
             </p>
         </div>
     </div>
-    {% endif %}
 
-    {# FIXME: How come this is rendered for the Decode Darfur project when it is in the else block? #}
-    {# Uncommented for now #}
-    {{ project.info.task_presenter|safe }}
+        {#  WARNING - WARNING - WARNING
+            This is SUPER JANK HACK. Need to absolutely fix.
+            When there are no more tasks, we don't render the task presenter HTML anymore.
+            BUT, this causes the sub headers for Decode Darfur project to break
+            because the required CSS is located in the task presenter HTML.
+
+            Here we include those CSS when the task presenter is no longer rendered.
+        #}
+        {% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR") %}
+        <link rel="stylesheet" href="/static/css/amnesty.css">
+        <link rel="stylesheet" href="/static/css/decodedarfur.css">
+        {% endif %}
+
+    {% else %}
+        {{ project.info.task_presenter|safe }}
+    {% endif %}
 
     <div id='PYBOSSA_USER_LOCALE' hidden>
         {% if current_user.is_anonymous() %}
