@@ -29,6 +29,10 @@
     <script src="{{url_for('static', filename='js/pybossa/pybossa.js')}}" type="text/javascript"></script>
 
     {% if invite_new_volunteers %}
+    {#
+        If the user completed all the tasks, the let him know that his work is done.
+        Also, we don't load the task presenter in this case (see final else block).
+    #}
     <div class="row" align="center" style="padding:20px;">
         <div class="col-xs-12">
             <p>
@@ -37,7 +41,27 @@
             </p>
         </div>
     </div>
+    {% elif project_is_finished %}
+    {#
+        This is very important!!
+        We also don't want to load the task presenter when the project finishes!!
+    #}
+    <div class="row" align="center" style="padding:20px;">
+        <div class="col-xs-12">
+            <p>
+                {{ _("Amazing, the project is completed! Thank you to all our digital volunteers who helped decode Darfur!") }}
+            </p>
+        </div>
+    </div>
+    {% else %}
+    {#
+        If the user still has tasks to complete or the project isn't finished yet,
+        render the task presenter.
+    #}
+        {{ project.info.task_presenter|safe }}
+    {% endif %}
 
+    {% if invite_new_volunteers or project_is_finished %}
         {#  WARNING - WARNING - WARNING
             This is SUPER JANK HACK. Need to absolutely fix.
             When there are no more tasks, we don't render the task presenter HTML anymore.
@@ -50,9 +74,6 @@
         <link rel="stylesheet" href="/static/css/amnesty.css">
         <link rel="stylesheet" href="/static/css/decodedarfur.css">
         {% endif %}
-
-    {% else %}
-        {{ project.info.task_presenter|safe }}
     {% endif %}
 
     <div id='PYBOSSA_USER_LOCALE' hidden>
