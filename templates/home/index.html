@@ -37,4 +37,18 @@
         </div>
     </div>
 </section>
+{% if current_user.admin %}
+<section class="grey get-started">
+    <div class="row">
+        <div class="span4">
+            <h2><i class="icon-play-circle"></i> {{ _('Get Started') }}</h2>
+            <p>{{ _('It\'s really simple to start contributing.') }}</p>
+        </div>
+        <div class="span8">
+            <a href="{{url_for('project.index')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a> <a href="{{url_for('project.new')}}" class="btn btn-primary btn-large"><i class="icon-plus-sign"></i> {{ _('Create a Project') }}</a>
+            <a href="{{ url_for('account.register') }}" class="btn btn-success btn-large"><i class="icon icon-white icon-user"></i>{{ _(' Create a new account!') }}</a>
+        </div>
+    </div>
+</section>
+{% endif %}
 {% endblock %}
