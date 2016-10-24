@@ -11,7 +11,7 @@
                 <p class="text-sm text-center" style="margin-top: 5px;">
                 <a href="{{ url_for('account.forgot_password') }}">{{ _('Forgot Password') }}</a>
                 </p>
-                <p class="text-center">{{_('Not registered?')}} <a href="{{ url_for('account.register') }}">{{_('Sign up for free now')}}</a> <br/>{{_('or sign in/sign up through')}}</p>
+                <p class="text-center">{{_('Not registered?')}} <!--<a href="{{ url_for('account.register') }}">{{_('Sign up for free now')}}</a>--> <br/>{{_('sign in/sign up through')}}</p>
 
                 {% if next is not none%}
                 {% if auth.twitter %}
