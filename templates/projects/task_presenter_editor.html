@@ -31,8 +31,17 @@
             <fieldset>
                 {{ render_field(form.editor)}}
                 <div class="form-actions">
+                    {% if current_user.admin or project.owner_id == current_user.id %}
                     <input type="submit" value={{ _('Update the project task presenter') }} class="btn btn-primary" />
+                    {% else %}
+                    <input type="submit" value={{ _('Update the project task presenter') }} class="btn btn-primary" disabled />
+                    {% endif %}
                     <a href="#" class="btn btn-default btn-preview" value="preview">{{ _('Preview the task presenter') }}</a>
+                    {% if current_user.admin or current_user.subadmin %}
+                        <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn">{{ _('Cancel') }}</a>
+                    {% else %}
+                        <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn">{{ _('Cancel') }}</a>
+                    {% endif %}
                 </div>
             </fieldset>
         </form>
