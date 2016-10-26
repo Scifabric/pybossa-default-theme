@@ -1,0 +1,38 @@
+{% extends "/base.html" %}
+{% set active_page = "projects" %}
+{% set active_project  = project.short_name %}
+{% import "projects/_helpers.html" as helper %}
+
+{% block content %}
+{% from "_formhelpers.html" import render_field %}
+{{ helper.render_loading(loading_text) }}
+<div class="row">
+    <div class="span3">
+        {{ helper.render_project_local_nav(project, 'tasks', current_user)}}
+    </div>
+    <div class="span9">
+        <h1><strong>{{project.name}}</strong>: {{_('Import tasks')}}</h1>
+        {% if form %}
+        <h2>{{_('From Local CSV Spreadsheet')}}</h2>
+        <form class="form-horizontal" method="post" enctype="multipart/form-data" action="{{ url_for(target, short_name=project.short_name) }}">
+        <fieldset>
+            {{ form.hidden_tag() }}
+            <span class="help-inline"> {{ _('Please choose local csv file with data for') }} {{ active_project }} {{_(' and press Import button')}}. <br/>
+            <p><font color="red">Note: The csv file select should have column names matching to what they're defined in task presenter code for {{active_project}}.</font></p>
+            </span>
+            <div class="form-actions">
+                <input type="file" name="file" accept=".csv"><br/><br/>
+                <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" >
+                <a href="{{ url_for('project.tasks', short_name=project.short_name) }}" class="btn">{{_('Cancel')}}</a>
+            </div>
+        </fieldset>
+        </form>
+        {% endif %}
+    </div>
+</div>
+<script>
+    $("#submit").off('click').on('click', function(){
+        $("#loading").show();
+    });
+</script>
+{% endblock %}
