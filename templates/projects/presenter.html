@@ -70,7 +70,7 @@
 
             Here we include those CSS when the task presenter is no longer rendered.
         #}
-        {% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR") %}
+        {% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_PART_2") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_DEMO") %}
         <link rel="stylesheet" href="/static/css/amnesty.css">
         <link rel="stylesheet" href="/static/css/decodedarfur.css">
         {% endif %}
