@@ -213,7 +213,7 @@
 	        <div class="after-submit-sucess text-center" style="display:none">\
 	          <p>Thanks for your comments and suggestions</p>\
 	          <br/>\
-	          <a href="" class="view-comment-on-forum">View comment on forum</a>\
+	          <a href="" class="view-comment-on-forum" target="_blank">View comment on forum</a>\
 	          <br/>\
 	          <br/>\
 	          <button type="button" class="btn-secondary--alt--md--fullwidth" data-dismiss="modal" id="flag-btn-close" style="width: 150px;">Close</button>\
