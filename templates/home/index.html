@@ -37,16 +37,19 @@
         </div>
     </div>
 </section>
-{% if current_user.admin %}
+{% if current_user.is_authenticated() %}
 <section class="grey get-started">
     <div class="row">
-        <div class="span4">
+        <div class="col-md-offset-4 col-md-4">
             <h2><i class="icon-play-circle"></i> {{ _('Get Started') }}</h2>
-            <p>{{ _('It\'s really simple to start contributing.') }}</p>
+            <p>{{ _('It\'s really simple to start contributing.') }}</p></br>
         </div>
-        <div class="span8">
-            <a href="{{url_for('project.index')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a> <a href="{{url_for('project.new')}}" class="btn btn-primary btn-large"><i class="icon-plus-sign"></i> {{ _('Create a Project') }}</a>
+        <div class="col-md-offset-4 col-md-5">
+            <a href="{{url_for('project.index')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a>
+            {% if current_user.admin %}
+            <a href="{{url_for('project.new')}}" class="btn btn-primary btn-large"><i class="icon-plus-sign"></i> {{ _('Create a Project') }}</a>
             <a href="{{ url_for('account.register') }}" class="btn btn-success btn-large"><i class="icon icon-white icon-user"></i>{{ _(' Create a new account!') }}</a>
+            {% endif %}
         </div>
     </div>
 </section>
