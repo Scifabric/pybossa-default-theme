@@ -2,7 +2,7 @@
 {% set active_project = project.short_name %}
 
 <!-- Load Decode Darfur template -->
-{% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR") %}
+{% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR")  or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_PART_2") %}
     {% extends "decodedarfur/base.html" %}
     {% block subnavblock %}
     {% include "decodedarfur/sub-header.html" %}
