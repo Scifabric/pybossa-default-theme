@@ -81,8 +81,9 @@
 		return;
 	}
 
+	var currentProject = window.settings.currentProject;
 	//we are in page tutorial
-	if (window.location.href.indexOf("/project/decode-darfur/tutorial") !== -1) {
+	if (window.location.href.indexOf("/project/" + currentProject + "/tutorial") !== -1) {
 		return;
 	}
 
@@ -98,6 +99,6 @@
 	if (window.pybossaTutorial.isSkippedOrComplete()) {
 		return;
 	}
-	window.location.href = "/project/decode-darfur/tutorial";
+	window.location.href = "/project/" + currentProject + "/tutorial";
 	//
 })();
