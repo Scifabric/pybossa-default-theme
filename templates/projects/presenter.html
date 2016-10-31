@@ -46,12 +46,17 @@
         This is very important!!
         We also don't want to load the task presenter when the project finishes!!
     #}
-    <div class="row" align="center" style="padding:20px;">
-        <div class="col-xs-12">
+    <div class="row" align="center">
+        {% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_PART_2") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_DEMO") %}
+            {% include "decodedarfur/decode_darfur_finished.html" %}
+        {% else %}
+         <div class="col-xs-12">
             <p>
                 {{ _("Amazing, the project is completed! Thank you to all our digital volunteers who helped decode Darfur!") }}
             </p>
         </div>
+        {% endif %}
+
     </div>
     {% else %}
     {#
