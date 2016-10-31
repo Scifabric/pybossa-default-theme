@@ -319,7 +319,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal - Project Completed Message -->
 <div class="modal fade completed-message" data-backdrop="static" data-keyboard="false" id="completed-message" role="dialog">
     <div class="modal-dialog modal-sm modal-inverse">
@@ -333,15 +332,13 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <p class="h3">PROJECT COMPLETED</p>
+                        <p class="h3">{{ title }}</p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <p>
-                            All the tasks for this project have been completed! You've helped decode <b class="decoded-sq-km-user"> over 13,234 square km</b>. Thank you!
-                        </p>
+                        <p> {{ message }}</p>
                     </div>
                 </div>
 
@@ -364,7 +361,13 @@
   }
 
   (function() {
-    //$('.completed-message').modal('show');
+    var text="over 13,234 square km";
+    $('p:contains('+text+')', document.body).each(function(){
+          $(this).html($(this).html().replace(
+                new RegExp(text, 'g'), '<b>'+text+'</b>'
+          ));
+    });
+    $('.completed-message').modal('show');
     displaySquareKm();
 
     // calculating the sq/km decoded this session.
