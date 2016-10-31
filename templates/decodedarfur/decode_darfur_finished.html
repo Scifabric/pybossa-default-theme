@@ -3,16 +3,7 @@
 <link rel="stylesheet" href="/static/css/decodedarfur.css">
 
 <link rel="stylesheet" href="/static/vendor/ionicons/ionicons.min.css">
-<link rel="stylesheet" href="/static/vendor/waitMe/waitMe.min.css">
 
-<!-- Hammer for mobile swipe events -->
-<script src="/static/vendor/hammer/hammer.min.js"></script>
-
-<!-- Images Loaded -->
-<script src="/static/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-
-<!-- waitMe -->
-<script src="/static/vendor/waitMe/waitMe.min.js"></script>
 <script type="text/javascript">
   var PARENT_PROJECT_SHORT_NAME = 'decode-darfur';
 </script>
@@ -372,23 +363,9 @@
     $('.carousel-control').hide();
   }
 
-  function imageOnError(img) {
-    img.onerror = '';
-    img.src = '/static/img/decode-darfur/no-image.png';
-    img.classList.add('broken-img');
-    $(".spin").hide();
-    $('#images, #mobileCarousel, #tabletCarousel').addClass('green-background');
-    return true;
-  }
-
   (function() {
-    $('.completed-message').modal('show');
+    //$('.completed-message').modal('show');
     displaySquareKm();
-    checkIfImagesAreLoaded();
-
-    $('.desktop-container').append( '<div class="spin"><img class="spin-gif" src="/static/js/spin.gif"> </div>');
-    $('#mobileCarousel').append( '<div class="spin"><img class="spin-gif" src="/static/js/spin.gif"> </div>');
-    $('#tabletCarousel').append( '<div class="spin"><img class="spin-gif" src="/static/js/spin.gif"> </div>');
 
     // calculating the sq/km decoded this session.
     function displaySquareKmThisSession(user_progress){
@@ -425,22 +402,6 @@
             $(".all-sessions .progress-tracker-number").text(Math.round(user_progress));
             displaySquareKmThisSession(user_progress);
         });
-    }
-
-    function checkIfImagesAreLoaded() {
-        var total_images = $(".all-images img").length;
-        var images_loaded = 0;
-        $(".all-images").find('img').each(function() {
-          var fakeSrc = $(this).attr('src');
-          $("<img/>").attr("src", fakeSrc).css('display', 'none').load(function() {
-            images_loaded++;
-            if (images_loaded >= total_images) {
-              $(".spin").hide();
-              $("#images , .container-fluid.image-tiles").show();
-              $('#images, #mobileCarousel, #tabletCarousel').addClass('green-background');
-            }
-          });
-      });
     }
 
   })();
