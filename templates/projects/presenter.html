@@ -54,7 +54,7 @@
     #}
     <div class="row" align="center">
         {% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_PART_2") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_DEMO") %}
-            {% with  title="PROJECT COMPLETED", message="All the tasks for this project have been completed! You've helped decode over 13,234 square km. Thank you!" %}
+            {% with  title="PROJECT COMPLETED", message="All the tasks for this project have been completed! You've helped decode over square km. Thank you!" %}
             {% include "decodedarfur/decode_darfur_finished.html" %}
             {% endwith %}
         {% else %}
