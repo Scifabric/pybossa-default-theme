@@ -396,14 +396,14 @@
         }
         $.get("/api/project/" + PARENT_PROJECT_SHORT_NAME + "/" + user_id + "/progress.json", function (data) {
             all_volunteers_progress = Math.round(Number(data["all_volunteers"]));
-            makeTextBold(all_volunteers_progress);
+            includeAreaNumberMakeTextBold(all_volunteers_progress);
             user_progress = Number(data["current_user"]);
             $(".all-vulunters .progress-tracker-number").text(all_volunteers_progress);
             $(".all-sessions .progress-tracker-number").text(Math.round(user_progress));
             displaySquareKmThisSession(user_progress);
         });
     }
-    function makeTextBold(all_volunteers_progress) {
+    function includeAreaNumberMakeTextBold(all_volunteers_progress) {
         var text=" square km";
         $('p:contains('+text+')', document.body).each(function(){
               $(this).html($(this).html().replace(
