@@ -88,9 +88,9 @@
 	}
 
 	//we are in login/register modal
-	if (window.location.href.indexOf("?modal=all") !== -1 
-		|| window.location.href.indexOf("?modal=login") !== -1 
-		|| window.location.href.indexOf("?modal=register") !== -1 
+	if (window.location.href.indexOf("modal=all") !== -1 
+		|| window.location.href.indexOf("modal=login") !== -1 
+		|| window.location.href.indexOf("modal=register") !== -1 
 		) {
 		return;
 	}
