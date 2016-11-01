@@ -34,7 +34,7 @@
         Also, we don't load the task presenter in this case (see final else block).
     #}
     <div class="row" align="center">
-        <div class="col-xs-12" style="padding-left: 0px !important; ">
+        <div class="col-xs-12" style="padding-left: 0px !important; padding-right: 0px !important; ">
             {% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_PART_2") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_DEMO") %}
                 {% with title="Congratulations!", message="You've contributed to all the tasks for this project, but we still needs more volunteers, so please spread the word!" %}
                 {% include "decodedarfur/decode_darfur_finished.html" %}
