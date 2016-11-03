@@ -2,6 +2,8 @@
 {% from "projects/_helpers.html" import render_project_card_option %}
 
 {% block rightbody %}
+<div class ="container">
+<div class="col-sm-9 col-md-9" style="margin-top:30px;">
 <h2>{{ _('Admin Site') }}</h2>
 <div class="row">
     <div id="dashboard" class="col-md-6">
@@ -25,9 +27,9 @@
     </div>
     <div id="subadminusers" class="col-md-6">
         {{ render_project_card_option(project, upload_method, title=_('Subadministrators'), explanation=_('Manage subadministrators'), link=url_for('admin.subadminusers'), link_action_text=_('Manage'), icon='user')}}
-    </div>    
+    </div>
 </div>
-<div class="row">    
+<div class="row">
     <div id="users-list" class="col-md-6">
         {{ render_project_card_option(project, upload_method, title=_('Users'), explanation=_('Export a list of users'), link=url_for('admin.export_users', format='csv'), link_action_text=_('CSV'), link_two=url_for('admin.export_users', format='json'), link_action_text_two=_('JSON'), icon='user')}}
     </div>
@@ -42,4 +44,6 @@
         </ul>
     </div>
 </div>
+</div>
+</div> <!-- container -->
 {% endblock %}
