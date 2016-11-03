@@ -2,6 +2,8 @@
 {% from "projects/_helpers.html" import render_grid_projects %}
 
 {% block rightbody%}
+<div class ="container">
+<div class="col-sm-9 col-md-9" style="margin-top:30px;">
 <h1><strong>{{ _('Admin Site') }} :</strong> {{ _('Manage featured projects') }}</h1>
 <ul class="nav nav-pills nav-justified">
     {% for c in categories %}
@@ -19,6 +21,8 @@
 </div>
     </div>
 </div>
+</div>
+</div> <!-- container -->
 {% endblock %}
 {% block extrajs %}
 {% include "admin/js/featured_projects.js" %}
