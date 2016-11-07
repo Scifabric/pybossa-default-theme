@@ -33,12 +33,18 @@
         If the user completed all the tasks, the let him know that his work is done.
         Also, we don't load the task presenter in this case (see final else block).
     #}
-    <div class="row" align="center" style="padding:20px;">
-        <div class="col-xs-12">
+    <div class="row" align="center">
+        <div class="col-xs-12" style="padding-left: 0px !important; padding-right: 0px !important; ">
+            {% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_PART_2") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_DEMO") %}
+                {% with title="Congratulations!", message="You've contributed to all the tasks for this project, but we still needs more volunteers, so please spread the word!" %}
+                {% include "decodedarfur/decode_darfur_finished.html" %}
+                {% endwith %}
+            {% else %}
             <p>
                 {{ _("Congratulations! You've contributed to all the tasks for this project, but we still needs more
                 volunteers, so please spread the word!") }}
             </p>
+            {% endif %}
         </div>
     </div>
     {% elif project_is_finished %}
@@ -46,12 +52,19 @@
         This is very important!!
         We also don't want to load the task presenter when the project finishes!!
     #}
-    <div class="row" align="center" style="padding:20px;">
-        <div class="col-xs-12">
+    <div class="row" align="center">
+        {% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_PART_2") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_DEMO") %}
+            {% with  title="PROJECT COMPLETED", message="All the tasks for this project have been completed! You've helped decode over square km. Thank you!" %}
+            {% include "decodedarfur/decode_darfur_finished.html" %}
+            {% endwith %}
+        {% else %}
+         <div class="col-xs-12">
             <p>
                 {{ _("Amazing, the project is completed! Thank you to all our digital volunteers who helped decode Darfur!") }}
             </p>
         </div>
+        {% endif %}
+
     </div>
     {% else %}
     {#
