@@ -1,0 +1,57 @@
+/* Sub header style begins here */
+.sub-header-darfur-imagery-comparison {
+    height: 50px;
+    line-height: 50px;
+}
+.black-background{
+    background-color: black;
+}
+.white-text{
+    color: white;
+}
+.black-text{
+    color: black;
+}
+.dic-key-div{
+    padding-right: 40px;
+}
+.dic-rectangle{
+    padding-left: 4px;
+    padding-right: 4px;
+    background:whitesmoke;
+    margin-right: 5px;
+}
+.dic-subheader-navbar-button-container .navbar-toggle{
+    float: none;
+    margin: 0 0 0 0;
+    padding: 9px 10px;
+    border: transparent !important;
+}
+.dic-icon{
+    background-color: black !important;
+}
+@media screen and (min-width: 310px) and (max-width:992px) {
+    #sub-header-darfur-imagery-comparison-desktop, .navbar-header{
+        display: none;
+    }
+    #sub-header-darfur-imagery-comparison-mobile{
+        display: block;
+        padding-top: 15px;
+    }
+    .dic-key-div{
+        padding-right: auto;
+    }
+}
+@media screen and (min-width:992px) {
+    #sub-header-darfur-imagery-comparison-desktop, .navbar-header{
+        display: block !important;
+    }
+    #sub-header-darfur-imagery-comparison-mobile{
+        display: none;
+    }
+}
+
+
+
+
+/* Sub header style ends here */

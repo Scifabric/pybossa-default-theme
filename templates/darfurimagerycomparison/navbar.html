@@ -1,0 +1,152 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid" id="header-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar5">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="display: none;" id="amnestyLargeLogo" href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}"><img src="/static/img/amnesty-main-logo.png" alt="Amnesty Decoders"></a>
+            <a class="navbar-brand" id="amnestySmallLogo" href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}"><img src="/static/img/amnesty-small-logo.png" alt="Amnesty Decoders"></a>
+        </div>
+
+
+        <div id="navbar5" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right" id="menu">
+                {% if current_user.is_authenticated() %}
+                    {% if current_user.admin %}
+                    <li class="admin-menu"><a href="{{ url_for('admin.index')}}">{{ _('Admin') }}</a></li>
+                    <li class="admin-menu"><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
+                    <li class="admin-menu"><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
+                    {% endif %}
+                    <li><a href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}/projects/decode-darfur/how-it-works" >How it works</a></li>
+                    <li><a href="{{ config.get('DISCOURSE_SERVER_URL') }}/session/sso" >Discuss</a></li>
+
+                    {% if config['AMNESTY_SSO_ENABLE'] %}
+                    <li class="admin-menu"><a href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}/account/profile"><i class="fa fa-user" aria-hidden="true"></i> {{ current_user.name }}</a></li>
+                    {% else %}
+                    <li class="admin-menu"><a href="{{ url_for('account.profile', name=current_user.name) }}">{{ _('Account') }}</a></li>
+                    <li class="admin-menu"><a href="{{ url_for('account.signout') }}">Signout</a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}/projects/decode-darfur/how-it-works" >How it works</a></li>
+
+                    {% if config['AMNESTY_SSO_ENABLE'] %}
+                    <li><a href="#" id="btn-sso-register">{{ _('Register') }}</a></li>
+                    <script>
+                    $('#btn-sso-register').click(function(){
+                        window.amnestySSO.showImModalContent('register');
+                        $('#amnestySSOModal').modal('show');
+                    });
+                    </script>
+                    {% else %}
+                    <li><a href="{{ url_for('account.register') }}?next={{ request.path }}" >{{ _('Register') }}</a></li>
+                    {% endif %}
+
+                    {% if config['AMNESTY_SSO_ENABLE'] %}
+                    <li><a href="#" id="btn-sso-login">{{ _('Sign in') }}</a></li>
+                    <script>
+                    $('#btn-sso-login').click(function(){
+                        window.amnestySSO.showImModalContent('login');
+                        $('#amnestySSOModal').modal('show');
+                    });
+                    </script>
+                    {% else %}
+                    <li><a href="{{ url_for('account.signin') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right ">
+                <li style="display: none;">
+                    {% if current_user.is_authenticated() %}
+                    <ul class="nav secondary-nav pull-right ul-top-position">
+                        <li {% if active_page=='profile' %} class="active" {% endif %}><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i
+                            class="icon icon-user"></i> {{ current_user.name | truncate(6,true) }} <span
+                            class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('account.profile', name=current_user.name) }}"><i
+                                    class="icon icon-user"></i> {{
+                                _('My Profile') }}</a></li>
+                            <li><a href="{{ url_for('account.projects', name=current_user.name) }}"><i
+                                    class="icon icon-th-large"></i> {{ _('My Projects') }}</a></li>
+                            <li><a href="{{ url_for('account.update_profile', name=current_user.name) }}"><i
+                                    class="icon icon-cog"></i> {{ _('My Settings') }}</a></li>
+                            {% if current_user.admin == 1 %}
+                            <li class="divider"></li>
+                            <li><a href="{{ url_for('admin.index') }}">{% if notify_admin %} <span
+                                    class="label label-info ">{{ news |count }}</span>{%
+                                else %}<i class="icon icon-cog"></i> {% endif %} {{ _('Admin Site') }}</a></li>
+                            {% endif %}
+                            <li class="divider"></li>
+                            <li><a href="{{ url_for('account.signout') }}"><i class="icon icon-off"></i> {{
+                                _('Sign Out') }}</a>
+                            </li>
+                        </ul>
+                        </li>
+                    </ul>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+      <!--/.nav-collapse -->
+
+         <!--header-part -->
+        <div class="row sub-header-darfur-imagery-comparison" id="sub-header-darfur-imagery-comparison-mobile"  align="left" >
+            <div class="col-xs-2  dic-toogle-div" >
+                <div class="dic-subheader-navbar-button-container navbar-default .navbar-toggle .icon-bar">
+                    <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navbar5" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar dic-icon"></span>
+                      <span class="icon-bar dic-icon"></span>
+                      <span class="icon-bar dic-icon"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-xs-8 dic-message-div" align="center">
+                <div>
+                    <p class="h6 dic-message-text black-text">
+                        COMPARE THE BEFORE AND AFTER IMAGES
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-xs-2 dic-key-div" align="right">
+                <div class="pull-right">
+                    <a href="#" class="h6" data-toggle="modal" data-target="">
+                        <span class="i-span"><i class="glyphicon glyphicon-question-sign black-text"  style="font-size: 20px;">
+                        </i>
+                            <span class="dic-key-text black-text" style="display: none;">
+                                KEY
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--/.container-fluid -->
+  </nav>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $(window).resize(function () {
+            if ($(window).width() < 980) {
+                $('#nav-head').removeClass('navbar-fixed-top');
+            }
+            else {
+                $('#nav-head').addClass('navbar-fixed-top');
+            }
+
+        });
+        if ($(window).width() < 980) {
+            $('#nav-head').removeClass('navbar-fixed-top');
+        }
+        else {
+            $('#nav-head').addClass('navbar-fixed-top');
+        }
+    });
+</script>
