@@ -9,6 +9,9 @@
 .white-text{
     color: white;
 }
+.container-div{
+    padding-bottom: 35px;
+}
 .black-text{
     color: black;
 }
@@ -50,8 +53,132 @@
         display: none;
     }
 }
-
-
-
-
+.text-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /* Sub header style ends here */
+
+/* Questions div style begins here */
+.first-question{
+    height: 50px;
+}
+/* Questions div style ends here */
+
+
+/* Main div style begins here */
+.col-8-custom{
+    width: 62% !important;
+}
+.col-2-custom{
+    width: 19% !important;
+}
+.dic-content-div{
+     display: table;
+}
+.img-before-div , .img-after-div{
+    padding: 0px;
+    position: relative;
+}
+
+.img-after, .img-before{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.img-before{
+    padding-right: 1px;
+}
+.img-after{
+    padding-left: 1px;
+}
+
+.dic-main-image-div{
+    float: none;
+    display: table-cell;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.10), 0px 0px 0px rgba(0,0,0,0.10), 0px 1px 1px rgba(0,0,0,0.10);
+    z-index: 9;
+}
+.before {
+    height: 80px;
+    position: absolute;
+    top: 0px;
+    left: -10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    background-color: rgba(0,0,0,0.88);
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    transform-origin: bottom left;
+    transform: translateY(-100%) rotate(180deg);
+    text-align: center;
+}
+.after {
+    height: 80px;
+    position: absolute;
+    top: 0;
+    right: -18px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    background-color: rgba(0,0,0,0.88);
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    z-index: 999;
+    text-align: center;
+}
+/*  Main div style ends here */
+
+/* Left and Right div style begins here */
+.dic-left-side-div, .dic-right-side-div {
+    float: none;
+    display: table-cell;
+    background-color: #e5e5e5;
+    border-top: 60px solid white;
+    border-bottom: 60px solid white;
+}
+
+/* Left and Right div style ends here */
+.buildings-option-div{
+    padding-top: 20px;
+}
+.radio{
+    text-align: center;
+}
+.option-label-text{
+    line-height: inherit;
+}
+.option-changed, .option-unchanged, .option-unsure{
+    border: 2px solid  #e5e5e5;
+}
+.no-padding-right{
+    padding-right: 0px;
+}
+.no-padding-left{
+    padding-left: 0px;
+}
+.half-padding{
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}
+.radio{
+    margin-top: 0px;
+}
+.dic-continue-button{
+    height: 50px;
+    letter-spacing: 2px;
+    border: none;
+}
+.message-end{
+    padding-top: 10px;
+}
+.padd-10{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
