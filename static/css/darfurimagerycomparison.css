@@ -1,59 +1,62 @@
 /* Sub header style begins here */
+
 .sub-header-darfur-imagery-comparison {
     height: 50px;
     line-height: 50px;
 }
-.black-background{
+.black-background {
     background-color: black;
 }
-.white-text{
+.white-text {
     color: white;
 }
-.container-div{
+.container-div {
     padding-bottom: 35px;
 }
-.black-text{
+.black-text {
     color: black;
 }
-.dic-key-div{
+.dic-key-div {
     padding-right: 40px;
 }
-.dic-rectangle{
+.dic-rectangle {
     padding-left: 4px;
     padding-right: 4px;
-    background:whitesmoke;
+    background: whitesmoke;
     margin-right: 5px;
 }
-.dic-subheader-navbar-button-container .navbar-toggle{
+.dic-subheader-navbar-button-container .navbar-toggle {
     float: none;
     margin: 0 0 0 0;
     padding: 9px 10px;
     border: transparent !important;
 }
-.dic-icon{
+.dic-icon {
     background-color: black !important;
 }
-@media screen and (min-width: 310px) and (max-width:992px) {
-    #sub-header-darfur-imagery-comparison-desktop, .navbar-header{
+@media screen and (min-width: 310px) and (max-width: 992px) {
+    #sub-header-darfur-imagery-comparison-desktop,
+    .navbar-header {
         display: none;
     }
-    #sub-header-darfur-imagery-comparison-mobile{
+    #sub-header-darfur-imagery-comparison-mobile {
         display: block;
         padding-top: 15px;
     }
-    .dic-key-div{
+    .dic-key-div {
         padding-right: auto;
     }
 }
-@media screen and (min-width:992px) {
-    #sub-header-darfur-imagery-comparison-desktop, .navbar-header{
+@media screen and (min-width: 992px) {
+    #sub-header-darfur-imagery-comparison-desktop,
+    .navbar-header {
         display: block !important;
     }
-    #sub-header-darfur-imagery-comparison-mobile{
+    #sub-header-darfur-imagery-comparison-mobile {
         display: none;
     }
 }
-.text-center{
+.text-center {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,46 +64,45 @@
 /* Sub header style ends here */
 
 /* Questions div style begins here */
-.first-question{
+.first-question {
     height: 50px;
 }
 /* Questions div style ends here */
 
-
 /* Main div style begins here */
-.col-8-custom{
+.col-8-custom {
     width: 62% !important;
 }
-.col-2-custom{
+.col-2-custom {
     width: 19% !important;
 }
-.dic-content-div{
-     display: table;
+.dic-content-div {
+    display: table;
 }
-.img-before-div , .img-after-div{
+.img-before-div,
+.img-after-div {
     padding: 0px;
     position: relative;
 }
-
-.img-after, .img-before{
+.img-after,
+.img-before {
     position: relative;
     width: 100%;
     height: auto;
 }
-.img-before{
+.img-before {
     padding-right: 1px;
 }
-.img-after{
+.img-after {
     padding-left: 1px;
 }
-
-.dic-main-image-div{
+.dic-main-image-div {
     float: none;
     display: table-cell;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.10), 0px 0px 0px rgba(0,0,0,0.10), 0px 1px 1px rgba(0,0,0,0.10);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.10), 0px 0px 0px rgba(0, 0, 0, 0.10), 0px 1px 1px rgba(0, 0, 0, 0.10);
     z-index: 9;
 }
 .before {
@@ -111,7 +113,7 @@
     padding-left: 5px;
     padding-right: 5px;
     color: white;
-    background-color: rgba(0,0,0,0.88);
+    background-color: rgba(0, 0, 0, 0.88);
     letter-spacing: 2px;
     writing-mode: vertical-rl;
     transform-origin: bottom left;
@@ -126,119 +128,127 @@
     padding-left: 5px;
     padding-right: 5px;
     color: white;
-    background-color: rgba(0,0,0,0.88);
+    background-color: rgba(0, 0, 0, 0.88);
     letter-spacing: 2px;
     writing-mode: vertical-rl;
     z-index: 999;
     text-align: center;
 }
 /*  Main div style ends here */
-
 /* Left and Right div style begins here */
-.dic-left-side-div, .dic-right-side-div {
+
+.dic-left-side-div,
+.dic-right-side-div {
     float: none;
     display: table-cell;
     background-color: #e5e5e5;
     border-top: 60px solid white;
     border-bottom: 60px solid white;
 }
-
 /* Left and Right div style ends here */
-.buildings-option-div{
+
+.buildings-option-div {
     padding-top: 20px;
 }
-.radio{
+.radio {
     text-align: center;
 }
-.option-label-text{
+.option-label-text {
     line-height: inherit;
 }
-.option-changed, .option-unchanged, .option-unsure{
-    border: 2px solid  #e5e5e5;
+.option-changed,
+.option-unchanged,
+.option-unsure {
+    border: 2px solid #e5e5e5;
     text-align: center;
     padding: 10px;
 }
-.no-padding-right{
+.no-padding-right {
     padding-right: 0px;
 }
-.no-padding-left{
+.no-padding-left {
     padding-left: 0px;
 }
-.half-padding{
+.half-padding {
     padding-left: 7.5px;
     padding-right: 7.5px;
 }
-.radio{
+.radio {
     margin-top: 0px;
 }
-.dic-continue-button{
+.dic-continue-button {
     height: 50px;
     letter-spacing: 2px;
     border: none;
 }
-.message-end{
+.message-end {
     padding-top: 10px;
 }
-.padd-10{
+.padd-10 {
     padding-right: 10px;
     padding-left: 10px;
 }
-
-
+/*Radio button style begins here*/
 .radio {
-  padding-left: 20px !important; }
-  .radio label {
+    padding-left: 20px !important;
+}
+.radio label {
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    padding-left: 5px; }
-    .radio label::before {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      width: 19px;
-      height: 19px;
-      left: 0;
-      margin-left: -19.1px;
-      border: 2px solid black;
-      border-radius: 50%;
-      background-color: white;
-      -webkit-transition: border 0.15s ease-in-out;
-      -o-transition: border 0.15s ease-in-out;
-      transition: border 0.15s ease-in-out; }
-    .radio label::after {
-        display: inline-block;
-        position: absolute;
-        content: " ";
-        width: 15px;
-        height: 15px;
-        left: 3px;
-        top: 2px;
-        margin-left: -20px;
-        border-radius: 60%;
-        background-color: black;
-        -webkit-transform: scale(0, 0);
-        -ms-transform: scale(0, 0);
-        -o-transform: scale(0, 0);
-        transform: scale(0, 0);
-        box-shadow: inset 2px 2px 2px 2px yellow;
-        -webkit-box-shadow: inset 0px 0px 0px 2px yellow;
-        -moz-box-shadow: inset 0px 0px 0px 2px yellow;
-        -o-box-shadow: inset 0px 0px 0px 2px yellow;
-        -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
-        -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
-        -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
-        transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33); }
-      .radio input[type="radio"] {
-        opacity: 0;
-        z-index: 1; }
-
-    .radio input[type="radio"]:checked + label::after {
-      -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-      -o-transform: scale(1, 1);
-      transform: scale(1, 1); }
-  .radio.radio-inline {
-    margin-top: 0; }
-
-
+    padding-left: 5px;
+    line-height: normal;
+}
+.radio label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 0;
+    margin-left: -19.1px;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: white;
+    -webkit-transition: border 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out;
+}
+.radio label::after {
+    display: inline-block;
+    position: absolute;
+    content: " ";
+    width: 13px;
+    height: 13px;
+    left: 3px;
+    top: 2px;
+    margin-left: -20px;
+    border-radius: 50%;
+    background-color: black;
+    -webkit-transform: scale(0, 0);
+    -ms-transform: scale(0, 0);
+    -o-transform: scale(0, 0);
+    transform: scale(0, 0);
+    box-shadow: inset 2px 2px 2px 2px yellow;
+    -webkit-box-shadow: inset 0px 0px 0px 2px yellow;
+    -moz-box-shadow: inset 0px 0px 0px 2px yellow;
+    -o-box-shadow: inset 0px 0px 0px 2px yellow;
+    -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+}
+.radio input[type="radio"] {
+    opacity: 0;
+    z-index: 1;
+}
+.radio input[type="radio"]:checked + label::after {
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+}
+.radio.radio-inline {
+    margin-top: 0;
+}
+/*Radio button style ends here*/
