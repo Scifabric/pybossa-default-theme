@@ -11,7 +11,7 @@
     color: white;
 }
 .container-div {
-    padding-bottom: 35px;
+    padding-bottom: 10px;
 }
 .black-text {
     color: black;
@@ -56,18 +56,23 @@
         display: none;
     }
 }
-.text-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 /* Sub header style ends here */
 
-/* Questions div style begins here */
-.first-question {
+/* Header msg div style begins here */
+.header-msg {
     height: 50px;
+    padding-top: 17px;
 }
-/* Questions div style ends here */
+.header-submit{
+    min-height: 80px;
+    padding-top: 17px;
+    padding-bottom: 10px;
+}
+.step-three-msg{
+    color:#8e8c8c;
+}
+/* Header msg div style ends here */
 
 /* Main div style begins here */
 .col-8-custom {
@@ -147,8 +152,10 @@
 }
 /* Left and Right div style ends here */
 
-.buildings-option-div {
+.dic-option-container {
     padding-top: 20px;
+    padding-bottom: 10px;
+    height: 80px;
 }
 .radio {
     text-align: center;
@@ -156,12 +163,10 @@
 .option-label-text {
     line-height: inherit;
 }
-.option-changed,
-.option-unchanged,
-.option-unsure {
+.option-div {
     border: 2px solid #e5e5e5;
     text-align: center;
-    padding: 10px;
+    height: 55px;
 }
 .no-padding-right {
     padding-right: 0px;
@@ -176,18 +181,26 @@
 .radio {
     margin-top: 0px;
 }
-.dic-continue-button {
+.dic-main-button {
     height: 50px;
     letter-spacing: 2px;
     border: none;
 }
+.dic-main-button:focus{
+    outline: none;
+}
 .message-end {
     padding-top: 10px;
+    padding-bottom: 30px;
 }
 .padd-10 {
     padding-right: 10px;
     padding-left: 10px;
 }
+/*.step-one{*/
+    /*padding-top: 8px;*/
+    /*padding-bottom: 10px;*/
+/*}*/
 /*Radio button style begins here*/
 .radio {
     padding-left: 20px !important;
@@ -198,6 +211,7 @@
     position: relative;
     padding-left: 5px;
     line-height: normal;
+    padding-bottom: 9px;
 }
 .radio label::before {
     content: "";
@@ -218,9 +232,9 @@
     display: inline-block;
     position: absolute;
     content: " ";
-    width: 13px;
+    width: 11.4px;
     height: 13px;
-    left: 3px;
+    left: 3.5px;
     top: 2px;
     margin-left: -20px;
     border-radius: 50%;
@@ -243,12 +257,112 @@
     z-index: 1;
 }
 .radio input[type="radio"]:checked + label::after {
-    -webkit-transform: scale(1, 1);
-    -ms-transform: scale(1, 1);
-    -o-transform: scale(1, 1);
-    transform: scale(1, 1);
+    -webkit-transform: scale(1.09, 1);
+    -ms-transform: scale(1.09, 1);
+    -o-transform: scale(1.09, 1);
+    transform: scale(1.09, 1);
 }
 .radio.radio-inline {
-    margin-top: 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 /*Radio button style ends here*/
+
+/*Checkbox button style ends here*/
+.checkbox {
+  padding-left: 20px;
+}
+.checkbox label {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  padding-left: 5px;
+}
+.checkbox label::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 0;
+  margin-left: -20px;
+  border: 2px solid black;
+  border-radius: 3px;
+  background-color: #fff;
+  -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+
+}
+.checkbox label::after {
+    display: inline-block;
+    position: absolute;
+    width: 11px;
+    height: 11.1px;
+    left: 2px;
+    top: 2px;
+    margin-left: -20px;
+    padding-left: 0px;
+    padding-top: 1px;
+    font-size: 11px;
+    color: black;
+    background-color: yellow;
+}
+.checkbox input[type="checkbox"]{
+  opacity: 0;
+  z-index: 1;
+}
+
+.input[type="checkbox"]:checked + label::before {
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+input[type="checkbox"].styled:checked + label:after {
+  font-family: 'FontAwesome';
+  content: "\f00c";
+}
+input[type="checkbox"] .styled:checked + label::before {
+  color: #fff;
+}
+input[type="checkbox"] .styled:checked + label::after {
+  color: #fff;
+}
+.a-link:hover {
+    text-decoration: none;
+    cursor:pointer;
+}
+
+/*Checkbox button style ends here*/
+
+/*Leader board style begins here*/
+.user-badge {
+    height: 35px;
+    width: 35px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: black;
+    color:white;
+    border:3px solid yellow;
+}
+.current-user-badge{
+    height: 35px;
+    width: 35px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: white;
+    color:black;
+    border: 5px solid black;
+}
+/*Leader board style ends here*/
+
+
+
+
+
+
+
+
