@@ -1,0 +1,376 @@
+/* Sub header style begins here */
+
+.sub-header-darfur-imagery-comparison {
+    height: 50px;
+    line-height: 50px;
+}
+.black-background {
+    background-color: black;
+}
+.white-text {
+    color: white;
+}
+.container-div {
+    padding-bottom: 10px;
+}
+.black-text {
+    color: black;
+}
+.dic-key-div {
+    padding-right: 40px;
+}
+.dic-rectangle {
+    padding-left: 4px;
+    padding-right: 4px;
+    background: whitesmoke;
+    margin-right: 5px;
+}
+.dic-subheader-navbar-button-container .navbar-toggle {
+    float: none;
+    margin: 0 0 0 0;
+    padding: 9px 10px;
+    border: transparent !important;
+}
+.dic-icon {
+    background-color: black !important;
+}
+@media screen and (min-width: 310px) and (max-width: 992px) {
+    #sub-header-darfur-imagery-comparison-desktop,
+    .navbar-header {
+        display: none;
+    }
+    #sub-header-darfur-imagery-comparison-mobile {
+        display: block;
+        padding-top: 15px;
+    }
+    .dic-key-div {
+        padding-right: auto;
+    }
+}
+@media screen and (min-width: 992px) {
+    #sub-header-darfur-imagery-comparison-desktop,
+    .navbar-header {
+        display: block !important;
+    }
+    #sub-header-darfur-imagery-comparison-mobile {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .step-two,
+    .step-three,
+    .leaderboard-div{
+        display: none;
+    }
+}
+
+/* Sub header style ends here */
+
+/* Header msg div style begins here */
+.header-msg {
+    height: 50px;
+    padding-top: 17px;
+}
+.header-submit{
+    min-height: 80px;
+    padding-top: 17px;
+    padding-bottom: 10px;
+}
+.step-three-msg{
+    color:#8e8c8c;
+}
+/* Header msg div style ends here */
+
+/* Main div style begins here */
+.col-8-custom {
+    width: 62% !important;
+}
+.col-2-custom {
+    width: 19% !important;
+}
+.dic-content-div {
+    display: table;
+}
+.img-before-div,
+.img-after-div {
+    padding: 0px;
+    position: relative;
+}
+.img-after,
+.img-before {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.img-before {
+    padding-right: 1px;
+}
+.img-after {
+    padding-left: 1px;
+}
+.dic-main-image-div {
+    float: none;
+    display: table-cell;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.10), 0px 0px 0px rgba(0, 0, 0, 0.10), 0px 1px 1px rgba(0, 0, 0, 0.10);
+    z-index: 9;
+}
+.before {
+    height: 80px;
+    position: absolute;
+    top: 0px;
+    left: -10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.88);
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    transform-origin: bottom left;
+    transform: translateY(-100%) rotate(180deg);
+    text-align: center;
+}
+.after {
+    height: 80px;
+    position: absolute;
+    top: 0;
+    right: -18px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.88);
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    z-index: 999;
+    text-align: center;
+}
+/*  Main div style ends here */
+/* Left and Right div style begins here */
+
+.dic-left-side-div,
+.dic-right-side-div {
+    float: none;
+    display: table-cell;
+    background-color: #e5e5e5;
+    border-top: 60px solid white;
+    border-bottom: 60px solid white;
+}
+/* Left and Right div style ends here */
+
+.dic-option-container {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    height: 80px;
+}
+.radio {
+    text-align: center;
+}
+.option-label-text {
+    line-height: inherit;
+}
+.option-div {
+    border: 2px solid #e5e5e5;
+    text-align: center;
+    height: 55px;
+}
+.no-padding-right {
+    padding-right: 0px;
+}
+.no-padding-left {
+    padding-left: 0px;
+}
+.half-padding {
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}
+.radio {
+    margin-top: 0px;
+}
+.dic-main-button {
+    height: 50px;
+    letter-spacing: 2px;
+    border: none;
+}
+.dic-main-button:focus{
+    outline: none;
+}
+.message-end {
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+.padd-10 {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+/*.step-one{*/
+    /*padding-top: 8px;*/
+    /*padding-bottom: 10px;*/
+/*}*/
+/*Radio button style begins here*/
+.radio {
+    padding-left: 20px !important;
+}
+.radio label {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    padding-left: 5px;
+    line-height: normal;
+    padding-bottom: 9px;
+}
+.radio label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 0;
+    margin-left: -19.1px;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: white;
+    -webkit-transition: border 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out;
+}
+.radio label::after {
+    display: inline-block;
+    position: absolute;
+    content: " ";
+    width: 11.4px;
+    height: 13px;
+    left: 3.5px;
+    top: 2px;
+    margin-left: -20px;
+    border-radius: 50%;
+    background-color: black;
+    -webkit-transform: scale(0, 0);
+    -ms-transform: scale(0, 0);
+    -o-transform: scale(0, 0);
+    transform: scale(0, 0);
+    box-shadow: inset 2px 2px 2px 2px yellow;
+    -webkit-box-shadow: inset 0px 0px 0px 2px yellow;
+    -moz-box-shadow: inset 0px 0px 0px 2px yellow;
+    -o-box-shadow: inset 0px 0px 0px 2px yellow;
+    -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+}
+.radio input[type="radio"] {
+    opacity: 0;
+    z-index: 1;
+}
+.radio input[type="radio"]:checked + label::after {
+    -webkit-transform: scale(1.09, 1);
+    -ms-transform: scale(1.09, 1);
+    -o-transform: scale(1.09, 1);
+    transform: scale(1.09, 1);
+}
+.radio.radio-inline {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+/*Radio button style ends here*/
+
+/*Checkbox button style ends here*/
+.checkbox {
+  padding-left: 20px;
+}
+.checkbox label {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  padding-left: 5px;
+}
+.checkbox label::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 0;
+  margin-left: -20px;
+  border: 2px solid black;
+  border-radius: 3px;
+  background-color: #fff;
+  -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+
+}
+.checkbox label::after {
+    display: inline-block;
+    position: absolute;
+    width: 11px;
+    height: 11.1px;
+    left: 2px;
+    top: 2px;
+    margin-left: -20px;
+    padding-left: 0px;
+    padding-top: 1px;
+    font-size: 11px;
+    color: black;
+    background-color: yellow;
+}
+.checkbox input[type="checkbox"]{
+  opacity: 0;
+  z-index: 1;
+}
+
+.input[type="checkbox"]:checked + label::before {
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+input[type="checkbox"].styled:checked + label:after {
+  font-family: 'FontAwesome';
+  content: "\f00c";
+}
+input[type="checkbox"] .styled:checked + label::before {
+  color: #fff;
+}
+input[type="checkbox"] .styled:checked + label::after {
+  color: #fff;
+}
+.a-link:hover {
+    text-decoration: none;
+    cursor:pointer;
+}
+
+/*Checkbox button style ends here*/
+
+/*Leader board style begins here*/
+.user-badge {
+    height: 35px;
+    width: 35px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: black;
+    color:white;
+    border:3px solid yellow;
+}
+.current-user-badge{
+    height: 35px;
+    width: 35px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: white;
+    color:black;
+    border: 5px solid black;
+}
+/*Leader board style ends here*/
+
+
+
+
+
+
+
+

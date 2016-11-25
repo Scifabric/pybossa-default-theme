@@ -15,6 +15,14 @@
     {% include "decodedarfur/sub-header.html" %}
     {% endblock subnavblock %}
 
+
+<!-- Load Darfur Imagery Comparison -->
+{% elif project.short_name == config.get("PROJECT_SHORT_NAME_DARFUR_IMAGERY_COMPARISON") %}
+    {% extends "darfurimagerycomparison/base.html" %}
+    {% block subnavbarblock %}
+    {% include "darfurimagerycomparison/sub-header.html" %}
+    {% endblock subnavbarblock %}
+
 <!-- Load Default template -->
 {% else %}
     {% extends "base.html" %}
