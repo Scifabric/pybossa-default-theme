@@ -57,6 +57,14 @@
     }
 }
 
+@media screen and (min-width: 992px) {
+    .step-two,
+    .step-three,
+    .leaderboard-div{
+        display: none;
+    }
+}
+
 /* Sub header style ends here */
 
 /* Header msg div style begins here */
