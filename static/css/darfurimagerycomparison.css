@@ -112,12 +112,6 @@
 .border-left{
     border-left: 1px solid white;
 }
-/*.img-before {*/
-    /*padding-right: 1px;*/
-/*}*/
-/*.img-after {*/
-    /*padding-left: 1px;*/
-/*}*/
 .dic-main-image-div {
     float: none;
     display: table-cell;
