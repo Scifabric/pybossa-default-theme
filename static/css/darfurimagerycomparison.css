@@ -64,7 +64,6 @@
         display: none;
     }
 }
-
 /* Sub header style ends here */
 
 /* Header msg div style begins here */
@@ -103,11 +102,15 @@
     width: 100%;
     height: auto;
 }
-.img-before {
-    padding-right: 1px;
+.padd-00{
+    padding-right: 0px;
+    padding-left: 0px;
 }
-.img-after {
-    padding-left: 1px;
+.border-right {
+    border-right: 1px solid white;
+}
+.border-left{
+    border-left: 1px solid white;
 }
 .dic-main-image-div {
     float: none;
