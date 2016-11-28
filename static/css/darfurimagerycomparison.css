@@ -36,7 +36,7 @@
 }
 @media screen and (min-width: 310px) and (max-width: 992px) {
     #sub-header-darfur-imagery-comparison-desktop,
-    .navbar-header {
+    .navbar-header, .steps-desktop {
         display: none;
     }
     #sub-header-darfur-imagery-comparison-mobile {
@@ -60,7 +60,8 @@
 @media screen and (min-width: 992px) {
     .step-two,
     .step-three,
-    .leaderboard-div{
+    .leaderboard-div,
+    .tablet-mobile-view{
         display: none;
     }
 }
@@ -207,6 +208,10 @@
 .padd-10 {
     padding-right: 10px;
     padding-left: 10px;
+}
+.padd-10-top-bottom{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 /*.step-one{*/
     /*padding-top: 8px;*/
@@ -370,10 +375,100 @@ input[type="checkbox"] .styled:checked + label::after {
 }
 /*Leader board style ends here*/
 
+@media screen and (min-width: 310px) and (max-width: 992px) {
+.desktop-view , .header-msg-div{
+    display: none;
+}
+.modal-lg {
+   width: 98%;
+   max-width:1200px;
+  }
+}
 
+/* Mobile Images tabs begins here*/
+.images-tab-ul > li + li, .images-tab-ul > li {
+    margin-left: 0px;
+    width: 50%;
+}
+.images-tab-ul > li > a {
+    border-radius: 0px;
+    background-color: black;
+    color:white;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.images-tab-ul > li.active > a, .images-tab-ul > li.active > a:hover, .images-tab-ul > li.active > a:focus {
+    color: black;
+    background-color: yellow;
+}
+.answer-questions{
+    height: 40px;
+    padding: 12px;
+}
+.steps-mobile-link:link{
+    color: white !important;
+    outline: none;
+    text-decoration: none;
+}
+/* Mobile Images tabs ends here */
 
+/* Mobile Images tabs*/
+.option-div-mobile{
+    border-bottom: 1px solid #e5e5e5;
+}
+.modal-body {
+    max-height: calc(100vh);
+    overflow-y: auto;
+}
+.none {
+    display:none;
+}
+.block{
+    display: block;
+  -webkit-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
+}
+.step-one-buildings-mobile{
+    padding-bottom: 20px;
+}
+.button-div{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.modal-header .close {
+    margin-top: -2px;
+    margin-right: 20px;
+    font-size: 34px;
+}
+.long-line {
+    border-radius: 25px;
+    background: #ededef;
+    width: 220px;
+    height: 10px;
+    margin: auto;
+    margin-top: 20px;
+}
+.short-line {
+    border-radius: 25px;
+    background: #ededef;
+    width: 140px;
+    height: 10px;
+    margin: auto;
+    margin-top: 15px;
+    float: left;
+}
+.checkbox-rectangle{
+	width: 15px;
+    height: 15px;
+    border: 2px solid #ededed;
+    margin: auto;
+    margin-top:15px;
+    float: right;
+}
 
-
-
-
-
+.second-step-mobile-div{
+    min-height:270px;
+}
+.second-step-header-mobile-div{
+    min-height: 60px;
+}
