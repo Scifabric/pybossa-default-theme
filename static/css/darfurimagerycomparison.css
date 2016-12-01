@@ -4,6 +4,10 @@
     height: 50px;
     line-height: 50px;
 }
+.sub-header-darfur-imagery-comparison div{
+    padding-left: 0;
+    padding-right: 0;
+}
 .black-background {
     background-color: black;
 }
@@ -44,7 +48,7 @@
         padding-top: 15px;
     }
     .dic-key-div {
-        padding-right: auto;
+        padding-right: 5px !important;
     }
 }
 @media screen and (min-width: 992px) {
