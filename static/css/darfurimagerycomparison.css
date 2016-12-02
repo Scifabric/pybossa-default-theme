@@ -433,7 +433,9 @@ input[type="checkbox"] .styled:checked + label::after {
 .modal-body {
     max-height: calc(100vh);
     overflow-y: auto;
+    height: 600px;
 }
+
 .none {
     display:none;
 }
@@ -480,9 +482,7 @@ input[type="checkbox"] .styled:checked + label::after {
     float: right;
 }
 
-.second-step-mobile-div{
-    min-height:270px;
-}
+
 .second-step-header-mobile-div{
     min-height: 60px;
 }
