@@ -4,6 +4,10 @@
     height: 50px;
     line-height: 50px;
 }
+.sub-header-darfur-imagery-comparison div{
+    padding-left: 0;
+    padding-right: 0;
+}
 .black-background {
     background-color: black;
 }
@@ -44,7 +48,7 @@
         padding-top: 15px;
     }
     .dic-key-div {
-        padding-right: auto;
+        padding-right: 5px !important;
     }
 }
 @media screen and (min-width: 992px) {
@@ -168,6 +172,9 @@
     padding-top: 20px;
     padding-bottom: 10px;
     height: 80px;
+}
+.step-two-changed-modal, .step-two-unsure-modal, .step-two-unchanged-modal {
+    padding-top: 0px;
 }
 .radio {
     text-align: center;
@@ -344,7 +351,7 @@ input[type="checkbox"] .styled:checked + label::before {
 input[type="checkbox"] .styled:checked + label::after {
   color: #fff;
 }
-.a-link:hover {
+.link:hover {
     text-decoration: none;
     cursor:pointer;
 }
@@ -403,13 +410,16 @@ input[type="checkbox"] .styled:checked + label::after {
     background-color: yellow;
 }
 .answer-questions{
-    height: 40px;
-    padding: 12px;
+    height: 60px;
+    padding: 20px;
 }
 .steps-mobile-link:link{
     color: white !important;
     outline: none;
     text-decoration: none;
+}
+.steps-mobile-link, .btn-dic-continue-mobile, .btn-dic-next-task-mobile{
+    height: 60px;
 }
 /* Mobile Images tabs ends here */
 
