@@ -413,7 +413,10 @@ input[type="checkbox"] .styled:checked + label::after {
     height: 60px;
     padding: 20px;
 }
-.steps-mobile-link:link{
+.steps-mobile-link:hover,
+.steps-mobile-link:focus,
+.steps-mobile-link:hover,
+.steps-mobile-link:visited{
     color: white !important;
     outline: none;
     text-decoration: none;
