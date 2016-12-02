@@ -495,3 +495,9 @@ input[type="checkbox"] .styled:checked + label::after {
      background:black;
      color: white ;
 }
+p.before-tooltip {
+    margin: 0;
+}
+.tooltip-inner{
+    padding: 10px;
+}
