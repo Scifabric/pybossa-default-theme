@@ -516,3 +516,6 @@ p.before-tooltip {
 div#already-answered-error {
     top: 30%;
 }
+span.h5.dic-key-text.white-text {
+    margin-right: 39px;
+}
