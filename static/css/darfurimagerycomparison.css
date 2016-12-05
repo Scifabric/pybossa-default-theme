@@ -94,7 +94,8 @@
     width: 19% !important;
 }
 .dic-content-div {
-    display: table;
+      display: flex;
+  flex-wrap: wrap;
 }
 .img-before-div,
 .img-after-div {
@@ -118,8 +119,14 @@
     border-left: 1px solid white;
 }
 .dic-main-image-div {
-    float: none;
-    display: table-cell;
+      display: flex;
+  flex-direction: column;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex:1 0 auto;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
@@ -160,8 +167,14 @@
 
 .dic-left-side-div,
 .dic-right-side-div {
-    float: none;
-    display: table-cell;
+      display: flex;
+  flex-direction: column;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex:1 0 auto;
     background-color: #e5e5e5;
     border-top: 60px solid white;
     border-bottom: 60px solid white;
