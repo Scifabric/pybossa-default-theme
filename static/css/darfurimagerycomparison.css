@@ -64,7 +64,6 @@
 @media screen and (min-width: 992px) {
     .step-two,
     .step-three,
-    .leaderboard-div,
     .tablet-mobile-view{
         display: none;
     }
@@ -94,8 +93,9 @@
     width: 19% !important;
 }
 .dic-content-div {
-      display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    min-height:300px;
 }
 .img-before-div,
 .img-after-div {
@@ -119,14 +119,14 @@
     border-left: 1px solid white;
 }
 .dic-main-image-div {
-      display: flex;
-  flex-direction: column;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      flex:1 0 auto;
+    display: flex;
+    flex-direction: column;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex:1 0 auto;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
@@ -167,14 +167,14 @@
 
 .dic-left-side-div,
 .dic-right-side-div {
-      display: flex;
-  flex-direction: column;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      flex:1 0 auto;
+    display: flex;
+    flex-direction: column;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex:1 0 auto;
     background-color: #e5e5e5;
     border-top: 60px solid white;
     border-bottom: 60px solid white;
@@ -376,16 +376,21 @@ input[type="checkbox"] .styled:checked + label::after {
 /*Checkbox button style ends here*/
 
 /*Leader board style begins here*/
+.leaderboard-container-desktop{
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 30px;
+}
 .user-badge {
-    height: 35px;
-    width: 35px;
+    height: 40px;
+    width: 40px;
     display: table-cell;
     text-align: center;
     vertical-align: middle;
     border-radius: 50%;
     background: black;
     color:white;
-    border:3px solid yellow;
+    border:4px solid yellow;
 }
 .current-user-badge{
     height: 35px;
@@ -397,6 +402,22 @@ input[type="checkbox"] .styled:checked + label::after {
     background: white;
     color:black;
     border: 5px solid black;
+}
+.hr-line {
+    border-top: 2px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.rank-mobile, .name-mobile, .score-mobile{
+    padding-top: 10px;
+    height: 60px;
+}
+.rank-desktop, .name-desktop, .score-desktop{
+    padding-top: 15px;
+    height: 60px;
+}
+.rank-desktop p, .name-desktop p, .score-desktop p, 
+.rank-mobile p, .name-mobile p, .score-mobile p{
+    font-weight:bold;
 }
 /*Leader board style ends here*/
 
