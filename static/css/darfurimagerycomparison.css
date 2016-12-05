@@ -404,8 +404,8 @@ input[type="checkbox"] .styled:checked + label::after {
     border: 5px solid black;
 }
 .hr-line {
-    border-top: 2px solid #e5e5e5;
-    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 0.5px solid #e5e5e5;
 }
 .rank-mobile, .name-mobile, .score-mobile{
     padding-top: 10px;
@@ -415,7 +415,7 @@ input[type="checkbox"] .styled:checked + label::after {
     padding-top: 15px;
     height: 60px;
 }
-.rank-desktop p, .name-desktop p, .score-desktop p, 
+.rank-desktop p, .name-desktop p, .score-desktop p,
 .rank-mobile p, .name-mobile p, .score-mobile p{
     font-weight:bold;
 }
