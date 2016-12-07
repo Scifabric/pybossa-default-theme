@@ -75,8 +75,9 @@
     height: 50px;
     padding-top: 17px;
 }
-.padd-top-15{
-     padding-top: 15px;
+.padd-tb-15{
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 .header-submit{
     min-height: 80px;
@@ -424,6 +425,9 @@ input[type="checkbox"] .styled:checked + label::after {
 .rank-desktop p, .name-desktop p, .score-desktop p,
 .rank-mobile p, .name-mobile p, .score-mobile p{
     font-weight:bold;
+}
+p#darfur-fun-facts-desktop, p#darfur-fun-facts-mobile  {
+    text-align: center;
 }
 /*Leader board style ends here*/
 
