@@ -203,7 +203,26 @@
     border: 2px solid #e5e5e5;
     text-align: center;
     height: 55px;
+    position: relative;
 }
+span.radio-checkbox-shortcut-number {
+    right: 4px;
+    bottom: 4px;
+    position: absolute;
+    color: #E5E5E5;
+}
+span.button-shortcut-text {
+    right: 4px;
+    bottom: 4px;
+    position: absolute;
+    color: #696866 !important;
+    letter-spacing: normal;
+    font-weight: normal;
+}
+.dic-main-button{
+    position: relative;
+}
+
 .no-padding-right {
     padding-right: 0px;
 }
@@ -590,3 +609,4 @@ span.h5.dic-key-text.white-text {
 #btn-redo-trial, #btn-trial-start-decoding{
     width:100%;
 }
+ 
