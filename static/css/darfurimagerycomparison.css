@@ -75,6 +75,9 @@
     height: 50px;
     padding-top: 17px;
 }
+.padd-top-15{
+     padding-top: 15px;
+}
 .header-submit{
     min-height: 80px;
     padding-top: 17px;
@@ -376,10 +379,13 @@ input[type="checkbox"] .styled:checked + label::after {
 /*Checkbox button style ends here*/
 
 /*Leader board style begins here*/
-.leaderboard-container-desktop{
+.leaderboard-data{
     padding-left: 80px;
     padding-right: 80px;
     padding-top: 30px;
+}
+.leaderboard-container-desktop{
+    padding-top: 20px;
 }
 .user-badge {
     height: 40px;
