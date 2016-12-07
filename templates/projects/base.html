@@ -7,11 +7,11 @@
 {% block content %}
 <div class="container">
     {% if project %}
-    <div class="col-sm-3 col-md-3">
+    <div class="col-sm-3 col-md-3" style="margin-top:50px;">
         {{ helper.render_project_local_nav(project, active_link, current_user, pro_features) }}
     </div>
     <!-- Project -->
-    <div class="col-sm-9 col-md-9" style="min-height:400px;margin-top:30px;">
+    <div class="col-sm-9 col-md-9" style="min-height:400px;margin-top:50px;">
         <div class="row">
             <div class="col-sm-8 col-md-8">
                 <h1>{{project.name}}</h1>
