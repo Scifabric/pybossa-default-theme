@@ -563,3 +563,20 @@ div#already-answered-error {
 span.h5.dic-key-text.white-text {
     margin-right: 39px;
 }
+/*Trial style code starts here*/
+.trial-score {
+    height: 100px;
+    width: 100px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: black;
+    color: white;
+    font-size: 40px;
+    box-shadow: 0 0 5px 13px yellow;
+}
+.trial-score-div{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
