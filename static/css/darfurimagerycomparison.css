@@ -373,8 +373,8 @@ input[type="checkbox"] .styled:checked + label::after {
   color: #fff;
 }
 .link:hover {
-    text-decoration: none;
-    cursor:pointer;
+    text-decoration: none !important;
+    cursor:pointer !important;
 }
 
 /*Checkbox button style ends here*/
