@@ -10,39 +10,15 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 
 	var beforeImageSources = [], afterImageSources = [];
 
-	//get images source THEN hide them
-	extractImageSource(beforeImageSources, beforeImageContainer);
-	extractImageSource(afterImageSources, afterImageContainer);
-
-	$(beforeImageContainer).find('img').hide();
-	$(afterImageContainer).find('img').hide();
-
-	//init canvas to render images
-	var html = "<div class='square-container'>" + 
-			'<canvas id="smallBeforeCanvas">Your browser does not support the HTML5 canvas tag.</canvas>' +
-			'<canvas id="bigBeforeCanvas" style="display:none">Your browser does not support the HTML5 canvas tag.</canvas>' +
-		"</div>";
-	$(beforeImageContainer).append(html);
-
-		//squarec-container help to keep canvas in square shape during resize
-	html = "<div class='square-container'>" + 
-			'<canvas id="smallAfterCanvas">Your browser does not support the HTML5 canvas tag.</canvas>' +
-			'<canvas id="bigAfterCanvas" style="display:none">Your browser does not support the HTML5 canvas tag.</canvas>' +
-		"</div>";
-	$(afterImageContainer).append(html);
-
 	var beforeImages = [];
-	var bigBeforeCanvas = document.getElementById("bigBeforeCanvas");
-	var bigBeforeCanvasContext = bigBeforeCanvas.getContext('2d');
-	var smallBeforeCanvas = document.getElementById("smallBeforeCanvas");
-	var smallBeforeCanvasContext = smallBeforeCanvas.getContext('2d');
+	var bigBeforeCanvas;
+	var smallBeforeCanvas;
 
 	var afterImages = [];
-	var bigAfterCanvas = document.getElementById("bigAfterCanvas");
-	var bigAfterCanvasContext = bigAfterCanvas.getContext('2d');
-	var smallAfterCanvas = document.getElementById("smallAfterCanvas");
-	var smallAfterCanvasContext = smallAfterCanvas.getContext('2d');
+	var bigAfterCanvas;
+	var smallAfterCanvas;
 
+	//container's size of final single before/after image 
 	var size;
 
 	var tileRealSize = 256;//square of 256 x 256
@@ -52,27 +28,42 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 	var zoomWidth;
 	
 
-	//the canvas contain original size images
-	$("#bigBeforeCanvas").attr('width', tileRealSize * 2).attr('height', tileRealSize * 2);
-	$("#bigAfterCanvas").attr('width', tileRealSize * 2).attr('height', tileRealSize * 2);
+	var initBeforeDeffered = $.Deferred();
+	var initAfterDeffered = $.Deferred();
 
-	//establish first time setting for dimension
-	resize();
+	init(beforeImageContainer)
+	.then(function(results){
+		beforeImages = results.images;
+		smallBeforeCanvas = results.smallCanvas;
+		bigBeforeCanvas = results.bigCanvas;
 
-	$(window).on('resize', function() {
-		resize();
-    	drawSmallImages(smallBeforeCanvasContext, beforeImages);
-    	drawSmallImages(smallAfterCanvasContext, afterImages);
+		initBeforeDeffered.resolve();
 	});
 
-	init(beforeImageSources, beforeImages, smallBeforeCanvasContext, bigBeforeCanvasContext);
-	init(afterImageSources, afterImages, smallAfterCanvasContext, bigAfterCanvasContext);
+	init(afterImageContainer)
+	.then(function(results){
+		afterImages = results.images;
+		smallAfterCanvas = results.smallCanvas;
+		bigAfterCanvas = results.bigCanvas;
 
-	if (Modernizr.touchevents) {
-		handleEventOnMobile();		
-	} else {
-		handleEventOnDesktop();
-	}
+		initAfterDeffered.resolve();
+	});
+
+	$.when(initBeforeDeffered.promise(), initAfterDeffered.promise()).then(function(){
+		if (Modernizr.touchevents) {
+			handleEventOnMobile();		
+		} else {
+			handleEventOnDesktop();
+		}
+
+		$(window).on('resize', function() {
+			var size = getSize();
+			resize(smallBeforeCanvas, size);
+			resize(smallAfterCanvas, size);
+	    	drawSmallImages(smallBeforeCanvas, beforeImages);
+	    	drawSmallImages(smallAfterCanvas, afterImages);
+		});
+	})
 
 	function handleEventOnMobile() {
 		// tap position in before image and after image
@@ -84,14 +75,13 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 			x: null,
 			y: null
 		};
-
 		
-		$('#smallBeforeCanvas').mousemove(function(evt){
+		$(smallBeforeCanvas).mousemove(function(evt){
 			//reset after image interaction
 			afterXY.x = afterXY.y = null;
 			zoomOnMobile(evt, smallBeforeCanvas, bigBeforeCanvas, beforeImages, beforeXY);
 		});
-		$('#smallAfterCanvas').mousemove(function(evt){
+		$(smallAfterCanvas).mousemove(function(evt){
 			//reset before image interaction
 			beforeXY.x = beforeXY.y = null;
 			zoomOnMobile(evt, smallAfterCanvas, bigAfterCanvas, afterImages, afterXY);
@@ -122,7 +112,7 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 	    ) {
 	    	previousXY.x = null;
 	    	previousXY.y = null;
-	    	drawSmallImages(smallCanvasContext, images);
+	    	drawSmallImages(smallCanvas, images);
 	    } 
 	    //zoom
 	    else {
@@ -135,22 +125,22 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 	
 	function handleEventOnDesktop() {		
 		var mouseOutBefore = true, mouseOutAfter = true;
-		$('#smallBeforeCanvas').mouseout(function(){
+		$(smallBeforeCanvas).mouseout(function(){
 			mouseOutBefore = true;
 			if (mouseOutAfter) {
-				drawSmallImages(smallBeforeCanvasContext, beforeImages);
-				drawSmallImages(smallAfterCanvasContext, afterImages);
+				drawSmallImages(smallBeforeCanvas, beforeImages);
+				drawSmallImages(smallAfterCanvas, afterImages);
 			}
 		});
-		$('#smallAfterCanvas').mouseout(function(){
+		$(smallAfterCanvas).mouseout(function(){
 			mouseOutAfter = true;
 			if (mouseOutBefore) {
-				drawSmallImages(smallBeforeCanvasContext, beforeImages);
-				drawSmallImages(smallAfterCanvasContext, afterImages);
+				drawSmallImages(smallBeforeCanvas, beforeImages);
+				drawSmallImages(smallAfterCanvas, afterImages);
 			}
 		});
 
-		$('#smallBeforeCanvas').mousemove(function(evt){
+		$(smallBeforeCanvas).mousemove(function(evt){
 			if (zoomLevel < 1) {
 				return;
 			}
@@ -165,7 +155,7 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 			zoom(smallAfterCanvas, bigAfterCanvas, afterImages, x, y);
 		});
 
-		$('#smallAfterCanvas').mousemove(function(evt){
+		$(smallAfterCanvas).mousemove(function(evt){
 			if (zoomLevel < 1) {
 				return;
 			}
@@ -181,26 +171,39 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 		});		
 	}
 
+	/* get size of image container width */
+	function getSize() {
+		//in mobile we only show before or after image so we need to use the width of visibile one
+		var beforeWidth = $(beforeImageContainer).width();
+		var afterWidth = $(afterImageContainer).width();
+		size = (afterWidth > beforeWidth) ? afterWidth : beforeWidth;
+		return size;
+	}
 
 	/* calculate size of canvas, zoom ratio, zoom viewport width when resize window*/
-	function resize() {
-		size = $('.square-container').width();
+	function resize(smallCanvas, newSize) {
+		if (!newSize) {
+			size = getSize();
+		} else {
+			size = newSize;
+		}
+
 		tileViewSize = size/2;
 		zoomLevel = tileRealSize/tileViewSize;
 		zoomWidth = tileViewSize;
-		$("#smallBeforeCanvas").attr('width', size).attr('height', size);
-		$("#smallAfterCanvas").attr('width', size).attr('height', size);
+		$(smallCanvas).attr('width', size).attr('height', size);
 	}
 
 	//find <img> in imageContainer, extract <img>'s source to imageSources
-	function extractImageSource(imageSources, imageContainer) {
+	function extractImageSource(imageContainer) {
+		var imageSources = [];
 		if ($(imageContainer).find('img').length == 0) {
 			console.error('There is no before images');
 		}
 		$.each($(imageContainer).find('img'), function(index, value){
 			imageSources.push($(value).attr('src'));
 		});
-
+		return imageSources;
 	}
 
 	/* zoom by draw the right part of original image on top of smaller one */
@@ -210,14 +213,13 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 
 	    var viewPort = zoomWidth;
 	    // var zoomLevel = 2;
-	    drawSmallImages(smallCanvasContext, images);
+	    drawSmallImages(smallCanvas, images);
 
 	    var largeX1,largeY1;
 	    largeX1 = x * zoomLevel - viewPort/2;
 	    largeY1 = y * zoomLevel - viewPort/2;
 
 	    var bigImageCut = bigCanvasContext.getImageData(largeX1 , largeY1, viewPort, viewPort);
-	    console.log(bigImageCut);
 	    var x1, y1;
 	    x1 = x - viewPort/2;
 	    y1 = y - viewPort/2;
@@ -232,7 +234,14 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 	}
 
 	/* combine images for before/after images, use for first load */
-	function init(imageSources, images, smallContext, bigContext) {
+	function init(imageContainer) {
+		var initDeferred = $.Deferred();
+
+		//get images source THEN hide them
+		var imageSources = extractImageSource(imageContainer);
+
+		var images = [];
+
 		//create scope for promise
 		function imageOnload(image) {
 		    var deferred = $.Deferred();
@@ -254,21 +263,55 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 		//as jquery.when() doesn't support array of promise so we pass as separate argument now
 		$.when(promises[0], promises[1], promises[2], promises[3])
 		.then(function(){
-	    	drawSmallImages(smallContext, images);
-	    	drawBigImages(bigContext, images);
+		    var	size = getSize();
+
+		    // $(imageContainer).empty();
+		    if (settings.cleanPreviousContent) {
+		    	settings.cleanPreviousContent(imageContainer);
+		    } else {
+		    	$(imageContainer).find('img').hide();	
+		    }		    
+
+			//init canvas to render images
+			var html = '<!-- to enable zoom, images has been replaced with canvas -->' +
+					'<canvas class="smallCanvas">Your browser does not support the HTML5 canvas tag.</canvas>' +
+					'<canvas class="bigCanvas" style="display:none">Your browser does not support the HTML5 canvas tag.</canvas>'
+				;
+			$(imageContainer).append(html);
+
+			var bigCanvas = $(imageContainer).find(".bigCanvas")[0];
+			var smallCanvas = $(imageContainer).find(".smallCanvas")[0];
+
+			//the canvas contain original size images
+			$(bigCanvas).attr('width', tileRealSize * 2).attr('height', tileRealSize * 2);
+
+			resize(smallCanvas, size);
+
+	    	drawSmallImages(smallCanvas, images);
+	    	drawBigImages(bigCanvas, images);
+
+	    	initDeferred.resolve({
+	    		images: images,
+	    		smallCanvas: smallCanvas,
+	    		bigCanvas: bigCanvas,
+	    	});  	
 		},function(){
 			console.error("Error in loading images");
 		});
+
+		return initDeferred.promise();
 	}
 
-	function drawSmallImages(context, images) {
+	function drawSmallImages(canvas, images) {
+		var context = canvas.getContext('2d');
 		context.drawImage(images[0], 0, 0, tileRealSize, tileRealSize, 0, 0, tileViewSize, tileViewSize);
 		context.drawImage(images[1], 0, 0, tileRealSize, tileRealSize, tileViewSize, 0, tileViewSize, tileViewSize);
 		context.drawImage(images[2], 0, 0, tileRealSize, tileRealSize, 0, tileViewSize, tileViewSize, tileViewSize);
 		context.drawImage(images[3], 0, 0, tileRealSize, tileRealSize, tileViewSize, tileViewSize, tileViewSize, tileViewSize);			
 	}
 
-	function drawBigImages(context, images) {
+	function drawBigImages(canvas, images) {
+		var context = canvas.getContext('2d');
 		context.drawImage(images[0], 0, 0, tileRealSize, tileRealSize, 0, 0, tileRealSize, tileRealSize);
 		context.drawImage(images[1], 0, 0, tileRealSize, tileRealSize, tileRealSize, 0, tileRealSize, tileRealSize);
 		context.drawImage(images[2], 0, 0, tileRealSize, tileRealSize, 0, tileRealSize, tileRealSize, tileRealSize);
@@ -283,11 +326,21 @@ var darfurimagerycomparison_initLeaderboardTmp = darfurimagerycomparison.initLea
 darfurimagerycomparison.initLeaderboard = function(projectId) {
 	darfurimagerycomparison_initLeaderboardTmp(projectId);
 
-	var beforeImageContainer = $('.desktop-view .img-before-div')[0];
-	var afterImageContainer = $('.desktop-view .img-after-div')[0];
-	
+	//apply zoom for desktop view
 	parallelZoom.zoomBeforeAfter({
-		beforeImageContainer: beforeImageContainer,
-		afterImageContainer: afterImageContainer		
+		beforeImageContainer: $('.desktop-view .img-before-div')[0],
+		afterImageContainer: $('.desktop-view .img-after-div')[0],
+		cleanPreviousContent: function(imageContainer) {
+			$(imageContainer).find('.row').remove();
+		}
 	});
+
+	//apply zoom for mobile view
+	parallelZoom.zoomBeforeAfter({
+		beforeImageContainer: $('.tablet-mobile-view #before-tab .padd-00')[0],
+		afterImageContainer: $('.tablet-mobile-view #after-tab .padd-00')[0],
+		cleanPreviousContent: function(imageContainer) {
+			$(imageContainer).find('.row').remove();
+		}	
+	});	
 }
