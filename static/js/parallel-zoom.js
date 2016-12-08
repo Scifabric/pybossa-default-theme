@@ -50,7 +50,7 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 	});
 
 	$.when(initBeforeDeffered.promise(), initAfterDeffered.promise()).then(function(){
-		if (Modernizr.touchevents) {
+		if (Modernizr.touch) {
 			handleEventOnMobile();		
 		} else {
 			handleEventOnDesktop();
