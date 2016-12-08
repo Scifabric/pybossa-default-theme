@@ -239,7 +239,7 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 		    image.onload = function() {
 		    	deferred.resolve('a');
 		    };
-		    return deferred;
+		    return deferred.promise();
 		}
 
 		var promises = [];
@@ -251,11 +251,12 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 		    images.push(image);
 		} 
 
-		$.when(promises)
-		.done(function(){
+		//as jquery.when() doesn't support array of promise so we pass as separate argument now
+		$.when(promises[0], promises[1], promises[2], promises[3])
+		.then(function(){
 	    	drawSmallImages(smallContext, images);
 	    	drawBigImages(bigContext, images);
-		}).fail(function(){
+		},function(){
 			console.error("Error in loading images");
 		});
 	}
