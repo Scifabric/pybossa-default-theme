@@ -274,7 +274,10 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 
 			//init canvas to render images
 			var html = '<!-- to enable zoom, images has been replaced with canvas -->' +
-					'<canvas class="smallCanvas">Your browser does not support the HTML5 canvas tag.</canvas>' +
+					//as normalize.css set canvas with display: inline-block 
+					//which create a default padding-bottom (can not remove that padding)
+					//so we set display: block here
+					'<canvas class="smallCanvas" style="display: block">Your browser does not support the HTML5 canvas tag.</canvas>' +
 					'<canvas class="bigCanvas" style="display:none">Your browser does not support the HTML5 canvas tag.</canvas>'
 				;
 			$(imageContainer).append(html);
