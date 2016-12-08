@@ -614,4 +614,22 @@ span.h5.dic-key-text.white-text {
 #btn-redo-trial, #btn-trial-start-decoding{
     width:100%;
 }
- 
+footer ul.social-icons-ul li {
+     display: inline-block;
+     list-style: none;
+ }
+footer ul.social-icons-ul {
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+}
+footer ul.social-icons-ul li a {
+    display: inline-block;
+    padding: 20px;
+    color: #fff;
+}
+footer ul.social-icons-ul li a:hover {
+    background-color: #262626 !important;
+    transition: background-color .25s;
+    border-radius: 0 !important;
+}
