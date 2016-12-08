@@ -527,11 +527,6 @@ p#darfur-fun-facts-desktop, p#darfur-fun-facts-mobile  {
     padding-left: 15px;
     padding-right: 15px;
 }
-.modal-header .close {
-    margin-top: -2px;
-    margin-right: 20px;
-    font-size: 34px;
-}
 .long-line {
     border-radius: 25px;
     background: #ededef;
