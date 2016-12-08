@@ -100,6 +100,7 @@
     display: flex;
     flex-wrap: wrap;
     min-height:300px;
+    padding-top: 2px;
 }
 .img-before-div,
 .img-after-div {
@@ -218,6 +219,7 @@ span.button-shortcut-text {
     color: #696866 !important;
     letter-spacing: normal;
     font-weight: normal;
+    font-size:12px;
 }
 .dic-main-button{
     position: relative;
@@ -448,6 +450,9 @@ input[type="checkbox"] .styled:checked + label::after {
 p#darfur-fun-facts-desktop, p#darfur-fun-facts-mobile  {
     text-align: center;
 }
+ p#darfur-fun-facts-mobile {
+     padding-bottom: 30px;
+ }
 /*Leader board style ends here*/
 
 @media screen and (min-width: 310px) and (max-width: 992px) {
