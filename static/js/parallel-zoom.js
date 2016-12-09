@@ -2,6 +2,7 @@
 zoom for image comparison in darfur project,
 when zoom before (or after) image, zoom the after (or before) image also
 */
+(function(){
 
 var parallelZoom = {};
 parallelZoom.zoomBeforeAfter = function(settings) {
@@ -233,7 +234,10 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 	    smallCanvasContext.strokeRect(x1, y1, viewPort, viewPort);		
 	}
 
-	/* combine images for before/after images, use for first load */
+	/* 
+	 * Combine images for before/after images, use for first load.
+	 * Before image will have single image (after image with 4 images)
+	 */
 	function init(imageContainer) {
 		var initDeferred = $.Deferred();
 
@@ -260,9 +264,7 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 		    images.push(image);
 		} 
 
-		//as jquery.when() doesn't support array of promise so we pass as separate argument now
-		$.when(promises[0], promises[1], promises[2], promises[3])
-		.then(function(){
+		var buildCanvas = function(){
 		    var	size = getSize();
 
 		    // $(imageContainer).empty();
@@ -298,43 +300,70 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 	    		smallCanvas: smallCanvas,
 	    		bigCanvas: bigCanvas,
 	    	});  	
-		},function(){
-			console.error("Error in loading images");
-		});
+		};
+
+		// as jquery.when() doesn't support array of promise so we pass as separate argument now
+			// after image include 4 smaller images
+		if (promises.length == 4) {
+			$.when(promises[0], promises[1], promises[2], promises[3])
+			.then(buildCanvas, function(){
+				console.error("Error in loading images");
+			});
+		} 
+			// before image include 1 image
+		else if (promises.length == 1) {
+			$.when(promises[0])
+			.then(buildCanvas, function(){
+				console.error("Error in loading images");
+			});
+		} else {
+			console.error('Number of child images for before or after image should be 1 or 4')
+		}
 
 		return initDeferred.promise();
 	}
 
 	function drawSmallImages(canvas, images) {
 		var context = canvas.getContext('2d');
-		context.drawImage(images[0], 0, 0, tileRealSize, tileRealSize, 0, 0, tileViewSize, tileViewSize);
-		context.drawImage(images[1], 0, 0, tileRealSize, tileRealSize, tileViewSize, 0, tileViewSize, tileViewSize);
-		context.drawImage(images[2], 0, 0, tileRealSize, tileRealSize, 0, tileViewSize, tileViewSize, tileViewSize);
-		context.drawImage(images[3], 0, 0, tileRealSize, tileRealSize, tileViewSize, tileViewSize, tileViewSize, tileViewSize);			
+		if (images.length == 4) {
+			context.drawImage(images[0], 0, 0, tileRealSize, tileRealSize, 0, 0, tileViewSize, tileViewSize);
+			context.drawImage(images[1], 0, 0, tileRealSize, tileRealSize, tileViewSize, 0, tileViewSize, tileViewSize);
+			context.drawImage(images[2], 0, 0, tileRealSize, tileRealSize, 0, tileViewSize, tileViewSize, tileViewSize);
+			context.drawImage(images[3], 0, 0, tileRealSize, tileRealSize, tileViewSize, tileViewSize, tileViewSize, tileViewSize);			
+		} else if (images.length == 1) {
+			context.drawImage(images[0], 0, 0, tileRealSize * 2, tileRealSize * 2, 0, 0, tileViewSize * 2, tileViewSize * 2);
+		} else {
+			console.error('Number of child images for before or after image should be 1 or 4')
+		}
 	}
 
 	function drawBigImages(canvas, images) {
 		var context = canvas.getContext('2d');
-		context.drawImage(images[0], 0, 0, tileRealSize, tileRealSize, 0, 0, tileRealSize, tileRealSize);
-		context.drawImage(images[1], 0, 0, tileRealSize, tileRealSize, tileRealSize, 0, tileRealSize, tileRealSize);
-		context.drawImage(images[2], 0, 0, tileRealSize, tileRealSize, 0, tileRealSize, tileRealSize, tileRealSize);
-		context.drawImage(images[3], 0, 0, tileRealSize, tileRealSize, tileRealSize, tileRealSize, tileRealSize, tileRealSize);
+		if (images.length == 4) {
+			context.drawImage(images[0], 0, 0, tileRealSize, tileRealSize, 0, 0, tileRealSize, tileRealSize);
+			context.drawImage(images[1], 0, 0, tileRealSize, tileRealSize, tileRealSize, 0, tileRealSize, tileRealSize);
+			context.drawImage(images[2], 0, 0, tileRealSize, tileRealSize, 0, tileRealSize, tileRealSize, tileRealSize);
+			context.drawImage(images[3], 0, 0, tileRealSize, tileRealSize, tileRealSize, tileRealSize, tileRealSize, tileRealSize);
+		} else if (images.length == 1) {
+			context.drawImage(images[0], 0, 0, tileRealSize * 2, tileRealSize * 2, 0, 0, tileRealSize * 2, tileRealSize * 2);
+		} else {
+			console.error('Number of child images for before or after image should be 1 or 4')
+		}
 	}
 
 }
 
-//Fixme: we enable zoom inside initLeaderboard() as we need to wait when all the images available on dom
-//later when we can modify the template.html code then no need to do this
-var darfurimagerycomparison_initLeaderboardTmp = darfurimagerycomparison.initLeaderboard;
-darfurimagerycomparison.initLeaderboard = function(projectId) {
-	darfurimagerycomparison_initLeaderboardTmp(projectId);
-
+//trigger zoom
+$(document).on('taskpresenter:imageready', function(){
 	//apply zoom for desktop view
 	parallelZoom.zoomBeforeAfter({
 		beforeImageContainer: $('.desktop-view .img-before-div')[0],
 		afterImageContainer: $('.desktop-view .img-after-div')[0],
 		cleanPreviousContent: function(imageContainer) {
-			$(imageContainer).find('.row').remove();
+			//before image
+			$(imageContainer).find('img.img-before').remove();	
+			//after image
+			$(imageContainer).find('.row').remove();	
 		}
 	});
 
@@ -343,7 +372,13 @@ darfurimagerycomparison.initLeaderboard = function(projectId) {
 		beforeImageContainer: $('.tablet-mobile-view #before-tab .padd-00')[0],
 		afterImageContainer: $('.tablet-mobile-view #after-tab .padd-00')[0],
 		cleanPreviousContent: function(imageContainer) {
-			$(imageContainer).find('.row').remove();
+			//before image
+			$(imageContainer).find('img.img-before').remove();	
+			//after image
+			$(imageContainer).find('.row').remove();	
 		}	
-	});	
-}
+	});
+});
+
+})();
+
