@@ -72,8 +72,14 @@
 
 /* Header msg div style begins here */
 .header-msg {
+    /**
     height: 50px;
     padding-top: 17px;
+    **/
+}
+.padd-tb-15{
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 .header-submit{
     min-height: 80px;
@@ -96,6 +102,7 @@
     display: flex;
     flex-wrap: wrap;
     min-height:300px;
+    padding-top: 2px;
 }
 .img-before-div,
 .img-after-div {
@@ -182,9 +189,10 @@
 /* Left and Right div style ends here */
 
 .dic-option-container {
-    padding-top: 20px;
+    /** padding-top: 20px;
     padding-bottom: 10px;
     height: 80px;
+    **/
 }
 .step-two-changed-modal, .step-two-unsure-modal, .step-two-unchanged-modal {
     padding-top: 0px;
@@ -199,7 +207,27 @@
     border: 2px solid #e5e5e5;
     text-align: center;
     height: 55px;
+    position: relative;
 }
+span.radio-checkbox-shortcut-number {
+    right: 4px;
+    bottom: 4px;
+    position: absolute;
+    color: #E5E5E5;
+}
+span.button-shortcut-text {
+    right: 4px;
+    bottom: 4px;
+    position: absolute;
+    color: #696866 !important;
+    letter-spacing: normal;
+    font-weight: normal;
+    font-size:12px;
+}
+.dic-main-button{
+    position: relative;
+}
+
 .no-padding-right {
     padding-right: 0px;
 }
@@ -369,17 +397,20 @@ input[type="checkbox"] .styled:checked + label::after {
   color: #fff;
 }
 .link:hover {
-    text-decoration: none;
-    cursor:pointer;
+    text-decoration: none !important;
+    cursor:pointer !important;
 }
 
 /*Checkbox button style ends here*/
 
 /*Leader board style begins here*/
-.leaderboard-container-desktop{
+.leaderboard-data{
     padding-left: 80px;
     padding-right: 80px;
     padding-top: 30px;
+}
+.leaderboard-container-desktop{
+    padding-top: 20px;
 }
 .user-badge {
     height: 40px;
@@ -419,6 +450,12 @@ input[type="checkbox"] .styled:checked + label::after {
 .rank-mobile p, .name-mobile p, .score-mobile p{
     font-weight:bold;
 }
+p#darfur-fun-facts-desktop, p#darfur-fun-facts-mobile  {
+    text-align: center;
+}
+ p#darfur-fun-facts-mobile {
+     padding-bottom: 30px;
+ }
 /*Leader board style ends here*/
 
 @media screen and (min-width: 310px) and (max-width: 992px) {
@@ -493,11 +530,6 @@ input[type="checkbox"] .styled:checked + label::after {
     padding-left: 15px;
     padding-right: 15px;
 }
-.modal-header .close {
-    margin-top: -2px;
-    margin-right: 20px;
-    font-size: 34px;
-}
 .long-line {
     border-radius: 25px;
     background: #ededef;
@@ -552,4 +584,50 @@ div#already-answered-error {
 }
 span.h5.dic-key-text.white-text {
     margin-right: 39px;
+}
+/*Trial style code starts here*/
+.trial-score {
+    height: 100px;
+    width: 100px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: black;
+    color: white;
+    font-size: 40px;
+    box-shadow: 0 0 5px 13px yellow;
+}
+.trial-score-div{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+#btn-redo-trial {
+    background-color: white;
+    border: #E5E5E5 solid 1px;
+}
+.trial-task-modal-body{
+    padding-bottom: 85px;
+}
+#btn-redo-trial, #btn-trial-start-decoding{
+    width:100%;
+}
+footer ul.social-icons-ul li {
+     display: inline-block;
+     list-style: none;
+ }
+footer ul.social-icons-ul {
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+}
+footer ul.social-icons-ul li a {
+    display: inline-block;
+    padding: 20px;
+    color: #fff;
+}
+footer ul.social-icons-ul li a:hover {
+    background-color: #262626 !important;
+    transition: background-color .25s;
+    border-radius: 0 !important;
 }
