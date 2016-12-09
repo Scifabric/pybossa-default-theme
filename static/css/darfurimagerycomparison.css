@@ -40,23 +40,29 @@
 }
 @media screen and (min-width: 310px) and (max-width: 992px) {
     #sub-header-darfur-imagery-comparison-desktop,
-    .navbar-header, .steps-desktop {
+    .navbar-header, .steps-desktop,
+    .key-desktop-image{
         display: none;
     }
-    #sub-header-darfur-imagery-comparison-mobile {
+    #sub-header-darfur-imagery-comparison-mobile{
         display: block;
         padding-top: 15px;
     }
     .dic-key-div {
         padding-right: 5px !important;
     }
+    .key-modal-images-tab{
+        display: block;
+    }
 }
 @media screen and (min-width: 992px) {
     #sub-header-darfur-imagery-comparison-desktop,
-    .navbar-header {
+    .navbar-header,
+    .key-desktop-image{
         display: block !important;
     }
-    #sub-header-darfur-imagery-comparison-mobile {
+    #sub-header-darfur-imagery-comparison-mobile,
+    .key-modal-images-tab{
         display: none;
     }
 }
@@ -88,6 +94,9 @@
 }
 .step-three-msg{
     color:#8e8c8c;
+}
+.padding-top{
+    padding-top: 10px;
 }
 /* Header msg div style ends here */
 
@@ -630,4 +639,19 @@ footer ul.social-icons-ul li a:hover {
     background-color: #262626 !important;
     transition: background-color .25s;
     border-radius: 0 !important;
+}
+#btn-close-key-modal{
+    width:150px;
+    display: block;
+    margin: 0 auto;
+}
+.key-img{
+    position: relative;
+    width: 100%;
+    height: auto;
+ }
+.key-modal-images-tab{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
 }
