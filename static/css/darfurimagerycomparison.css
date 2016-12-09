@@ -631,3 +631,8 @@ footer ul.social-icons-ul li a:hover {
     transition: background-color .25s;
     border-radius: 0 !important;
 }
+#btn-close-key-modal{
+    width:150px;
+    display: block;
+    margin: 0 auto;
+}
