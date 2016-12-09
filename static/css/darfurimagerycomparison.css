@@ -72,8 +72,10 @@
 
 /* Header msg div style begins here */
 .header-msg {
+    /**
     height: 50px;
     padding-top: 17px;
+    **/
 }
 .padd-tb-15{
     padding-top: 15px;
@@ -187,9 +189,10 @@
 /* Left and Right div style ends here */
 
 .dic-option-container {
-    padding-top: 20px;
+    /** padding-top: 20px;
     padding-bottom: 10px;
     height: 80px;
+    **/
 }
 .step-two-changed-modal, .step-two-unsure-modal, .step-two-unchanged-modal {
     padding-top: 0px;
