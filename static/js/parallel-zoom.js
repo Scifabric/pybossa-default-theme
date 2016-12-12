@@ -279,6 +279,7 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 					//as normalize.css set canvas with display: inline-block 
 					//which create a default padding-bottom (can not remove that padding)
 					//so we set display: block here
+					'<i class="glyphicon glyphicon-zoom-in icon-zoom-in"></i>' +
 					'<canvas class="smallCanvas" style="display: block">Your browser does not support the HTML5 canvas tag.</canvas>' +
 					'<canvas class="bigCanvas" style="display:none">Your browser does not support the HTML5 canvas tag.</canvas>'
 				;
