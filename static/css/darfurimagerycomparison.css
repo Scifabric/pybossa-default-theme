@@ -645,6 +645,15 @@ footer ul.social-icons-ul li a:hover {
     display: block;
     margin: 0 auto;
 }
+.row-key-header-container{
+    padding-top: 30px;
+}
+
+.row-key-img-container{
+    background-color: #F7F7F7;
+    padding: 30px 30px 15px 30px;
+}
+
 .key-img{
     position: relative;
     width: 100%;
@@ -655,3 +664,4 @@ footer ul.social-icons-ul li a:hover {
     text-align: center;
     margin: 0 auto;
 }
+
