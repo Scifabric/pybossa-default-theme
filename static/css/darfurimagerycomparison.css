@@ -410,6 +410,10 @@ input[type="checkbox"] .styled:checked + label::after {
     cursor:pointer !important;
 }
 
+.lnk-no-buildings{
+    border-bottom: thin solid black;
+}
+
 /*Checkbox button style ends here*/
 
 /*Leader board style begins here*/
