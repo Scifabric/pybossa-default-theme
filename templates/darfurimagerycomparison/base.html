@@ -123,10 +123,10 @@
         <p>Cookies help us deliver our services. By using our services, you agree to our use of cookies. <a target="_blank" href="https://www.amnesty.org/en/about-us/cookie-statement/" style="text-decoration: underline !important;">Learn more.</a> <button class="btn btn-sm btn-default" onclick="accept_cookies()" style="float: right; margin-right: 5%;text-transform:uppercase;font-weight: 300"></i> OK, Got it!</button></p>
     </div>
     {% endif %}
-    <footer class="col-xs-12" style="padding-bottom: 20px; min-height: 220px">
+    <footer class="col-xs-12" >
          <div class="row" style="margin: 0 auto; text-align: center;">
-            <ul class="social-icons-ul rrssb-buttons"
-                style="margin: 0 auto !important; width: 150px !important; height: 70px !important;">
+            <ul class="social-icons-ul rrssb-buttons "
+                style="margin: 0 auto !important; width: 150px !important; height: 70px !important; visibility: hidden !important;">
                 <li>
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ config.get('SHARE_URL') }}"
                        class="popup">
@@ -141,7 +141,7 @@
                 </li>
             </ul>
         </div>
-        <div class="row" style="text-align: center;">
+        <div class="row" style="text-align: center; display: none;">
             <h3 style="margin-top: 5px;">PLEASE SHARE AND HELP RECRUIT YOUR FRIENDS</h3>
         </div>
         <div class="row">
