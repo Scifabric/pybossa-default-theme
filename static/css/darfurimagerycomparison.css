@@ -409,7 +409,9 @@ input[type="checkbox"] .styled:checked + label::after {
     text-decoration: none !important;
     cursor:pointer !important;
 }
-
+.no-b-border{
+    border-bottom:none !important;
+}
 .lnk-no-buildings{
     border-bottom: thin solid black;
 }
@@ -668,4 +670,6 @@ footer ul.social-icons-ul li a:hover {
     text-align: center;
     margin: 0 auto;
 }
-
+.radio-inline-tutorial{
+  margin-top: 17px !important;
+}
