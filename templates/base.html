@@ -53,6 +53,7 @@
   </head>
 
   <body>
+    <article>
     {% set active_page = active_page | default('index') -%}
     {% set active_project  = active_project | default('none') -%}
     {% include "_navbar.html" %}
@@ -60,7 +61,6 @@
     <!-- checkpoint::logged-in::{{current_user.name}} -->
     {% endif %}
     {% block content %}{% endblock %}
-    {% include "_footer.html" %}
     <!-- Le javascript -->
     <script id="cookies_warning">
         window.cookieconsent_options = {"message":"Cookies help us to deliver our services. By using our services, you agree to our use of cookies.","dismiss":"Got it!","learnMore":"Learn More.","link":"{{url_for('help.cookies_policy')}}","theme":"dark-bottom"};
@@ -78,5 +78,7 @@
     {% block extrajs %}
     {% endblock %}
     {% include "_flash_messages.html" %}
+    </article>
+    {% include "_footer.html" %}
   </body>
 </html>
