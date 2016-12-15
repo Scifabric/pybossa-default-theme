@@ -673,6 +673,7 @@ footer ul.social-icons-ul li a:hover {
     transition: background-color .25s;
     border-radius: 0 !important;
 }
+
 #btn-close-key-modal{
     width:150px;
     display: block;
@@ -697,6 +698,7 @@ footer ul.social-icons-ul li a:hover {
     text-align: center;
     margin: 0 auto;
 }
+
 .radio-inline-tutorial{
   margin-top: 17px !important;
 }
@@ -714,3 +716,15 @@ footer ul.social-icons-ul li a:hover {
 #after-tab{
     position: relative;
 }
+/* zoom */
+.icon-zoom-in {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    text-shadow: 1px 1px 1px #fff;
+    color: black;
+}
+.clearfix i.icon-zoom-in:hover {
+    color: black !important;
+}
+
