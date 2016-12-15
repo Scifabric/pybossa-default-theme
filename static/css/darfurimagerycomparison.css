@@ -427,16 +427,42 @@ input[type="checkbox"] .styled:checked + label::after {
 .leaderboard-container-desktop{
     padding-top: 20px;
 }
+
 .user-badge {
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     display: table-cell;
     text-align: center;
     vertical-align: middle;
     border-radius: 50%;
     background: black;
-    color:white;
-    border:4px solid yellow;
+    color: white;
+    font-size: 17px;
+}
+.user-1{
+    box-shadow: 0 0 0px 6px #ffff00;
+}
+.user-2{
+    box-shadow: 0 0 0px 6px #fef234;
+}
+.user-3{
+    box-shadow: 0 0 0px 6px #fed22e;
+}
+.user-4{
+    box-shadow: 0 0 0px 6px #fed230;
+}
+.user-5{
+    box-shadow: 0 0 0px 6px #fdb02a;
+}
+.current-userbadge{
+    height: 30px;
+    width: 30px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    font-size: 17px;
+    box-shadow: 0 0 0px 5px black;
 }
 .current-user-badge{
     height: 35px;
@@ -676,8 +702,20 @@ footer ul.social-icons-ul li a:hover {
 .radio-inline-tutorial{
   margin-top: 17px !important;
 }
-
-
+.amnesty-copyright{
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #AFAFAC;
+    font-size: 11px;
+    font-weight: inherit;
+    padding: 1px;
+}
+#after-tab{
+    position: relative;
+}
 /* zoom */
 .icon-zoom-in {
     position: absolute;
@@ -689,3 +727,4 @@ footer ul.social-icons-ul li a:hover {
 .clearfix i.icon-zoom-in:hover {
     color: black !important;
 }
+
