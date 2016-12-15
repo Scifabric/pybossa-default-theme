@@ -81,8 +81,9 @@
 
         window.user = {
             'ip': '{{ request.remote_addr }}',
-            'id': '{{ current_user.id }}',
+            'id': parseInt('{{ current_user.id }}'),
             'username': '{{ current_user.name }}',
+            'score': parseInt('{{ user_score }}'),
             'isAnonymous': ('{{ current_user.is_anonymous() }}' == 'True')
         }
     </script>
