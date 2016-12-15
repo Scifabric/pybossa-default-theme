@@ -66,9 +66,9 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 
 			//don't zoom icon when thumbnail image has the same size as original image
             if (zoomLevel <= 1) {
-                $elem.find('.icon-zoom-in').hide();
+                $([beforeImageContainer, afterImageContainer]).find('.icon-zoom-in').hide();
             } else {
-                $elem.find('.icon-zoom-in').show();
+                $([beforeImageContainer, afterImageContainer]).find('.icon-zoom-in').show();
             }
 		});
 	})
@@ -140,7 +140,7 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 				drawSmallImages(smallAfterCanvas, afterImages);
 
 				if (zoomLevel > 1) {
-                    $elem.find('.icon-zoom-in').show();
+                    $([beforeImageContainer, afterImageContainer]).find('.icon-zoom-in').show();
                 }
 			}
 		});
@@ -151,7 +151,7 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 				drawSmallImages(smallAfterCanvas, afterImages);
 
 				if (zoomLevel > 1) {
-                    $elem.find('.icon-zoom-in').show();
+                    $([beforeImageContainer, afterImageContainer]).find('.icon-zoom-in').show();
                 }
 			}
 		});
@@ -170,7 +170,7 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 			zoom(smallBeforeCanvas, bigBeforeCanvas, beforeImages, x, y);
 			zoom(smallAfterCanvas, bigAfterCanvas, afterImages, x, y);
 
-			$elem.find('.icon-zoom-in').hide();
+			$([beforeImageContainer, afterImageContainer]).find('.icon-zoom-in').hide();
 		});
 
 		$(smallAfterCanvas).mousemove(function(evt){
@@ -187,7 +187,7 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 			zoom(smallBeforeCanvas, bigBeforeCanvas, beforeImages, x, y);
 			zoom(smallAfterCanvas, bigAfterCanvas, afterImages, x, y);
 
-			$elem.find('.icon-zoom-in').hide();
+			$([beforeImageContainer, afterImageContainer]).find('.icon-zoom-in').hide();
 		});		
 	}
 
