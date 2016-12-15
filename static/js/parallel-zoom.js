@@ -63,6 +63,13 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 			resize(smallAfterCanvas, size);
 	    	drawSmallImages(smallBeforeCanvas, beforeImages);
 	    	drawSmallImages(smallAfterCanvas, afterImages);
+
+			//don't zoom icon when thumbnail image has the same size as original image
+            if (zoomLevel <= 1) {
+                $([beforeImageContainer, afterImageContainer]).find('.icon-zoom-in').hide();
+            } else {
+                $([beforeImageContainer, afterImageContainer]).find('.icon-zoom-in').show();
+            }
 		});
 	})
 
@@ -131,6 +138,10 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 			if (mouseOutAfter) {
 				drawSmallImages(smallBeforeCanvas, beforeImages);
 				drawSmallImages(smallAfterCanvas, afterImages);
+
+				if (zoomLevel > 1) {
+                    $([beforeImageContainer, afterImageContainer]).find('.icon-zoom-in').show();
+                }
 			}
 		});
 		$(smallAfterCanvas).mouseout(function(){
@@ -138,6 +149,10 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 			if (mouseOutBefore) {
 				drawSmallImages(smallBeforeCanvas, beforeImages);
 				drawSmallImages(smallAfterCanvas, afterImages);
+
+				if (zoomLevel > 1) {
+                    $([beforeImageContainer, afterImageContainer]).find('.icon-zoom-in').show();
+                }
 			}
 		});
 
@@ -154,6 +169,8 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 
 			zoom(smallBeforeCanvas, bigBeforeCanvas, beforeImages, x, y);
 			zoom(smallAfterCanvas, bigAfterCanvas, afterImages, x, y);
+
+			$([beforeImageContainer, afterImageContainer]).find('.icon-zoom-in').hide();
 		});
 
 		$(smallAfterCanvas).mousemove(function(evt){
@@ -169,6 +186,8 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 
 			zoom(smallBeforeCanvas, bigBeforeCanvas, beforeImages, x, y);
 			zoom(smallAfterCanvas, bigAfterCanvas, afterImages, x, y);
+
+			$([beforeImageContainer, afterImageContainer]).find('.icon-zoom-in').hide();
 		});		
 	}
 
@@ -279,6 +298,7 @@ parallelZoom.zoomBeforeAfter = function(settings) {
 					//as normalize.css set canvas with display: inline-block 
 					//which create a default padding-bottom (can not remove that padding)
 					//so we set display: block here
+					'<i class="glyphicon glyphicon-zoom-in icon-zoom-in"></i>' +
 					'<canvas class="smallCanvas" style="display: block">Your browser does not support the HTML5 canvas tag.</canvas>' +
 					'<canvas class="bigCanvas" style="display:none">Your browser does not support the HTML5 canvas tag.</canvas>'
 				;
