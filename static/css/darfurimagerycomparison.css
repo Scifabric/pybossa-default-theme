@@ -700,3 +700,17 @@ footer ul.social-icons-ul li a:hover {
 .radio-inline-tutorial{
   margin-top: 17px !important;
 }
+.amnesty-copyright{
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    background: black;
+    color: #AFAFAC;
+    font-size: 11px;
+    font-weight: inherit;
+    padding: 1px;
+}
+#after-tab{
+    position: relative;
+}
