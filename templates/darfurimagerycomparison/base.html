@@ -69,7 +69,7 @@
     <script src="/static/js/pybossa-tutorial.js"></script>
     <script>
         window.amnestySSO = {
-            'enabled': ('{{ config.get('AMNESTY_SSO_ENABLE') }}' == 'true'),
+            'enabled': ('{{ config.get('AMNESTY_SSO_ENABLE') }}' == 'True'),
             'imServerUrl': '{{ config.get('AMNESTY_SSO_SERVER_URL') }}',
             'isAnonymous': '{{ current_user.is_anonymous() }}',
             'loginModalMode': '{{ request.args.get("modal") }}',
