@@ -412,7 +412,7 @@ input[type="checkbox"] .styled:checked + label::after {
 .no-b-border{
     border-bottom:none !important;
 }
-.lnk-no-buildings{
+.lnk-border-bottom{
     border-bottom: thin solid black;
 }
 
@@ -617,10 +617,11 @@ span.h5.dic-key-text.white-text {
     padding-top: 25px;
     padding-bottom: 25px;
 }
-#btn-redo-trial {
+.btn-white{
     background-color: white;
     border: #E5E5E5 solid 1px;
 }
+
 .trial-task-modal-body{
     padding-bottom: 85px;
 }
