@@ -38,6 +38,11 @@
         If the user completed all the tasks, the let him know that his work is done.
         Also, we don't load the task presenter in this case (see final else block).
     #}
+
+    {#
+        FIXME: COMMENTED OUT FOR NOW. NOT WORKING. MAYBE CAUSED BY TASKS BEING FLAGGED AS BROKEN.
+    #}
+    {#
     <div class="row" align="center">
         <div class="col-xs-12" style="padding-left: 0px !important; padding-right: 0px !important; ">
             {% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_PART_2") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_DEMO") %}
@@ -52,6 +57,27 @@
             {% endif %}
         </div>
     </div>
+    #}
+
+    {#
+        TEMPORARY FIX
+    #}
+    <div class="row" align="center">
+        {% if project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_PART_2") or project.short_name == config.get("PROJECT_SHORT_NAME_DECODE_DARFUR_DEMO") %}
+            {% with  title="PROJECT COMPLETED", message="All the tasks for this project have been completed! You've helped decode over square km. Thank you!" %}
+            {% include "decodedarfur/decode_darfur_finished.html" %}
+            {% endwith %}
+        {% else %}
+         <div class="col-xs-12">
+            <p>
+                {{ _("Amazing, the project is completed! Thank you to all our digital volunteers who helped decode Darfur!") }}
+            </p>
+        </div>
+        {% endif %}
+
+    </div>
+
+
     {% elif project_is_finished %}
     {#
         This is very important!!
