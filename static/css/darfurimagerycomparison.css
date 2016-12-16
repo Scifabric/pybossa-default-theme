@@ -38,7 +38,7 @@
 .dic-icon {
     background-color: black !important;
 }
-@media screen and (min-width: 310px) and (max-width: 992px) {
+@media screen and (min-width: 310px) and (max-width: 768px) {
     #sub-header-darfur-imagery-comparison-desktop,
     .navbar-header, .steps-desktop,
     .key-desktop-image{
@@ -55,7 +55,7 @@
         display: block;
     }
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 769px) {
     #sub-header-darfur-imagery-comparison-desktop,
     .navbar-header,
     .key-desktop-image{
@@ -67,7 +67,7 @@
     }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 769px) {
     .step-two,
     .step-three,
     .tablet-mobile-view{
@@ -110,7 +110,7 @@
 .dic-content-div {
     display: flex;
     flex-wrap: wrap;
-    min-height:300px;
+    min-height:250px;
     padding-top: 2px;
 }
 .img-before-div,
@@ -499,7 +499,7 @@ p#darfur-fun-facts-desktop, p#darfur-fun-facts-mobile  {
  }
 /*Leader board style ends here*/
 
-@media screen and (min-width: 310px) and (max-width: 992px) {
+@media screen and (min-width: 310px) and (max-width: 768px) {
 .desktop-view , .header-msg-div{
     display: none;
 }
