@@ -769,6 +769,6 @@ footer ul.social-icons-ul li a:hover {
         transform: rotate(90deg);
     }
     .dic-content-div{
-        flex-wrap: 1 1 auto;
+        flex-wrap: unset !important;
     }
 }}
