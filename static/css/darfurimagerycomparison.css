@@ -737,9 +737,9 @@ footer ul.social-icons-ul li a:hover {
 }
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) { 
-    /* Safari only override */
-    ::i-block-chrome, .before{
+@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0)
+{ @media {
+    .before{
         height: auto;
         width: 80px;
         position: absolute;
@@ -752,8 +752,8 @@ footer ul.social-icons-ul li a:hover {
         transform-origin: bottom left;
         text-align: center;
         transform: rotate(-90deg);
-    } 
-    ::i-block-chrome, .before{
+    }
+    .after{
         height: auto;
         width: 80px;
         position: absolute;
@@ -768,4 +768,4 @@ footer ul.social-icons-ul li a:hover {
         text-align: center;
         transform: rotate(90deg);
     }
-}
+}}
