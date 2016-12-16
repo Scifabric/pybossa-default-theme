@@ -728,3 +728,45 @@ footer ul.social-icons-ul li a:hover {
     color: black !important;
 }
 
+@-moz-document url-prefix() {
+.before{
+    left: 0px !important;
+}
+.after{
+    right: -28px !important;
+    padding-left: 3px;	
+}
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    /* Safari only override */
+    ::i-block-chrome, .before{
+        height: auto;
+        width: 80px;
+        position: absolute;
+        top: 44px;
+        left: 15px;
+        padding: 8px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.88);
+        letter-spacing: 2px;
+        transform-origin: bottom left;
+        text-align: center;
+        transform: rotate(-90deg);
+    } 
+    ::i-block-chrome, .before{
+        height: auto;
+        width: 80px;
+        position: absolute;
+        top: 22px;
+        right: -43px;
+        padding: 8px;
+        padding-right: 5px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.88);
+        letter-spacing: 2px;
+        z-index: 999;
+        text-align: center;
+        transform: rotate(90deg);
+    }
+}
