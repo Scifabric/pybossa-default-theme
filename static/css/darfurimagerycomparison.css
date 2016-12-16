@@ -744,7 +744,7 @@ footer ul.social-icons-ul li a:hover {
         width: 80px;
         position: absolute;
         top: 44px;
-        left: 15px;
+        left: 0px;
         padding: 8px;
         color: white;
         background-color: rgba(0, 0, 0, 0.88);
@@ -758,7 +758,7 @@ footer ul.social-icons-ul li a:hover {
         width: 80px;
         position: absolute;
         top: 22px;
-        right: -43px;
+        right: -57px;
         padding: 8px;
         padding-right: 5px;
         color: white;
