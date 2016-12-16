@@ -768,4 +768,7 @@ footer ul.social-icons-ul li a:hover {
         text-align: center;
         transform: rotate(90deg);
     }
+    .dic-content-div{
+        flex-wrap: 1 1 auto;;
+    }
 }}
