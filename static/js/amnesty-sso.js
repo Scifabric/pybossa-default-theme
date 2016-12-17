@@ -202,12 +202,11 @@
 	<div class="modal fade modal-flag" id="flagModal2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">\
 	  <div class="modal-dialog modal-md" role="document">\
 	    <div class="modal-content">\
+	      <div class="modal-header">\
+	      	<button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+            <h4 class="modal-title h3">Comment on this area</h4>\
+	      </div>\
 	      <div class="modal-body">\
-	        <div class="text-center">\
-	          <p class="modal-title h3">Comment on this area</p>\
-	          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
-	        </div>\
-	        <br/>\
 	        <div class="submit-comment-container">\
 	          <p class="text-danger message text-center"></p>\
 	          <textarea class="form-control" rows="3" id="flag-content" placeholder="Tell us if you see something in this area that our researchers and other Decoders should take a closer look at."></textarea>\
@@ -227,7 +226,7 @@
 	          <a href="" class="view-comment-on-forum" target="_blank">View comment on forum</a>\
 	          <br/>\
 	          <br/>\
-	          <button type="button" class="btn-default-amnesty btn-block" data-dismiss="modal" id="flag-btn-close" style="width: 150px;">Close</button>\
+	          <button type="button" class="btn-default-amnesty" data-dismiss="modal" id="flag-btn-close" style="width: 150px;">Close</button>\
 	        </div>\
 	      </div>\
 	    </div>\
