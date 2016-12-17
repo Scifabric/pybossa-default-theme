@@ -39,9 +39,9 @@
 						<p>Registering allows you to participate in discussions, track your progress and helps the research teams make the best use of the data you provide.</p>\
 					</div>\
 					<br/>\
-					<button class="btn-default-amnesty btn-block btn-register login-modal" id="register-btn">REGISTER</button>\
+					<button class="btn-default-amnesty btn-register login-modal" id="register-btn">REGISTER</button>\
 					<br/><br/>\
-					<button class="btn-default-amnesty btn-block btn-sign-in login-modal" id="login-btn">SIGN IN</button>\
+					<button class="btn-default-amnesty btn-sign-in login-modal" id="login-btn">SIGN IN</button>\
 					<br/><br/>\
 					<button class="btn-link btn-skip-registration login-modal" id="skip-btn">Skip registration</button>\
 					<br/><br/>\
@@ -213,7 +213,7 @@
 	          <textarea class="form-control" rows="3" id="flag-content" placeholder="Tell us if you see something in this area that our researchers and other Decoders should take a closer look at."></textarea>\
 	          <br/>\
 	          <div class="text-center">\
-	            <button type="button" class="btn-default-amnesty btn-block btn-flag" id="flag-btn">\
+	            <button type="button" class="btn-default-amnesty btn-flag" id="flag-btn">\
 	              <span class="glyphicon glyphicon-refresh spinning"></span>\
 	              Flag this section\
 	            </button>\
