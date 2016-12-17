@@ -49,6 +49,10 @@
                 {% with title="Congratulations!", message="You've contributed to all the tasks for this project, but we still needs more volunteers, so please spread the word!" %}
                 {% include "decodedarfur/decode_darfur_finished.html" %}
                 {% endwith %}
+
+            {% elif project.short_name == config.get("PROJECT_SHORT_NAME_DARFUR_IMAGERY_COMPARISON")  %}
+                {% include "darfurimagerycomparison/finished.html" %}
+
             {% else %}
             <p>
                 {{ _("Congratulations! You've contributed to all the tasks for this project, but we still needs more
@@ -67,6 +71,10 @@
             {% with  title="PROJECT COMPLETED", message="All the tasks for this project have been completed! You've helped decode over square km. Thank you!" %}
             {% include "decodedarfur/decode_darfur_finished.html" %}
             {% endwith %}
+
+        {% elif project.short_name == config.get("PROJECT_SHORT_NAME_DARFUR_IMAGERY_COMPARISON")  %}
+            {% include "darfurimagerycomparison/finished.html" %}
+
         {% else %}
          <div class="col-xs-12">
             <p>
@@ -88,6 +96,10 @@
             {% with  title="PROJECT COMPLETED", message="All the tasks for this project have been completed! You've helped decode over square km. Thank you!" %}
             {% include "decodedarfur/decode_darfur_finished.html" %}
             {% endwith %}
+
+        {% elif project.short_name == config.get("PROJECT_SHORT_NAME_DARFUR_IMAGERY_COMPARISON")  %}
+            {% include "darfurimagerycomparison/finished.html" %}
+
         {% else %}
          <div class="col-xs-12">
             <p>

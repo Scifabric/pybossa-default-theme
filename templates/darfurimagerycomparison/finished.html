@@ -1,0 +1,240 @@
+<link rel="stylesheet" href="/static/css/amnesty.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/darfurimagerycomparison.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/vendor/ionicons/ionicons.min.css">
+
+<style>
+    #mainBody .container{
+        width: 100% !important;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+</style>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('#project-finished-modal').modal('show');
+
+        $( ".btn-join-discussion" ).click(function() {
+            window.location = 'https://discuss.decoders.amnesty.org';
+        });
+    });
+</script>
+
+<div class="row sub-header-darfur-imagery-comparison black-background" id="sub-header-darfur-imagery-comparison-desktop" align="center">
+    <div class="col-md-2 col-xs-2 dic-tasks-div pull-left">
+        <div class="">
+            <span class="i-span">
+                <span class="dic-rectangle">  <span class="dic-session-number black-text">0</span></span>
+                <span class="dic-tasks-text white-text">
+                   Tasks this session
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <div class="col-md-8 col-xs-8 dic-message-div">
+        <div>
+            <span class="  dic-message-text white-text">
+                COMPARE THE BEFORE AND AFTER IMAGES
+            </span>
+        </div>
+    </div>
+
+    <div class="col-md-2 col-xs-2 dic-key-div ">
+        <div>
+            <a href="#" class="" data-toggle="modal" data-target="#flagModal" style="margin-right: 39px;">
+              <span class="i-span"><i class="glyphicon glyphicon-flag white-text"></i>
+                <span class="  dic-key-text white-text"> FLAG</span>
+              </span>
+            </a>
+            <a href="#" class="key-modal-link pull-right" data-toggle="modal" data-target="" style="margin-right: 39px;">
+                <span class="i-span"><i class="glyphicon glyphicon-question-sign white-text">
+                </i>
+                    <span class="dic-key-text white-text">
+                        KEY
+                    </span>
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container-div">
+    <div class="row dic-content-div desktop-view">
+        <div class="col-md-2 col-lg-2 dic-left-side-div col-2-custom">
+        </div>
+        <div class="col-md-8 col-lg-8 dic-main-image-div col-8-custom">
+            <!-- Tile images div begins here  -->
+            <div class="row dic-tiles-div">
+                <div class="col-md-6 col-lg-6 img-before-div border-right">
+                    <img class="img-before" src="/static/img/decode-darfur/project-completed/img-tile-preload.jpg"  onerror="return imageOnError(this);">
+                    <div class="before rotate-before"> Before </div>
+                </div>
+                <div class="col-md-6 col-lg-6 img-after-div border-left">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 padd-00">
+                            <img class="img-after x1y1" src="/static/img/decode-darfur/project-completed/blurred-tile-t1.jpg" onerror="return imageOnError(this);">
+                        </div>
+                        <div class="col-md-6 col-lg-6 padd-00">
+                            <img class="img-after x2y1" src="/static/img/decode-darfur/project-completed/blurred-tile-t2.jpg" onerror="return imageOnError(this);">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 padd-00">
+                            <img class="img-after x1y2" src="/static/img/decode-darfur/project-completed/blurred-tile-b1.jpg" onerror="return imageOnError(this);">
+                        </div>
+                        <div class="col-md-6 col-lg-6 padd-00">
+                            <img class="img-after x2y2" src="/static/img/decode-darfur/project-completed/blurred-tile-b2.jpg" onerror="return imageOnError(this);">
+                        </div>
+                    </div>
+                    <div class="after rotate-after"> After </div>
+                </div>
+            </div>
+            <!-- Tile images div ends here  -->
+
+        </div>
+        <div class="col-md-2 col-lg-2 dic-right-side-div col-2-custom">
+        </div>
+    </div>
+    <div id="before-after-tab" class="tablet-mobile-view">
+        <ul class="nav nav-pills images-tab-ul">
+            <li>
+                <a href="#before-tab" data-id="0" class="  text-center link" data-toggle="tab"> BEFORE</a>
+                <p class="before-tooltip" data-toggle="tooltip" data-placement="bottom" title="Please study the before image before answering questions"></p>
+            </li>
+            <li class="active">
+                <a href="#after-tab" data-id="1" class="  text-center link" data-toggle="tab">AFTER</a>
+            </li>
+        </ul>
+        <div class="tab-content clearfix">
+            <div class="tab-pane" id="before-tab">
+                <div class="col-md-12 col-lg-12 padd-00">
+                    <img class="img-before src-img-before" src="/static/img/decode-darfur/project-completed/img-tile-preload.jpg"onerror="return imageOnError(this);">
+                    <div class="before rotate-before"> Before </div>
+                </div>
+            </div>
+            <div class="tab-pane active" id="after-tab">
+                <div class="col-md-12 col-lg-12 padd-00">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6 padd-00">
+                            <img class="img-after x1y1" src="/static/img/decode-darfur/project-completed/blurred-tile-t1.jpg" onerror="return imageOnError(this);">
+                        </div>
+                        <div class="col-md-6  col-sm-6 col-xs-6 padd-00">
+                            <img class="img-after x2y1" src="/static/img/decode-darfur/project-completed/blurred-tile-t2.jpg" onerror="return imageOnError(this);">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6 padd-00">
+                            <img class="img-after x1y2" src="/static/img/decode-darfur/project-completed/blurred-tile-b1.jpg" onerror="return imageOnError(this);">
+                        </div>
+                        <div class="col-md-6  col-sm-6 col-xs-6  padd-00">
+                            <img class="img-after x2y2" src="/static/img/decode-darfur/project-completed/blurred-tile-b2.jpg" onerror="return imageOnError(this);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 black-background text-center answer-questions">
+            <div class="half-circle none"><span class="glyphicon glyphicon-menu-up"></span></div>
+            <div class="row">
+                <p class="  white-text steps-mobile-link btn-answer-questions">ANSWER QUESTIONS</p>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 text-center padd-10-top-bottom">
+            <p> Once you've studied before and after images,
+                <br/> tab above to answer questions about the images
+            </p>
+        </div>
+
+    </div>
+</div>
+<div class="row header-msg-div">
+    <p class="header-msg text-center  step-one" style="font-size: 19px;">
+        1. Considering only the buildings, can you see a significant change between the two images?
+    </p>
+
+</div>
+<div class="row">
+    <div class="col-md-2 col-lg-2 col-2-custom">
+    </div>
+    <div class="col-md-8 col-lg-8 col-8-custom padd-10 steps-desktop">
+        <div class="row">
+            <!-- First step begins here -->
+            <div class="row clearfix dic-option-container step-one step-one-buildings" style="padding-bottom: 10px;">
+                <div class="col-md-4 col-lg-4 no-padding-left">
+                    <div class="option-div link">
+                        <div class="radio radio-info radio-inline radio-inline-tutorial">
+                            <input type="radio" id="changed-desktop-radio" value="change" name="building-changes-desktop-radio">
+                            <label for="changed-desktop-radio" class=" "> CHANGE </label>
+                        </div>
+                        <span class="radio-checkbox-shortcut-number"> 1 </span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 half-padding">
+                    <div class="option-div link">
+                        <div class="radio radio-inline radio-inline-tutorial">
+                            <input type="radio" id="unchanged-desktop-radio" value="no change" name="building-changes-desktop-radio">
+                            <label for="unchanged-desktop-radio" class=" "> NO CHANGE </label>
+                        </div>
+                        <span class="radio-checkbox-shortcut-number"> 2 </span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 no-padding-right">
+                    <div class="option-div link">
+                        <div class="radio radio-inline radio-inline-tutorial">
+                            <input type="radio" id="unsure-desktop-radio" value="not sure" name="building-changes-desktop-radio">
+                            <label for="unsure-desktop-radio" class=" "> NOT SURE </label>
+                        </div>
+                        <span class="radio-checkbox-shortcut-number"> 3 </span>
+                    </div>
+                </div>
+            </div>
+            <!-- First step ends here -->
+            <!-- Continue button begins here -->
+            <div class="row">
+                <button class="col-md-12 col-lg-12   dic-main-button btn-dic-continue black-background white-text" id="btn-dic-continue"> CONTINUE
+                <span class="glyphicon glyphicon-menu-right"></span>
+                <span class="button-shortcut-text"> SPACEBAR </span>
+                </button>
+                <button class="col-md-12 col-lg-12   dic-main-button black-background white-text step-three btn-next-task btn-dic-next-task" id="btn-dic-next-task"> NEXT TASK
+                <span class="glyphicon glyphicon-menu-right"></span>
+                <span class="button-shortcut-text"> SPACEBAR </span>
+                </button>
+            </div>
+            <!-- Continue button ends here -->
+            <!-- Message in the end begins here -->
+            <div class="row text-center message-end">
+                <p class="no-buidings-msg step-one">
+                    <a class="link "> I can't see any buildings in the images</a>
+                </p>
+                <p class="flag-msg-div step-three ">
+                    <a class="flag-msg link lnk-flag-modal"> <span class="glyphicon glyphicon-flag"></span> Flag and discuss the previous images on the community forum</a>
+                </p>
+                <p class="go-back-msg ">
+                    <a class="none go-back link"> <span class="glyphicon glyphicon-menu-left"></span> Go back </a>
+                </p>
+            </div>
+            <!-- Message in the end ends here -->
+        </div>
+    </div>
+    <div class="col-md-2 col-lg-2 col-2-custom">
+    </div>
+</div>
+<!-- Orientation Modal -->
+<div id="project-finished-modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <h4>Congratulations!</h4>
+            </div>
+            <div class="modal-body" align="center">
+                <p>You've contributed to all the tasks for this project.<br>We still needs more volunteers, so please spread the word!</p>
+            </div>
+            <div class="modal-footer" align="center" style="text-align: center">
+                <button class="btn-secondary--alt--md--fullwidth btn-tutorial btn-join-discussion" style="width: 200px;" id="btn-join-discussion">
+                    JOIN DISCUSSION
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
