@@ -580,7 +580,7 @@ p#darfur-fun-facts-desktop, p#darfur-fun-facts-mobile  {
     width: 220px;
     height: 10px;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .short-line {
     border-radius: 25px;
@@ -600,6 +600,9 @@ p#darfur-fun-facts-desktop, p#darfur-fun-facts-mobile  {
     float: right;
 }
 
+.answer-separator-mobile{
+    min-height: 45px;
+}
 
 .second-step-header-mobile-div{
     min-height: 60px;
