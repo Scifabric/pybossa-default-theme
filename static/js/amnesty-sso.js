@@ -15,6 +15,17 @@
 
 		if (!window.amnestySSO.init) {		
 			var html = '\
+	<style>\
+		/* as style of each project may be different so we keep modal style here so it does not break between projects */\
+		.btn-default-amnesty {\
+		    background-color: black;\
+		    border-color: black;\
+		    color: white;\
+		    padding: 6px 22px;\
+		    font-size: 14px;\
+		    height: 45px;\
+		}\
+	</style>\
 	<div class="modal fade" id="amnestySSOModal" tabindex="-1" role="dialog" aria-labelledby="amnestySSOModalLabel">\
 	  <div class="modal-dialog" role="document">\
 	    <div class="modal-content">\
@@ -28,9 +39,9 @@
 						<p>Registering allows you to participate in discussions, track your progress and helps the research teams make the best use of the data you provide.</p>\
 					</div>\
 					<br/>\
-					<button class="btn-secondary--alt--md--fullwidth btn-register login-modal" id="register-btn">REGISTER</button>\
+					<button class="btn-default-amnesty btn-register login-modal" id="register-btn">REGISTER</button>\
 					<br/><br/>\
-					<button class="btn-secondary--alt--md--fullwidth btn-sign-in login-modal" id="login-btn">SIGN IN</button>\
+					<button class="btn-default-amnesty btn-sign-in login-modal" id="login-btn">SIGN IN</button>\
 					<br/><br/>\
 					<button class="btn-link btn-skip-registration login-modal" id="skip-btn">Skip registration</button>\
 					<br/><br/>\
@@ -191,18 +202,17 @@
 	<div class="modal fade modal-flag" id="flagModal2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">\
 	  <div class="modal-dialog modal-md" role="document">\
 	    <div class="modal-content">\
+	      <div class="modal-header">\
+	      	<button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+            <h4 class="modal-title h3">Comment on this area</h4>\
+	      </div>\
 	      <div class="modal-body">\
-	        <div class="text-center">\
-	          <p class="modal-title h3">Comment on this area</p>\
-	          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
-	        </div>\
-	        <br/>\
 	        <div class="submit-comment-container">\
 	          <p class="text-danger message text-center"></p>\
 	          <textarea class="form-control" rows="3" id="flag-content" placeholder="Tell us if you see something in this area that our researchers and other Decoders should take a closer look at."></textarea>\
 	          <br/>\
 	          <div class="text-center">\
-	            <button type="button" class="btn-primary--md--fullwidth btn-flag" id="flag-btn">\
+	            <button type="button" class="btn-default-amnesty btn-flag" id="flag-btn">\
 	              <span class="glyphicon glyphicon-refresh spinning"></span>\
 	              Flag this section\
 	            </button>\
@@ -216,7 +226,7 @@
 	          <a href="" class="view-comment-on-forum" target="_blank">View comment on forum</a>\
 	          <br/>\
 	          <br/>\
-	          <button type="button" class="btn-secondary--alt--md--fullwidth" data-dismiss="modal" id="flag-btn-close" style="width: 150px;">Close</button>\
+	          <button type="button" class="btn-default-amnesty" data-dismiss="modal" id="flag-btn-close" style="width: 150px;">Close</button>\
 	        </div>\
 	      </div>\
 	    </div>\
