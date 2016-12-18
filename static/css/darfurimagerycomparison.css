@@ -828,7 +828,7 @@ footer ul.social-icons-ul li a:hover {
     overflow: scroll !important;
 }
 .modal-footer {
-    padding: initial;
+    padding: 15px;
     text-align: center;
     border-top: none;
 }
