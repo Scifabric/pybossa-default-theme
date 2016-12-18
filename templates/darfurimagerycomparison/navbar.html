@@ -30,7 +30,7 @@
                     <li class="admin-menu"><a href="{{ url_for('account.signout') }}">Signout</a></li>
                     {% endif %}
                 {% else %}
-                    <li><a href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}/projects/decode-darfur/how-it-works" >How it works</a></li>
+                    {# <li><a href="{{ config.get('AMNESTY_SSO_SERVER_URL') }}/projects/decode-darfur/how-it-works" >How it works</a></li> #}
 
                     {% if config['AMNESTY_SSO_ENABLE'] %}
                     <li><a href="#" id="btn-sso-register">{{ _('Register') }}</a></li>
