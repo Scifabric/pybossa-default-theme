@@ -57,6 +57,11 @@
     .key-modal-images-tab{
         display: block;
     }
+    .modal-dialog{
+        width: auto;
+        height: auto;
+        max-height: 100%;
+    }
 }
 @media screen and (min-width: 769px) {
     #sub-header-darfur-imagery-comparison-desktop,
