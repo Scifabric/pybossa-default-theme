@@ -57,6 +57,11 @@
     .key-modal-images-tab{
         display: block;
     }
+    .modal-dialog{
+        width: auto;
+        height: auto;
+        max-height: 100%;
+    }
 }
 @media screen and (min-width: 769px) {
     #sub-header-darfur-imagery-comparison-desktop,
@@ -67,6 +72,43 @@
     #sub-header-darfur-imagery-comparison-mobile,
     .key-modal-images-tab{
         display: none;
+    }
+    .user-badge {
+        position: relative;
+        display: table-cell;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: black;
+        color: white;
+        font-size: 14px;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .user-1{
+        box-shadow: 0 0 0px 6px #ffff00;
+    }
+    .user-2{
+        box-shadow: 0 0 0px 6px #fef234;
+    }
+    .user-3{
+        box-shadow: 0 0 0px 6px #fed22e;
+    }
+    .user-4{
+        box-shadow: 0 0 0px 6px #fed230;
+    }
+    .user-5{
+        box-shadow: 0 0 0px 6px #fdb02a;
+    }
+    .current-userbadge{
+        height: 30px;
+        width: 30px;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 50%;
+        font-size: 17px;
+        box-shadow: 0 0 0px 5px black;
     }
 }
 
@@ -246,6 +288,7 @@ span.button-shortcut-text {
 .no-padding-left {
     padding-left: 0px;
 }
+
 .half-padding {
     padding-left: 7.5px;
     padding-right: 7.5px;
@@ -431,42 +474,6 @@ input[type="checkbox"] .styled:checked + label::after {
     padding-top: 20px;
 }
 
-.user-badge {
-    height: 35px;
-    width: 35px;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 50%;
-    background: black;
-    color: white;
-    font-size: 17px;
-}
-.user-1{
-    box-shadow: 0 0 0px 6px #ffff00;
-}
-.user-2{
-    box-shadow: 0 0 0px 6px #fef234;
-}
-.user-3{
-    box-shadow: 0 0 0px 6px #fed22e;
-}
-.user-4{
-    box-shadow: 0 0 0px 6px #fed230;
-}
-.user-5{
-    box-shadow: 0 0 0px 6px #fdb02a;
-}
-.current-userbadge{
-    height: 30px;
-    width: 30px;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 50%;
-    font-size: 17px;
-    box-shadow: 0 0 0px 5px black;
-}
 .current-user-badge{
     height: 35px;
     width: 35px;
@@ -735,7 +742,7 @@ footer ul.social-icons-ul li a:hover {
     left: 0px !important;
 }
 .after{
-    right: -28px !important;	
+    right: -28px !important;
 }
 }
 
@@ -774,3 +781,59 @@ footer ul.social-icons-ul li a:hover {
         flex-wrap: unset !important;
     }
 }}
+
+
+@media screen and (min-width: 310px) and (max-width: 768px) {
+    .user-badge{
+        position: relative;
+        display: table-cell;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: black;
+        color: white;
+        font-size: 11px;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .current-userbadge{
+        position: relative;
+        display: table-cell;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        font-size: 11px;
+        text-align: center;
+        vertical-align: middle;
+        box-shadow: 0 0 0px 2px black;
+    }
+
+    .leaderboard-container-mobile p, .badge-text , .current-user-score{
+        margin: auto;
+        font-size: 12px;
+    }
+    .user-1{
+        box-shadow: 0 0 0px 3px #ffff00;
+    }
+    .user-2{
+        box-shadow: 0 0 0px 3px #fef234;
+    }
+    .user-3{
+        box-shadow: 0 0 0px 3px #fed22e;
+    }
+    .user-4{
+        box-shadow: 0 0 0px 3px #fed230;
+    }
+    .user-5{
+        box-shadow: 0 0 0px 3px #fdb02a;
+    }
+}
+
+.modal-dialog{
+    overflow: scroll !important;
+}
+.modal-footer {
+    padding: 15px;
+    text-align: center;
+    border-top: none;
+}
