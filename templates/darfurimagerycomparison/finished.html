@@ -17,6 +17,10 @@
             window.location = 'https://discuss.decoders.amnesty.org';
         });
     });
+    // Prevent background body from being scrolled
+    $('body').css('overflow','hidden');
+    $('body').css('position','fixed');
+    $('body').css('width','100%');
 </script>
 
 <div class="row sub-header-darfur-imagery-comparison black-background" id="sub-header-darfur-imagery-comparison-desktop" align="center">
@@ -59,7 +63,7 @@
 </div>
 
 <div class="container-div">
-    <div class="row dic-content-div desktop-view">
+    <div class="dic-content-div desktop-view">
         <div class="col-md-2 col-lg-2 dic-left-side-div col-2-custom">
         </div>
         <div class="col-md-8 col-lg-8 dic-main-image-div col-8-custom">
