@@ -827,11 +827,12 @@ footer ul.social-icons-ul li a:hover {
     .user-5{
         box-shadow: 0 0 0px 3px #fdb02a;
     }
+
+    .modal-dialog{
+        overflow: scroll !important;
+    }
 }
 
-.modal-dialog{
-    overflow: scroll !important;
-}
 .modal-footer {
     padding: 15px;
     text-align: center;
