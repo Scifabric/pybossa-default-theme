@@ -837,3 +837,7 @@ footer ul.social-icons-ul li a:hover {
     text-align: center;
     border-top: none;
 }
+.key-icon{
+    font-size: 14px;
+    top: 2px;
+}
