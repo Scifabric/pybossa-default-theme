@@ -13,7 +13,7 @@
 
     <!-- Le styles -->
     {% assets filters="libsass", output="css/gen/pybossa.min.css",
-              depends="sass/**/*.scss", 
+              depends="sass/**/*.scss",
               "sass/_pybossa.scss"%}
         <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
     {% endassets %}
@@ -50,6 +50,16 @@
     {% include '_ga.html' ignore missing %}
     <!-- Google Custom Search -->
     {% include '_gcs.html' ignore missing %}
+    <!-- Le javascript -->
+    {% if not jstop %}
+    {% assets filters="jsmin", output="js/gen/default.min.js",
+              "js/vendor/jquery-2.2.3.js", "js/vendor/bootstrap.js",
+              "js/vendor/modernizr.min.js", "js/flashmessages.js",
+              "js/vendor/cookieconsent.min.js"
+              %}
+              <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% endif %}
   </head>
 
   <body>
@@ -66,15 +76,6 @@
         window.cookieconsent_options = {"message":"Cookies help us to deliver our services. By using our services, you agree to our use of cookies.","dismiss":"Got it!","learnMore":"Learn More.","link":"{{url_for('help.cookies_policy')}}","theme":"dark-bottom"};
     </script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
-    {% if not jstop %}
-    {% assets filters="jsmin", output="js/gen/default.min.js",
-              "js/vendor/jquery-2.2.3.js", "js/vendor/bootstrap.js", 
-              "js/vendor/modernizr.min.js", "js/flashmessages.js", 
-              "js/vendor/cookieconsent.min.js"
-              %}
-              <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
-    {% endif %}
     {% block extrajs %}
     {% endblock %}
     {% include "_flash_messages.html" %}
