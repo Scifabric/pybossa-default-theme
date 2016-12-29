@@ -10,11 +10,26 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1 hidden-xs hidden-sm" style="margin-top:20px;">
                 <ul class="nav nav-pills nav-justified categories">
+                <style>
+                   .floating-box{
+                       display: inline-block;
+                       background-color: #f2f2f2;
+                       text-align: center;
+                       line-height: 50px;
+                       width: 200px;
+                       height: 50px;
+                       border: 1px #f2f2f2;
+                       margin: 5px;
+                    }
+                   .floating-box:hover {
+                       background-color: #d9d9d9;
+                   }
+                </style>
                     {% for c in categories %}
-                    <li {% if active_cat.short_name==c.short_name%}class="active"{% endif %}><a href="{{url_for('project.project_cat_index', category=c.short_name)}}" rel="nofollow"><i class="icon-chevron-right"></i> {{ c.name }}</a></li>
+                    <div {% if active_cat.short_name==c.short_name%}class="floating-box" "active" {% else %}class="floating-box" {% endif %}><a href="{{url_for('project.project_cat_index', category=c.short_name)}}" rel="nofollow"><i class="icon-chevron-right"></i> {{ c.name }}</a></div>
                     {% endfor %}
                     {% if current_user.is_authenticated() and current_user.admin %}
-                    <li {% if active_cat.short_name=="draft"%}class="active"{% endif %}><a href="{{url_for('project.draft')}}" rel="nofollow"><i class="icon-chevron-right"></i> {{ _('Draft') }}</a></li>
+                    <div {% if active_cat.short_name=="draft"%}class="floating-box" "active" {% else %}class="floating-box" {% endif %}><a href="{{url_for('project.draft')}}" rel="nofollow"><i class="icon-chevron-right"></i> {{ _('Draft') }}</a></div>
                     {% endif %}
                 </ul>
             </div>
