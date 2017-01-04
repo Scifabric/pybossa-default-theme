@@ -10,21 +10,6 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1 hidden-xs hidden-sm" style="margin-top:20px;">
                 <ul class="nav nav-pills nav-justified categories">
-                <style>
-                   .floating-box{
-                       display: inline-block;
-                       background-color: #f2f2f2;
-                       text-align: center;
-                       line-height: 50px;
-                       width: 200px;
-                       height: 50px;
-                       border: 1px #f2f2f2;
-                       margin: 5px;
-                    }
-                   .floating-box:hover {
-                       background-color: #d9d9d9;
-                   }
-                </style>
                     {% for c in categories %}
                     <div {% if active_cat.short_name==c.short_name%}class="floating-box" "active" {% else %}class="floating-box" {% endif %}><a href="{{url_for('project.project_cat_index', category=c.short_name)}}" rel="nofollow"><i class="icon-chevron-right"></i> {{ c.name }}</a></div>
                     {% endfor %}
