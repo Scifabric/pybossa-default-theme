@@ -5,21 +5,15 @@
 <section class="home featured">
     <div class="jumbotron">
         <div class="container text-center firstfold">
-            {% if categories_projects['featured'] | count > 0 %}
-            {% set featured_project = categories_projects['featured'] | random %}
-            <h1>{{ featured_project.name }}</h1>
-            <p>{{ featured_project.description }}</p>
-            <a class="btn btn-primary" href="{{ url_for('project.details', short_name=featured_project.short_name)}}">{{_('Contribute')}}</a>
-            {% else %}
             <h1>{{_('Welcome to ')}} {{brand}}</h1>
             <p>{{_("The ultimate crowdsourcing framework to analyze or enrich data that can't be processed by machines alone.")}}</p>
-            {% endif %}
             <h4>
             <p>This site is based on <a href="http://pybossa.com/">PyBossa</a>, which is licensed under the GNU Affero General Public License. The source code of this site's version of PyBossa is available in our GitHub <a href="https://github.com/dtws">repositories</a>.</p>
             </h4>
         </div>
     </div>
 </section>
+{% if current_user.is_authenticated() %}
 <section class="home projects">
     <div class="container">
         <div class="row">
@@ -40,7 +34,6 @@
         </div>
     </div>
 </section>
-{% if current_user.is_authenticated() %}
 <section class="grey get-started">
     <div class="row">
         <div class="col-md-offset-4 col-md-4">
