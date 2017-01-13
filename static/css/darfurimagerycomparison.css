@@ -258,9 +258,7 @@
     line-height: inherit;
 }
 .option-div {
-    border: 2px solid #e5e5e5;
     text-align: center;
-    height: 55px;
     position: relative;
 }
 span.radio-checkbox-shortcut-number {
@@ -841,4 +839,33 @@ footer ul.social-icons-ul li a:hover {
 .key-icon{
     font-size: 14px;
     top: 2px;
+}
+
+.btn-black-white
+{
+    background-color: black;
+    color: white;
+    border-radius: 0 !important;
+}
+.btn-height
+{
+    height: 50px;
+}
+.btn-black-white:focus, .btn-black-white:hover
+{   color: white;
+    outline: none;
+}
+span.shortcut-number {
+    right: 20px;
+    bottom: 7px;
+    position: absolute;
+    color: #CDC7C6;
+    z-index: 9999;
+    font-size: 12px;
+}
+span.shortcut-nr-2 {
+    right: 12px !important;
+}
+span.shortcut-nr-3 {
+    right: 7px !important;
 }
