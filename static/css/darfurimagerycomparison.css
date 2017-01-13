@@ -261,6 +261,7 @@
     text-align: center;
     position: relative;
 }
+
 span.radio-checkbox-shortcut-number {
     right: 4px;
     bottom: 4px;
@@ -557,7 +558,10 @@ p#darfur-fun-facts-desktop, p#darfur-fun-facts-mobile  {
 
 /* Mobile Images tabs*/
 .option-div-mobile{
+    height: 55px;
+    border: 2px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5;
+
 }
 #steps-mobile .modal-body {
     max-height: calc(100vh);
