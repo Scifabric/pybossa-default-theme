@@ -258,11 +258,10 @@
     line-height: inherit;
 }
 .option-div {
-    border: 2px solid #e5e5e5;
     text-align: center;
-    height: 55px;
     position: relative;
 }
+
 span.radio-checkbox-shortcut-number {
     right: 4px;
     bottom: 4px;
@@ -559,7 +558,10 @@ p#darfur-fun-facts-desktop, p#darfur-fun-facts-mobile  {
 
 /* Mobile Images tabs*/
 .option-div-mobile{
+    height: 55px;
+    border: 2px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5;
+
 }
 #steps-mobile .modal-body {
     max-height: calc(100vh);
@@ -718,7 +720,7 @@ footer ul.social-icons-ul li a:hover {
     margin: 0;
     background-color: rgba(0, 0, 0, 0.75);
     color: #AFAFAC;
-    font-size: 11px;
+    font-size: 8px;
     font-weight: inherit;
     padding: 1px;
 }
@@ -841,4 +843,33 @@ footer ul.social-icons-ul li a:hover {
 .key-icon{
     font-size: 14px;
     top: 2px;
+}
+
+.btn-black-white
+{
+    background-color: black;
+    color: white;
+    border-radius: 0 !important;
+}
+.btn-height
+{
+    height: 50px;
+}
+.btn-black-white:focus, .btn-black-white:hover
+{   color: white;
+    outline: none;
+}
+span.shortcut-number {
+    right: 20px;
+    bottom: 7px;
+    position: absolute;
+    color: #CDC7C6;
+    z-index: 9999;
+    font-size: 12px;
+}
+span.shortcut-nr-2 {
+    right: 12px !important;
+}
+span.shortcut-nr-3 {
+    right: 7px !important;
 }
