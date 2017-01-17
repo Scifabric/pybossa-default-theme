@@ -896,3 +896,6 @@ span.shortcut-nr-3 {
     float: none;
     margin: 0 auto;
 }
+#tutorial-slideshow-modal, #trial-task-feedback-modal {
+    z-index: 999999 !important;
+}
