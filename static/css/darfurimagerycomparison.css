@@ -4,8 +4,8 @@
     margin-top: 0px;
 }
 .sub-header-darfur-imagery-comparison {
-    height: 50px;
-    line-height: 50px;
+    height: 36px;
+    line-height: 36px;
 }
 .sub-header-darfur-imagery-comparison div{
     padding-left: 0;
@@ -799,7 +799,7 @@ footer ul.social-icons-ul li a:hover {
         box-shadow: 0 0 0px 2px black;
     }
 
-    .leaderboard-container-mobile p, .badge-text , .current-user-score{
+    .satellite-images-container-mobile p, .badge-text , .current-user-score{
         margin: auto;
         font-size: 12px;
     }
@@ -898,4 +898,9 @@ span.shortcut-nr-3 {
 }
 #tutorial-slideshow-modal, #trial-task-feedback-modal {
     z-index: 999999 !important;
+}
+@media (min-width: 993px){
+    .navbar-brand > img{
+        width: 110px;
+    }
 }
