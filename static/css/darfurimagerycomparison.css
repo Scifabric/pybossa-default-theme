@@ -839,6 +839,7 @@ footer ul.social-icons-ul li a:hover {
     background-color: black;
     color: white;
     border-radius: 0 !important;
+    border: solid 2px #CDC7C6;
 }
 .btn-height
 {
@@ -847,6 +848,11 @@ footer ul.social-icons-ul li a:hover {
 .btn-black-white:focus, .btn-black-white:hover
 {   color: white;
     outline: none;
+}
+.btn-active{
+    color: black !important;
+    background-color: yellow !important;
+    outline: none !important;
 }
 span.shortcut-number {
     right: 20px;
