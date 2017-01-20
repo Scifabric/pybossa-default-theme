@@ -946,10 +946,23 @@ span.shortcut-nr-3 {
 #tutorial-slideshow-modal, #trial-task-feedback-modal, #key-modal, #trial-task-finished-modal {
     z-index: 999999 !important;
 }
+
+/*Override header menu style*/
 @media (min-width: 993px){
     .navbar-brand > img{
         width: 110px;
         height: auto !important;
-        margin-top: 7%;
+        margin-top: 2%;
+    }
+    .navbar-brand {
+        height: 50px !important;
+    }
+    .amnesty-decoder-text h2 {
+        margin: 0 0 0 50px !important;
+    }
+    #menu li a {
+       padding: 15px 18px 15px 15px !important;
     }
 }
+
+
