@@ -180,13 +180,10 @@
     border-left: 1px solid white;
 }
 .dic-main-image-div {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     display: -webkit-box;
     display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
     flex:1 0 auto;
     padding-left: 10px;
     padding-right: 10px;
@@ -727,7 +724,7 @@ footer ul.social-icons-ul li a:hover {
 .clearfix i.icon-zoom-in:hover {
     color: black !important;
 }
-
+/* Mozilla CSS styles go here */
 @-moz-document url-prefix() {
 .before{
     left: 0px !important;
@@ -735,8 +732,11 @@ footer ul.social-icons-ul li a:hover {
 .after{
     right: -28px !important;
 }
+.confirmation-modal-tiles .after{
+    right: -24px !important;
 }
-
+}
+/* Safari CSS styles go here */
 @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0)
 { @media {
     .before{
@@ -758,7 +758,7 @@ footer ul.social-icons-ul li a:hover {
         width: 80px;
         position: absolute;
         top: 23px;
-        right: -57px;
+        right: -56px;
         padding: 8px;
         padding-right: 5px;
         color: white;
@@ -771,8 +771,47 @@ footer ul.social-icons-ul li a:hover {
     .dic-content-div{
         flex-wrap: unset !important;
     }
+    .confirmation-modal-tiles .after {
+        width: 60px;
+        height: auto !important;
+        right: -42px !important;
+        top: 18px !important;
+    }
+    .confirmation-modal-tiles .before {
+        width: 60px;
+        height: auto !important;
+        top: 36px !important;
+    }
+
 }}
 
+/* IE10+ CSS styles go here */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .before{
+        -ms-writing-mode: tb-rl !important;
+        left: 0px !important;
+    }
+    .after{
+        -ms-writing-mode: bt-rl !important;
+        right: -28px !important;
+    }
+    .confirmation-modal-tiles .after {
+        right: -25px !important;
+    }
+}
+/* Microsoft Edge  */
+@supports (-ms-ime-align:auto) {
+  .before{
+        left: 0px !important;
+    }
+    .after{
+        right: -28px !important;
+    }
+    .confirmation-modal-tiles .after {
+        right: -25px !important;
+    }
+
+}
 
 @media screen and (min-width: 310px) and (max-width: 768px) {
     .user-badge{
@@ -876,7 +915,9 @@ span.shortcut-nr-3 {
 .confirmation-modal-tiles .before ,
 .confirmation-modal-tiles .after {
     font-size: 10px;
-    height: 60px;
+    height: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .confirmation-modal-tiles .after {
     right: -14px;
