@@ -142,6 +142,14 @@
 .trial-task-feedback-subtitle-your-answer {
     color:#8e8c8c;
 }
+.trial-task-feedback-subtitle-correct-answer{
+    margin-bottom: 5px;
+}
+
+.trial-task-feedback-subtitle-your-answer {
+    margin-top: 5px;
+}
+
 .padding-top{
     padding-top: 10px;
 }
