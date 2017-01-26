@@ -220,7 +220,7 @@
     height: 80px;
     position: absolute;
     top: 0;
-    right: -18px;
+    right: -17px;
     padding-left: 5px;
     padding-right: 5px;
     color: white;
@@ -687,7 +687,7 @@ footer ul.social-icons-ul li a:hover {
     margin: 0 auto;
 }
 .row-key-header-container{
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .row-key-img-container{
@@ -705,7 +705,44 @@ footer ul.social-icons-ul li a:hover {
     text-align: center;
     margin: 0 auto;
 }
-
+#key-modal {
+    font-family:Helvetica, Arial;
+    color: #000;
+}
+.modal-top-text{
+    padding: 20px;
+    padding-bottom: 0px;
+    font-size: 14px;
+}
+.key-modal-title{
+    padding-left: 20px;
+    font-weight: bold;
+}
+#key-modal .fa-ul>li {
+    position: relative;
+    text-align: center;
+    padding: 3px;
+    margin-left: 0px;
+}
+#key-modal .fa-ul> li:first-child{
+    padding-top: 25px;
+}
+#key-modal .fa-ul {
+    margin-left: 0px;
+}
+#key-modal .fa-li{
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    font-size: 11px !important;
+}
+#key-modal .before, #key-modal .after {
+    height: 60px;
+    font-size: 10px;
+}
+#key-modal .after{
+    right: -14px;
+}
 .radio-inline-tutorial{
   margin-top: 17px !important;
 }
@@ -978,5 +1015,3 @@ span.shortcut-nr-3 {
 {
     text-transform:capitalize;
 }
-
-
