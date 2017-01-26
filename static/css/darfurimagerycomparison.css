@@ -137,7 +137,9 @@
     padding-top: 17px;
     padding-bottom: 10px;
 }
-.step-three-msg, .darfur-fun-facts-subtitle2{
+.step-three-msg, .darfur-fun-facts-subtitle2,
+.trial-task-feedback-subtitle-correct-answer,
+.trial-task-feedback-subtitle-your-answer {
     color:#8e8c8c;
 }
 .padding-top{
@@ -963,6 +965,10 @@ span.shortcut-nr-3 {
     #menu li a {
        padding: 15px 18px 15px 15px !important;
     }
+}
+.capitalize-text
+{
+    text-transform:capitalize;
 }
 
 
