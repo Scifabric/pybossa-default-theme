@@ -1012,9 +1012,9 @@ span.shortcut-nr-3 {
 /*Override header menu style*/
 @media (min-width: 993px){
     .navbar-brand > img{
-        width: 110px;
+        max-width: 110px !important;
         height: auto !important;
-        margin-top: 2%;
+        min-width: 100px !important;
     }
     .navbar-brand {
         height: 50px !important;
