@@ -693,6 +693,7 @@ footer ul.social-icons-ul li a:hover {
 .row-key-img-container{
     background-color: #F7F7F7;
     padding: 30px 30px 15px 30px;
+    padding-top: 0px;
 }
 
 .key-img{
@@ -713,6 +714,8 @@ footer ul.social-icons-ul li a:hover {
     padding: 20px;
     padding-bottom: 0px;
     font-size: 14px;
+    text-align: justify;
+    text-justify: inter-word;
 }
 .key-modal-title{
     padding-left: 20px;
@@ -725,7 +728,10 @@ footer ul.social-icons-ul li a:hover {
     margin-left: 0px;
 }
 #key-modal .fa-ul> li:first-child{
-    padding-top: 25px;
+    padding-top: 25px;;
+}
+#key-modal .fa-ul> li:last-child{
+    padding-bottom: 15px;
 }
 #key-modal .fa-ul {
     margin-left: 0px;
@@ -742,6 +748,15 @@ footer ul.social-icons-ul li a:hover {
 }
 #key-modal .after{
     right: -14px;
+}
+.small-changes-text{
+    padding-left: 0px;
+}
+.small-changes-ul{
+    padding-top: 0px;
+}
+#key-modal .small-changes-ul> li:first-child {
+    padding-top: 0px !important;
 }
 .radio-inline-tutorial{
   margin-top: 17px !important;
