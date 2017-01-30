@@ -42,6 +42,9 @@
     background-color: black !important;
 }
 @media screen and (min-width: 310px) and (max-width: 768px) {
+    #key-modal .fa-ul> li {
+        padding: 10px !important;
+    }
     #sub-header-darfur-imagery-comparison-desktop,
     .navbar-header, .steps-desktop,
     .key-desktop-image{
@@ -1024,6 +1027,9 @@ span.shortcut-nr-3 {
     }
     #menu li a {
        padding: 15px 18px 15px 15px !important;
+    }
+    .navbar-brand {
+        width: 110px;
     }
 }
 .capitalize-text
