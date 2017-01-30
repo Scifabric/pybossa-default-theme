@@ -1,3 +1,55 @@
+# Pybossa tutorial javascript API
+Include `/static/js/pybossa-tutorial.js`, store user's tutorial stage in cookie
+
+Set tutorial complete
+```js
+window.pybossaTutorial.setComplete()
+```
+
+Set tutorial skip
+```js
+window.pybossaTutorial.setSkipped()
+```
+
+Check if user skipped or complete the tutorial
+```js
+window.pybossaTutorial.isSkippedOrComplete
+```
+
+# Integration with IM
+First, include `/static/js/amnesty-sso.js`, `/static/js/pybossa-tutorial.js` files
+
+To open modal with 3 options: register, login, skip:
+```js
+window.amnestySSO.showImModalContent('all');
+$('#amnestySSOModal').modal('show');
+```
+
+To open login modal:
+```js
+window.amnestySSO.showImModalContent('login');
+$('#amnestySSOModal').modal('show');
+```
+
+To open register modal:
+```js
+window.amnestySSO.showImModalContent('register');
+$('#amnestySSOModal').modal('show');
+```
+
+After finish login/register with IM, if user hasn't tried tutorial yet, user will be redirected to tutorial url.
+
+# Integration with Discourse forum
+Include `/static/js/amnesty-sso.js` file
+
+Add flag link button
+```html
+<a data-target='#flagModal'>Flag</a>
+```
+Flag modal doesn't show if tutorial modal is open. Tutorial modal open status is defined by `window.isInTutorial`
+
+If user is not logged in, then click flag button will open the register/login modal.
+
 # Results page
 The results page in this pybossa theme use style and images from https://github.com/AltClick/amnesty-theme
 

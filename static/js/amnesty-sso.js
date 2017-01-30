@@ -112,6 +112,9 @@
 
 			$('#amnestySSOModal #skip-btn').click(function(){
 				$('#amnestySSOModal').modal('hide');
+				if (!window.pybossaTutorial.isSkippedOrComplete()) {
+					window.pybossaTutorial.open()
+				}
 			});
 
 			//wait IM login form to return token
@@ -142,7 +145,18 @@
         			})
         			.always(function(){
         			});
-			}			
+			}
+
+			var isIMModalOpen = false
+			$('#amnestySSOModal').on('hidden.bs.modal', function (e) {
+			  isIMModalOpen = false
+			})
+			$('#amnestySSOModal').on('shown.bs.modal', function (e) {
+			  isIMModalOpen = true
+			})
+			window.amnestySSO.isIMModalOpen = function() {
+				return isIMModalOpen
+			}
 		}
 	});
 

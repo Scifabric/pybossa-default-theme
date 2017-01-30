@@ -19,13 +19,16 @@
 	tutorial.isSkippedOrComplete = isSkippedOrComplete;
 	tutorial.setSkipped = setSkipped;
 	tutorial.setComplete = setComplete;
+	tutorial.open	= open
+
+	var currentProject = window.settings.currentProject;
 
 	function setStage(stage) {
-		createCookie('decode-darfurtutorial-stage', stage, 120);
+		createCookie(currentProject + '-tutorial-stage', stage, 120);
 	}
 
 	function getStage() {
-		return readCookie('decode-darfurtutorial-stage');	
+		return readCookie(currentProject + '-tutorial-stage');	
 	}
 
 	function isSkippedOrComplete() {
@@ -68,6 +71,11 @@
 
 	function eraseCookie(name) {
 		createCookie(name,"",-1);
+	}
+
+	function open() {
+		var currentProject = window.settings.currentProject;
+		window.location.href = "/project/" + currentProject + "/tutorial";
 	}
 
 })();
