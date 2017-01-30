@@ -137,9 +137,19 @@
     padding-top: 17px;
     padding-bottom: 10px;
 }
-.step-three-msg, .darfur-fun-facts-subtitle2{
+.step-three-msg, .darfur-fun-facts-subtitle2,
+.trial-task-feedback-subtitle-correct-answer,
+.trial-task-feedback-subtitle-your-answer {
     color:#8e8c8c;
 }
+.trial-task-feedback-subtitle-correct-answer{
+    margin-bottom: 5px;
+}
+
+.trial-task-feedback-subtitle-your-answer {
+    margin-top: 5px;
+}
+
 .padding-top{
     padding-top: 10px;
 }
@@ -210,7 +220,7 @@
     height: 80px;
     position: absolute;
     top: 0;
-    right: -18px;
+    right: -17px;
     padding-left: 5px;
     padding-right: 5px;
     color: white;
@@ -677,12 +687,13 @@ footer ul.social-icons-ul li a:hover {
     margin: 0 auto;
 }
 .row-key-header-container{
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .row-key-img-container{
     background-color: #F7F7F7;
     padding: 30px 30px 15px 30px;
+    padding-top: 0px;
 }
 
 .key-img{
@@ -695,7 +706,58 @@ footer ul.social-icons-ul li a:hover {
     text-align: center;
     margin: 0 auto;
 }
-
+#key-modal {
+    font-family:Helvetica, Arial;
+    color: #000;
+}
+.modal-top-text{
+    padding: 20px;
+    padding-bottom: 0px;
+    font-size: 14px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.key-modal-title{
+    padding-left: 20px;
+    font-weight: bold;
+}
+#key-modal .fa-ul>li {
+    position: relative;
+    text-align: center;
+    padding: 3px;
+    margin-left: 0px;
+}
+#key-modal .fa-ul> li:first-child{
+    padding-top: 25px;;
+}
+#key-modal .fa-ul> li:last-child{
+    padding-bottom: 15px;
+}
+#key-modal .fa-ul {
+    margin-left: 0px;
+}
+#key-modal .fa-li{
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    font-size: 11px !important;
+}
+#key-modal .before, #key-modal .after {
+    height: 60px;
+    font-size: 10px;
+}
+#key-modal .after{
+    right: -14px;
+}
+.small-changes-text{
+    padding-left: 0px;
+}
+.small-changes-ul{
+    padding-top: 0px;
+}
+#key-modal .small-changes-ul> li:first-child {
+    padding-top: 0px !important;
+}
 .radio-inline-tutorial{
   margin-top: 17px !important;
 }
@@ -950,9 +1012,9 @@ span.shortcut-nr-3 {
 /*Override header menu style*/
 @media (min-width: 993px){
     .navbar-brand > img{
-        width: 110px;
+        max-width: 110px !important;
         height: auto !important;
-        margin-top: 2%;
+        min-width: 100px !important;
     }
     .navbar-brand {
         height: 50px !important;
@@ -964,5 +1026,7 @@ span.shortcut-nr-3 {
        padding: 15px 18px 15px 15px !important;
     }
 }
-
-
+.capitalize-text
+{
+    text-transform:capitalize;
+}
