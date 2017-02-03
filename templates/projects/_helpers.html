@@ -234,7 +234,7 @@
         {% endif %}
 {% endmacro %}
 
-{% macro render_grid_projects(projects, title, upload_method, id=None, title_class='col-md-offset-1 col-md-10', projects_class='col-sm-offset-2 col-sm-8 col-md-offset-0 col-md-4', container=True, subheading=None, active_cat=None, featured=False) %}
+{% macro render_grid_projects(projects, title, upload_method, current_user, id=None, title_class='col-md-offset-1 col-md-10', projects_class='col-sm-offset-2 col-sm-8 col-md-offset-0 col-md-4', container=True, subheading=None, active_cat=None, featured=False, show_ownership=False) %}
 <section id="{{id}}" class="account {{title |lower }}-projects">
     {% if container %}
     <div class="container">
@@ -253,6 +253,9 @@
                        <div class="post-pic" style="background: rgb(0, 151, 167) url({{render_url_thumbnail(f, upload_method)}}) no-repeat center top; background-size: cover;"></div>
                        <div class="caption">
                            <h3>{{f.name}}</h3>
+                           {% if show_ownership and f.owner_id != current_user.id %}
+                            <em>{{ _('Co-owner')}}</em>
+                           {% endif %}
                            <p>{{f.description}}</p>
                            {% if featured %}
                             {% if f.featured %}

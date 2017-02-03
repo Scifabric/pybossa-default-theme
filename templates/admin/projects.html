@@ -16,7 +16,7 @@
 <div class="tab-content">
     {% for c in categories %}
     <div {% if loop.first %}class="tab-pane active" {% else %} class="tab-pane" {% endif %} id="{{c.short_name}}">
-        {{ render_grid_projects(projects[c.short_name], "", upload_method, featured=True,title_class="col-md-12", container=False)}}
+        {{ render_grid_projects(projects[c.short_name], "", upload_method, current_user, featured=True,title_class="col-md-12", container=False)}}
     </div>
     {% endfor %}
 </div>

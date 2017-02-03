@@ -4,7 +4,7 @@
 </ul>
 <ul class="list-group" style="margin-top: 21px;">
     <li class="list-group-item {% if active_link=="profile"%}active{% endif %}"><a href="{{url_for('account.profile', name=current_user.name)}}">{{ _('My Account') }}</a><i class="fa fa-chevron-right pull-right"></i></li>
-    {% if current_user.admin %}
+    {% if current_user.admin or current_user.subadmin %}
     <li class="list-group-item {% if active_link=="projects"%}active{% endif %}"><a href="{{url_for('account.projects', name=current_user.name)}}">{{ _('My Projects') }}</a><i class="fa fa-chevron-right pull-right"></i></li>
     <li class="list-group-item {% if active_link=="admin"%}active{% endif %}"><a href="{{url_for('admin.index')}}">{{ _('Admin Site') }}</a><i class="fa fa-chevron-right pull-right"></i></li>
     {% endif %}

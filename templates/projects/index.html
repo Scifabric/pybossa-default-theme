@@ -35,7 +35,7 @@
             {% endif %}
             <div class="row">
                 <div class="col-md-offset-1 col-md-10">
-                    {{ helper.render_grid_projects(projects, title, upload_method, title_class="col-md-12", container=False, active_cat = active_cat.short_name, subheading=subheading)}}
+                    {{ helper.render_grid_projects(projects, title, upload_method, current_user, title_class="col-md-12", container=False, active_cat = active_cat.short_name, subheading=subheading)}}
                 </div>
             </div>
             {% if pagination.pages > 1 %}
