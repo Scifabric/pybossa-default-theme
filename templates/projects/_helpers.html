@@ -1,3 +1,5 @@
+{% import "account/_helpers.html" as accountHelper %}
+
 {% macro render_pagination(pagination, handle) %}
 <div class="container">
 <div class="col-md-offset-3 col-md-9 text-center">
@@ -32,7 +34,7 @@
 </div>
 {% endmacro %}
 
-{% macro render_project_local_nav(project, active_link, current_user, pro_features) -%}
+{% macro render_project_local_nav(project, active_link, current_user, is_coowner, pro_features) -%}
 <ul class="list-group" style="margin-top: 21px;">
     {{ render_project_thumbnail(project, upload_method, class="img-responsive thumbnail card") }}
 </ul>
@@ -43,10 +45,10 @@
     <li class="list-group-item {% if active_link=="tasks"%}active{% endif %}"><a href="{{url_for('project.tasks', short_name=project.short_name)}}">{{_('Tasks')}} {{daniel}}</a>{% if task_subsection_1_text %}<a href="{{task_subsection_1}}">{{task_subsection_1_text}}</a>{% endif %}<i class="fa fa-chevron-right pull-right"></i></li>
     <li class="list-group-item {% if active_link=="stats"%}active{% endif %}"><a href="{{url_for('project.show_stats', short_name=project.short_name)}}">{{_('Statistics')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
     {% endif %} 
-    {% if ( current_user.is_authenticated() and current_user.id == project.owner_id ) or current_user.admin %}
+    {% if ( current_user.is_authenticated() and (current_user.id == project.owner_id or is_coowner(project.id)) ) or current_user.admin %}
     <li class="list-group-item {% if active_link=="settings"%}active{% endif %}"><a href="{{url_for('project.settings', short_name=project.short_name)}}">{{_('Settings')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
     {% endif %}
-    {% if ( current_user.is_authenticated() and current_user.id == project.owner_id
+    {% if ( current_user.is_authenticated() and (current_user.id == project.owner_id or is_coowner(project.id))
     and current_user.pro) or current_user.admin %}
         {% if pro_features.get('auditlog_enabled') %}
         <li class="list-group-item {% if active_link=="auditlog"%}active{% endif %}"><a href="{{url_for('project.auditlog', short_name=project.short_name)}}">{{_('Audit Logs')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
@@ -351,6 +353,43 @@
         <p class="readmore"><a {% if link_class %}class="{{link_class}}"{% endif %} {% if nofollow %}rel="nofollow"{% endif%} href="{{link}}" {% if download %}download{%endif%}>{{link_action_text}}</a> <a {% if link_class %}class="{{link_class}}"{% endif %} {% if nofollow %}rel="nofollow"{% endif%} href="{{link_two}}" {% if download %}download{%endif%}>{{link_action_text_two}}</a></p>
         {% else %}
         <p class="readmore"><a {% if link_class %}class="{{link_class}}"{% endif %} {% if nofollow %}rel="nofollow"{% endif%} href="{{link}}" {% if download %}download{%endif%}>{{link_action_text}}</a></p>
+        {% endif %}
+    </div>
+</div>
+{% endmacro -%}
+
+{%- macro render_project_card_coowner(short_name, user, upload_method, title, explanation, link, link_action_text, background=False, isCoowner=False, download=False, nofollow=False, link_class=None, id=None, icon=None, link_two=None, link_action_text_two=None) %}
+<div {%if id%}id="{{id}}"{% endif %} class="thumbnail card">
+    <div class="post-pic" style="background: rgb(0, 151, 167) {%- if background %}url({{accountHelper.render_user_avatar_src(user, upload_method)}}){% endif -%} no-repeat center top; background-size: cover;">
+        {% if not background %}
+            {% if icon %}
+            <div class="row">
+                <div class="col-xs-8">
+                    <h3>{{user.fullname}}</h3>
+                </div>
+                <div class="col-xs-3">
+                    <i class="fa fa-{{icon}} fa-fw fa-4x"></i>
+                </div>
+            </div>
+            {% else %}
+                <h3>{{user.fullname}}</h3>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div class="caption">
+        {% if background %}
+        <h3>{{user.fullname}}</h3>
+        {% endif %}
+        <p>{{user.name}}</p>
+        {% if isCoowner %}
+        <p class="readmore"><a href="{{url_for('project.del_coowner', short_name=short_name, user_id=user.id)}}">
+            {{ _('Remove Co-owner') }}</a>
+        </p>
+        {% else %}
+        <p class="readmore">
+        <a href="{{url_for('project.add_coowner', short_name=short_name, user_id=user.id)}}">
+            {{ _('Add Co-owner') }}</a>
+        </p>
         {% endif %}
     </div>
 </div>
