@@ -15,7 +15,7 @@
                 <h2>{{ _('Your Account') }}: {{current_user.fullname}}</h2>
                 {{ helper.render_user_profile(current_user, upload_method, "settings") }} 
                 {% if projects_contrib | count > 0 %}
-                {{ project_helper.render_grid_projects(projects_contrib,  _('Your Contributions'), upload_method, current_user, title_class="col-md-12", container=False, current_user=currnet_user, show_ownership=True)}}
+                {{ project_helper.render_grid_projects(projects_contrib,  _('Your Contributions'), upload_method, current_user, title_class="col-md-12", container=False, current_user=current_user, show_ownership=True)}}
                 {% endif %}
             </div>
     </div>
