@@ -6,6 +6,37 @@
 
 {% block projectcontent %}
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/slider/css/slider.css')}}"/>
+
+<style type="text/css">
+#tasksGrid th.sort-asc
+{
+}
+
+#tasksGrid th.sort-desc
+{
+}
+
+#tasksGrid th.sort-desc:after,
+#tasksGrid th.sort-asc:after{
+    content: '';
+    position: relative;
+    left: -20px;
+    float: right;
+    border: 7px solid transparent;
+}
+#tasksGrid th.sort-desc:after{
+    top: 10px;
+    border-top-color: silver;
+}
+#tasksGrid th.sort-asc:after{
+    border-bottom-color: silver;
+}
+#tasksGrid th.sort-desc,
+#tasksGrid th.sort-asc{
+    padding-left: 20px;
+}
+</style>
+
 <div class="row">
     <div class="col-md-12">
         <p>{{_('This page shows all the available tasks for this project')}}.</p> 
@@ -25,8 +56,8 @@
                 <i class="fa fa-refresh" aria-hidden="true"></i>
             </button>
         </li>
-        <li class="dropdown" style="float: right;">
-            <button class="dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{records_per_page}}<span class="caret"></span></button>
+        <li class="dropdown" style="float: right; padding-left: 5px;">
+            <button class="dropdown-toggle" type="button" id="btnRpp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{records_per_page}}<span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
                 <li><a href="#" class='records_per_page'>10</a></li>
                 <li><a href="#" class='records_per_page'>20</a></li>
@@ -36,19 +67,44 @@
                 <li><a href="#" class='records_per_page'>100</a></li>
             </ul>
         </li>
+        <li class="dropdown" id="columnsSettings" style="float: right;">
+            <button class="dropdown-toggle" type="button" id="btnColumnsSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="fa fa-cog"><span class="caret"></span></button>
+            <ul class="dropdown-menu" aria-labelledby="btnColumnsSettings">
+                <li><a href="#" class="columns_settings" data-value="task_id" tabIndex="-1"><input type="checkbox" {{ "checked" if "task_id" in filter_data.display_columns }} />&nbsp;Task Id</a></li>
+                <li><a href="#" class="columns_settings" data-value="priority" tabIndex="-1"><input type="checkbox" {{ "checked" if "priority" in filter_data.display_columns }}/>&nbsp;Priority</a></li>
+                <li><a href="#" class="columns_settings" data-value="pcomplete" tabIndex="-1"><input type="checkbox" {{ "checked" if "pcomplete" in filter_data.display_columns }}/>&nbsp;%Complete</a></li>
+                <li><a href="#" class="columns_settings" data-value="created" tabIndex="-1"><input type="checkbox" {{ "checked" if "created" in filter_data.display_columns }}/>&nbsp;Created</a></li>
+                <li><a href="#" class="columns_settings" data-value="finish_time" tabIndex="-1"><input type="checkbox" {{ "checked" if "finish_time" in filter_data.display_columns }}/>&nbsp;Completed</a></li>
+                <li><a href="#" class="columns_settings" data-value="actions" tabIndex="-1"><input type="checkbox" {{ "checked" if "actions" in filter_data.display_columns }}/>&nbsp;Actions</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 <div>
-    <table width="100%">
+    <table width="100%" id="tasksGrid">
         <thead>
             <tr>
-                <th>Task#</th>
-                <th>Priority</th>
-                <th>%Complete</th>
-                <th>Completed</th>
-                <th>Actions</th>
+                {% if 'task_id' in filter_data.display_columns %}
+                <th style="cursor: pointer;" class="{{'sort-asc' if filter_data.order_by['task_id'] == 'asc'}} {{'sort-desc' if filter_data.order_by['task_id'] == 'desc'}}" data-sort="task_id">Task#</th>
+                {% endif %}
+                {% if 'priority' in filter_data.display_columns %}
+                <th style="cursor: pointer;" class="{{'sort-asc' if filter_data.order_by['priority'] == 'asc'}} {{'sort-desc' if filter_data.order_by['priority'] == 'desc'}}" data-sort="priority">Priority</th>
+                {% endif %}
+                {% if 'pcomplete' in filter_data.display_columns %}
+                <th style="cursor: pointer;" class="{{'sort-asc' if filter_data.order_by['pcomplete'] == 'asc'}} {{'sort-desc' if filter_data.order_by['pcomplete'] == 'desc'}}" data-sort="pcomplete">%Complete</th>
+                {% endif %}
+                {% if 'created' in filter_data.display_columns %}
+                <th style="cursor: pointer;" class="{{'sort-asc' if filter_data.order_by['created'] == 'asc'}} {{'sort-desc' if filter_data.order_by['created'] == 'desc'}}" data-sort="created">Created</th>
+                {% endif %}
+                {% if 'finish_time' in filter_data.display_columns %}
+                <th style="cursor: pointer;" class="{{'sort-asc' if filter_data.order_by['finish_time'] == 'asc'}} {{'sort-desc' if filter_data.order_by['finish_time'] == 'desc'}}" data-sort="finish_time">Completed</th>
+                {% endif %}
+                {% if 'actions' in filter_data.display_columns %}
+                <th style="cursor: pointer;">Actions</th>
+                {% endif %}
             </tr>
             <tr>
+                {% if 'task_id' in filter_data.display_columns %}
                 <th>
                 <div class="form-group">
                     <div class="input-group">
@@ -57,26 +113,41 @@
                     </div>
                     </div>
                 </th>
+                {% endif %}
+                {% if 'priority' in filter_data.display_columns %}
                 <th>
                     <div>
                         <input id="priority" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="[{{ filter_data.priority1 or 0 }},{{ filter_data.priority2 or 100 }}]" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
                     </div>
                 </th>
+                {% endif %}
+                {% if 'pcomplete' in filter_data.display_columns %}
                 <th>
                     <div>
                         <input id="pcomplete" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="[{{ filter_data.pcomplete1 or 0 }},{{ filter_data.pcomplete2 or 100 }}]" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
                     </div>
                 </th>
+                {% endif %}
+                {% if 'created' in filter_data.display_columns %}
+                <th>
+                   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dateModal" data-info="created">Filter</button>
+                </th>
+                {% endif %}
+                {% if 'finish_time' in filter_data.display_columns %}
                 <th>
                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dateModal" data-info="ftime">Filter</button>
                 </th>
-                <th>Filter</th>
+                {% endif %}
+                {% if 'actions' in filter_data.display_columns %}
+                <th>&nbsp;</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
             {% for t in tasks %}
             {% set task_pct = t.pct_status*100 %}
             <tr>
+                {% if 'task_id' in filter_data.display_columns %}
                 <td>
                     {% if task_pct >= 100 %}
                         <span class="label label-success">#{{ t.id }}</span>
@@ -85,9 +156,20 @@
                     {% endif %}
                     {{ t.n_task_runs }} {{_('of')}} {{ t.n_answers }}
                 </td>
+                {% endif %}
+                {% if 'priority' in filter_data.display_columns %}
                 <td>{{ t.priority_0 }}</td>
+                {% endif %}
+                {% if 'pcomplete' in filter_data.display_columns %}
                 <td>{{task_pct}}</td>
+                {% endif %}
+                {% if 'created' in filter_data.display_columns %}
+                <td>{{ t.created }}</td>
+                {% endif %}
+                {% if 'finish_time' in filter_data.display_columns %}
                 <td>{{ t.finish_days }}</td>
+                {% endif %}
+                {% if 'actions' in filter_data.display_columns %}
                 <td>
                     {% if task_pct >= 100 %}
                     <a id="fulldownload" rel="nofollow" class="btn btn-success btn-xs" href="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}"><i class="fa fa-cloud-download"></i> {{_('Download Task Results')}}</a>
@@ -97,6 +179,7 @@
                     <a id="nothingtodownload" rel="nofollow" class="btn btn-info btn-xs disabled" href="#"><i class="fa fa-cloud-download"></i> {{_('Nothing to download yet')}}</a>
                     {% endif %}
                 </td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
@@ -141,7 +224,7 @@
 <script type="text/javascript">
     var filter_data = {{ filter_data|tojson }};
     var first_page_url = "{{ url_for('project.tasks_browse', short_name=project.short_name) }}";
-    var records_per_page = {{ records_per_page if records_per_page != 10 else None}};
+    var records_per_page = {{ records_per_page if records_per_page != 10 else 'undefined'}};
 </script>
 
 <script src="{{url_for('static', filename='vendor/slider/js/bootstrap-slider.js')}}" type="text/javascript"></script>
