@@ -34,6 +34,7 @@
         {{ render_field(form.long_description, class_="input-xlarge", placeholder=_('Explain the project (use Markdown!)')) }}
         {{ render_field(form.category_id) }}
         {{ render_checkbox_field(form.allow_anonymous_contributors, class_="", tooltip=_('Check if you want to allow anonymous users contribute to your project')) }}
+        {{ render_checkbox_field(form.hidden, tooltip=_('Do you want to hide your project?'))}}
         {{ render_checkbox_field(form.protect, id='protect') }}
         <div id='password'>{{ render_field(form.password) }}</div>
         {{ render_field(form.webhook) }}
