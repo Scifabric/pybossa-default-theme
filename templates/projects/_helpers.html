@@ -44,7 +44,7 @@
     <li class="list-group-item {% if active_link=="results"%}active{% endif %}"><a href="{{url_for('project.results', short_name=project.short_name)}}">{{_('Results')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
     <li class="list-group-item {% if active_link=="tasks"%}active{% endif %}"><a href="{{url_for('project.tasks', short_name=project.short_name)}}">{{_('Tasks')}} {{daniel}}</a>{% if task_subsection_1_text %}<a href="{{task_subsection_1}}">{{task_subsection_1_text}}</a>{% endif %}<i class="fa fa-chevron-right pull-right"></i></li>
     <li class="list-group-item {% if active_link=="stats"%}active{% endif %}"><a href="{{url_for('project.show_stats', short_name=project.short_name)}}">{{_('Statistics')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
-    {% endif %} 
+    {% endif %}
     {% if ( current_user.is_authenticated() and (current_user.id == project.owner_id or is_coowner(project.id)) ) or current_user.admin %}
     <li class="list-group-item {% if active_link=="settings"%}active{% endif %}"><a href="{{url_for('project.settings', short_name=project.short_name)}}">{{_('Settings')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
     {% endif %}
@@ -124,7 +124,7 @@
 {% macro show_project(project, active_cat, current_user, upload_method) %}
 <div class="project-item {{class}} col-xs-12 col-md-8">
     <div class="media">
- 
+
             <div class="media-body">
             <h4 class="media-heading">
             <a href="{{ url_for('project.details', short_name = project.short_name) }}">{{ project.name }}</a></h2>
@@ -236,7 +236,33 @@
         {% endif %}
 {% endmacro %}
 
-{% macro render_grid_projects(projects, title, upload_method, current_user, id=None, title_class='col-md-offset-1 col-md-10', projects_class='col-sm-offset-2 col-sm-8 col-md-offset-0 col-md-4', container=True, subheading=None, active_cat=None, featured=False, show_ownership=False) %}
+{% macro render_dropdown(id, class, entries, current_selection) %}
+<div class="btn-group">
+    <div class="dropdown combo-box">
+        <button class="btn btn-default dropdown-toggle {{class}}" type="button" id="{{id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span class="selection" data-dropdown-selection="{{current_selection}}">{{entries[current_selection]}}</span>
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="{{id}}">
+            {% for key, display in entries.iteritems() %}
+            <li><a href="#" data-dropdown-selection="{{key}}">{{display}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro render_sort_control(columns, directions) %}
+<div class="order-panel pull-right">
+    {{ render_dropdown(columns.id, _('order-column'), columns.entries, columns.current_selection) }}
+    {{ render_dropdown(directions.id, _('order-direction'), directions.entries, directions.current_selection) }}
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary sort-by-button" name="button">Sort</button>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro render_grid_projects(projects, title, upload_method, current_user, id=None, title_class='col-md-offset-1 col-md-10', projects_class='col-sm-offset-2 col-sm-8 col-md-offset-0 col-md-4', container=True, subheading=None, active_cat=None, featured=False, show_ownership=False, show_sort_box=False, sort_options=None) %}
 <section id="{{id}}" class="account {{title |lower }}-projects">
     {% if container %}
     <div class="container">
@@ -249,6 +275,11 @@
                     <p>{{subheading}}</p>
                     {% endif %}
                 </div>
+                {% if show_sort_box %}
+                    <div class="col-md-12 sort-control-row">
+                        {{ render_sort_control(sort_options.columns, sort_options.directions)}}
+                    </div>
+                {% endif %}
                {% for f in projects %}
                <div class="{{projects_class}}">
                    <div class="thumbnail card">
