@@ -8,14 +8,6 @@
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/slider/css/slider.css')}}"/>
 
 <style type="text/css">
-#tasksGrid th.sort-asc
-{
-}
-
-#tasksGrid th.sort-desc
-{
-}
-
 #tasksGrid th.sort-desc:after,
 #tasksGrid th.sort-asc:after{
     content: '';
@@ -35,6 +27,24 @@
 #tasksGrid th.sort-asc{
     padding-left: 20px;
 }
+
+#tasksBrowseControls {
+    padding-left:0;
+}
+#tasksBrowseControls>ul {
+    list-style: none;
+    padding-left: 0;
+}
+#tasksBrowseControls>ul>li:not(:first-child) {
+    float:right;
+    padding-left: 5px;
+}
+#tasksBrowseControls>ul>li:first-child {
+    float:left;
+}
+#tasksGrid th.sortable {
+    cursor: pointer;
+}
 </style>
 
 <div class="row">
@@ -44,19 +54,28 @@
         <ul>
             <li><strong>{{_('Task')}} </strong><span class="label label-info">#0000</span> {{_('This number identifies the task for the project and it is unique')}}</li>
             <li><strong>0 of 30</strong>: {{_('The first number shows how many answers have been submitted for the task and the')}} <a data-placement="top" rel="tooltip" href="#" data-original-title="{{_('This redundancy method will help to detect errors, typos, data forging, etc. when the task has been completed')}}">{{_('second number')}}</a> {{_('how many need to be obtained to mark the task as')}} <strong>{{_('completed')}}</strong>. </li>
-            <li><strong>{{_('Progress Bar')}}</strong>: {{_('The progress progress-bar will the percentage that has been completed for the task')}}.</li>
+            <li><strong>{{_('Priority')}}</strong>: {{_('Shows the priority of the task, priority ranges between 0 (lowest value) and 1.0 (hightest priority)')}}.</li>
+            <li><strong>{{_('%Complete')}}</strong>: {{_('Shows the percentage that has been completed of the task')}}.</li>
+            <li><strong>{{_('Created')}}</strong>: {{_('When the task was created')}}.</li>
+            <li><strong>{{_('Completed')}}</strong>: {{_('When the task became fully completed')}}.</li>
+            <li><strong>{{_('Actions')}}</strong>: {{_('Download or view task results')}}.</li>
         </ul>
         </p>
     </div>
 </div>
-<div class="collapse navbar-collapse">
-    <ul style="list-style: none;">
-        <li style="float: right; padding-left: 5px;">
+<div id='tasksBrowseControls' class="collapse navbar-collapse">
+    <ul>
+        <li>
+        <b>
+        {{ _('Displaying') }} {{ pagination.total_count if pagination.total_count < pagination.per_page else pagination.per_page }} {{ _(' of') }} {{ pagination.total_count }}
+        </b>
+        </li>
+        <li>
             <button id='btnRefresh' type="button" data-toggle="popover" data-trigger="focus" data-placement="top" data-constraints='focus' data-content="{{_('Please refresh the results after setting the desired filters.')}}" title="{{_('Refresh Results')}}">
                 <i class="fa fa-refresh" aria-hidden="true"></i>
             </button>
         </li>
-        <li class="dropdown" style="float: right; padding-left: 5px;">
+        <li class="dropdown">
             <button class="dropdown-toggle" type="button" id="btnRpp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{records_per_page}}<span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
                 <li><a href="#" class='records_per_page'>10</a></li>
@@ -67,7 +86,7 @@
                 <li><a href="#" class='records_per_page'>100</a></li>
             </ul>
         </li>
-        <li class="dropdown" id="columnsSettings" style="float: right;">
+        <li class="dropdown" id="columnsSettings">
             <button class="dropdown-toggle" type="button" id="btnColumnsSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="fa fa-cog"><span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="btnColumnsSettings">
                 <li><a href="#" class="columns_settings" data-value="task_id" tabIndex="-1"><input type="checkbox" {{ "checked" if "task_id" in filter_data.display_columns }} />&nbsp;Task Id</a></li>
@@ -85,22 +104,22 @@
         <thead>
             <tr>
                 {% if 'task_id' in filter_data.display_columns %}
-                <th style="cursor: pointer;" class="{{'sort-asc' if filter_data.order_by['task_id'] == 'asc'}} {{'sort-desc' if filter_data.order_by['task_id'] == 'desc'}}" data-sort="task_id">Task#</th>
+                <th class="{{'sort-asc' if filter_data.order_by['task_id'] == 'asc'}} {{'sort-desc' if filter_data.order_by['task_id'] == 'desc'}} sortable" data-sort="task_id">Task#</th>
                 {% endif %}
                 {% if 'priority' in filter_data.display_columns %}
-                <th style="cursor: pointer;" class="{{'sort-asc' if filter_data.order_by['priority'] == 'asc'}} {{'sort-desc' if filter_data.order_by['priority'] == 'desc'}}" data-sort="priority">Priority</th>
+                <th class="{{'sort-asc' if filter_data.order_by['priority'] == 'asc'}} {{'sort-desc' if filter_data.order_by['priority'] == 'desc'}} sortable" data-sort="priority">Priority</th>
                 {% endif %}
                 {% if 'pcomplete' in filter_data.display_columns %}
-                <th style="cursor: pointer;" class="{{'sort-asc' if filter_data.order_by['pcomplete'] == 'asc'}} {{'sort-desc' if filter_data.order_by['pcomplete'] == 'desc'}}" data-sort="pcomplete">%Complete</th>
+                <th class="{{'sort-asc' if filter_data.order_by['pcomplete'] == 'asc'}} {{'sort-desc' if filter_data.order_by['pcomplete'] == 'desc'}} sortable" data-sort="pcomplete">%Complete</th>
                 {% endif %}
                 {% if 'created' in filter_data.display_columns %}
-                <th style="cursor: pointer;" class="{{'sort-asc' if filter_data.order_by['created'] == 'asc'}} {{'sort-desc' if filter_data.order_by['created'] == 'desc'}}" data-sort="created">Created</th>
+                <th class="{{'sort-asc' if filter_data.order_by['created'] == 'asc'}} {{'sort-desc' if filter_data.order_by['created'] == 'desc'}} sortable" data-sort="created">Created</th>
                 {% endif %}
                 {% if 'finish_time' in filter_data.display_columns %}
-                <th style="cursor: pointer;" class="{{'sort-asc' if filter_data.order_by['finish_time'] == 'asc'}} {{'sort-desc' if filter_data.order_by['finish_time'] == 'desc'}}" data-sort="finish_time">Completed</th>
+                <th class="{{'sort-asc' if filter_data.order_by['finish_time'] == 'asc'}} {{'sort-desc' if filter_data.order_by['finish_time'] == 'desc'}} sortable" data-sort="finish_time">Completed</th>
                 {% endif %}
                 {% if 'actions' in filter_data.display_columns %}
-                <th style="cursor: pointer;">Actions</th>
+                <th>Actions</th>
                 {% endif %}
             </tr>
             <tr>
@@ -167,16 +186,16 @@
                 <td>{{ t.created }}</td>
                 {% endif %}
                 {% if 'finish_time' in filter_data.display_columns %}
-                <td>{{ t.finish_days }}</td>
+                <td>{{ t.finish_time }}</td>
                 {% endif %}
                 {% if 'actions' in filter_data.display_columns %}
                 <td>
                     {% if task_pct >= 100 %}
-                    <a id="fulldownload" rel="nofollow" class="btn btn-success btn-xs" href="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}"><i class="fa fa-cloud-download"></i> {{_('Download Task Results')}}</a>
+                    <a id="fulldownload" rel="nofollow" class="btn btn-success btn-xs fa fa-cloud-download" href="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}">&nbsp;</a> <button type="button" class="btn btn-success btn-xs fa fa-eye" data-toggle="modal" data-target="#infoModal" data-info="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}"></button>
                     {% elif task_pct > 0 and task_pct < 100 %}
-                    <a id="partialdownload" rel="nofollow" class="btn btn-info btn-xs" href="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}"><i class="fa fa-cloud-download"></i> {{_('Download Partial results')}}</a>
+                    <a id="partialdownload" rel="nofollow" class="btn btn-info btn-xs fa fa-cloud-download" href="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}">&nbsp;</a> <button type="button" class="btn btn-success btn-xs fa fa-eye" data-toggle="modal" data-target="#infoModal" data-info="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}"></button>
                     {% else %}
-                    <a id="nothingtodownload" rel="nofollow" class="btn btn-info btn-xs disabled" href="#"><i class="fa fa-cloud-download"></i> {{_('Nothing to download yet')}}</a>
+                    <a id="nothingtodownload" rel="nofollow" class="btn btn-info btn-xs disabled fa fa-cloud-download" href="#"> {{_('Nothing to download yet')}}</a>
                     {% endif %}
                 </td>
                 {% endif %}
@@ -193,7 +212,7 @@
 </div>
 {% endif %}
 
-<!-- Modal -->
+<!-- Date Modal -->
 <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
@@ -216,6 +235,26 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id='saveDateModal'>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- View Info -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="infoModalLabel">View Task Info</h4>
+      </div>
+      <div class="modal-body">
+        <div id='loadingInfo' style="text-align: center;"><i class="fa fa-spinner fa-pulse fa-5x fa-fw"> </i></div>
+        <div id='taskInfo'>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
