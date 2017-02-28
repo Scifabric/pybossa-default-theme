@@ -10,6 +10,14 @@
 .sort-control-row {
     margin-bottom: 20px;
     .btn-default {
-        width: 140px;
+        width: 100px;
     }
+}
+
+.control-group-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: $gray;
+    padding-right: 5px;
+    vertical-align: middle;
 }

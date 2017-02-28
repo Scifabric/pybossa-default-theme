@@ -239,7 +239,7 @@
 {% macro render_dropdown(id, class, entries, current_selection) %}
 <div class="btn-group">
     <div class="dropdown combo-box">
-        <button class="btn btn-default dropdown-toggle {{class}}" type="button" id="{{id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <button class="btn btn-default btn-xs dropdown-toggle {{class}}" type="button" id="{{id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <span class="selection" data-dropdown-selection="{{current_selection}}">{{entries[current_selection]}}</span>
             <span class="caret"></span>
         </button>
@@ -254,10 +254,11 @@
 
 {% macro render_sort_control(columns, directions) %}
 <div class="order-panel pull-right">
+    <span class="control-group-label">Order by</span>
     {{ render_dropdown(columns.id, _('order-column'), columns.entries, columns.current_selection) }}
     {{ render_dropdown(directions.id, _('order-direction'), directions.entries, directions.current_selection) }}
     <div class="btn-group">
-        <button type="button" class="btn btn-primary sort-by-button" name="button">Sort</button>
+        <button type="button" class="btn btn-primary btn-xs sort-by-button" name="button">Sort</button>
     </div>
 </div>
 {% endmacro %}
