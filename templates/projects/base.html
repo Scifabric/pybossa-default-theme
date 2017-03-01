@@ -24,6 +24,7 @@
             </div>
         </div>
         {% if active_link == 'info' %}
+        <p>Project ID: {{project.id}}</p>
         <p><em>{{ overall_progress | round | int }}% {{_('completed')}}</em></p>
         <p>Number of tasks to be submitted: {{n_available_tasks}}</p>
         {% endif %}
