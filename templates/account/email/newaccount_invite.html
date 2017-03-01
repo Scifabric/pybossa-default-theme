@@ -1,12 +1,16 @@
  {% block page_content %}
     <h1>Account Registration</h1>
     <p>Hello, {{user['fullname']}}!</p>
-    <p>Welcome to GIGwork. Your account has been created on {{ server_url }} </p>
+    <p>Welcome to GIGwork 
+    {% if server_url == "https://qa.gigwork.net" %}
+    (QA Version)
+    {% endif %}
+    . Your account has been created on {{ server_url }} </p>
     
     <p>Please login with your email: {{user['email_addr']}} and temporary password: {{user['password']}}</p>
     <p>Upon login, you will be emailed a code that you will need to enter to verify your account</p>
     {% if project_urls %}
-        <p>You can contribute to following project(s):
+        <p>You can contribute to the following project(s):
         <ul>
         {% for project_url in project_urls %}
             <li>{{project_url}}</li>
@@ -14,5 +18,6 @@
         </ul>
         </p>
     {% endif %}
+    <br>
     <p>Reference manual for GIGwork platform is available at {{user_manual_url}}</p>
 {% endblock %}
