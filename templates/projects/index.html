@@ -24,13 +24,13 @@
         </div>
         {% if projects %}
             {% if active_cat.short_name=="featured"%}
-                {% set title = _('Featured Ongoing Projects') %}
+                {% set title = _('Ongoing Featured Projects') %}
                 {% set subheading =_('A special selection of the most interesting projects') %}
             {% elif active_cat.short_name=='draft' %}
                 {% set title = _('Draft Projects') %}
                 {% set subheading = _('Work in progress projects') %}
             {% else %}
-                {% set title = active_cat.name + ' ' + _('Ongoing Projects') %}
+                {% set title = _('Ongoing') + ' ' + active_cat.name + ' ' + _('Projects') %}
                 {% set subheading = active_cat.description %}
             {% endif %}
             <div class="row">
