@@ -26,6 +26,9 @@
             </div>
     </div>
 </section>
-
-<script src="{{url_for('static', filename='js/projects.js')}}" type="text/javascript"> </script>
+{% endblock %}
+{% block extrajs %}
+<script type="text/javascript">
+{% include "account/js/sort_projects.js" %}
+</script>
 {% endblock %}
