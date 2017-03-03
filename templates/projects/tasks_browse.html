@@ -55,7 +55,7 @@
             <li><strong>{{_('Task')}} </strong><span class="label label-info">#0000</span> {{_('This number identifies the task for the project and it is unique')}}</li>
             <li><strong>0 of 30</strong>: {{_('The first number shows how many answers have been submitted for the task and the')}} <a data-placement="top" rel="tooltip" href="#" data-original-title="{{_('This redundancy method will help to detect errors, typos, data forging, etc. when the task has been completed')}}">{{_('second number')}}</a> {{_('how many need to be obtained to mark the task as')}} <strong>{{_('completed')}}</strong>. </li>
             <li><strong>{{_('Priority')}}</strong>: {{_('Shows the priority of the task, priority ranges between 0 (lowest value) and 1.0 (hightest priority)')}}.</li>
-            <li><strong>{{_('%Complete')}}</strong>: {{_('Shows the percentage that has been completed of the task')}}.</li>
+            <li><strong>%{{_('Complete')}}</strong>: {{_('Shows the percentage that has been completed of the task')}}.</li>
             <li><strong>{{_('Created')}}</strong>: {{_('When the task was created')}}.</li>
             <li><strong>{{_('Completed')}}</strong>: {{_('When the task became fully completed')}}.</li>
             <li><strong>{{_('Actions')}}</strong>: {{_('Download or view task results')}}.</li>
@@ -186,7 +186,7 @@
                 <td>{{ t.created }}</td>
                 {% endif %}
                 {% if 'finish_time' in filter_data.display_columns %}
-                <td>{{ t.finish_time }}</td>
+                <td>{{ t.finish_time or '' }}</td>
                 {% endif %}
                 {% if 'actions' in filter_data.display_columns %}
                 <td>
@@ -195,7 +195,7 @@
                     {% elif task_pct > 0 and task_pct < 100 %}
                     <a id="partialdownload" rel="nofollow" class="btn btn-info btn-xs fa fa-cloud-download" href="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}">&nbsp;</a> <button type="button" class="btn btn-success btn-xs fa fa-eye" data-toggle="modal" data-target="#infoModal" data-info="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}"></button>
                     {% else %}
-                    <a id="nothingtodownload" rel="nofollow" class="btn btn-info btn-xs disabled fa fa-cloud-download" href="#"> {{_('Nothing to download yet')}}</a>
+                    <a id="nothingtodownload" rel="nofollow" class="btn btn-info btn-xs disabled fa fa-cloud-download" href="#">&nbsp;</a> <a rel="nofollow" class="btn btn-success btn-xs disabled fa fa-eye" href="#"></a>
                     {% endif %}
                 </td>
                 {% endif %}

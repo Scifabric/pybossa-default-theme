@@ -64,6 +64,8 @@ $(document).ready(function() {
 	});
 
 	$("#tasksGrid th[data-sort]").click(function(evt) {
+		dirtyView();
+		
 		var column = $(this);
 
 		if (!evt.ctrlKey) {
