@@ -24,9 +24,12 @@
             </div>
         </div>
         {% if active_link == 'info' %}
+        <p><strong>{{ overall_progress | round | int }}% {{_('completed')}}</strong></p>
         <p>Project ID: {{project.id}}</p>
-        <p><em>{{ overall_progress | round | int }}% {{_('completed')}}</em></p>
-        <p>Number of tasks to be submitted: {{n_available_tasks}}</p>
+        <p>Number of tasks remaining: {{n_available_tasks}}</p>
+        <p>Total number of tasks: {{n_tasks}}</p>
+        <p>Tasks completed by you: {{n_completed_tasks_by_user}}</p>
+        <p>Oldest available task (with highest priority): {{oldest_available_task | datetime}}</p>
         {% endif %}
         {% block projectcontent %}{% endblock %}
         <div id="ckan" style="display:none">
