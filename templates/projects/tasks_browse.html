@@ -136,25 +136,25 @@
                 {% if 'priority' in filter_data.display_columns %}
                 <th>
                     <div>
-                        <input id="priority" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="[{{ filter_data.priority1 or 0 }},{{ filter_data.priority2 or 100 }}]" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
+                        <input id="priority" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="[{{ filter_data.priority_from or 0 }},{{ filter_data.priority_to or 100 }}]" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
                     </div>
                 </th>
                 {% endif %}
                 {% if 'pcomplete' in filter_data.display_columns %}
                 <th>
                     <div>
-                        <input id="pcomplete" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="[{{ filter_data.pcomplete1 or 0 }},{{ filter_data.pcomplete2 or 100 }}]" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
+                        <input id="pcomplete" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="[{{ filter_data.pcomplete_from or 0 }},{{ filter_data.pcomplete_to or 100 }}]" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
                     </div>
                 </th>
                 {% endif %}
                 {% if 'created' in filter_data.display_columns %}
                 <th>
-                   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dateModal" data-info="created">Filter</button>
+                   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dateModal" data-info="created">Select date range</button>
                 </th>
                 {% endif %}
                 {% if 'finish_time' in filter_data.display_columns %}
                 <th>
-                   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dateModal" data-info="ftime">Filter</button>
+                   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dateModal" data-info="ftime">Select date range</button>
                 </th>
                 {% endif %}
                 {% if 'actions' in filter_data.display_columns %}
@@ -224,11 +224,13 @@
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon" style="width: 70px;">From:</div>
-                <input class="form-control input-sm" type="datetime-local" value="" id="time1" style="width: 190px;" />
+                <input class="form-control input-sm" type="datetime-local" id="time_from" style="width: 190px;" />
             </div>
+        </div>
+        <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon" style="width: 70px;">To:</div>
-                <input class="form-control input-sm" type="datetime-local" value="" id="time2" style="width: 190px;" />
+                <input class="form-control input-sm" type="datetime-local" id="time_to" style="width: 190px;" />
             </div>
         </div>
       </div>

@@ -6,18 +6,26 @@ function dirtyView() {
 		$("[data-toggle=popover]").popover('show');
 	}
 }
+function checkDateValidity() {
+	if (!this.checkValidity()) {
+		var form_group = $(this).closest('.form-group');
+		if (!form_group.hasClass('has-error')) {
+			form_group.addClass('has-error');
+		}
+	}
+}
 $(document).ready(function() {
 	$('#priority').slider().on('slide', function(ev) {
 		dirtyView();
 
-		filter_data.priority1 = ev.value[0];
-		filter_data.priority2 = ev.value[1];
+		filter_data.priority_from = ev.value[0];
+		filter_data.priority_to = ev.value[1];
 	});
 	$('#pcomplete').slider().on('slide', function(ev) {
 		dirtyView();
 
-		filter_data.pcomplete1 = ev.value[0];
-		filter_data.pcomplete2 = ev.value[1];
+		filter_data.pcomplete_from = ev.value[0];
+		filter_data.pcomplete_to = ev.value[1];
 	});
 	$('#task_id').change(function() {
 		dirtyView();
@@ -33,16 +41,23 @@ $(document).ready(function() {
 		dateModalInfo = info;
 
 		var modal = $(this);
-		modal.find('.modal-body #time1').val(filter_data[info + '1']);
-		modal.find('.modal-body #time2').val(filter_data[info + '2']);
+		modal.find('.modal-body #time_from').val(filter_data[info + '_from']).focusout(checkDateValidity).closest('.form-group').removeClass('has-error');
+		modal.find('.modal-body #time_to').val(filter_data[info + '_to']).focusout(checkDateValidity).closest('.form-group').removeClass('has-error');
 	});
 
 	$('#saveDateModal').click(function() {
 		var info = dateModalInfo;
 		var modal = $('#dateModal');
 
-		filter_data[info + '1'] = modal.find('.modal-body #time1').val();
-		filter_data[info + '2'] = modal.find('.modal-body #time2').val();
+		var time_from = modal.find('.modal-body #time_from');
+		var time_to = modal.find('.modal-body #time_to');
+
+		if (!time_from[0].checkValidity() || !time_to[0].checkValidity()) {
+			return;
+		}
+
+		filter_data[info + '_from'] = time_from.val();
+		filter_data[info + '_to'] = time_to.val();
 
 		modal.modal('hide');
 		dirtyView();
