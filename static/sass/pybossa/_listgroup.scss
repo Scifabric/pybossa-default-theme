@@ -5,3 +5,7 @@ li.list-group-item {
 li.list-group-item.active a {
     color: $white;
 }
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+	background-color:#3498db;
+	border-color:#3498db;
+}
