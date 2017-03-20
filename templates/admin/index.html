@@ -31,7 +31,10 @@
 </div>
 <div class="row">
     <div id="users-list" class="col-md-6">
-        {{ render_project_card_option(project, upload_method, title=_('Users'), explanation=_('Export a list of users'), link=url_for('admin.export_users', format='csv'), link_action_text=_('CSV'), link_two=url_for('admin.export_users', format='json'), link_action_text_two=_('JSON'), icon='user')}}
+        {{ render_project_card_option(project, upload_method, title=_('Export Users'), explanation=_('Export a list of users'), link=url_for('admin.export_users', format='csv'), link_action_text=_('CSV'), link_two=url_for('admin.export_users', format='json'), link_action_text_two=_('JSON'), icon='user')}}
+    </div>
+    <div id="import-users" class="col-md-6">
+        {{ render_project_card_option(project, upload_method, title=_('Import Users'), explanation=_('Import bulk users with local csv file'), link=url_for('admin.userimport', type='usercsvimport'), link_action_text=_('Import'), icon='user')}}
     </div>
 </div>
 <div class="row">
