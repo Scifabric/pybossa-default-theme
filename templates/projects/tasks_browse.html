@@ -5,6 +5,48 @@
 {% set section = _('Browse tasks') %}
 
 {% block projectcontent %}
+<link rel="stylesheet" href="{{url_for('static', filename='vendor/slider/css/slider.css')}}"/>
+
+<style type="text/css">
+#tasksGrid th.sort-desc:after,
+#tasksGrid th.sort-asc:after{
+    content: '';
+    position: relative;
+    left: -20px;
+    float: right;
+    border: 7px solid transparent;
+}
+#tasksGrid th.sort-desc:after{
+    top: 10px;
+    border-top-color: silver;
+}
+#tasksGrid th.sort-asc:after{
+    border-bottom-color: silver;
+}
+#tasksGrid th.sort-desc,
+#tasksGrid th.sort-asc{
+    padding-left: 20px;
+}
+
+#tasksBrowseControls {
+    padding-left:0;
+}
+#tasksBrowseControls>ul {
+    list-style: none;
+    padding-left: 0;
+}
+#tasksBrowseControls>ul>li:not(:first-child) {
+    float:right;
+    padding-left: 5px;
+}
+#tasksBrowseControls>ul>li:first-child {
+    float:left;
+}
+#tasksGrid th.sortable {
+    cursor: pointer;
+}
+</style>
+
 <div class="row">
     <div class="col-md-12">
         <p>{{_('This page shows all the available tasks for this project')}}.</p> 
@@ -12,44 +54,156 @@
         <ul>
             <li><strong>{{_('Task')}} </strong><span class="label label-info">#0000</span> {{_('This number identifies the task for the project and it is unique')}}</li>
             <li><strong>0 of 30</strong>: {{_('The first number shows how many answers have been submitted for the task and the')}} <a data-placement="top" rel="tooltip" href="#" data-original-title="{{_('This redundancy method will help to detect errors, typos, data forging, etc. when the task has been completed')}}">{{_('second number')}}</a> {{_('how many need to be obtained to mark the task as')}} <strong>{{_('completed')}}</strong>. </li>
-            <li><strong>{{_('Progress Bar')}}</strong>: {{_('The progress progress-bar will the percentage that has been completed for the task')}}.</li>
+            <li><strong>{{_('Priority')}}</strong>: {{_('Shows the priority of the task, priority ranges between 0 (lowest value) and 1.0 (hightest priority)')}}.</li>
+            <li><strong>%{{_('Complete')}}</strong>: {{_('Shows the percentage that has been completed of the task')}}.</li>
+            <li><strong>{{_('Created')}}</strong>: {{_('When the task was created')}}.</li>
+            <li><strong>{{_('Completed')}}</strong>: {{_('When the task became fully completed')}}.</li>
+            <li><strong>{{_('Actions')}}</strong>: {{_('Download or view task results')}}.</li>
         </ul>
         </p>
     </div>
 </div>
-{% for t in tasks %}
-{% set task_pct = t.pct_status*100 %}
-<div class="row">
-    <div class="col-md-3">
-        {% if task_pct >= 100 %}
-        {{_('Task')}} <span class="label label-success">#{{ t.id }}</span>
-        {% else %}
-        {{_('Task')}} <span class="label label-info">#{{ t.id }}</span>
-        {% endif %}
-        {{ t.n_task_runs }} {{_('of')}} {{ t.n_answers }}
-    </div>
-    <div class="col-md-5">
-        <div class="progress"> 
-            <div class="progress-bar" role="progressbar" aria-valuenow="{{task_pct}}" aria-valuemin="0" aria-valuemax="100" style="width: {{task_pct}}%;">
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        {% if task_pct >= 100 %}
-        <a id="fulldownload" rel="nofollow" class="btn btn-success btn-xs" href="{{ url_for('project.export', 
-            short_name=project.short_name,
-            task_id=t.id) }}"><i class="fa fa-cloud-download"></i> {{_('Download Task Results')}}</a>
-        {% elif task_pct > 0 and task_pct < 100 %}
-        <a id="partialdownload" rel="nofollow" class="btn btn-info btn-xs" href="{{ url_for('project.export', 
-            short_name=project.short_name,
-            task_id=t.id) }}"><i class="fa fa-cloud-download"></i> {{_('Download Partial results')}}</a>
-
-        {% else %}
-        <a id="nothingtodownload" rel="nofollow" class="btn btn-info btn-xs disabled" href="#"><i class="fa fa-cloud-download"></i> {{_('Nothing to download yet')}}</a>
-        {% endif %}
-    </div>
+<div id='tasksBrowseControls' class="collapse navbar-collapse">
+    <ul>
+        <li>
+        <b>
+        {{ _('Displaying') }} {{ pagination.total_count if pagination.total_count < pagination.per_page else pagination.per_page }} {{ _(' of') }} {{ pagination.total_count }}
+        </b>
+        </li>
+        <li>
+            <button id='btnRefresh' type="button" data-toggle="popover" data-trigger="focus" data-placement="top" data-constraints='focus' data-content="{{_('Please refresh the results after setting the desired filters.')}}" title="{{_('Refresh Results')}}">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+            </button>
+        </li>
+        <li class="dropdown">
+            <button class="dropdown-toggle" type="button" id="btnRpp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{records_per_page}}<span class="caret"></span></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+                <li><a href="#" class='records_per_page'>10</a></li>
+                <li><a href="#" class='records_per_page'>20</a></li>
+                <li><a href="#" class='records_per_page'>30</a></li>
+                <li><a href="#" class='records_per_page'>50</a></li>
+                <li><a href="#" class='records_per_page'>70</a></li>
+                <li><a href="#" class='records_per_page'>100</a></li>
+            </ul>
+        </li>
+        <li class="dropdown" id="columnsSettings">
+            <button class="dropdown-toggle" type="button" id="btnColumnsSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="fa fa-cog"><span class="caret"></span></button>
+            <ul class="dropdown-menu" aria-labelledby="btnColumnsSettings">
+                <li><a href="#" class="columns_settings" data-value="task_id" tabIndex="-1"><input type="checkbox" {{ "checked" if "task_id" in filter_data.display_columns }} />&nbsp;Task Id</a></li>
+                <li><a href="#" class="columns_settings" data-value="priority" tabIndex="-1"><input type="checkbox" {{ "checked" if "priority" in filter_data.display_columns }}/>&nbsp;Priority</a></li>
+                <li><a href="#" class="columns_settings" data-value="pcomplete" tabIndex="-1"><input type="checkbox" {{ "checked" if "pcomplete" in filter_data.display_columns }}/>&nbsp;%Complete</a></li>
+                <li><a href="#" class="columns_settings" data-value="created" tabIndex="-1"><input type="checkbox" {{ "checked" if "created" in filter_data.display_columns }}/>&nbsp;Created</a></li>
+                <li><a href="#" class="columns_settings" data-value="finish_time" tabIndex="-1"><input type="checkbox" {{ "checked" if "finish_time" in filter_data.display_columns }}/>&nbsp;Completed</a></li>
+                <li><a href="#" class="columns_settings" data-value="actions" tabIndex="-1"><input type="checkbox" {{ "checked" if "actions" in filter_data.display_columns }}/>&nbsp;Actions</a></li>
+            </ul>
+        </li>
+    </ul>
 </div>
-{% endfor %}
+<div>
+    <table width="100%" id="tasksGrid">
+        <thead>
+            <tr>
+                {% if 'task_id' in filter_data.display_columns %}
+                <th class="{{'sort-asc' if filter_data.order_by['task_id'] == 'asc'}} {{'sort-desc' if filter_data.order_by['task_id'] == 'desc'}} sortable" data-sort="task_id">Task#</th>
+                {% endif %}
+                {% if 'priority' in filter_data.display_columns %}
+                <th class="{{'sort-asc' if filter_data.order_by['priority'] == 'asc'}} {{'sort-desc' if filter_data.order_by['priority'] == 'desc'}} sortable" data-sort="priority">Priority</th>
+                {% endif %}
+                {% if 'pcomplete' in filter_data.display_columns %}
+                <th class="{{'sort-asc' if filter_data.order_by['pcomplete'] == 'asc'}} {{'sort-desc' if filter_data.order_by['pcomplete'] == 'desc'}} sortable" data-sort="pcomplete">%Complete</th>
+                {% endif %}
+                {% if 'created' in filter_data.display_columns %}
+                <th class="{{'sort-asc' if filter_data.order_by['created'] == 'asc'}} {{'sort-desc' if filter_data.order_by['created'] == 'desc'}} sortable" data-sort="created">Created</th>
+                {% endif %}
+                {% if 'finish_time' in filter_data.display_columns %}
+                <th class="{{'sort-asc' if filter_data.order_by['finish_time'] == 'asc'}} {{'sort-desc' if filter_data.order_by['finish_time'] == 'desc'}} sortable" data-sort="finish_time">Completed</th>
+                {% endif %}
+                {% if 'actions' in filter_data.display_columns %}
+                <th>Actions</th>
+                {% endif %}
+            </tr>
+            <tr>
+                {% if 'task_id' in filter_data.display_columns %}
+                <th>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">#</div>
+                        <input class="form-control input-sm" type="number" value="{{ filter_data.task_id or '' }}" id="task_id" style="width: 100px;">
+                    </div>
+                    </div>
+                </th>
+                {% endif %}
+                {% if 'priority' in filter_data.display_columns %}
+                <th>
+                    <div>
+                        <input id="priority" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="[{{ filter_data.priority_from or 0 }},{{ filter_data.priority_to or 100 }}]" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
+                    </div>
+                </th>
+                {% endif %}
+                {% if 'pcomplete' in filter_data.display_columns %}
+                <th>
+                    <div>
+                        <input id="pcomplete" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="[{{ filter_data.pcomplete_from or 0 }},{{ filter_data.pcomplete_to or 100 }}]" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
+                    </div>
+                </th>
+                {% endif %}
+                {% if 'created' in filter_data.display_columns %}
+                <th>
+                   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dateModal" data-info="created">Select date range</button>
+                </th>
+                {% endif %}
+                {% if 'finish_time' in filter_data.display_columns %}
+                <th>
+                   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dateModal" data-info="ftime">Select date range</button>
+                </th>
+                {% endif %}
+                {% if 'actions' in filter_data.display_columns %}
+                <th>&nbsp;</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in tasks %}
+            {% set task_pct = t.pct_status*100 %}
+            <tr>
+                {% if 'task_id' in filter_data.display_columns %}
+                <td>
+                    {% if task_pct >= 100 %}
+                        <span class="label label-success">#{{ t.id }}</span>
+                    {% else %}
+                        <span class="label label-info">#{{ t.id }}</span>
+                    {% endif %}
+                    {{ t.n_task_runs }} {{_('of')}} {{ t.n_answers }}
+                </td>
+                {% endif %}
+                {% if 'priority' in filter_data.display_columns %}
+                <td>{{ t.priority_0 }}</td>
+                {% endif %}
+                {% if 'pcomplete' in filter_data.display_columns %}
+                <td>{{task_pct}}</td>
+                {% endif %}
+                {% if 'created' in filter_data.display_columns %}
+                <td>{{ t.created }}</td>
+                {% endif %}
+                {% if 'finish_time' in filter_data.display_columns %}
+                <td>{{ t.finish_time or '' }}</td>
+                {% endif %}
+                {% if 'actions' in filter_data.display_columns %}
+                <td>
+                    {% if task_pct >= 100 %}
+                    <a id="fulldownload" rel="nofollow" class="btn btn-success btn-xs fa fa-cloud-download" href="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}">&nbsp;</a> <button type="button" class="btn btn-success btn-xs fa fa-eye" data-toggle="modal" data-target="#infoModal" data-info="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}"></button>
+                    {% elif task_pct > 0 and task_pct < 100 %}
+                    <a id="partialdownload" rel="nofollow" class="btn btn-info btn-xs fa fa-cloud-download" href="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}">&nbsp;</a> <button type="button" class="btn btn-success btn-xs fa fa-eye" data-toggle="modal" data-target="#infoModal" data-info="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}"></button>
+                    {% else %}
+                    <a id="nothingtodownload" rel="nofollow" class="btn btn-info btn-xs disabled fa fa-cloud-download" href="#">&nbsp;</a> <a rel="nofollow" class="btn btn-success btn-xs disabled fa fa-eye" href="#"></a>
+                    {% endif %}
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% if pagination.pages > 1 %}
 <div class="row">
     <div class="col-md-12 text-center">
@@ -57,4 +211,63 @@
     </div>
 </div>
 {% endif %}
+
+<!-- Date Modal -->
+<div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="dateModalLabel">Edit date range</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon" style="width: 70px;">From:</div>
+                <input class="form-control input-sm" type="datetime-local" id="time_from" style="width: 190px;" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon" style="width: 70px;">To:</div>
+                <input class="form-control input-sm" type="datetime-local" id="time_to" style="width: 190px;" />
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id='saveDateModal'>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- View Info -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="infoModalLabel">View Task Info</h4>
+      </div>
+      <div class="modal-body">
+        <div id='loadingInfo' style="text-align: center;"><i class="fa fa-spinner fa-pulse fa-5x fa-fw"> </i></div>
+        <div id='taskInfo'>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    var filter_data = {{ filter_data|tojson }};
+    var first_page_url = "{{ url_for('project.tasks_browse', short_name=project.short_name) }}";
+    var records_per_page = {{ records_per_page if records_per_page != 10 else 'undefined'}};
+</script>
+
+<script src="{{url_for('static', filename='vendor/slider/js/bootstrap-slider.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/tasks_browse.js')}}" type="text/javascript"></script>
 {% endblock %}
