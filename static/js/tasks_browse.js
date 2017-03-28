@@ -6,14 +6,7 @@ function dirtyView() {
 		$("[data-toggle=popover]").popover('show');
 	}
 }
-function checkDateValidity() {
-	if (!this.checkValidity()) {
-		var form_group = $(this).closest('.form-group');
-		if (!form_group.hasClass('has-error')) {
-			form_group.addClass('has-error');
-		}
-	}
-}
+
 $(document).ready(function() {
 	$('#priority').slider().on('slide', function(ev) {
 		dirtyView();
@@ -41,23 +34,39 @@ $(document).ready(function() {
 		dateModalInfo = info;
 
 		var modal = $(this);
-		modal.find('.modal-body #time_from').val(filter_data[info + '_from']).focusout(checkDateValidity).closest('.form-group').removeClass('has-error');
-		modal.find('.modal-body #time_to').val(filter_data[info + '_to']).focusout(checkDateValidity).closest('.form-group').removeClass('has-error');
+		var from = filter_data[info + '_from'];
+		var to = filter_data[info + '_to'];
+
+		if (from) {
+			modal.find('.modal-body #date_from').val(from.substring(0, from.indexOf('T')));
+			modal.find('.modal-body #time_from').val(from.substring(from.indexOf('T')+1));
+		}
+
+		if (to) {
+			modal.find('.modal-body #date_to').val(to.substring(0, to.indexOf('T')));
+			modal.find('.modal-body #time_to').val(to.substring(to.indexOf('T')+1));
+		}
 	});
 
 	$('#saveDateModal').click(function() {
 		var info = dateModalInfo;
 		var modal = $('#dateModal');
 
-		var time_from = modal.find('.modal-body #time_from');
-		var time_to = modal.find('.modal-body #time_to');
+		var time_from = modal.find('.modal-body #time_from').val();
+		var time_to = modal.find('.modal-body #time_to').val();
+		var date_from = modal.find('.modal-body #date_from').val();
+		var date_to = modal.find('.modal-body #date_to').val();
 
-		if (!time_from[0].checkValidity() || !time_to[0].checkValidity()) {
-			return;
+		var from = '', to = '';
+		if (date_from) {
+			from = date_from + 'T' + (time_from || '00:00');
+		}
+		if (date_to) {
+			to = date_to + 'T' + (time_to || '23:59');
 		}
 
-		filter_data[info + '_from'] = time_from.val();
-		filter_data[info + '_to'] = time_to.val();
+		filter_data[info + '_from'] = from;
+		filter_data[info + '_to'] = to;
 
 		modal.modal('hide');
 		dirtyView();

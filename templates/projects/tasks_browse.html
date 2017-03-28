@@ -53,8 +53,8 @@
         <p>{{_('For each task, you can find the following information')}}:
         <ul>
             <li><strong>{{_('Task')}} </strong><span class="label label-info">#0000</span> {{_('This number identifies the task for the project and it is unique')}}</li>
-            <li><strong>0 of 30</strong>: {{_('The first number shows how many answers have been submitted for the task and the')}} <a data-placement="top" rel="tooltip" href="#" data-original-title="{{_('This redundancy method will help to detect errors, typos, data forging, etc. when the task has been completed')}}">{{_('second number')}}</a> {{_('how many need to be obtained to mark the task as')}} <strong>{{_('completed')}}</strong>. </li>
-            <li><strong>{{_('Priority')}}</strong>: {{_('Shows the priority of the task, priority ranges between 0 (lowest value) and 1.0 (hightest priority)')}}.</li>
+            <li><strong>0 of 30</strong>: {{_('The first number shows how many answers have been submitted for the task and the')}} {{_('second number')}} {{_('how many need to be obtained to mark the task as')}} <strong>{{_('completed')}}</strong>. </li>
+            <li><strong>{{_('Priority')}}</strong>: {{_('Shows the priority of the task, priority ranges from 0.0 (lowest value) to 1.0 (hightest priority)')}}.</li>
             <li><strong>%{{_('Complete')}}</strong>: {{_('Shows the percentage that has been completed of the task')}}.</li>
             <li><strong>{{_('Created')}}</strong>: {{_('When the task was created')}}.</li>
             <li><strong>{{_('Completed')}}</strong>: {{_('When the task became fully completed')}}.</li>
@@ -89,7 +89,7 @@
         <li class="dropdown" id="columnsSettings">
             <button class="dropdown-toggle" type="button" id="btnColumnsSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="fa fa-cog"><span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="btnColumnsSettings">
-                <li><a href="#" class="columns_settings" data-value="task_id" tabIndex="-1"><input type="checkbox" {{ "checked" if "task_id" in filter_data.display_columns }} />&nbsp;Task Id</a></li>
+                <li><a href="#" class="columns_settings" data-value="task_id" tabIndex="-1"><input type="checkbox" {{ "checked" if "task_id" in filter_data.display_columns }} disabled="disabled" />&nbsp;Task Id</a></li>
                 <li><a href="#" class="columns_settings" data-value="priority" tabIndex="-1"><input type="checkbox" {{ "checked" if "priority" in filter_data.display_columns }}/>&nbsp;Priority</a></li>
                 <li><a href="#" class="columns_settings" data-value="pcomplete" tabIndex="-1"><input type="checkbox" {{ "checked" if "pcomplete" in filter_data.display_columns }}/>&nbsp;%Complete</a></li>
                 <li><a href="#" class="columns_settings" data-value="created" tabIndex="-1"><input type="checkbox" {{ "checked" if "created" in filter_data.display_columns }}/>&nbsp;Created</a></li>
@@ -128,7 +128,7 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">#</div>
-                        <input class="form-control input-sm" type="number" value="{{ filter_data.task_id or '' }}" id="task_id" style="width: 100px;">
+                        <input class="form-control input-sm" type="number" value="{{ filter_data.task_id or '' }}" min="{{ first_task_id or 0 }}" id="task_id" style="width: 100px;">
                     </div>
                     </div>
                 </th>
@@ -224,13 +224,13 @@
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon" style="width: 70px;">From:</div>
-                <input class="form-control input-sm" type="datetime-local" id="time_from" style="width: 190px;" />
+                <input class="form-control input-sm" type="date" id="date_from" style="width: 180px;" />&nbsp;<input class="form-control input-sm" type="time" id="time_from" style="width: 180px;" value="00:00" />
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon" style="width: 70px;">To:</div>
-                <input class="form-control input-sm" type="datetime-local" id="time_to" style="width: 190px;" />
+                <input class="form-control input-sm" type="date" id="date_to" style="width: 180px;" />&nbsp;<input class="form-control input-sm" type="time" id="time_to" style="width: 180px;" value="23:59" />
             </div>
         </div>
       </div>
