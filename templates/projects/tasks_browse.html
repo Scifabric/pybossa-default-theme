@@ -54,7 +54,7 @@
         <ul>
             <li><strong>{{_('Task')}} </strong><span class="label label-info">#0000</span> {{_('This number identifies the task for the project and it is unique')}}</li>
             <li><strong>0 of 30</strong>: {{_('The first number shows how many answers have been submitted for the task and the')}} {{_('second number')}} {{_('how many need to be obtained to mark the task as')}} <strong>{{_('completed')}}</strong>. </li>
-            <li><strong>{{_('Priority')}}</strong>: {{_('Shows the priority of the task, priority ranges from 0.0 (lowest value) to 1.0 (hightest priority)')}}.</li>
+            <li><strong>{{_('Priority')}}</strong>: {{_('Shows the priority of the task, priority ranges from 0.0 (lowest value) to 1.0 (highest priority)')}}.</li>
             <li><strong>%{{_('Complete')}}</strong>: {{_('Shows the percentage that has been completed of the task')}}.</li>
             <li><strong>{{_('Created')}}</strong>: {{_('When the task was created')}}.</li>
             <li><strong>{{_('Completed')}}</strong>: {{_('When the task became fully completed')}}.</li>
@@ -180,7 +180,7 @@
                 <td>{{ t.priority_0 }}</td>
                 {% endif %}
                 {% if 'pcomplete' in filter_data.display_columns %}
-                <td>{{task_pct}}</td>
+                <td>{{ task_pct|round(2, 'floor') }}</td>
                 {% endif %}
                 {% if 'created' in filter_data.display_columns %}
                 <td>{{ t.created }}</td>
