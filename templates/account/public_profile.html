@@ -26,7 +26,7 @@
                 <div class="col-md-offset-15 col-md-10 {% if input_form %} hidden {% endif %}" id="user-info" >
                     {% if metadata %}
                         {% if metadata.languages %}<h4><b>Language(s):</b> {{metadata.languages|join(', ') }}</h4>{% endif %}
-                        {% if metadata.location %}<h4><b>Location:</b> {{metadata.location}}</h4>{% endif %}
+                        {% if metadata.location %}<h4><b>Location:</b> {{metadata.location|join(', ') }}</h4>{% endif %}
                         {% if metadata.start_time %}<h4><b>Available:</b> {{metadata.start_time}}<b> - </b> {{metadata.end_time}} {{metadata.timezone}}</h4>{% endif %}
                         {% if metadata.user_type %}<h4><b>User Type:</b> {{metadata.user_type}}</h4>{% endif %}
                         {% if metadata.review %}<h4><b>Review:</b> {{metadata.review}}</h4>{% endif %}
@@ -46,7 +46,9 @@
                             <div class="help-tip">
                                 <p>Non Chrome users should input time in <u>military format</u> ex. 13:30</p>
                             </div>
-                            {{ render_form(form, action_url=url_for('account.add_metadata',name=user.name), btn_class="btn btn-info btn-large" )}}
+                            {{ render_form(form, action_url=url_for('account.add_metadata',name=user.name), btn_class="btn btn-info btn-block") }}
+                            &nbsp;
+                            <a href="{{url_for('account.profile', name=user.name)}}" class="btn btn-default btn-block">{{ _('Cancel') }}</a>
                         </div>
                     </div>
                 </div>
