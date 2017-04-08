@@ -39,7 +39,10 @@
 </div>
 <div class="row">
     <div id="exportprojects" class="col-md-6">
-        {{ render_project_card_option(project, upload_method, title=_('projects'), explanation=_('Generate projects report'), link=url_for('project.export_projects', format='csv'), link_action_text=_('CSV'), icon='check') }}
+        {{ render_project_card_option(project, upload_method, title=_('Project Report'), explanation=_('Generate projects report'), link=url_for('project.export_projects', format='csv'), link_action_text=_('CSV'), icon='check') }}
+    </div>
+    <div id="manageusers" class="col-md-6">
+        {{ render_project_card_option(project, upload_method, title=_('Manage Users'), explanation=_('Enable/Disable Users'), link=url_for('admin.manageusers'), link_action_text=_('Manage'), icon='user')}}
     </div>
 </div>
 <div class="row">
