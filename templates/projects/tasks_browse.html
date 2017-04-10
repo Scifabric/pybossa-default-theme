@@ -136,7 +136,7 @@
                 {% if 'priority' in filter_data.display_columns %}
                 <th>
                     <div>
-                        <input id="priority" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="[{{ filter_data.priority_from or 0 }},{{ filter_data.priority_to or 100 }}]" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
+                        <input id="priority" type="text" class="span2" value="" data-slider-min="0" data-slider-max="1" data-slider-step="0.05" data-slider-value="[{{ filter_data.priority_from or 0 }},{{ filter_data.priority_to or 1 }}]" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
                     </div>
                 </th>
                 {% endif %}
@@ -169,18 +169,18 @@
                 {% if 'task_id' in filter_data.display_columns %}
                 <td>
                     {% if task_pct >= 100 %}
-                        <span class="label label-success">#{{ t.id }}</span>
+                        <a class="label label-success" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) }}">#{{ t.id }}</a>
                     {% else %}
-                        <span class="label label-info">#{{ t.id }}</span>
+                        <a class="label label-info" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) }}">#{{ t.id }}</a>
                     {% endif %}
-                    {{ t.n_task_runs }} {{_('of')}} {{ t.n_answers }}
+                    {{ t.n_task_runs|int }} {{_('of')}} {{ t.n_answers }}
                 </td>
                 {% endif %}
                 {% if 'priority' in filter_data.display_columns %}
                 <td>{{ t.priority_0 }}</td>
                 {% endif %}
                 {% if 'pcomplete' in filter_data.display_columns %}
-                <td>{{ task_pct|round(2, 'floor') }}</td>
+                <td>{{ (task_pct|round(2, 'floor')|string).rstrip('0').rstrip('.') }}</td>
                 {% endif %}
                 {% if 'created' in filter_data.display_columns %}
                 <td>{{ t.created }}</td>

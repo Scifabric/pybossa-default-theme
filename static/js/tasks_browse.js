@@ -8,11 +8,11 @@ function dirtyView() {
 }
 
 $(document).ready(function() {
-	$('#priority').slider().on('slide', function(ev) {
+	$('#priority').slider({ formater: function (value) { return value.toFixed(2); } }).on('slide', function(ev) {
 		dirtyView();
 
-		filter_data.priority_from = ev.value[0];
-		filter_data.priority_to = ev.value[1];
+		filter_data.priority_from = ev.value[0].toFixed(2);
+		filter_data.priority_to = ev.value[1].toFixed(2);
 	});
 	$('#pcomplete').slider().on('slide', function(ev) {
 		dirtyView();
@@ -69,7 +69,7 @@ $(document).ready(function() {
 		filter_data[info + '_to'] = to;
 
 		modal.modal('hide');
-		dirtyView();
+		refresh();
 	});
 
 	$('.records_per_page').click(function() {
