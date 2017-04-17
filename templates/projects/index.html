@@ -13,7 +13,7 @@
             <button id="hide-types" class="btn btn-info btn-sm">Hide</button>
             <button id="show-types" class="btn btn-info btn-sm hidden">Show</button>
         </div>
-        <div id="project-types">
+        <div id="categories">
             <div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
                 <ul class="nav nav-pills nav-justified categories">
                 {% for c in categories %}
@@ -54,5 +54,5 @@
 </section>
 {% endblock %}
 {% block extrajs %}
-{% include "projects/js/projecttypes.js" %}
+{% include "projects/js/categories.js" %}
 {% endblock %}
