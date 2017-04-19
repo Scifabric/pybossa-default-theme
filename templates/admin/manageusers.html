@@ -43,6 +43,17 @@
     {% endfor %}
 </div>
 {% endif %}
+
+{% if disabledusers %}
+<h1>{{ _('Current Disabled Users') }}</h1>
+<div class="row">
+    {% for user in disabledusers %}
+    <div class="col-sm-4 col-md-4">
+    {{ render_project_card_manage_users(user, upload_method, background=True)}}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
 </div>
 </div> <!-- container -->
 {% endblock %}
