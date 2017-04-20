@@ -9,18 +9,22 @@
     <div class="container">
         <div class="row">
         <div class="text-center" style="margin-top:30px;">
-           <h1>Project Categories</h1>
+            <h1>Project Categories</h1>
+            <button id="hide-types" class="btn btn-info btn-sm">Hide</button>
+            <button id="show-types" class="btn btn-info btn-sm hidden">Show</button>
         </div>
+        <div id="categories">
             <div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
                 <ul class="nav nav-pills nav-justified categories">
-                    {% for c in categories %}
-                    <div {% if active_cat.short_name==c.short_name%}class="floating-box active" {% else %}class="floating-box" {% endif %}><a href="{{url_for('project.project_cat_index', category=c.short_name)}}" rel="nofollow"><i class="icon-chevron-right"></i> {{ c.name }}</a></div>
-                    {% endfor %}
-                    {% if current_user.is_authenticated() and current_user.admin %}
-                    <div {% if active_cat.short_name=="draft"%}class="floating-box active" {% else %}class="floating-box" {% endif %}><a href="{{url_for('project.draft')}}" rel="nofollow"><i class="icon-chevron-right"></i> {{ _('Draft') }}</a></div>
-                    {% endif %}
+                {% for c in categories %}
+                <div {% if active_cat.short_name==c.short_name%}class="floating-box active" {% else %}class="floating-box" {% endif %}><a href="{{url_for('project.project_cat_index', category=c.short_name)}}" rel="nofollow"><i class="icon-chevron-right"></i> {{ c.name }}</a></div>
+                {% endfor %}
+                {% if current_user.is_authenticated() and current_user.admin %}
+                <div {% if active_cat.short_name=="draft"%}class="floating-box active" {% else %}class="floating-box" {% endif %}><a href="{{url_for('project.draft')}}" rel="nofollow"><i class="icon-chevron-right"></i> {{ _('Draft') }}</a></div>
+                {% endif %}
                 </ul>
             </div>
+        </div>
         </div>
         {% if projects %}
             {% if active_cat.short_name=="featured"%}
@@ -48,4 +52,7 @@
         {% endif %}
     </div>
 </section>
+{% endblock %}
+{% block extrajs %}
+{% include "projects/js/categories.js" %}
 {% endblock %}
