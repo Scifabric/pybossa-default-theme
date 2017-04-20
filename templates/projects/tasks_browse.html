@@ -3,6 +3,7 @@
 {% set active_project  = "all" %}
 {% set active_link = "tasks" %}
 {% set section = _('Browse tasks') %}
+{% import "projects/_helpers.html" as project_helper %}
 
 {% block projectcontent %}
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/slider/css/slider.css')}}"/>
@@ -49,7 +50,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <p>{{_('This page shows all the available tasks for this project')}}.</p> 
+        <p>{{_('This page shows all the available tasks for this project')}}.</p>
         <p>{{_('For each task, you can find the following information')}}:
         <ul>
             <li><strong>{{_('Task')}} </strong><span class="label label-info">#0000</span> {{_('This number identifies the task for the project and it is unique')}}</li>
@@ -97,6 +98,13 @@
                 <li><a href="#" class="columns_settings" data-value="actions" tabIndex="-1"><input type="checkbox" {{ "checked" if "actions" in filter_data.display_columns }}/>&nbsp;Actions</a></li>
             </ul>
         </li>
+        {% if filter_columns %}
+        <li>
+            <button id='btnFilter' type="button" data-target="#filterModal" data-toggle="modal">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </li>
+        {% endif %}
     </ul>
 </div>
 <div>
@@ -259,6 +267,50 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Filter Modal -->
+<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="infoModalLabel">Filter By Task Request Fields</h4>
+      </div>
+      <div class="modal-body">
+        <div class="filter-rows">
+
+          <div class="row" style="margin-bottom: 5px">
+            <div class="form-inline col-xs-12">
+              <select class="form-group form-control filter-field-name" style="width: 200px">
+                <option value="" disabled selected>Field Name</option>
+                <option value=""></option>
+                {% for column_name in filter_columns %}
+                  <option value="{{column_name}}">{{column_name}}</option>
+                {% endfor %}
+              </select>
+              <div class="form-group">
+                <input type="text" class="form-control filter-field-value" placeholder="Field Value" style="width:267px"/>
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-danger form-control remove-filter-button">Remove</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <button type="button" class="btn btn-primary add-filter-row-button" name="button">Add Row</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id='saveFilterModal'>Save changes</button>
       </div>
     </div>
   </div>

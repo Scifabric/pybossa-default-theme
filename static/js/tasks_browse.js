@@ -89,7 +89,7 @@ $(document).ready(function() {
 
 	$("#tasksGrid th[data-sort]").click(function(evt) {
 		dirtyView();
-		
+
 		var column = $(this);
 
 		if (!evt.ctrlKey) {
@@ -120,10 +120,72 @@ $(document).ready(function() {
 			.fail(function() { taskInfo.text('Error loading data'); })
 			.always(function() {loadingInfo.hide(); taskInfo.show();});
 	});
+
+  $('.remove-filter-button').click(removeFilterRow);
+
+  function removeFilterRow() {
+    if (filterCount == 1) {
+        $('.filter-field-name').val(0);
+        $('.filter-field-value').val(null);
+    }
+    else {
+      $(this).parents('.row').remove();
+      filterCount -= 1;
+    }
+  }
+
+  function addFieldFilterRow(fieldName, fieldValue) {
+    fieldName = fieldName || "";
+    fieldValue = fieldValue || "";
+
+    var toAppend = $('#filterModal .filter-rows .row').first().clone();
+
+    toAppend.find('.filter-field-name').val(fieldName);
+    toAppend.find('.filter-field-value').val(fieldValue);
+    toAppend.find('.remove-filter-button').click(removeFilterRow);
+
+    $('#filterModal .filter-rows').append(toAppend);
+    filterCount += 1;
+  };
+
+  var firstShow = true;
+  var filterCount = 1;
+  $('#filterModal').on('show.bs.modal', function(event) {
+    if (firstShow && filter_data.filter_by_field) {
+      filter_data.filter_by_field.forEach(function(elt) {
+        addFieldFilterRow(elt[0], elt[1]);
+      });
+    }
+    firstShow = false;
+  });
+
+  $('#saveFilterModal').click(function() {
+    var filterRows = $('#filterModal .filter-rows .row');
+    filterRows = $.makeArray(filterRows);
+
+    var filters = filterRows.map(function(elt) {
+      var elt = $(elt);
+      var fieldName = elt.find('.filter-field-name').val();
+      var fieldValue = elt.find('.filter-field-value').val();
+      if (fieldName) {
+        return [fieldName, fieldValue];
+      }
+    }).filter(function(elt) {
+      return elt;
+    });
+    filter_data.filter_by_field = filters;
+
+    $('#filterModal').modal('hide');
+    refresh();
+  });
+
+  $('.add-filter-row-button').click(function(evt) {
+    addFieldFilterRow();
+  });
 });
 
 function displayTaskInfo(taskInfo, data) {
-	if (data.length < 1) { 
+	if (data.length < 1) {
 		return;
 	}
 
@@ -149,6 +211,7 @@ function displayTaskInfo(taskInfo, data) {
 
 function prepareFilters() {
 	filter_data['order_by'] = null;
+  var filter_by_field = filter_data['filter_by_field'] || [];
 	var order_by = [];
 	var display_columns = [];
 	var sortColumns = $("#tasksGrid th[data-sort]");
@@ -174,13 +237,17 @@ function prepareFilters() {
 
 	for(key in filter_data) {
 		if(filter_data[key] == null) {
-			delete filter_data[key]; 
+			delete filter_data[key];
 		}
 	}
+
+  if (filter_by_field.length > 0) {
+    filter_data['filter_by_field'] = JSON.stringify(filter_by_field);
+  }
 }
 
 function refresh() {
-	prepareFilters();	
-	
+	prepareFilters();
+
 	window.location.replace(first_page_url + (!isNaN(records_per_page) ? ("/1/" + records_per_page) : "") + "?" + $.param(filter_data));
 }
