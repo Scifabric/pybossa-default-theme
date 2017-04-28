@@ -6,6 +6,7 @@
 
 {% block projectcontent %}
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/slider/css/slider.css')}}"/>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <style type="text/css">
 #tasksGrid th.sort-desc:after,
@@ -44,6 +45,12 @@
 }
 #tasksGrid th.sortable {
     cursor: pointer;
+}
+#date_from {
+    z-index: 1051;
+}
+#date_to {
+    z-index: 1051;
 }
 </style>
 
@@ -226,13 +233,15 @@
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon" style="width: 70px;">From:</div>
-                <input class="form-control input-sm" type="date" id="date_from" style="width: 180px;" />&nbsp;<input class="form-control input-sm" type="time" id="time_from" style="width: 180px;" value="00:00" />
+                <input class="form-control input-sm datepicker" type="text" id="date_from" style="width: 180px;" placeholder="YYYY-MM-DD"/>
+                <input class="form-control input-sm" type="time" id="time_from" style="width: 180px;" value="00:00" />
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon" style="width: 70px;">To:</div>
-                <input class="form-control input-sm" type="date" id="date_to" style="width: 180px;" />&nbsp;<input class="form-control input-sm" type="time" id="time_to" style="width: 180px;" value="23:59" />
+                <input class="form-control input-sm datepicker" type="text" id="date_to" style="width: 180px;" placeholder="YYYY-MM-DD"/>&nbsp;
+                <input class="form-control input-sm" type="time" id="time_to" style="width: 180px;" value="23:59" />
             </div>
         </div>
       </div>
@@ -270,6 +279,7 @@
     var records_per_page = {{ records_per_page if records_per_page != 10 else 'undefined'}};
 </script>
 
+<script src="{{url_for('static', filename='js/vendor/jquery-ui-1.12.1.min.js')}}" type="text/javascript"></script>
 <script src="{{url_for('static', filename='vendor/slider/js/bootstrap-slider.js')}}" type="text/javascript"></script>
 <script src="{{url_for('static', filename='js/tasks_browse.js')}}" type="text/javascript"></script>
 {% endblock %}

@@ -27,6 +27,12 @@ $(document).ready(function() {
 		console.log(filter_data.task_id);
 	});
 
+    $('.datepicker').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "yy-mm-dd"
+    });
+
 	$('#dateModal').on('show.bs.modal', function (event) {
 		var button = $(event.relatedTarget);
 		var info = button.data('info');
