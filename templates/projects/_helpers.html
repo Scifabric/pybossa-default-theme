@@ -38,28 +38,28 @@
 <ul class="list-group" style="margin-top: 21px;">
     {{ render_project_thumbnail(project, upload_method, class="img-responsive thumbnail card") }}
 </ul>
-<ul class="list-group" style="margin-top: 21px;">
-    <li class="list-group-item {% if active_link=="info"%}active{% endif %}"><a href="{{url_for('project.details', short_name=project.short_name)}}">{{_('Info')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
+<div class="list-group" style="margin-top: 21px;">
+    <a class="list-group-item {% if active_link=='info'%}active{% endif %}" href="{{url_for('project.details', short_name=project.short_name)}}">{{_('Info')}}<i class="fa fa-chevron-right pull-right"></i></a>
     {% if current_user.admin or current_user.subadmin %}
-    <li class="list-group-item {% if active_link=="results"%}active{% endif %}"><a href="{{url_for('project.results', short_name=project.short_name)}}">{{_('Results')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
-    <li class="list-group-item {% if active_link=="tasks"%}active{% endif %}"><a href="{{url_for('project.tasks', short_name=project.short_name)}}">{{_('Tasks')}} {{daniel}}</a>{% if task_subsection_1_text %}<a href="{{task_subsection_1}}">{{task_subsection_1_text}}</a>{% endif %}<i class="fa fa-chevron-right pull-right"></i></li>
-    <li class="list-group-item {% if active_link=="stats"%}active{% endif %}"><a href="{{url_for('project.show_stats', short_name=project.short_name)}}">{{_('Statistics')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
+    <a class="list-group-item {% if active_link=='results'%}active{% endif %}" href="{{url_for('project.results', short_name=project.short_name)}}">{{_('Results')}}<i class="fa fa-chevron-right pull-right"></i></a>
+    <a class="list-group-item {% if active_link=='tasks'%}active{% endif %}" href="{{url_for('project.tasks', short_name=project.short_name)}}">{{_('Tasks')}} {{daniel}}{% if task_subsection_1_text %}<a href="{{task_subsection_1}}">{{task_subsection_1_text}}</a>{% endif %}<i class="fa fa-chevron-right pull-right"></i></a>
+    <a class="list-group-item {% if active_link=='stats'%}active{% endif %}" href="{{url_for('project.show_stats', short_name=project.short_name)}}">{{_('Statistics')}}<i class="fa fa-chevron-right pull-right"></i></a>
     {% endif %}
     {% if ( current_user.is_authenticated() and (current_user.id == project.owner_id or is_coowner(project.id)) ) or current_user.admin %}
-    <li class="list-group-item {% if active_link=="settings"%}active{% endif %}"><a href="{{url_for('project.settings', short_name=project.short_name)}}">{{_('Settings')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
+    <a class="list-group-item {% if active_link=='settings'%}active{% endif %}" href="{{url_for('project.settings', short_name=project.short_name)}}">{{_('Settings')}}<i class="fa fa-chevron-right pull-right"></i></a>
     {% endif %}
     {% if ( current_user.is_authenticated() and (current_user.id == project.owner_id or is_coowner(project.id))
     and current_user.pro) or current_user.admin %}
         {% if pro_features.get('auditlog_enabled') %}
-        <li class="list-group-item {% if active_link=="auditlog"%}active{% endif %}"><a href="{{url_for('project.auditlog', short_name=project.short_name)}}">{{_('Audit Logs')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
+        <a class="list-group-item {% if active_link=='auditlog'%}active{% endif %}" href="{{url_for('project.auditlog', short_name=project.short_name)}}">{{_('Audit Logs')}}<i class="fa fa-chevron-right pull-right"></i></a>
         {% endif %}
         {% if pro_features.get('webhooks_enabled') %}
-        <li class="list-group-item {% if active_link=="webhook"%}active{% endif %}"><a href="{{url_for('project.webhook_handler', short_name=project.short_name)}}">{{_('Webhooks')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
+        <a class="list-group-item {% if active_link=='webhook'%}active{% endif %}"  href="{{url_for('project.webhook_handler', short_name=project.short_name)}}">{{_('Webhooks')}}<i class="fa fa-chevron-right pull-right"></i></a>
         {% endif %}
     {% endif %}
-    <li class="list-group-item {% if active_link=="blog"%}active{% endif %}"><a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}">{{_('Blog')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
-    <li class="list-group-item {% if active_link=="contribute"%}active{% endif %}"><a href="{{url_for('project.presenter', short_name=project.short_name)}}">{{_('Contribute')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
-</ul>
+    <a class="list-group-item {% if active_link=='blog'%}active{% endif %}" href="{{url_for('project.show_blogposts', short_name=project.short_name)}}">{{_('Blog')}}<i class="fa fa-chevron-right pull-right"></i></a>
+    <a class="list-group-item {% if active_link=='contribute'%}active{% endif %}" href="{{url_for('project.presenter', short_name=project.short_name)}}">{{_('Contribute')}}<i class="fa fa-chevron-right pull-right"></i></a>
+</div>
 {% endmacro %}
 
 {% macro render_project_summary(project, n_tasks, overall_progress, last_activity, current_user, upload_method) -%}
@@ -283,33 +283,35 @@
                 {% endif %}
                {% for f in projects %}
                <div class="{{projects_class}}">
-                   <div class="thumbnail card">
-                       <div class="post-pic" style="background: rgb(0, 151, 167) url({{render_url_thumbnail(f, upload_method)}}) no-repeat center top; background-size: cover;"></div>
-                       <div class="caption">
-                           <h3>{{f.name}}</h3>
-                           {% if show_ownership and f.owner_id != current_user.id %}
-                            <em>{{ _('Co-owner')}}</em>
-                           {% endif %}
-                           <p>{{f.description}}</p>
-                           {% if featured %}
-                            {% if f.featured %}
-                            <p class="readmore">
-                            <a id="projectBtnDel{{f.id}}" onclick="del({{f.id}})">{{ _('Remove from Featured') }}</a>
-                            <a id="projectBtnAdd{{f.id}}" onclick="add({{f.id}})" style="display:none">{{ _('Add to Featured') }}</a>
-                            </p>
-                            {% else %}
-                            <p class="readmore">
-                            <a id="projectBtnAdd{{f.id}}" onclick="add({{f.id}})" >{{ _('Add to Featured') }}</a>
-                            <a id="projectBtnDel{{f.id}}" onclick="del({{f.id}})" style="display:none">{{ _('Remove from Featured') }}</a>
-                            </p>
-                            {% endif %}
-                           {% else %}
-                           {% if active_cat != 'draft' %}
-                           <p class="readmore"><a href="{{ url_for('project.details', short_name=f.short_name)}}">{{_('More info')}}</a></p>
-                           {% endif %}
-                           {% endif %}
+                       <div class="thumbnail card">
+                           <a href="{{ url_for('project.details', short_name=f.short_name)}}">
+                               <div class="post-pic" style="background: rgb(0, 151, 167) url({{render_url_thumbnail(f, upload_method)}}) no-repeat center top; background-size: cover;"></div>
+                           </a>
+                           <div class="caption">
+                               <h3>{{f.name}}</h3>
+                               {% if show_ownership and f.owner_id != current_user.id %}
+                               <em>{{ _('Co-owner')}}</em>
+                               {% endif %}
+                               <p>{{f.description}}</p>
+                               {% if featured %}
+                               {% if f.featured %}
+                               <p class="readmore">
+                                   <a id="projectBtnDel{{f.id}}" onclick="del({{f.id}})">{{ _('Remove from Featured') }}</a>
+                                   <a id="projectBtnAdd{{f.id}}" onclick="add({{f.id}})" style="display:none">{{ _('Add to Featured') }}</a>
+                               </p>
+                               {% else %}
+                               <p class="readmore">
+                                   <a id="projectBtnAdd{{f.id}}" onclick="add({{f.id}})" >{{ _('Add to Featured') }}</a>
+                                   <a id="projectBtnDel{{f.id}}" onclick="del({{f.id}})" style="display:none">{{ _('Remove from Featured') }}</a>
+                               </p>
+                               {% endif %}
+                               {% else %}
+                               {% if active_cat != 'draft' %}
+                               <p class="readmore"><a href="{{ url_for('project.details', short_name=f.short_name)}}">{{_('More info')}}</a></p>
+                               {% endif %}
+                               {% endif %}
+                           </div>
                        </div>
-                   </div>
                </div>
                {% endfor %}
            </div>
@@ -360,6 +362,7 @@
 
 {%- macro render_project_card_option(project, upload_method, title, explanation, link, link_action_text, background=False, download=False, nofollow=False, link_class=None, id=None, icon=None, link_two=None, link_action_text_two=None) %}
 <div {%if id%}id="{{id}}"{% endif %} class="thumbnail card">
+    <a href="{{link}}">
     <div class="post-pic" style="background: rgb(0, 151, 167) {% if background %} url({{render_url_thumbnail(project, upload_method)}}) {% endif %} no-repeat center top; background-size: cover;">
         {% if not background %}
             {% if icon %}
@@ -376,6 +379,7 @@
             {% endif %}
         {% endif %}
     </div>
+    </a>
     <div class="caption">
         {% if background %}
         <h3>{{title}}</h3>

@@ -6,7 +6,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8" style="margin-top: 50px;">
-                <h1>Privacy Policy</h1>
+                {% if current_user.is_anonymous() %}
+                    <div class="text-center">
+                        <h3>{{_('To view the <b>Privacy Policy</b> please sign in with your GIGwork account')}}</h3>
+                        <a href="{{ url_for('account.signin') }}" class="btn btn-success">{{ _('Sign In') }}</a>
+                    </div>
+                {% else %}
+                    <h1>Privacy Policy</h1>
+                {% endif %}
             </div>
         </div>
     </div>
