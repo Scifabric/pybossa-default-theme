@@ -15,19 +15,27 @@
     <div class="col-md-12 text-center">
         <h3>{{_('Export in CSV format')}}</h3>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         {% if n_tasks != 0 %}
-        {{ render_project_card_option(project, upload_method, title=_('Tasks'), explanation=_('Export tasks in CSV format'), link=url_for('project.export_to', short_name=project.short_name, type='task', format='csv'), link_action_text=_('Export'), download=True, nofollow=True)}}
+        {{ render_project_card_option(project, upload_method, title=_('Tasks'), explanation=_('Export tasks in CSV format'), link=url_for('project.export_to', short_name=project.short_name, type='task', format='csv', expanded='False'), link_action_text=_('Export'), download=True, nofollow=True)}}
         {% else %}
         {{ render_project_card_option(project, upload_method, title=_('Tasks'), explanation=_('Export tasks in CSV format'), link="#", link_action_text=_('Export'), download=True, nofollow=True, link_class="disabled")}}
         {% endif %}
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         {% if n_task_runs != 0 %}
 
-        {{ render_project_card_option(project, upload_method, title=_('Task Runs'), explanation=_('Export task runs in CSV format'), link=url_for('project.export_to', short_name=project.short_name, type='task_run', format='csv'), link_action_text=_('Export'), download=True, nofollow=True)}}
+        {{ render_project_card_option(project, upload_method, title=_('Task Runs'), explanation=_('Export task runs in CSV format'), link=url_for('project.export_to', short_name=project.short_name, type='task_run', format='csv', expanded='False'), link_action_text=_('Export'), download=True, nofollow=True)}}
         {% else %}
         {{ render_project_card_option(project, upload_method, title=_('Task Runs'), explanation=_('Export task runs in CSV format'), link="#", link_action_text=_('Export'), download=True, nofollow=True, link_class="disabled")}}
+        {% endif %}
+    </div>
+    <div class="col-md-4">
+        {% if n_task_runs != 0 %}
+
+        {{ render_project_card_option(project, upload_method, title=_('Task Runs with Metadata'), explanation=_('Export task runs with metadata in CSV format'), link=url_for('project.export_to', short_name=project.short_name, type='task_run', format='csv', expanded='True'), link_action_text=_('Export'), download=True, nofollow=True)}}
+        {% else %}
+        {{ render_project_card_option(project, upload_method, title=_('Task Runs with Metadata'), explanation=_('Export task runs with metadata in CSV format'), link="#", link_action_text=_('Export'), download=True, nofollow=True, link_class="disabled")}}
         {% endif %}
     </div>
 </div>
@@ -35,19 +43,27 @@
     <div class="col-md-12 text-center">
         <h3>{{_('Export in JSON format')}}</h3>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         {% if n_tasks != 0 %}
-        {{ render_project_card_option(project, upload_method, title=_('Tasks'), explanation=_('Export tasks in JSON format'), link=url_for('project.export_to', short_name=project.short_name, type='task', format='json'), link_action_text=_('Export'), download=True, nofollow=True)}}
+        {{ render_project_card_option(project, upload_method, title=_('Tasks'), explanation=_('Export tasks in JSON format'), link=url_for('project.export_to', short_name=project.short_name, type='task', format='json', expanded='False'), link_action_text=_('Export'), download=True, nofollow=True)}}
         {% else %}
         {{ render_project_card_option(project, upload_method, title=_('Tasks'), explanation=_('Export tasks in JSON format'), link="#", link_action_text=_('Export'), download=True, nofollow=True, link_class="disabled")}}
         {% endif %}
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         {% if n_task_runs != 0 %}
 
-        {{ render_project_card_option(project, upload_method, title=_('Task Runs'), explanation=_('Export task runs in JSON format'), link=url_for('project.export_to', short_name=project.short_name, type='task_run', format='json'), link_action_text=_('Export'), download=True, nofollow=True)}}
+        {{ render_project_card_option(project, upload_method, title=_('Task Runs'), explanation=_('Export task runs in JSON format'), link=url_for('project.export_to', short_name=project.short_name, type='task_run', format='json', expanded='False'), link_action_text=_('Export'), download=True, nofollow=True)}}
         {% else %}
         {{ render_project_card_option(project, upload_method, title=_('Task Runs'), explanation=_('Export task runs in JSON format'), link="#", link_action_text=_('Export'), download=True, nofollow=True, link_class="disabled")}}
+        {% endif %}
+    </div>
+    <div class="col-md-4">
+        {% if n_task_runs != 0 %}
+
+        {{ render_project_card_option(project, upload_method, title=_('Task Runs with Metadata'), explanation=_('Export task runs with metadata in JSON format'), link=url_for('project.export_to', short_name=project.short_name, type='task_run', format='json', expanded='True'), link_action_text=_('Export'), download=True, nofollow=True)}}
+        {% else %}
+        {{ render_project_card_option(project, upload_method, title=_('Task Runs with Metadata'), explanation=_('Export task runs with metadata in JSON format'), link="#", link_action_text=_('Export'), download=True, nofollow=True, link_class="disabled")}}
         {% endif %}
     </div>
 
