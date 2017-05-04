@@ -132,7 +132,8 @@ $(document).ready(function() {
   function removeFilterRow() {
     if (filterCount == 1) {
         $('.filter-field-name').val(0);
-        $('.filter-field-value').val(null);
+        $('.filter-field-value').val(null)
+                                .prop('disabled', true);
     }
     else {
       $(this).parents('.row').remove();
@@ -140,14 +141,26 @@ $(document).ready(function() {
     }
   }
 
-  function addFieldFilterRow(fieldName, fieldValue) {
+  function enableOnChange(event) {
+      $(this).parents('.row')
+             .find('.filter-field-value')
+             .prop('disabled', false);
+  }
+
+  function addFieldFilterRow(fieldName, fieldValue, enabled) {
     fieldName = fieldName || "";
     fieldValue = fieldValue || "";
 
     var toAppend = $('#filterModal .filter-rows .row').first().clone();
 
-    toAppend.find('.filter-field-name').val(fieldName);
-    toAppend.find('.filter-field-value').val(fieldValue);
+    toAppend.find('.filter-field-name')
+            .val(fieldName)
+            .change(enableOnChange);
+
+    toAppend.find('.filter-field-value')
+            .val(fieldValue)
+            .prop('disabled', !enabled);
+
     toAppend.find('.remove-filter-button').click(removeFilterRow);
 
     $('#filterModal .filter-rows').append(toAppend);
@@ -157,9 +170,13 @@ $(document).ready(function() {
   var firstShow = true;
   var filterCount = 1;
   $('#filterModal').on('show.bs.modal', function(event) {
+    if (firstShow) {
+      $('.filter-field-value').prop('disabled', true);
+      $('.filter-field-name').change(enableOnChange);
+    }
     if (firstShow && filter_data.filter_by_field) {
       filter_data.filter_by_field.forEach(function(elt) {
-        addFieldFilterRow(elt[0], elt[1]);
+        addFieldFilterRow(elt[0], elt[1], true);
       });
     }
     firstShow = false;
