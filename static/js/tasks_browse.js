@@ -127,56 +127,70 @@ $(document).ready(function() {
 			.always(function() {loadingInfo.hide(); taskInfo.show();});
 	});
 
+  var firstShow = true;
+  var filterCount = 0;
+  var filterRowModel = null;
   $('.remove-filter-button').click(removeFilterRow);
 
   function removeFilterRow() {
-    if (filterCount == 1) {
-        $('.filter-field-name').val(0);
-        $('.filter-field-value').val(null)
-                                .prop('disabled', true);
+    if (filterCount === 1) {
+      $('.filter-field-name').val(0);
+      $('.filter-field-value').val(null)
+                              .prop('disabled', true);
     }
     else {
       $(this).parents('.row').remove();
       filterCount -= 1;
     }
-  }
+  };
 
   function enableOnChange(event) {
-      $(this).parents('.row')
-             .find('.filter-field-value')
-             .prop('disabled', false);
-  }
+    var row = $(this).parents('.row');
+    row.find('.filter-field-value')
+       .prop('disabled', false);
+    row.find('.filter-field-operator')
+       .prop('disabled', false);
+  };
 
-  function addFieldFilterRow(fieldName, fieldValue, enabled) {
+  function addFieldFilterRow(fieldName, operator, fieldValue, enabled) {
     fieldName = fieldName || "";
+    operator = operator || "";
     fieldValue = fieldValue || "";
 
-    var toAppend = $('#filterModal .filter-rows .row').first().clone();
+    var toAppend = filterRowModel.clone();
 
     toAppend.find('.filter-field-name')
             .val(fieldName)
             .change(enableOnChange);
-
+    toAppend.find('.filter-field-operator')
+            .val(operator)
+            .prop('disabled', !enabled);
     toAppend.find('.filter-field-value')
             .val(fieldValue)
             .prop('disabled', !enabled);
-
-    toAppend.find('.remove-filter-button').click(removeFilterRow);
+    toAppend.find('.remove-filter-button')
+            .click(removeFilterRow);
 
     $('#filterModal .filter-rows').append(toAppend);
     filterCount += 1;
   };
 
-  var firstShow = true;
-  var filterCount = 1;
+  function createFilterRowModel() {
+      $('.filter-field-name').change(enableOnChange);
+      var model = $('#filterModal .filter-rows .row').first();
+
+      filterRowModel = model.clone();
+      model.remove();
+  };
+
   $('#filterModal').on('show.bs.modal', function(event) {
     if (firstShow) {
-      $('.filter-field-value').prop('disabled', true);
-      $('.filter-field-name').change(enableOnChange);
+      createFilterRowModel();
+      addFieldFilterRow();
     }
     if (firstShow && filter_data.filter_by_field) {
       filter_data.filter_by_field.forEach(function(elt) {
-        addFieldFilterRow(elt[0], elt[1], true);
+        addFieldFilterRow(elt[0], elt[1], elt[2], true);
       });
     }
     firstShow = false;
@@ -189,9 +203,10 @@ $(document).ready(function() {
     var filters = filterRows.map(function(elt) {
       var elt = $(elt);
       var fieldName = elt.find('.filter-field-name').val();
+      var operator = elt.find('.filter-field-operator').val();
       var fieldValue = elt.find('.filter-field-value').val();
       if (fieldName) {
-        return [fieldName, fieldValue];
+        return [fieldName, operator, fieldValue];
       }
     }).filter(function(elt) {
       return elt;
