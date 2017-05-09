@@ -54,12 +54,30 @@
         <button type="submit" class="btn btn-primary" value="Reset">{{_('Reset secret key')}}</button>
     </div>
 </form>
+<h3>{{_('Webpush notifications')}}</h3>
+<p><span class="label label-info"><i class="fa fa-bullhorn"></i> {{_('Warning')}}</span> {{_('Once you enable the notifications, you cannot disable them.')}}</p>
+{% if project.info.get('onesignal') == None %}
+<button id="webpush" class="btn btn-primary" value="webpush">{{_('Activate')}}</button>
+{% else %}
+<button class="btn btn-primary disabled" value="webpush">{{_('Enabled')}}</button>
+{% endif %}
 
 </p>
 {% endblock %}
 {% block extrajs %}
 <script>
     var pybossaAvatarAspectRatio = 4/3;
+</script>
+<script>
+    $("#webpush").off('click').on('click', function(){
+        var url = window.location.href.split("update")[0] + "webpush";
+        $.get(url, function(data){
+            console.log(data);
+            if (data['id'] !== undefined) {
+                pybossaNotify('Webpush notifications enabled', true, 'success');
+            }
+        });
+    })
 </script>
 <script src="{{url_for('static', filename='js/vendor/cropper.min.js')}}"></script>
 <link rel="stylesheet" href="{{url_for('static', filename='css/cropper.min.css')}}" type="text/css" />
