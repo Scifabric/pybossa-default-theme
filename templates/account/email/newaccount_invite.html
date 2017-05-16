@@ -1,7 +1,7 @@
  {% block page_content %}
     <h1>Account Registration</h1>
     <p>Hello, {{user['fullname']}}!</p>
-    <p>Welcome to GIGwork 
+    <p>Welcome to {{ config.BRAND }}
     {% if server_url == "https://qa.gigwork.net" %}
     (QA Version)
     {% endif %}
