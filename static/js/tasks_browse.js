@@ -40,18 +40,22 @@ $(document).ready(function() {
 		dateModalInfo = info;
 
 		var modal = $(this);
-		var from = filter_data[info + '_from'];
-		var to = filter_data[info + '_to'];
+		var interval = ['from', 'to'];
 
-		if (from) {
-			modal.find('.modal-body #date_from').val(from.substring(0, from.indexOf('T')));
-			modal.find('.modal-body #time_from').val(from.substring(from.indexOf('T')+1));
-		}
+		interval.forEach(function(attr) {
+		    var dateTime = filter_data[info + '_'+attr];
+		    var dateEntry = modal.find('.modal-body #date_'+attr)
+		    var timeEntry = modal.find('.modal-body #time_'+attr)
 
-		if (to) {
-			modal.find('.modal-body #date_to').val(to.substring(0, to.indexOf('T')));
-			modal.find('.modal-body #time_to').val(to.substring(to.indexOf('T')+1));
-		}
+		    if(dateTime){
+		        dateEntry.val(dateTime.substring(0, dateTime.indexOf('T')));
+			    timeEntry.val(dateTime.substring(dateTime.indexOf('T')+1));
+		    }
+		    else{
+		        dateEntry.val("");
+                timeEntry.val("");
+		    }
+		});
 	});
 
 	$('#saveDateModal').click(function() {
