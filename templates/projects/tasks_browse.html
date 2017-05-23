@@ -103,6 +103,7 @@
                 <li><a href="#" class="columns_settings" data-value="created" tabIndex="-1"><input type="checkbox" {{ "checked" if "created" in filter_data.display_columns }}/>&nbsp;Created</a></li>
                 <li><a href="#" class="columns_settings" data-value="finish_time" tabIndex="-1"><input type="checkbox" {{ "checked" if "finish_time" in filter_data.display_columns }}/>&nbsp;Completed</a></li>
                 <li><a href="#" class="columns_settings" data-value="actions" tabIndex="-1"><input type="checkbox" {{ "checked" if "actions" in filter_data.display_columns }}/>&nbsp;Actions</a></li>
+                <li><a href="#" class="columns_settings" data-value="selections" tabIndex="-1"><input type="checkbox" {{ "checked" if "selections" in filter_data.display_columns }}/>&nbsp;Selection</a></li>
             </ul>
         </li>
         {% if filter_columns %}
@@ -182,6 +183,9 @@
                 {% if 'actions' in filter_data.display_columns %}
                 <th>&nbsp;</th>
                 {% endif %}
+                {% if 'selection' in filter_data.display_columns %}
+                <th>&nbsp;</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -211,8 +215,8 @@
                 <td>{{ t.finish_time or '' }}</td>
                 {% endif %}
                 {% if 'actions' in filter_data.display_columns %}
-                <td>
-                    <div style="width: 90px;">
+                <td style="width: 70px;">
+                    <div style="width: 70px;">
                       {% if task_pct >= 100 %}
                       <a id="fulldownload" rel="nofollow" class="btn btn-success btn-xs fa fa-cloud-download" href="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}">&nbsp;</a> <button type="button" class="btn btn-success btn-xs fa fa-eye" data-toggle="modal" data-target="#infoModal" data-info="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}"></button>
                       {% elif task_pct > 0 and task_pct < 100 %}
@@ -220,8 +224,12 @@
                       {% else %}
                       <a id="nothingtodownload" rel="nofollow" class="btn btn-info btn-xs disabled fa fa-cloud-download" href="#">&nbsp;</a> <a rel="nofollow" class="btn btn-success btn-xs disabled fa fa-eye" href="#"></a>
                       {% endif %}
-                      <input type="checkbox" name="" value="" class="task-checkbox">
                     </div>
+                </td>
+                {% endif %}
+                {% if 'selections' in filter_data.display_columns %}
+                <td>
+                    <input type="checkbox" name="" value="" class="task-checkbox">
                 </td>
                 {% endif %}
             </tr>
