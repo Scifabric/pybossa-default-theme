@@ -226,6 +226,17 @@ $(document).ready(function() {
   });
 
     // Update priority modal
+
+    function getSelection() {
+        var taskIds = [];
+        for (var id in selectedTasks) {
+            if (selectedTasks[id]) {
+                taskIds.push(parseInt(id));
+            }
+        }
+        return taskIds;
+    };
+
     $('#save-update-modal').click(function () {
         var priority = parseFloat($("#priority-value").val());
         $("#update-modal").modal("hide");
@@ -236,8 +247,10 @@ $(document).ready(function() {
         }
         var preparedFilters = prepareFilters();
         var url = window.location.pathname.split('/browse')[0] + "/priorityupdate";
+        taskIds = getSelection();
         var data = {
             priority_0: priority,
+            taskIds: taskIds,
             filters: {}
         };
         Object.assign(data.filters, preparedFilters);
@@ -253,6 +266,15 @@ $(document).ready(function() {
         }).fail(function(res) {
             pybossaNotify("There was an error processing the request.", true, "warning");
         });
+    });
+
+    $(".task-checkbox").click(function(evt) {
+        var taskId = $(this).parents('.task-row')
+                            .first()
+                            .find('a.label')
+                            .html()
+                            .replace('#', '');
+        selectedTasks[taskId] = this.checked;
     });
 });
 

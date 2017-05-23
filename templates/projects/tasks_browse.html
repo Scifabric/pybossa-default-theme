@@ -185,7 +185,7 @@
         <tbody>
             {% for t in tasks %}
             {% set task_pct = t.pct_status*100 %}
-            <tr>
+            <tr class="task-row">
                 {% if 'task_id' in filter_data.display_columns %}
                 <td>
                     {% if task_pct >= 100 %}
@@ -218,7 +218,7 @@
                       {% else %}
                       <a id="nothingtodownload" rel="nofollow" class="btn btn-info btn-xs disabled fa fa-cloud-download" href="#">&nbsp;</a> <a rel="nofollow" class="btn btn-success btn-xs disabled fa fa-eye" href="#"></a>
                       {% endif %}
-                      <input type="checkbox" name="" value="">
+                      <input type="checkbox" name="" value="" class="task-checkbox">
                     </div>
                 </td>
                 {% endif %}
@@ -366,6 +366,7 @@
 
 <script type="text/javascript">
     var filter_data = {{ filter_data|tojson }};
+    var selectedTasks = {};
     var first_page_url = "{{ url_for('project.tasks_browse', short_name=project.short_name) }}";
     var records_per_page = {{ records_per_page if records_per_page != 10 else 'undefined'}};
     var csrftoken = "{{ csrf_token() }}";
