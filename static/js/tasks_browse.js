@@ -43,13 +43,13 @@ $(document).ready(function() {
 		var interval = ['from', 'to'];
 
 		interval.forEach(function(attr) {
-		    var dateTime = filter_data[info + '_'+attr];
-		    var dateEntry = modal.find('.modal-body #date_'+attr)
-		    var timeEntry = modal.find('.modal-body #time_'+attr)
+		    var dateTime = filter_data[info + '_' + attr];
+		    var dateEntry = modal.find('.modal-body #date_' + attr);
+		    var timeEntry = modal.find('.modal-body #time_' + attr);
 
-		    if(dateTime){
+		    if (dateTime) {
 		        dateEntry.val(dateTime.substring(0, dateTime.indexOf('T')));
-			    timeEntry.val(dateTime.substring(dateTime.indexOf('T')+1));
+			    timeEntry.val(dateTime.substring(dateTime.indexOf('T') + 1));
 		    }
 		    else{
 		        dateEntry.val("");
@@ -89,8 +89,8 @@ $(document).ready(function() {
 	});
 
 	$('.pagination-tasks-browse').click(function() {
-		prepareFilters();
-		$(this).attr('href', $(this).attr('href') + "?" + $.param(filter_data));
+		var preparedFilters = prepareFilters();
+		$(this).attr('href', $(this).attr('href') + "?" + $.param(preparedFilters));
 	})
 
 	$("#btnRefresh").click(function() {
@@ -224,6 +224,36 @@ $(document).ready(function() {
   $('.add-filter-row-button').click(function(evt) {
     addFieldFilterRow();
   });
+
+    // Update priority modal
+    $('#save-update-modal').click(function () {
+        var priority = parseFloat($("#priority-value").val());
+        $("#update-modal").modal("hide");
+        window.scrollTo(0, 0);
+        if (isNaN(priority) || priority < 0 || priority > 1) {
+            pybossaNotify("Invalid priority", true, "warning");
+            return;
+        }
+        var preparedFilters = prepareFilters();
+        var url = window.location.pathname.split('/browse')[0] + "/priorityupdate";
+        var data = {
+            priority_0: priority,
+            filters: {}
+        };
+        Object.assign(data.filters, preparedFilters);
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data)
+        }).done(function(res) {
+            refresh();
+        }).fail(function(res) {
+            pybossaNotify("There was an error processing the request.", true, "warning");
+        });
+    });
 });
 
 function displayTaskInfo(taskInfo, data) {
@@ -252,8 +282,9 @@ function displayTaskInfo(taskInfo, data) {
 }
 
 function prepareFilters() {
-	filter_data['order_by'] = null;
-  var filter_by_field = filter_data['filter_by_field'] || [];
+    var preparedFilters = $.extend(true, {}, filter_data);
+	preparedFilters['order_by'] = null;
+    var filter_by_field = preparedFilters['filter_by_field'] || [];
 	var order_by = [];
 	var display_columns = [];
 	var sortColumns = $("#tasksGrid th[data-sort]");
@@ -265,31 +296,32 @@ function prepareFilters() {
 	});
 
 	if (order_by.length > 0) {
-		filter_data['order_by'] = order_by.join(',');
+		preparedFilters['order_by'] = order_by.join(',');
 	}
 
-	filter_data['display_columns'] = null;
+	preparedFilters['display_columns'] = null;
 	$("a.columns_settings:has(input:checked)").each(function() {
 		display_columns.push($(this).attr('data-value'));
 	});
 
 	if (display_columns.length > 0) {
-		filter_data['display_columns'] = JSON.stringify(display_columns);
+		preparedFilters['display_columns'] = JSON.stringify(display_columns);
 	}
 
-	for(key in filter_data) {
-		if(filter_data[key] == null) {
-			delete filter_data[key];
+	for(key in preparedFilters) {
+		if(preparedFilters[key] == null) {
+			delete preparedFilters[key];
 		}
 	}
 
   if (filter_by_field.length > 0) {
-    filter_data['filter_by_field'] = JSON.stringify(filter_by_field);
+    preparedFilters['filter_by_field'] = JSON.stringify(filter_by_field);
   }
+  return preparedFilters;
 }
 
 function refresh() {
-	prepareFilters();
+	var preparedFilters = prepareFilters();
 
-	window.location.replace(first_page_url + (!isNaN(records_per_page) ? ("/1/" + records_per_page) : "") + "?" + $.param(filter_data));
+	window.location.replace(first_page_url + (!isNaN(records_per_page) ? ("/1/" + records_per_page) : "") + "?" + $.param(preparedFilters));
 }
