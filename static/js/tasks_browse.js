@@ -237,9 +237,13 @@ $(document).ready(function() {
         return taskIds;
     };
 
-    $('#save-update-modal').click(function () {
+    $('#btn-edit-priority').click(function() {
+        $("#update-priority-modal").modal("show");
+    });
+
+    $('#save-priority-modal').click(function () {
         var priority = parseFloat($("#priority-value").val());
-        $("#update-modal").modal("hide");
+        $("#update-priority-modal").modal("hide");
         window.scrollTo(0, 0);
         if (isNaN(priority) || priority < 0 || priority > 1) {
             pybossaNotify("Invalid priority", true, "warning");
@@ -269,11 +273,17 @@ $(document).ready(function() {
     });
 
     $(".task-checkbox").click(function(evt) {
-        var taskId = $(this).parents('.task-row')
-                            .first()
-                            .find('a.label')
-                            .html()
-                            .replace('#', '');
+        var rowElt = $(this).parents('.task-row').first();
+        if (this.checked) {
+            rowElt.addClass('bg-primary');
+        }
+        else {
+            rowElt.removeClass('bg-primary');
+        }
+        var taskId = rowElt.first()
+                           .find('a.label')
+                           .html()
+                           .replace('#', '');
         selectedTasks[taskId] = this.checked;
     });
 });

@@ -111,10 +111,12 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
             </button>
         </li>
-        <li>
-            <button id='btn-task-update' type="button" data-target="#update-modal" data-toggle="modal" title="Edit task priority">
-                <i class="fa fa-edit" aria-hidden="true"></i>
-            </button>
+        <li class="dropdown" id="edit-tasks">
+            <button class="dropdown-toggle" type="button" id="btn-edit-tasks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="fa fa-edit"><span class="caret"></span></button>
+            <ul class="dropdown-menu" aria-labelledby="btn-edit-tasks">
+                <li><a href="#" id="" data-value="task-redundancy" tabIndex="-1">Edit redundancy</a></li>
+                <li><a href="#" id="btn-edit-priority" data-value="task-priority" tabIndex="-1">Edit priority</a></li>
+            </ul>
         </li>
         {% endif %}
     </ul>
@@ -336,12 +338,12 @@
 </div>
 
 <!-- Update -->
-<div class="modal fade" id="update-modal" tabindex="-1" role="dialog" aria-labelledby="update-modal-label">
+<div class="modal fade" id="update-priority-modal" tabindex="-1" role="dialog" aria-labelledby="update-priority-modal-label">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="update-modal-label">Update task priority</h4>
+        <h4 class="modal-title">Update task priority</h4>
       </div>
       <div class="modal-body">
         <div class="form-horizontal">
@@ -357,7 +359,7 @@
             task matched by the current filtering criteria (all pages).</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="save-update-modal">Update</button>
+        <button type="button" class="btn btn-primary" id="save-priority-modal">Update</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
