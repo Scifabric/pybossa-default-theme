@@ -258,10 +258,40 @@ $(document).ready(function() {
             filters: {}
         };
         Object.assign(data.filters, preparedFilters);
+        sendUpdateRequest(url, data);
+    });
 
+    $('#btn-edit-redundancy').click(function() {
+        $("#update-redundancy-modal").modal("show");
+    });
+
+    $('#save-redundancy-modal').click(function () {
+        var redundancy = parseInt($("#redundancy-value").val());
+        $("#update-redundancy-modal").modal("hide");
+        MAX_ALLOWED = 1000;
+        MIN_ALLOWED = 1;
+        window.scrollTo(0, 0);
+        if (isNaN(redundancy) || redundancy < MIN_ALLOWED || redundancy > MAX_ALLOWED) {
+            pybossaNotify("Invalid redundancy: please enter a value between " +
+                          MIN_ALLOWED + " and " + MAX_ALLOWED, true, "warning");
+            return;
+        }
+        var preparedFilters = prepareFilters();
+        var url = window.location.pathname.split('/browse')[0] + "/redundancyupdate";
+        taskIds = getSelection();
+        var data = {
+            n_answers: redundancy,
+            taskIds: taskIds,
+            filters: {}
+        };
+        Object.assign(data.filters, preparedFilters);
+        sendUpdateRequest(url, data);
+    });
+
+    function sendUpdateRequest(endpoint, data) {
         $.ajax({
             type: "POST",
-            url: url,
+            url: endpoint,
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(data)
@@ -270,7 +300,7 @@ $(document).ready(function() {
         }).fail(function(res) {
             pybossaNotify("There was an error processing the request.", true, "warning");
         });
-    });
+    }
 
     $(".task-checkbox").click(function(evt) {
         var rowElt = $(this).parents('.task-row').first();
