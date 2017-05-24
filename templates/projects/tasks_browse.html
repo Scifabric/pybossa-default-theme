@@ -84,6 +84,17 @@
             </button>
         </li>
         <li class="dropdown">
+            <button class="dropdown-toggle" type="button" id="btnDownload" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="fa fa-cloud-download"></span><span class="caret"></span></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+                <li><a href="#" class='download_type' id='tasks_csv'>Tasks CSV</a></li>
+                <li><a href="#" class='download_type' id='tasks_json'>Tasks JSON</a></li>
+                <li><a href="#" class='download_type' id='taskruns_csv'>Task Runs CSV</a></li>
+                <li><a href="#" class='download_type' id='taskruns_json'>Task Runs JSON</a></li>
+                <li><a href="#" class='download_type' id='taskruns_csv_meta'>Task Runs with Metadata CSV</a></li>
+                <li><a href="#" class='download_type' id='taskruns_json_meta'>Task Runs with Metadata JSON</a></li>
+           </ul>
+        </li>
+        <li class="dropdown">
             <button class="dropdown-toggle" type="button" id="btnRpp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{records_per_page}}<span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
                 <li><a href="#" class='records_per_page'>10</a></li>
