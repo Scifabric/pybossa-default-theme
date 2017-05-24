@@ -225,8 +225,6 @@ $(document).ready(function() {
     addFieldFilterRow();
   });
 
-    // Update priority modal
-
     function getSelection() {
         var taskIds = [];
         for (var id in selectedTasks) {
@@ -241,7 +239,7 @@ $(document).ready(function() {
         $("#update-priority-modal").modal("show");
     });
 
-    $('#save-priority-modal').click(function () {
+    $('#save-priority-modal').click(function() {
         var priority = parseFloat($("#priority-value").val());
         $("#update-priority-modal").modal("hide");
         window.scrollTo(0, 0);
@@ -249,23 +247,19 @@ $(document).ready(function() {
             pybossaNotify("Invalid priority", true, "warning");
             return;
         }
-        var preparedFilters = prepareFilters();
-        var url = window.location.pathname.split('/browse')[0] + "/priorityupdate";
-        taskIds = getSelection();
-        var data = {
-            priority_0: priority,
-            taskIds: taskIds,
-            filters: {}
-        };
-        Object.assign(data.filters, preparedFilters);
-        sendUpdateRequest(url, data);
+        var data = getFilterObject();
+        data.priority_0 = priority;
+        var url = getUrlFor("/priorityupdate");
+        sendUpdateRequest(url, data).done(function(res) {
+            refresh();
+        });
     });
 
     $('#btn-edit-redundancy').click(function() {
         $("#update-redundancy-modal").modal("show");
     });
 
-    $('#save-redundancy-modal').click(function () {
+    $('#save-redundancy-modal').click(function() {
         var redundancy = parseInt($("#redundancy-value").val());
         $("#update-redundancy-modal").modal("hide");
         MAX_ALLOWED = 1000;
@@ -276,31 +270,59 @@ $(document).ready(function() {
                           MIN_ALLOWED + " and " + MAX_ALLOWED, true, "warning");
             return;
         }
-        var preparedFilters = prepareFilters();
-        var url = window.location.pathname.split('/browse')[0] + "/redundancyupdate";
-        taskIds = getSelection();
-        var data = {
-            n_answers: redundancy,
-            taskIds: taskIds,
-            filters: {}
-        };
-        Object.assign(data.filters, preparedFilters);
-        sendUpdateRequest(url, data);
+        var data = getFilterObject();
+        data.n_answers = redundancy;
+        var url = getUrlFor("/redundancyupdate");
+        sendUpdateRequest(url, data).done(function(res) {
+            refresh();
+        });
     });
 
+    $('#save-delete-modal').click(function() {
+        $("#delete-tasks-modal").modal("hide");
+        window.scrollTo(0, 0);
+        var data = getFilterObject();
+        var url = getUrlFor("/deleteselected");
+        sendUpdateRequest(url, data).done(function(res) {
+            if (res.enqueued) {
+                pybossaNotify("Your request has been enqueued, you will receive an email when the task deletion is complete.", true, "warning");
+            }
+            else {
+                refresh();
+            }
+        });
+    });
+
+    function getUrlFor(endpoint) {
+        var baseUrl = window.location.pathname.split('/browse')[0];
+        return baseUrl + endpoint;
+    };
+
+    function getFilterObject() {
+        taskIds = getSelection();
+        if (taskIds.length) {
+            return {
+                taskIds: taskIds
+            };
+        }
+        else {
+            return {
+                filters: prepareFilters()
+            };
+        }
+    };
+
     function sendUpdateRequest(endpoint, data) {
-        $.ajax({
+        return $.ajax({
             type: "POST",
             url: endpoint,
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(data)
-        }).done(function(res) {
-            refresh();
         }).fail(function(res) {
             pybossaNotify("There was an error processing the request.", true, "warning");
         });
-    }
+    };
 
     $(".task-checkbox").click(function(evt) {
         var rowElt = $(this).parents('.task-row').first();

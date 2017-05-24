@@ -119,6 +119,11 @@
                 <li><a href="#" id="btn-edit-priority" data-value="task-priority" tabIndex="-1">Edit priority</a></li>
             </ul>
         </li>
+        <li>
+            <button id='btn-delete-tasks' type="button" data-target="#delete-tasks-modal" data-toggle="modal" title="Delete tasks">
+                <i class="fa fa-remove" aria-hidden="true"></i>
+            </button>
+        </li>
         {% endif %}
     </ul>
 </div>
@@ -397,6 +402,34 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="save-redundancy-modal">Update</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Update Redundancy -->
+<div class="modal fade" id="delete-tasks-modal" tabindex="-1" role="dialog" aria-labelledby="delete-tasks-modal-label">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Delete tasks</h4>
+      </div>
+      <div class="modal-body">
+        <p><strong>If tasks are selected:</strong> will delete all selected
+            tasks in the current page and the corresponding task results.</p>
+        <p><strong>If tasks are not selected:</strong> will delete all tasks
+            matching the current filtering criteria and the corresponding task
+            results.</p>
+        <p>
+            <strong>Are you sure you want to proceed?</strong>
+        </p>
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="save-delete-modal">Yes, delete!</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
