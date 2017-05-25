@@ -92,6 +92,12 @@ $(document).ready(function() {
 		$(this).attr('href', $(this).attr('href') + "?" + $.param(preparedFilters));
 	})
 
+	$('.download_type').click(function() {
+		download_type = $(this).attr('id');
+
+ 		refresh();
+	});
+
 	$("#btnRefresh").click(function() {
 		refresh();
 	});
