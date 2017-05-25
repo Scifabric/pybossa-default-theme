@@ -288,7 +288,7 @@ $(document).ready(function() {
                 pybossaNotify("Your request has been enqueued, you will receive an email when the task deletion is complete.", true, "warning");
             }
             else {
-                refresh();
+                refresh(!!data.filters);
             }
         });
     });
@@ -404,8 +404,11 @@ function prepareFilters() {
   return preparedFilters;
 }
 
-function refresh() {
-	var preparedFilters = prepareFilters();
-
-	window.location.replace(first_page_url + (!isNaN(records_per_page) ? ("/1/" + records_per_page) : "") + "?" + $.param(preparedFilters));
+function refresh(dropFilters) {
+    var location = first_page_url + (!isNaN(records_per_page) ? ("/1/" + records_per_page) : "");
+    if (!dropFilters) {
+	    var preparedFilters = prepareFilters();
+        location += "?" + $.param(preparedFilters);
+    }
+	window.location.replace(location);
 }
