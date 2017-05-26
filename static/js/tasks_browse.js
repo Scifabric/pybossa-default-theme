@@ -320,7 +320,16 @@ $(document).ready(function() {
             contentType: "application/json",
             data: JSON.stringify(data)
         }).fail(function(res) {
-            pybossaNotify("There was an error processing the request.", true, "warning");
+            var message = "There was an error processing the request.";
+            var severity = "warning";
+            if (res.status === 403) {
+                message = "You do not have the permissions to perform this action.";
+                severity = "danger";
+            }
+            console.log(res);
+            console.log(status);
+            console.log(error);
+            pybossaNotify(message, true, severity);
         });
     };
 
