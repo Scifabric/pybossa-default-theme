@@ -24,7 +24,6 @@ $(document).ready(function() {
 		dirtyView();
 
 		filter_data.task_id = $(this).val();
-		console.log(filter_data.task_id);
 	});
 
     $('.datepicker').datepicker({
@@ -326,9 +325,6 @@ $(document).ready(function() {
                 message = "You do not have the permissions to perform this action.";
                 severity = "danger";
             }
-            console.log(res);
-            console.log(status);
-            console.log(error);
             pybossaNotify(message, true, severity);
         });
     };
