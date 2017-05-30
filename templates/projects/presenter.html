@@ -19,11 +19,12 @@
         nope: '{{url_for('static', filename='js/vendor/json2.min.js')}}'
 });
 </script>
+<link rel="stylesheet" href="{{url_for('static', filename='css/small-navbar.css')}}"/>
 
 <div class="container" style="min-height:400px;">
     <div class="row">
-        <div class="col-md-12" style="margin-top:30px;">
-            <h1><a href="{{url_for('project.details', short_name=project.short_name)}}">{{ project.name }}</a>: {{ _('Contribute') }}</h1>
+        <div class="col-md-12" style="margin-top:-10px;">
+            <h3><a href="{{url_for('project.details', short_name=project.short_name)}}">{{ project.name }}</a>: {{ _('Contribute') }}</h3>
         </div>
     </div>
     {% if invite_new_volunteers %}
