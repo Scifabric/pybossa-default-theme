@@ -1,5 +1,4 @@
 var dateModalInfo = '';
-var download_type;
 
 function dirtyView() {
 	if (filter_data.changed === false) {
@@ -94,9 +93,7 @@ $(document).ready(function() {
 	})
 
 	$('.download-type').click(function() {
-		download_type = $(this).attr('id');
-
- 		refresh();
+		exportTasks($(this).attr('id'));
 	});
 
 	$("#btnRefresh").click(function() {
@@ -423,4 +420,11 @@ function refresh(dropFilters) {
         location += "?" + $.param(preparedFilters);
     }
 	window.location.replace(location);
+}
+
+function exportTasks(downloadType) {
+    var location = first_page_url + (!isNaN(records_per_page) ? ("/1/" + records_per_page) : "");
+    var preparedFilters = prepareFilters();
+    location += "?" + $.param(preparedFilters) + "&download_type=" + downloadType;
+    window.location.replace(location);
 }
