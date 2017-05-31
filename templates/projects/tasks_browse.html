@@ -451,7 +451,6 @@
     var filter_data = {{ filter_data|tojson }};
     var selectedTasks = {};
     var first_page_url = "{{ url_for('project.tasks_browse', short_name=project.short_name) }}";
-<<<<<<< HEAD
     var records_per_page = {{ records_per_page if records_per_page != 10 else 'undefined'}};
     var csrftoken = "{{ csrf_token() }}";
     $.ajaxSetup({
