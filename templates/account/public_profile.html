@@ -24,6 +24,11 @@
                 </div>
                 {% if current_user.admin or current_user.subadmin%}
                 <div class="col-md-offset-15 col-md-10 {% if input_form %} hidden {% endif %}" id="user-info" >
+                    <h4>{{ _('Total projects contributed:')}} {{total_projects_contributed}}</h4>
+                    <h4>{{ _('Total tasks completed:')}} {{user.n_answers}}</h4>
+                    <h4>{{ _('Percentage of tasks completed:')}} {{percentage_tasks_completed}}</h4>
+                    <h4>{{ _('Last task submission date:')}} {{user.last_task_submission_on}}</h4>
+
                     {% if metadata %}
                         {% if metadata.languages %}<h4><b>Language(s):</b> {{metadata.languages|join(', ') }}</h4>{% endif %}
                         {% if metadata.locations %}<h4><b>Location(s):</b> {{metadata.locations|join(', ') }}</h4>{% endif %}
