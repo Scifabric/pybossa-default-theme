@@ -25,6 +25,7 @@
 · Will you help make a difference? Explain to the volunteers why their contribution is essential and how the result of your project can help change things!
 
 (you can use Markdown to give format to your description!)')) }}
+            {{ render_field(form.password, class_="span4", placeholder=_('Enter project password')) }}
             <div class="form-actions">
                 <input type="submit" value={{_('Create the project')}} class="btn btn-primary" />
                 <a href="{{url_for('account.profile', name=current_user.name)}}" class="btn btn-default">{{_('Cancel')}}</a>
