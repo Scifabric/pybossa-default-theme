@@ -54,7 +54,7 @@
             {% for stat_name, value in current_stats.iteritems() %}
             <tr>
                 <td><p><strong>{{ stat_name }}<p><strong></td>
-                <td>{{ value | int }}</td>
+                <td><p>{{ value | int }}</p></td>
             </tr>
             {% endfor %}
         </table>
