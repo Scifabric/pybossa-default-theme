@@ -11,3 +11,4 @@ static/.webassets-cache/*
 static/css/gen/*
 static/js/gen/*
 *.sublime-*
+static/src/node_modules/*
