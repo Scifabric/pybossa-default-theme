@@ -97,12 +97,9 @@
         <li class="dropdown">
             <button class="dropdown-toggle" type="button" id="btnRpp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{records_per_page}}<span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-                <li><a href="#" class='records_per_page'>10</a></li>
-                <li><a href="#" class='records_per_page'>20</a></li>
-                <li><a href="#" class='records_per_page'>30</a></li>
-                <li><a href="#" class='records_per_page'>50</a></li>
-                <li><a href="#" class='records_per_page'>70</a></li>
-                <li><a href="#" class='records_per_page'>100</a></li>
+                {% for num in allowed_records_per_page %}
+                    <li><a href="#" class='records_per_page'>{{num}}</a></li>
+                {% endfor %}
             </ul>
         </li>
         <li class="dropdown" id="columnsSettings">
