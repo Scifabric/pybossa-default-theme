@@ -18,7 +18,7 @@ module.exports = {
   output: {
     path: '../js/',
     publicPath: '/static/js/',
-    filename: '[name].js'
+    filename: 'editor.min.js'
   },
   module: {
     // `loaders` is an array of loaders to use.
