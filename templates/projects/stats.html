@@ -67,17 +67,6 @@
                     <div id="dayStatsTotal" style="margin:0;height:500px;"></div>
                     <script>
                     (function(){
-                    var
-                        horizontal,
-                        bar = [],
-                        point,
-                        markers = {
-                                data: [],
-                                markers: {
-                                    show: true,
-                                    position: 'ct'
-                                }
-                        };
 
                     function date(obj) {
                         var d = new Date(parseInt( obj ));
@@ -86,51 +75,34 @@
                         var day = d.getDate();
                         return(year + "-" + month + '-' + day)
                     }
-                    function answersPerDay(obj) {
-                        return ("Tasks: " + parseInt(obj.y));
-                    }
 
                     var dayStatsTotalContainer = document.getElementById('dayStatsTotal');
 
-                    projectStats.dayStats[3]['values'].forEach(function(elt) {
-                        point = [elt[0], elt[1]];
-                        bar.push(point);
-                        markers.data.push(point);
-                    });
+                    var maxY = Math.max.apply(null, projectStats.dayStats[3]['values'].map(function(elt) {
+                        return elt[1];
+                    }));
 
                     function drawGraph(opts) {
-
-                        // Return a new graph.
                         return Flotr.draw(
-                        dayStatsTotalContainer, [bar, markers], {
+                        dayStatsTotalContainer, [projectStats.dayStats[3]['values']], {
                             title: "Completed Tasks in the last 15 days".fontsize(5.5),
                             xaxis:{
                                 showMinorLabels: true,
                                 mode: 'time'
                             },
                             yaxis:{
-                            min:0,
-                            tickDecimals: 0
+                                min:0,
+                                tickDecimals: 0,
+                                max:maxY+2
                             },
-                            bars:{
-                                show: true,
-                                horizontal: horizontal,
-                                barWidth: 35000000
-                            },
-                            mouse:{
-                                track: true,
-                                trackFormatter: function (e){return e.y;},
-                                relative: true,
-                                trackY: true,
-                                trackDecimals: 2,
-                                sensibility: 3
+                            grid: {
+                                minorVerticalLines: true
                             }
                         });
                     }
                         
-                        // Actually draw the graph.
-                        graph = drawGraph();
-                        
+                    graph = drawGraph();
+
                     })();
                     </script>
                 </div>
@@ -165,7 +137,6 @@
                     function answersPerDay(obj) {
                         return (parseInt(obj.y) + " {{_('answers were submitted this day')}} " + date(obj.x));
                     }
-
                     var dayStatsContainer = document.getElementById('dayStats');
 
                     projectStats.dayStats[2]['values'].forEach(function(elt) {
@@ -175,7 +146,6 @@
                     });
 
                     function drawGraph(opts) {
-
                         // Return a new graph.
                         return Flotr.draw(
                         dayStatsContainer, [bar, markers], {
@@ -203,14 +173,58 @@
                             }
                         });
                     }
-                        
-                        // Actually draw the graph.
-                        graph = drawGraph();
+
+                    // Actually draw the graph.
+                    graph = drawGraph();
                     })();
                     </script>
                 </div>
             </div>
             <!-- END Day Stats CARD -->
+
+            <!-- Percentage of Tasks Completed CARD -->
+            <div id="card" class="row">
+                <div  class="col-md-12">
+                    <div id="perctTasks" style="margin:0;height:500px;position:relative;"></div>
+                    <script>
+                    (function(){
+                    var d1 = [[0,projectStats.n_completed_tasks]];
+                    var d2 = [[0,projectStats.n_pending_tasks]];
+                    var perctTasksContainer = document.getElementById('perctTasks');
+
+                    function drawGraph(opts) {
+                        return Flotr.draw(
+                        perctTasksContainer, [{data:d1, label:'Completed'}, {data:d2, label:'Open'}], {
+                            title: "Percentage of Tasks Completed".fontsize(5.5),
+                            grid : {
+                                verticalLines : false,
+                                horizontalLines : false
+                            },
+                            xaxis : { showLabels : false },
+                            yaxis : { showLabels : false },
+                            pie : {
+                                show : true,
+                                explode : 6,
+                                labelFormatter: function(total, value){ return (100 * value / total).toFixed(0)+'%'}
+                            },
+                            mouse : {
+                                track : true,
+                                trackFormatter: function(obj){return 'Tasks: '+obj.y;},
+                                trackDecimals: 0
+                                },
+                            legend : {
+                                position : 'nw',
+                                backgroundColor : '#D2E8FF'
+                            }
+                        });
+                    }
+
+                    graph = drawGraph();
+                    })();
+                    </script>
+                </div>
+            </div>
+            <!-- END Percentage of Tasks Completed CARD -->
 
             {% if pro_features['better_stats_enabled'] %}
             <div id="card" class="row">
