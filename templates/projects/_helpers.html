@@ -360,7 +360,7 @@
 {% endif -%}
 {% endmacro -%}
 
-{%- macro render_project_card_option(project, upload_method, title, explanation, link, link_action_text, background=False, download=False, nofollow=False, link_class=None, id=None, icon=None, link_two=None, link_action_text_two=None, background_url=None) %}
+{%- macro render_project_card_option(project, upload_method, title, explanation, link, link_action_text, background=False, download=False, nofollow=False, link_class=None, id=None, icon=None, link_two=None, link_action_text_two=None, background_url=None, published=False) %}
 <div {%if id%}id="{{id}}"{% endif %} class="thumbnail card">
     <a href="{{link}}">
     <div class="post-pic" style="background: rgb(0, 151, 167) {% if background %} url({{render_url_thumbnail(project, upload_method)}}) {% endif %} no-repeat center top; background-size: cover;">
@@ -383,6 +383,9 @@
     <div class="caption">
         {% if background %}
         <h3>{{title}}</h3>
+        {% endif %}
+        {% if published == False %}
+        <span class="label label-info">DRAFT</span>
         {% endif %}
         <p>{{explanation}}</p>
         {% if link_two %}

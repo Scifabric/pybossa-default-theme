@@ -6,24 +6,10 @@
 
 {% block projectcontent %}
 {% from "_formhelpers.html" import render_field %}
-<div id="project-form" class="row"> 
-    <div class="col-md-12">
-        <form method="post" action="{{ url_for('project.new_blogpost', short_name=project.short_name) }}">
-            {{ form.hidden_tag() }}
-            <fieldset>
-                {{ render_field(form.title, placeholder= _('The title of your post')) }}
-                {{ render_field(form.body, placeholder= _('Write your post here. You can use Markdown!')) }}
-                <div class="form-actions">
-                    <input type="submit" value={{_('Publish')}} class="btn btn-primary" />
-                </div>
-            </fieldset>
-        </form>
-    </div>
-</div>
 <div id="editorpybossa">
     <Imagecrop/>
 </div>
 
-   <script src="/static/js/editor.min.js?68665f1eaa27b02229af"></script>
+   <script src="/static/js/editor.min.js?4c539b19d9351d403646"></script>
 
 {% endblock %}
