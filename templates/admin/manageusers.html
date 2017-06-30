@@ -62,48 +62,60 @@
 
 <!-- Filter Modal -->
 <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel">
-  <div class="modal-dialog modal-md" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="infoModalLabel">User Smart Search</h4>
-      </div>
-      <div class="modal-body">
-        <div class="filter-rows">
-          <div class="row" style="margin-bottom: 5px">
-            <div class="form-inline col-xs-12">
-              <select class="form-group form-control filter-field-name" style="width: 150px">
-                <option value="" disabled selected>Field Name</option>
-                {% for column_name in filter_columns %}
-                  <option value="{{column_name}}">{{column_name}}</option>
-                {% endfor %}
-              </select>
-              <div class="form-group">
-                <input type="text" class="form-control filter-field-value" placeholder="Field Value" disabled style="width:214px"/>
-              </div>
-              <div class="form-group">
-                <button type="button" class="btn btn-danger form-control remove-filter-button">Remove</button>
-              </div>
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="infoModalLabel">User Smart Search</h4>
             </div>
-          </div>
+            <div class="modal-body">
+                <div class="filter-rows">
+                    <div class="row" style="margin-bottom: 5px">
+                        <div class="form-inline col-xs-12">
+                            <select class="form-group form-control filter-field-name" style="width: 150px">
+                                <option value="" disabled selected>Field Name</option>
+                                {% for column_name in filter_columns %}
+                                <option value="{{column_name}}">{{column_name}}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="form-group">
+                                <input type="text" class="form-control filter-field-value" placeholder="Field Value" disabled style="width:214px"/>
+                            </div>
+                            <div class="form-group">
+                                <div class="timezones hidden">
+                                    <select class="selectpicker" data-width="100px">
+                                        <option value="est">est</option>
+                                        <option value="gst">gst</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-danger form-control remove-filter-button">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-primary add-filter-row-button" name="button">Add Row</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id='saveFilterModal'>Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
-        <div class="row">
-          <div class="col-xs-6">
-            <button type="button" class="btn btn-primary add-filter-row-button" name="button">Add Row</button>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id='saveFilterModal'>Save changes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
     </div>
-  </div>
 </div>
 
 <script type="text/javascript">
     var filter_data = {{ filter_data|tojson }};
     var first_page_url = "{{ url_for('admin.manageusers') }}";
+    var locations = {{ locations|safe }};
+    var languages = {{ languages|safe }};
+    var userTypes = {{ user_types|safe }};
+    var timezones = {{ timezones|safe }};
 </script>
 {% block extrajs %}
 {% include "admin/js/user_info_search.js" %}
