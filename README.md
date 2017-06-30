@@ -18,6 +18,20 @@ This theme is automatically grabbed and installed in the PyBossa server when
 you clone the server with the option **--recursive**, as this theme is included
 as a sub-module in PyBossa.
 
+# Modifying VueJS components
+
+PYBOSSA is using [VueJS](https://vuejs.org/) for some of its components. For example,
+creating and editing blog posts is done via the API using a VueJS App.
+
+All the code is going to be usually installed in the */static/src* folder, but it may
+vary in the future. Check for each template, and see from where it comes.
+
+Once you know the folder, just get it there. Then, review the webpack config file, and
+modify the code that you want. We use babel, so you will see modern JavaScript in there.
+
+For more information about how to modify/edit/improve VueJS, just check the docs of the
+official site.
+
 # Translations
 
 If you want to enable the translations for your PyBossa server, you'll have to create 
