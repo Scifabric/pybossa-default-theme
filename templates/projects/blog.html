@@ -4,11 +4,15 @@
 {% set active_link = "blog" %}
 
 {% block projectcontent %}
+        <div style="margin-bottom: 15px;">
+        <a class="btn btn-warning" href="{{url_for('project.new_blogpost', short_name=project.short_name)}}">Create a new blog post</a>
+        </div>
+
         {% if blogposts %}
         <div class="row">
-            {% for blogpost in blogposts %}
+            {% for blogpost in blogposts | sort(attribute='updated', reverse=True) %}
             <div class="col-sm-6">
-                {{ render_project_card_option(project, upload_method, title=blogpost.title, explanation=blogpost.body | markdown | truncate(200) | striptags, link=url_for('project.show_blogpost', short_name=project.short_name, id=blogpost.id), link_action_text=_('Read more'))}}
+                {{ render_project_card_option(project, upload_method, background=True, background_url=blogpost.media_url, title=blogpost.title, explanation=blogpost.body | markdown | truncate(200) | striptags, link=url_for('project.show_blogpost', short_name=project.short_name, id=blogpost.id), link_action_text=_('Read more'), published=blogpost.published)}}
             </div>
             {% endfor %}
             <ul>

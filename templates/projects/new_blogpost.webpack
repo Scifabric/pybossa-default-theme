@@ -9,7 +9,7 @@
 <div id="editorpybossa">
     <Imagecrop/>
 </div>
-
-   <script src="/static/js/editor.min.js?fc9e54f5d39a3bcea865"></script>
-
+<% for(var i=0; i<htmlWebpackPlugin.files.js.length; i++) {%>
+   <script src="<%= htmlWebpackPlugin.files.js[i] %>"></script>
+<% } %>
 {% endblock %}
