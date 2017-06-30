@@ -82,6 +82,7 @@ export default {
     },
     created(){
         var url = window.location.href 
+        var update = false
         if (url.indexOf('/update') !== -1) {
             var tmp = url.split('/')
             console.log(tmp)
@@ -89,6 +90,7 @@ export default {
             this.blogpost_id = tmp[(tmp.length -2)]
             url = '/api/blogpost/' + this.blogpost_id
             console.log(url)
+            update = true
         }
         var options = {headers: {'Content-Type': 'application/json'}}
         var self = this
@@ -101,11 +103,16 @@ export default {
           .then(function(response) {
           self.project = response.data.project
           self.owner = response.data.owner
-          self.data.project_id = response.data.project_id
-          self.data.title = response.data.title
-          self.data.body = response.data.body
-          self.src = response.data.media_url
-          self.file_name = response.data.info.file_name
+          if (update) {
+            self.data.project_id = response.data.project_id
+            self.data.title = response.data.title
+            self.data.body = response.data.body
+            self.src = response.data.media_url
+            self.file_name = response.data.info.file_name
+          }
+          else {
+            self.data.project_id = response.data.project.id
+          }
         });
 
     },
