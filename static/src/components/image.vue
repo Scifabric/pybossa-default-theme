@@ -2,33 +2,37 @@
     <div>
 
 
-     <div>
+        <div>
             <div class="file-upload-form">
                 Upload an image file:
                 <input type="file" @change="previewImage" accept="image/*">
             </div>
-            <div v-if="src.length > 0">
-                <img id="cropit" class="preview" :src="src" v-on:load="cropIt">
+            <div id="cropit-ctn" v-if="src.length > 0">
+                <img id="cropit" class="preview" :src="src"/> 
+                <div class="cropping-btns">
+                    <button class="btn btn-info" v-on:click="createCropper" v-bind:class="{ disabled: isCropping}">Crop</button>
+                    <button class="btn btn-info" v-on:click="cropIt">Save</button>
+                </div>
             </div>
-            <div v-else>
-                <img class="preview" src="http://via.placeholder.com/500x375">
+            <div id="cropit-ctn" v-else>
+                <img class="preview" src="http://via.placeholder.com/675x379">
             </div>
         </div>
 
-     <div class="blogcover">
-      </div>
-      <div class="form-group">
-          <label for="title" class="control-label"><label for="title">Title</label></label>
-          <input class="form-control" v-model="data.title" placeholder="Write a nice title" type="text">
-      </div>
-      <markdown-editor v-model="data.body"></markdown-editor/>
-      <div class="action-btns">
-        <button class="btn btn-warning" v-on:click="update">Save draft</button>
-        <div v-if="canPublish">
-          <button v-if="this.data.published" class="btn btn-primary" v-on:click="publish(false)">Unpublish</button>
-          <button v-else class="btn btn-primary" v-on:click="publish(true)">Publish</button>
+        <div class="blogcover">
         </div>
-      </div>
+        <div class="form-group">
+            <label for="title" class="control-label"><label for="title">Title</label></label>
+            <input class="form-control" v-model="data.title" placeholder="Write a nice title" type="text">
+        </div>
+        <markdown-editor v-model="data.body"></markdown-editor/>
+        <div class="action-btns">
+            <button class="btn btn-warning" v-on:click="update">Save draft</button>
+            <div v-if="canPublish">
+                <button v-if="this.data.published" class="btn btn-primary" v-on:click="publish(false)">Unpublish</button>
+                <button v-else class="btn btn-primary" v-on:click="publish(true)">Publish</button>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -38,63 +42,100 @@ import { markdownEditor } from 'vue-simplemde'
 import Cropper from 'cropperjs'
 import 'cropperjs/dist/cropper.min.css'
 
-export default {
-  components: {
- //   'vue-core-image-upload': VueCoreImageUpload,
-    'markdown-editor': markdownEditor,
-  },
-  data() {
-    return {
-      src: '',
-      blogpost_id: null,
-      data: {project_id: 580,
-             title: '',
-             body: '',
-             published: false
-             }
-    }
-  },
-  methods: {
-      cropIt(){
-          var self = this
-          console.log("loaded and ready to crop")
-          var image = document.getElementById('cropit');
-          var cropper = new Cropper(image, {
-            aspectRatio: 16 / 9,
-            movable: false,
-          });
+function createCropperVanilla(){
+    var image = document.getElementById('cropit');
+    console.log(image)
+    var cropper = new Cropper(image, {
+        aspectRatio: 16 / 9,
+        movable: false,
+        autoCrop: false,
+    })
+    return cropper
+}
 
-            cropper.getCroppedCanvas();
-            
-            cropper.getCroppedCanvas({
-              width: 160,
-              height: 90,
-              beforeDrawImage: function(canvas) {
-                const context = canvas.getContext('2d');
-            
-                context.imageSmoothingEnabled = false;
-                context.imageSmoothingQuality = 'high';
-              },
+function cleanCropper(){
+    var ctn = document.getElementById('cropit-ctn');
+    var image = document.getElementById('cropit');
+    image.classList.remove("preview");
+    image.classList.remove("cropper-hidden");
+    var child = document.getElementsByClassName("cropper-container")[0];
+    ctn.removeChild(child)
+}
+
+export default {
+    components: {
+        //   'vue-core-image-upload': VueCoreImageUpload,
+        'markdown-editor': markdownEditor,
+    },
+    data() {
+        return {
+            src: '',
+            blogpost_id: null,
+            cropper: null,
+            data: {project_id: 580,
+                title: '',
+                body: '',
+                published: false
+            }
+        }
+    },
+    methods: {
+        createCropper(){
+            this.cropper = createCropperVanilla()
+        },
+        cropIt(){
+            var self = this
+            if (this.cropper === null)  this.cropper = createCropperVanilla()
+            self.cropper.getCroppedCanvas();
+            self.cropper.getCroppedCanvas({
+                width: 160,
+                height: 90,
+                beforeDrawImage: function(canvas) {
+                    const context = canvas.getContext('2d');
+
+                    context.imageSmoothingEnabled = false;
+                    context.imageSmoothingQuality = 'high';
+                },
             });
 
 
             var file_name = document.querySelector('input[type=file]').files[0].name.split(".")[0] + ".png"
-            
+
             // Upload cropped image to server if the browser supports `HTMLCanvasElement.toBlob`
-            cropper.getCroppedCanvas().toBlob(function (blob) {
-              var formData = new FormData();
-            
-              formData.append('file', blob, file_name)
-              formData.append('project_id', self.data.project_id)
-              formData.append('title', self.data.title)
-              formData.append('body', self.data.body)
-            
-              // Use `jQuery.ajax` method
-              axios.post('/api/blogpost', formData)
+            self.cropper.getCroppedCanvas().toBlob(function (blob) {
+                var formData = new FormData();
+
+                formData.append('file', blob, file_name)
+                formData.append('project_id', self.data.project_id)
+                formData.append('title', self.data.title)
+                formData.append('body', self.data.body)
+                console.log(self.puturl)
+
+                if (self.puturl === '/api/blogpost') {
+                    axios.post(self.puturl, formData).then(function(response){
+                        self.data.title = response.data.title
+                        self.data.body = response.data.body
+                        self.blogpost_id = response.data.id
+                        self.src = response.data.media_url + '?' + Date.now()
+                        self.cropper.destroy()
+                        self.cropper = null
+                    }
+                    )
+                }
+                else {
+                    axios.put(self.puturl, formData).then(function(response){
+                        self.data.title = response.data.title
+                        self.data.body = response.data.body
+                        self.blogpost_id = response.data.id
+                        self.src = response.data.media_url + '?' + Date.now()
+                        self.cropper.destroy()
+                        self.cropper = null
+                    })
+                }
             });
 
-      },
-      previewImage: function(event) {
+        },
+        previewImage: function(event) {
             // Reference to the DOM input element
             var input = event.target;
             // Ensure that you have a file before attempting to read it
@@ -112,25 +153,25 @@ export default {
             }
         },
 
-    imageuploaded(res) {
-      if(res.media_url !== '' && res.media_url !== undefined) {
-        this.src = res.media_url
-      }
-      this.data.title = res.title
-      this.data.body = res.body
-      this.blogpost_id = res.id
-    },
-    update(){
-        var self = this
-        if (this.src === 'http://via.placeholder.com/500x375') {
-            axios.post(this.puturl, this.data).then(function(response){
-                console.log(response)
-                if (response.data.media_url !== '' && response.data.media_url !== null) {
-                    self.src = response.data.media_url
-                }
-                self.data.title = response.data.title
-                self.data.body = response.data.body
-                self.blogpost_id = response.data.id
+        imageuploaded(res) {
+            if(res.media_url !== '' && res.media_url !== undefined) {
+                this.src = res.media_url
+            }
+            this.data.title = res.title
+            this.data.body = res.body
+            this.blogpost_id = res.id
+        },
+        update(){
+            var self = this
+            if (this.puturl === '/api/blogpost') {
+                axios.post(this.puturl, this.data).then(function(response){
+                    console.log(response)
+                    if (response.data.media_url !== '' && response.data.media_url !== null) {
+                        self.src = response.data.media_url
+                    }
+                    self.data.title = response.data.title
+                    self.data.body = response.data.body
+                    self.blogpost_id = response.data.id
 
                 })
         }
@@ -140,17 +181,21 @@ export default {
         this.data.published = flag
         axios.put(this.puturl, this.data).then(function(response){console.log(response)})
     }
-  },
-  computed: {
-    puturl(){
-        if (this.blogpost_id) return '/api/blogpost/' + this.blogpost_id
-        else return '/api/blogpost'
-    },
-    canPublish(){
-        if (this.data.title === '' || this.data.body === '') return false
-        else return true
+},
+    computed: {
+        isCropping(){
+            if (this.cropper !== null) return true
+            else return false
+        },
+        puturl(){
+            if (this.blogpost_id) return '/api/blogpost/' + this.blogpost_id
+            else return '/api/blogpost'
+        },
+            canPublish(){
+                if (this.data.title === '' || this.data.body === '') return false
+                else return true
+            }
     }
-  }
 }
 </script>
 <style>
@@ -172,5 +217,10 @@ export default {
 
 #cropit {
     max-width: 100%;
+}
+.cropit-ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 </style>
