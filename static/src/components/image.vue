@@ -9,7 +9,7 @@
                 <img id="cropit" class="preview" :src="src"/> 
                 <div class="cropping-btns">
                     <button class="btn btn-info" v-on:click="createCropper" v-bind:class="{ disabled: isCropping}">Crop</button>
-                    <button class="btn btn-info" v-on:click="cropIt">Save</button>
+                    <button v-if="isCropping" class="btn btn-info" v-on:click="cropIt">Save</button>
                 </div>
             </div>
             <div id="cropit-ctn" v-else>
@@ -76,7 +76,8 @@ export default {
                 title: '',
                 body: '',
                 published: false
-            }
+            },
+            file_name: null,
         }
     },
     created(){
@@ -104,6 +105,7 @@ export default {
           self.data.title = response.data.title
           self.data.body = response.data.body
           self.src = response.data.media_url
+          self.file_name = response.data.info.file_name
         });
 
     },
@@ -128,13 +130,15 @@ export default {
             });
 
 
-            var file_name = document.querySelector('input[type=file]').files[0].name.split(".")[0] + ".png"
+            if (document.querySelector('input[type=file]').files.length > 0) {
+                this.file_name = document.querySelector('input[type=file]').files[0].name.split(".")[0] + ".png"
+            }
 
             // Upload cropped image to server if the browser supports `HTMLCanvasElement.toBlob`
             self.cropper.getCroppedCanvas().toBlob(function (blob) {
                 var formData = new FormData();
 
-                formData.append('file', blob, file_name)
+                formData.append('file', blob, self.file_name)
                 formData.append('project_id', self.data.project_id)
                 formData.append('title', self.data.title)
                 formData.append('body', self.data.body)
