@@ -1,7 +1,5 @@
 <template>
     <div>
-
-
         <div>
             <div class="file-upload-form">
                 Upload an image file:
@@ -72,13 +70,44 @@ export default {
             src: '',
             blogpost_id: null,
             cropper: null,
-            data: {project_id: 580,
+            project: null,
+            owner: null,
+            data: {project_id: null,
                 title: '',
                 body: '',
                 published: false
             }
         }
     },
+    created(){
+        var url = window.location.href 
+        if (url.indexOf('/update') !== -1) {
+            var tmp = url.split('/')
+            console.log(tmp)
+            console.log(tmp[(tmp.length -2)])
+            this.blogpost_id = tmp[(tmp.length -2)]
+            url = '/api/blogpost/' + this.blogpost_id
+            console.log(url)
+        }
+        var options = {headers: {'Content-Type': 'application/json'}}
+        var self = this
+        axios({
+          method:'get',
+          url:url,
+          headers: {'Content-Type': 'application/json'},
+          data: null
+        })
+          .then(function(response) {
+          self.project = response.data.project
+          self.owner = response.data.owner
+          self.data.project_id = response.data.project_id
+          self.data.title = response.data.title
+          self.data.body = response.data.body
+          self.src = response.data.media_url
+        });
+
+    },
+
     methods: {
         createCropper(){
             this.cropper = createCropperVanilla()

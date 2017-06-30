@@ -5,6 +5,9 @@
 {% block projectcontent %}
 <article>
     <header>
+        {% if blogpost.media_url %}
+        <img class="img-responsive" src="{{blogpost.media_url}}"></img>
+        {% endif %}
         <h2>{{ blogpost.title }}</h2>
         <p>
         <em>{{ _('Author: ') }} {{ blogpost.owner.name }}</em>
