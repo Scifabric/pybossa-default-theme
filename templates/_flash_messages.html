@@ -2,7 +2,7 @@
 {% if messages %}
   {% for category, message in messages %}
     <script>
-        pybossaNotify('{{message|safe}}', true, "{{category}}");
+        pybossaNotify('{{message}}', true, "{{category}}");
     </script>
   {% endfor %}
 {% endif %}
