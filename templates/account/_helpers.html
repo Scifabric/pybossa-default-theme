@@ -36,7 +36,7 @@
 {% macro render_user_profile(user, upload_method, settings, private=True) %}
 <p><strong><i class="fa fa-user"></i> {{ _('Nick')}}:</strong> {{ user.name }}</p>
 {% if private %}
-<p><strong><i class="fa fa-envelope"></i> {{_('E-mail')}}:</strong> {{user.email_addr }} 
+<p><strong><i class="fa fa-envelope"></i> {{_('E-mail')}}:</strong> {{user.email_addr }}
     {% if (user.valid_email == False) %}
       {% if (user.confirmation_email_sent == False) %}
       <a href="{{ url_for('account.confirm_email')}}" class="btn btn-warning btn-xs">Validate email</a>
@@ -78,7 +78,7 @@
 {%- macro render_user_avatar_src(user, upload_method) %}
     {%- if user.info.avatar %}
         {%- if upload_method == 'rackspace'%}
-        {{ url_for('rackspace', filename=user.info.avatar, container=user.info.container)}} 
+        {{ url_for('rackspace', filename=user.info.avatar, container=user.info.container)}}
         {%- else %}
         {{url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}
         {% endif -%}
@@ -117,7 +117,7 @@
       {% else %}
       <li class="active">
           <a href="#">{{ page }}</a>
-      </li>  
+      </li>
       {% endif %}
     {% endif %}
   {%- endfor %}

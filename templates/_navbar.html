@@ -28,7 +28,7 @@
                     <li><a href="{{ url_for('account.projects', name=current_user.name) }}"> {{ _('My Projects') }}</a></li>
                     {% endif %}
                     <li><a href="{{ url_for('account.update_profile', name=current_user.name) }}"> {{ _('My Settings') }}</a></li>
-                    {% if current_user.admin == 1 %}
+                    {% if current_user.admin or current_user.subadmin %}
                     <li class="divider"></li>
                     <li><a href="{{ url_for('admin.index') }}">{% if notify_admin %} <span class="label label-info ">{{ news |count }}</span>{% else %}{% endif %} {{ _('Admin Site') }}</a></li>
                     {% endif %}
