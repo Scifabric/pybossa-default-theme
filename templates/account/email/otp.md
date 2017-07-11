@@ -1,5 +1,7 @@
-Hello {{user.fullname}}
+##One Time Password (OTP) Authentication
 
-In order to complete signin process, please provide the OTP.
+Hello, {{user.fullname}}!
 
-Details on how to generate OTP has been sent to your email: {{user.email}}
+Please apply the following OTP Code to complete the signin
+
+OTP code: {{otpcode}}
