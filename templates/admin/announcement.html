@@ -1,0 +1,13 @@
+{% extends "admin/base.html" %}
+{% from "admin/_helpers.html" import render_admin_user%}
+
+
+{% block rightbody %}
+<div class="container">
+        <div style="margin-bottom: 15px;">
+        <a class="btn btn-warning" href="{{url_for('admin.new_announcement')}}">Create a new Announcement</a>
+        </div>
+
+            <h1>{{ _('Sorry! No posts so far.') }}</h1>
+</div>
+{% endblock %}

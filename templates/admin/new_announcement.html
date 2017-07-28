@@ -1,0 +1,19 @@
+{% extends "admin/base.html" %}
+{% from "admin/_helpers.html" import render_admin_user%}
+
+
+{% block rightbody %}
+
+<div class="container">
+            <h1>New announcement</h1>
+</div>
+
+ <div id="editorpybossa">
+    <Imagecrop/>
+</div>
+
+
+
+   <script src="/static/js/editor.min.js?af15e1183bb483802118"></script>
+
+{% endblock %}
