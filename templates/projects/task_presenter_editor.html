@@ -26,6 +26,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
+        <h2>Task Presenter</h2>
         <form class="col-md-12" method="post" action="{{ url_for('project.task_presenter_editor', short_name=project.short_name) }}">
             {{ form.hidden_tag() }}
             <fieldset>
@@ -38,9 +39,9 @@
                     {% endif %}
                     <a href="#" class="btn btn-default btn-preview" value="preview">{{ _('Preview the task presenter') }}</a>
                     {% if current_user.admin or current_user.subadmin %}
-                        <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn">{{ _('Cancel') }}</a>
+                        <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-warning">{{ _('Cancel') }}</a>
                     {% else %}
-                        <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn">{{ _('Cancel') }}</a>
+                        <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn btn-warning">{{ _('Cancel') }}</a>
                     {% endif %}
                 </div>
             </fieldset>
@@ -48,7 +49,30 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-12">
+        <h2>Latest GitHub Push Info</h2>
+        {% if project.info.pusher %}
+            <table class="table table-hover table-condensed">
+                <tr>
+                    <td><p>Pusher:</p></td>
+                    <td><p>{{ project.info.pusher }}</p></td>
+                </tr>
+                <tr>
+                    <td><p>Last Updated:</p></td>
+                    <td><p>{{ project.info.timestamp }}</p></td>
+                </tr>
 
+                <tr>
+                    <td><p>Last Commit:</p></td>
+                    <td><a href={{ project.info.ref_url }} target="_blank">{{ project.info.ref }}</a></td>
+                </tr>
+            </table>
+        {% else %}
+            <p>Task presenter code was not updated via GitHub</p>
+        {% endif %}
+    </div>
+</div>
 
 <div id="modal-preview" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg">
@@ -151,4 +175,3 @@ $(".btn-preview").off('click').on('click', function(){
 </script>
 
 {% endblock %}
-
