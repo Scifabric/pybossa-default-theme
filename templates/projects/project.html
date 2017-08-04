@@ -34,8 +34,14 @@
                 </tr>
                 <tr>
                     <td><p>Last submission date:</p></td>
-                    <td ><p>{{latest_submitted_task | datetime}}</p></td>
+                    <td><p>{{latest_submitted_task | datetime}}</p></td>
                 </tr>
+                {% if current_user.admin or current_user.subadmin %}
+                <tr>
+                    <td><p>Project Owner:</p></td>
+                    <td><p>{{ owner.fullname }}</p></td>
+                </tr>
+                {% endif %}
             </table>
         </div>
     </div>
