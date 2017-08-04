@@ -12,7 +12,7 @@
     <div class="row">
         {% if project.owner_id == current_user.id or is_coowner(project.id) or (current_user.is_authenticated() and current_user.admin)%}
         <div id="import_tasks" class="col-md-6">
-            {{ render_project_card_option(project, upload_method, title=_('Import Tasks'), explanation=_('Import tasks from templates, GDrive, or CSV'), link=url_for('project.import_task', short_name=project.short_name), link_action_text=_('Import'), icon='cloud-upload')}}
+            {{ render_project_card_option(project, upload_method, title=_('Import Tasks'), explanation=_('Import tasks from templates, GDrive, or CSV'), link=url_for('project.import_task', short_name=project.short_name), link_action_text=_('Import'), icon='cloud-upload', published=project.published)}}
         </div>
         {% endif %}
         {% if project.owner_id == current_user.id or current_user.admin or current_user.subadmin %}
