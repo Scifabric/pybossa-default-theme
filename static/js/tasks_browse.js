@@ -237,13 +237,10 @@ $(document).ready(function() {
     });
 
     function getSelection() {
-        var taskIds = [];
-        for (var id in selectedTasks) {
-            if (selectedTasks[id]) {
-                taskIds.push(parseInt(id));
-            }
+        if (selectedTask) {
+            return [selectedTask];
         }
-        return taskIds;
+        return [];
     };
 
     $('#btn-edit-priority').click(function() {
@@ -304,6 +301,37 @@ $(document).ready(function() {
         });
     });
 
+    $('body').on('contextmenu', 'tbody tr', function(e) {
+        $('#context-menu').css({
+            display: 'block',
+            left: e.pageX - $(this).offset().left,
+            top: e.pageY - 100
+        });
+        selectedTask = $(this).find('td:first').text()
+                              .trim().split(' ')[0].substring(1).trim();
+        $('#tasksGrid tr').removeClass('selected');
+        $(this).toggleClass('selected');
+        return false;
+    });
+
+    $('#info-columns').on('hide.bs.dropdown', function(event) {
+        refresh();
+    });
+
+    $('html').click(function() {
+        $('#context-menu').hide();
+        $('#tasksGrid tr').removeClass('selected');
+    });
+
+    $('#edit-pri').click(function() {
+        $('#update-priority-modal').modal('show');
+    });
+
+    $('#edit-red').click(function() {
+        $('#update-redundancy-modal').modal('show');
+    });
+
+
     function getUrlFor(endpoint) {
         var baseUrl = window.location.pathname.split('/browse')[0];
         return baseUrl + endpoint;
@@ -340,21 +368,6 @@ $(document).ready(function() {
             pybossaNotify(message, true, severity);
         });
     };
-
-    $('.task-checkbox').click(function(evt) {
-        var rowElt = $(this).parents('.task-row').first();
-        if (this.checked) {
-            rowElt.addClass('bg-primary');
-        }
-        else {
-            rowElt.removeClass('bg-primary');
-        }
-        var taskId = rowElt.first()
-                           .find('a.label')
-                           .html()
-                           .replace('#', '');
-        selectedTasks[taskId] = this.checked;
-    });
 });
 
 function displayTaskInfo(taskInfo, data) {
