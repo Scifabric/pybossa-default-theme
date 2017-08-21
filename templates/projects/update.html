@@ -35,6 +35,7 @@
         {{ render_field(form.category_id) }}
         {{ render_checkbox_field(form.allow_anonymous_contributors, class_="", tooltip=_('Check if you want to allow anonymous users contribute to your project')) }}
         {{ render_checkbox_field(form.hidden, tooltip=_('Check if you want to hide your project'))}}
+        {{ render_checkbox_field(form.email_notif, tooltip=_('Check if you want to send email notifications to your workers when new tasks are loaded'))}}
         <div id='password'>{{ render_field(form.password, placeholder="Leave blank to maintain set password") }}</div>
         {{ render_field(form.webhook) }}
         <div class="form-actions">
