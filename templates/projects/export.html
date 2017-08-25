@@ -7,7 +7,7 @@
 {% from "projects/_helpers.html" import render_project_card_option %}
 
 {% block projectcontent %}
-{% if not current_user.admin and not current_user.subadmin %}
+{% if not is_coowner(project.id) and not current_user.admin and not current_user.subadmin %}
     {{ privacy.render_lock_page() }}
 {% else %}
 <p>{{ _('You can export and download') }} <strong>{{ _('all the available') }}</strong> {{ _('Tasks and Task Runs (the submitted answers by the users) in CSV or JSON formats.') }}</p>

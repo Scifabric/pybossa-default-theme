@@ -82,6 +82,8 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
             </button>
         </li>
+        <!-- Project owner, subadmin that are project co-owners and admins can edit/delete task properties -->
+        {% if project.owner_id == current_user.id or (current_user.subadmin and is_coowner(project.id)) or current_user.admin %}
         <li class="dropdown" id="edit-tasks">
             <button class="dropdown-toggle" type="button" id="btn-edit-tasks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="fa fa-edit"><span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="btn-edit-tasks">
@@ -94,6 +96,7 @@
                 <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
         </li>
+        {% endif %}
         {% endif %}
     </ul>
 </div>
@@ -406,7 +409,8 @@
     </div>
   </div>
 </div>
-
+<!-- Project owner, subadmin that are project co-owners and admins can edit/delete task properties -->
+{% if project.owner_id == current_user.id or (current_user.subadmin and is_coowner(project.id)) or current_user.admin %}
 <div id="context-menu" class="dropdown clearfix">
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-menu" style="display:block;position:absolute;">
         <li><a href="#" id="edit-pri" data-value="task-priority">Edit Priority</a></li>
@@ -414,6 +418,7 @@
         <li><a href="#" id="del-task" data-target="#delete-tasks-modal" data-toggle="modal">Delete Task</a></li>
     </ul>
 </div>
+{% endif %}
 
 <script type="text/javascript">
     var filter_data = {{ filter_data|tojson }};

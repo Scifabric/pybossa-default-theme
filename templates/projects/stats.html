@@ -19,7 +19,7 @@
     var projectStats = {{projectStats|safe}};
 </script>
 
-        {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin and not current_user.subadmin)) %}
+        {% if enforce_privacy and (not is_coowner(project.id) and not current_user.admin and not current_user.subadmin) %}
         {{ privacy.render_lock_page() }}
         {% else %}
         <br/>
@@ -100,7 +100,7 @@
                             }
                         });
                     }
-                        
+
                     graph = drawGraph();
 
                     })();
