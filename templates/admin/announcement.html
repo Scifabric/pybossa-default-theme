@@ -1,6 +1,5 @@
 {% extends "admin/base.html" %}
-{% from "admin/_helpers.html" import render_admin_user%}
-
+{% from "admin/_helpers.html" import render_admin_user, render_announcement%}
 
 {% block rightbody %}
 <div class="container">
@@ -8,6 +7,17 @@
         <a class="btn btn-warning" href="{{url_for('admin.new_announcement')}}">Create a new Announcement</a>
         </div>
 
+        {% if announcements %}
+        <div class="row">
+            {% for announcement in announcements | sort(attribute='updated', reverse=True) %}
+            <div class="col-sm-6">
+                {{ render_announcement(upload_method, background=True, background_url=announcement.media_url, title=announcement.title, explanation=announcement.body | markdown | truncate(200) | striptags, link="placeholder", link_action_text=_('Read more'), published=announcement.published)}}
+            </div>
+            {% endfor %}
+            <ul>
+        {% else %}
             <h1>{{ _('Sorry! No posts so far.') }}</h1>
+        {% endif %}
+
 </div>
 {% endblock %}
