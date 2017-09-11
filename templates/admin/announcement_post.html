@@ -12,7 +12,7 @@
         </p>
         <p>
         <!-- TODO: show single announcement? -->
-        <!-- <a href="{{url_for('admin.show_blogposts', short_name=project.short_name)}}">{{_('Back')}}</a></p> -->
+        <a href="{{url_for('admin.update_announcement', id=announcement.id)}}">{{_('Back')}}</a></p>
     </header>
     <body>
         <p>{{ announcement.body | e | markdown }}</p>

@@ -5,7 +5,7 @@
                 Upload an image file:
                 <input type="file" @change="previewImage" accept="image/*">
             </div>
-            <div id="cropit-ctn" v-if="src.length > 0">
+            <div id="cropit-ctn" v-if="src != null && src.length > 0">
                 <img id="cropit" class="preview" :src="src"/> 
                 <div class="cropping-btns">
                     <button class="btn btn-info" v-on:click="createCropper" v-bind:class="{ disabled: isCropping}">Crop</button>
@@ -108,6 +108,7 @@ export default {
             self.file_name = response.data.info.file_name
           }
           else {
+            // TODO: do we need this ???
             // self.data.project_id = response.data.project.id
           }
         });
