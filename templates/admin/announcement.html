@@ -11,7 +11,13 @@
         <div class="row">
             {% for announcement in announcements | sort(attribute='updated', reverse=True) %}
             <div class="col-sm-6">
-                {{ render_announcement(upload_method, background=True, background_url=announcement.media_url, title=announcement.title, explanation=announcement.body | markdown | truncate(200) | striptags, link=url_for('admin.update_announcement', id=announcement.id), link_action_text=_('Read more'), published=announcement.published)}}
+                {{ render_announcement(upload_method, background=True, background_url=announcement.media_url, title=announcement.title, explanation=announcement.body | markdown | truncate(200) | striptags, link=url_for('admin.update_announcement', id=announcement.id), link_action_text=_('Edit'), published=announcement.published)}}
+                <form class="form-horizontal" method="post" action="{{ url_for('admin.delete_announcement', id=announcement.id) }}" onsubmit="return confirm('Do you really want to delete this announcement?');">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                    <div class="form-actions">
+                        <input type="submit" value={{_('Delete')}} class="btn btn-danger" />
+                    </div>
+                </form>
             </div>
             {% endfor %}
             <ul>

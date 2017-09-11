@@ -90,6 +90,7 @@ export default {
             url = '/api/announcement/' + this.announcement_id
             console.log(url)
             update = true
+            document.getElementById("announcementtitle").innerHTML="Update announcement"
         }
         var options = {headers: {'Content-Type': 'application/json'}}
         var self = this

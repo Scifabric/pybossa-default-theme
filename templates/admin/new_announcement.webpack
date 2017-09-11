@@ -5,7 +5,7 @@
 {% block rightbody %}
 
 <div class="container">
-            <h1>New announcement</h1>
+            <h1 id="announcementtitle">New announcement</h1>
 </div>
 
 <div id="editorpybossa">

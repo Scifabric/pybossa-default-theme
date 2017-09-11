@@ -19,7 +19,7 @@
     </body>
 </article>
 {% if current_user.admin %}
-<form class="form-horizontal" method="post" action="{{ url_for('admin.delete_announcement', id=announcement.id) }}" onsubmit="return confirm('Do you really want to delete this announcement?');">
+<form class="form-horizontal" method="post" action="{{ url_for('admin.delete_announcement', id) }}" onsubmit="return confirm('Do you really want to delete this announcement?');">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
     <div class="form-actions">
         <input type="submit" value={{_('Delete')}} class="btn btn-danger" />
