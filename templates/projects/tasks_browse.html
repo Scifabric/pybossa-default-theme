@@ -34,12 +34,12 @@
         </b>
         </li>
         <li>
-            <button id='btnRefresh' type="button" data-toggle="popover" data-trigger="focus" data-placement="top" data-constraints='focus' data-content="{{_('Please refresh the results after setting the desired filters.')}}" title="{{_('Refresh Results')}}">
-                <i class="fa fa-refresh" aria-hidden="true"></i>
+            <button id='btnRefresh' type="button" data-toggle="popover" data-trigger="focus" data-placement="top" data-constraints='focus' data-content="{{_('Please refresh the results after setting the desired filters.')}}" title="{{_('Search')}}">
+                <i class="fa fa-search" aria-hidden="true"></i>
             </button>
         </li>
         <li class="dropdown">
-            <button class="dropdown-toggle" type="button" id="btnDownload" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="fa fa-cloud-download"></span><span class="caret"></span></button>
+            <button class="dropdown-toggle" type="button" id="btnDownload" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Export tasks/task runs"><span class="fa fa-cloud-download"></span><span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
                 <li><a href="#" class='download-type' id='task-csv'>Tasks CSV</a></li>
                 <li><a href="#" class='download-type' id='task-json'>Tasks JSON</a></li>
@@ -50,7 +50,7 @@
            </ul>
         </li>
         <li class="dropdown">
-            <button class="dropdown-toggle" type="button" id="btnRpp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{records_per_page}}<span class="caret"></span></button>
+            <button class="dropdown-toggle" type="button" id="btnRpp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Tasks per page">{{records_per_page}}<span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
                 {% for num in allowed_records_per_page %}
                     <li><a href="#" class='records_per_page'>{{num}}</a></li>
@@ -58,7 +58,7 @@
             </ul>
         </li>
         <li class="dropdown" id="columnsSettings">
-            <button class="dropdown-toggle" type="button" id="btnColumnsSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="fa fa-cog"><span class="caret"></span></button>
+            <button class="dropdown-toggle" type="button" id="btnColumnsSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Columns"><span class="fa fa-cog"><span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="btnColumnsSettings">
                 <li><a href="#" class="columns_settings" data-value="task_id" tabIndex="-1"><input type="checkbox" {{ "checked" if "task_id" in filter_data.display_columns }} disabled="disabled" />&nbsp;Task Id</a></li>
                 <li><a href="#" class="columns_settings" data-value="priority" tabIndex="-1"><input type="checkbox" {{ "checked" if "priority" in filter_data.display_columns }}/>&nbsp;Priority</a></li>
@@ -70,7 +70,7 @@
         </li>
         {% if filter_columns %}
         <li class="dropdown" id="info-columns">
-            <button class="dropdown-toggle" type="button" id="btn-filter-columns" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Task Info"><span class="fa fa-database"><span class="caret"></span></button>
+            <button class="dropdown-toggle" type="button" id="btn-filter-columns" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Display task info"><span class="fa fa-database"><span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="btn-filter-columns">
                 {% for column_name in filter_columns %}
                     <li><a href="#" class="columns_settings" data-value={{column_name}} tabIndex='-1'><input type="checkbox" {{ "checked" if column_name in filter_data.display_columns }}/>&nbsp; {{column_name}}</a></li>
@@ -79,13 +79,13 @@
         </li>
         <li>
             <button id='btnFilter' type="button" data-target="#filterModal" data-toggle="modal" title="Filter by request fields">
-                <i class="fa fa-search" aria-hidden="true"></i>
+                <i class="fa fa-filter" aria-hidden="true"></i>
             </button>
         </li>
         <!-- Project owner, subadmin that are project co-owners and admins can edit/delete task properties -->
         {% if project.owner_id == current_user.id or (current_user.subadmin and is_coowner(project.id)) or current_user.admin %}
         <li class="dropdown" id="edit-tasks">
-            <button class="dropdown-toggle" type="button" id="btn-edit-tasks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="fa fa-edit"><span class="caret"></span></button>
+            <button class="dropdown-toggle" type="button" id="btn-edit-tasks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Edit priority/redundancy"><span class="fa fa-edit"><span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="btn-edit-tasks">
                 <li><a href="#" id="btn-edit-redundancy" data-value="task-redundancy" tabIndex="-1">Edit redundancy</a></li>
                 <li><a href="#" id="btn-edit-priority" data-value="task-priority" tabIndex="-1">Edit priority</a></li>
@@ -249,7 +249,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id='saveDateModal'>Save changes</button>
+        <button type="button" class="btn btn-primary" id='saveDateModal'>Search</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -317,7 +317,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id='saveFilterModal'>Save changes</button>
+        <button type="button" class="btn btn-primary" id='saveFilterModal'>Search</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
