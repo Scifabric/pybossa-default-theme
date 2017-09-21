@@ -33,9 +33,10 @@
         {{ render_field(form.description, class_="input-xlarge", placeholder=_('Give some details about the project')) }}
         {{ render_field(form.long_description, class_="input-xlarge", placeholder=_('Explain the project (use Markdown!)')) }}
         {{ render_field(form.category_id) }}
-        {{ render_checkbox_field(form.allow_anonymous_contributors, class_="", tooltip=_('Check if you want to allow anonymous users contribute to your project')) }}
+        {{ render_checkbox_field(form.allow_anonymous_contributors, tooltip=_('Check if you want to allow anonymous users contribute to your project')) }}
         {{ render_checkbox_field(form.hidden, tooltip=_('Check if you want to hide your project'))}}
         {{ render_checkbox_field(form.email_notif, tooltip=_('Check if you want to send email notifications to your workers when new tasks are loaded'))}}
+        {{ render_checkbox_field(form.sync_enabled, class_="", tooltip=_('Check if you want to enable project syncing')) }}
         <div id='password'>{{ render_field(form.password, placeholder="Leave blank to maintain set password") }}</div>
         {{ render_field(form.webhook) }}
         <div class="form-actions">
@@ -43,6 +44,26 @@
         </div>
     </fieldset>
 </form>
+
+{% if current_user.admin or project.owner_id == current_user.id %}
+    <h3>{{_('Project Sync')}}</h3>
+    <form method="post" action="{{ url_for('project.sync_project', short_name = project.short_name) }}">
+        <fieldset>
+            {{ render_field(sync_form.target_url) }}
+            {{ render_field(sync_form.target_key) }}
+            <div class="form-actions">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                <button type="submit" name='btn' value="sync" class="btn btn-primary">
+                    {{_('Sync Project')}}
+                </button>
+                <button type="submit" name='btn' value="undo" class="btn btn-default">
+                    {{_('Undo Last Sync')}}
+                </button>
+            </div>
+        </fieldset>
+    </form>
+{% endif %}
+
 <h3>{{_('Project secret key')}}</h3>
 <div class="input-group">
     <input type="password" name="secret-key" class="form-control" id="project-secret-key" style="width:100%;" readonly value="{{project.secret_key}}">
