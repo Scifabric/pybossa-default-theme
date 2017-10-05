@@ -5,8 +5,8 @@
 <section class="home featured">
     <div class="jumbotron">
         <div class="container text-center firstfold">
-            {% if categories_projects['featured'] | count > 0 %}
-            {% set featured_project = categories_projects['featured'] | random %}
+            {% if featured | count > 0 %}
+            {% set featured_project = featured | random %}
             <h1>{{ featured_project.name }}</h1>
             <p>{{ featured_project.description }}</p>
             <a class="btn btn-primary" href="{{ url_for('project.details', short_name=featured_project.short_name)}}">{{_('Contribute')}}</a>
@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-10">
-               {% for f in categories_projects['featured'] %}
+               {% for f in featured %}
                <div class="col-sm-offset-2 col-sm-8 col-md-offset-0 col-md-4">
                    <div class="thumbnail card">
                        <div class="post-pic" style="background: rgb(0, 151, 167) url({{helper.render_url_thumbnail(f, upload_method)}}) no-repeat center top; background-size: cover;"></div>
