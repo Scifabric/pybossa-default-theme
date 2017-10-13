@@ -32,7 +32,7 @@
 <div class="row">
 {% for user in found %}
     <div class="col-sm-4 col-md-4">
-    {{ render_project_card_coowner(short_name, user.user, upload_method, background=True, isCoowner=user.isCoowner)}}
+    {{ render_project_card_coowner(project.short_name, user, upload_method, background=True, is_coowner=user.is_coowner, is_creator=user.is_creator)}}
     </div>
 {% endfor %}
 </div>
@@ -45,7 +45,7 @@
 <div class="row">
     {% for user in coowners %}
     <div class="col-sm-4 col-md-4">
-    {{ render_project_card_coowner(short_name, user, upload_method, background=True, isCoowner=True)}}
+    {{ render_project_card_coowner(project.short_name, user, upload_method, background=True, is_coowner=True, is_creator=user.is_creator)}}
     </div>
     {% endfor %}
 </div>

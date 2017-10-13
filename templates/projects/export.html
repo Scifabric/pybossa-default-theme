@@ -7,7 +7,7 @@
 {% from "projects/_helpers.html" import render_project_card_option %}
 
 {% block projectcontent %}
-{% if not is_coowner(project.id) and not current_user.admin and not current_user.subadmin %}
+{% if not current_user.id in project.owners_ids and not current_user.admin and not current_user.subadmin %}
     {{ privacy.render_lock_page() }}
 {% else %}
 <p>{{ _('You can export and download') }} <strong>{{ _('all the available') }}</strong> {{ _('Tasks and Task Runs (the submitted answers by the users) in CSV or JSON formats.') }}</p>
@@ -69,7 +69,7 @@
 
 </div>
 {% endif %}
-{% if current_user.is_authenticated() and (project.owner_id == current_user.id or is_coowner(project.id)) %}
+{% if current_user.is_authenticated() and (current_user.id in project.owners_ids) %}
 <div id="ckan" class="row">
     <div class="col-md-12 text-center">
         {% if ckan_name %}
