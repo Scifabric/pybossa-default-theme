@@ -27,7 +27,7 @@
         <form method="post" action="{{ url_for(target, short_name=project.short_name) }}">
             <fieldset>
                 {{ form.hidden_tag() }}
-                <span class="help-inline"> {{ _('Or manually provide the ID of a Flickr set with images for') }} {{ active_project }}. <br/> {{ _('For more information, please look at') }} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-from-a-flickr-photo-set" target="_blank">{{ _('the documentation') }}.</a></span>
+                <span class="help-inline"> {{ _('Or manually provide the ID of a Flickr set with images for') }} {{ active_project }}. <br/> {{ _('For more information, please look at') }} <a href="http://docs.pybossa.com/user/overview/#importing-the-tasks-from-a-flickr-photo-set" target="_blank">{{ _('the documentation') }}.</a></span>
                 {{ render_field(form.album_id, placeholder="The ID of the Flickr set") }}
                 <div class="form-actions">
                     <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" />
