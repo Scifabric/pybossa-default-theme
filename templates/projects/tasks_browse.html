@@ -196,8 +196,8 @@
                 <td>{{ t.finish_time or '' }}</td>
                 {% endif %}
                 {% if 'actions' in filter_data.display_columns %}
-                <td style="width: 70px;">
-                    <div style="width: 70px;">
+                <td style="width: 100px;">
+                    <div style="width: 100px;">
                       {% if task_pct >= 100 %}
                       <a id="fulldownload" rel="nofollow" class="btn btn-success btn-xs fa fa-cloud-download" href="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}">&nbsp;</a> <button type="button" class="btn btn-success btn-xs fa fa-eye" data-toggle="modal" data-target="#infoModal" data-info="{{ url_for('project.export', short_name=project.short_name, task_id=t.id) }}"></button>
                       {% elif task_pct > 0 and task_pct < 100 %}
@@ -205,6 +205,14 @@
                       {% else %}
                       <a id="nothingtodownload" rel="nofollow" class="btn btn-info btn-xs disabled fa fa-cloud-download" href="#">&nbsp;</a> <a rel="nofollow" class="btn btn-success btn-xs disabled fa fa-eye" href="#"></a>
                       {% endif %}
+                      <button type="button"
+                              class="btn btn-success btn-xs fa fa-users"
+                              data-toggle="modal"
+                              data-target="#taskRunStatusModal"
+                              data-info="{{ url_for('project.export_statuses',
+                                                    short_name=project.short_name,
+                                                    task_id=t.id) }}">
+                      </button>
                     </div>
                 </td>
                 {% endif %}
@@ -319,6 +327,31 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id='saveFilterModal'>Search</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Task Run Status Info -->
+<div class="modal fade" id="taskRunStatusModal" tabindex="-1" role="dialog" aria-labelledby="taskRunStatusModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="taskRunStatusModalLabel">Task Run Status Info</h4>
+      </div>
+      <div class="modal-body">
+        <div id='loadingTaskRunStatusInfo' style="text-align: center;">
+            <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+        </div>
+        <div id='taskRunStatusInfo'></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+            Close
+        </button>
       </div>
     </div>
   </div>

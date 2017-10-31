@@ -127,7 +127,6 @@ $(document).ready(function() {
         var button = $(event.relatedTarget);
         var url = button.data('info');
 
-        //var modal = $(this);
         var loadingInfo = $('#loadingInfo').show();
         var taskInfo = $('#taskInfo').hide().text('');
 
@@ -140,6 +139,28 @@ $(document).ready(function() {
         })
         .always(function() {
             loadingInfo.hide(); taskInfo.show();
+        });
+    });
+
+    $('#taskRunStatusModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget);
+        var url = button.data('info');
+
+        var loadingTaskRunStatusInfo =
+            $('#loadingTaskRunStatusInfo').show();
+        var taskRunStatusInfo =
+            $('#taskRunStatusInfo').hide().text('');
+
+        $.get(url)
+        .done(function(data) {
+            displayTaskRunStatusInfo(taskRunStatusInfo, data);
+        })
+        .fail(function() {
+            taskRunStatusInfo.text('Error loading data');
+        })
+        .always(function() {
+            loadingTaskRunStatusInfo.hide();
+            taskRunStatusInfo.show();
         });
     });
 
@@ -376,7 +397,7 @@ function displayTaskInfo(taskInfo, data) {
     }
 
     var headers = [];
-    var info = '<table><thead><tr>';
+    var info = '<table class="table"><thead><tr>';
     // Extract headers
     for (var headerName in data[0].info) {
         headers.push(headerName);
@@ -391,8 +412,81 @@ function displayTaskInfo(taskInfo, data) {
         }
         info += '</tr>';
     }
-    info += '</tbody></html>';
+    info += '</tbody></table>';
     taskInfo.html(info);
+}
+
+function displayTaskRunStatusInfo(taskRunStatusInfo, data) {
+    if (data.length < 1) {
+        return;
+    }
+
+    var users = data.user_details;
+    var modal = document.getElementById('taskRunStatusModal');
+    var info = '<table class="table"><thead><tr>';
+
+    // Headers
+    info += '<th>#</th>'
+    info += '<th>User ID</th>'
+    info += '<th>User Email</th>'
+    info += '<th>Status</th>'
+    info += '<th>Lock Expires In</th>'
+    info += '</tr></thead><tbody>';
+
+    // Rows
+    for (var i = 0; i < data.redundancy; i++) {
+        var num = i + 1;
+        var user = users[i];
+
+        info += '<tr>';
+        info += '<td>' + num.toString()  + '</td>';
+        if (user) {
+            info += '<td>' + user.user_id.toString() + '</td>';
+            info += '<td>' + user.user_email + '</td>';
+            info += '<td>' + user.status + '</td>';
+            info += `<td id="clock-${num}">` + '-' + '</td>';
+        }
+        else {
+            info += '<td>' + '-' + '</td>';
+            info += '<td>' + '-' + '</td>';
+            info += '<td>' + 'Available' + '</td>';
+            info += '<td>' + '-' + '</td>';
+        }
+        info += '</tr>';
+    }
+
+    info += '</tbody></table>';
+
+    taskRunStatusInfo.html(info);
+
+    // Locked countdown
+    for (var i = 0; i < users.length; i++) {
+        var clock = document.getElementById(
+            `clock-${i + 1}`
+        );
+        if (users[i].status === 'Locked') {
+            countdown(clock, users[i].lock_ttl);
+        }
+    }
+
+    function countdown(clock, t) {
+        var counter = setInterval(_countdown, 1000);
+
+        function _countdown() {
+            console.log('Countdown:', t);
+            var seconds = Math.floor(t % 60);
+            var minutes = Math.floor((t / 60) % 60);
+
+            clock.innerHTML = `${minutes}m  ${seconds}s`;
+
+            t--;
+            if (t <= 0 || modal.style.display === 'none') {
+                clearInterval(counter);
+                clock.innerHTML = 'EXPIRED';
+                return;
+            }
+        }
+    }
 }
 
 function prepareFilters() {
