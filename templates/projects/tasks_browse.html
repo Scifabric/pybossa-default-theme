@@ -83,7 +83,7 @@
             </button>
         </li>
         <!-- Project owner, subadmin that are project co-owners and admins can edit/delete task properties -->
-        {% if project.owner_id == current_user.id or (current_user.subadmin and is_coowner(project.id)) or current_user.admin %}
+        {% if (current_user.subadmin and current_user.id in project.owners_ids) or current_user.admin %}
         <li class="dropdown" id="edit-tasks">
             <button class="dropdown-toggle" type="button" id="btn-edit-tasks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Edit priority/redundancy"><span class="fa fa-edit"><span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="btn-edit-tasks">
@@ -410,7 +410,7 @@
   </div>
 </div>
 <!-- Project owner, subadmin that are project co-owners and admins can edit/delete task properties -->
-{% if project.owner_id == current_user.id or (current_user.subadmin and is_coowner(project.id)) or current_user.admin %}
+{% if (current_user.subadmin and current_user.id in project.owners_ids) or current_user.admin %}
 <div id="context-menu" class="dropdown clearfix">
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-menu" style="display:block;position:absolute;">
         <li><a href="#" id="edit-pri" data-value="task-priority">Edit Priority</a></li>
