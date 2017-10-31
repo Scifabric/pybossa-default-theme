@@ -423,50 +423,66 @@ function displayTaskRunStatusInfo(taskRunStatusInfo, data) {
 
     var users = data.user_details;
     var modal = document.getElementById('taskRunStatusModal');
-    var info = '<table class="table"><thead><tr>';
+    var table = document.createElement('table');
+    var header = document.createElement('thead');
+    var headerRow = document.createElement('tr');
+    var body = document.createElement('tbody');
+    var colNames = [
+        '#',
+        'User ID',
+        'User Email',
+        'Status',
+        'Lock Expires'
+    ]
+
+    table.className += 'table';
 
     // Headers
-    info += '<th>#</th>'
-    info += '<th>User ID</th>'
-    info += '<th>User Email</th>'
-    info += '<th>Status</th>'
-    info += '<th>Lock Expires In</th>'
-    info += '</tr></thead><tbody>';
+    colNames.forEach(function(colName) {
+        var th = document.createElement('th');
+        var colNameText = document.createTextNode(colName);
+        th.appendChild(colNameText);
+        headerRow.appendChild(th);
+    });
+    header.appendChild(headerRow);
+    table.appendChild(header);
 
     // Rows
     for (var i = 0; i < data.redundancy; i++) {
         var num = i + 1;
         var user = users[i];
+        var row = document.createElement('tr');
+        var userId = '-';
+        var userEmail = '-';
+        var trStatus = 'Available';
+        var clock = makeCell('-');
 
-        info += '<tr>';
-        info += '<td>' + num.toString()  + '</td>';
         if (user) {
-            info += '<td>' + user.user_id.toString() + '</td>';
-            info += '<td>' + user.user_email + '</td>';
-            info += '<td>' + user.status + '</td>';
-            info += `<td id="clock-${num}">` + '-' + '</td>';
+            userId = user.user_id;
+            userEmail = user.user_email;
+            trStatus = user.status;
         }
-        else {
-            info += '<td>' + '-' + '</td>';
-            info += '<td>' + '-' + '</td>';
-            info += '<td>' + 'Available' + '</td>';
-            info += '<td>' + '-' + '</td>';
+
+        if (user && user.lock_ttl) {
+            countdown(clock, user.lock_ttl);
         }
-        info += '</tr>';
+
+        row.appendChild(makeCell(num));
+        row.appendChild(makeCell(userId));
+        row.appendChild(makeCell(userEmail));
+        row.appendChild(makeCell(trStatus));
+        row.appendChild(clock);
+        body.appendChild(row);
     }
 
-    info += '</tbody></table>';
+    table.appendChild(body);
+    taskRunStatusInfo.html(table);
 
-    taskRunStatusInfo.html(info);
-
-    // Locked countdown
-    for (var i = 0; i < users.length; i++) {
-        var clock = document.getElementById(
-            `clock-${i + 1}`
-        );
-        if (users[i].status === 'Locked') {
-            countdown(clock, users[i].lock_ttl);
-        }
+    function makeCell(content) {
+        var td = document.createElement('td');
+        var text = document.createTextNode(content);
+        td.appendChild(text);
+        return td;
     }
 
     function countdown(clock, t) {
@@ -477,7 +493,7 @@ function displayTaskRunStatusInfo(taskRunStatusInfo, data) {
             var seconds = Math.floor(t % 60);
             var minutes = Math.floor((t / 60) % 60);
 
-            clock.innerHTML = `${minutes}m  ${seconds}s`;
+            clock.innerHTML = minutes + 'm ' + seconds + 's';
 
             t--;
             if (t <= 0 || modal.style.display === 'none') {
