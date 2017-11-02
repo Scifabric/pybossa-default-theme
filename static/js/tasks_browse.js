@@ -127,7 +127,6 @@ $(document).ready(function() {
         var button = $(event.relatedTarget);
         var url = button.data('info');
 
-        //var modal = $(this);
         var loadingInfo = $('#loadingInfo').show();
         var taskInfo = $('#taskInfo').hide().text('');
 
@@ -140,6 +139,28 @@ $(document).ready(function() {
         })
         .always(function() {
             loadingInfo.hide(); taskInfo.show();
+        });
+    });
+
+    $('#taskRunStatusModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget);
+        var url = button.data('info');
+
+        var loadingTaskRunStatusInfo =
+            $('#loadingTaskRunStatusInfo').show();
+        var taskRunStatusInfo =
+            $('#taskRunStatusInfo').hide().text('');
+
+        $.get(url)
+        .done(function(data) {
+            displayTaskRunStatusInfo(taskRunStatusInfo, data);
+        })
+        .fail(function() {
+            taskRunStatusInfo.text('Error loading data');
+        })
+        .always(function() {
+            loadingTaskRunStatusInfo.hide();
+            taskRunStatusInfo.show();
         });
     });
 
@@ -376,7 +397,7 @@ function displayTaskInfo(taskInfo, data) {
     }
 
     var headers = [];
-    var info = '<table><thead><tr>';
+    var info = '<table class="table"><thead><tr>';
     // Extract headers
     for (var headerName in data[0].info) {
         headers.push(headerName);
@@ -391,8 +412,97 @@ function displayTaskInfo(taskInfo, data) {
         }
         info += '</tr>';
     }
-    info += '</tbody></html>';
+    info += '</tbody></table>';
     taskInfo.html(info);
+}
+
+function displayTaskRunStatusInfo(taskRunStatusInfo, data) {
+    if (data.length < 1) {
+        return;
+    }
+
+    var users = data.user_details;
+    var modal = document.getElementById('taskRunStatusModal');
+    var table = document.createElement('table');
+    var header = document.createElement('thead');
+    var headerRow = document.createElement('tr');
+    var body = document.createElement('tbody');
+    var colNames = [
+        '#',
+        'User ID',
+        'User Email',
+        'Status',
+        'Lock Expires'
+    ]
+
+    table.className += 'table';
+
+    // Headers
+    colNames.forEach(function(colName) {
+        var th = document.createElement('th');
+        var colNameText = document.createTextNode(colName);
+        th.appendChild(colNameText);
+        headerRow.appendChild(th);
+    });
+    header.appendChild(headerRow);
+    table.appendChild(header);
+
+    // Rows
+    for (var i = 0; i < data.redundancy; i++) {
+        var num = i + 1;
+        var user = users[i];
+        var row = document.createElement('tr');
+        var userId = '-';
+        var userEmail = '-';
+        var trStatus = 'Available';
+        var clock = makeCell('-');
+
+        if (user) {
+            userId = user.user_id;
+            userEmail = user.user_email;
+            trStatus = user.status;
+        }
+
+        if (user && user.lock_ttl) {
+            countdown(clock, user.lock_ttl);
+        }
+
+        row.appendChild(makeCell(num));
+        row.appendChild(makeCell(userId));
+        row.appendChild(makeCell(userEmail));
+        row.appendChild(makeCell(trStatus));
+        row.appendChild(clock);
+        body.appendChild(row);
+    }
+
+    table.appendChild(body);
+    taskRunStatusInfo.html(table);
+
+    function makeCell(content) {
+        var td = document.createElement('td');
+        var text = document.createTextNode(content);
+        td.appendChild(text);
+        return td;
+    }
+
+    function countdown(clock, t) {
+        var counter = setInterval(_countdown, 1000);
+
+        function _countdown() {
+            console.log('Countdown:', t);
+            var seconds = Math.floor(t % 60);
+            var minutes = Math.floor((t / 60) % 60);
+
+            clock.innerHTML = minutes + 'm ' + seconds + 's';
+
+            t--;
+            if (t <= 0 || modal.style.display === 'none') {
+                clearInterval(counter);
+                clock.innerHTML = 'EXPIRED';
+                return;
+            }
+        }
+    }
 }
 
 function prepareFilters() {
