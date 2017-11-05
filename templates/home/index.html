@@ -14,12 +14,12 @@
     </div>
 </section>
 {% if current_user.is_authenticated() %}
-{% if categories_projects['featured'] %}
+{% if featured %}
 <section class="home projects">
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-10">
-               {% for f in categories_projects['featured'] %}
+               {% for f in featured %}
                <div class="col-sm-offset-2 col-sm-8 col-md-offset-0 col-md-4">
                    <a href="{{ url_for('project.details', short_name=f.short_name)}}">
                        <div class="thumbnail card">

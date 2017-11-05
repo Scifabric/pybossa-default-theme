@@ -11,7 +11,7 @@
 <form method="post" action="{{ url_for(target, short_name=project.short_name) }}">
     <fieldset>
         {{ form.hidden_tag() }}
-        <span class="help-inline">{{_('Please provide an EpiCollect Plus project name to import its data for')}} {{ active_project }}.<br/> {{_('For more information, please look at')}} <a href="http://docs.pybossa.com/en/latest/user/overview.html#importing-the-tasks-via-the-built-in-csv-task-creator" target="_blank">{{_('the documentation')}}.</a></span>
+        <span class="help-inline">{{_('Please provide an EpiCollect Plus project name to import its data for')}} {{ active_project }}.<br/> {{_('For more information, please look at')}} <a href="http://docs.pybossa.com/user/overview/#importing-the-tasks-via-the-built-in-csv-task-creator" target="_blank">{{_('the documentation')}}.</a></span>
         {{ render_field(form.epicollect_project, placeholder=_('The name of the public EpiCollect Plus project')) }}
         {{ render_field(form.epicollect_form, placeholder=_('The name of the project\'s form')) }}
         <div class="form-actions">
