@@ -84,6 +84,8 @@
 <button class="btn btn-primary disabled" value="webpush">{{_('Enabled')}}</button>
 {% endif %}
 
+<h3>{{_('Transfer project ownership')}}</h3>
+<a href="{{url_for('project.transfer_ownership', short_name=project.short_name)}}" class="btn btn-primary">Change owner</a>
 </p>
 {% endblock %}
 {% block extrajs %}
