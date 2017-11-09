@@ -492,8 +492,9 @@ function displayTaskRunStatusInfo(taskRunStatusInfo, data) {
             console.log('Countdown:', t);
             var seconds = Math.floor(t % 60);
             var minutes = Math.floor((t / 60) % 60);
+            var hours = Math.floor(t / 60 / 60);
 
-            clock.innerHTML = minutes + 'm ' + seconds + 's';
+            clock.innerHTML = hours + 'h ' + minutes + 'm ' + seconds + 's';
 
             t--;
             if (t <= 0 || modal.style.display === 'none') {
