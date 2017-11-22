@@ -45,24 +45,36 @@
     </fieldset>
 </form>
 
-{% if current_user.admin or project.owner_id == current_user.id %}
-    <h3>{{_('Project Sync')}}</h3>
-    <form method="post" action="{{ url_for('project.sync_project', short_name = project.short_name) }}">
-        <fieldset>
-            {{ render_field(sync_form.target_url) }}
-            {{ render_field(sync_form.target_key) }}
-            <div class="form-actions">
-                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-                <button type="submit" name='btn' value="sync" class="btn btn-primary">
-                    {{_('Sync Project')}}
-                </button>
-                <button type="submit" name='btn' value="undo" class="btn btn-default">
-                    {{_('Undo Last Sync')}}
-                </button>
-            </div>
-        </fieldset>
-    </form>
-{% endif %}
+<h3>{{_('Project Sync')}}</h3>
+    {% if server_url != target_url and (current_user.admin or (current_user.subadmin and current_user.id in project.owners_ids)) %}
+        <form method="post" action="{{ url_for('project.sync_project', short_name = project.short_name) }}">
+            <fieldset>
+                {{ render_field(sync_form.target_key, placeholder=_('Enter your API key from ' + target_url)) }}
+                <div class="form-actions">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                    <button type="submit" name='btn' value="sync" class="btn btn-primary">
+                        {{_('Sync Project')}}
+                    </button>
+                    <button type="submit" name='btn' value="undo" class="btn btn-default">
+                        {{_('Undo Last Sync')}}
+                    </button>
+                </div>
+            </fieldset>
+            <p>
+                <span class="label label-info"><i class="fa fa-bullhorn"></i>{{_('Note')}}</span>&nbsp;
+                {{ _('  To get your API key follow: ') }}&nbsp;
+                <b>
+                    <a href="{{ target_url }}" target="_blank">{{ target_url }}</a>
+                    {{  _(' > My Profile > API Key ') }}
+                </b>
+            </p>
+        </form>
+    {% else %}
+        <p>
+            <span class="label label-info"><i class="fa fa-bullhorn"></i>{{_('Note')}}</span>&nbsp;
+            {{ _('  Project syncing from this domain is disabled.') }}
+        </p>
+    {% endif %}
 
 <h3>{{_('Project secret key')}}</h3>
 <div class="input-group">
