@@ -13,13 +13,17 @@
                 {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin and not current_user.subadmin)) %}
                 {{ privacy.render_lock_page() }}
                 {% else %}
-                <div class="text-center">
+                <div class="text-center" style="margin-top:30px;">
                     {{helper.render_user_thumbnail(user, upload_method, class='col-xs-4 img-circle')}}
                 </div>
-                <div class="text-center">
+                <div class="text-center" style="margin-top:30px;">
                     <h1 id="user-data">{{user.fullname}}</h1>
                     {% if user.rank %}
                     <h2><i class="fa fa-trophy"></i> {{ _('Rank')}}: {{user.rank}}</h2>
+                    {% endif %}
+                    {% if current_user.id == user.id %}
+                    <p><i class="fa fa-envelope"></i> {{_('E-mail')}}: {{ user.email_addr }}</p>
+                    <p><i class="fa fa-key"></i> {{ _('API key') }}: {{ user.api_key }}</p>
                     {% endif %}
                 </div>
                 {% if current_user.admin or current_user.subadmin%}
