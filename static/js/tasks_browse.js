@@ -265,23 +265,7 @@ $(document).ready(function() {
     };
 
     $('#btn-edit-priority').click(function() {
-        $('#update-priority-modal').modal('show');
-    });
-
-    $('#save-priority-modal').click(function() {
-        var priority = parseFloat($('#priority-value').val());
-        $('#update-priority-modal').modal('hide');
-        window.scrollTo(0, 0);
-        if (isNaN(priority) || priority < 0 || priority > 1) {
-            pybossaNotify('Invalid priority', true, 'warning');
-            return;
-        }
-        var data = getFilterObject();
-        data.priority_0 = priority;
-        var url = getUrlFor('/priorityupdate');
-        sendUpdateRequest(url, data).done(function(res) {
-            refresh();
-        });
+        showPriorityUpdateModal();
     });
 
     $('#btn-edit-redundancy').click(function() {
@@ -345,7 +329,7 @@ $(document).ready(function() {
     });
 
     $('#edit-pri').click(function() {
-        $('#update-priority-modal').modal('show');
+        showPriorityUpdateModal();
     });
 
     $('#edit-red').click(function() {
@@ -371,6 +355,39 @@ $(document).ready(function() {
             };
         }
     };
+
+    function showPriorityUpdateModal() {
+        $('#priority-value').keypress(function(e) {
+            var keyCode = e.keyCode || e.which,
+                KEY_CODE_ENTER = 13;
+
+            if(keyCode == KEY_CODE_ENTER) {
+                updateTaskPriority();
+            }
+        });
+
+        $('#save-priority-modal').click(function() {
+            updateTaskPriority();
+        });
+
+        $('#update-priority-modal').modal('show');
+    }
+
+    function updateTaskPriority() {
+        var priority = parseFloat($('#priority-value').val());
+        $('#update-priority-modal').modal('hide');
+        window.scrollTo(0, 0);
+        if (isNaN(priority) || priority < 0 || priority > 1) {
+            pybossaNotify('Invalid priority', true, 'warning');
+            return;
+        }
+        var data = getFilterObject();
+        data.priority_0 = priority;
+        var url = getUrlFor('/priorityupdate');
+        sendUpdateRequest(url, data).done(function(res) {
+            refresh();
+        });
+    }
 
     function sendUpdateRequest(endpoint, data) {
         return $.ajax({
