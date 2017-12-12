@@ -265,46 +265,11 @@ $(document).ready(function() {
     };
 
     $('#btn-edit-priority').click(function() {
-        $('#update-priority-modal').modal('show');
-    });
-
-    $('#save-priority-modal').click(function() {
-        var priority = parseFloat($('#priority-value').val());
-        $('#update-priority-modal').modal('hide');
-        window.scrollTo(0, 0);
-        if (isNaN(priority) || priority < 0 || priority > 1) {
-            pybossaNotify('Invalid priority', true, 'warning');
-            return;
-        }
-        var data = getFilterObject();
-        data.priority_0 = priority;
-        var url = getUrlFor('/priorityupdate');
-        sendUpdateRequest(url, data).done(function(res) {
-            refresh();
-        });
+        showPriorityUpdateModal();
     });
 
     $('#btn-edit-redundancy').click(function() {
-        $('#update-redundancy-modal').modal('show');
-    });
-
-    $('#save-redundancy-modal').click(function() {
-        var redundancy = parseInt($('#redundancy-value').val());
-        $('#update-redundancy-modal').modal('hide');
-        MAX_ALLOWED = 1000;
-        MIN_ALLOWED = 1;
-        window.scrollTo(0, 0);
-        if (isNaN(redundancy) || redundancy < MIN_ALLOWED || redundancy > MAX_ALLOWED) {
-            pybossaNotify('Invalid redundancy: please enter a value between ' +
-                          MIN_ALLOWED + ' and ' + MAX_ALLOWED, true, 'warning');
-            return;
-        }
-        var data = getFilterObject();
-        data.n_answers = redundancy;
-        var url = getUrlFor('/redundancyupdate');
-        sendUpdateRequest(url, data).done(function(res) {
-            refresh();
-        });
+        showRedundancyUpdateModal()
     });
 
     $('#save-delete-modal').click(function() {
@@ -345,13 +310,12 @@ $(document).ready(function() {
     });
 
     $('#edit-pri').click(function() {
-        $('#update-priority-modal').modal('show');
+        showPriorityUpdateModal();
     });
 
     $('#edit-red').click(function() {
-        $('#update-redundancy-modal').modal('show');
+        showRedundancyUpdateModal()
     });
-
 
     function getUrlFor(endpoint) {
         var baseUrl = window.location.pathname.split('/browse')[0];
@@ -371,6 +335,72 @@ $(document).ready(function() {
             };
         }
     };
+
+    function onEnterKey(cb) {
+        return function(e) {
+            var keyCode = e.keyCode || e.which,
+                KEY_CODE_ENTER = 13;
+
+            if(keyCode == KEY_CODE_ENTER) {
+                cb();
+            }
+        }
+    }
+
+    function showPriorityUpdateModal() {
+        $('#priority-value').keypress(onEnterKey(updateTaskPriority));
+
+        $('#save-priority-modal').click(function() {
+            updateTaskPriority();
+        });
+
+        $('#update-priority-modal').modal('show');
+    }
+
+    function updateTaskPriority() {
+        var priority = parseFloat($('#priority-value').val());
+        $('#update-priority-modal').modal('hide');
+        window.scrollTo(0, 0);
+        if (isNaN(priority) || priority < 0 || priority > 1) {
+            pybossaNotify('Invalid priority', true, 'warning');
+            return;
+        }
+        var data = getFilterObject();
+        data.priority_0 = priority;
+        var url = getUrlFor('/priorityupdate');
+        sendUpdateRequest(url, data).done(function(res) {
+            refresh();
+        });
+    }
+
+    function showRedundancyUpdateModal() {
+        $('#redundancy-value').keypress(onEnterKey(updateTaskRedundancy));
+
+        $('#save-redundancy-modal').click(function() {
+            updateTaskRedundancy();
+        });
+
+        $('#update-redundancy-modal').modal('show');
+    }
+
+    function updateTaskRedundancy() {
+        var redundancy = parseInt($('#redundancy-value').val());
+        $('#update-redundancy-modal').modal('hide');
+        MAX_ALLOWED = 1000;
+        MIN_ALLOWED = 1;
+        window.scrollTo(0, 0);
+        if (isNaN(redundancy) || redundancy < MIN_ALLOWED || redundancy > MAX_ALLOWED) {
+            pybossaNotify('Invalid redundancy: please enter a value between ' +
+                          MIN_ALLOWED + ' and ' + MAX_ALLOWED, true, 'warning');
+            return;
+        }
+        var data = getFilterObject();
+        data.n_answers = redundancy;
+        var url = getUrlFor('/redundancyupdate');
+        sendUpdateRequest(url, data).done(function(res) {
+            refresh();
+        });
+    }
 
     function sendUpdateRequest(endpoint, data) {
         return $.ajax({
