@@ -354,6 +354,10 @@ $(document).ready(function() {
             updateTaskPriority();
         });
 
+        $('#update-priority-modal').on('shown.bs.modal', function () {
+          $('#priority-value').focus()
+        })
+
         $('#update-priority-modal').modal('show');
     }
 
@@ -379,6 +383,10 @@ $(document).ready(function() {
         $('#save-redundancy-modal').click(function() {
             updateTaskRedundancy();
         });
+
+        $('#update-redundancy-modal').on('shown.bs.modal', function () {
+            $('#redundancy-value').focus()
+        })
 
         $('#update-redundancy-modal').modal('show');
     }
