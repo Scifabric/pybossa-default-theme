@@ -39,6 +39,23 @@
         {% endif %}
     </div>
 </div>
+<div class="row">
+     <div class="col-md-4">
+        {% if n_tasks != 0 %}
+        {{ render_project_card_option(project, upload_method, title=_('Consensus'), explanation=_('Export consensus in CSV format'), link=url_for('project.export_to', short_name=project.short_name, type='consensus', format='csv', expanded='False'), link_action_text=_('Export'), nofollow=True)}}
+        {% else %}
+        {{ render_project_card_option(project, upload_method, title=_('Consensus'), explanation=_('Export consensus in CSV format'), link="#", link_action_text=_('Export'), nofollow=True, link_class="disabled")}}
+        {% endif %}
+    </div>
+    <div class="col-md-4">
+        {% if n_task_runs != 0 %}
+
+        {{ render_project_card_option(project, upload_method, title=_('Consensus with Metadata'), explanation=_('Export consensus with metadata in CSV format'), link=url_for('project.export_to', short_name=project.short_name, type='consensus', format='csv', expanded='True'), link_action_text=_('Export'), nofollow=True)}}
+        {% else %}
+        {{ render_project_card_option(project, upload_method, title=_('Consensus with Metadata'), explanation=_('Export consensus with metadata in CSV format'), link="#", link_action_text=_('Export'), nofollow=True, link_class="disabled")}}
+        {% endif %}
+    </div>
+</div>
 <div id="json" class="row">
     <div class="col-md-12 text-center">
         <h3>{{_('Export in JSON format')}}</h3>
@@ -66,7 +83,23 @@
         {{ render_project_card_option(project, upload_method, title=_('Task Runs with Metadata'), explanation=_('Export task runs with metadata in JSON format'), link="#", link_action_text=_('Export'), nofollow=True, link_class="disabled")}}
         {% endif %}
     </div>
+</div>
+<div class="row">
+     <div class="col-md-4">
+        {% if n_tasks != 0 %}
+        {{ render_project_card_option(project, upload_method, title=_('Consensus'), explanation=_('Export consensus in JSON format'), link=url_for('project.export_to', short_name=project.short_name, type='consensus', format='json', expanded='False'), link_action_text=_('Export'), nofollow=True)}}
+        {% else %}
+        {{ render_project_card_option(project, upload_method, title=_('Consensus'), explanation=_('Export consensus in JSON format'), link="#", link_action_text=_('Export'), nofollow=True, link_class="disabled")}}
+        {% endif %}
+    </div>
+    <div class="col-md-4">
+        {% if n_task_runs != 0 %}
 
+        {{ render_project_card_option(project, upload_method, title=_('Consensus with Metadata'), explanation=_('Export consensus with metadata in JSON format'), link=url_for('project.export_to', short_name=project.short_name, type='consensus', format='json', expanded='True'), link_action_text=_('Export'), nofollow=True)}}
+        {% else %}
+        {{ render_project_card_option(project, upload_method, title=_('Consensus with Metadata'), explanation=_('Export consensus with metadata in JSON format'), link="#", link_action_text=_('Export'), nofollow=True, link_class="disabled")}}
+        {% endif %}
+    </div>
 </div>
 {% endif %}
 {% if current_user.is_authenticated() and (current_user.id in project.owners_ids) %}
