@@ -119,10 +119,6 @@ $(document).ready(function() {
         }
     });
 
-    $('#columnsSettings').on('hide.bs.dropdown', function(event) {
-        refresh();
-    });
-
     $('#infoModal').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget);
         var url = button.data('info');
@@ -304,6 +300,20 @@ $(document).ready(function() {
         refresh();
     });
 
+    $('#info-columns').on('click', 'li', function(event) {
+        event.stopPropagation();
+        dropdownCheckboxToggle(this);
+    });
+
+    $('#columnsSettings').on('hide.bs.dropdown', function(event) {
+        refresh();
+    });
+
+    $('#columnsSettings').on('click', 'li', function(event) {
+        event.stopPropagation();
+        dropdownCheckboxToggle(this);
+    });
+
     $('html').click(function() {
         $('#context-menu').hide();
         $('#tasksGrid tr').removeClass('selected');
@@ -316,6 +326,14 @@ $(document).ready(function() {
     $('#edit-red').click(function() {
         showRedundancyUpdateModal()
     });
+
+    function dropdownCheckboxToggle(elm) {
+        var checkbox = $(elm).find('input[type="checkbox"]');
+
+        if (checkbox.length && !checkbox.prop('disabled') ) {
+            checkbox.prop('checked', !checkbox.prop('checked'));
+        }
+    }
 
     function getUrlFor(endpoint) {
         var baseUrl = window.location.pathname.split('/browse')[0];
