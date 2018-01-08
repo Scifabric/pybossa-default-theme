@@ -302,7 +302,11 @@ $(document).ready(function() {
 
     $('#info-columns').on('click', 'li', function(event) {
         event.stopPropagation();
-        dropdownCheckboxToggle(this);
+
+        if (!$(event.target).is(':checkbox')) {
+            event.preventDefault();
+            dropdownCheckboxToggle(this);
+        }
     });
 
     $('#columnsSettings').on('hide.bs.dropdown', function(event) {
@@ -311,7 +315,11 @@ $(document).ready(function() {
 
     $('#columnsSettings').on('click', 'li', function(event) {
         event.stopPropagation();
-        dropdownCheckboxToggle(this);
+
+        if (!$(event.target).is(':checkbox')) {
+            event.preventDefault();
+            dropdownCheckboxToggle(this);
+        }
     });
 
     $('html').click(function() {
