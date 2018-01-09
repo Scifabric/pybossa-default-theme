@@ -1,9 +1,52 @@
 {% with messages = get_flashed_messages(with_categories=True) %}
 {% if messages %}
   {% for category, message in messages %}
+    {% if category != 'announcement' %}
     <script>
         pybossaNotify('{{message}}', true, "{{category}}");
     </script>
+    {% else %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/announcement.css')}}"/>
+    <div id="announcement-box" class="panel panel-warning">
+      <div class="panel-heading">
+        <h5><strong>New notification</strong></h5>
+      </div>
+      <div class="panel-body">
+        <p>
+          {{message | safe}}
+        </p>
+        <div>
+          <div class="btn btn-large btn-warning pull-right">Dismiss</div>
+        </div>
+      </div>
+    </div>
+    <script>
+        (function() {
+            function parseCookie(){
+                var cookies = document.cookie.split(';');
+                return cookies.reduce(function(acc, item) {
+                    var split = item.split(/=(.+)/);
+                    acc[split[0].trim()] = split[1].trim();
+                    return acc;
+                }, {});
+            }
+
+            var cookieKey = 'gig_announcement_{{message.__hash__()}}_dismissed';
+
+            var dismissed = parseCookie()[cookieKey];
+            if (dismissed) {
+                return;
+            }
+
+            var announcements = $('#announcement-box');
+            announcements.show()
+            $('#announcement-box .btn').on('click', function() {
+                announcements.hide();
+                document.cookie = cookieKey + '=1;max-age=2592000;path=/';
+            });
+        })();
+    </script>
+    {% endif %}
   {% endfor %}
 {% endif %}
 {% endwith %}
