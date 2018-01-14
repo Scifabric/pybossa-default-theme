@@ -4,12 +4,11 @@
 {% from "projects/_helpers.html" import render_grid_projects, broken_image %}
 {% import "privacy/locked.html" as privacy %}
 {% from "_formhelpers.html" import render_form %}
-
+{% import "account/user_pref_metadata.html" as user_pref_metadata %}
 {% block content %}
-<section class="account public-profile">
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-2 col-md-8">
+            <div class="col-md-offset-2 col-md-8" style="margin-top:30px;">
                 {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin and not current_user.subadmin)) %}
                 {{ privacy.render_lock_page() }}
                 {% else %}
@@ -21,53 +20,26 @@
                     {% if user.rank %}
                     <h2><i class="fa fa-trophy"></i> {{ _('Rank')}}: {{user.rank}}</h2>
                     {% endif %}
-                    {% if current_user.id == user.id %}
-                    <p><i class="fa fa-envelope"></i> {{_('E-mail')}}: {{ user.email_addr }}</p>
-                    <p><i class="fa fa-key"></i> {{ _('API key') }}: {{ user.api_key }}</p>
-                    {% endif %}
                 </div>
                 {% if current_user.admin or current_user.subadmin%}
                 <div class="col-md-offset-15 col-md-10 {% if input_form %} hidden {% endif %}" id="user-info" >
-                    <h4>{{ _('Total projects contributed:')}} {{total_projects_contributed}}</h4>
-                    <h4>{{ _('Total tasks completed:')}} {{user.n_answers}}</h4>
-                    <h4>{{ _('Percentage of tasks completed:')}} {{percentage_tasks_completed}}</h4>
-                    <h4>{{ _('Last task submission date:')}} {{user.last_task_submission_on}}</h4>
-
-                    {% if metadata %}
-                        {% if metadata.languages %}<h4><b>Language(s):</b> {{metadata.languages|join(', ') }}</h4>{% endif %}
-                        {% if metadata.locations %}<h4><b>Location(s):</b> {{metadata.locations|join(', ') }}</h4>{% endif %}
-                        {% if metadata.start_time %}<h4><b>Available:</b> {{metadata.start_time}}<b> - </b> {{metadata.end_time}} {{metadata.timezone}}</h4>{% endif %}
-                        {% if metadata.user_type %}<h4><b>User Type:</b> {{metadata.user_type}}</h4>{% endif %}
-                        {% if metadata.review %}<h4><b>Review:</b> {{metadata.review}}</h4>{% endif %}
-                        <h5><small>Submitted by: @{{metadata.admin}} {{metadata.time_stamp}}</small></h5>
-                    {% else %}
-                        <div class="text-center", id="no-info-text">
-                            <h4><b>There is no user information to display</b></h4>
-                        </div>
-                    {% endif %}
-                    {% if can_update %}
-                    <div class="text-center">
-                        <button id="edit-button" class="btn btn-info btn-large" >Edit</button>
-                    </div>
-                    {% endif %}
+                    <p><strong>{{ _('Total projects contributed:')}}</strong> {{total_projects_contributed}}</p>
+                    <p><strong>{{ _('Total tasks completed:')}}</strong> {{user.n_answers}}</p>
+                    <p><strong>{{ _('Percentage of tasks completed:')}}</strong> {{percentage_tasks_completed}}</p>
+                    <p><strong>{{ _('Last task submission date:')}}</strong> {{user.last_task_submission_on}}</p>
                 </div>
-                {% if can_update %}
-                <div class="col-md-offset-15 col-md-10">
-                    <div class="text-center">
-                        <div id="input-form" {% if not input_form %} class="hidden" {% endif %} >
-                            <div class="help-tip">
-                                <p>Non Chrome users should input time in <u>military format</u> ex. 13:30</p>
-                            </div>
-                            {{ render_form(form, action_url=url_for('account.add_metadata',name=user.name), btn_class="btn btn-info btn-block") }}
-                            &nbsp;
-                            <a href="{{url_for('account.profile', name=user.name)}}" class="btn btn-default btn-block">{{ _('Cancel') }}</a>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
                 {% endif %}
             </div>
-        </div>
+          </div>
+          <div class="row">
+              <div class="col-md-offset-2 col-md-8">
+                  {% if current_user.admin or current_user.subadmin%}
+                  <div class="col-md-offset-15 col-md-10">
+                      {{ user_pref_metadata.render_upref_mdata(user, upref_mdata, upref_mdata_form, can_update, input_form) }}
+                  </div>
+                  {% endif %}
+              </div>
+          </div>
     </div>
 </section>
 {% if projects_created %}
@@ -78,7 +50,7 @@
 {% endif %}
 {% endif %}
 {{ broken_image() }}
+{% endblock %}
 {% block extrajs %}
 {% include "account/js/metadata.js" %}
-{% endblock %}
 {% endblock %}
