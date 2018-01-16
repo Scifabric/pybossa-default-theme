@@ -295,7 +295,7 @@
                            </a>
                            <div class="caption">
                                <h3>{{f.name}}</h3>
-                               {% if show_ownership and f.owner_id != current_user.id %}
+                               {% if show_ownership and current_user.id in f.owners_ids and f.owner_id != current_user.id %}
                                <em>{{ _('Co-owner')}}</em>
                                {% endif %}
                                <p>{{f.description}}</p>

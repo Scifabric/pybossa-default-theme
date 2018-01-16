@@ -71,7 +71,7 @@
     </div>
 </section>
 {% if projects_created %}
-{{render_grid_projects(projects_created, "Created Projects", upload_method, current_user, id="created-projects", show_ownership=True)}}
+{{render_grid_projects(projects_created, "Projects Owned", upload_method, current_user, id="created-projects", show_ownership=True)}}
 {% endif %}
 {% if projects %}
 {{render_grid_projects(projects, "Contributions", upload_method, current_user, id="contributed-projects", show_ownership=True)}}
