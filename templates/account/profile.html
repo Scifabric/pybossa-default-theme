@@ -3,21 +3,27 @@
 {% set active_link = "profile" %}
 {% import "account/_helpers.html" as helper %}
 {% import "projects/_helpers.html" as project_helper %}
-
+{% import "account/user_pref_metadata.html" as user_pref_metadata %}
 {% block content %}
 <section class="account profile">
     <div class="container">
-      
+
             <div class="col-sm-3 col-md-3" style="margin-top:30px;">
                 {{ helper.render_account_local_nav(current_user, active_link) }}
             </div>
             <div class="col-sm-9 col-md-9" style="margin-top:30px;">
                 <h2>{{ _('Your Account') }}: {{current_user.fullname}}</h2>
-                {{ helper.render_user_profile(current_user, upload_method, "settings") }} 
+                {{ helper.render_user_profile(current_user, upload_method, "settings") }}
+                {{ user_pref_metadata.render_upref_mdata(user, upref_mdata, upref_mdata_form, can_update, input_form) }}
+            </div>
+            <div>
                 {% if projects_contrib | count > 0 %}
                 {{ project_helper.render_grid_projects(projects_contrib,  _('Your Contributions'), upload_method, current_user, title_class="col-md-12", container=False, show_ownership=True)}}
                 {% endif %}
             </div>
     </div>
 </section>
+{% endblock %}
+{% block extrajs %}
+{% include "account/js/metadata.js" %}
 {% endblock %}

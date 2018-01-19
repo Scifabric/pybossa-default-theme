@@ -1,0 +1,46 @@
+{% from "_formhelpers.html" import render_form %}
+{% macro render_upref_mdata(user, upref_mdata, upref_mdata_form, can_update, input_form) %}
+<div class="user-metadata">
+    {% if upref_mdata %}
+        {% if upref_mdata.languages %}
+            <p><strong>Language(s):</strong> {{upref_mdata.languages|join(', ') }}</p>
+        {% endif %}
+        {% if upref_mdata.locations %}
+            <p><strong>Location(s):</strong> {{upref_mdata.locations|join(', ') }}</p>
+        {% endif %}
+        {% if upref_mdata.start_time %}
+            <p><strong>Available:</strong> {{upref_mdata.start_time}} - {{upref_mdata.end_time}} {{upref_mdata.timezone}}</p>
+        {% endif %}
+        {% if upref_mdata.user_type %}
+            <p><strong>User Type:</strong> {{upref_mdata.user_type}}</p>
+        {% endif %}
+        {% if upref_mdata.review %}
+            <p><strong>Review:</strong> {{upref_mdata.review}}</p>
+        {% endif %}
+        {% if upref_mdata.admin %}
+            <h5><small>Submitted by: @{{upref_mdata.admin}} {{upref_mdata.time_stamp}}</small></h5>
+        {% endif %}
+    {% else %}
+        <div class="text-center", id="no-info-text">
+            <h4><b>There is no user preference/metadata information to display</b></h4>
+        </div>
+    {% endif %}
+    {% if can_update %}
+    <div class="text-center">
+        <button id="edit-button" class="btn btn-info btn-large" >Edit</button>
+    </div>
+    <div class="col-md-offset-15 col-md-10">
+        <div class="text-center">
+            <div id="input-form" {% if not input_form %} class="hidden" {% endif %} >
+                <div class="help-tip">
+                    <p>Non Chrome users should input time in <u>military format</u> ex. 13:30</p>
+                </div>
+                {{ render_form(upref_mdata_form, action_url=url_for('account.add_metadata',name=user.name), btn_class="btn btn-info btn-block") }}
+                &nbsp;
+                <a href="{{url_for('account.profile', name=user.name)}}" class="btn btn-default btn-block">{{ _('Cancel') }}</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endmacro %}
