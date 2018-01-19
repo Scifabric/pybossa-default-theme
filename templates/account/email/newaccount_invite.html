@@ -2,11 +2,11 @@
     <h1>Account Registration</h1>
     <p>Hello, {{user['fullname']}}!</p>
     <p>Welcome to {{ config.BRAND }}
-    {% if server_url == "https://qa.gigwork.net" %}
+    {% if is_qa %}
     (QA Version)
     {% endif %}
     . Your account has been created on <a href={{ server_url }}>{{ server_url }}</a></p>
-    
+
     <p>Please login with your email: {{user['email_addr']}} and temporary password: {{user['password']}}</p>
     <p>Upon login, you will be emailed a code that you will need to enter to verify your account</p>
     {% if project_urls %}
@@ -19,5 +19,5 @@
         </p>
     {% endif %}
     <br>
-    <p>Reference manual for GIGwork platform is available at <a href={{user_manual_url}}>{{user_manual_label}}</a></p>
+    <p>Reference manual for {{ config.BRAND }} platform is available at <a href={{user_manual_url}}>{{user_manual_label}}</a></p>
 {% endblock %}
