@@ -3,12 +3,13 @@
 {% import "account/_helpers.html" as helper %}
 {% from "projects/_helpers.html" import render_grid_projects, broken_image %}
 {% import "privacy/locked.html" as privacy %}
+{% import "account/user_pref_metadata.html" as user_pref_metadata %}
 
 {% block content %}
 <section class="account public-profile">
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-2 col-md-8">
+            <div class="col-md-offset-2 col-md-8" style="margin-top:30px;">
                 {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
                 {{ privacy.render_lock_page() }}
                 {% else %}
@@ -23,6 +24,15 @@
                 </div>
             </div>
         </div>
+        {% if config.upref_mdata %}
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="col-md-offset-15 col-md-10">
+                    {{ user_pref_metadata.render_upref_mdata(user, form, can_update, input_form) }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </section>
 {% if projects_created %}
@@ -33,4 +43,7 @@
 {% endif %}
 {% endif %}
 {{ broken_image() }}
+{% endblock %}
+{% block extrajs %}
+{% include "account/js/metadata.js" %}
 {% endblock %}
