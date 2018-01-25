@@ -576,6 +576,7 @@ function prepareFilters() {
     var filter_by_field = preparedFilters['filter_by_field'] || [];
     var order_by = [];
     var display_columns = [];
+    var display_info_columns = [];
     var sortColumns = $('#tasksGrid th[data-sort]');
     sortColumns.filter('.sort-asc').each(function() {
         order_by.push($(this).attr('data-sort') + ' asc');
@@ -596,6 +597,12 @@ function prepareFilters() {
     if (display_columns.length > 0) {
         preparedFilters['display_columns'] = JSON.stringify(display_columns);
     }
+
+    $('a.info_columns_settings:has(input:checked)').each(function() {
+        display_info_columns.push($(this).attr('data-value'));
+    });
+
+    preparedFilters['display_info_columns'] = JSON.stringify(display_info_columns);
 
     for(key in preparedFilters) {
         if(preparedFilters[key] == null) {

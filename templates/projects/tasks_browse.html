@@ -77,7 +77,7 @@
             <button class="dropdown-toggle" type="button" id="btn-filter-columns" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Display task info"><span class="fa fa-database"><span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="btn-filter-columns">
                 {% for column_name in filter_columns %}
-                    <li><a href="#" class="columns_settings" data-value={{column_name}} tabIndex='-1'><input type="checkbox" {{ "checked" if column_name in filter_data.display_columns }}/>&nbsp; {{column_name}}</a></li>
+                    <li><a href="#" class="info_columns_settings" data-value={{column_name}} tabIndex='-1'><input type="checkbox" {{ "checked" if column_name in info_columns }}/>&nbsp; {{column_name}}</a></li>
                 {% endfor %}
             </ul>
         </li>
@@ -221,7 +221,7 @@
                 </td>
                 {% endif %}
                 {% for column_name in info_columns %}
-                <td>{{ t[column_name] }}</td>
+                <td>{{ t.info[column_name] }}</td>
                 {% endfor %}
             </tr>
             {% endfor %}
