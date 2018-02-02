@@ -1,3 +1,4 @@
+
 {% import "account/_helpers.html" as helper %}
 
 {% macro render_admin_user(user, upload_method) %}
@@ -57,6 +58,7 @@
     </div>
 </div>
 {% endmacro -%}
+
 {%- macro render_project_card_subadmin_user(user, upload_method, title, explanation, link, link_action_text, background=False, download=False, nofollow=False, link_class=None, id=None, icon=None, link_two=None, link_action_text_two=None) %}
 <div {%if id%}id="{{id}}"{% endif %} class="thumbnail card">
     <div class="post-pic" style="background: rgb(0, 151, 167) {%- if background %}url({{helper.render_user_avatar_src(user, upload_method)}}){% endif -%} no-repeat center top; background-size: cover;">

@@ -55,6 +55,12 @@ module.exports = {
       filename: '../../templates/projects/new_blogpost.html',
       template: '../../templates/projects/new_blogpost.webpack'
     }),
+    new htmlWebpackPlugin({
+      inject: false,
+      hash: true,
+      filename: '../../templates/admin/new_announcement.html',
+      template: '../../templates/admin/new_announcement.webpack'
+    }),
     //new webpack.optimize.DedupePlugin(),
     //new webpack.optimize.UglifyJsPlugin({minimize: true})
   ]
