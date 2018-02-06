@@ -68,11 +68,10 @@ export default {
     data() {
         return {
             src: '',
-            blogpost_id: null,
+            announcement_id: null,
             cropper: null,
-            project: null,
             owner: null,
-            data: {project_id: null,
+            data: {
                 title: '',
                 body: '',
                 published: false
@@ -87,10 +86,11 @@ export default {
             var tmp = url.split('/')
             console.log(tmp)
             console.log(tmp[(tmp.length -2)])
-            this.blogpost_id = tmp[(tmp.length -2)]
-            url = '/api/blogpost/' + this.blogpost_id
+            this.announcement_id = tmp[(tmp.length -2)]
+            url = '/api/announcement/' + this.announcement_id
             console.log(url)
             update = true
+            document.getElementById("announcementtitle").innerHTML="Update announcement"
         }
         var options = {headers: {'Content-Type': 'application/json'}}
         var self = this
@@ -101,17 +101,16 @@ export default {
           data: null
         })
           .then(function(response) {
-          self.project = response.data.project
           self.owner = response.data.owner
           if (update) {
-            self.data.project_id = response.data.project_id
             self.data.title = response.data.title
             self.data.body = response.data.body
             self.src = response.data.media_url
             self.file_name = response.data.info.file_name
           }
           else {
-            self.data.project_id = response.data.project.id
+            // TODO: do we need this ???
+            // self.data.project_id = response.data.project.id
           }
         });
 
@@ -146,16 +145,15 @@ export default {
                 var formData = new FormData();
 
                 formData.append('file', blob, self.file_name)
-                formData.append('project_id', self.data.project_id)
                 formData.append('title', self.data.title)
                 formData.append('body', self.data.body)
                 console.log(self.puturl)
 
-                if (self.puturl === '/api/blogpost') {
+                if (self.puturl === '/api/announcement') {
                     axios.post(self.puturl, formData).then(function(response){
                         self.data.title = response.data.title
                         self.data.body = response.data.body
-                        self.blogpost_id = response.data.id
+                        self.announcement_id = response.data.id
                         self.src = response.data.media_url + '?' + Date.now()
                         self.cropper.destroy()
                         self.cropper = null
@@ -166,7 +164,7 @@ export default {
                     axios.put(self.puturl, formData).then(function(response){
                         self.data.title = response.data.title
                         self.data.body = response.data.body
-                        self.blogpost_id = response.data.id
+                        self.announcement_id = response.data.id
                         self.src = response.data.media_url + '?' + Date.now()
                         self.cropper.destroy()
                         self.cropper = null
@@ -199,11 +197,11 @@ export default {
             }
             this.data.title = res.title
             this.data.body = res.body
-            this.blogpost_id = res.id
+            this.announcement_id = res.id
         },
         update(){
             var self = this
-            if (this.puturl === '/api/blogpost') {
+            if (this.puturl === '/api/announcement') {
                 axios.post(this.puturl, this.data).then(function(response){
                     console.log(response)
                     if (response.data.media_url !== '' && response.data.media_url !== null) {
@@ -211,7 +209,7 @@ export default {
                     }
                     self.data.title = response.data.title
                     self.data.body = response.data.body
-                    self.blogpost_id = response.data.id
+                    self.announcement_id = response.data.id
 
                 })
         }
@@ -228,8 +226,8 @@ export default {
             else return false
         },
         puturl(){
-            if (this.blogpost_id) return '/api/blogpost/' + this.blogpost_id
-            else return '/api/blogpost'
+            if (this.announcement_id) return '/api/announcement/' + this.announcement_id
+            else return '/api/announcement'
         },
             canPublish(){
                 if (this.data.title === '' || this.data.body === '') return false
