@@ -453,6 +453,40 @@ $(document).ready(function() {
             pybossaNotify(message, true, severity);
         });
     };
+
+    // user preferences
+    $("#multiple-languages").select2({
+        placeholder: "Select language(s)",
+        allowClear: false
+    });
+    $("#multiple-locations").select2({
+        placeholder: "Select language(s)",
+        allowClear: false
+    });
+
+    if (filter_data.filter_by_upref){
+        var selected_lang = filter_data.filter_by_upref.languages;
+        var selected_loc = filter_data.filter_by_upref.locations;
+        if (selected_lang){
+            $("#multiple-languages").val(selected_lang).trigger('change');
+        }
+        if (selected_loc){
+            $("#multiple-locations").val(selected_loc).trigger('change');
+        }
+    }
+
+    function filterTasksByUserPreference(){
+      languages = $("#multiple-languages").select2("val");
+      locations = $("#multiple-locations").select2("val");
+
+      filter_data.filter_by_upref = {'languages': languages, 'locations': locations};
+      $('#filter-upref-modal').modal('hide');
+      refresh();
+    }
+
+    $('#upref-filter-modal-search-button').click(function() {
+        filterTasksByUserPreference();
+    });
 });
 
 function displayTaskInfo(taskInfo, data) {
@@ -574,6 +608,7 @@ function prepareFilters() {
     var preparedFilters = $.extend(true, {}, filter_data);
     preparedFilters['order_by'] = null;
     var filter_by_field = preparedFilters['filter_by_field'] || [];
+    var filter_by_upref = preparedFilters['filter_by_upref'] || {};
     var order_by = [];
     var display_columns = [];
     var display_info_columns = [];
@@ -613,6 +648,11 @@ function prepareFilters() {
     if (filter_by_field.length > 0) {
         preparedFilters['filter_by_field'] = JSON.stringify(filter_by_field);
     }
+
+    if (Object.keys(filter_by_upref).length > 0) {
+        preparedFilters['filter_by_upref'] = JSON.stringify(filter_by_upref);
+    }
+
     return preparedFilters;
 }
 
