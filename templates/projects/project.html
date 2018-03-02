@@ -20,6 +20,12 @@
                     <td><p>Total number of tasks remaining:</p></td>
                     <td><p>{{n_available_tasks}}</p></td>
                 </tr>
+                {% if current_user.admin or current_user.subadmin %}
+                <tr>
+                    <td><p>Total number of task runs remaining:</p></td>
+                    <td><p>{{num_remaining_task_runs}}</p></td>
+                </tr>
+                {% endif %}
                 <tr>
                     <td><p>Total number of tasks available for you:</p></td>
                     <td><p>{{n_available_tasks_for_user}}</p></td>
