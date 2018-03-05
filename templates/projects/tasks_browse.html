@@ -461,30 +461,20 @@
         <h4 class="modal-title" id="infoModalLabel">Filter Task By User Preference</h4>
       </div>
       <div class="modal-body">
-        <div class="filter-rows">
-          <div class="row" style="margin-bottom: 5px">
-            <div class="form-inline col-xs-12">
-              <div class="row" style="margin-bottom: 5px">
-                <div class="form-inline col-xs-12">
-                  <label for="multiple-languages" class="col-sm-6 control-label">Languages</label>
-                  <select id="multiple-languages" class="js-states form-control" style="width: 80%" multiple>
-                    {% for lang in language_options %}
-                      <option value="{{lang}}">{{lang}}</option>
-                    {% endfor %}
-                  </select>
-                  <br>
-                  <br>
-                  <label for="multiple-locations" class="col-sm-6 control-label">Locations</label>
-                  <select id="multiple-locations" class="js-states form-control" style="width: 80%" multiple>
-                    {% for loc in location_options %}
-                      <option value="{{loc}}">{{loc}}</option>
-                    {% endfor %}
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <label for="multiple-languages" class="control-label">Languages</label>
+        <select id="multiple-languages" class="js-states form-control" style="width: 100%" multiple>
+          {% for lang in language_options %}
+            <option value="{{lang}}">{{lang}}</option>
+          {% endfor %}
+        </select>
+        <br>
+        <br>
+        <label for="multiple-locations" class="control-label">Locations</label>
+        <select id="multiple-locations" class="js-states form-control" style="width: 100%" multiple>
+          {% for loc in location_options %}
+            <option value="{{loc}}">{{loc}}</option>
+          {% endfor %}
+        </select>
       </div>
 
       <div class="modal-footer">
