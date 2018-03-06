@@ -22,6 +22,10 @@
                 </tr>
                 {% if current_user.admin or current_user.subadmin %}
                 <tr>
+                    <td><p>Total number of task runs:</p></td>
+                    <td><p>{{num_expected_task_runs}}</p></td>
+                </tr>
+                <tr>
                     <td><p>Total number of task runs remaining:</p></td>
                     <td><p>{{num_remaining_task_runs}}</p></td>
                 </tr>
