@@ -33,6 +33,7 @@
         {{ _('Displaying') }} {{ pagination.total_count if pagination.total_count < pagination.per_page else pagination.per_page }} {{ _(' of') }} {{ pagination.total_count }}
         </b>
         </li>
+        <br>
         <li>
             <button id='btnRefresh' type="button" data-toggle="popover" data-trigger="focus" data-placement="top" data-constraints='focus' data-content="{{_('Please refresh the results after setting the desired filters.')}}" title="{{_('Search')}}">
                 <i class="fa fa-search" aria-hidden="true"></i>

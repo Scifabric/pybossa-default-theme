@@ -456,11 +456,11 @@ $(document).ready(function() {
 
     // user preferences
     $("#multiple-languages").select2({
-        placeholder: "Select language",
+        placeholder: "Pick language",
         allowClear: false
     });
     $("#multiple-locations").select2({
-        placeholder: "Select location",
+        placeholder: "Pick location",
         allowClear: false
     });
 
