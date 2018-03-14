@@ -8,17 +8,28 @@ function dirtyView() {
 }
 
 $(document).ready(function() {
+    if (filter_data.priority_to === 0) {
+        filter_data.priority_to = 0.0001;
+    }
+    if (filter_data.pcomplete_to === 0) {
+        filter_data.pcomplete_to = 0.0001;
+    }
+    var priority = [filter_data.priority_from || 0, filter_data.priority_to || 1]
+    var pcomplete = [filter_data.pcomplete_from || 0, filter_data.pcomplete_to || 100]
     $('#priority').slider({
         formater: function(value) {
             return value.toFixed(2);
-        }
+        },
+        value: priority
     }).on('slide', function(ev) {
         dirtyView();
         filter_data.priority_from = ev.value[0].toFixed(2);
         filter_data.priority_to = ev.value[1].toFixed(2);
     });
 
-    $('#pcomplete').slider().on('slide', function(ev) {
+    $('#pcomplete').slider({
+        value: pcomplete
+    }).on('slide', function(ev) {
         dirtyView();
         filter_data.pcomplete_from = ev.value[0];
         filter_data.pcomplete_to = ev.value[1];
