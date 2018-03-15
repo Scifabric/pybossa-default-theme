@@ -150,14 +150,14 @@
                 {% if 'priority' in filter_data.display_columns %}
                 <th>
                     <div>
-                        <input id="priority" type="text" class="span2" value="" data-slider-min="0" data-slider-max="1" data-slider-step="0.05" data-slider-value="[{{ filter_data.priority_from or 0 }},{{ filter_data.priority_to or 1 }}]" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
+                        <input id="priority" type="text" class="span2" value="" data-slider-min="0" data-slider-max="1" data-slider-step="0.05" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
                     </div>
                 </th>
                 {% endif %}
                 {% if 'pcomplete' in filter_data.display_columns %}
                 <th>
                     <div>
-                        <input id="pcomplete" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="[{{ filter_data.pcomplete_from or 0 }},{{ filter_data.pcomplete_to or 100 }}]" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
+                        <input id="pcomplete" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="show" />
                     </div>
                 </th>
                 {% endif %}
