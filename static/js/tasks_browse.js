@@ -89,11 +89,6 @@ $(document).ready(function() {
         refresh();
     });
 
-    $('.pagination-tasks-browse').click(function() {
-        var preparedFilters = prepareFilters();
-        $(this).attr('href', $(this).attr('href') + '?' + $.param(preparedFilters));
-    })
-
     $('.download-type').click(function() {
         exportTasks($(this).attr('id'));
     });
