@@ -1126,6 +1126,7 @@ msgstr "タスクの発表者を編集する"
 #: themes/default/templates/projects/importers/gdocs.html:14
 #: themes/default/templates/projects/importers/s3.html:20
 #: themes/default/templates/projects/importers/twitter.html:14
+#: themes/default/templates/projects/importers/iiif.html:5
 msgid "Import tasks"
 msgstr "タスクをインポートする"
 
@@ -1977,6 +1978,10 @@ msgstr ""
 msgid "Repeat"
 msgstr "作成"
 
+#: themes/default/templates/projects/importers/iiif.html:10
+msgid "From a IIIF manifest"
+msgstr "IIIFマニフェストから"
+
 #: themes/default/templates/projects/importers/csv.html:16
 msgid "From a CSV file"
 msgstr "CSVファイルから"
@@ -1994,6 +1999,7 @@ msgstr "CSVファイルのURL（DropBox, Box, Ubuntu One等のパブリック・
 #: themes/default/templates/projects/importers/gdocs.html:20
 #: themes/default/templates/projects/importers/s3.html:23
 #: themes/default/templates/projects/importers/twitter.html:34
+#: themes/default/templates/projects/importers/iiif.html:16
 msgid "For more information, please look at"
 msgstr "より詳しい情報は次のリンク先を参照してください："
 
@@ -2004,6 +2010,7 @@ msgstr "より詳しい情報は次のリンク先を参照してください：
 #: themes/default/templates/projects/importers/gdocs.html:20
 #: themes/default/templates/projects/importers/s3.html:23
 #: themes/default/templates/projects/importers/twitter.html:35
+#: themes/default/templates/projects/importers/iiif.html:16
 msgid "the documentation"
 msgstr "解説書"
 

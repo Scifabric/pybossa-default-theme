@@ -1163,6 +1163,7 @@ msgstr "Modifica il presentatore dell'incarico"
 #: themes/default/templates/projects/importers/gdocs.html:14
 #: themes/default/templates/projects/importers/s3.html:20
 #: themes/default/templates/projects/importers/twitter.html:14
+#: themes/default/templates/projects/importers/iiif.html:5
 msgid "Import tasks"
 msgstr "Importa tasks"
 
@@ -2044,6 +2045,10 @@ msgstr ""
 msgid "Repeat"
 msgstr "Creare"
 
+#: themes/default/templates/projects/importers/iiif.html:10
+msgid "From a IIIF manifest"
+msgstr "Da un manifest di IIIF"
+
 #: themes/default/templates/projects/importers/csv.html:16
 msgid "From a CSV file"
 msgstr "Da un file CSV"
@@ -2063,6 +2068,7 @@ msgstr ""
 #: themes/default/templates/projects/importers/gdocs.html:20
 #: themes/default/templates/projects/importers/s3.html:23
 #: themes/default/templates/projects/importers/twitter.html:34
+#: themes/default/templates/projects/importers/iiif.html:16
 msgid "For more information, please look at"
 msgstr "Per maggiori informazioni, vedi"
 
@@ -2073,6 +2079,7 @@ msgstr "Per maggiori informazioni, vedi"
 #: themes/default/templates/projects/importers/gdocs.html:20
 #: themes/default/templates/projects/importers/s3.html:23
 #: themes/default/templates/projects/importers/twitter.html:35
+#: themes/default/templates/projects/importers/iiif.html:16
 msgid "the documentation"
 msgstr "la documentazione"
 
