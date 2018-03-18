@@ -2354,6 +2354,10 @@ msgstr "Αυτή η εργασία δεν ανήκει στο"
 msgid "Try with another one"
 msgstr "Δοκιμάστε με ένα άλλο"
 
+#: themes/default/templates/projects/tasks/iiif.html:2
+msgid "Import from a IIIF manifest"
+msgstr "Εισαγωγή από ένα δηλωτικό IIIF"
+
 #: themes/default/templates/projects/tasks/csv.html:3
 msgid "Provide a public link to your own CSV file"
 msgstr "Παραθέστε έναν δημόσιο σύνδεσμο για το δικό σας αρχείο CSV"

@@ -2343,6 +2343,10 @@ msgstr "Esta tarea no pertenece a"
 msgid "Try with another one"
 msgstr "Prueba con otra"
 
+#: themes/default/templates/projects/tasks/iiif.html:2
+msgid "Import from a IIIF manifest"
+msgstr "Importar de un manifiesto IIIF"
+
 #: themes/default/templates/projects/tasks/csv.html:3
 msgid "Provide a public link to your own CSV file"
 msgstr "Proporciona un enlace público al CSV"

@@ -2335,6 +2335,10 @@ msgstr "このタスクは次のプロジェクトにはありません："
 msgid "Try with another one"
 msgstr "別のもので試す"
 
+#: themes/default/templates/projects/tasks/iiif.html:2
+msgid "Import from a IIIF manifest"
+msgstr "IIIFマニフェストからのインポート"
+
 #: themes/default/templates/projects/tasks/csv.html:3
 msgid "Provide a public link to your own CSV file"
 msgstr "自分のCSVファイルのパブリックリンクを使用"

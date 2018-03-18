@@ -2364,6 +2364,10 @@ msgstr ""
 msgid "Try with another one"
 msgstr ""
 
+#: themes/default/templates/projects/tasks/iiif.html:2
+msgid "Import from a IIIF manifest"
+msgstr "Importa da un manifest IIIF"
+
 #: themes/default/templates/projects/tasks/csv.html:3
 msgid "Provide a public link to your own CSV file"
 msgstr "Fornisci un link pubblico per il tuo file CSV"

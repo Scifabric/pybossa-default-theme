@@ -2051,8 +2051,8 @@ msgid "Repeat"
 msgstr "Erstellen"
 
 #: themes/default/templates/projects/importers/iiif.html:10
-msgid "From a IIIF manifest"
-msgstr "Aus einer IIIF manifest"
+msgid "From a IIIF-Manifest"
+msgstr "Aus einer IIIF-Manifest"
 
 #: themes/default/templates/projects/importers/csv.html:16
 msgid "From a CSV file"
@@ -2355,6 +2355,10 @@ msgstr ""
 #: themes/default/templates/projects/task/wrong.html:9
 msgid "Try with another one"
 msgstr ""
+
+#: themes/default/templates/projects/tasks/iiif.html:2
+msgid "Import from a IIIF manifest"
+msgstr "Import aus einem IIIF-Manifest"
 
 #: themes/default/templates/projects/tasks/csv.html:3
 msgid "Provide a public link to your own CSV file"
