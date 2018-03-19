@@ -1146,6 +1146,7 @@ msgstr "Edita el presentador de tareas"
 #: themes/default/templates/projects/importers/gdocs.html:14
 #: themes/default/templates/projects/importers/s3.html:20
 #: themes/default/templates/projects/importers/twitter.html:14
+#: themes/default/templates/projects/importers/iiif.html:5
 msgid "Import tasks"
 msgstr "Importa tareas"
 
@@ -2027,6 +2028,10 @@ msgstr "Código de estatus de la respuesta"
 msgid "Repeat"
 msgstr "Repetir"
 
+#: themes/default/templates/projects/importers/iiif.html:10
+msgid "From a IIIF manifest"
+msgstr "De un manifiesto IIIF"
+
 #: themes/default/templates/projects/importers/csv.html:16
 msgid "From a CSV file"
 msgstr "De un fichero CSV"
@@ -2046,6 +2051,7 @@ msgstr ""
 #: themes/default/templates/projects/importers/gdocs.html:20
 #: themes/default/templates/projects/importers/s3.html:23
 #: themes/default/templates/projects/importers/twitter.html:34
+#: themes/default/templates/projects/importers/iiif.html:16
 msgid "For more information, please look at"
 msgstr "Para más información, por favor consulta"
 
@@ -2056,6 +2062,7 @@ msgstr "Para más información, por favor consulta"
 #: themes/default/templates/projects/importers/gdocs.html:20
 #: themes/default/templates/projects/importers/s3.html:23
 #: themes/default/templates/projects/importers/twitter.html:35
+#: themes/default/templates/projects/importers/iiif.html:16
 msgid "the documentation"
 msgstr "la documentación"
 
@@ -2335,6 +2342,10 @@ msgstr "Esta tarea no pertenece a"
 #: themes/default/templates/projects/task/wrong.html:9
 msgid "Try with another one"
 msgstr "Prueba con otra"
+
+#: themes/default/templates/projects/tasks/iiif.html:2
+msgid "Import from a IIIF manifest"
+msgstr "Importar de un manifiesto IIIF"
 
 #: themes/default/templates/projects/tasks/csv.html:3
 msgid "Provide a public link to your own CSV file"
