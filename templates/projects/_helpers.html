@@ -256,9 +256,7 @@
                             </p>
                             {% endif %}
                            {% else %}
-                           {% if active_cat != 'draft' %}
                            <p class="readmore"><a href="{{ url_for('project.details', short_name=f.short_name)}}">{{_(readmore_text or 'More info')}}</a></p>
-                           {% endif %}
                            {% endif %}
                        </div>
                    </div>
