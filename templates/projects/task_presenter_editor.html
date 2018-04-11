@@ -6,16 +6,23 @@
 {% block projectcontent %}
 {% from "_formhelpers.html" import render_field %}
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/codemirror.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/addons/display/fullscreen.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/addons/dialog/dialog.css')}}"/>
 <style>
     iframe {
         height:400px;
         width: 100%;
     }
     .CodeMirror {
-        width: 700px;
+        width: 100%;
     }
     .modal-body {
         padding: 0px;
+    }
+    .cm-trailingspace {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QUXCToH00Y1UgAAACFJREFUCNdjPMDBUc/AwNDAAAFMTAwMDA0OP34wQgX/AQBYgwYEx4f9lQAAAABJRU5ErkJggg==);
+        background-position: bottom left;
+        background-repeat: repeat-x;
     }
 </style>
 <!-- Task Presenter Editor -->
@@ -67,7 +74,19 @@
               'vendor/codemirror/mode/xml/xml.js',
               'vendor/codemirror/mode/javascript/javascript.js',
               'vendor/codemirror/mode/css/css.js',
-              'vendor/codemirror/mode/htmlmixed/htmlmixed.js'
+              'vendor/codemirror/mode/htmlmixed/htmlmixed.js',
+              'vendor/codemirror/addons/search/search.js',
+              'vendor/codemirror/addons/search/searchcursor.js',
+              'vendor/codemirror/addons/search/jump-to-line.js',
+              'vendor/codemirror/addons/edit/closebrackets.js',
+              'vendor/codemirror/addons/edit/closetag.js',
+              'vendor/codemirror/addons/edit/continuelist.js',
+              'vendor/codemirror/addons/edit/matchbrackets.js',
+              'vendor/codemirror/addons/edit/matchtags.js',
+              'vendor/codemirror/addons/edit/trailingspace.js',
+              'vendor/codemirror/addons/fold/xml-fold.js',
+              'vendor/codemirror/addons/display/fullscreen.js',
+              'vendor/codemirror/addons/dialog/dialog.js'
               %}
               <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
@@ -124,10 +143,24 @@
 return baseTemplate;
  }
 
- var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
-mode:'text/html',
-lineNumbers: true,
-autofocus: true
+var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+  mode:'text/html',
+  lineNumbers: true,
+  autofocus: true,
+  autoCloseBrackets: true,
+  autoCloseTags: true,
+  matchBrackets: true,
+  matchTags: true,
+  showTrailingSpace: true,
+  fullScreen: false,
+  extraKeys: {
+    "F11": function(cm) {
+      cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+    },
+    "Esc": function(cm) {
+      if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+    }
+  }
 });
 
 function showPreview() {
