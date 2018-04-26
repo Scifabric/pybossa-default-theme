@@ -22,24 +22,35 @@
     configured with user preferences')}}.</li>
 </ul>
 
-<p>{{_('You also have the following option(s)')}}:</p>
-<ul>
-    <li><strong>{{_('Randomize Within Priority')}}</strong>:
-    {{_('(Applicable only to \'Default\' and \'User Preference\' schedulers) The
-    next task is randomly selected from the highest priority tasks provided by
-    the scheduler. When left unchecked, the old available task within the
-    highest priority is returned first.')  }}
-</ul>
-
 <form id="task_scheduler" method="post" action="{{ url_for('project.task_scheduler', short_name=project.short_name) }}">
     {{ form.hidden_tag() }}
     <fieldset>
         {{ render_field(form.sched, class_="span4",
         placeholder="Task scheduler for your project")}}
-        {{ render_field(form.rand_within_priority) }}
+        <div id="show-randomizable">
+            <p>{{_('You also have the following option(s)')}}:</p>
+            <ul>
+                <li><strong>{{_('Randomize Within Priority')}}</strong>:
+                {{_('The next task is randomly selected from the highest priority tasks
+                provided by the scheduler. When left unchecked, the old available task
+                within the highest priority is returned first.')  }}
+            </ul>
+            {{ render_field(form.rand_within_priority) }}
+        </div>
         <div class="form-actions">
             <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
         </div>
     </fieldset>
 </form>
+<script>
+    $('#show-randomizable').hide();
+    $('#sched').change(function () {
+        if ({{ randomizable_scheds | safe }}.indexOf($('#sched').val()) !== -1) {
+            $('#show-randomizable').show();
+        } else {
+            $('#show-randomizable').hide();
+            $('#rand_within_priority').prop('checked', false);
+        }
+    });
+</script>
 {% endblock %}
