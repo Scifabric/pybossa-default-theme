@@ -17,9 +17,18 @@
     <li><strong>{{_('Breadth First')}}</strong>: {{_('returns a
     task which has the least number of task runs (answers)
     excluding the current user')}}.</li>
-    <li><strong>{{_('User Preference Scheduler')}}</strong>: {{_('returns a
+    <li><strong>{{_('User Preference')}}</strong>: {{_('returns a
     task that matches user preferences set in user profile, provided tasks are
     configured with user preferences')}}.</li>
+</ul>
+
+<p>{{_('You also have the following option(s)')}}:</p>
+<ul>
+    <li><strong>{{_('Randomize Within Priority')}}</strong>:
+    {{_('(Applicable only to \'Default\' and \'User Preference\' schedulers) The
+    next task is randomly selected from the highest priority tasks provided by
+    the scheduler. When left unchecked, the old available task within the
+    highest priority is returned first.')  }}
 </ul>
 
 <form id="task_scheduler" method="post" action="{{ url_for('project.task_scheduler', short_name=project.short_name) }}">
@@ -27,6 +36,7 @@
     <fieldset>
         {{ render_field(form.sched, class_="span4",
         placeholder="Task scheduler for your project")}}
+        {{ render_field(form.rand_within_priority) }}
         <div class="form-actions">
             <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
         </div>
