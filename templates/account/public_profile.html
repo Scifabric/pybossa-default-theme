@@ -31,15 +31,17 @@
                 {% endif %}
             </div>
           </div>
+          {% if config.upref_mdata %}
           <div class="row">
               <div class="col-md-offset-2 col-md-8">
                   {% if current_user.admin or current_user.subadmin%}
                   <div class="col-md-offset-15 col-md-10">
-                      {{ user_pref_metadata.render_upref_mdata(user, upref_mdata, upref_mdata_form, can_update, input_form) }}
+                      {{ user_pref_metadata.render_upref_mdata(user, form, can_update, input_form) }}
                   </div>
                   {% endif %}
               </div>
           </div>
+          {% endif %}
     </div>
 </section>
 {% if projects_created %}
