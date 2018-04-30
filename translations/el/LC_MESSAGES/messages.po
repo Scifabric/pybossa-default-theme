@@ -457,17 +457,15 @@ msgid "Upload"
 msgstr "Ανεβάστε"
 
 #: themes/default/templates/account/update.html:47
+#: themes/default/templates/account/update.html:64
 #: themes/default/templates/account/update.html:77
+#: themes/default/templates/projects/update.html:47
 msgid "Save the changes"
 msgstr "Αποθήκευση αλλαγών"
 
 #: themes/default/templates/account/update.html:54
 msgid "Change your Password"
 msgstr "Αλλαγή κωδικού"
-
-#: themes/default/templates/account/update.html:64
-msgid "Save the Changes"
-msgstr "Αποθήκευση αλλαγών"
 
 #: themes/default/templates/account/update.html:85
 msgid "Do you want to reset your personal API Key?"
@@ -2002,11 +2000,6 @@ msgstr "Εξηγείστε το πρόγραμμα (χρησιμοποιώντα
 msgid "Check if you want to allow anonymous users contribute to your project"
 msgstr ""
 
-#: themes/default/templates/projects/update.html:47
-#, fuzzy
-msgid "Save the changes"
-msgstr "Αποθήκευση αλλαγών"
-
 #: themes/default/templates/projects/update_blogpost.html:14
 msgid "Edit the blog post"
 msgstr "Επεξεργαστείετε την ανάρτηση του blog "
@@ -2591,9 +2584,6 @@ msgstr "Όνομα"
 #: themes/default/templates/stats/index.html:19
 msgid "Score"
 msgstr "Σκορ"
-
-#~ msgid ""
-#~ msgstr ""
 
 #~ msgid "The file you uploaded has two headers with the same name."
 #~ msgstr "Το αρχείο που ανεβάσατε έχει δύο τίτλους με το ίδιο όνομα"

@@ -448,17 +448,15 @@ msgid "Upload"
 msgstr "アップロード"
 
 #: themes/default/templates/account/update.html:47
+#: themes/default/templates/account/update.html:64
 #: themes/default/templates/account/update.html:77
+#: themes/default/templates/projects/update.html:47
 msgid "Save the changes"
 msgstr "変更の保存"
 
 #: themes/default/templates/account/update.html:54
 msgid "Change your Password"
 msgstr "パスワード変更"
-
-#: themes/default/templates/account/update.html:64
-msgid "Save the Changes"
-msgstr "変更を保存する"
 
 #: themes/default/templates/account/update.html:85
 msgid "Do you want to reset your personal API Key?"
@@ -608,7 +606,7 @@ msgstr "過去7日間のダッシュボード"
 
 #: themes/default/templates/admin/dashboard.html:22
 msgid "Refresh"
-msgstr ""
+msgstr "更新"
 
 #: themes/default/templates/admin/dashboard.html:28
 msgid "Active users"
@@ -1938,10 +1936,6 @@ msgstr "プロジェクトについて説明する（Markdownを使用！）"
 msgid "Check if you want to allow anonymous users contribute to your project"
 msgstr ""
 
-#: themes/default/templates/projects/update.html:47
-msgid "Save the changes"
-msgstr "変更を保存"
-
 #: themes/default/templates/projects/update_blogpost.html:14
 msgid "Edit the blog post"
 msgstr "ブログ投稿を編集"
@@ -2525,9 +2519,6 @@ msgstr "スコア"
 #~ msgid "<strong>注意</strong> You will need to upload the tasks using the"
 #~ msgstr ""
 
-#~ msgid ""
-#~ msgstr ""
-
 #~ msgid "The file you uploaded has two headers with the same name."
 #~ msgstr "アップロードされたファイルは、同じ名前のヘッダーが複数含まれているようです。"
 
@@ -2740,9 +2731,6 @@ msgstr "スコア"
 
 #~ msgid "Reset"
 #~ msgstr "リセット"
-
-#~ msgid "Refresh"
-#~ msgstr "更新"
 
 #~ msgid "Order by"
 #~ msgstr "並べ替え："

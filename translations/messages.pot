@@ -447,16 +447,14 @@ msgid "Upload"
 msgstr ""
 
 #: themes/default/templates/account/update.html:47
+#: themes/default/templates/account/update.html:64
 #: themes/default/templates/account/update.html:77
+#: themes/default/templates/projects/update.html:47
 msgid "Save the changes"
 msgstr ""
 
 #: themes/default/templates/account/update.html:54
 msgid "Change your Password"
-msgstr ""
-
-#: themes/default/templates/account/update.html:64
-msgid "Save the Changes"
 msgstr ""
 
 #: themes/default/templates/account/update.html:85
@@ -1905,10 +1903,6 @@ msgstr ""
 
 #: themes/default/templates/projects/update.html:42
 msgid "Check if you want to allow anonymous users contribute to your project"
-msgstr ""
-
-#: themes/default/templates/projects/update.html:47
-msgid "Save the changes"
 msgstr ""
 
 #: themes/default/templates/projects/update_blogpost.html:14

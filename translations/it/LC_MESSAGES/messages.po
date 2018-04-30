@@ -450,17 +450,15 @@ msgid "Upload"
 msgstr "Carica"
 
 #: themes/default/templates/account/update.html:47
+#: themes/default/templates/account/update.html:64
 #: themes/default/templates/account/update.html:77
+#: themes/default/templates/projects/update.html:47
 msgid "Save the changes"
 msgstr "Salva le modifiche"
 
 #: themes/default/templates/account/update.html:54
 msgid "Change your Password"
 msgstr "Cambia la tua password"
-
-#: themes/default/templates/account/update.html:64
-msgid "Save the Changes"
-msgstr "Salva le modifiche"
 
 #: themes/default/templates/account/update.html:85
 msgid "Do you want to reset your personal API Key?"
@@ -2005,10 +2003,6 @@ msgstr "Spiega il progetto (usa Markdown!)"
 msgid "Check if you want to allow anonymous users contribute to your project"
 msgstr ""
 
-#: themes/default/templates/projects/update.html:47
-msgid "Save the changes"
-msgstr "Salva le modifiche"
-
 #: themes/default/templates/projects/update_blogpost.html:14
 msgid "Edit the blog post"
 msgstr "Modifica il post"
@@ -2615,9 +2609,6 @@ msgstr "Nome"
 #: themes/default/templates/stats/index.html:19
 msgid "Score"
 msgstr "Punteggio"
-
-#~ msgid ""
-#~ msgstr ""
 
 #~ msgid "Oops! It looks like the file is empty."
 #~ msgstr "Oops! Sembra che il file sia vuoto."
