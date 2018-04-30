@@ -119,29 +119,19 @@
 <link rel="stylesheet" href="{{url_for('static', filename='css/cropper.min.css')}}" type="text/css" />
 <script src="{{url_for('static', filename='js/image_crop.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
-$(function() {
-        var passProtected = document.getElementById('protect').checked;
-        if (!passProtected) {
-        $('#password').hide();
-        }
-        $('#protect').on('change', function() {
-            $('#password').toggle();
-            });
+    //Show/hide secret key
+    $(window).load(function(){
+        $(".fa-eye-slash").hide();
+        $("#password-toggle").click(function(evt){
+            evt.preventDefault();
+            $(".password-toggle").toggle();
+            if ( $("#project-secret-key").attr("type") == 'password') {
+                $("#project-secret-key").attr("type", 'text');
+            }
+            else {
+                $("#project-secret-key").attr("type", 'password');
+            }
         });
-
-        //Show/hide secret key
-        $(window).load(function(){
-            $(".fa-eye-slash").hide();
-            $("#password-toggle").click(function(evt){
-                evt.preventDefault();
-                $(".password-toggle").toggle();
-                if ( $("#project-secret-key").attr("type") == 'password') {
-                    $("#project-secret-key").attr("type", 'text');
-                }
-                else {
-                    $("#project-secret-key").attr("type", 'password');
-                }
-            });
-        });
+    });
 </script>
 {% endblock %}
