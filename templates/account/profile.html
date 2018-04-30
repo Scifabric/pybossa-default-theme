@@ -14,7 +14,9 @@
             <div class="col-sm-9 col-md-9" style="margin-top:30px;">
                 <h2>{{ _('Your Account') }}: {{current_user.fullname}}</h2>
                 {{ helper.render_user_profile(current_user, upload_method, "settings") }}
-                {{ user_pref_metadata.render_upref_mdata(user, upref_mdata, upref_mdata_form, can_update, input_form) }}
+                {% if config.upref_mdata %}
+                {{ user_pref_metadata.render_upref_mdata(user, form, can_update, input_form) }}
+                {% endif %}
             </div>
             <div>
                 {% if projects_contrib | count > 0 %}

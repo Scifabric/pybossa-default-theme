@@ -101,11 +101,13 @@
                 <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
         </li>
+        {% if language_options %}
         <li>
             <button id='btn-filter-user-pref' type="button" data-target="#filter-upref-modal" data-toggle="modal" title="Filter by user preference">
                 <i class="fa fa-user" aria-hidden="true"></i>
             </button>
         </li>
+        {% endif %}
         {% endif %}
         {% endif %}
     </ul>
@@ -462,20 +464,24 @@
         <h4 class="modal-title" id="infoModalLabel">Filter Task By User Preference</h4>
       </div>
       <div class="modal-body">
-        <label for="multiple-languages" class="control-label">Languages</label>
-        <select id="multiple-languages" class="js-states form-control" style="width: 100%" multiple>
-          {% for lang in language_options %}
-            <option value="{{lang}}">{{lang}}</option>
-          {% endfor %}
-        </select>
-        <br>
-        <br>
-        <label for="multiple-locations" class="control-label">Locations</label>
-        <select id="multiple-locations" class="js-states form-control" style="width: 100%" multiple>
-          {% for loc in location_options %}
-            <option value="{{loc}}">{{loc}}</option>
-          {% endfor %}
-        </select>
+        {% if language_options %}
+          <label for="multiple-languages" class="control-label">Languages</label>
+          <select id="multiple-languages" class="js-states form-control" style="width: 100%" multiple>
+            {% for lang in language_options %}
+              <option value="{{lang}}">{{lang}}</option>
+            {% endfor %}
+          </select>
+          <br>
+          <br>
+        {% endif %}
+        {% if location_options %}
+          <label for="multiple-locations" class="control-label">Locations</label>
+          <select id="multiple-locations" class="js-states form-control" style="width: 100%" multiple>
+            {% for loc in location_options %}
+              <option value="{{loc}}">{{loc}}</option>
+            {% endfor %}
+          </select>
+        {% endif %}
       </div>
 
       <div class="modal-footer">
