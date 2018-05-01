@@ -1,5 +1,5 @@
 # Translations template for PyBossa.
-# Copyright (C) 2016 PyBossa
+# Copyright (C) 2016 Scifabric
 # This file is distributed under the same license as the PyBossa project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
