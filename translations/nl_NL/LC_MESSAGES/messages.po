@@ -11,50 +11,50 @@ msgstr ""
 "POT-Creation-Date: 2016-02-05 18:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Milo van der Linden <milo@dogodigi.net>, 2018\n"
-"Language-Team: Japanese (https://www.transifex.com/codeforeurope/teams/86021/ja/)\n"
+"Language-Team: Dutch (Netherlands) (https://www.transifex.com/codeforeurope/teams/86021/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
-"Language: ja\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: themes/default/templates/_navbar.html:12
 #: themes/default/templates/account/index.html:14
 msgid "Community"
-msgstr "コミュニティ"
+msgstr "Community"
 
 #: themes/default/templates/_navbar.html:13
 #: themes/default/templates/base.html:78
 #: themes/default/templates/account/projects.html:13
 #: themes/default/templates/stats/global.html:89
 msgid "Projects"
-msgstr "プロジェクト"
+msgstr "Projecten"
 
 #: themes/default/templates/_navbar.html:14
 #: themes/default/templates/projects/new_blogpost.html:21
 msgid "Create"
-msgstr "作成"
+msgstr "Maak"
 
 #: themes/default/templates/_navbar.html:15
 #: themes/default/templates/home/_about.html:3
 msgid "About"
-msgstr ""
+msgstr "Over"
 
 #: themes/default/templates/_navbar.html:22
 #: themes/default/templates/account/_helpers.html:3
 msgid "My Profile"
-msgstr "ユーザー・プロフィール"
+msgstr "Mijn profiel"
 
 #: themes/default/templates/_navbar.html:23
 #: themes/default/templates/account/_helpers.html:4
 msgid "My Projects"
-msgstr "ユーザー・プロジェクト"
+msgstr "Mijn projecten"
 
 #: themes/default/templates/_navbar.html:24
 #: themes/default/templates/account/_helpers.html:8
 msgid "My Settings"
-msgstr "個人設定"
+msgstr "Mijn instellingen"
 
 #: themes/default/templates/_navbar.html:27
 #: themes/default/templates/account/_helpers.html:6
@@ -65,56 +65,56 @@ msgstr "個人設定"
 #: themes/default/templates/admin/update_category.html:13
 #: themes/default/templates/admin/users.html:14
 msgid "Admin Site"
-msgstr "管理ページ"
+msgstr ""
 
 #: themes/default/templates/_navbar.html:30
 msgid "Sign Out"
-msgstr "サインアウト"
+msgstr "Afmelden"
 
 #: themes/default/templates/_navbar.html:38
 #: themes/default/templates/account/signin.html:45
 msgid "Sign in"
-msgstr "サインイン"
+msgstr "Aanmelden"
 
 #: themes/default/templates/base.html:66
 msgid "Resources"
-msgstr "リソース"
+msgstr "Bronnen"
 
 #: themes/default/templates/base.html:67
 msgid "Docs"
-msgstr "ドキュメント"
+msgstr "Documenten"
 
 #: themes/default/templates/base.html:69
 msgid "Terms of Use"
-msgstr "利用規約"
+msgstr "Gebruiksvoorwaarden"
 
 #: themes/default/templates/base.html:70
 msgid "Cookies Policy"
-msgstr "クッキーの利用ポリシー"
+msgstr "Cookie beleid"
 
 #: themes/default/templates/base.html:71
 msgid "Stats"
-msgstr "統計"
+msgstr "Statistieken"
 
 #: themes/default/templates/base.html:76
 msgid "Licenses"
-msgstr "ライセンス"
+msgstr "Licenties"
 
 #: themes/default/templates/base.html:77
 msgid "Overview"
-msgstr "概要"
+msgstr "Overzicht"
 
 #: themes/default/templates/base.html:79
 msgid "Data"
-msgstr "データ"
+msgstr "Gegevens"
 
 #: themes/default/templates/base.html:80
 msgid "Content"
-msgstr "内容"
+msgstr "Inhoud"
 
 #: themes/default/templates/base.html:85
 msgid "Technologies"
-msgstr "技術"
+msgstr "Technologie"
 
 #: themes/default/templates/base.html:86
 msgid "CKAN"
@@ -126,11 +126,11 @@ msgstr "EpiCollect"
 
 #: themes/default/templates/base.html:92
 msgid "Contact"
-msgstr "連絡先"
+msgstr "Contact"
 
 #: themes/default/templates/base.html:93
 msgid "Email"
-msgstr "Eメール"
+msgstr "Email"
 
 #: themes/default/templates/base.html:94
 msgid "Twitter"
@@ -138,77 +138,77 @@ msgstr "Twitter"
 
 #: themes/default/templates/account/_helpers.html:14
 msgid "I've done"
-msgstr "完了しました"
+msgstr "Ik heb"
 
 #: themes/default/templates/account/_helpers.html:14
 msgid "tasks for the @PyBossa project:"
-msgstr "＠PyBossaプロジェクトのタスク"
+msgstr "taken voor het @PyBossa project"
 
 #: themes/default/templates/account/_helpers.html:14
 msgid "Do you want to help?"
-msgstr "手助けしてみませんか？"
+msgstr "Wil je meehelpen?"
 
 #: themes/default/templates/account/_helpers.html:15
 msgid "Tweet"
-msgstr "ツイートする"
+msgstr "Tweet"
 
 #: themes/default/templates/account/_helpers.html:39
 msgid "Nick"
-msgstr "ニックネーム"
+msgstr ""
 
 #: themes/default/templates/account/_helpers.html:41
 msgid "E-mail"
-msgstr "Eメール"
+msgstr "Email"
 
 #: themes/default/templates/account/_helpers.html:54
 #: themes/default/templates/account/_helpers.html:67
 #: themes/default/templates/stats/index.html:17
 msgid "Rank"
-msgstr "ランク"
+msgstr "Rang"
 
 #: themes/default/templates/account/_helpers.html:59
 #: themes/default/templates/projects/tasks_browse.html:33
 msgid "of"
-msgstr ""
+msgstr "van"
 
 #: themes/default/templates/account/_helpers.html:59
 msgid "with a Score of"
-msgstr ""
+msgstr "met een score van"
 
 #: themes/default/templates/account/_helpers.html:59
 msgid "contributed tasks"
-msgstr "貢献済みのタスク"
+msgstr "bijdragen"
 
 #: themes/default/templates/account/_helpers.html:67
 msgid "The user has not contributed to any tasks yet"
-msgstr "まだ、作業に貢献していません。"
+msgstr "Gebruiker heeft nog geen bijdragen"
 
 #: themes/default/templates/account/_helpers.html:70
 #: themes/default/templates/home/index.html:78
 msgid "Joined"
-msgstr "加わりました"
+msgstr "Aangemeld"
 
 #: themes/default/templates/account/_helpers.html:73
 msgid "API key"
-msgstr "APIキー"
+msgstr "API sleutel"
 
 #: themes/default/templates/account/_helpers.html:76
 msgid "Edit your profile"
-msgstr "プロファイルの編集"
+msgstr "Profiel wijzigen"
 
 #: themes/default/templates/account/_helpers.html:100
 #: themes/default/templates/projects/_helpers.html:7
 msgid "Prev"
-msgstr "前へ"
+msgstr "Vorige"
 
 #: themes/default/templates/account/_helpers.html:120
 #: themes/default/templates/projects/_helpers.html:27
 msgid "Next"
-msgstr "次へ"
+msgstr "Volgende"
 
 #: themes/default/templates/account/account_validation.html:7
 msgid "Just one more step, please"
-msgstr "もうあと１ステップです"
+msgstr "Nog een stap"
 
 #: themes/default/templates/account/account_validation.html:8
 msgid ""
@@ -216,65 +216,67 @@ msgid ""
 "just provided. Please, check it out and click on the link you'll find to "
 "create your account at"
 msgstr ""
-"たった今、ユーザーを特定するために、入力して頂いたメールアドレスにメールを送信しました。受信したメールを確認し、新規アカウントを作成するためのリンクをクリックしてください。"
+"Om je identiteit te kunnen valideren hebben we een email gestuurd naar het "
+"door jou ingegeven adres. Klik op de link in de email om je account te "
+"activeren."
 
 #: themes/default/templates/account/account_validation.html:9
 msgid ""
 "If you are not receiving the email, please check the junk folder. If it's "
 "not there please drop us an email to"
-msgstr "もしもメールが受信できていない場合、迷惑メールをチェックしてください。メールが受信できていない場合には次のアドレスにご連絡ください："
+msgstr ""
 
 #: themes/default/templates/account/account_validation.html:10
 msgid "In the meantime, you can check some of the amazing"
-msgstr "その間、いくつかの素晴らしい機能を確認することができます。"
+msgstr ""
 
 #: themes/default/templates/account/account_validation.html:10
 msgid "projects"
-msgstr "プロジェクト"
+msgstr "projecten"
 
 #: themes/default/templates/account/account_validation.html:10
 msgid "and contribute to them as anonymous"
-msgstr "また、匿名でこれらに貢献することができます"
+msgstr ""
 
 #: themes/default/templates/account/index.html:14
 msgid "registered users"
-msgstr "名の登録ユーザー"
+msgstr "geregistreerde gebruikers"
 
 #: themes/default/templates/account/index.html:14
 #: themes/default/templates/stats/global.html:49
 msgid "Leaderboard"
-msgstr "リーダーボード"
+msgstr ""
 
 #: themes/default/templates/account/newsletter.html:10
 msgid "Newsletter"
-msgstr "ニュースレター"
+msgstr "Nieuwsbrief"
 
 #: themes/default/templates/account/newsletter.html:11
 msgid ""
 "If you want to be updated with our new features, projects, and\n"
 "        scientific projects, subscribe to our newsletter."
-msgstr "新しい機能、新規プロジェクト、および科学プロジェクトを更新したい場合は、私達のニュースレターを講読してください。"
+msgstr ""
 
 #: themes/default/templates/account/newsletter.html:15
 msgid "Sign me up!"
-msgstr "ログイン"
+msgstr "Ik meld mij aan!"
 
 #: themes/default/templates/account/newsletter.html:18
 msgid "Not interested"
-msgstr "興味がありません"
+msgstr "Geen interesse"
 
 #: themes/default/templates/account/password_forgot.html:6
 #: themes/default/templates/account/password_reset.html:6
 msgid "Reset your Password"
-msgstr "パスワードのリセット"
+msgstr "Wachtwoord herstellen"
 
 #: themes/default/templates/account/password_forgot.html:10
 msgid "my e-mail"
-msgstr "Eメール"
+msgstr "mijn email"
 
 #: themes/default/templates/account/password_forgot.html:12
 msgid "Reset my Password"
-msgstr "パスワードのリセット"
+msgstr "Wachtwoord herstellen"
 
 #: themes/default/templates/account/password_forgot.html:13
 #: themes/default/templates/account/password_reset.html:14
@@ -301,207 +303,209 @@ msgstr "パスワードのリセット"
 #: themes/default/templates/projects/importers/s3.html:37
 #: themes/default/templates/projects/importers/twitter.html:44
 msgid "Cancel"
-msgstr "キャンセル"
+msgstr "Annuleren"
 
 #: themes/default/templates/account/password_reset.html:10
 msgid "my new password"
-msgstr "新しいパスワード"
+msgstr "Nieuw wachtwoord"
 
 #: themes/default/templates/account/password_reset.html:11
 msgid "my new password again"
-msgstr "パスワードの再入力"
+msgstr "Herhaal nieuw wachtwoord"
 
 #: themes/default/templates/account/profile.html:15
 msgid "Your Profile"
-msgstr "プロファイル"
+msgstr "Mijn Profiel"
 
 #: themes/default/templates/account/profile.html:18
 msgid "Your Contributions"
-msgstr "現在の貢献状況"
+msgstr "Mijn bijdragen"
 
 #: themes/default/templates/account/profile.html:26
 msgid "Contribute!"
-msgstr "貢献する"
+msgstr "Doe mee!"
 
 #: themes/default/templates/account/projects.html:16
 msgid "Published"
-msgstr "公開済み"
+msgstr "Gepubliceerd"
 
 #: themes/default/templates/account/projects.html:22
 #: themes/default/templates/projects/index.html:15
 msgid "Draft"
-msgstr "起草中"
+msgstr "Concept"
 
 #: themes/default/templates/account/projects.html:28
 msgid "You have not created a project"
-msgstr "プロジェクトが作成されていません。"
+msgstr "Geen projecten"
 
 #: themes/default/templates/account/projects.html:29
 #: themes/default/templates/home/index.html:37
 msgid "Create a Project"
-msgstr "プロジェクトを作成する"
+msgstr "Project aanmaken"
 
 #: themes/default/templates/account/register.html:6
 #: themes/default/templates/account/signin.html:6
 msgid "Note"
-msgstr "ノート"
+msgstr ""
 
 #: themes/default/templates/account/register.html:7
 #: themes/default/templates/account/signin.html:7
 msgid "By click the"
-msgstr ""
+msgstr "Door hier onder te klikken op"
 
 #: themes/default/templates/account/register.html:8
 msgid "Create account button"
-msgstr "アカウント作成ボタン"
+msgstr "Knop voor aanmaken van account"
 
 #: themes/default/templates/account/register.html:9
 msgid "below you are agreeing to the"
-msgstr ""
+msgstr "ga je akkoord met de"
 
 #: themes/default/templates/account/register.html:10
 #: themes/default/templates/account/signin.html:8
 msgid "terms of use"
-msgstr "利用規約"
+msgstr "gebruiksvoorwaarden"
 
 #: themes/default/templates/account/register.html:10
 #: themes/default/templates/account/signin.html:8
 msgid "and"
-msgstr "および"
+msgstr "en"
 
 #: themes/default/templates/account/register.html:11
 #: themes/default/templates/account/signin.html:9
 msgid "data"
-msgstr "日付"
+msgstr "gegevens"
 
 #: themes/default/templates/account/register.html:14
 #: themes/default/templates/account/register.html:24
 msgid "Create an account"
-msgstr "アカウントを作成する"
+msgstr "Account aanmaken"
 
 #: themes/default/templates/account/register.html:18
 #: themes/default/templates/account/update.html:40
 msgid "my full name"
-msgstr "フルネーム"
+msgstr "volledige naam"
 
 #: themes/default/templates/account/register.html:19
 #: themes/default/templates/account/update.html:41
 msgid "myusername"
-msgstr "ユーザーネーム"
+msgstr "mijngebruikersnaam"
 
 #: themes/default/templates/account/register.html:20
 #: themes/default/templates/account/update.html:42
 msgid "hello@mywebsite.org"
-msgstr "hello@mywebsite.org"
+msgstr "hallo@mijnwebsite.nl"
 
 #: themes/default/templates/account/register.html:21
 #: themes/default/templates/account/register.html:22
 msgid "my secret password"
-msgstr "秘密のパスワード"
+msgstr "wachtwoord"
 
 #: themes/default/templates/account/signin.html:7
 msgid "Sign in button"
-msgstr "サインインボタン"
+msgstr "Knop voor aanmelden"
 
 #: themes/default/templates/account/signin.html:7
 msgid ""
 "below you are agreeing to\n"
 "    the"
 msgstr ""
+"ga je akkoord met\n"
+"    de"
 
 #: themes/default/templates/account/signin.html:13
 #: themes/default/templates/account/signin.html:23
 msgid "Sign in with Twitter"
-msgstr "Twitterでログイン"
+msgstr "Aanmelden via Twitter"
 
 #: themes/default/templates/account/signin.html:16
 #: themes/default/templates/account/signin.html:26
 msgid "Sign in with Facebook"
-msgstr "Facebookでログイン"
+msgstr "Aanmelden via Facebook"
 
 #: themes/default/templates/account/signin.html:19
 #: themes/default/templates/account/signin.html:29
 msgid "Sign in with Google"
-msgstr "Googleでログイン"
+msgstr "Aanmelden via Google"
 
 #: themes/default/templates/account/signin.html:38
 msgid "Or Sign in with your PyBossa account"
-msgstr "あるいは、PyBossaアカウントでログイン"
+msgstr "Of aanmelden met een PyBossa account"
 
 #: themes/default/templates/account/signin.html:40
 msgid "Sign in with your PyBossa account"
-msgstr "PyBossaアカウントでログイン"
+msgstr "Aanmelden met een PyBossa account"
 
 #: themes/default/templates/account/signin.html:52
 msgid " Create a new account!"
-msgstr "新しいアカウントを作成"
+msgstr "Maak een account aan!"
 
 #: themes/default/templates/account/signin.html:53
 msgid "Forgot Password"
-msgstr "パスワードを忘れた方へ"
+msgstr "Wachtwoord vergeten"
 
 #: themes/default/templates/account/update.html:17
 msgid "Update your profile"
-msgstr "プロフィールの更新"
+msgstr "Profiel aanpassen"
 
 #: themes/default/templates/account/update.html:31
 #: themes/default/templates/projects/update.html:28
 msgid "Upload"
-msgstr "アップロード"
+msgstr "Upload"
 
 #: themes/default/templates/account/update.html:47
 #: themes/default/templates/account/update.html:64
 #: themes/default/templates/account/update.html:77
 #: themes/default/templates/projects/update.html:47
 msgid "Save the changes"
-msgstr "変更の保存"
+msgstr "Wijzigingen opslaan"
 
 #: themes/default/templates/account/update.html:54
 msgid "Change your Password"
-msgstr "パスワード変更"
+msgstr "Wachtwoord wijzigen"
 
 #: themes/default/templates/account/update.html:85
 msgid "Do you want to reset your personal API Key?"
-msgstr "APIキーをリセットしますか？"
+msgstr "Wil je je persoonlijke API sleutel herstellen?"
 
 #: themes/default/templates/account/update.html:89
 msgid "No, do not reset the API key!"
-msgstr "いいえ、APIキーのリセットはしません！"
+msgstr "Nee, niet herstellen"
 
 #: themes/default/templates/account/email/forgot_password.html:4
 msgid "Recover your lost password"
-msgstr ""
+msgstr "Wachtwoord herstellen"
 
 #: themes/default/templates/account/email/forgot_password.html:8
 #: themes/default/templates/account/email/forgot_password_openid.html:8
 #: themes/default/templates/account/email/validate_account.html:8
 msgid "Hello"
-msgstr ""
+msgstr "Hallo"
 
 #: themes/default/templates/account/email/forgot_password.html:14
 #: themes/default/templates/account/email/forgot_password_openid.html:13
 msgid "We received a request to recover your password for"
-msgstr ""
+msgstr "We hebben een verzoek ontvangen om het wachtwoord te herstellen voor"
 
 #: themes/default/templates/account/email/forgot_password.html:17
 #: themes/default/templates/account/email/forgot_password_openid.html:16
 #: themes/default/templates/account/email/validate_account.html:22
 msgid "If you did not request this, please ignore this email"
-msgstr ""
+msgstr "Als je dit niet wilt, reageer dan niet op deze email"
 
 #: themes/default/templates/account/email/forgot_password.html:20
 msgid "To recover your password, please visit the URL below"
-msgstr ""
+msgstr "Klik de onderstaande url om het wachtwoord te herstellen"
 
 #: themes/default/templates/account/email/forgot_password.html:23
 msgid "Click here to recover your account"
-msgstr ""
+msgstr "Klik hier om je account te herstellen"
 
 #: themes/default/templates/account/email/forgot_password.html:26
 #: themes/default/templates/account/email/forgot_password_openid.html:22
 #: themes/default/templates/account/email/validate_account.html:31
 msgid "Regards"
-msgstr ""
+msgstr "Met vriendelijke groet"
 
 #: themes/default/templates/account/email/forgot_password_openid.html:4
 msgid "Recover your password"
@@ -546,11 +550,11 @@ msgstr ""
 
 #: themes/default/templates/account/email/validate_account.html:25
 msgid "Click here to confirm your e-mail address and create your account"
-msgstr ""
+msgstr "Klik hier om je emailadres te bevestigen en je account te activeren"
 
 #: themes/default/templates/admin/_helpers.html:9
 msgid "nick"
-msgstr "ニックネーム"
+msgstr ""
 
 #: themes/default/templates/admin/_helpers.html:10
 msgid "Member since"
@@ -558,51 +562,51 @@ msgstr ""
 
 #: themes/default/templates/admin/_helpers.html:14
 msgid "Remove from admin group"
-msgstr "管理グループから削除"
+msgstr ""
 
 #: themes/default/templates/admin/_helpers.html:18
 msgid "Add to admin group"
-msgstr "管理グループへの追加"
+msgstr ""
 
 #: themes/default/templates/admin/categories.html:13
 msgid "Manage Categories"
-msgstr "カテゴリーの管理"
+msgstr ""
 
 #: themes/default/templates/admin/categories.html:20
 #: themes/default/templates/admin/update_category.html:19
 msgid "Category name"
-msgstr "カテゴリー名"
+msgstr ""
 
 #: themes/default/templates/admin/categories.html:21
 #: themes/default/templates/admin/update_category.html:20
 msgid "Category description"
-msgstr "カテゴリーの説明"
+msgstr ""
 
 #: themes/default/templates/admin/categories.html:23
 msgid "Add Category"
-msgstr "カテゴリーの追加"
+msgstr ""
 
 #: themes/default/templates/admin/categories.html:30
 msgid "List of Available Categories"
-msgstr "利用できるカテゴリー"
+msgstr ""
 
 #: themes/default/templates/admin/categories.html:39
 msgid "Edit Category Name"
-msgstr "カテゴリー名の編集"
+msgstr ""
 
 #: themes/default/templates/admin/categories.html:41
 #: themes/default/templates/admin/categories.html:43
 #: themes/default/templates/admin/del_category.html:17
 msgid "Delete Category"
-msgstr "カテゴリーの削除"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:19
 msgid "Dashboard last 7 days"
-msgstr "過去7日間のダッシュボード"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:22
 msgid "Refresh"
-msgstr "更新"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:28
 msgid "Active users"
@@ -642,23 +646,23 @@ msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:108
 msgid "Recent activity"
-msgstr "最近のアクティビティ"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:115
 msgid "new project created"
-msgstr "新しいプロジェクトが作成されました。"
+msgstr "project aangemaakt"
 
 #: themes/default/templates/admin/dashboard.html:119
 msgid "has published a blog post"
-msgstr "は、ブログ・ポストに公開されました。"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:123
 msgid "has added new tasks"
-msgstr "は、新しいタスクに追加されました。"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:127
 msgid "has completed a task"
-msgstr "は、完了したタスクです。"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:131
 msgid "has contributed to"
@@ -667,7 +671,7 @@ msgstr ""
 #: themes/default/templates/admin/dashboard.html:139
 #: themes/default/templates/admin/dashboard.html:149
 msgid "has joined"
-msgstr "が加わりました。"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:159
 msgid "No data available yet. You'll need to wait 24 hours."
@@ -677,86 +681,86 @@ msgstr ""
 #: themes/default/templates/projects/delete.html:14
 #: themes/default/templates/projects/tasks/delete.html:14
 msgid "Danger Zone!"
-msgstr "警告！"
+msgstr ""
 
 #: themes/default/templates/admin/del_category.html:15
 msgid ""
 "Deleting the category will remove it from all the projects! This operation "
 "cannot be undone!"
-msgstr "全てのプロジェクトからカテゴリーを削除します！この操作は元に戻せません！"
+msgstr ""
 
 #: themes/default/templates/admin/del_category.html:21
 msgid "No, do not delete it"
-msgstr "いいえ、削除しません。"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:15
 msgid "Dashboard"
-msgstr "ダッシュボード"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:16
 msgid "Internal Statistics"
-msgstr "内部統計"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:18
 msgid "Go"
-msgstr "進む"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:22
 msgid "Background Jobs"
-msgstr "バックグラウンド処理"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:23
 msgid "Monitor the background jobs"
-msgstr "バックグランド処理を確認する。"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:25
 #: themes/default/templates/admin/index.html:34
 #: themes/default/templates/admin/index.html:41
 #: themes/default/templates/admin/index.html:50
 msgid "Manage"
-msgstr "管理"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:31
 #: themes/default/templates/projects/index.html:33
 msgid "Featured Projects"
-msgstr "注目されているプロジェクト"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:32
 msgid "Show projects on the front page"
-msgstr "フロントページにプロジェクトを表示する。"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:38
 msgid "Categories"
-msgstr "カテゴリー"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:39
 msgid "Manage project categories"
-msgstr "プロジェクトのカテゴリーを管理する。"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:47
 msgid "Administrators"
-msgstr "管理者"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:48
 msgid "Manage administrators"
-msgstr "管理者の管理"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:54
 #: themes/default/templates/projects/stats.html:235
 msgid "Users"
-msgstr "ユーザー"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:55
 msgid "Export a list of users"
-msgstr "ユーザーのリストをエクスポート"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:57
 msgid "JSON"
-msgstr "JSON"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:60
 msgid "CSV"
-msgstr "CSV"
+msgstr ""
 
 #: themes/default/templates/admin/index.html:66
 msgid "Latest news from PyBossa"
@@ -772,31 +776,31 @@ msgstr ""
 
 #: themes/default/templates/admin/projects.html:13
 msgid "Manage featured projects"
-msgstr "注目されているプロジェクトの管理"
+msgstr ""
 
 #: themes/default/templates/admin/update_category.html:22
 msgid "Update Category"
-msgstr "カテゴリーの更新"
+msgstr ""
 
 #: themes/default/templates/admin/users.html:14
 msgid "Manage Admin Users"
-msgstr "管理ユーザーの管理"
+msgstr ""
 
 #: themes/default/templates/admin/users.html:19
 msgid "Try with the full name or nick"
-msgstr "フルネームあるいはニックネームで試みる"
+msgstr ""
 
 #: themes/default/templates/admin/users.html:20
 msgid "Search"
-msgstr "検索"
+msgstr ""
 
 #: themes/default/templates/admin/users.html:24
 msgid "Found Users"
-msgstr "見つかったユーザー"
+msgstr ""
 
 #: themes/default/templates/admin/users.html:31
 msgid "Current Users with Admin privileges"
-msgstr "管理者特権を保持している現在のユーザー"
+msgstr ""
 
 #: themes/default/templates/home/_about.html:5
 msgid ""
@@ -807,16 +811,21 @@ msgid ""
 "civic hackers and developers to create projects where anyone around the "
 "world with some time, interest and an internet connection can contribute."
 msgstr ""
-"PyBossaは、無償のオープンソース・クラウド・ソーシングおよびマイクロ・タスキングのプラットフォームです。このシステムは、人による手作業を必要とするような、画像分類、転機、ジオコーディング、あるいは、それ以外の作業において、オンライン支援によるプロジェクトの作成と運用を可能にします。PyBossaは、プロジェクトを通して研究者、一般のIT技術者および開発者を手助けするとともに、時間がある人、興味がある人、そして、インターネット接続が可能な世界中の誰もが参加できる機会を提供します。"
+"PyBossa is een vrij, open-source crowd-sourcing en micro-tasking platform. "
+"PyBossa maakt het mogelijk projecten te maken voor het online assisteren in "
+"het uitvoeren van taken die menselijke kennis verlangen zoals het "
+"classificeren, beschrijven, op de kaart aanduiden van afbeeldingen en meer. "
+"PyBossa ondersteund onderzoekers, civic hackers en ontwikkelaars met "
+"projecten waar anderen aan kunnen bijdragen en meehelpen."
 
 #: themes/default/templates/home/_about.html:8
 msgid "PyBossa is different to existing efforts:"
-msgstr "PyBossaは既存の努力と異なっています。"
+msgstr ""
 
 #: themes/default/templates/home/_about.html:10
 #, python-format
 msgid "It's a 100%% open-source"
-msgstr "100%、オープンソースです。"
+msgstr ""
 
 #: themes/default/templates/home/_about.html:11
 msgid ""
@@ -824,8 +833,6 @@ msgid ""
 "handle payment or money — it is designed to support volunteer-driven "
 "projects."
 msgstr ""
-"いわゆる、「Mechanical "
-"Turk」スタイルのプロジェクトではなく、PyBossaは、金銭的報酬を伴うようには設計されていません。PyBossaは、ボランティア・ベースのプロジェクトをサポートするように設計されています。"
 
 #: themes/default/templates/home/_about.html:13
 msgid ""
@@ -835,36 +842,34 @@ msgid ""
 "of Javascript and HTML which are then deployed on a PyBossa instance (such "
 "as"
 msgstr ""
-"展開されているクラウド・ソーシングあるいはマイクロ・タスキングのプロジェクトを開発するためのプラットフォームあるいはフレームワークとして設計されています。"
 
 #: themes/default/templates/home/_about.html:13
 msgid ""
 "This way one can easily develop custom projects while using the PyBossa "
 "platform to store your data, manage users, and handle workflow"
 msgstr ""
-"この方法によって、データの蓄積、ユーザー管理、ワークフロー通りの処理のためのPyBossaプラットフォームを使うことで、誰もが簡単にカスタム・プロジェクトを開発できます。"
 
 #: themes/default/templates/home/_about.html:18
 msgid "You can read more about the architecture in the"
-msgstr "以下では、アーキテクチャについてより詳しい情報を得ることができます。"
+msgstr ""
 
 #: themes/default/templates/home/_about.html:18
 msgid "PyBossa Documentation"
-msgstr "PyBossaの解説書"
+msgstr ""
 
 #: themes/default/templates/home/_about.html:18
 msgid "and follow the"
-msgstr "そして以下の、"
+msgstr ""
 
 #: themes/default/templates/home/_about.html:18
 msgid "step-by-step tutorial to create your own projects"
-msgstr "自分のプロジェクトを作成するための、ステップ・バイ・ステップのチュートリアルがあります。"
+msgstr "Leer stap voor stap projecten aanmaken"
 
 #: themes/default/templates/home/_about.html:21
 #: themes/default/templates/projects/_helpers.html:40
 #: themes/default/templates/projects/stats.html:32
 msgid "Statistics"
-msgstr "統計"
+msgstr ""
 
 #: themes/default/templates/home/_about.html:23
 msgid ""
@@ -879,80 +884,80 @@ msgstr ""
 
 #: themes/default/templates/home/_about.html:25
 msgid "Check the global statistics"
-msgstr "全体の統計を確認する。"
+msgstr ""
 
 #: themes/default/templates/home/_about.html:27
 msgid "Contact information"
-msgstr "連絡先について"
+msgstr ""
 
 #: themes/default/templates/home/_about.html:29
 msgid "For more info, send us an e-mail to: "
-msgstr "詳しい情報、次のEメールアドレスまでお問い合わせください："
+msgstr ""
 
 #: themes/default/templates/home/_about.html:29
 msgid "Follow us on Twitter!"
-msgstr "Twitterでフォロー！"
+msgstr ""
 
 #: themes/default/templates/home/_about.html:30
 msgid "E-mail list: "
-msgstr "Eメールのリスト"
+msgstr ""
 
 #: themes/default/templates/home/_about.html:31
 msgid "Report any bug, issue or improvement:"
-msgstr "バグ、ご意見、あういは改善点について報告します。"
+msgstr ""
 
 #: themes/default/templates/home/_about.html:33
 msgid "Github Issues"
-msgstr "Githubの問題"
+msgstr ""
 
 #: themes/default/templates/home/_pybossa_text.html:1
 msgid ""
 "Online assistance in performing tasks that require human cognition, "
 "knowledge or intelligence such as image classification, transcription, "
 "geocoding and more!"
-msgstr "画像の分類や転記、ジオコーディングといった、人の認識や知識、知性を必要とする作業をオンラインで支援します。"
+msgstr ""
 
 #: themes/default/templates/home/_pybossa_text.html:3
 msgid "Help advance research"
-msgstr "高度な調査研究を支援します"
+msgstr ""
 
 #: themes/default/templates/home/_pybossa_text.html:4
 msgid "Everything is open and freely usable"
-msgstr "全てがオープンかつ自由に利用できます"
+msgstr ""
 
 #: themes/default/templates/home/_pybossa_text.html:5
 msgid "Things computers can't do"
-msgstr "コンピュータには出来ないことができます"
+msgstr ""
 
 #: themes/default/templates/home/index.html:18
 #: themes/default/templates/projects/_helpers.html:36
 #: themes/default/templates/projects/_helpers.html:240
 msgid "Info"
-msgstr "概要"
+msgstr ""
 
 #: themes/default/templates/home/index.html:33
 msgid "Get Started"
-msgstr "開始する"
+msgstr ""
 
 #: themes/default/templates/home/index.html:34
 msgid "It's really simple to start contributing."
-msgstr "非常に簡単に貢献作業に参加できます。"
+msgstr ""
 
 #: themes/default/templates/home/index.html:37
 msgid " Start Contributing"
-msgstr "貢献作業を開始する"
+msgstr ""
 
 #: themes/default/templates/home/index.html:42
 msgid "Most Active Projects"
-msgstr "活動的なプロジェクト"
+msgstr ""
 
 #: themes/default/templates/home/index.html:54
 msgid "Start"
-msgstr "開始"
+msgstr ""
 
 #: themes/default/templates/home/index.html:62
 msgid "Your project"
-msgstr "あなたのプロジェクト"
+msgstr ""
 
 #: themes/default/templates/home/index.html:63
 msgid "could be here!"
@@ -960,15 +965,15 @@ msgstr ""
 
 #: themes/default/templates/home/index.html:64
 msgid "Create a project"
-msgstr "プロジェクトを作成する"
+msgstr "Project aanmaken"
 
 #: themes/default/templates/home/index.html:73
 msgid "Most Active Volunteers"
-msgstr "最もアクティブなボランティア"
+msgstr ""
 
 #: themes/default/templates/home/index.html:80
 msgid "Submitted Tasks"
-msgstr "タスクを提出する"
+msgstr ""
 
 #: themes/default/templates/home/index.html:84
 #: themes/default/templates/projects/_helpers.html:39
@@ -984,16 +989,16 @@ msgstr "タスクを提出する"
 #: themes/default/templates/projects/tasks.html:13
 #: themes/default/templates/projects/tasks_browse.html:62
 msgid "Tasks"
-msgstr "タスク"
+msgstr ""
 
 #: themes/default/templates/home/search.html:7
 msgid "Search Results"
-msgstr "結果を検索する"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:37
 #: themes/default/templates/projects/presenter.html:15
 msgid "Contribute"
-msgstr "貢献する"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:38
 #: themes/default/templates/projects/results.html:15
@@ -1007,11 +1012,11 @@ msgstr ""
 #: themes/default/templates/projects/tasks.html:37
 #: themes/default/templates/projects/tasks.html:41
 msgid "Settings"
-msgstr "設定"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:49
 msgid "Audit Logs"
-msgstr "検査ログ"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:54
 msgid "Webhooks"
@@ -1019,53 +1024,53 @@ msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:57
 msgid "Blog"
-msgstr "ブログ"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:69
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:71
 #: themes/default/templates/projects/_helpers.html:131
 msgid "Description"
-msgstr "説明"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:72
 #: themes/default/templates/projects/_helpers.html:132
 msgid "Creation Date"
-msgstr "作成日"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:73
 #: themes/default/templates/projects/_helpers.html:134
 msgid "Last Activity"
-msgstr "最新の活動"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:74
 #: themes/default/templates/projects/_helpers.html:137
 #: themes/default/templates/projects/_helpers.html:199
 msgid "Overall progress"
-msgstr "全体の進捗"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:74
 #: themes/default/templates/projects/_helpers.html:199
 #: themes/default/templates/projects/tasks_browse.html:19
 msgid "completed"
-msgstr "完了"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:105
 #: themes/default/templates/projects/_helpers.html:115
 msgid "Remove from Featured!"
-msgstr "特集から省く"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:108
 #: themes/default/templates/projects/_helpers.html:112
 msgid "Add to Featured!"
-msgstr "特集に加える"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:139
 #: themes/default/templates/projects/_helpers.html:141
 msgid "Created by"
-msgstr "作成者"
+msgstr "Gemaakt door"
 
 #: themes/default/templates/projects/_helpers.html:139
 msgid "Me"
@@ -1073,7 +1078,7 @@ msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:144
 msgid "Try it!"
-msgstr "挑戦する！"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:212
 msgid "Done! View results"
@@ -1081,7 +1086,7 @@ msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:215
 msgid "Start Contributing Now!"
-msgstr "今すぐ、貢献作業を開始する！"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:218
 msgid "Thanks for contributing"
@@ -1098,12 +1103,12 @@ msgstr ""
 #: themes/default/templates/projects/actions.html:9
 #: themes/default/templates/projects/settings.html:18
 msgid "Edit the project details"
-msgstr "プロジェクトの詳細を編集する"
+msgstr ""
 
 #: themes/default/templates/projects/actions.html:10
 #: themes/default/templates/projects/tasks.html:33
 msgid "Edit the task presenter"
-msgstr "タスクの発表者を編集する"
+msgstr ""
 
 #: themes/default/templates/projects/actions.html:11
 #: themes/default/templates/projects/importers/csv.html:14
@@ -1115,48 +1120,48 @@ msgstr "タスクの発表者を編集する"
 #: themes/default/templates/projects/importers/twitter.html:14
 #: themes/default/templates/projects/importers/iiif.html:5
 msgid "Import tasks"
-msgstr "タスクをインポートする"
+msgstr ""
 
 #: themes/default/templates/projects/actions.html:12
 #: themes/default/templates/projects/settings.html:20
 msgid "Delete the project"
-msgstr "プロジェクトを削除する"
+msgstr ""
 
 #: themes/default/templates/projects/auditlog.html:17
 msgid "When"
-msgstr "いつ？"
+msgstr ""
 
 #: themes/default/templates/projects/auditlog.html:18
 msgid "Who"
-msgstr "だれが？"
+msgstr ""
 
 #: themes/default/templates/projects/auditlog.html:19
 msgid "Source"
-msgstr "情報源"
+msgstr ""
 
 #: themes/default/templates/projects/auditlog.html:20
 msgid "Action"
-msgstr "活動"
+msgstr ""
 
 #: themes/default/templates/projects/auditlog.html:21
 msgid "Attribute"
-msgstr "属性"
+msgstr ""
 
 #: themes/default/templates/projects/auditlog.html:22
 msgid "Old Value"
-msgstr "古い値"
+msgstr ""
 
 #: themes/default/templates/projects/auditlog.html:23
 msgid "New Value"
-msgstr "新しい値"
+msgstr ""
 
 #: themes/default/templates/projects/auditlog.html:28
 msgid "You"
-msgstr "あなた"
+msgstr ""
 
 #: themes/default/templates/projects/auditlog.html:39
 msgid "Sorry! No logs so far."
-msgstr "申し訳ございません！今のところログはありません。"
+msgstr ""
 
 #: themes/default/templates/projects/auditlog.html:45
 #: themes/default/templates/projects/blog.html:33
@@ -1171,15 +1176,15 @@ msgstr "申し訳ございません！今のところログはありません。
 #: themes/default/templates/projects/tasks.html:78
 #: themes/default/templates/projects/tasks_browse.html:65
 msgid "Sorry! This project does not exist."
-msgstr "申し訳ございません！このプロジェクトは存在しません。"
+msgstr ""
 
 #: themes/default/templates/projects/blog.html:27
 msgid "Sorry! No posts so far."
-msgstr "申し訳ございません！今のところ投稿はありません。"
+msgstr ""
 
 #: themes/default/templates/projects/blog_post.html:15
 msgid "Author: "
-msgstr "著者"
+msgstr ""
 
 #: themes/default/templates/projects/blog_post.html:17
 msgid "Written: "
@@ -1189,65 +1194,65 @@ msgstr ""
 #: themes/default/templates/projects/task_autoimporter.html:40
 #: themes/default/templates/projects/task_settings.html:31
 msgid "Delete"
-msgstr "消去"
+msgstr ""
 
 #: themes/default/templates/projects/blog_post.html:32
 msgid "Edit"
-msgstr "編集"
+msgstr ""
 
 #: themes/default/templates/projects/blog_post.html:36
 #: themes/default/templates/projects/blog_post.html:41
 #: themes/default/templates/projects/task_autoimporter.html:41
 msgid "Back"
-msgstr "戻る"
+msgstr ""
 
 #: themes/default/templates/projects/blog_post.html:40
 msgid "Sorry! This blogpost does not exist."
-msgstr "申し訳ございません！このブログ投稿は存在していません。"
+msgstr ""
 
 #: themes/default/templates/projects/delete.html:12
 msgid "Delete project"
-msgstr "プロジェクトの消去"
+msgstr ""
 
 #: themes/default/templates/projects/delete.html:14
 msgid "If you delete the project and its tasks, it will be gone forever!"
-msgstr "プロジェクトとその作業を削除すると、永久に失われることになります！"
+msgstr ""
 
 #: themes/default/templates/projects/delete.html:20
 msgid ""
 "Are you sure you want to delete this project and all its tasks and "
 "associated task runs?"
-msgstr "このプロジェクトと、その全ての作業、および、関連する稼働中の作業が消去されます。"
+msgstr ""
 
 #: themes/default/templates/projects/delete.html:22
 msgid "Yes, delete it"
-msgstr "はい、削除します"
+msgstr ""
 
 #: themes/default/templates/projects/delete.html:23
 msgid "No, do not delete it!"
-msgstr "いいえ、消去しません！"
+msgstr ""
 
 #: themes/default/templates/projects/export.html:13
 msgid "Export All Tasks and Task Runs"
-msgstr "全てのタスクと稼働中のタスクをエクスポートします。"
+msgstr ""
 
 #: themes/default/templates/projects/export.html:14
 msgid "You can export and download"
-msgstr "出力およびダウンロードをすることができます。"
+msgstr ""
 
 #: themes/default/templates/projects/export.html:14
 msgid "all the available"
-msgstr "利用可能な全ての"
+msgstr ""
 
 #: themes/default/templates/projects/export.html:14
 msgid ""
 "Tasks and Task Runs (the submitted answers by the users) in CSV or JSON "
 "formats."
-msgstr "タスクおよび稼働中のタスク（ユーザーによって提出された回答）をCSVあるいはJSON形式で出力します。"
+msgstr ""
 
 #: themes/default/templates/projects/export.html:17
 msgid "Export in CSV format"
-msgstr "CSV形式でエクスポート"
+msgstr ""
 
 #: themes/default/templates/projects/export.html:24
 #: themes/default/templates/projects/export.html:26
@@ -1255,11 +1260,11 @@ msgstr "CSV形式でエクスポート"
 #: themes/default/templates/projects/export.html:39
 #: themes/default/templates/projects/export.html:54
 msgid "Task Runs"
-msgstr "稼働中のタスク"
+msgstr ""
 
 #: themes/default/templates/projects/export.html:30
 msgid "Export in JSON format"
-msgstr "JSON形式でのエクスポート"
+msgstr ""
 
 #: themes/default/templates/projects/export.html:47
 msgid "Export to the"
@@ -1267,22 +1272,21 @@ msgstr ""
 
 #: themes/default/templates/projects/export.html:49
 msgid "Export to a CKAN server"
-msgstr "CKANサーバーの形式でエクスポート"
+msgstr ""
 
 #: themes/default/templates/projects/export.html:51
 msgid "IMPORTANT"
-msgstr "重要！"
+msgstr ""
 
 #: themes/default/templates/projects/export.html:51
 msgid ""
 "This export option stills in beta mode and may fail in the CKAN server. If "
 "you get an error, please send an e-mail to info@pybossa.com"
 msgstr ""
-"この出力オプションはまだベータ版であり、CKANサーバーの形式の場合には失敗する可能性があります。エラーが発生した場合には、info@pybossa.comにメールしてください。"
 
 #: themes/default/templates/projects/export.html:56
 msgid "You don't have a Datahub.io API key in your"
-msgstr "アカウントにDatahub.io API キーがありません。"
+msgstr ""
 
 #: themes/default/templates/projects/export.html:56
 msgid "account. Please,"
@@ -1290,52 +1294,52 @@ msgstr ""
 
 #: themes/default/templates/projects/export.html:56
 msgid "create an account"
-msgstr "アカウントを作成"
+msgstr "account aanmaken"
 
 #: themes/default/templates/projects/export.html:56
 msgid ""
 "and copy/paste the API key in your profile in order to use this exporter"
-msgstr "し、このエクスポート機能を使用するために、APIキーをプロフィールにコピー・アンド・ペーストしてください。"
+msgstr ""
 
 #: themes/default/templates/projects/index.html:35
 msgid "A special selection of the most interesting projects"
-msgstr "最も興味深いプロジェクトの特集"
+msgstr ""
 
 #: themes/default/templates/projects/index.html:38
 #: themes/default/templates/stats/global.html:93
 msgid "Draft Projects"
-msgstr "件の起草中のプロジェクト"
+msgstr ""
 
 #: themes/default/templates/projects/index.html:39
 msgid "Work in progress projects"
-msgstr "稼働中のプロジェクト"
+msgstr ""
 
 #: themes/default/templates/projects/index.html:58
 msgid "Sorry, there are no published projects for this category yet"
-msgstr "申し訳ございません。このカテゴリーのプロジェクトはまだありません。"
+msgstr ""
 
 #: themes/default/templates/projects/new.html:13
 msgid "Project"
-msgstr "プロジェクト"
+msgstr ""
 
 #: themes/default/templates/projects/new.html:13
 msgid "Create a new project"
-msgstr "プロジェクトの新規作成"
+msgstr "Project aanmaken"
 
 #: themes/default/templates/projects/new.html:17
 #: themes/default/templates/projects/update.html:37
 msgid "The name of the project"
-msgstr "プロジェクトの名称"
+msgstr ""
 
 #: themes/default/templates/projects/new.html:18
 #: themes/default/templates/projects/update.html:38
 msgid "Short name or slug for the project"
-msgstr "プロジェクトの省略名あるいは識別名"
+msgstr ""
 
 #: themes/default/templates/projects/new.html:18
 #: themes/default/templates/projects/update.html:38
 msgid "Project slug:"
-msgstr "識別名"
+msgstr ""
 
 #: themes/default/templates/projects/new.html:19
 msgid ""
@@ -1346,49 +1350,42 @@ msgid ""
 "                · Will you help make a difference? Explain to the volunteers why their contribution is essential and how the result of your project can help change things!                                                             \n"
 "            (you can use Markdown to give format to your description!)"
 msgstr ""
-"プロジェクトの説明\n"
-"    · プロジェクトの目的と期待する成果について\n"
-"    · プロジェクトの運用方法について\n"
-"    · ボラティンティアの支援方法および貢献方法\n"
-"    · 世の中に与えるインパクトについて\n"
-"\n"
-"（Markdownを使用して整形された記述を書くことができます。）"
 
 #: themes/default/templates/projects/new.html:26
 msgid "Create the project"
-msgstr "プロジェクトの作成"
+msgstr "Project aanmaken"
 
 #: themes/default/templates/projects/new_blogpost.html:14
 msgid "Write a new blog post for ad"
-msgstr "宣伝のための新規ブログの投稿記事を執筆する"
+msgstr ""
 
 #: themes/default/templates/projects/new_blogpost.html:18
 #: themes/default/templates/projects/update_blogpost.html:20
 msgid "The title of your post"
-msgstr "投稿のタイトル"
+msgstr ""
 
 #: themes/default/templates/projects/new_blogpost.html:19
 #: themes/default/templates/projects/update_blogpost.html:21
 msgid "Write your post here. You can use Markdown!"
-msgstr "投稿記事の執筆欄。Markdownを使用することができます！"
+msgstr ""
 
 #: themes/default/templates/projects/password.html:14
 msgid "Enter the password to contribute to this project:"
-msgstr "パスワードを入力してこのプロジェクトに貢献する"
+msgstr ""
 
 #: themes/default/templates/projects/password.html:18
 msgid "Project password"
-msgstr "プロジェクトパスワード"
+msgstr ""
 
 #: themes/default/templates/projects/password.html:21
 msgid "Submit"
-msgstr "投稿"
+msgstr ""
 
 #: themes/default/templates/projects/presenter.html:22
 msgid ""
 "Sorry, you've contributed to all the tasks for this project, but this "
 "project still needs more volunteers, so please spread the word!"
-msgstr "申し訳ございません。このプロジェクトではより多くのボランティアを必要としています。このプロジェクトの事を周知していただけると幸いです。"
+msgstr ""
 
 #: themes/default/templates/projects/publish.html:12
 msgid "Publish the project"
@@ -1431,24 +1428,26 @@ msgstr ""
 msgid ""
 "The project owner has not created/published/visualized any results yet."
 msgstr ""
+"De eigenaar van het project heeft nog geen resultaten "
+"gemaakt/gepubliceerd/gepresenteerd."
 
 #: themes/default/templates/projects/settings.html:16
 msgid "Project Settings"
-msgstr "プロジェクトの設定"
+msgstr ""
 
 #: themes/default/templates/projects/settings.html:19
 #: themes/default/templates/projects/task_settings.html:13
 msgid "Task Settings"
-msgstr "タスクの設定"
+msgstr ""
 
 #: themes/default/templates/projects/settings.html:21
 msgid "Write a blog post"
-msgstr "ブログ記事を執筆"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:39
 #: themes/default/templates/projects/task_priority.html:21
 msgid "Important"
-msgstr "重要"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:39
 msgid "Data have been"
@@ -1456,7 +1455,7 @@ msgstr ""
 
 #: themes/default/templates/projects/stats.html:39
 msgid "anonymized"
-msgstr "匿名化"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:47
 msgid "Average contribution time per task"
@@ -1468,57 +1467,57 @@ msgstr ""
 
 #: themes/default/templates/projects/stats.html:56
 msgid "Distribution of Answers per Hour"
-msgstr "1時間当たりの回答の分布"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:86
 msgid "Completed Tasks in the last 15 days"
-msgstr "過去15日間に完了したタスク"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:86
 #: themes/default/templates/projects/stats.html:157
 msgid "select an area to zoom, click to reset the chart"
-msgstr "範囲を選択してズームし、クリックでグラフをリセットします"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:157
 msgid "Answers per day"
-msgstr "1日当たりの回答"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:169
 msgid "answers were submitted this day"
-msgstr "回答はこの日に投稿されました"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:228
 msgid "Distribution of Answers"
-msgstr "回答の分布"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:234
 msgid "Type"
-msgstr "タイプ"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:236
 msgid "Percentage"
-msgstr "パーセンテージ"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:275
 msgid "Details about Anonymous Users"
-msgstr "匿名ユーザーの詳細"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:278
 msgid "anonymous users have"
-msgstr "人の匿名ユーザーが"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:278
 #: themes/default/templates/projects/stats.html:369
 msgid "participated"
-msgstr "参加しました。"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:285
 msgid "Country"
-msgstr "国"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:286
 msgid "City"
-msgstr "都市"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:307
 #: themes/default/templates/projects/stats.html:308
@@ -1527,39 +1526,39 @@ msgstr "都市"
 #: themes/default/templates/projects/stats.html:311
 #: themes/default/templates/projects/stats.html:376
 msgid "User"
-msgstr "ユーザー"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:327
 #: themes/default/templates/stats/global.html:169
 msgid "This page includes GeoLite data created by MaxMind, available from"
-msgstr "このページは、MaxMindによって作成されたGeoLiteデータが含まれており、以下から利用することができます："
+msgstr "Deze pagina bevat GeoLite gegevens van MaxMind, beschikbaar via"
 
 #: themes/default/templates/projects/stats.html:366
 msgid "Details about Authenticated Users"
-msgstr "登録ユーザーの詳細"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:369
 msgid "authenticated users have"
-msgstr "人の登録ユーザーが"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:371
 msgid "Top 5 users"
-msgstr "上位5名のユーザー"
+msgstr ""
 
 #: themes/default/templates/projects/task_autoimport_options.html:13
 msgid "Setup task autoimporter"
-msgstr "タスクの自動インポートを設定"
+msgstr ""
 
 #: themes/default/templates/projects/task_autoimport_options.html:16
 #: themes/default/templates/projects/task_import_options.html:16
 #: themes/default/templates/projects/snippets/options.html:4
 msgid "Use one of the following available"
-msgstr "以下の利用可能なものを使用し、"
+msgstr ""
 
 #: themes/default/templates/projects/task_autoimport_options.html:17
 #: themes/default/templates/projects/task_import_options.html:17
 msgid "importers"
-msgstr "インポート"
+msgstr ""
 
 #: themes/default/templates/projects/task_autoimport_options.html:17
 msgid "to setup as the autoimporter"
@@ -1567,59 +1566,59 @@ msgstr ""
 
 #: themes/default/templates/projects/task_autoimporter.html:14
 msgid "Currently configured autoimport"
-msgstr "現在設定済みの自動インポート"
+msgstr ""
 
 #: themes/default/templates/projects/task_autoimporter.html:15
 msgid "You currently have the following autoimporter configured"
-msgstr "以下の設定済み自動インポートがあります"
+msgstr ""
 
 #: themes/default/templates/projects/task_import_options.html:13
 #: themes/default/templates/projects/tasks.html:20
 msgid "Import Tasks"
-msgstr "タスクのインポート"
+msgstr ""
 
 #: themes/default/templates/projects/task_import_options.html:17
 msgid "to import tasks..."
-msgstr "タスクをインポートするためには..."
+msgstr ""
 
 #: themes/default/templates/projects/task_import_options.html:31
 msgid "... or import a set of"
-msgstr "あるいは、その他の"
+msgstr ""
 
 #: themes/default/templates/projects/task_import_options.html:31
 msgid "template tasks"
-msgstr "テンプレートタスク"
+msgstr ""
 
 #: themes/default/templates/projects/task_n_answers.html:14
 #: themes/default/templates/projects/task_settings.html:34
 msgid "Task Redundancy"
-msgstr "タスクの冗長性"
+msgstr ""
 
 #: themes/default/templates/projects/task_n_answers.html:18
 msgid "The number of answers per tasks that you want for the project"
-msgstr "プロジェクトで必要とするタスクに対する回答数"
+msgstr ""
 
 #: themes/default/templates/projects/task_n_answers.html:20
 #: themes/default/templates/projects/task_scheduler.html:35
 msgid "Set redundancy"
-msgstr "冗長性の設定"
+msgstr ""
 
 #: themes/default/templates/projects/task_presenter_editor.html:28
 #: themes/default/templates/projects/snippets/options.html:3
 msgid "Task Presenter Editor"
-msgstr "タスク提供者の編集"
+msgstr ""
 
 #: themes/default/templates/projects/task_presenter_editor.html:28
 msgid "Help"
-msgstr "ヘルプ"
+msgstr ""
 
 #: themes/default/templates/projects/task_presenter_editor.html:34
 msgid "Update the project task presenter"
-msgstr "プロジェクトのタスク提供者の情報を更新"
+msgstr ""
 
 #: themes/default/templates/projects/task_presenter_editor.html:35
 msgid "Preview the task presenter"
-msgstr "タスク提供者のプレビュー"
+msgstr ""
 
 #: themes/default/templates/projects/task_presenter_editor.html:45
 msgid "&times;"
@@ -1627,143 +1626,143 @@ msgstr ""
 
 #: themes/default/templates/projects/task_presenter_editor.html:46
 msgid "Task Presenter Preview"
-msgstr "タスク提供者のプレビュー"
+msgstr ""
 
 #: themes/default/templates/projects/task_presenter_editor.html:54
 msgid "Close"
-msgstr "閉じる"
+msgstr ""
 
 #: themes/default/templates/projects/task_priority.html:14
 #: themes/default/templates/projects/task_settings.html:22
 msgid "Task Priority"
-msgstr "タスクの優先度"
+msgstr ""
 
 #: themes/default/templates/projects/task_priority.html:15
 msgid "You can change the"
-msgstr "タスクの優先度を変更することができます。"
+msgstr ""
 
 #: themes/default/templates/projects/task_priority.html:16
 msgid "priority"
-msgstr "優先度"
+msgstr ""
 
 #: themes/default/templates/projects/task_priority.html:16
 msgid ""
 "of one or more tasks,\n"
 "                providing a list of task IDs separated by commas. The lowest\n"
 "                priority is"
-msgstr "は、一つあるいは複数のタスクに与えることができ、カンマ区切りのタスクIDのリストによって定義されます。最も低い優先度＝"
+msgstr ""
 
 #: themes/default/templates/projects/task_priority.html:19
 msgid "and the highest priority is"
-msgstr "、最も高い優先度の値＝"
+msgstr ""
 
 #: themes/default/templates/projects/task_priority.html:21
 msgid ""
 "The priority value is only\n"
 "                respected by the"
-msgstr "優先度の値は、"
+msgstr ""
 
 #: themes/default/templates/projects/task_priority.html:22
 msgid "default scheduler"
-msgstr "規定の予定管理"
+msgstr ""
 
 #: themes/default/templates/projects/task_priority.html:27
 msgid "Comma separated Task.IDs i.e.: 3, 532, 100"
-msgstr "タスクリストの例: 3, 532, 100"
+msgstr ""
 
 #: themes/default/templates/projects/task_priority.html:28
 msgid "Priority value between 0.0 and 1.0"
-msgstr "0.0～1.0の優先度の値"
+msgstr ""
 
 #: themes/default/templates/projects/task_priority.html:30
 msgid "Change Priority"
-msgstr "優先度の変更"
+msgstr ""
 
 #: themes/default/templates/projects/task_scheduler.html:14
 #: themes/default/templates/projects/task_settings.html:17
 msgid "Task Scheduler"
-msgstr "タスク・スケジューラー"
+msgstr ""
 
 #: themes/default/templates/projects/task_scheduler.html:15
 msgid "You can choose from the following schedulers"
-msgstr "以下のスケジュール管理から選択できます"
+msgstr ""
 
 #: themes/default/templates/projects/task_scheduler.html:17
 msgid "Default"
-msgstr "規定の検索"
+msgstr ""
 
 #: themes/default/templates/projects/task_scheduler.html:17
 msgid "or"
-msgstr "あるいは"
+msgstr ""
 
 #: themes/default/templates/projects/task_scheduler.html:18
 msgid "Depth First"
-msgstr "縦型探索"
+msgstr ""
 
 #: themes/default/templates/projects/task_scheduler.html:18
 msgid ""
 "returns a task that\n"
 "                    has not been completed (the value of number of answers has\n"
 "                    not achieved) excluding the current user"
-msgstr "現在のユーザーを除いた、完了していないタスク（回答数の値は得られません）を検索します。"
+msgstr ""
 
 #: themes/default/templates/projects/task_scheduler.html:21
 msgid "Breadth First"
-msgstr "幅優先探索"
+msgstr ""
 
 #: themes/default/templates/projects/task_scheduler.html:21
 msgid ""
 "returns a\n"
 "                    task which has the least number of task runs (answers)\n"
 "                    excluding the current user"
-msgstr "現在のユーザーを除いた、稼働中のタスクが最も少ないタスクを検索します。"
+msgstr ""
 
 #: themes/default/templates/projects/task_scheduler.html:24
 msgid "Random"
-msgstr "ランダム"
+msgstr ""
 
 #: themes/default/templates/projects/task_scheduler.html:24
 msgid ""
 "returns a task\n"
 "                    randomly --a user could get the same task twice or more\n"
 "                    times"
-msgstr "ランダムにタスクを検索します。したがって、同じタスクを複数回取得することがあります。"
+msgstr ""
 
 #: themes/default/templates/projects/task_settings.html:18
 msgid "Change how the tasks are delivered to volunteers"
-msgstr "どのようにタスクがボランティアの人々に公開されるかを変更します"
+msgstr ""
 
 #: themes/default/templates/projects/task_settings.html:19
 msgid "Scheduler"
-msgstr "予定管理"
+msgstr ""
 
 #: themes/default/templates/projects/task_settings.html:23
 msgid "Change the priority of the tasks"
-msgstr "タスクの優先度の変更"
+msgstr ""
 
 #: themes/default/templates/projects/task_settings.html:24
 msgid "Priority"
-msgstr "優先度"
+msgstr ""
 
 #: themes/default/templates/projects/task_settings.html:29
 msgid "Delete Tasks"
-msgstr "タスクの削除"
+msgstr ""
 
 #: themes/default/templates/projects/task_settings.html:30
 msgid "Delete all the tasks and associated answers"
-msgstr "全てのタスクおよび関連する回答の削除"
+msgstr ""
 
 #: themes/default/templates/projects/task_settings.html:35
 msgid "Change the redundancy level for the tasks"
-msgstr "タスクの冗長性レベルの変更"
+msgstr ""
 
 #: themes/default/templates/projects/task_settings.html:36
 msgid "Redundancy"
-msgstr "冗長性"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:21
 msgid "Import tasks from templates, GDrive, or CSV"
-msgstr "テンプレート、GDriveあるいはCSVによるタスクのインポート"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:22
 #: themes/default/templates/projects/importers/csv.html:23
@@ -1774,96 +1773,96 @@ msgstr "テンプレート、GDriveあるいはCSVによるタスクのインポ
 #: themes/default/templates/projects/importers/s3.html:36
 #: themes/default/templates/projects/importers/twitter.html:43
 msgid "Import"
-msgstr "インポート"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:25
 #: themes/default/templates/projects/tasks.html:68
 msgid "Export Tasks"
-msgstr "タスクのエクスポート"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:26
 #: themes/default/templates/projects/tasks.html:69
 msgid "Export tasks to JSON, CSV or a CKAN server"
-msgstr "JSON、CSV、CKANサーバーへのタスクのエクスポート"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:27
 #: themes/default/templates/projects/tasks.html:70
 msgid "Export"
-msgstr "エクスポート"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:32
 msgid "Task Presenter"
-msgstr "タスク提供者"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:34
 msgid "Editor"
-msgstr "編集者"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:38
 msgid "Configure the task scheduler, redundancy, etc."
-msgstr "タスク管理、冗長性等の設定"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:46
 #: themes/default/templates/projects/tasks.html:49
 #: themes/default/templates/projects/tasks.html:62
 #: themes/default/templates/projects/tasks.html:65
 msgid "Browse"
-msgstr "閲覧"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:47
 #: themes/default/templates/projects/tasks.html:63
 msgid "Check the status of the tasks"
-msgstr "タスクの状態を確認"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:53
 msgid "Auto-import Tasks"
-msgstr "自動インポートのタスク"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:54
 msgid "Import tasks regularly and automatically"
-msgstr "タスクを定期的かつ自動的にインポートする"
+msgstr ""
 
 #: themes/default/templates/projects/tasks.html:55
 msgid "Setup"
-msgstr "設定"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:13
 msgid "Browse tasks"
-msgstr "タスクの閲覧"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:15
 msgid "This page shows all the available tasks for this project"
-msgstr "このページでは、このプロジェクトで利用可能なタスクが表示されます。"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:16
 msgid "For each task, you can find the following information"
-msgstr "各々のタスクについて、以下の情報があります"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:18
 #: themes/default/templates/projects/tasks_browse.html:29
 #: themes/default/templates/projects/tasks_browse.html:31
 msgid "Task"
-msgstr "タスク"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:18
 msgid "This number identifies the task for the project and it is unique"
-msgstr "この番号は、プロジェクトのタスクを識別するユニークなものです。"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:19
 msgid ""
 "The first number shows how many answers have been submitted for the task and"
 " the"
-msgstr "最初の数字は、タスクに対して得られた回答数を示し、"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:19
 msgid ""
 "This redundancy method will help to detect errors, typos, data forging, etc."
 " when the task has been completed"
-msgstr "この冗長性メソッドは、タスクが完了した際に、エラー検出、タイプミス、データねつ造等の検出を助けます。"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:19
 msgid "second number"
-msgstr "二つ目の数字は"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:19
 msgid "how many need to be obtained to mark the task as"
@@ -1871,40 +1870,40 @@ msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:20
 msgid "Progress Bar"
-msgstr "プログレスバー"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:20
 msgid ""
 "The progress bar will the percentage that has been completed for the task"
-msgstr "プログレスバーは、タスクの完了状況のパーセンテージを表しています"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:48
 msgid "Download Task Results"
-msgstr "タスクの成果をダウンロード"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:52
 msgid "Download Partial results"
-msgstr "成果の一部をダウンロード"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:55
 msgid "Nothing to download yet"
-msgstr "まだ、ダウンロードできるものはありません"
+msgstr ""
 
 #: themes/default/templates/projects/tutorial.html:14
 msgid "Start contributing"
-msgstr "貢献作業を開始"
+msgstr ""
 
 #: themes/default/templates/projects/update.html:14
 msgid "Update the project"
-msgstr "プロジェクトの更新"
+msgstr ""
 
 #: themes/default/templates/projects/update.html:39
 msgid "Give some details about the project"
-msgstr "プロジェクトについての詳細な情報について"
+msgstr ""
 
 #: themes/default/templates/projects/update.html:40
 msgid "Explain the project (use Markdown!)"
-msgstr "プロジェクトについて説明する（Markdownを使用！）"
+msgstr ""
 
 #: themes/default/templates/projects/update.html:42
 msgid "Check if you want to allow anonymous users contribute to your project"
@@ -1912,15 +1911,15 @@ msgstr ""
 
 #: themes/default/templates/projects/update_blogpost.html:14
 msgid "Edit the blog post"
-msgstr "ブログ投稿を編集"
+msgstr ""
 
 #: themes/default/templates/projects/update_blogpost.html:23
 msgid "Update"
-msgstr "更新"
+msgstr ""
 
 #: themes/default/templates/projects/webhook.html:20
 msgid "Created"
-msgstr ""
+msgstr "Aangemaakt"
 
 #: themes/default/templates/projects/webhook.html:21
 msgid "Updated"
@@ -1944,17 +1943,17 @@ msgstr ""
 
 #: themes/default/templates/projects/importers/iiif.html:10
 msgid "From a IIIF manifest"
-msgstr "IIIFマニフェストから"
+msgstr ""
 
 #: themes/default/templates/projects/importers/csv.html:16
 msgid "From a CSV file"
-msgstr "CSVファイルから"
+msgstr ""
 
 #: themes/default/templates/projects/importers/csv.html:20
 msgid ""
 "Please provide a URL (i.e. DropBox, Box, Ubuntu One, etc. public link) to a "
 "CSV file with data for"
-msgstr "CSVファイルのURL（DropBox, Box, Ubuntu One等のパブリック・リンク）を入力してください："
+msgstr ""
 
 #: themes/default/templates/projects/importers/csv.html:20
 #: themes/default/templates/projects/importers/dropbox.html:26
@@ -1965,7 +1964,7 @@ msgstr "CSVファイルのURL（DropBox, Box, Ubuntu One等のパブリック・
 #: themes/default/templates/projects/importers/twitter.html:34
 #: themes/default/templates/projects/importers/iiif.html:16
 msgid "For more information, please look at"
-msgstr "より詳しい情報は次のリンク先を参照してください："
+msgstr ""
 
 #: themes/default/templates/projects/importers/csv.html:20
 #: themes/default/templates/projects/importers/dropbox.html:26
@@ -1976,15 +1975,15 @@ msgstr "より詳しい情報は次のリンク先を参照してください：
 #: themes/default/templates/projects/importers/twitter.html:35
 #: themes/default/templates/projects/importers/iiif.html:16
 msgid "the documentation"
-msgstr "解説書"
+msgstr ""
 
 #: themes/default/templates/projects/importers/csv.html:21
 msgid "The URL of the CSV file"
-msgstr "CSVファイルのURL"
+msgstr ""
 
 #: themes/default/templates/projects/importers/dropbox.html:18
 msgid "From your Dropbox account"
-msgstr "Dropboxアカウントから"
+msgstr ""
 
 #: themes/default/templates/projects/importers/dropbox.html:27
 msgid "You are about to import"
@@ -1992,19 +1991,19 @@ msgstr ""
 
 #: themes/default/templates/projects/importers/dropbox.html:27
 msgid "files"
-msgstr "ファイル"
+msgstr ""
 
 #: themes/default/templates/projects/importers/epicollect.html:16
 msgid "From an EpiCollect Plus project"
-msgstr "EpiCollect Plusプロジェクトから"
+msgstr ""
 
 #: themes/default/templates/projects/importers/epicollect.html:20
 msgid "Please provide an EpiCollect Plus project name to import its data for"
-msgstr "EpiCollect Plusのデータをインポートするためにプロジェクト名を入力してください"
+msgstr ""
 
 #: themes/default/templates/projects/importers/epicollect.html:22
 msgid "The name of the public EpiCollect Plus project"
-msgstr "公開されているEpiCollect Plus のプロジェクトの名前"
+msgstr ""
 
 #: themes/default/templates/projects/importers/epicollect.html:23
 msgid "The name of the project's form"
@@ -2016,7 +2015,7 @@ msgstr ""
 
 #: themes/default/templates/projects/importers/flickr.html:17
 msgid "Revoke access"
-msgstr "アクセスを無効にする"
+msgstr ""
 
 #: themes/default/templates/projects/importers/flickr.html:20
 msgid "Grant access to your Flickr albums to select one..."
@@ -2024,7 +2023,7 @@ msgstr ""
 
 #: themes/default/templates/projects/importers/flickr.html:21
 msgid "Log in Flickr"
-msgstr "Flickrにログイン"
+msgstr ""
 
 #: themes/default/templates/projects/importers/flickr.html:31
 msgid "Or manually provide the ID of a Flickr set with images for"
@@ -2032,27 +2031,27 @@ msgstr ""
 
 #: themes/default/templates/projects/importers/flickr.html:53
 msgid "Select one of your albums:"
-msgstr "アルバムを選択："
+msgstr ""
 
 #: themes/default/templates/projects/importers/flickr.html:55
 msgid "photos"
-msgstr "写真"
+msgstr ""
 
 #: themes/default/templates/projects/importers/flickr.html:55
 msgid "Select"
-msgstr "選択"
+msgstr ""
 
 #: themes/default/templates/projects/importers/gdocs.html:16
 msgid "From a Google Docs Spreadsheet"
-msgstr "Google Docs スプレッドシートからのインポート"
+msgstr ""
 
 #: themes/default/templates/projects/importers/gdocs.html:20
 msgid "Please provide a URL to a Google Drive Spreadsheet with data for"
-msgstr "このプロジェクトのためのGoogle Drive スプレッドシートのURLを入力してください："
+msgstr ""
 
 #: themes/default/templates/projects/importers/gdocs.html:21
 msgid "The URL of the Google Docs Spreadsheet"
-msgstr "Google Docs スプレッドシートのURL"
+msgstr ""
 
 #: themes/default/templates/projects/importers/s3.html:21
 msgid "From an Amazon S3 bucket"
@@ -2106,11 +2105,11 @@ msgstr ""
 
 #: themes/default/templates/projects/presenters/basic.html:2
 msgid "Basic"
-msgstr "基本"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/basic.html:3
 msgid "The most basic template"
-msgstr "代表的なテンプレート"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/basic.html:4
 #: themes/default/templates/projects/presenters/image.html:4
@@ -2119,7 +2118,7 @@ msgstr "代表的なテンプレート"
 #: themes/default/templates/projects/presenters/sound.html:4
 #: themes/default/templates/projects/presenters/video.html:4
 msgid "Complexity"
-msgstr "難易度"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/basic.html:5
 #: themes/default/templates/projects/presenters/image.html:5
@@ -2128,31 +2127,31 @@ msgstr "難易度"
 #: themes/default/templates/projects/presenters/sound.html:5
 #: themes/default/templates/projects/presenters/video.html:5
 msgid "Skills"
-msgstr "スキル"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/basic.html:5
 #: themes/default/templates/projects/presenters/image.html:5
 #: themes/default/templates/projects/presenters/sound.html:5
 #: themes/default/templates/projects/presenters/video.html:5
 msgid "HTML and JavaScript"
-msgstr "HTMLとJavaScript"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/basic.html:6
 msgid "Use the Basic template"
-msgstr "基本テンプレート"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/image.html:2
 #: themes/default/templates/projects/tasks/gdocs-image.html:2
 msgid "Image Pattern Recognition"
-msgstr "イメージパターン認識"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/image.html:3
 msgid "Re-use the Flickr Person Finder template"
-msgstr "Flickr Person Finder のテンプレートの再利用"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/image.html:6
 msgid "Use the Image template"
-msgstr "イメージテンプレート"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/image.html:7
 #: themes/default/templates/projects/presenters/map.html:7
@@ -2160,233 +2159,226 @@ msgstr "イメージテンプレート"
 #: themes/default/templates/projects/presenters/sound.html:7
 #: themes/default/templates/projects/presenters/video.html:7
 msgid "Download the template and work locally"
-msgstr "テンプレートのダウンロード"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/map.html:2
 #: themes/default/templates/projects/tasks/gdocs-map.html:2
 msgid "Geo-coding"
-msgstr "ジオコーディング"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/map.html:3
 msgid "Re-use the Urban Park template"
-msgstr "Urban Parkのテンプレートの使用"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/map.html:5
 msgid "HTML, JavaScript and Geo expertise"
-msgstr "HTML、JavaScriptおよびGeoExpertis"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/map.html:6
 msgid "Use the Maps project template"
-msgstr "マッププロジェクトのテンプレート"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/pdf.html:2
 #: themes/default/templates/projects/tasks/gdocs-pdf.html:2
 msgid "Transcribing documents"
-msgstr "解説書の転記"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/pdf.html:3
 msgid "Re-use the PDF transcription template"
-msgstr "PDFの転記テンプレートの再利用"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/pdf.html:5
 msgid "HTML, JavaScript and Server side"
-msgstr "HTML、JavaScriptおよびサーバー"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/pdf.html:6
 msgid "Use the Transcription template"
-msgstr "転記テンプレート"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/sound.html:2
 #: themes/default/templates/projects/tasks/gdocs-sound.html:2
 msgid "Sound Pattern Recognition"
-msgstr "サウンドパターンの再認識"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/sound.html:3
 msgid "Re-use the SoundCloud template"
-msgstr "SoundCloudテンプレートの再利用"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/sound.html:6
 msgid "Use the Sound template"
-msgstr "サウンドテンプレート"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/video.html:2
 #: themes/default/templates/projects/tasks/gdocs-video.html:2
 msgid "Video Pattern Recognition"
-msgstr "ビデオパターン認識"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/video.html:3
 msgid "Re-use the Vimeo template"
-msgstr "Vimeoテンプレートの再利用"
+msgstr ""
 
 #: themes/default/templates/projects/presenters/video.html:6
 msgid "Use the Video template"
-msgstr "ビデオテンプレートを使用"
+msgstr ""
 
 #: themes/default/templates/projects/snippets/options.html:5
 msgid "templates"
-msgstr "テンプレート"
+msgstr ""
 
 #: themes/default/templates/projects/snippets/options.html:5
 msgid "for your project"
-msgstr "をプロジェクトに適用します。"
+msgstr ""
 
 #: themes/default/templates/projects/task/wrong.html:8
 msgid "Error!"
-msgstr "エラー"
+msgstr ""
 
 #: themes/default/templates/projects/task/wrong.html:8
 msgid "This task does not belong to"
-msgstr "このタスクは次のプロジェクトにはありません："
+msgstr ""
 
 #: themes/default/templates/projects/task/wrong.html:9
 msgid "Try with another one"
-msgstr "別のもので試す"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/iiif.html:2
 msgid "Import from a IIIF manifest"
-msgstr "IIIFマニフェストからのインポート"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/csv.html:3
 msgid "Provide a public link to your own CSV file"
-msgstr "自分のCSVファイルのパブリックリンクを使用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/csv.html:5
 msgid ""
 "Use the CSV URL\n"
 "      importer"
 msgstr ""
-"CSVのURLを使用する\n"
-"インポートCSV URL\n"
-"インポート"
 
 #: themes/default/templates/projects/tasks/delete.html:12
 msgid "Delete all Tasks and Task Runs"
-msgstr "全てのタスクおよび稼働中のタスクの消去"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/delete.html:14
 msgid ""
 "If you delete all the\n"
 "            tasks and task runs they will be gone\n"
 "            forever!"
-msgstr "全てのタスクと稼働中のタスクを消去すると、永久に元に戻すことはできません！"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/delete.html:16
 msgid "You cannot undo this action!"
-msgstr "この処理を元に戻すことはできません！"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/delete.html:20
 msgid ""
 "Are you sure you want to delete ALL the project tasks and associated task "
 "runs?"
-msgstr "全てのプロジェクトタスクと関連する稼働中のタスクを消去しますか？"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/delete.html:24
 msgid "Yes"
-msgstr "はい"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/delete.html:26
 msgid ""
 "No, do not delete\n"
 "              anything!"
-msgstr "いいえ、何も消去しません！"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/dropbox.html:3
 msgid "Use files from your Dropbox account"
-msgstr "Dropboxのアカウントのファイルの使用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/dropbox.html:5
 msgid "Use the Dropbox importer"
-msgstr "Dropboxのインポート"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/epicollect.html:2
 msgid "EpiCollect Plus Project"
-msgstr "EpiCollect Plusプロジェクト"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/epicollect.html:3
 msgid "Use an EpiCollect Plus project"
-msgstr "EpiCollect Plusプロジェクトの使用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/epicollect.html:5
 msgid ""
 "Use the EpiCollect\n"
 "      Plus importer"
 msgstr ""
-"EpiCollect Plus\n"
-"インポート"
 
 #: themes/default/templates/projects/tasks/flickr.html:3
 msgid "Use images from a Flickr set"
-msgstr "Flickr の画像を使用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/flickr.html:5
 msgid "Use the Flickr importer"
-msgstr "Flickrのインポート"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs-image.html:3
 msgid "Re-use the Flickr Person Finder tasks"
-msgstr "Flickr Person Finder タスクの再利用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs-image.html:5
 msgid ""
 "Use the\n"
 "      Image tasks"
-msgstr "画像タスクの使用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs-map.html:3
 msgid "Re-use the Urban Park tasks"
-msgstr "Urban Parkタスクの再利用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs-map.html:5
 msgid ""
 "Use the\n"
 "      Mapping tasks"
-msgstr "マッピングタスクの使用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs-pdf.html:3
 msgid "Re-use the PDF transcription tasks"
-msgstr "PDFファイルの転記タスクの再利用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs-pdf.html:5
 msgid ""
 "Use the\n"
 "      Transcription tasks"
-msgstr "転記タスクの使用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs-sound.html:3
 msgid "Re-use the SoundCloud tasks"
-msgstr "SoundCloudのタスクの再利用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs-sound.html:5
 msgid ""
 "Use the\n"
 "      Sound tasks"
-msgstr "音声タスクの使用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs-video.html:3
 msgid "Re-use the Vimeo tasks"
-msgstr "Vimeoのタスクの再利用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs-video.html:5
 msgid ""
 "Use the\n"
 "      Video tasks"
-msgstr "ビデオタスクの使用"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs.html:2
 msgid "Google Drive Spreadsheet"
-msgstr "Google Drive スプレッドシート"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs.html:3
 msgid "Import a Google Drive Spreadsheet"
-msgstr "Google Drive スプレッドシートのインポート"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/gdocs.html:5
 msgid ""
 "Use the Google Drive\n"
 "      importer"
 msgstr ""
-"Google Drive\n"
-"インポート"
 
 #: themes/default/templates/projects/tasks/s3.html:2
 msgid "S3"
@@ -2410,24 +2402,24 @@ msgstr ""
 
 #: themes/default/templates/stats/global.html:38
 msgid "General Statistics"
-msgstr "一般的な統計"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:46
 msgid "Anonymous users"
-msgstr "匿名ユーザー"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:47
 msgid "Authenticated users"
-msgstr "登録ユーザー"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:48
 #: themes/default/templates/stats/global.html:94
 msgid "Total"
-msgstr "合計"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:52
 msgid "Top 5 Users in the last 24 hours"
-msgstr "過去24時間における上位5名のユーザー"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:55
 msgid "with"
@@ -2435,48 +2427,48 @@ msgstr ""
 
 #: themes/default/templates/stats/global.html:55
 msgid "contributed answers"
-msgstr "寄与された回答"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:60
 msgid "No active users in the last 24 hours"
-msgstr "過去24時刊に活動したユーザーはありません"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:92
 msgid "Published Projects"
-msgstr "公開中のプロジェクト"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:97
 msgid "Top 5 projects in the last 24 hours"
-msgstr "過去24時刊の上位5位であったプロジェクト"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:105
 msgid "No active projects in the last 24 hours"
-msgstr "過去24時刊に活動中のプロジェクトはありません"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:135
 msgid "Tasks and Answers"
-msgstr "タスクと回答"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:138
 msgid "Number of Tasks"
-msgstr "タスク数"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:139
 msgid "Number of Task Runs"
-msgstr "稼働中のタスク数"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:167
 msgid "Anonymous Volunteers"
-msgstr "匿名のボランティア"
+msgstr ""
 
 #: themes/default/templates/stats/index.html:13
 msgid "Community Leaderboard"
-msgstr "コミュニティのリーダーボード"
+msgstr ""
 
 #: themes/default/templates/stats/index.html:18
 msgid "Name"
-msgstr "名前"
+msgstr ""
 
 #: themes/default/templates/stats/index.html:19
 msgid "Score"
-msgstr "スコア"
+msgstr ""

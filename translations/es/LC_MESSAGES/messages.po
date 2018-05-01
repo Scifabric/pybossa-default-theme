@@ -1,18 +1,23 @@
-
+# Translations template for PROJECT.
+# Copyright (C) 2016 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: daniel@scifabric.com\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2016-02-05 18:06+0000\n"
-"PO-Revision-Date: 2013-03-26 18:24+0100\n"
-"Last-Translator: Daniel Lombraña González <daniel@scifabric.com>\n"
-"Language: es\n"
-"Language-Team: es <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Milo van der Linden <milo@dogodigi.net>, 2018\n"
+"Language-Team: Spanish (https://www.transifex.com/codeforeurope/teams/86021/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: themes/default/templates/_navbar.html:12
 #: themes/default/templates/account/index.html:14
@@ -207,9 +212,9 @@ msgstr "Sólo un paso más, por favor"
 
 #: themes/default/templates/account/account_validation.html:8
 msgid ""
-"In order to confirm your identity, we've sent an email to the address you"
-" just provided. Please, check it out and click on the link you'll find to"
-" create your account at"
+"In order to confirm your identity, we've sent an email to the address you "
+"just provided. Please, check it out and click on the link you'll find to "
+"create your account at"
 msgstr ""
 "Para confirmar tu identidad, hemos enviado un correo electrónico a la "
 "dirección que acabas de indicar. Por favor, revísalo y haz click en el "
@@ -217,11 +222,11 @@ msgstr ""
 
 #: themes/default/templates/account/account_validation.html:9
 msgid ""
-"If you are not receiving the email, please check the junk folder. If it's"
-" not there please drop us an email to"
+"If you are not receiving the email, please check the junk folder. If it's "
+"not there please drop us an email to"
 msgstr ""
-"Si no recibes el correo, revisa la carpeta de spam, por favor. Si no está"
-" ahí, contáctanos en"
+"Si no recibes el correo, revisa la carpeta de spam, por favor. Si no está "
+"ahí, contáctanos en"
 
 #: themes/default/templates/account/account_validation.html:10
 msgid "In the meantime, you can check some of the amazing"
@@ -253,8 +258,7 @@ msgid ""
 "If you want to be updated with our new features, projects, and\n"
 "        scientific projects, subscribe to our newsletter."
 msgstr ""
-"Si quieres estar al tanto de nuestras nuevas funcionalidades, proyectos y"
-"\n"
+"Si quieres estar al tanto de nuestras nuevas funcionalidades, proyectos y\n"
 " proyectos científicos, suscríbete a nuestro boletín."
 
 #: themes/default/templates/account/newsletter.html:15
@@ -542,15 +546,16 @@ msgstr "Sólo un paso más, por favor"
 
 #: themes/default/templates/account/email/validate_account.html:19
 msgid ""
-"To verify that you are the owner of this e-mail address, please visit the"
-" URL below"
+"To verify that you are the owner of this e-mail address, please visit the "
+"URL below"
 msgstr ""
 "Para verificar que eres el dueño de esta dirección de correo, por "
 "favorvisita la URL de abajo"
 
 #: themes/default/templates/account/email/validate_account.html:25
 msgid "Click here to confirm your e-mail address and create your account"
-msgstr "Haz click aquí para confirmar tu dirección de correo y crear tu cuenta"
+msgstr ""
+"Haz click aquí para confirmar tu dirección de correo y crear tu cuenta"
 
 #: themes/default/templates/admin/_helpers.html:9
 msgid "nick"
@@ -685,11 +690,11 @@ msgstr "¡Zona de Peligro!"
 
 #: themes/default/templates/admin/del_category.html:15
 msgid ""
-"Deleting the category will remove it from all the projects! This "
-"operation cannot be undone!"
+"Deleting the category will remove it from all the projects! This operation "
+"cannot be undone!"
 msgstr ""
-"Si borras esta categoría, se borrará de todos los proyectos. Esta acción "
-"no puede ser deshecha."
+"Si borras esta categoría, se borrará de todos los proyectos. Esta acción no "
+"puede ser deshecha."
 
 #: themes/default/templates/admin/del_category.html:21
 msgid "No, do not delete it"
@@ -806,23 +811,21 @@ msgstr "Usuarios con privilegios de administrador"
 
 #: themes/default/templates/home/_about.html:5
 msgid ""
-"PyBossa is a free, open-source crowd-sourcing and micro-tasking platform."
-" It enables people to create and run projects that utilise online "
-"assistance in performing tasks that require human cognition such as image"
-" classification, transcription, geocoding and more. PyBossa is there to "
-"help researchers, civic hackers and developers to create projects where "
-"anyone around the world with some time, interest and an internet "
-"connection can contribute."
+"PyBossa is a free, open-source crowd-sourcing and micro-tasking platform. It"
+" enables people to create and run projects that utilise online assistance in"
+" performing tasks that require human cognition such as image classification,"
+" transcription, geocoding and more. PyBossa is there to help researchers, "
+"civic hackers and developers to create projects where anyone around the "
+"world with some time, interest and an internet connection can contribute."
 msgstr ""
 "PyBossa es una plataforma de código abierto y gratuita para el crowd-"
-"sourcing ylas micro-tareas. La plataforma permite la creación y ejecución"
-" de proyectos en losque se requiera la ayuda del conocimiento humano para"
-" resolver tareas como por ejemplola clasificación de imágenes, "
-"transcripción de documentos, geolocalización, etc. PyBossaes una "
-"herramienta que pretende ayudar a investigadores, hackers cívicos y "
-"desarrolladoresa crear proyectos en los que cualquier persona del mundo "
-"pueda contribuir si tiene una conexión a Internet e interés en el "
-"proyecto."
+"sourcing ylas micro-tareas. La plataforma permite la creación y ejecución de"
+" proyectos en losque se requiera la ayuda del conocimiento humano para "
+"resolver tareas como por ejemplola clasificación de imágenes, transcripción "
+"de documentos, geolocalización, etc. PyBossaes una herramienta que pretende "
+"ayudar a investigadores, hackers cívicos y desarrolladoresa crear proyectos "
+"en los que cualquier persona del mundo pueda contribuir si tiene una "
+"conexión a Internet e interés en el proyecto."
 
 #: themes/default/templates/home/_about.html:8
 msgid "PyBossa is different to existing efforts:"
@@ -835,31 +838,26 @@ msgstr "Es 100%% código libre"
 
 #: themes/default/templates/home/_about.html:11
 msgid ""
-"Unlike, say, “mechanical turk” style projects, PyBossa is not designed to"
-" handle payment or money — it is designed to support volunteer-driven "
+"Unlike, say, “mechanical turk” style projects, PyBossa is not designed to "
+"handle payment or money — it is designed to support volunteer-driven "
 "projects."
 msgstr ""
-"A diferencia de otros proyectos tipo, por ejemplo “mechanical turk”, "
-"PyBossa\"\n"
-"\"PyBossa no está diseñado para manejar pagos o dinero — está diseñado "
-"para dar soporte\"\n"
+"A diferencia de otros proyectos tipo, por ejemplo “mechanical turk”, PyBossa\"\n"
+"\"PyBossa no está diseñado para manejar pagos o dinero — está diseñado para dar soporte\"\n"
 "\" a proyectos orientados alrededor de la comunidad de voluntarios."
 
 #: themes/default/templates/home/_about.html:13
 msgid ""
 "It's designed as a platform and framework for developing deploying crowd-"
-"sourcing and microtasking project rather than being a crowd-sourcing "
-"project itself. Individual crowd-sourcing projects are written as simple "
-"snippets of Javascript and HTML which are then deployed on a PyBossa "
-"instance (such as"
+"sourcing and microtasking project rather than being a crowd-sourcing project"
+" itself. Individual crowd-sourcing projects are written as simple snippets "
+"of Javascript and HTML which are then deployed on a PyBossa instance (such "
+"as"
 msgstr ""
 "Está diseñado como una plataforma para el desarrollo y lanzamiento \"\n"
-"\"de proyectos de micro-tareas y/o crowdsourcing más que como siendo un "
-"proyecto\"\n"
-"\"en si misma. Los proyectos individuales se crean escribiendo pequeños "
-"programas\"\n"
-"\"de Javascript y HTML que son posteriormente lanzados como instancias "
-"(como por ejemplo"
+"\"de proyectos de micro-tareas y/o crowdsourcing más que como siendo un proyecto\"\n"
+"\"en si misma. Los proyectos individuales se crean escribiendo pequeños programas\"\n"
+"\"de Javascript y HTML que son posteriormente lanzados como instancias (como por ejemplo"
 
 #: themes/default/templates/home/_about.html:13
 msgid ""
@@ -867,8 +865,7 @@ msgid ""
 "platform to store your data, manage users, and handle workflow"
 msgstr ""
 "De esta forma, se pueden desarrollar proyectos personalizados mientras\"\n"
-"\"se utiliza la plataforma PyBossa para almacenar los datos, manejar los "
-"usuarios,\"\n"
+"\"se utiliza la plataforma PyBossa para almacenar los datos, manejar los usuarios,\"\n"
 "\" y el flujo de trabajo"
 
 #: themes/default/templates/home/_about.html:18
@@ -895,14 +892,15 @@ msgstr "Estadísticas"
 
 #: themes/default/templates/home/_about.html:23
 msgid ""
-" PyBossa provides individual statistics for every project in the system, "
-"as well as a"
+" PyBossa provides individual statistics for every project in the system, as "
+"well as a"
 msgstr ""
 "PyBossa proporciona estadísticas individuales para cada proyecto \"\n"
 "\" así como también para"
 
 #: themes/default/templates/home/_about.html:23
-msgid "general overview about the system like total number of users, tasks, etc"
+msgid ""
+"general overview about the system like total number of users, tasks, etc"
 msgstr "todo el sistema: número total de usuarios, tareas, etc."
 
 #: themes/default/templates/home/_about.html:25
@@ -940,8 +938,8 @@ msgid ""
 "geocoding and more!"
 msgstr ""
 "Asistencia en línea para realizar tareas que requieren de capacidades, "
-"conocimiento o inteligencia humanas, tales como clasificación de "
-"imágenes, transcripción de documentos, geolocalización y otras."
+"conocimiento o inteligencia humanas, tales como clasificación de imágenes, "
+"transcripción de documentos, geolocalización y otras."
 
 #: themes/default/templates/home/_pybossa_text.html:3
 msgid "Help advance research"
@@ -1276,7 +1274,8 @@ msgstr "todas las"
 msgid ""
 "Tasks and Task Runs (the submitted answers by the users) in CSV or JSON "
 "formats."
-msgstr "Tareas y Repuestas (enviadas por los usuarios) en el formato CSV o JSON"
+msgstr ""
+"Tareas y Repuestas (enviadas por los usuarios) en el formato CSV o JSON"
 
 #: themes/default/templates/projects/export.html:17
 msgid "Export in CSV format"
@@ -1308,12 +1307,11 @@ msgstr "IMPORTANTE"
 
 #: themes/default/templates/projects/export.html:51
 msgid ""
-"This export option stills in beta mode and may fail in the CKAN server. "
-"If you get an error, please send an e-mail to info@pybossa.com"
+"This export option stills in beta mode and may fail in the CKAN server. If "
+"you get an error, please send an e-mail to info@pybossa.com"
 msgstr ""
-"Esta opción de exportar está en fase beta y puede que falle en el "
-"servidor CKANSi recibes un error, por favor, envía un correo a "
-"info@pybossa.com"
+"Esta opción de exportar está en fase beta y puede que falle en el servidor "
+"CKANSi recibes un error, por favor, envía un correo a info@pybossa.com"
 
 #: themes/default/templates/projects/export.html:56
 msgid "You don't have a Datahub.io API key in your"
@@ -1328,7 +1326,8 @@ msgid "create an account"
 msgstr "crea una cuenta"
 
 #: themes/default/templates/projects/export.html:56
-msgid "and copy/paste the API key in your profile in order to use this exporter"
+msgid ""
+"and copy/paste the API key in your profile in order to use this exporter"
 msgstr "y copia/pega la clave API en tu perfil para usar este exportador"
 
 #: themes/default/templates/projects/index.html:35
@@ -1373,34 +1372,18 @@ msgstr "Slug del proyecto"
 
 #: themes/default/templates/projects/new.html:19
 msgid ""
-"Explain your project"
-"                                                             \n"
-"                · Why? Why you are creating this project, what you want "
-"to achieve with it"
-"                                                             \n"
-"                · How? Explain how your project works"
-"                                                             \n"
-"                · How you can help: Explain to the volunteers how they "
-"can help and contribute to the goal of your project"
-"                                                             \n"
-"                · Will you help make a difference? Explain to the "
-"volunteers why their contribution is essential and how the result of your"
-" project can help change things!"
-"                                                             \n"
+"Explain your project                                                             \n"
+"                · Why? Why you are creating this project, what you want to achieve with it                                                             \n"
+"                · How? Explain how your project works                                                             \n"
+"                · How you can help: Explain to the volunteers how they can help and contribute to the goal of your project                                                             \n"
+"                · Will you help make a difference? Explain to the volunteers why their contribution is essential and how the result of your project can help change things!                                                             \n"
 "            (you can use Markdown to give format to your description!)"
 msgstr ""
-"Explica tu proyecto"
-"                                                             \n"
-"                · ¿Por qué? Por qué estás creando este proyecto, qué "
-"quiere                                                             \n"
-"                · ¿Cómo? Explica cómo funciona tu proyecto"
-"                                                             \n"
-"                · ¿Cómo puedo ayudar?: Explica a los voluntarios cómo "
-"puedencontribuir a tu proyecto"
-"                                                             \n"
-"                · ¿Tu contribución será útil? Explica a los voluntarios "
-"por qué su contribución es tan importante para los objetivos de tu "
-"proyecto.                                                             \n"
+"Explica tu proyecto                                                             \n"
+"                · ¿Por qué? Por qué estás creando este proyecto, qué quiere                                                             \n"
+"                · ¿Cómo? Explica cómo funciona tu proyecto                                                             \n"
+"                · ¿Cómo puedo ayudar?: Explica a los voluntarios cómo puedencontribuir a tu proyecto                                                             \n"
+"                · ¿Tu contribución será útil? Explica a los voluntarios por qué su contribución es tan importante para los objetivos de tu proyecto.                                                             \n"
 "            (Puedes utilizar Markdown para escribir la descripción.)"
 
 #: themes/default/templates/projects/new.html:26
@@ -1438,8 +1421,8 @@ msgid ""
 "Sorry, you've contributed to all the tasks for this project, but this "
 "project still needs more volunteers, so please spread the word!"
 msgstr ""
-"Vaya, ya has contribuiod a todas las tareas de este proyecto, pero "
-"todavía puedes ayudar invitando a otros voluntarios a que participen."
+"Vaya, ya has contribuiod a todas las tareas de este proyecto, pero todavía "
+"puedes ayudar invitando a otros voluntarios a que participen."
 
 #: themes/default/templates/projects/publish.html:12
 msgid "Publish the project"
@@ -1455,19 +1438,18 @@ msgid ""
 "project has been published, people will be able to contribute to it and "
 "answers will begin to be stored."
 msgstr ""
-"Estás a punto de publicar tu proyecto. ¡Esto NO puede deshacerse! Una vez"
-" que el proyecto has sido publicado, la gente podrá contribuir y  las "
+"Estás a punto de publicar tu proyecto. ¡Esto NO puede deshacerse! Una vez "
+"que el proyecto has sido publicado, la gente podrá contribuir y  las "
 "respuestas serán guardadas."
 
 #: themes/default/templates/projects/publish.html:16
 msgid ""
-"That means that your project should be working properly, so please make "
-"sure it does. Otherwise you can work on it and publish it once it works "
-"fine."
+"That means that your project should be working properly, so please make sure"
+" it does. Otherwise you can work on it and publish it once it works fine."
 msgstr ""
-"Esto significa que tu proyecto debería funcionar, así comprueba  que así "
-"es. En caso contrario, trabaja en el proyecto y una vez que funcione  "
-"bien, publícalo."
+"Esto significa que tu proyecto debería funcionar, así comprueba  que así es."
+" En caso contrario, trabaja en el proyecto y una vez que funcione  bien, "
+"publícalo."
 
 #: themes/default/templates/projects/publish.html:21
 msgid "Are you sure you want to publish this project?"
@@ -1486,10 +1468,10 @@ msgid "No results"
 msgstr "No hay resultados"
 
 #: themes/default/templates/projects/results.html:22
-msgid "The project owner has not created/published/visualized any results yet."
+msgid ""
+"The project owner has not created/published/visualized any results yet."
 msgstr ""
-"El dueño del proyecto no ha creado/publicado/visualizado resultados "
-"todavía."
+"El dueño del proyecto no ha creado/publicado/visualizado resultados todavía."
 
 #: themes/default/templates/projects/settings.html:16
 msgid "Project Settings"
@@ -1591,7 +1573,8 @@ msgstr "Usuario"
 #: themes/default/templates/projects/stats.html:327
 #: themes/default/templates/stats/global.html:169
 msgid "This page includes GeoLite data created by MaxMind, available from"
-msgstr "Esta página incluye datos del producto GeoLite de MaxMind, disponible en"
+msgstr ""
+"Esta página incluye datos del producto GeoLite de MaxMind, disponible en"
 
 #: themes/default/templates/projects/stats.html:366
 msgid "Details about Authenticated Users"
@@ -1708,13 +1691,11 @@ msgstr "Prioridad"
 #: themes/default/templates/projects/task_priority.html:16
 msgid ""
 "of one or more tasks,\n"
-"                providing a list of task IDs separated by commas. The "
-"lowest\n"
+"                providing a list of task IDs separated by commas. The lowest\n"
 "                priority is"
 msgstr ""
 "de una o más tareas, \n"
-"                proporcionando una lista de identificadores separados por"
-" comas. La prioridad\n"
+"                proporcionando una lista de identificadores separados por comas. La prioridad\n"
 " más baja es"
 
 #: themes/default/templates/projects/task_priority.html:19
@@ -1767,12 +1748,11 @@ msgstr "Búsqueda en Profundidad"
 #: themes/default/templates/projects/task_scheduler.html:18
 msgid ""
 "returns a task that\n"
-"                    has not been completed (the value of number of "
-"answers has\n"
+"                    has not been completed (the value of number of answers has\n"
 "                    not achieved) excluding the current user"
 msgstr ""
-"devuelve una tarea que no ha sido completada (no se ha alcanzado el "
-"número de respuestas para la tarea) excluyendo al propio usuario"
+"devuelve una tarea que no ha sido completada (no se ha alcanzado el número "
+"de respuestas para la tarea) excluyendo al propio usuario"
 
 #: themes/default/templates/projects/task_scheduler.html:21
 msgid "Breadth First"
@@ -1781,12 +1761,11 @@ msgstr "Búsqueda en Anchura"
 #: themes/default/templates/projects/task_scheduler.html:21
 msgid ""
 "returns a\n"
-"                    task which has the least number of task runs "
-"(answers)\n"
+"                    task which has the least number of task runs (answers)\n"
 "                    excluding the current user"
 msgstr ""
-"devuelve una tarea que tiene el menor número de respuestas, excluyendo al"
-" propio usuario"
+"devuelve una tarea que tiene el menor número de respuestas, excluyendo al "
+"propio usuario"
 
 #: themes/default/templates/projects/task_scheduler.html:24
 msgid "Random"
@@ -1795,8 +1774,7 @@ msgstr "Aleatorio"
 #: themes/default/templates/projects/task_scheduler.html:24
 msgid ""
 "returns a task\n"
-"                    randomly --a user could get the same task twice or "
-"more\n"
+"                    randomly --a user could get the same task twice or more\n"
 "                    times"
 msgstr ""
 "devuelve un tarea aleatoriamente --un usuario puede hacer la misma tarea "
@@ -1924,20 +1902,18 @@ msgstr "Este número identifica la tarea del proyecto y es único"
 
 #: themes/default/templates/projects/tasks_browse.html:19
 msgid ""
-"The first number shows how many answers have been submitted for the task "
-"and the"
+"The first number shows how many answers have been submitted for the task and"
+" the"
 msgstr ""
-"El primer número muestra cuantas respuestas se han conseguido para la "
-"tarea\"\n"
+"El primer número muestra cuantas respuestas se han conseguido para la tarea\"\n"
 "\" y el"
 
 #: themes/default/templates/projects/tasks_browse.html:19
 msgid ""
-"This redundancy method will help to detect errors, typos, data forging, "
-"etc. when the task has been completed"
+"This redundancy method will help to detect errors, typos, data forging, etc."
+" when the task has been completed"
 msgstr ""
-"Este método de redundancia ayuda a detectar errores, fallos, "
-"falsificación\"\n"
+"Este método de redundancia ayuda a detectar errores, fallos, falsificación\"\n"
 "\"de datos, etc. cuando una tarea ha sido completada"
 
 #: themes/default/templates/projects/tasks_browse.html:19
@@ -1953,10 +1929,11 @@ msgid "Progress Bar"
 msgstr "Barra de Progreso"
 
 #: themes/default/templates/projects/tasks_browse.html:20
-msgid "The progress bar will the percentage that has been completed for the task"
+msgid ""
+"The progress bar will the percentage that has been completed for the task"
 msgstr ""
-"La barra de progreso mostrará el porcentaje que ha sido completado para "
-"la tarea"
+"La barra de progreso mostrará el porcentaje que ha sido completado para la "
+"tarea"
 
 #: themes/default/templates/projects/tasks_browse.html:48
 msgid "Download Task Results"
@@ -2032,11 +2009,11 @@ msgstr "De un fichero CSV"
 
 #: themes/default/templates/projects/importers/csv.html:20
 msgid ""
-"Please provide a URL (i.e. DropBox, Box, Ubuntu One, etc. public link) to"
-" a CSV file with data for"
+"Please provide a URL (i.e. DropBox, Box, Ubuntu One, etc. public link) to a "
+"CSV file with data for"
 msgstr ""
-"Por favor proporciona la URL (por ejemplo de DropBox) parael fichero CSV "
-"con los datos para"
+"Por favor proporciona la URL (por ejemplo de DropBox) parael fichero CSV con"
+" los datos para"
 
 #: themes/default/templates/projects/importers/csv.html:20
 #: themes/default/templates/projects/importers/dropbox.html:26
@@ -2083,8 +2060,8 @@ msgstr "Desde un proyecto EpiCollect Plus"
 #: themes/default/templates/projects/importers/epicollect.html:20
 msgid "Please provide an EpiCollect Plus project name to import its data for"
 msgstr ""
-"Por favor proporciona el nombre de un proyecto EpiCollect Plus para "
-"importar sus datos para"
+"Por favor proporciona el nombre de un proyecto EpiCollect Plus para importar"
+" sus datos para"
 
 #: themes/default/templates/projects/importers/epicollect.html:22
 msgid "The name of the public EpiCollect Plus project"
@@ -2133,8 +2110,7 @@ msgstr "Desde una hoja de cálculo de Google"
 #: themes/default/templates/projects/importers/gdocs.html:20
 msgid "Please provide a URL to a Google Drive Spreadsheet with data for"
 msgstr ""
-"Por favor, proporciona un enlace de una hoja de cálculo de Google Drive "
-"para"
+"Por favor, proporciona un enlace de una hoja de cálculo de Google Drive para"
 
 #: themes/default/templates/projects/importers/gdocs.html:21
 msgid "The URL of the Google Docs Spreadsheet"
@@ -2166,14 +2142,14 @@ msgstr "Desde una cuenta de Twitter o un hashtag"
 
 #: themes/default/templates/projects/importers/twitter.html:20
 msgid ""
-"You can provide your own Twitter credentials and make API requests in "
-"behalf of them, or use the credentials provided by us. (The later only "
-"allows to import the number of tweets returned by a single Twitter API "
-"call, which is 100 for searches and 200 for user timelines.)"
+"You can provide your own Twitter credentials and make API requests in behalf"
+" of them, or use the credentials provided by us. (The later only allows to "
+"import the number of tweets returned by a single Twitter API call, which is "
+"100 for searches and 200 for user timelines.)"
 msgstr ""
-"Puedes usar tus propias credenciales de Twitter para hacer peticiones a "
-"la API con ellas, o usar las credenciales que proporcionamos nosotros para"
-" ello. (Esto último sólo te permitirá importar un número de tweets "
+"Puedes usar tus propias credenciales de Twitter para hacer peticiones a la "
+"API con ellas, o usar las credenciales que proporcionamos nosotros para "
+"ello. (Esto último sólo te permitirá importar un número de tweets "
 "equivalente a una única llamada a la API de Twitter, 100 para búsquedas o "
 "200 para timelines de una cuenta.)"
 
@@ -2188,12 +2164,10 @@ msgstr "Usaré las credenciales de la plataforma"
 #: themes/default/templates/projects/importers/twitter.html:32
 msgid ""
 "Please provide the source of your tweets. It can be a \"#hashtag\", a "
-"regular \"word\" for search or a \"@user_account\" from where to import "
-"them"
+"regular \"word\" for search or a \"@user_account\" from where to import them"
 msgstr ""
-"Por favor, introduce la fuente de tus tweets. Puede ser un "
-"\"#hashtag\",una palabra para buscar o una \"@cuenta_de_usuario\" desde "
-"la que importarlos"
+"Por favor, introduce la fuente de tus tweets. Puede ser un \"#hashtag\",una "
+"palabra para buscar o una \"@cuenta_de_usuario\" desde la que importarlos"
 
 #: themes/default/templates/projects/importers/twitter.html:37
 msgid "#hashtag or @user or something else"
@@ -2368,8 +2342,8 @@ msgstr "No se puede deshacer esta acción"
 
 #: themes/default/templates/projects/tasks/delete.html:20
 msgid ""
-"Are you sure you want to delete ALL the project tasks and associated task"
-" runs?"
+"Are you sure you want to delete ALL the project tasks and associated task "
+"runs?"
 msgstr ""
 "¿Estás seguro de que quieres eliminar todas las tareas y\"\n"
 "\" respuestas del proyecto?"
@@ -2570,349 +2544,3 @@ msgstr "Nombre"
 #: themes/default/templates/stats/index.html:19
 msgid "Score"
 msgstr "Puntuación"
-
-#~ msgid "Hidden"
-#~ msgstr "Oculta"
-
-#~ msgid "No"
-#~ msgstr "No"
-
-#~ msgid "Oops! It looks like the file is empty."
-#~ msgstr "¡Uy! Parece que el fichero está vacío."
-
-#~ msgid "Use the Mprojecting template"
-#~ msgstr ""
-
-#~ msgid "The file you uploaded has two headers with the same name."
-#~ msgstr "El fichero que has subido tiene dos cabeceras con el mismo nombre."
-
-#~ msgid "Oops! That file doesn't look like the right file."
-#~ msgstr "¡Uy! Ese fichero no parece que sea el correcto."
-
-#~ msgid "It looks like there were no new records to import"
-#~ msgstr "¡Uy! Parece que el fichero no contiene nuevas tareas que importar."
-
-#~ msgid "new tasks were imported successfully"
-#~ msgstr "nuevas tareas importadas satisfactoriamente"
-
-#~ msgid "new task was imported successfully"
-#~ msgstr "nueva tarea importada satisfactoriamente"
-
-#~ msgid "Name is already taken."
-#~ msgstr "El Nombre ya está registrado"
-
-#~ msgid "Short Name"
-#~ msgstr "Nombre Corto"
-
-#~ msgid "Short Name is already taken."
-#~ msgstr "El Nombre Corto ya está registrado"
-
-#~ msgid "Long Description"
-#~ msgstr "Descripción Larga"
-
-#~ msgid "You must provide a description."
-#~ msgstr "Debes proporcionar una descripción."
-
-#~ msgid "Allow Anonymous Contributors"
-#~ msgstr "Permitir Voluntarios Anónimos"
-
-#~ msgid "Category"
-#~ msgstr "Categoría"
-
-#~ msgid "Hide?"
-#~ msgstr "¿Ocultar?"
-
-#~ msgid "Password (leave blank for no password)"
-#~ msgstr "Contraseña (dejar en blanco para no usar contraseña)"
-
-#~ msgid "Webhook"
-#~ msgstr ""
-
-#~ msgid "Task IDs"
-#~ msgstr "Identificador de Tareas"
-
-#~ msgid "Title"
-#~ msgstr "Título"
-
-#~ msgid "You must enter a title for the post."
-#~ msgstr "Debes proporcionar un título para el post."
-
-#~ msgid "Body"
-#~ msgstr "Cuerpo"
-
-#~ msgid "You must enter some text for the post."
-#~ msgstr "Debes proporcionar contenido para el post."
-
-#~ msgid "Password"
-#~ msgstr "Contraseña"
-
-#~ msgid "You must enter a password"
-#~ msgstr "Debes proporcionar una contraseña"
-
-#~ msgid "You must provide a URL"
-#~ msgstr "Debes proporcionar un enlace"
-
-#~ msgid "Oops! That's not a valid URL. You must provide a valid URL"
-#~ msgstr "¡Uy! Ese enlace no es válido. Debes proporcionar uno correcto"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "You must provide an EpiCollect Plus project name"
-#~ msgstr "Debes proporcionar el nombre de un proyecto EpiCollect Plus"
-
-#~ msgid "You must provide a Form name for the project"
-#~ msgstr "Debes proporcionar el nombre del Formulario del Proyecto"
-
-#~ msgid "Project Name"
-#~ msgstr "Nombre del Proyecto"
-
-#~ msgid "Form name"
-#~ msgstr "Nombre del Formulario"
-
-#~ msgid "You must provide a valid Flickr album ID"
-#~ msgstr "Debe proporcionar un ID de álbum de Flickr válido"
-
-#~ msgid "Album ID"
-#~ msgstr "ID del Álbum"
-
-#~ msgid "The e-mail is required"
-#~ msgstr "El correo electrónico es obligatorio"
-
-#~ msgid "You must provide a password"
-#~ msgstr "Debe proporcionar una contraseña"
-
-#~ msgid "Full name must be between 3 and 35 characters long"
-#~ msgstr "Nombre y Apellidos debe contenter entre 3 y 35 caracteres"
-
-#~ msgid "Full name"
-#~ msgstr "Nombre y Apellidos"
-
-#~ msgid "User name must be between 3 and 35 characters long"
-#~ msgstr "El nombre de usuario debe tener entre 3 y 35 caracteres"
-
-#~ msgid "The user name is already taken"
-#~ msgstr "El nombre de usuario ya está registrado"
-
-#~ msgid "User name"
-#~ msgstr "Nombre de usuario"
-
-#~ msgid "Email must be between 3 and 35 characters long"
-#~ msgstr "El correo debe tener entre 3 y 35 caracteres"
-
-#~ msgid "Email is already taken"
-#~ msgstr "El correo electrónico ya está registrado"
-
-#~ msgid "Email Address"
-#~ msgstr "Correo Electrónico"
-
-#~ msgid "Password cannot be empty"
-#~ msgstr "La contraseña no puede estara vacía"
-
-#~ msgid "Passwords must match"
-#~ msgstr "Las contraseñas deben coincidir"
-
-#~ msgid "New Password"
-#~ msgstr "Nueva Contraseña"
-
-#~ msgid "Repeat Password"
-#~ msgstr "Repita la Contraseña"
-
-#~ msgid "Username"
-#~ msgstr "Nombre de usuario"
-
-#~ msgid "Get email notifications"
-#~ msgstr "Recibir notificaciones por correo electrónico"
-
-#~ msgid "Language"
-#~ msgstr "Idioma por Defecto"
-
-#~ msgid "CKAN API Key"
-#~ msgstr "Clave API de CKAN"
-
-#~ msgid "Privacy Mode"
-#~ msgstr "Modo Privado"
-
-#~ msgid "English"
-#~ msgstr "Inglés"
-
-#~ msgid "Spanish"
-#~ msgstr "Español"
-
-#~ msgid "French"
-#~ msgstr "Francés"
-
-#~ msgid "German"
-#~ msgstr "Alemán"
-
-#~ msgid "Italian"
-#~ msgstr "Italiano"
-
-#~ msgid "Current password"
-#~ msgstr "Mi contraseña actual"
-
-#~ msgid "New password"
-#~ msgstr "Mi nueva contraseña"
-
-#~ msgid "Repeat password"
-#~ msgstr "Repite la contraseña"
-
-#~ msgid "Avatar"
-#~ msgstr "Avatar"
-
-#~ msgid "This item already exists"
-#~ msgstr "Este elemento ya existe"
-
-#~ msgid "%sand space symbols are forbidden"
-#~ msgstr "%sy el espacio en blanco no se permiten"
-
-#~ msgid "Only comma separated values are allowed, no spaces"
-#~ msgstr "Solo se permiten valores separados por comas, no espacios"
-
-#~ msgid "Invalid URL"
-#~ msgstr "URL inválida"
-
-#~ msgid "Connection error"
-#~ msgstr "Error de conexión"
-
-#~ msgid "This name is used by the system."
-#~ msgstr "Este nombre es usado por el sistema"
-
-#~ msgid "my current password"
-#~ msgstr "mi contraseña actual"
-
-#~ msgid " Reset API Key"
-#~ msgstr " Reiniciar la clave API"
-
-#~ msgid "Reset the API Key"
-#~ msgstr "Reinicia la clave API"
-
-#~ msgid " Change your Password"
-#~ msgstr " Cambia tu Contraseña"
-
-#~ msgid "Welcome back"
-#~ msgstr "Bienvenido de nuevo"
-
-#~ msgid "Ooops, Incorrect email/password"
-#~ msgstr "Uy! Contraseña y/o correo electrónico incorrecto"
-
-#~ msgid "Please correct the errors"
-#~ msgstr "Por favor, corrija los siguientes errores"
-
-#~ msgid "You are now signed out"
-#~ msgstr "Acabas de cerrar la sesión"
-
-#~ msgid "Register"
-#~ msgstr "Registrarse"
-
-#~ msgid "Subscribe to our Newsletter"
-#~ msgstr "Subscribirse a nuestro Boletín"
-
-#~ msgid "Thanks for signing-up"
-#~ msgstr "Gracias por registrarte"
-
-#~ msgid "Your email has been validated."
-#~ msgstr "Tu dirección de correo electrónico ha sido verificado"
-
-#~ msgid "Profile"
-#~ msgstr "Perfíl"
-
-#~ msgid "Your profile has been updated!"
-#~ msgstr "Tu perfil ha sido actualizado"
-
-#~ msgid "Yay, you changed your password succesfully!"
-#~ msgstr "¡Genial, has cambiado tu contraseña!"
-
-#~ msgid "Your current password doesn't match the one in our records"
-#~ msgstr "La contraseña actual no coincide con la que tenemos en nuestro sistema"
-
-#~ msgid "You reset your password successfully!"
-#~ msgstr "¡Has reiniciado la contraseña satisfactoriamente!"
-
-#~ msgid "We've send you an email with account recovery instructions!"
-#~ msgstr ""
-
-#~ msgid "Something went wrong, please correct the errors on the form"
-#~ msgstr "Algo ha ido mal, por favor corrige los errores del formulario"
-
-#~ msgid "New API-KEY generated"
-#~ msgstr "Nueva clave API creada"
-
-#~ msgid "Category added"
-#~ msgstr "Categoría añadida"
-
-#~ msgid "Category deleted"
-#~ msgstr "Proyecto eliminado"
-
-#~ msgid "Category updated"
-#~ msgstr "Proyecto actualizado"
-
-#~ msgid "Project created!"
-#~ msgstr "Proyecto creado!"
-
-#~ msgid "You can check the "
-#~ msgstr "Puedes comprobar la"
-
-#~ msgid "Guide and Documentation"
-#~ msgstr "Guía y  Documentación"
-
-#~ msgid "for adding tasks, a thumbnail, using PyBossa.JS, etc."
-#~ msgstr "para añadir tareas, un icono, utilizando PyBossa.JS, etc."
-
-#~ msgid "Task presenter added!"
-#~ msgstr "Presentador de Tareas añadido!"
-
-#~ msgid "<strong>Note</strong> You will need to upload the tasks using the"
-#~ msgstr "<strong>Nota</strong> Va a necesitar subir las tareas utilizando el"
-
-#~ msgid "CSV importer"
-#~ msgstr "importador CSV"
-
-#~ msgid "Project deleted!"
-#~ msgstr "¡Proyecto eliminado!"
-
-#~ msgid "Project updated!"
-#~ msgstr "¡Proyecto actualizado!"
-
-#~ msgid "You must provide a file to change the avatar"
-#~ msgstr "Debes proporcionar el nombre del Formulario del Proyecto"
-
-#~ msgid "Importing tasks, this may take a while, wait..."
-#~ msgstr "Importando tareas, esto puede llevar un rato, espera..."
-
-#~ msgid "Success! Tasks will be imported daily."
-#~ msgstr "¡Todo ha ido bien! Las tareas se importarán diariamente."
-
-#~ msgid "Sorry, incorrect password"
-#~ msgstr "Contraseña incorrecta"
-
-#~ msgid "All the tasks and associated task runs have been deleted"
-#~ msgstr "Todas las tareas y sus respuestas han sido eliminadas"
-
-#~ msgid "Exporting data..., this may take a while"
-#~ msgstr "Exportando datos..., esto puede llevar un rato"
-
-#~ msgid "Data exported to "
-#~ msgstr "Datos exportados a "
-
-#~ msgid "Redundancy of Tasks updated!"
-#~ msgstr "Redundancia de las tareas actualizada"
-
-#~ msgid "Project Task Scheduler updated!"
-#~ msgstr "¡Gestor de tareas actualizado!"
-
-#~ msgid "Task priority has been changed"
-#~ msgstr "Su perfil ha sido actualizado"
-
-#~ msgid "Write a new post"
-#~ msgstr "Escribe un nuevo artículo"
-
-#~ msgid "Blog post created!"
-#~ msgstr "¡Artículo creado!"
-
-#~ msgid "Edit a post"
-#~ msgstr "Editar artículo"
-
-#~ msgid "Blog post updated!"
-#~ msgstr "¡Artículo actualizado!"
-
