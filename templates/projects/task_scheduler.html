@@ -43,14 +43,32 @@
     </fieldset>
 </form>
 <script>
-    $('#show-randomizable').hide();
-    $('#sched').change(function () {
-        if ({{ randomizable_scheds | safe }}.indexOf($('#sched').val()) !== -1) {
-            $('#show-randomizable').show();
-        } else {
+    $(document).ready(function () {
+        if (!selectedSchedulerIsRandomizable()) {
             $('#show-randomizable').hide();
-            $('#rand_within_priority').prop('checked', false);
         }
+
+        $('#sched').change(function () {
+            $('#rand_within_priority').prop('checked', false);
+
+            if (selectedSchedulerIsRandomizable()) {
+                $('#show-randomizable').show();
+            } else {
+                $('#show-randomizable').hide();
+            }
+        });
     });
+
+    function selectedSchedulerIsRandomizable () {
+        return isRandomizableScheduler(selectedScheduler());
+    }
+
+    function selectedScheduler () {
+        return $('#sched').val();
+    }
+
+    function isRandomizableScheduler (s) {
+        return {{ randomizable_scheds | safe }}.indexOf(s) !== -1;
+    }
 </script>
 {% endblock %}
