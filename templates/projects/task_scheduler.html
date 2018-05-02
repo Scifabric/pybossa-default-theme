@@ -2,7 +2,7 @@
 {% set active_page = "projects" %}
 {% set active_link  = "tasks" %}
 {% set section =  _('Task Scheduler')%}
-{% from "_formhelpers.html" import render_field %}
+{% from "_formhelpers.html" import render_field, render_checkbox_field %}
 
 {% block projectcontent %}
 <p>{{_('You can choose from the following schedulers')}}:</p>
@@ -35,7 +35,7 @@
                 provided by the scheduler. When left unchecked, the old available task
                 within the highest priority is returned first.')  }}
             </ul>
-            {{ render_field(form.rand_within_priority) }}
+            {{ render_checkbox_field(form.rand_within_priority) }}
         </div>
         <div class="form-actions">
             <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
