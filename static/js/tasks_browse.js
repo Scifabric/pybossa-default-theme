@@ -284,9 +284,10 @@ $(document).ready(function() {
                 pybossaNotify('Your request has been enqueued, you will receive an email when the task deletion is complete.', true, 'warning');
             }
             else {
-                refresh(!!data.filters);
+                refresh();
             }
         });
+        pybossaNotify('Your request is being executed. Please wait...', true, 'warning')
     });
 
     $('body').on('contextmenu', 'tbody tr', function(e) {
