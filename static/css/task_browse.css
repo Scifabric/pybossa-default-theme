@@ -55,3 +55,22 @@ tbody > tr:hover{
     width:55px;
     height:28px;
 }
+
+.overlay {
+    display: none;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    text-align: center;
+}
+
+.spinner {
+    color: #fff;
+    position:relative;
+    top:40%;
+    font-size: 32px;
+}
