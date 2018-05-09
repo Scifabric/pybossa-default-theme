@@ -67,11 +67,29 @@
                     </div>
                 </form>
             </section>
+            <section class="account delete">
+                <h2>{{_('Delete your account')}}</h2>
+                <div class="alert alert-danger">
+                    <strong>{{ _('Danger Zone!') }}</strong> {{ _('By deleting your account, all your personal data will be removed from the server and third party services. Your contributions will be anonymized. This operation cannot be undone!') }}
+                </div>
+                <div class="form-group">
+                    <input onkeyup="checkEmail(this.value)" class="form-control" id="delete" placeholder="Type your email to confirm that you want to delete it.">
+                    <a id="deleteTrue"  class="btn btn-primary" style="margin-top:10px; display:none;" href="{{url_for('account.delete', name=current_user.name)}}">{{_('Delete')}}</a>
+                </div>
+            </section>
         </div>
     </div>
 </section>
 <script>
     var pybossaAvatarAspectRatio = 1 / 1;
+function checkEmail (txt) {
+    if (txt === '{{ current_user.email_addr}}') {
+        document.getElementById('deleteTrue').style.display='block';
+    } else {
+        document.getElementById('deleteTrue').style.display='none';
+    }
+}
+
 </script>
 <script src="{{url_for('static', filename='js/vendor/cropper.min.js')}}"></script>
 <link rel="stylesheet" href="{{url_for('static', filename='css/cropper.min.css')}}" type="text/css" />
