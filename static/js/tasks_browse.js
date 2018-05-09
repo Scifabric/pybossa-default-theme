@@ -1,3 +1,4 @@
+;(function(){
 var dateModalInfo = '';
 
 function dirtyView() {
@@ -284,9 +285,10 @@ $(document).ready(function() {
                 pybossaNotify('Your request has been enqueued, you will receive an email when the task deletion is complete.', true, 'warning');
             }
             else {
-                refresh(!!data.filters);
+                refresh();
             }
         });
+        pybossaNotify('Your request is being executed. Please wait...', true, 'warning')
     });
 
     $('body').on('contextmenu', 'tbody tr', function(e) {
@@ -443,6 +445,7 @@ $(document).ready(function() {
     }
 
     function sendUpdateRequest(endpoint, data) {
+        setSpinner(true);
         return $.ajax({
             type: 'POST',
             url: endpoint,
@@ -450,6 +453,7 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: JSON.stringify(data)
         }).fail(function(res) {
+            setSpinner(false);
             var message = 'There was an error processing the request.';
             var severity = 'warning';
             if (res.status === 403) {
@@ -677,3 +681,13 @@ function exportTasks(downloadType) {
     location += '?' + $.param(preparedFilters) + '&download_type=' + downloadType;
     window.location.replace(location);
 }
+
+function setSpinner(active) {
+    var mask = $('.overlay');
+    if (active) {
+        mask.show();
+    } else {
+        mask.hide();
+    }
+}
+})();
