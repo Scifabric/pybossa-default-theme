@@ -275,6 +275,23 @@ $(document).ready(function() {
         showRedundancyUpdateModal()
     });
 
+    $('#delete-tasks-modal').on('show.bs.modal', function(e) {
+        if (!(selectedTask || pybTaskBrowse.filterCount)) {
+            alert('No tasks to delete!');
+            e.preventDefault();
+        }
+        var modalBody = this.querySelector('.modal-body p');
+        var text;
+        if (selectedTask) {
+            text = 'You are about to delete task ' + selectedTask;
+        }
+        else {
+            var sfx = pybTaskBrowse.filterCount != 1 ? 's' : '';
+            text = 'You are about to delete ' + pybTaskBrowse.filterCount + ' filtered task'+ sfx + '.';
+        }
+        modalBody.innerHTML = text;
+    });
+
     $('#save-delete-modal').click(function() {
         $('#delete-tasks-modal').modal('hide');
         window.scrollTo(0, 0);
