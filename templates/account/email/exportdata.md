@@ -2,7 +2,7 @@ Hi, {{ user['fullname']}}!
 
 You have recently requested to export all the data that we have from you in our server.
 
-In the following links, you will be able to download ZIP files that have your personal data, your projects and your contributions.
+In the following links, you will be able to download ZIP files that have your personal data, your projects and your contributions (the links will be only valid for {{config.TTL_ZIP_SEC_FILES'}} days).
 
 Personal Data: {{personal_data_link}}
 Your created projects: {{personal_projects_link}}
