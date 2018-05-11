@@ -275,6 +275,10 @@ $(document).ready(function() {
         showRedundancyUpdateModal()
     });
 
+    $('#delete-tasks-modal .cancel-delete').on('click', function() {
+        selectedTask = undefined;
+    });
+
     $('#delete-tasks-modal').on('show.bs.modal', function(e) {
         if (!(selectedTask || pybTaskBrowse.filterCount)) {
             alert('No tasks to delete!');
