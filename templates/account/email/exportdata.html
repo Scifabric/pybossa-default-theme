@@ -9,8 +9,6 @@ Hi, {{ user['fullname']}}!
 {% endblock %}
 
 {% block body %}
-<p>Hi, {{ user['fullname']}}!</p>
-
 <p>You have recently requested to export all the data that we have from you in our server.</p>
 
 <p>In the following links, you will be able to download ZIP files that have your personal data, your projects and your contributions.</p>
@@ -20,6 +18,8 @@ Hi, {{ user['fullname']}}!
     <li>Your created projects: {{personal_projects_link}}</li>
     <li>Your contributions: {{personal_contributions_link}}</li>
 </ul>
+
+<p>Within the ZIP files you will find your data in JSON format. You can open those files with any text editor, as this format is an open standard.</p>
 
 <p>If you want to get new updated versions of these files, just export again your data.</p>
 

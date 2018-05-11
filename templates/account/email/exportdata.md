@@ -8,6 +8,8 @@ Personal Data: {{personal_data_link}}
 Your created projects: {{personal_projects_link}}
 Your contributions: {{personal_contributions_link}}
 
+Within the ZIP files you will find your data in JSON format. You can open those files with any text editor, as this format is an open standard.
+
 If you want to get new updated versions of these files, just export again your data.
 
 For the projects' data (tasks, task runs and results) you can use the available exporters for your projects.
