@@ -68,6 +68,15 @@
                 </form>
             </section>
             <section class="account delete">
+                <h2>{{_('Export your data')}}</h2>
+                <p>
+                    {{ _('We will get an email when the data is available to download. You will get access to your personal data, your contributions and the projects you have created') }}
+                </p>
+                <div class="form-group">
+                    <a class="btn btn-primary" style="margin-top:10px;" href="{{url_for('account.start_export', name=current_user.name)}}">{{_('Export your data')}}</a>
+                </div>
+            </section>
+            <section class="account delete">
                 <h2>{{_('Delete your account')}}</h2>
                 <div class="alert alert-danger">
                     <strong>{{ _('Danger Zone!') }}</strong> {{ _('By deleting your account, all your personal data will be removed from the server and third party services. Your contributions will be anonymized. This operation cannot be undone!') }}
