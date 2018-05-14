@@ -83,6 +83,7 @@ function checkAge () {
     if (yearsOld >= 16) {
         document.getElementById('register').style.display='block';
         document.getElementById('ageCheck').style.display='none';
+        localStorage.setItem('ageCheck', true);
     } else {
         modal.open();
     }
