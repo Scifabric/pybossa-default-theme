@@ -15,7 +15,7 @@
                         <input class="form-control" id="month" placeholder="MM">
                         <input class="form-control" id="year" placeholder="YYYY">
                     </div>
-                    <button onclick="checkAge()" class="btn btn-primary">Check age</button>
+                    <button onclick="checkAge()" style="margin-top:15px;" class="btn btn-primary">Check age</button>
                 </div>
 
                 {{ render_form(form, form_id="register", action_url=url_for('account.register'), btn_class="btn btn-primary btn-block" )}}
@@ -38,7 +38,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tingle/0.13.2/tingle.min.js"></script>
 <script>
 var modal = new tingle.modal({
-    footer: false,
+    footer: true,
     stickyFooter: false,
     closeMethods: ['overlay', 'button', 'escape'],
     closeLabel: "Close",
@@ -48,6 +48,7 @@ var modal = new tingle.modal({
     },
     onClose: function() {
         console.log('modal closed');
+        window.location.href = '/';
     },
     beforeClose: function() {
         // here's goes some logic
@@ -61,16 +62,16 @@ var modal = new tingle.modal({
 modal.setContent("<h1>You must be 16+ years old to create an account</h1><p>You cannot create an account in this server unless you are 16+ years old. However, you can still participate as an anonymous user as you don't need an account for doing so.</p>");
 
 // add a button
-modal.addFooterBtn('Button label', 'tingle-btn tingle-btn--primary', function() {
+modal.addFooterBtn('OK', 'tingle-btn tingle-btn--primary', function() {
     // here goes some logic
     modal.close();
 });
 
 // add another button
-modal.addFooterBtn('Dangerous action !', 'tingle-btn tingle-btn--danger', function() {
-    // here goes some logic
-    modal.close();
-});
+// modal.addFooterBtn('Dangerous action !', 'tingle-btn tingle-btn--danger', function() {
+//     // here goes some logic
+//     modal.close();
+// });
 
 function checkAge () {
     var day = document.getElementById('day').value;
