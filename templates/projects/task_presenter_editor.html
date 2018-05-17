@@ -214,24 +214,24 @@
 return baseTemplate;
  }
 
- var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
-mode:'text/html',
-lineNumbers: true,
-autofocus: true,
-autoCloseBrackets: true,
-autoCloseTags: true,
-matchBrackets: true,
-matchTags: true,
-showTrailingSpace: true,
-fullScreen: false,
-extraKeys: {
-  "F11": function(cm) {
-    cm.setOption("fullScreen", !cm.getOption("fullScreen"));
-  },
-  "Esc": function(cm) {
-    if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+  mode:'text/html',
+  lineNumbers: true,
+  autofocus: true,
+  autoCloseBrackets: true,
+  autoCloseTags: true,
+  matchBrackets: true,
+  matchTags: true,
+  showTrailingSpace: true,
+  fullScreen: false,
+  extraKeys: {
+    "F11": function(cm) {
+      cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+    },
+    "Esc": function(cm) {
+      if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+    }
   }
-}
 });
 
 function showPreview() {
