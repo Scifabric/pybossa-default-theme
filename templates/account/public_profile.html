@@ -30,20 +30,56 @@
                 </div>
                 {% endif %}
             </div>
-          </div>
-          {% if config.upref_mdata %}
-          <div class="row">
-              <div class="col-md-offset-2 col-md-8">
-                  {% if current_user.admin or current_user.subadmin%}
-                  <div class="col-md-offset-15 col-md-10">
-                      {{ user_pref_metadata.render_upref_mdata(user, form, can_update, input_form) }}
-                  </div>
-                  {% endif %}
-              </div>
-          </div>
-          {% endif %}
+        </div>
+        {% if config.upref_mdata %}
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                {% if current_user.admin or current_user.subadmin%}
+                <div class="col-md-offset-15 col-md-10">
+                    {{ user_pref_metadata.render_upref_mdata(user, form, can_update, input_form) }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                {% if current_user.admin %}
+                  <section class="account delete">
+                      <h2>{{_('Export user data')}}</h2>
+                      <p>
+                          {{ _('You will get an email when the data is available to download.') }}
+                      </p>
+                      <div class="form-group">
+                          <a class="btn btn-primary" style="margin-top:10px;" href="{{url_for('account.start_export', name=user.name)}}">{{_('Export user data')}}</a>
+                      </div>
+                  </section>
+                  <section class="account delete">
+                      <h2>{{_('Delete this account')}}</h2>
+                      <div class="alert alert-danger">
+                          <strong>{{ _('Danger Zone!') }}</strong> {{ _('By deleting this account, all the personal data will be removed from the server and third party services. This operation cannot be undone!') }}
+                      </div>
+                      <div class="form-group">
+                          <input onkeyup="checkEmail(this.value)" class="form-control" id="delete" placeholder="Type your email to confirm that you want to delete it.">
+                          <a id="deleteTrue"  class="btn btn-primary" style="margin-top:10px; display:none;" href="{{url_for('account.delete', name=user.name)}}">{{_('Delete')}}</a>
+                      </div>
+                  </section>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </section>
+{% if current_user.admin %}
+<script>
+function checkEmail (txt) {
+    if (txt === '{{ user.email_addr }}') {
+        document.getElementById('deleteTrue').style.display='block';
+    } else {
+        document.getElementById('deleteTrue').style.display='none';
+    }
+}
+</script>
+{% endif %}
 {% if projects_created %}
 {{render_grid_projects(projects_created, "Projects Owned", upload_method, current_user, id="created-projects", show_ownership=True)}}
 {% endif %}
