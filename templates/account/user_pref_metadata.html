@@ -20,10 +20,11 @@
         {% if form.data.admin %}
             <h5><small>Submitted by: @{{form.data.admin}} {{form.data.time_stamp}}</small></h5>
         {% endif %}
-    {% else %}
-        <div class="text-center", id="no-info-text">
-            <h4><b>There is no user preference/metadata information to display</b></h4>
-        </div>
+    {% endif %}
+    {% if form.data and not form.data.languages and not form.data.locations and not form.data.work_hours_from and not form.data.work_hours_to and not form.data.user_type %}
+            <div class="text-center", id="no-info-text">
+                <h4><b>There is no user preference/metadata information to display</b></h4>
+            </div>
     {% endif %}
     {% if can_update %}
     <div class="text-center">

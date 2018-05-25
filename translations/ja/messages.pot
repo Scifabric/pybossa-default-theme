@@ -1317,6 +1317,7 @@ msgstr "タスクの発表者を編集する"
 #: themes/default/templates/projects/importers/epicollect.html:14
 #: themes/default/templates/projects/importers/flickr.html:16
 #: themes/default/templates/projects/importers/gdocs.html:14
+#: themes/default/templates/projects/importers/iiif.html:5
 msgid "Import tasks"
 msgstr "タスクをインポートする"
 
@@ -2088,6 +2089,10 @@ msgstr "ブログ投稿を編集"
 msgid "Update"
 msgstr "更新"
 
+#: themes/default/templates/projects/importers/iiif.html:10
+msgid "From a IIIF manifest"
+msgstr "IIIFマニフェストから"
+
 #: themes/default/templates/projects/importers/csv.html:16
 msgid "From a CSV file"
 msgstr "CSVファイルから"
@@ -2103,6 +2108,7 @@ msgstr "CSVファイルのURL（DropBox, Box, Ubuntu One等のパブリック・
 #: themes/default/templates/projects/importers/epicollect.html:20
 #: themes/default/templates/projects/importers/flickr.html:47
 #: themes/default/templates/projects/importers/gdocs.html:20
+#: themes/default/templates/projects/importers/iiif.html:16
 msgid "For more information, please look at"
 msgstr "より詳しい情報は次のリンク先を参照してください："
 
@@ -2111,6 +2117,7 @@ msgstr "より詳しい情報は次のリンク先を参照してください：
 #: themes/default/templates/projects/importers/epicollect.html:20
 #: themes/default/templates/projects/importers/flickr.html:47
 #: themes/default/templates/projects/importers/gdocs.html:20
+#: themes/default/templates/projects/importers/iiif.html:16
 msgid "the documentation"
 msgstr "解説書"
 
@@ -2327,6 +2334,10 @@ msgstr "このタスクは次のプロジェクトにはありません："
 #: themes/default/templates/projects/task/wrong.html:9
 msgid "Try with another one"
 msgstr "別のもので試す"
+
+#: themes/default/templates/projects/tasks/iiif.html:2
+msgid "Import from a IIIF manifest"
+msgstr "IIIFマニフェストからのインポート"
 
 #: themes/default/templates/projects/tasks/csv.html:3
 msgid "Provide a public link to your own CSV file"
