@@ -303,6 +303,7 @@ $(document).ready(function() {
         var url = getUrlFor('/deleteselected');
         sendUpdateRequest(url, data).done(function(res) {
             if (res.enqueued) {
+                setSpinner(false);
                 pybossaNotify('Your request has been enqueued, you will receive an email when the task deletion is complete.', true, 'warning');
             }
             else {
