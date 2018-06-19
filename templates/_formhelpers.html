@@ -55,8 +55,8 @@
 {% macro render_form(form, form_id="", action_url='', action_text='Submit', class_='', btn_class='btn btn-default', btn_name=None, btn_value=None) -%}
     {% for f in form if f.type == 'Select2Field' %}
         {% if loop.first  %}
-        <link rel="stylesheet" href="{{url_for('static', filename='css/select2.min.css')}}"/>
-        <script src="{{url_for('static', filename='js/vendor/select2.min.js')}}" type="text/javascript"></script>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/select2.min.css', _external=True, _scheme=preferred_url_scheme)}}"/>
+        <script src="{{url_for('static', filename='js/vendor/select2.min.js', _external=True, _scheme=preferred_url_scheme)}}" type="text/javascript"></script>
         {% endif  %}
     {% endfor %}
     <form id="{{form_id}}" method="POST" action="{{ action_url }}" role="form" class="{{ class_ }}">

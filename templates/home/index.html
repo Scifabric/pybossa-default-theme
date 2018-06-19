@@ -44,10 +44,10 @@
             <br />
             <div class="row">
               <div class="col-md-offset-3 col-md-3 text-center pagination-centered">
-                <p><img src="/static/img/unlocked.svg" height="120"></p>
+                <p><img src="{{ url_for('static', filename='img/unlocked.svg', _external=True, _scheme=preferred_url_scheme) }}" height="120"></p>
               </div>
               <div class="col-md-3 text-center pagination-centered">
-                <p><img src="/static/img/wink.svg" height="120"></p>
+                <p><img src="{{ url_for('static', filename='img/wink.svg', _external=True, _scheme=preferred_url_scheme) }}" height="120"></p>
               </div>
             </div>
             <div class="row">

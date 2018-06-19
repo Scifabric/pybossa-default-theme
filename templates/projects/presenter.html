@@ -5,8 +5,8 @@
 
 {% block content %}
 {% assets filters="jsmin", output="js/gen/full.min.js",
-          "js/vendor/jquery-2.2.3.js", "js/vendor/bootstrap.js", 
-          "js/vendor/modernizr.min.js", "js/flashmessages.js", 
+          "js/vendor/jquery-2.2.3.js", "js/vendor/bootstrap.js",
+          "js/vendor/modernizr.min.js", "js/flashmessages.js",
           "js/vendor/cookieconsent.min.js",
           "js/pybossa/pybossa.js",
           "js/pybossa-player/dist/pybossa-player.min.js"
@@ -16,10 +16,10 @@
 <script>
     Modernizr.load({
         test: window.JSON,
-        nope: '{{url_for('static', filename='js/vendor/json2.min.js')}}'
+        nope: '{{url_for('static', filename='js/vendor/json2.min.js', _external=True, _scheme=preferred_url_scheme)}}'
 });
 </script>
-<link rel="stylesheet" href="{{url_for('static', filename='css/small-navbar.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='css/small-navbar.css', _external=True, _scheme=preferred_url_scheme)}}"/>
 
 <div class="container" style="min-height:400px;">
     <div class="row">

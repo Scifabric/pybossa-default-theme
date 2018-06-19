@@ -14,9 +14,9 @@
 
 {% macro render_twitter_btn(project) %}
 <a href="https://twitter.com/share" class="twitter-share-button"
-    data-text="{{ _('I\'ve done') }} {{project.c}} {{ _('tasks for the @PyBossa project:') }} {{project.name}}. {{ _('Do you want to help?') }} {{url_for('project.details',short_name=project.short_name,_external=True)}}"
+    data-text="{{ _('I\'ve done') }} {{project.c}} {{ _('tasks for the @PyBossa project:') }} {{project.name}}. {{ _('Do you want to help?') }} {{url_for('project.details',short_name=project.short_name,_external=True, _scheme=preferred_url_scheme)}}"
     data-count="none">{{ _('Tweet') }}</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 {% endmacro %}
 
 {% macro render_googlePlus_btn(project) %}
@@ -26,7 +26,7 @@
 </script>
 
 <!-- Place this tag where you want the +1 button to render. -->
-<div class="g-plusone" data-size="medium" data-annotation="none" data-href="{{url_for('project.details',short_name=project.short_name,_external=True)}}"></div>
+<div class="g-plusone" data-size="medium" data-annotation="none" data-href="{{url_for('project.details',short_name=project.short_name,_external=True, _scheme=preferred_url_scheme)}}"></div>
 
 <!-- Place this render call where appropriate. -->
 <script type="text/javascript">gapi.plusone.go();</script>
@@ -83,7 +83,7 @@
         {{url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}
         {% endif -%}
     {%- else %}
-        {{ url_for('static', filename='img/placeholder.user.png')}}
+        {{ url_for('static', filename='img/placeholder.user.png', _external=True, _scheme=preferred_url_scheme)}}
     {% endif -%}
 {% endmacro -%}
 
@@ -91,12 +91,12 @@
 {% macro render_user_thumbnail(user, upload_method, id, class, style) %}
     {% if user.info.avatar %}
         {% if upload_method in ['rackspace', 'cloud'] %}
-        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for(upload_method, filename=user.info.avatar, container=user.info.container)}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.user.png')}}';">
+        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for(upload_method, filename=user.info.avatar, container=user.info.container)}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.user.png', _external=True, _scheme=preferred_url_scheme)}}';">
         {% else %}
-        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.user.png')}}';">
+        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.user.png', _external=True, _scheme=preferred_url_scheme)}}';">
         {% endif %}
     {% else %}
-        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('static', filename='img/placeholder.user.png')}}">
+        <img id="{{id}}" class="{{class}}" style="{{style}}" src="{{ url_for('static', filename='img/placeholder.user.png', _external=True, _scheme=preferred_url_scheme)}}">
     {% endif %}
 {% endmacro %}
 
@@ -134,11 +134,11 @@
 {% macro render_avatar(user, upload_method, class, width) %}
 {% if user.info.avatar %}
     {% if upload_method in ['rackspace', 'cloud'] %}
-    <img class="{{class}}" width="{{width}}" src="{{ url_for(upload_method, filename=user.info.avatar, container=user.info.container)}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.user.png')}}';">
+    <img class="{{class}}" width="{{width}}" src="{{ url_for(upload_method, filename=user.info.avatar, container=user.info.container)}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.user.png', _external=True, _scheme=preferred_url_scheme)}}';">
     {% else %}
-    <img class="{{class}}" width="{{width}}" src="{{ url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.user.png')}}';">
+    <img class="{{class}}" width="{{width}}" src="{{ url_for('uploads.uploaded_file', filename=(user.info.container + '/' + user.info.avatar))}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.user.png', _external=True, _scheme=preferred_url_scheme)}}';">
     {% endif %}
 {% else %}
-<img class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.user.png')}}">
+<img class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.user.png', _external=True, _scheme=preferred_url_scheme)}}">
 {% endif %}
 {% endmacro %}

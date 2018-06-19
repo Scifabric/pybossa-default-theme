@@ -120,9 +120,9 @@
         });
     })
 </script>
-<script src="{{url_for('static', filename='js/vendor/cropper.min.js')}}"></script>
-<link rel="stylesheet" href="{{url_for('static', filename='css/cropper.min.css')}}" type="text/css" />
-<script src="{{url_for('static', filename='js/image_crop.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/vendor/cropper.min.js', _external=True, _scheme=preferred_url_scheme)}}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='css/cropper.min.css', _external=True, _scheme=preferred_url_scheme)}}" type="text/css" />
+<script src="{{url_for('static', filename='js/image_crop.js', _external=True, _scheme=preferred_url_scheme)}}" type="text/javascript"></script>
 <script type="text/javascript">
     //Show/hide secret key
     $(window).load(function(){
