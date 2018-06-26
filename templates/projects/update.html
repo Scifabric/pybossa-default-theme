@@ -4,7 +4,7 @@
 {% import "projects/_helpers.html" as helper %}
 
 {% block projectcontent %}
-{% from "_formhelpers.html" import render_field, render_checkbox_field %}
+{% from "_formhelpers.html" import render_field, render_checkbox_field, render_select2_field %}
 <h2>{{_('Update the avatar')}}</h2>
 <form method="post" action="{{ url_for('project.update', short_name=project.short_name) }}" enctype="multipart/form-data">
     <fieldset>
@@ -40,6 +40,9 @@
             {{ render_checkbox_field(form.sync_enabled, class_="", tooltip=_('Check if you want to enable project syncing')) }}
         {% endif %}
         <div id='password'>{{ render_field(form.password, placeholder="Leave blank to maintain set password") }}</div>
+        {% if 'data_access' in form %}
+            {{ render_select2_field(form.data_access) }}
+        {% endif %}
         {{ render_field(form.webhook) }}
         <div class="form-actions">
             <button type="submit" name='btn' value="Save the changes" class="btn btn-primary">{{_('Save the changes')}}</button>
@@ -136,4 +139,6 @@
         });
     });
 </script>
+<link rel="stylesheet" href="{{url_for('static', filename='css/select2.min.css')}}"/>
+<script src="{{url_for('static', filename='js/vendor/select2.min.js')}}" type="text/javascript"></script>
 {% endblock %}
