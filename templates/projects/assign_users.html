@@ -1,0 +1,43 @@
+{% extends "projects/base.html" %}
+{% set active_page = "projects" %}
+{% set active_link  = "settings" %}
+{% set section =  _('Assign Users to Project')%}
+{% from "_formhelpers.html" import render_field, render_checkbox_field %}
+
+{% block projectcontent %}
+<p>{{_('Select users from the list')}}</p>
+<form id="assign_users" method="post" action="{{ url_for('project.assign_users', short_name=project.short_name) }}">
+    {{ form.hidden_tag() }}
+    <fieldset>
+        <div class="multi-container">
+            <select multiple="multiple" name="select_users" id="selected_users">
+                {% for user in users %}
+                    {% if user.id in project_users %}
+                        <option value="{{user.id}}" selected>{{user.fullname}}</option>
+                    {% else %}
+                        <option value="{{user.id}}">{{user.fullname}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-actions">
+            <input type="submit" value={{_('Assign')}} class="btn btn-primary" />
+        </div>
+    <fieldset>
+</form>
+<script src="/static/js/vendor/multi.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('select').multi({
+            search_placeholder: 'Search Users...'
+        });
+    });
+</script>
+<link rel="stylesheet" type="text/css" href="/static/css/multi.min.css">
+<style>
+    .multi-container {
+        width: 70%;
+        margin-bottom: 25px;
+    }
+</style>
+{% endblock %}
