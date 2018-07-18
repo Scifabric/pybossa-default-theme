@@ -7,6 +7,6 @@ Cheers!
 {{ config.BRAND }} Team
 
 ***
-[UNSUBSCRIBE]({{ url_for('account.update_profile', name=user['name'], _external=True, _scheme=preferred_url_scheme)}})
+[UNSUBSCRIBE]({{ url_for('account.update_profile', name=user['name'], _external=True)}})
 Powered by [PyBossa](https://pybossa.com)
 Follow us: [Twitter](https://twitter.com/pybossa), [Google+](https://plus.google.com/115359083217638640334/posts)

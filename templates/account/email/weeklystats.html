@@ -1,7 +1,7 @@
 {% extends "account/email/base.html" %}
 
 {% block subject %}
-<a href="{{url_for('project.details', short_name=project.short_name, _external=True, _scheme=preferred_url_scheme)}}">Weekly update of your project: {{project.name}}</a>
+<a href="{{url_for('project.details', short_name=project.short_name, _external=True)}}">Weekly update of your project: {{project.name}}</a>
 {% endblock %}
 
 {% block subtitle %}
@@ -17,12 +17,12 @@ Hello {{ project.owner.fullname }},
 
 <p><em>{{text | join }}| truncate(100) }}</em></p>
 
-<p><a href="https://twitter.com/intent/tweet?text={{text | join | truncate(100) | urlencode}}&url={{url_for('project.details', short_name=project.short_name, _external=True, _scheme=preferred_url_scheme)|urlencode}}&hashtags=crowdsourcing&via=PyBossa">Tweet it!</a></p>
+<p><a href="https://twitter.com/intent/tweet?text={{text | join | truncate(100) | urlencode}}&url={{url_for('project.details', short_name=project.short_name, _external=True)|urlencode}}&hashtags=crowdsourcing&via=PyBossa">Tweet it!</a></p>
 
 <h3>Top 5 registered crafters</h3>
 <ol>
 {% for u in users_stats.auth.top5 %}
-    <li><a href="{{url_for('account.profile', name=u.name, _external=True, _scheme=preferred_url_scheme)}}">{{u.fullname}}</a></li>
+    <li><a href="{{url_for('account.profile', name=u.name, _external=True)}}">{{u.fullname}}</a></li>
 {% endfor %}
 </ol>
 {% if users_stats['anon']['top5'] %}
