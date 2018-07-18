@@ -10,7 +10,7 @@
     {% with announcements = get_flashed_messages(category_filter=["announcement"]) %}
     {% if announcements %}
     {% for message in announcements %}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/announcement.css', _external=True, _scheme=preferred_url_scheme)}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/announcement.css')}}"/>
     <div id="announcement-box-{{message.id}}" class="panel panel-warning announcement-box">
         <div class="panel-heading">
             <h5><strong>{{message.title}}</strong></h5>

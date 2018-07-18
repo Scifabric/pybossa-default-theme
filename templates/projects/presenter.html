@@ -16,10 +16,10 @@
 <script>
     Modernizr.load({
         test: window.JSON,
-        nope: '{{url_for('static', filename='js/vendor/json2.min.js', _external=True, _scheme=preferred_url_scheme)}}'
+        nope: '{{url_for('static', filename='js/vendor/json2.min.js')}}'
 });
 </script>
-<link rel="stylesheet" href="{{url_for('static', filename='css/small-navbar.css', _external=True, _scheme=preferred_url_scheme)}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='css/small-navbar.css')}}"/>
 
 <div class="container" style="min-height:400px;">
     <div class="row">

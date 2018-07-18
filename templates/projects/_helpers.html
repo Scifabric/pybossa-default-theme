@@ -158,9 +158,9 @@
 <script>
         function imgError(image) {
             image.onerror = "";
-            image.src = "{{url_for('static', filename='img/placeholder.project.png', _external=True, _scheme=preferred_url_scheme)}}";
+            image.src = "{{url_for('static', filename='img/placeholder.project.png')}}";
             if (arguments[1] === 'user') {
-                image.src = "{{url_for('static', filename='img/placeholder.user.png', _external=True, _scheme=preferred_url_scheme)}}";
+                image.src = "{{url_for('static', filename='img/placeholder.user.png')}}";
             }
             return true;
         }
@@ -168,7 +168,7 @@
 {% endmacro %}
 
 {% macro knob(val) %}
-<script src="{{url_for('static', filename='js/vendor/jquery.knob.js', _external=True, _scheme=preferred_url_scheme)}}"></script>
+<script src="{{url_for('static', filename='js/vendor/jquery.knob.js')}}"></script>
 <script>
     $(function() {
         $(".dial").knob({
@@ -332,7 +332,7 @@
 <div class="row">
     <div class="col-md-12">
         <div id="loading" class="alert alert-info" style="display:none;">
-            <img src="{{url_for('static', filename='img/loading.gif', _external=True, _scheme=preferred_url_scheme)}}"/> {{text}}
+            <img src="{{url_for('static', filename='img/loading.gif')}}"/> {{text}}
         </div>
     </div>
 </div>
@@ -341,14 +341,14 @@
 {% macro render_project_thumbnail(project, upload_method, id, class, style) %}
 {% if project.info.container %}
     {% if upload_method == 'rackspace' or upload_method == 'cloud'%}
-    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{ url_for(upload_method, filename=project.info.thumbnail, container=project.info.container)}}" style="{{style}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.project.png', _external=True, _scheme=preferred_url_scheme)}}';">
+    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{ url_for(upload_method, filename=project.info.thumbnail, container=project.info.container)}}" style="{{style}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.project.png')}}';">
     {% else %}
-    <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{ url_for('uploads.uploaded_file', filename=(project.info.container + '/' + project.info.thumbnail))}}" style="{{style}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.project.png', _external=True, _scheme=preferred_url_scheme)}}';" >
+    <img id="{{id}}"  class="{{class}}" width="{{width}}" src="{{ url_for('uploads.uploaded_file', filename=(project.info.container + '/' + project.info.thumbnail))}}" style="{{style}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.project.png')}}';" >
     {% endif %}
 {% elif project.info.thumbnail %}
-    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{project.info.thumbnail}}" style="{{style}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.project.png', _external=True, _scheme=preferred_url_scheme)}}';">
+    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{project.info.thumbnail}}" style="{{style}}" onError="this.onerror=null;this.src='{{url_for('static', filename='img/placeholder.project.png')}}';">
 {% else %}
-    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.project.png', _external=True, _scheme=preferred_url_scheme)}}" style="{{style}}">
+    <img id="{{id}}" class="{{class}}" width="{{width}}" src="{{url_for('static', filename='img/placeholder.project.png')}}" style="{{style}}">
 {% endif %}
 {% endmacro %}
 
@@ -362,7 +362,7 @@
 {%- elif project.info.thumbnail %}
     {{project.info.thumbnail}}"
 {% else -%}
-{{url_for('static', filename='img/placeholder.project.png', _external=True, _scheme=preferred_url_scheme)}}
+{{url_for('static', filename='img/placeholder.project.png')}}
 {% endif -%}
 {% endmacro -%}
 

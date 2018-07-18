@@ -5,9 +5,9 @@
 
 {% block projectcontent %}
 {% from "_formhelpers.html" import render_field %}
-<link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/codemirror.css', _external=True, _scheme=preferred_url_scheme)}}"/>
-<link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/addons/display/fullscreen.css', _external=True, _scheme=preferred_url_scheme)}}"/>
-<link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/addons/dialog/dialog.css', _external=True, _scheme=preferred_url_scheme)}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/codemirror.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/addons/display/fullscreen.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/addons/dialog/dialog.css')}}"/>
 <style>
     iframe {
         height:400px;
@@ -177,14 +177,14 @@
 
  function prepareSource(presenterSource) {
 
- var bootstrapCSS = "{{url_for('static', filename='css/gen/pybossa.min.css', _external=True, _scheme=preferred_url_scheme)}}",
- fontsCSS = "{{url_for('static', filename='css/fonts/stylesheet.css', _external=True, _scheme=preferred_url_scheme)}}",
- stylesCSS = "{{url_for('static', filename='css/styles.css', _external=True, _scheme=preferred_url_scheme)}}",
- jQuery = "{{url_for('static', filename='vendor/jquery.js', _external=True, _scheme=preferred_url_scheme)}}",
- bootstrapJS = "{{url_for('static', filename='vendor/bootstrap/2.2.1/js/bootstrap.js', _external=True, _scheme=preferred_url_scheme)}}",
- modernizr = "{{url_for('static', filename='js/vendor/modernizr.min.js', _external=True, _scheme=preferred_url_scheme)}}",
- pybossa = "{{url_for('static', filename='js/pybossa/pybossa.js', _external=True, _scheme=preferred_url_scheme)}}",
- defaultJs = "{{url_for('static', filename='js/gen/default.min.js', _external=True, _scheme=preferred_url_scheme)}}",
+ var bootstrapCSS = "{{url_for('static', filename='css/gen/pybossa.min.css')}}",
+ fontsCSS = "{{url_for('static', filename='css/fonts/stylesheet.css')}}",
+ stylesCSS = "{{url_for('static', filename='css/styles.css')}}",
+ jQuery = "{{url_for('static', filename='vendor/jquery.js')}}",
+ bootstrapJS = "{{url_for('static', filename='vendor/bootstrap/2.2.1/js/bootstrap.js')}}",
+ modernizr = "{{url_for('static', filename='js/vendor/modernizr.min.js')}}",
+ pybossa = "{{url_for('static', filename='js/pybossa/pybossa.js')}}",
+ defaultJs = "{{url_for('static', filename='js/gen/default.min.js')}}",
 
  baseTemplate =
      "<!doctype html>\n" +
