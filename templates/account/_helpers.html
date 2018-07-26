@@ -16,7 +16,7 @@
 <a href="https://twitter.com/share" class="twitter-share-button"
     data-text="{{ _('I\'ve done') }} {{project.c}} {{ _('tasks for the @PyBossa project:') }} {{project.name}}. {{ _('Do you want to help?') }} {{url_for('project.details',short_name=project.short_name,_external=True)}}"
     data-count="none">{{ _('Tweet') }}</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 {% endmacro %}
 
 {% macro render_googlePlus_btn(project) %}
