@@ -25,7 +25,22 @@
         </div>
     <fieldset>
 </form>
-<script src="/static/js/vendor/multi.min.js"></script>
+<!-- Le javascript -->
+{% if not jstop %}
+{% assets filters="jsmin", output="js/gen/mutli.min.js",
+          "js/vendor/multi.js"
+          %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+{% endif %}
+<script>
+    var select = document.getElementById('selected_users');
+    multi( select, {
+        'non_selected_header': 'All Users',
+        'selected_header': 'Selected Users'
+    });
+</script>
+
 <script>
     $(document).ready(function() {
         $('select').multi({
@@ -33,11 +48,22 @@
         });
     });
 </script>
-<link rel="stylesheet" type="text/css" href="/static/css/multi.min.css">
+<!-- Le styles -->
+{% assets output="css/gen/multi.min.css",
+          "css/multi.css"
+          %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
 <style>
     .multi-container {
         width: 70%;
         margin-bottom: 25px;
+    }
+    .multi-wrapper .selected-wrapper {
+        border-left: 20px solid #fafafa;
+    }
+    .multi-wrapper .header {
+        background: #ccc;
     }
 </style>
 {% endblock %}
