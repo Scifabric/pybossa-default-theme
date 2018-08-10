@@ -1,4 +1,4 @@
-/**
+/*!
  * multi.js
  * A user-friendly replacement for select boxes with multiple attribute enabled.
  *
