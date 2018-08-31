@@ -13,6 +13,11 @@
     </div>
     <div class="col-sm-9 col-md-9" style="margin-top:30px;">
         <h2><strong>{{ _('Project') }}</strong>: {{ _('Create a new project') }}</h2>
+        {% if message %}
+        <div style="margin: 15px 0 15px 0">
+            {{ message|safe }}
+        </div>
+        {% endif %}
         <form class="" method="post" action="{{ url_for('project.new')}}" enctype="multipart/form-data"}}>
         {{ form.hidden_tag() }}
         <fieldset>
