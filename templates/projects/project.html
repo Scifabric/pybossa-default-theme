@@ -51,6 +51,12 @@
                     <td><p>Project Owner:</p></td>
                     <td><p>{{ owner.fullname }}</p></td>
                 </tr>
+                    {% if config.ENABLE_ACCESS_CONTROL %}
+                    <tr>
+                        <td><p>Data Classification Levels</p></td>
+                        <td><p>{{', '.join(project.info.data_access or ['None'])}}</p></td>
+                    </tr>
+                    {% endif %}
                 {% endif %}
             </table>
         </div>
