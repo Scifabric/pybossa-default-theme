@@ -13,7 +13,13 @@
             {{form.hidden_tag()}}
             <fieldset>
                 <p>Please choose local csv file with user information and press Import button</p>
-                <p><font color="red">Note: The csv should contain columns: name, fullname, email_addr, password and project_slugs(optional) for user to contribute.</font></p>
+                {% if config.ENABLE_ACCESS_CONTROL %}
+                    <p><font color="red">Note: The csv should contain columns: name, fullname, email_addr,
+                    data_access and metadata(only "user_type" is required) for user to contribute.</font></p>
+                {% else %}
+                    <p><font color="red">Note: The csv should contain columns: name, fullname, email_addr and 
+                    metadata(only "user_type" is required) for user to contribute.</font></p>
+                {% endif %}
                 <div class="form-actions">
                     <input type="file" name="file" accept=".csv"><br/><br/>
                     <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" >
