@@ -11,18 +11,52 @@
     forever!')}}<br/><strong>{{_('You cannot undo this action!')}}</strong>
 </div>
 {{ helper.render_project_summary(project, n_tasks, overall_progress, last_activity, current_user) }}
+
+<h3><strong>{{_('Are you sure you want to delete the incomplete project tasks and associated task runs?')}}</strong></h3>
+<div>
+    <div class="form-group">
+        <label for="delete-task-project-name">Project Name</label>
+        <input type="text" class="form-control" id="delete-task-project-name">
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <label for="delete-task-prod">
+                Check if production: <input type="checkbox" id="delete-task-prod">
+            </label>
+        </div>
+    </div>
+</div>
 <form class="form-horizontal" method="post" action="{{ url_for('project.delete_tasks', short_name = project.short_name) }}">
-    <h3><strong>{{_('Are you sure you want to delete the incomplete project tasks and associated task runs?')}}</strong></h3>
     <div>
         <input type="checkbox" name="force_reset" value="true" /> {{_('Force remove completed tasks, taskruns and results.')}}
     </div>
     <div class="form-actions">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-        <button type="submit" name='btn' class="btn btn-sm"
-            value="Yes">{{_('Yes')}}</button>
+        <button type="submit" name='btn' class="btn btn-sm btn-danger" id="delete-btn"
+            value="Yes" disabled>{{_('Yes')}}</button>
         <a href="{{ url_for('project.settings', short_name = project.short_name) }}"
             class="btn btn-lg btn-primary">{{_('No, do not delete
             anything!')}}</a>
     </div>
-</div>
+</form>
+<script>
+    (function(){
+        var projNameEntry = $('#delete-task-project-name'),
+            isProdCheck = $('#delete-task-prod'),
+            deleteButton = $('#delete-btn'),
+            isProd = !('{{config.IS_QA}}' === 'True');
+        function checkCanDelete() {
+            var matchEnv = isProdCheck.prop('checked') === isProd
+            var matchName = projNameEntry.val() === '{{project.short_name}}';
+            if (matchEnv && matchName) {
+                deleteButton.attr('disabled', false);
+            }
+            else {
+                deleteButton.attr('disabled', true);
+            }
+        }
+        projNameEntry.keyup(checkCanDelete);
+        isProdCheck.change(checkCanDelete);
+    })();
+</script>
 {% endblock %}
