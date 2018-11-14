@@ -440,7 +440,7 @@
   </div>
 </div>
 
-<!-- Delet Task -->
+<!-- Delete Task -->
 <div class="modal fade" id="delete-tasks-modal" tabindex="-1" role="dialog" aria-labelledby="delete-tasks-modal-label">
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
@@ -450,13 +450,23 @@
       </div>
       <div class="modal-body">
             <p></p>
-            <strong>Are you sure you want to proceed?</strong>
-        </p>
-        </p>
+            <p><strong>If you are absolutely sure you want to proceed, enter the project short name in the box below and click on the delete button.</strong></p>
+
+            <div class="form-group">
+                <label for="delete-task-project-name">Project Short Name</label>
+                <input type="text" class="form-control" id="delete-task-project-name">
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <label for="delete-task-prod">
+                        Check If Production: <input type="checkbox" id="delete-task-prod">
+                    </label>
+                </div>
+            </div>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" id="save-delete-modal">Yes, delete!</button>
+        <button type="button" class="btn btn-danger" id="delete-btn" disabled>Yes, delete!</button>
         <button type="button" class="btn btn-default cancel-delete" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -528,6 +538,7 @@
         }
     })
 </script>
+{{ helper.confirm_delete(project, config.IS_QA) }}
 
 <div class="overlay">
     <span class="spinner">
