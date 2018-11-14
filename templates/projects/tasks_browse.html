@@ -466,7 +466,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" id="save-delete-modal" disabled>Yes, delete!</button>
+        <button type="button" class="btn btn-danger" id="delete-btn" disabled>Yes, delete!</button>
         <button type="button" class="btn btn-default cancel-delete" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -529,8 +529,6 @@
     };
     var first_page_url = "{{ url_for('project.tasks_browse', short_name=project.short_name) }}";
     var records_per_page = {{ records_per_page if records_per_page != 10 else 'undefined'}};
-    var isProd = !('{{config.IS_QA}}' === 'True');
-    var shortName = '{{project.short_name}}';
     var csrftoken = "{{ csrf_token() }}";
     $.ajaxSetup({
         beforeSend: function(xhr, settings) {
@@ -540,6 +538,7 @@
         }
     })
 </script>
+{{ helper.confirm_delete(project, config.IS_QA) }}
 
 <div class="overlay">
     <span class="spinner">

@@ -281,24 +281,12 @@ $(document).ready(function() {
 
     var projNameEntry = $('#delete-task-project-name'),
         isProdCheck = $('#delete-task-prod'),
-        deleteButton = $('#save-delete-modal');
+        deleteButton = $('#delete-btn');
     function resetDelete() {
         projNameEntry.val('');
         isProdCheck.prop('checked', false);
         deleteButton.attr('disabled', true);
     }
-    function checkCanDelete() {
-        var matchEnv = isProdCheck.prop('checked') === isProd
-        var matchName = projNameEntry.val() === shortName;
-        if (matchEnv && matchName) {
-            deleteButton.attr('disabled', false);
-        }
-        else {
-            deleteButton.attr('disabled', true);
-        }
-    }
-    projNameEntry.keyup(checkCanDelete)
-    isProdCheck.change(checkCanDelete)
 
     $('#delete-tasks-modal').on('show.bs.modal', function(e) {
         if (!(selectedTask || pybTaskBrowse.filterCount)) {
@@ -318,7 +306,7 @@ $(document).ready(function() {
         modalBody.innerHTML = text;
     });
 
-    $('#save-delete-modal').click(function() {
+    $('#delete-btn').click(function() {
         $('#delete-tasks-modal').modal('hide');
         window.scrollTo(0, 0);
         var data = getFilterObject();

@@ -39,24 +39,5 @@
             anything!')}}</a>
     </div>
 </form>
-<script>
-    (function(){
-        var projNameEntry = $('#delete-task-project-name'),
-            isProdCheck = $('#delete-task-prod'),
-            deleteButton = $('#delete-btn'),
-            isProd = !('{{config.IS_QA}}' === 'True');
-        function checkCanDelete() {
-            var matchEnv = isProdCheck.prop('checked') === isProd
-            var matchName = projNameEntry.val() === '{{project.short_name}}';
-            if (matchEnv && matchName) {
-                deleteButton.attr('disabled', false);
-            }
-            else {
-                deleteButton.attr('disabled', true);
-            }
-        }
-        projNameEntry.keyup(checkCanDelete);
-        isProdCheck.change(checkCanDelete);
-    })();
-</script>
+{{ helper.confirm_delete(project, config.IS_QA) }}
 {% endblock %}
