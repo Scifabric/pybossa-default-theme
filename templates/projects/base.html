@@ -19,9 +19,7 @@
                 <h2>{{section}}</h2>
                 {% endif %}
             </div>
-            <div class="col-sm-4 col-md-4">
-                {{helper.render_contribute_button(project)}}
-            </div>
+            {{helper.render_contribute_button(project, current_user, csrf_token())}}
         </div>
         {% if active_link == 'info' %}
         <p><strong>{{ overall_progress | round | int }}% {{_('completed')}}</strong></p>
