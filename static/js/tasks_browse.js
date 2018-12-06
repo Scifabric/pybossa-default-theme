@@ -193,7 +193,7 @@ $(document).ready(function() {
 
     function addFieldFilterRow(fieldName, operator, fieldValue, enabled) {
         fieldName = fieldName || '';
-        operator = operator || '';
+        operator = operator || 'equals';
         fieldValue = fieldValue || '';
 
         var toAppend = filterRowModel.clone();
