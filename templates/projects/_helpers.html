@@ -223,7 +223,7 @@
     {% endif %}
     {% if project['contrib_button'] == 'can_contribute' %}
     <div class="btn-group btn-contribute pull-right">
-        {% if current_user.admin or current_user.id in project.owners_ids %}
+        {% if current_user.admin or (current_user.subadmin and current_user.id in project.owners_ids) %}
         <form class="form-horizontal" method="post" action="{{ url_for('project.publish', short_name=project.short_name, published=0) }}">
           <div class="form-actions">
               <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
