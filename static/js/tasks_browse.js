@@ -561,19 +561,16 @@ function displayTaskInfo(taskInfo, data) {
     info += '</tbody></table>';
 
     var dataGoldAnswers = data["gold_answers"]
-    if (!Object.keys(dataGoldAnswers).length){
-        taskInfo.html(info);
-        return;
+    if (Object.keys(dataGoldAnswers).length){
+        info += '<b>Gold answers</b><table class="table">';
+        info += '<thead><tr><th>Field Name</th>'
+        info += '<th>Field Value</th></tr></thead><tbody>'
+        for (var fieldName in dataGoldAnswers){
+            info += '<tr><td>' + fieldName + '</td>'
+            info += '<td>' + dataGoldAnswers[fieldName] + '</td></tr>'
+        }
+        info += '</tbody></table>';
     }
-
-    info += '<b>Gold answers</b><table class="table">';
-    info += '<thead><tr><th>Field Name</th>'
-    info += '<th>Field Value</th></tr></thead><tbody>'
-    for (var fieldName in dataGoldAnswers){
-        info += '<tr><td>' + fieldName + '</td>'
-        info += '<td>' + dataGoldAnswers[fieldName] + '</td></tr>'
-    }
-    info += '</tbody></table>';
     taskInfo.html(info);
 }
 
