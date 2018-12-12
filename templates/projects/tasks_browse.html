@@ -22,11 +22,13 @@
         <p>{{_('For each task, you can find the following information')}}:
         <ul>
             <li><strong>{{_('Task')}} </strong><span class="label label-info">#0000</span> {{_('This number identifies the task for the project and it is unique')}}</li>
-            <li><strong>0 of 30</strong>: {{_('The first number shows how many answers have been submitted for the task and the')}} {{_('second number')}} {{_('how many need to be obtained to mark the task as')}} <strong>{{_('completed')}}</strong>. </li>
+            <li><strong>0 of 30</strong>: {{_('The first number shows how many answers have been submitted for the task and the')}} {{_('second number')}} {{_('how many need to be obtained to mark the task as')}} <strong>{{_('completed')}}</strong>.
+            {{_(' As gold tasks has no redundancy, this would be blank for gold tasks')}}.</li>
             <li><strong>{{_('Priority')}}</strong>: {{_('Shows the priority of the task, priority ranges from 0.0 (lowest value) to 1.0 (highest priority)')}}.</li>
-            <li><strong>%{{_('Complete')}}</strong>: {{_('Shows the percentage that has been completed of the task')}}.</li>
+            <li><strong>%{{_('Complete')}}</strong>: {{_('Shows the percentage that has been completed of the task')}}.{{_(' This would be blank for gold tasks as such tasks has no redundancy and would never complete')}}.</li>
             <li><strong>{{_('Created')}}</strong>: {{_('When the task was created')}}.</li>
             <li><strong>{{_('Completed')}}</strong>: {{_('When the task became fully completed')}}.</li>
+            <li><strong>{{_('Gold Tasks')}}</strong>: {{_('Shows whether task is gold task(Y) or not(N)')}}.</li>
             <li><strong>{{_('Actions')}}</strong>: {{_('Download or view task results')}}.</li>
         </ul>
         </p>
@@ -76,6 +78,7 @@
                 <li><a href="#" class="columns_settings" data-value="pcomplete" tabIndex="-1"><input type="checkbox" {{ "checked" if "pcomplete" in filter_data.display_columns }}/>&nbsp;%Complete</a></li>
                 <li><a href="#" class="columns_settings" data-value="created" tabIndex="-1"><input type="checkbox" {{ "checked" if "created" in filter_data.display_columns }}/>&nbsp;Created</a></li>
                 <li><a href="#" class="columns_settings" data-value="finish_time" tabIndex="-1"><input type="checkbox" {{ "checked" if "finish_time" in filter_data.display_columns }}/>&nbsp;Completed</a></li>
+                <li><a href="#" class="columns_settings" data-value="gold_task" tabIndex="-1"><input type="checkbox" {{ "checked" if "gold_task" in filter_data.display_columns }}/>&nbsp;Gold Task</a></li>
                 <li><a href="#" class="columns_settings" data-value="actions" tabIndex="-1"><input type="checkbox" {{ "checked" if "actions" in filter_data.display_columns }}/>&nbsp;Actions</a></li>
             </ul>
         </li>
@@ -137,6 +140,9 @@
                 {% if 'finish_time' in filter_data.display_columns %}
                 <th class="{{'sort-asc' if filter_data.order_by['finish_time'] == 'asc'}} {{'sort-desc' if filter_data.order_by['finish_time'] == 'desc'}} sortable" data-sort="finish_time">Completed</th>
                 {% endif %}
+                {% if 'gold_task' in filter_data.display_columns %}
+                <th class="{{'sort-asc' if filter_data.order_by['gold_task'] == 'asc'}} {{'sort-desc' if filter_data.order_by['gold_task'] == 'desc'}} sortable" data-sort="gold_task">Gold Task</th>
+                {% endif %}
                 {% if 'actions' in filter_data.display_columns %}
                 <th>Actions</th>
                 {% endif %}
@@ -147,7 +153,7 @@
             <tr>
                 {% if 'task_id' in filter_data.display_columns %}
                 <th>
-                <div class="form-group">
+                <div>
                     <div class="input-group">
                         <div class="input-group-addon">#</div>
                         <input class="form-control input-sm" type="number" value="{{ filter_data.task_id or '' }}" min="{{ first_task_id or 0 }}" id="task_id" style="width: 100px;">
@@ -179,6 +185,18 @@
                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dateModal" data-info="ftime">Select date range</button>
                 </th>
                 {% endif %}
+                {% if 'gold_task' in filter_data.display_columns %}
+                <th>
+                    <div>
+                        <select id="gold_task" class="input-sm" style="width: 100px">
+                            <option value="" style="font-weight: lighter;">--select--</option>
+                            <option value="Y">Y</option>
+                            <option value="N">N</option>
+                            <option value="All">All</option>
+                        </select>
+                    </div>
+                </th>
+                {% endif %}
                 {% if 'actions' in filter_data.display_columns %}
                 <th>&nbsp;</th>
                 {% endif %}
@@ -193,25 +211,42 @@
             <tr class="task-row">
                 {% if 'task_id' in filter_data.display_columns %}
                 <td>
-                    {% if task_pct >= 100 %}
+                    {% if t.calibration %}
+                        <a class="label label-warning" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) }}">#{{ t.id }}</a>
+                    {% elif task_pct >= 100 %}
                         <a class="label label-success" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) }}">#{{ t.id }}</a>
                     {% else %}
                         <a class="label label-info" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) }}">#{{ t.id }}</a>
                     {% endif %}
+                    {% if t.calibration %}
+                    {{_('---')}}
+                    {% else %}
                     {{ t.n_task_runs|int }} {{_('of')}} {{ t.n_answers }}
+                    {% endif %}
                 </td>
                 {% endif %}
                 {% if 'priority' in filter_data.display_columns %}
                 <td>{{ t.priority_0 }}</td>
                 {% endif %}
                 {% if 'pcomplete' in filter_data.display_columns %}
-                <td>{{ (task_pct|round(2, 'floor')|string).rstrip('0').rstrip('.') }}</td>
+                    {% if t.calibration %}
+                        <td>{{_('--')}}</td>
+                    {% else %}
+                        <td>{{ (task_pct|round(2, 'floor')|string).rstrip('0').rstrip('.') }}</td>
+                    {% endif %}
                 {% endif %}
                 {% if 'created' in filter_data.display_columns %}
                 <td>{{ t.created }}</td>
                 {% endif %}
                 {% if 'finish_time' in filter_data.display_columns %}
                 <td>{{ t.finish_time or '' }}</td>
+                {% endif %}
+                {% if 'gold_task' in filter_data.display_columns %}
+                    {% if t.calibration %}
+                    <td>{{ 'Y' }}</td>
+                    {% else %}
+                    <td>{{ 'N' }}</td>
+                    {% endif %}
                 {% endif %}
                 {% if 'actions' in filter_data.display_columns %}
                 <td style="width: 100px;">

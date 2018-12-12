@@ -41,6 +41,11 @@ $(document).ready(function() {
         filter_data.task_id = $(this).val();
     });
 
+    $('#gold_task').change(function() {
+        dirtyView();
+        filter_data.gold_task = $(this).val();
+    });
+
     $('.datepicker').datepicker({
         changeMonth: true,
         changeYear: true,
@@ -536,23 +541,36 @@ function displayTaskInfo(taskInfo, data) {
         return;
     }
 
+    var dataInfo = data["taskruns_info"]
     var headers = [];
     var info = '<table class="table"><thead><tr>';
     // Extract headers
-    for (var headerName in data[0].info) {
+    for (var headerName in dataInfo[0].info) {
         headers.push(headerName);
         info += '<th>' + headerName + '</th>'
     }
     info += '</tr></thead><tbody>';
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < dataInfo.length; i++) {
         info += '<tr>';
         for (var j = 0; j < headers.length; j++) {
             var headerName = headers[j];
-            info += '<td>' + JSON.stringify(data[i].info[headerName]) + '</td>';
+            info += '<td>' + JSON.stringify(dataInfo[i].info[headerName]) + '</td>';
         }
         info += '</tr>';
     }
     info += '</tbody></table>';
+
+    var dataGoldAnswers = data["gold_answers"]
+    if (Object.keys(dataGoldAnswers).length){
+        info += '<b>Gold answers</b><table class="table">';
+        info += '<thead><tr><th>Field Name</th>'
+        info += '<th>Field Value</th></tr></thead><tbody>'
+        for (var fieldName in dataGoldAnswers){
+            info += '<tr><td>' + fieldName + '</td>'
+            info += '<td>' + dataGoldAnswers[fieldName] + '</td></tr>'
+        }
+        info += '</tbody></table>';
+    }
     taskInfo.html(info);
 }
 
