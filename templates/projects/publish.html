@@ -7,8 +7,8 @@
 {% if project %}
   <div class="alert alert-danger">
       <strong>{{ _('Please read carefully!') }}</strong>
-      <p>{{ _('You are about to publish your project. Once your project has been published, people will be able to contribute to it.') }}</p>
-      <p>{{ _('That means that your project should be working properly, so please make sure it does. Otherwise you can work on it and publish it once it works fine.') }}</p>
+      <br>{{ _('You are about to publish your project. Once your project has been published, people will be able to contribute to it. ') }}
+      {{ _('It means that your project should be working properly, so please make sure it does. Otherwise you can work on it and publish it once it works fine.') }}</br>
   </div>
   <form class="form-horizontal" method="post" action="{{ url_for('project.publish', short_name = project.short_name, published = published) }}">
     <fieldset>
