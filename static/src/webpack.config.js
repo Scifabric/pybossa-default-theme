@@ -9,6 +9,7 @@ function resolve (dir) {
 
 module.exports = {
   // entry point of our application
+  mode: 'production',
   entry: './editor.js',
   // where to place the compiled bundle
   output: {
@@ -42,7 +43,7 @@ module.exports = {
         {
           test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
           loader: 'file-loader?outputPath=../img/search/&publicPath=../img/search/'
-        },
+        }
       ]
     },
     node: {
@@ -61,17 +62,15 @@ module.exports = {
         new htmlWebpackPlugin({
           inject: false,
           hash: true,
-          filename: '../../templates/projects/new_blogpost.html',
-          template: '../../templates/projects/new_blogpost.webpack'
+          filename: '../../../templates/projects/new_blogpost.html',
+          template: '../../templates/projects/new_blogpost.webpack' 
         }),
         new htmlWebpackPlugin({
           inject: false,
           hash: true,
-          filename: '../../templates/admin/new_announcement.html',
+          filename: '../../../templates/admin/new_announcement.html',
           template: '../../templates/admin/new_announcement.webpack'
         }),
         new VueLoaderPlugin()
-        
-        
     ]
 }
