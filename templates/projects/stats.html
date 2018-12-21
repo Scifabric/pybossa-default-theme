@@ -242,8 +242,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p><i class="icon-group"></i> <strong>{{userStats.authenticated.users}}</strong> {{_('authenticated users have')}} <strong>{{_('participated')}}</strong>.</p>
-                            {% if userStats.authenticated.top10 %}
-                            <h4><strong>{{_('Top 10 users')}}</strong></h4>
+                            {% if userStats.authenticated.all_users %}
+                            <h4><strong>{{_('All users')}}</strong></h4>
                             <table class="table table-hover table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -252,7 +252,7 @@
                                         <th>{{_('Tasks')}}</th>
                                     </tr>
                                 </thead>
-                            {% for u in userStats.authenticated.top10 %}
+                            {% for u in userStats.authenticated.all_users %}
                                 <tr>
                                     <th>{{loop.index}}</th>
                                     <th><a href="{{url_for('account.profile', name=u.name)}}">{{u.fullname}}</a></th>
@@ -267,17 +267,13 @@
                         <script>
                         (function(){
                         var container = document.getElementById('userAuthStats');
-                        var graph = Flotr.draw(container, [
-                            {data:[[0, projectStats.userAuthStats['top10'][0]['tasks'] ]],  label:projectStats.userAuthStats['top10'][0]['fullname']},
-                            {data:[[0, projectStats.userAuthStats['top10'][1]['tasks'] ]],  label:projectStats.userAuthStats['top10'][1]['fullname']},
-                            {data:[[0, projectStats.userAuthStats['top10'][2]['tasks'] ]],  label:projectStats.userAuthStats['top10'][2]['fullname']},
-                            {data:[[0, projectStats.userAuthStats['top10'][3]['tasks'] ]],  label:projectStats.userAuthStats['top10'][3]['fullname']},
-                            {data:[[0, projectStats.userAuthStats['top10'][4]['tasks'] ]],  label:projectStats.userAuthStats['top10'][4]['fullname']},
-                            {data:[[0, projectStats.userAuthStats['top10'][5]['tasks'] ]],  label:projectStats.userAuthStats['top10'][5]['fullname']},
-                            {data:[[0, projectStats.userAuthStats['top10'][6]['tasks'] ]],  label:projectStats.userAuthStats['top10'][6]['fullname']},
-                            {data:[[0, projectStats.userAuthStats['top10'][7]['tasks'] ]],  label:projectStats.userAuthStats['top10'][7]['fullname']},
-                            {data:[[0, projectStats.userAuthStats['top10'][8]['tasks'] ]],  label:projectStats.userAuthStats['top10'][8]['fullname']},
-                            {data:[[0, projectStats.userAuthStats['top10'][9]['tasks'] ]],  label:projectStats.userAuthStats['top10'][9]['fullname']}],
+                        var authUsersGraphData = []
+                        var i
+                        for (i = 0; i < projectStats.userAuthStats['all_users'].length; i++){
+                            authUsersGraphData.push({data:[[0, projectStats.userAuthStats['all_users'][i]['tasks'] ]],  label:projectStats.userAuthStats['all_users'][i]['fullname']});
+                        }
+
+                        var graph = Flotr.draw(container, authUsersGraphData,
                             {
                             pie     : {show: true, explode: 10},
                             grid    : {verticalLines: false, horizontalLines: false, outlineWidth: 0},
