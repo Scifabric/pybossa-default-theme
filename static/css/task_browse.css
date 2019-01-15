@@ -25,12 +25,9 @@
     list-style: none;
     padding-left: 0;
 }
-#tasksBrowseControls>ul>li:not(:first-child) {
+#tasksBrowseControls>ul>li {
     float:right;
     padding-left: 5px;
-}
-#tasksBrowseControls>ul>li:first-child {
-    float:left;
 }
 #tasksGrid th.sortable {
     cursor: pointer;
@@ -45,7 +42,7 @@
     position: absolute;
     display:none;
 }
-tbody > tr:hover{
+#taskGrid tbody > tr:hover{
     background-color: #ffff99;
 }
 .selected {
@@ -53,7 +50,6 @@ tbody > tr:hover{
 }
 #tasksBrowseControls button{
     width:55px;
-    height:28px;
 }
 
 .overlay {

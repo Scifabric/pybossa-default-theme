@@ -10,12 +10,15 @@ function resolve (dir) {
 module.exports = {
   // entry point of our application
   mode: 'production',
-  entry: './editor.js',
+  entry: {
+    editor: './editor.js',
+    task_browse: './task_browse.js'
+  },
   // where to place the compiled bundle
   output: {
     path: resolve('../js/gen'),
     publicPath: '/static/js/gen',
-    filename: 'editor.min.js'
+    filename: '[name].min.js'
   },
 
   resolve: {
@@ -38,7 +41,7 @@ module.exports = {
         },
         {
           test: /\.css$/,
-          loader: "style-loader!css-loader"
+          loader: 'style-loader!css-loader'
         },
         {
           test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
@@ -63,13 +66,19 @@ module.exports = {
           inject: false,
           hash: true,
           filename: '../../../templates/projects/new_blogpost.html',
-          template: '../../templates/projects/new_blogpost.webpack' 
+          template: '../../templates/projects/new_blogpost.webpack'
         }),
         new htmlWebpackPlugin({
           inject: false,
           hash: true,
           filename: '../../../templates/admin/new_announcement.html',
           template: '../../templates/admin/new_announcement.webpack'
+        }),
+        new htmlWebpackPlugin({
+          inject: false,
+          hash: true,
+          filename: '../../../templates/projects/tasks_browse.html',
+          template: '../../templates/projects/tasks_browse.webpack.html'
         }),
         new VueLoaderPlugin()
     ]

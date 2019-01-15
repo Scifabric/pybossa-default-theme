@@ -328,7 +328,7 @@ $(document).ready(function() {
         pybossaNotify('Your request is being executed. Please wait...', true, 'warning')
     });
 
-    $('body').on('contextmenu', 'tbody tr', function(e) {
+    $('body').on('contextmenu', '#tasksGrid tbody tr', function(e) {
         $('#context-menu').css({
             display: 'block',
             left: e.pageX - $(this).offset().left,
@@ -724,6 +724,11 @@ function refresh(dropFilters) {
     }
     window.location.replace(location);
 }
+
+window.addEventListener('filtersUpdated', function(event) {
+    filter_data = event.detail;
+    refresh();
+});
 
 function exportTasks(downloadType) {
     var location = first_page_url + (!isNaN(records_per_page) ? ('/1/' + records_per_page) : '');
