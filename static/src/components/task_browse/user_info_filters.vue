@@ -1,38 +1,32 @@
 <template>
     <div>
-        <table class="table table-striped" v-if="languages.length">
-            <thead>
-                <tr>
-                    <th>Language Filters</th>
-                    <th><div class="btn btn-xs btn-danger pull-right"
-                             @click="deleteUserFilter({ key: 'languages' })">Delete All</div></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(language, index) in languages" :key="index">
-                    <td>{{language}}</td>
-                    <td><div class="btn btn-xs btn-danger pull-right"
-                             @click="deleteUserFilter({ key: 'languages', index })">Remove</div></td>
-                </tr>
-            </tbody>
-        </table>
+        <div v-if="languages">
+            <h4>Language Filters
+                <div class="btn btn-xs btn-danger pull-right"
+                    @click="deleteUserFilter({ key: 'languages' })">Delete All</div>
+            </h4>
+            <p class="pill-list">
+                <span v-for="(language, index) in languages"
+                    :key="index"
+                    class="btn btn-info btn-xs"
+                    @click="deleteUserFilter({ key: 'languages', index })">{{language}}
+                <span aria-hidden="true">&times;</span></span>
+            </p>
+        </div>
 
-        <table class="table table-striped" v-if="countries.length">
-            <thead>
-                <tr>
-                    <th>Location Filters</th>
-                    <th><div class="btn btn-xs btn-danger pull-right"
-                             @click="deleteUserFilter({ key: 'locations' })">Delete All</div></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(country, index) in countries" :key="index">
-                    <td>{{country}}</td>
-                    <td><div class="btn btn-xs btn-danger pull-right"
-                             @click="deleteUserFilter({ key: 'locations', index })">Remove</div></td>
-                </tr>
-            </tbody>
-        </table>
+        <div v-if="locations">
+            <h4>Location Filters
+                <div class="btn btn-xs btn-danger pull-right"
+                    @click="deleteUserFilter({ key: 'locations' })">Delete All</div>
+            </h4>
+            <p class="pill-list">
+                <span v-for="(location, index) in locations"
+                    :key="index"
+                    class="btn btn-info btn-xs"
+                    @click="deleteUserFilter({ key: 'locations', index })">{{location}}
+                <span aria-hidden="true">&times;</span></span>
+            </p>
+        </div>
     </div>
 </template>
 <script>
@@ -46,7 +40,7 @@ export default {
     computed: {
         ...mapGetters(['getFilters']),
 
-        countries () {
+        locations () {
             return ((this.getFilters.filter_by_upref || {}).locations || [])
         },
 
@@ -57,4 +51,13 @@ export default {
 }
 </script>
 <style>
+.pill-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pill-list span {
+    margin-right: .2em;
+    margin-bottom: .2em;
+}
 </style>
