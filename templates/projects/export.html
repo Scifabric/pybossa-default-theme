@@ -37,7 +37,7 @@
     </div>
 
 </div>
-{% if current_user.is_authenticated() and project.owner_id == current_user.id %}
+{% if current_user.is_authenticated and project.owner_id == current_user.id %}
 <div id="ckan" class="row">
     <div class="col-md-12 text-center">
         {% if ckan_name %}

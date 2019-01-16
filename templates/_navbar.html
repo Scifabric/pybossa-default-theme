@@ -15,7 +15,7 @@
             </ul>
             {% include '_gcs_form.html' ignore missing %}
             <ul class="nav navbar-nav navbar-right">
-            {% if current_user.is_authenticated() %}
+            {% if current_user.is_authenticated %}
                 <li {% if active_page == 'profile' %} class="active" {% endif %}><a href="#" data-toggle="dropdown" class="dropdown-toggle"> {{ current_user.name | truncate(15,true) }} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ url_for('account.profile', name=current_user.name) }}"> {{ _('My Profile') }}</a></li>
