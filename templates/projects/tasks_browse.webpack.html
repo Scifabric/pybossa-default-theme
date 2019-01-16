@@ -115,11 +115,13 @@
             </button>
         </li>
         {% endif %}
+        {% if filter_data | length > 3 %}
         <li>
             <button id="btn-filters" class="btn btn-sm" type="button" data-target="#the-modal" data-toggle="modal" title="Filters">
                 Filters
             </button>
         </li>
+        {% endif %}
     </ul>
 </div>
 <div>

@@ -5,8 +5,8 @@
             <browse-filters></browse-filters>
         </template>
         <template slot="footer">
-            <div class="btn btn-primary" @click="update">Update</div>
-            <div class="btn btn-default" data-dismiss="modal" @click="close">Close</div>
+            <div class="btn btn-primary" @click="clear">Clear Filters</div>
+            <div class="btn btn-default" data-dismiss="modal">Close</div>
         </template>
     </browse-modal>
 </template>
@@ -14,7 +14,7 @@
 <script>
 import BrowseModal from './browse_modal'
 import BrowseFilters from './browse_filters'
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
     data () {
@@ -22,14 +22,8 @@ export default {
     },
 
     methods: {
-        ...mapMutations(['discardFilterChanges']),
-
-        update () {
-            window.dispatchEvent(new CustomEvent('filtersUpdated', {detail: this.getFilters}));
-        },
-
-        close () {
-            this.discardFilterChanges();
+        clear () {
+            window.dispatchEvent(new CustomEvent('clearFilters'));
         }
     },
 

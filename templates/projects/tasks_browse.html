@@ -115,11 +115,13 @@
             </button>
         </li>
         {% endif %}
+        {% if filter_data | length > 3 %}
         <li>
             <button id="btn-filters" class="btn btn-sm" type="button" data-target="#the-modal" data-toggle="modal" title="Filters">
                 Filters
             </button>
         </li>
+        {% endif %}
     </ul>
 </div>
 <div>
@@ -568,7 +570,7 @@
 </div>
 </div>
 
-<script src="/static/js/gen/task_browse.min.js?56b18d00653ba24428f2"></script>
+<script src="/static/js/gen/task_browse.min.js?3815778c2e2859c059f4"></script>
 <script type="text/javascript">
     var filter_data = {{ filter_data|tojson }};
     taskBrowse.setFilters(filter_data);

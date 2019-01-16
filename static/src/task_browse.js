@@ -7,19 +7,10 @@ import FiltersModal from './components/task_browse/filters_modal'
 
 Vue.use(Vuex);
 
-function del (obj, payload) {
-    const {key, index} = payload;
-    if (index === undefined) {
-        obj[key] = undefined;
-    } else {
-        obj[key].splice(index, 1);
-    }
-}
 
 const store = new Vuex.Store({
     state: {
-        filters: {},
-        origFilters: {}
+        filters: {}
     },
 
     getters: {
@@ -30,20 +21,7 @@ const store = new Vuex.Store({
 
     mutations: {
         setFilters(state, filters) {
-            state.origFilters = JSON.parse(JSON.stringify(filters));
             state.filters = JSON.parse(JSON.stringify(filters));
-        },
-
-        deleteFilter(state, payload) {
-            del(state.filters, payload);
-        },
-
-        deleteUserFilter(state, payload) {
-            del(state.filters.filter_by_upref, payload);
-        },
-
-        discardFilterChanges(state) {
-            state.filters = JSON.parse(JSON.stringify(state.origFilters));
         }
     }
 });

@@ -1,42 +1,31 @@
 <template>
     <div>
-        <div v-if="languages">
-            <h4>Language Filters
-                <div class="btn btn-xs btn-danger pull-right"
-                    @click="deleteUserFilter({ key: 'languages' })">Delete All</div>
-            </h4>
+        <div v-if="languages.length">
+            <h4>Language Filters</h4>
             <p class="pill-list">
                 <span v-for="(language, index) in languages"
                     :key="index"
-                    class="btn btn-info btn-xs"
-                    @click="deleteUserFilter({ key: 'languages', index })">{{language}}
-                <span aria-hidden="true">&times;</span></span>
+                    class="label label-info label-md">
+                    {{language}}
+                </span>
             </p>
         </div>
 
-        <div v-if="locations">
-            <h4>Location Filters
-                <div class="btn btn-xs btn-danger pull-right"
-                    @click="deleteUserFilter({ key: 'locations' })">Delete All</div>
-            </h4>
+        <div v-if="locations.length">
+            <h4>Location Filters</h4>
             <p class="pill-list">
                 <span v-for="(location, index) in locations"
                     :key="index"
-                    class="btn btn-info btn-xs"
-                    @click="deleteUserFilter({ key: 'locations', index })">{{location}}
-                <span aria-hidden="true">&times;</span></span>
+                    class="label label-info label-md">{{location}}
+                </span>
             </p>
         </div>
     </div>
 </template>
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
-    methods: {
-        ...mapMutations(['deleteUserFilter'])
-    },
-
     computed: {
         ...mapGetters(['getFilters']),
 

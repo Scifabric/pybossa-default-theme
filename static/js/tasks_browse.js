@@ -725,9 +725,8 @@ function refresh(dropFilters) {
     window.location.replace(location);
 }
 
-window.addEventListener('filtersUpdated', function(event) {
-    filter_data = event.detail;
-    refresh();
+window.addEventListener('clearFilters', function() {
+    refresh(true);
 });
 
 function exportTasks(downloadType) {

@@ -11,10 +11,6 @@
                 <tr v-for="(filter, key) in filters" :key=key>
                     <td class="col-xs-4">{{allFilters[key]}}</td>
                     <td class="col-xs-4">{{filter}}</td>
-                    <td class="pull-right">
-                        <button class="btn btn-xs btn-danger"
-                                @click="deleteFilter({ key })">Remove</button>
-                    </td>
                 </tr>
             </tbody>
         </table>
@@ -23,7 +19,7 @@
     </div>
 </template>
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 import TaskInfoFilters from './task_info_filters'
 import UserInfoFilters from './user_info_filters'
 
@@ -42,10 +38,6 @@ export default {
                 'ftime_to': 'Finish Time To'
             }
         };
-    },
-
-    methods: {
-        ...mapMutations(['deleteFilter'])
     },
 
     computed: {
