@@ -9,8 +9,8 @@
             </thead>
             <tbody>
                 <tr v-for="(filter, key) in filters" :key=key>
-                    <td class="col-xs-4">{{allFilters[key]}}</td>
-                    <td class="col-xs-4">{{filter}}</td>
+                    <td class="col-xs-4">{{filter.disp}}</td>
+                    <td class="col-xs-4">{{filter.val}}</td>
                 </tr>
             </tbody>
         </table>
@@ -24,18 +24,26 @@ import TaskInfoFilters from './task_info_filters'
 import UserInfoFilters from './user_info_filters'
 
 
+const formatters = {
+    'def': (val) => val,
+    'bool': (val) => (val ? 'True' : 'False')
+};
+
+
 export default {
     data () {
         return {
             allFilters: {
-                'priority_from': 'Priority From',
-                'priority_to': 'Priority To',
-                'created_from': 'Created Time From',
-                'created_to': 'Created Time To',
-                'pcomplete_from': '% Completed From',
-                'pcomplete_to': '% Completed To',
-                'ftime_from': 'Finish Time From',
-                'ftime_to': 'Finish Time To'
+                'task_id': { disp: 'Task Id' },
+                'priority_from': { disp: 'Priority From' },
+                'priority_to': { disp: 'Priority To' },
+                'created_from': { disp: 'Created Time From' },
+                'created_to': { disp: 'Created Time To' },
+                'pcomplete_from': { disp: '% Completed From' },
+                'pcomplete_to': { disp: '% Completed To' },
+                'ftime_from': { disp: 'Finish Time From' },
+                'ftime_to': { disp: 'Finish Time To' },
+                'gold_task': { disp: 'Gold Task', type: 'bool' }
             }
         };
     },
@@ -46,8 +54,12 @@ export default {
         filters () {
             const rv = {};
             for (const k of Object.keys(this.allFilters)) {
-                if (this.getFilters[k]) {
-                    rv[k] = this.getFilters[k];
+                const { disp, type='def' } = this.allFilters[k];
+                if (this.getFilters[k] !== undefined) {
+                    rv[k] = {
+                        disp,
+                        val: formatters[type](this.getFilters[k])
+                    }
                 }
             }
             return rv;
