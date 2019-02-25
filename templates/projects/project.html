@@ -7,10 +7,14 @@
     {% endif %}
     <div class="row">
         <div class="col-md-8">
-            <table class="table table-hover table-condensed">
+            <table class="table table-hover table-striped table-bordered">
                 <tr>
                     <td><p>Project ID:</p></td>
                     <td><p>{{project.id}}</p></td>
+                </tr>
+                <tr>
+                    <td><p>Short Name:</p></td>
+                    <td><p>{{project.short_name}}</p></td>
                 </tr>
                 <tr>
                     <td><p>Total number of tasks:</p></td>
