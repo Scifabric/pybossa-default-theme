@@ -34,7 +34,7 @@
         {% if upref_mdata_enabled %}
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
-                {% if current_user.admin or current_user.subadmin%}
+                {% if current_user.admin or current_user.subadmin or current_user.id == user.id %}
                 <div class="col-md-offset-15 col-md-10">
                     {{ user_pref_metadata.render_upref_mdata(user, form, can_update, input_form) }}
                 </div>
