@@ -13,6 +13,7 @@ module.exports = {
   mode: 'production',
   entry: {
     editor: './editor.js',
+    answerfieldsconfig: './answerfieldsconfig.js',
     component_helper: './component_helper.js',
     task_browse: './task_browse.js'
   },
@@ -71,6 +72,12 @@ module.exports = {
     child_process: 'empty'
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: false,
+      filename: '../../../templates/projects/answerfieldsconfig.html',
+      template: '../../templates/projects/answerfieldsconfig.webpack.ejs'
+    }),
     new HtmlWebpackPlugin({
       inject: false,
       hash: false,
