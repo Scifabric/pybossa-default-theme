@@ -15,6 +15,7 @@ module.exports = {
     editor: './editor.js',
     answerfieldsconfig: './answerfieldsconfig.js',
     component_helper: './component_helper.js',
+    performancestats: './performancestats.js',
     task_browse: './task_browse.js'
   },
   // where to place the compiled bundle
@@ -101,6 +102,12 @@ module.exports = {
       hash: false,
       filename: '../../../templates/projects/component_helper.html',
       template: '../../templates/projects/component_helper.webpack.ejs'
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: false,
+      filename: '../../../templates/projects/performancestats.html',
+      template: '../../templates/projects/performancestats.webpack.ejs'
     }),
     new VueLoaderPlugin()
   ]
