@@ -221,10 +221,11 @@
                     {% else %}
                         <a class="label label-info" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) }}">#{{ t.id }}</a>
                     {% endif %}
+                    {{ t.n_task_runs|int }} {{_('of')}}
                     {% if t.calibration %}
-                    {{_('---')}}
+                      &infin;
                     {% else %}
-                    {{ t.n_task_runs|int }} {{_('of')}} {{ t.n_answers }}
+                      {{ t.n_answers }}
                     {% endif %}
                 </td>
                 {% endif %}
