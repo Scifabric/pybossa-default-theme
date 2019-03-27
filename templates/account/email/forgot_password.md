@@ -6,9 +6,11 @@ If you did not request this, please ignore this email.
 
 To recover your password, please visit the URL below:
 
-[Click here to recover your account][recover]
+[Click here to recover your account]({{ recovery_url }})
 
-[recover]: {{ recovery_url }}
+or provide the key below to your browser:
+
+{{ key }}
 
 Regards,
 
