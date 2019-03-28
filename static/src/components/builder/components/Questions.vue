@@ -186,6 +186,7 @@ export default {
       try {
         const url = new URL(window.location.href);
         url.searchParams.set('template', 'helper-components');
+        url.searchParams.append('clear_template', 'true');
         const response = await fetch(url, {
           method: 'GET',
           headers: {
