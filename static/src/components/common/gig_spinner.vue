@@ -1,12 +1,12 @@
 <template>
-    <div class="spinner">
-        <span>
-            <i class="fa fa-spinner fa-spin fa-lg"></i>
-        </span>
-    </div>
+  <div class="spinner">
+    <span>
+      <i class="fa fa-spinner fa-spin fa-lg" />
+    </span>
+  </div>
 </template>
 <script>
-export default {}
+export default {};
 </script>
 <style scoped>
 .spinner {
