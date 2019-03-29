@@ -128,7 +128,7 @@ export default {
       try {
         const res = await fetch(url);
         this.stats = await res.json();
-      } catch {
+      } catch (e) {
         this.stats = [];
         window.pybossaNotify('An Error Occurred.', true, 'error');
       } finally {
