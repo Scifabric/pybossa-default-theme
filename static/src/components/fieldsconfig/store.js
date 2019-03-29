@@ -43,13 +43,11 @@ const storeSpecs = {
       _addField(state, payload);
     },
 
-    addFieldConfig (state, payload) {
-      const { name, config } = payload;
+    addFieldConfig (state, { name, config }) {
       state.answerFields[name].config = config;
     },
 
-    deleteField (state, payload) {
-      const { name } = payload;
+    deleteField (state, { name }) {
       const ix = state.fieldNames.indexOf(name);
       if (ix >= 0) {
         state.fieldNames.splice(ix, 1);
@@ -57,14 +55,14 @@ const storeSpecs = {
       delete state.answerFields[name];
     },
 
-    setData (state, payload) {
-      state.csrf = payload.csrf;
-      const fields = payload.answerFields;
-      for (const name in payload.answerFields) {
+    setData (state, { csrf, answerFields }) {
+      state.csrf = csrf;
+      const fields = answerFields;
+      for (const name in answerFields) {
         _addField(state, { name, ...fields[name] });
       }
     }
   }
 };
 
-export default { storeSpecs };
+export { storeSpecs };

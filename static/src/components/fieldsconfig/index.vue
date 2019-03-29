@@ -44,7 +44,7 @@
         v-for="(field, name) in answerFields"
         v-else
         :key="name"
-        class="field-config"
+        class="field-config-wrapper"
       >
         <component
           :is="labelTypes.config[field.type].component"
@@ -138,7 +138,7 @@ export default {
 
 </script>
 <style>
-.field-config {
+.field-config-wrapper {
     margin-bottom: 0.5em
 }
 </style>
