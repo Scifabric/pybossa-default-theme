@@ -128,7 +128,7 @@ describe('fieldsconfig', () => {
   });
 
   it('notifies exceptions', async () => {
-    fetch.mockImplementation((arg) => ({
+    fetch.mockImplementation(() => ({
       ok: true,
       json: () => { throw new Error('error'); }
     }));

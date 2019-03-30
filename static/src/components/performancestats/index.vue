@@ -85,9 +85,10 @@ export default {
     AccuracyTable,
     GigSpinner
   },
+
   props: {
     users: {
-      type: Array,
+      type: Object,
       default: () => []
     },
     fields: {
