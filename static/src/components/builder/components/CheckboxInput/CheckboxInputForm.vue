@@ -38,7 +38,7 @@
             <label>Checkbox {{ index + 1 }}</label>
             <button
               v-if="checkboxList.length > 1"
-              :id="'column-delete' + index"
+              :id="`column-delete${index}`"
               class="btn btn-times-delete pull-right fa fa-times"
               @click="deleteCheckboxListItem(checkbox.id)"
             /><br>
