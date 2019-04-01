@@ -32,12 +32,12 @@ describe('TextInput', () => {
     });
   });
 
-  test('It should get form from store', () => {
+  it('It should get form from store', () => {
     expect(storeMocks.getters[types.GET_TEXT_INPUT_FORM]).toBeCalled();
     expect(wrapper.vm.form['pyb-answer'].value).toBe('pybanswer');
   });
 
-  test('It should update form data.', () => {
+  it('It should update form data.', () => {
     const input = wrapper.find('input[type="text"]');
     input.element.value = 'anschanged';
     input.trigger('input');
@@ -47,7 +47,7 @@ describe('TextInput', () => {
     );
   });
 
-  test('Label should be hide until it is clicked.', () => {
+  it('Label should be hide until it is clicked.', () => {
     expect(wrapper.vm.form.labelAdded).toBe(false);
     const checkbox = wrapper.find('input[type="checkbox"]');
     checkbox.trigger('click');

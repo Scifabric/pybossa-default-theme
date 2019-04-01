@@ -5,58 +5,73 @@ const prop = (value, isVariable) => {
   return { value, isVariable };
 };
 
-const initialState = () => {
+export const initialState = () => {
+  const firstElement = getCheckboxObject();
+  const checkboxListObj = { [firstElement.id]: firstElement };
   return {
-    label: prop('', false),
+    label: '',
     labelAdded: false,
-    checkboxList: [getCheckboxObject()]
+    checkboxIdKeys: [firstElement.id],
+    checkboxListObj,
+    isValidForm: true
   };
 };
 
 export const getCheckboxObject = () => {
   return {
-    id: prop(utils.uniqueID(), false),
-    'pyb-answer': prop('', false),
-    label: prop('', false),
+    id: utils.uniqueID(),
+    'pyb-answer': '',
+    label: '',
     labelAdded: false,
-    'initial-value': { ...prop(false, true) },
-    isValidForm: true
-  };
+    'initial-value': { ...prop(false, true) } };
 };
 
 export const state = {
-  checkboxInput: {
-    form: initialState()
-  }
+  form: initialState()
 };
 
 export const getters = {
   [types.GET_CHECKBOX_INPUT_FORM]: state => {
-    return state.checkboxInput.form;
+    return { label: state.form.label,
+      labelAdded: state.form.labelAdded,
+      isValidForm: state.form.isValidForm,
+      checkboxList: state.form.checkboxIdKeys.map(id => (state.form.checkboxListObj[id])) };
+  },
+  [types.GET_CHECKBOXLIST]: state => {
+    return state.form.checkboxIdKeys.map(id => (state.form.checkboxListObj[id]));
   },
   [types.GET_CHECKBOX_INPUT_FORM_VALID]: () => {
-    return true;
+    return state.form.isValidForm;
   }
 };
 
 export const mutations = {
-  [types.MUTATE_CHECKBOX_INPUT_FORM]: (state, payload) => {
-    state.checkboxInput.form = payload;
-  }
-};
-
-export const actions = {
-  [types.UPDATE_CHECKBOX_INPUT_FORM]: ({ commit }, payload) => {
-    commit(types.MUTATE_TEXT_INPUT_FORM, payload);
+  [types.MUTATE_CLEAR_CHECKBOX_INPUT_FORM]: (state, payload) => {
+    state.form = initialState();
   },
-  [types.CLEAR_CHECKBOX_INPUT_FORM]: ({ commit }) => {
-    commit(types.MUTATE_CHECKBOX_INPUT_FORM, initialState());
+  [types.MUTATE_CHECKBOX_LABEL_ADDED]: (state, payload) => {
+    state.form.labelAdded = payload;
+  },
+  [types.MUTATE_CHECKBOX_LABEL]: (state, payload) => {
+    state.form.label = payload;
+  },
+  [types.MUTATE_CHECKBOX_UPDATE_LIST_ITEM]: (state, payload) => {
+    state.form.checkboxListObj[payload.id] = payload;
+  },
+  [types.MUTATE_CHECKBOX_DELETE_LIST_ITEM]: (state, id) => {
+    delete state.form.checkboxListObj[id];
+    state.form.checkboxIdKeys = state.form.checkboxIdKeys.filter(i => i !== id);
+  },
+  [types.MUTATE_CHECKBOX_ADD_LIST_ITEM]: (state) => {
+    const newObj = getCheckboxObject();
+    state.form.checkboxIdKeys.push(newObj.id);
+    state.form.checkboxListObj = { ...state.form.checkboxListObj, [newObj.id]: newObj };
   }
 };
 
 export default {
   state,
   mutations,
-  actions,
+  actions: {},
   getters
 };

@@ -87,7 +87,11 @@ export default {
   getValuesForTemplate (obj) {
     const values = {};
     Object.keys(obj).forEach(e => {
-      values[e] = obj[e].value;
+      if (obj[e].isVariable !== undefined) {
+        values[e] = obj[e].value;
+      } else {
+        values[e] = obj[e];
+      }
     });
 
     return values;
@@ -172,7 +176,7 @@ export default {
       const label = {
         for: idCheckboxGroup,
         component: output,
-        label: form.label.value
+        label: form.label
       };
       output = Mustache.render(labelTemplate, label);
     }

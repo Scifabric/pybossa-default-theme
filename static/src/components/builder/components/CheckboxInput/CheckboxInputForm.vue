@@ -3,18 +3,20 @@
     <h4>Checkbox Settings</h4>
     <input
       id="add-label"
-      v-model="form.labelAdded"
+      :checked="labelAdded"
       type="checkbox"
+      @input="updateCheckboxLabelAdded($event.target.checked)"
     >
     <label for="add-label">
       Add Checkbox Group Label
     </label>
     <input
-      v-if="form.labelAdded === true"
+      v-if="labelAdded === true"
       id="component-label"
-      v-model="form.label.value"
+      :value="label"
       class="form-control form-control-sm"
       type="text"
+      @change="updateCheckboxLabel($event.target.value)"
     >
     <hr>
     <h4 for="add-label">
@@ -24,7 +26,7 @@
       <div class="row">
         <div class="col-md-12">
           <div
-            v-for="(checkbox, index) in form.checkboxList"
+            v-for="(checkbox, index) in checkboxList"
             :key="index"
             class="row"
             name="columns"
@@ -35,10 +37,10 @@
             >
             <label>Checkbox {{ index + 1 }}</label>
             <button
-              v-if="form.checkboxList.length > 1"
-              id="column-delete"
+              v-if="checkboxList.length > 1"
+              :id="'column-delete' + index"
               class="btn btn-times-delete pull-right fa fa-times"
-              @click="removeCheckbox(checkbox)"
+              @click="deleteCheckboxListItem(checkbox.id)"
             /><br>
             <label
               class="col-lables"
@@ -48,9 +50,10 @@
             </label>
             <input
               id="component-label"
-              v-model="checkbox.label.value"
+              :value="checkbox.label"
               class="form-control form-control-sm"
               type="text"
+              @input="updateCheckboxItem(checkbox, 'label', $event.target.value)"
             >
             <label
               class="col-lables"
@@ -60,9 +63,10 @@
             </label>
             <input
               id="pyb-answer"
-              v-model="checkbox['pyb-answer'].value"
+              :value="checkbox['pyb-answer']"
               class="form-control form-control-sm"
               type="text"
+              @input="updateCheckboxItem(checkbox, 'pyb-answer', $event.target.value)"
             >
             <label
               class="col-lables"
@@ -72,8 +76,9 @@
             </label>
             <select
               id="initial-value"
-              v-model="checkbox['initial-value'].value"
               class="form-control form-control-sm"
+              :value="checkbox['initial-value'].value"
+              @input="updateCheckboxItem(checkbox, 'initial-value', {value: $event.target.value, isVariable:true})"
             >
               <option
                 v-for="e in booleanValues"
@@ -92,7 +97,7 @@
     <button
       id="add"
       class="btn btn-default btn-sm col-sm-2 col-md-1"
-      @click="addCheckbox"
+      @click="addCheckboxListItem"
     >
       Add
     </button>
@@ -115,52 +120,46 @@
 }
 </style>
 <script>
+import { mapState, mapMutations, mapGetters } from 'vuex';
 import * as types from '../../store/types';
-import { getCheckboxObject } from '../../store/modules/checkboxInput';
+import { cloneDeep } from 'lodash';
 
 export default {
   name: 'TextInputForm',
   components: {},
   data () {
     return {
-      booleanValues: [false, true]
-    };
+      booleanValues: [false, true] };
   },
   computed: {
-    form: {
-      get () {
-        return this.$store.getters[types.GET_CHECKBOX_INPUT_FORM];
-      },
-      set (value) {
-        this.$store.dispatch(types.UPDATE_CHECKBOX_INPUT_FORM, value);
-      }
-    }
-  },
-  mounted () {
-    this.scrollToEnd();
+    ...mapGetters({ 'checkboxList': types.GET_CHECKBOXLIST }),
+    ...mapState({
+      label: state => state.checkboxInput.form.label,
+      labelAdded: state => state.checkboxInput.form.labelAdded
+    })
   },
   updated () {
     this.scrollToEnd();
   },
   methods: {
-    scrollToEnd () {
-      var container = document.querySelector('.scroll');
-      var scrollHeight = container.scrollHeight;
-      container.scrollTop = scrollHeight;
-    },
-    updateColumns: function () {
-      this.$store.dispatch(types.UPDATE_CHECKBOX_INPUT_FORM, this.form);
-    },
-    addCheckbox: function () {
-      this.form.checkboxList.push(getCheckboxObject());
-      this.$store.dispatch(types.UPDATE_CHECKBOX_INPUT_FORM, this.form);
+    ...mapMutations({
+      'updateCheckboxLabel': types.MUTATE_CHECKBOX_LABEL,
+      'updateCheckboxLabelAdded': types.MUTATE_CHECKBOX_LABEL_ADDED,
+      'deleteCheckboxListItem': types.MUTATE_CHECKBOX_DELETE_LIST_ITEM,
+      'addCheckboxListItem': types.MUTATE_CHECKBOX_ADD_LIST_ITEM
+    }),
+    updateCheckboxItem (checkbox, fieldName, value) {
+      const newCheckbox = cloneDeep(checkbox);
+      newCheckbox[fieldName] = value;
+      this.$store.commit(types.MUTATE_CHECKBOX_UPDATE_LIST_ITEM, newCheckbox);
       this.scrollToEnd();
     },
-    removeCheckbox: function (checkboxToRemove) {
-      this.form.checkboxList = this.form.checkboxList.filter(
-        checkbox => checkbox !== checkboxToRemove
-      );
-      this.$store.dispatch(types.UPDATE_CHECKBOX_INPUT_FORM, this.form);
+    scrollToEnd () {
+      const container = document.querySelector('.scroll');
+      if (container) {
+        const scrollHeight = container.scrollHeight;
+        container.scrollTop = scrollHeight;
+      }
     }
   }
 };

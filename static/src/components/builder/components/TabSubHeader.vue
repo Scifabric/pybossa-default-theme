@@ -137,8 +137,8 @@ export default {
   },
   methods: {
     clearForm: function () {
-      this.$store.dispatch(
-        types[`CLEAR_${this.$route.params.componentName}_FORM`]
+      this.$store.commit(
+        types[`MUTATE_CLEAR_${this.$route.params.componentName}_FORM`]
       );
     }
   }

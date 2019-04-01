@@ -1,8 +1,9 @@
 /* eslint-disable no-undef */
 import utils from '../components/builder/utils';
-import { state } from '../components/builder/store/modules/textInput';
-const { textInput } = state;
-test('getCommonComponentsCode for TEXT_INPUT', () => {
+import { state as textInputState } from '../components/builder/store/modules/textInput';
+import { state as checkboxInput } from '../components/builder/store/modules/checkboxInput';
+const { textInput } = textInputState;
+test('getTextInputCode for TEXT_INPUT', () => {
   textInput.form['pyb-answer'].value = 'answername';
   textInput.form['label'].value = 'labelName';
   const componentCode = utils.getTextInputCode(textInput.form, 'TEXT_INPUT');
@@ -10,46 +11,52 @@ test('getCommonComponentsCode for TEXT_INPUT', () => {
   expect(componentCode.includes('<text-input')).toBeTruthy();
   expect(componentCode.includes('</text-input>')).toBeTruthy();
   expect(
-    componentCode.includes(
-      'pyb-answer="' + textInput.form['pyb-answer'].value + '"'
-    )
+    componentCode.includes(`pyb-answer="${textInput.form['pyb-answer'].value}"`)
   ).toBeTruthy();
-  expect(
-    componentCode.includes('id="' + textInput.form.id.value + '"')
-  ).toBeTruthy();
+  expect(componentCode.includes(`id="${textInput.form.id.value}"`)).toBeTruthy();
 });
 
-// test('getCommonComponentsCode for CHECKBOX_INPUT', () => {
-//     checkboxInput.form['pyb-answer'].value = 'answername'
-//     checkboxInput.form['label'].value = 'labelName'
-//     checkboxInput.form['initial-value'].value = true
-//     const componentCode = utils.getCommonComponentsCode(checkboxInput.form, 'CHECKBOX_INPUT')
+test('getCheckboxInputCode for CHECKBOX_INPUT', () => {
+  checkboxInput.form.labelAdded = true;
+  checkboxInput.form.label = 'Test label';
+  checkboxInput.form.checkboxList = [];
+  checkboxInput.form.checkboxList[0] = {
+    id: 'id0',
+    'pyb-answer': 'checkboxanswer0',
+    label: 'test checkbox0 label',
+    labelAdded: false,
+    'initial-value': { value: true, isVariable: true },
+    isVariable: true,
+    isValidForm: true
+  };
+  checkboxInput.form.checkboxList[1] = {
+    id: 'id1',
+    'pyb-answer': 'checkboxanswer',
+    label: 'test checkbox1 label',
+    labelAdded: false,
+    'initial-value': { value: false, isVariable: true },
+    isVariable: true,
+    isValidForm: true
+  };
+  const componentCode = utils.getCheckboxInputCode(checkboxInput.form, 'CHECKBOX_INPUT');
 
-//     expect(componentCode.includes('<checkbox-input')).toBeTruthy()
-//     expect(componentCode.includes('</checkbox-input>')).toBeTruthy()
-//     expect(componentCode.includes('pyb-answer="' +
-//     checkboxInput.form['pyb-answer'].value + '"')).toBeTruthy()
-//     expect(componentCode.includes('id="' +
-//     checkboxInput.form.id.value + '"')).toBeTruthy()
-//     expect(componentCode.includes('initial-value="' +
-//     checkboxInput.form['initial-value'].value + '"')).toBeTruthy()
-//     expect(componentCode.includes(':initial-value="' +
-//         checkboxInput.form['initial-value'].value + '"')).toBeFalsy()
-// })
-
-// test('getCommonComponentsCode for CHECKBOX_INPUT with variable in initial-value', () => {
-//     checkboxInput.form['pyb-answer'].value = 'answername'
-//     checkboxInput.form['label'].value = 'labelName'
-//     checkboxInput.form['initial-value'].isVariable = true
-//     checkboxInput.form['initial-value'].value = 'variableName'
-
-//     const componentCode = utils.getCommonComponentsCode(checkboxInput.form, 'CHECKBOX_INPUT')
-//     expect(componentCode.includes('<checkbox-input')).toBeTruthy()
-//     expect(componentCode.includes('</checkbox-input>')).toBeTruthy()
-//     expect(componentCode.includes('pyb-answer="' +
-//         checkboxInput.form['pyb-answer'].value + '"')).toBeTruthy()
-//     expect(componentCode.includes('id="' +
-//         checkboxInput.form.id.value + '"')).toBeTruthy()
-//     expect(componentCode.includes(':initial-value="' +
-//         checkboxInput.form['initial-value'].value + '"')).toBeTruthy()
-// })
+  expect(componentCode.includes('<checkbox-input')).toBeTruthy();
+  expect(componentCode.includes('</checkbox-input>')).toBeTruthy();
+  expect(componentCode.includes('Test label')).toBeTruthy();
+  expect(componentCode.includes(checkboxInput.form.checkboxList[0].label)).toBeTruthy();
+  expect(componentCode.includes(
+    `pyb-answer="${checkboxInput.form.checkboxList[0]['pyb-answer']}"`)).toBeTruthy();
+  expect(componentCode.includes(
+    `:initial-value="${checkboxInput.form.checkboxList[0]['initial-value'].value}"`
+  )).toBeTruthy();
+  expect(componentCode.includes(`id="${checkboxInput.form.checkboxList[0].id}"`)
+  ).toBeTruthy();
+  expect(componentCode.includes(checkboxInput.form.checkboxList[1].label)).toBeTruthy();
+  expect(componentCode.includes(
+    `pyb-answer="${checkboxInput.form.checkboxList[1]['pyb-answer']}"`)).toBeTruthy();
+  expect(componentCode.includes(
+    `:initial-value="${checkboxInput.form.checkboxList[1]['initial-value'].value}"`
+  )).toBeTruthy();
+  expect(componentCode.includes(`id="${checkboxInput.form.checkboxList[1].id}"`)
+  ).toBeTruthy();
+});
