@@ -1,7 +1,7 @@
 {% extends "account/email/base.html" %}
 
 {% block subject %}
-We miss you!
+Your account is going to be deleted
 {% endblock %}
 
 {% block subtitle %}
@@ -9,9 +9,10 @@ Hi, {{ user['fullname']}}!
 {% endblock %}
 
 {% block body %}
-<p>We notice you haven’t been around {{config.BRAND}} for more than three months. We would like to encourage you to visit us again and continue collaborating with us. We hope not to bother you with this email- we’re just trying to make you not forget about us.
-</p>
-<p>In any case, thank you for your contribution so far.
+<p>We notice you haven’t been around {{config.BRAND}} for more than five months.
+We would like to encourage you to visit us again and continue collaborating with
+us. If you don't contribute in the next month to a project, your account will be
+deleted from our systems.
 </p>
 <p>Regards,
 </p>
