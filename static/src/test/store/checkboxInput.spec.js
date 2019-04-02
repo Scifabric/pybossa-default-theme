@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { mutations, getters, state } from '../../components/builder/store/modules/checkboxInput';
 import * as types from '../../components/builder/store/types';
 describe('Checkbox setup', () => {

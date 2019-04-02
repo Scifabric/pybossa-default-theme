@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 import Vuex from 'vuex';
 import { mount, createLocalVue } from '@vue/test-utils';
 import { __createMocks as createStoreMocks } from '../../components/builder/store';

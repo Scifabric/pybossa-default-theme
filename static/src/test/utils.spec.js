@@ -1,9 +1,8 @@
-/* eslint-disable no-undef */
 import utils from '../components/builder/utils';
 import { state as textInputState } from '../components/builder/store/modules/textInput';
 import { state as checkboxInput } from '../components/builder/store/modules/checkboxInput';
 const { textInput } = textInputState;
-test('getTextInputCode for TEXT_INPUT', () => {
+it('getTextInputCode for TEXT_INPUT', () => {
   textInput.form['pyb-answer'].value = 'answername';
   textInput.form['label'].value = 'labelName';
   const componentCode = utils.getTextInputCode(textInput.form, 'TEXT_INPUT');
@@ -16,7 +15,7 @@ test('getTextInputCode for TEXT_INPUT', () => {
   expect(componentCode.includes(`id="${textInput.form.id.value}"`)).toBeTruthy();
 });
 
-test('getCheckboxInputCode for CHECKBOX_INPUT', () => {
+it('getCheckboxInputCode for CHECKBOX_INPUT', () => {
   checkboxInput.labelAdded = true;
   checkboxInput.label = 'Test label';
   checkboxInput.checkboxList = [];
