@@ -9,6 +9,9 @@ export const GET_CHECKBOXLIST = 'checkboxinput/CHECKBOXLIST';
 export const GET_TABLE_PROPS = 'table/PROPS';
 export const GET_TABLE_DATA_LIST = 'table/GET_TABLE_DATA_LIST';
 export const GET_TABLE_FORM_VALID = 'table/FORM_VALID';
+export const GET_TABLE_COLUMNS_LIST = 'table/COLUMN_LIST';
+export const GET_TABLE_NAME = 'table/NAME';
+export const GET_TABLE_LABEL = 'table/LABEL';
 
 // Mutations
 export const MUTATE_CLEAR_CHECKBOX_INPUT_FORM = 'checkboxInput/MUTATE_CLEAR_CHECKBOX_FORM';
@@ -30,6 +33,18 @@ export const MUTATE_TABLE_FORM = 'table/MUTATE_FORM';
 export const MUTATE_TABLE_COLUMNS_FORM = 'table/MUTATE_TABLE_COLUMNS_FORM';
 export const MUTATE_TABLE_FORM_VALID = 'table/MUTATE_TABLE_FORM_VALID';
 export const MUTATE_CLEAR_TABLE_FORM = 'checkboxInput/MUTATE_CLEAR_TABLE_FORM';
+export const MUTATE_TABLE_LABEL = 'table/MUTATE_TABLE_LABEL';
+export const MUTATE_TABLE_NAME = 'table/MUTATE_TABLE_NAME';
+export const MUTATE_TABLE_DATA = 'table/MUTATE_TABLE_DATA';
+
+// actions
+export const UPDATE_TEXT_INPUT_FORM = 'testinput/UPDATE_TEXT_INPUT_FORM';
+export const CLEAR_TEXT_INPUT_FORM = 'testinput/CLEAR_TEXT_INPUT_FORM';
+
+export const UPDATE_CHECKBOX_INPUT_FORM =
+  'checkboxinput/UPDATE_CHECKBOX_INPUT_FORM';
+export const CLEAR_CHECKBOX_INPUT_FORM =
+  'checkboxinput/CLEAR_CHECKBOX_INPUT_FORM';
 
 // actions
 export const UPDATE_TABLE_FORM = 'table/UPDATE_TABLE_FORM';

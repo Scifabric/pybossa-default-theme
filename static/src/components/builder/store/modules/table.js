@@ -9,23 +9,27 @@ export const getColumnObject = id => {
     name: '',
     header: '',
     component: 'plain-text',
-    id: `Columns ${id}`
+    id: `Columns ${id}`,
+    id2: utils.uniqueID(),
+    isDirty: false
   };
 };
 
 export const initialState = () => {
+  const firstElement = getColumnObject(1);
+  const columnListObj = { [firstElement.id2]: firstElement };
   return {
-    id: prop(utils.uniqueID(), false),
-    label: prop('', false),
-    name: prop('', false),
-    data: { ...prop('', true), list: [] },
+    id: utils.uniqueID(),
+    label: { value: '', isDirty: false },
+    name: { value: '', isDirty: false },
+    data: { ...prop('', true), list: [], isDirty: false },
+    columnIdKeys: [],
+    columnListObj,
     columns: [getColumnObject(1)],
-    options: prop(
+    options:
       {
         headings: {}
       },
-      false
-    ),
     colCounter: 1
   };
 };
@@ -47,12 +51,12 @@ export const getters = {
     const anyColumnNameEmpty =
       table.columns.filter(c => c.name === '').length > 0;
     const anyDirtyEmptyColumn =
-      table.columns.filter(c => c.name === '' && c.dirty).length > 0;
+      table.columns.filter(c => c.name === '' && c.isDirty).length > 0;
     const isAnswerFieldDirty =
       (table.name.value === '' && table.isVariable) ||
-      (table.name.value === '' && table.name.dirty);
-    const anyDirtyColumn = table.columns.filter(c => c.dirty).length > 0;
-    const isFormUntouched = !table.name.dirty && !anyDirtyColumn;
+      (table.name.value === '' && table.name.isDirty);
+    const anyDirtyColumn = table.columns.filter(c => c.isDirty).length > 0;
+    const isFormUntouched = !table.name.isDirty && !anyDirtyColumn;
     const anyColumnComponent =
       table.columns.filter(col => col.component !== 'plain-text').length > 0;
     const repeatedColName =

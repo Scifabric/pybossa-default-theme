@@ -39,10 +39,10 @@
                   }"
                   name="name"
                   type="text"
-                  @blur="col.dirty = true"
-                  @click="col.dirty = true"
+                  @blur="col.isDirty = true"
+                  @click="col.isDirty = true"
                 >
-                <p v-if="col.name === '' && col.dirty">
+                <p v-if="col.name === '' && col.isDirty">
                   This field is required!
                 </p>
                 <label class="col-lables">
@@ -100,10 +100,10 @@
                   'danger-validation': form.name.value === ''
                 }"
                 type="text"
-                @click="form.name.dirty = true"
-                @blur="form.name.dirty = true"
+                @click="form.name.isDirty = true"
+                @blur="form.name.isDirty = true"
               >
-              <p v-if="form.name.value === '' && form.name.dirty">
+              <p v-if="form.name.value === '' && form.name.isDirty">
                 This field is required!
               </p>
             </div>
@@ -224,17 +224,14 @@ export default {
     columnWithComponent: {
       get () {
         return (
-          this.form.columns.filter(col => col.component !== 'plain-text')
-            .length > 0
+          this.form.columns.filter(col => col.component !== 'plain-text').length > 0
         );
       }
     },
-
     inValidColumns: {
       get () {
         return !(
-          this.form.columns.length ===
-          this.form.columns.filter(col => col.name !== '').length
+          this.form.columns.length === this.form.columns.filter(col => col.name.value !== '').length
         );
       }
     },
@@ -283,7 +280,7 @@ export default {
       return (
         cols.length > 1 ||
         (this.form.columns.length > 1 && col.name === '') ||
-        (col.name === '' && col.dirty)
+        (col.name === '' && col.isDirty)
       );
     }
   }
