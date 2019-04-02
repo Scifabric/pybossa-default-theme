@@ -35,36 +35,33 @@ export const initialState = () => {
 };
 
 export const state = {
-  table: {
-    form: initialState()
-  }
+  ...initialState()
 };
 
 export const getters = {
   [types.GET_TABLE_PROPS]: state => {
-    return state.table.form;
+    return state;
   },
 
   [types.GET_TABLE_FORM_VALID]: state => {
     /* Determine if Table Form is valid */
-    const table = state.table.form;
     const anyColumnNameEmpty =
-      table.columns.filter(c => c.name === '').length > 0;
+      state.columns.filter(c => c.name === '').length > 0;
     const anyDirtyEmptyColumn =
-      table.columns.filter(c => c.name === '' && c.isDirty).length > 0;
+      state.columns.filter(c => c.name === '' && c.isDirty).length > 0;
     const isAnswerFieldDirty =
-      (table.name.value === '' && table.isVariable) ||
-      (table.name.value === '' && table.name.isDirty);
-    const anyDirtyColumn = table.columns.filter(c => c.isDirty).length > 0;
-    const isFormUntouched = !table.name.isDirty && !anyDirtyColumn;
+      (state.name.value === '' && state.isVariable) ||
+      (state.name.value === '' && state.name.isDirty);
+    const anyDirtyColumn = state.columns.filter(c => c.isDirty).length > 0;
+    const isFormUntouched = !state.name.isDirty && !anyDirtyColumn;
     const anyColumnComponent =
-      table.columns.filter(col => col.component !== 'plain-text').length > 0;
+      state.columns.filter(col => col.component !== 'plain-text').length > 0;
     const repeatedColName =
-      table.columns.length !==
-      [...new Set(table.columns.map(c => c.name))].length;
+      state.columns.length !==
+      [...new Set(state.columns.map(c => c.name))].length;
     const isDataNameEmptyAndRequired =
-      table.data.isVariable && table.data.value === '';
-    const isAnswerFieldRequired = anyColumnComponent && table.name.value === '';
+      state.data.isVariable && state.data.value === '';
+    const isAnswerFieldRequired = anyColumnComponent && state.name.value === '';
 
     if (
       isFormUntouched ||
@@ -84,7 +81,7 @@ export const getters = {
 
 export const mutations = {
   [types.MUTATE_TABLE_FORM]: (state, payload) => {
-    state.table.form = payload;
+    state = payload;
   },
   [types.MUTATE_TABLE_COLUMNS_FORM]: (state, payload) => {
     state.table.form.columns = payload.columnns;

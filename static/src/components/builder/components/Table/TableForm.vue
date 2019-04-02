@@ -196,6 +196,7 @@
 
 <script>
 import Vue from 'vue';
+import {mapMutations, mapGetters, mapState} from 'vuex'
 import StaticData from './StaticData.vue';
 import * as types from '../../store/types';
 import { ClientTable } from 'vue-tables-2';
@@ -212,6 +213,13 @@ export default {
     };
   },
   computed: {
+    ...mapState({
+      label: state.table.label,
+      name: state.table.name,
+      list: state.table.data.list,
+      dataSourceName: state.table.name,
+
+    }),
     form: {
       get () {
         const form = this.$store.getters[types.GET_TABLE_PROPS];
