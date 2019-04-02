@@ -134,8 +134,8 @@ export default {
   computed: {
     ...mapGetters({ 'checkboxList': types.GET_CHECKBOXLIST }),
     ...mapState({
-      label: state => state.checkboxInput.form.label,
-      labelAdded: state => state.checkboxInput.form.labelAdded
+      label: state => state.checkboxInput.label,
+      labelAdded: state => state.checkboxInput.labelAdded
     })
   },
   updated () {

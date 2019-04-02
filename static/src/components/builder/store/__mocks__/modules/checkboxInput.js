@@ -2,38 +2,37 @@
 import * as types from '../../types';
 export const state = {
   checkboxInput: {
-    form: {
-      label: 'testLabel',
-      labelAdded: false,
-      checkboxIdKeys: ['id1', 'id2'],
-      checkboxListObj: {
-        'id1': {
-          id: 'id1',
-          'pyb-answer': 'checkboxanswer',
-          label: 'test checkbox1 label',
-          labelAdded: false,
-          'initial-value': { value: false },
-          isVariable: true
-        },
-        'id2': {
-          id: 'id2',
-          'pyb-answer': 'checkboxanswer2',
-          label: 'test checkbox2 label',
-          labelAdded: false,
-          'initial-value': { value: false },
-          isVariable: true
-        },
-        isValidForm: true
-      }
+    label: 'testLabel',
+    labelAdded: false,
+    checkboxIdKeys: ['id1', 'id2'],
+    checkboxListObj: {
+      'id1': {
+        id: 'id1',
+        'pyb-answer': 'checkboxanswer',
+        label: 'test checkbox1 label',
+        labelAdded: false,
+        'initial-value': { value: false },
+        isVariable: true
+      },
+      'id2': {
+        id: 'id2',
+        'pyb-answer': 'checkboxanswer2',
+        label: 'test checkbox2 label',
+        labelAdded: false,
+        'initial-value': { value: false },
+        isVariable: true
+      },
+      isValidForm: true
     }
+
   }
 };
 
 export const getters = {
-  [types.GET_CHECKBOX_INPUT_FORM]: jest.fn().mockReturnValue({ label: state.checkboxInput.form.label,
-    labelAdded: state.checkboxInput.form.labelAdded,
-    isValidForm: state.checkboxInput.form.isValidForm,
-    checkboxList: state.checkboxInput.form.checkboxIdKeys.map(id => (state.checkboxInput.form.checkboxListObj[id]))
+  [types.GET_CHECKBOX_INPUT_PROPS]: jest.fn().mockReturnValue({ label: state.checkboxInput.label,
+    labelAdded: state.checkboxInput.labelAdded,
+    isValidForm: state.checkboxInput.isValidForm,
+    checkboxList: state.checkboxInput.checkboxIdKeys.map(id => (state.checkboxInput.checkboxListObj[id]))
   }),
   [types.GET_CHECKBOXLIST]: jest.fn().mockReturnValue(
     [{
@@ -53,7 +52,7 @@ export const getters = {
       isVariable: true
     }]
   ),
-  [types.GET_CHECKBOX_INPUT_FORM_VALID]: jest.fn().mockReturnValue(true)
+  [types.GET_CHECKBOX_INPUT_PROPS_VALID]: jest.fn().mockReturnValue(true)
 };
 
 export const mutations = {

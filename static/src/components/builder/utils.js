@@ -93,9 +93,9 @@ export default {
         values[e] = obj[e];
       }
     });
-
     return values;
   },
+
   getTableCode: function (form) {
     const columns = form.columns.map(col => col.name);
     const data = this.getTableData(form);

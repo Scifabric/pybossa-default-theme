@@ -17,10 +17,10 @@ test('getTextInputCode for TEXT_INPUT', () => {
 });
 
 test('getCheckboxInputCode for CHECKBOX_INPUT', () => {
-  checkboxInput.form.labelAdded = true;
-  checkboxInput.form.label = 'Test label';
-  checkboxInput.form.checkboxList = [];
-  checkboxInput.form.checkboxList[0] = {
+  checkboxInput.labelAdded = true;
+  checkboxInput.label = 'Test label';
+  checkboxInput.checkboxList = [];
+  checkboxInput.checkboxList[0] = {
     id: 'id0',
     'pyb-answer': 'checkboxanswer0',
     label: 'test checkbox0 label',
@@ -29,7 +29,7 @@ test('getCheckboxInputCode for CHECKBOX_INPUT', () => {
     isVariable: true,
     isValidForm: true
   };
-  checkboxInput.form.checkboxList[1] = {
+  checkboxInput.checkboxList[1] = {
     id: 'id1',
     'pyb-answer': 'checkboxanswer',
     label: 'test checkbox1 label',
@@ -38,25 +38,24 @@ test('getCheckboxInputCode for CHECKBOX_INPUT', () => {
     isVariable: true,
     isValidForm: true
   };
-  const componentCode = utils.getCheckboxInputCode(checkboxInput.form, 'CHECKBOX_INPUT');
-
+  const componentCode = utils.getCheckboxInputCode(checkboxInput, 'CHECKBOX_INPUT');
   expect(componentCode.includes('<checkbox-input')).toBeTruthy();
   expect(componentCode.includes('</checkbox-input>')).toBeTruthy();
   expect(componentCode.includes('Test label')).toBeTruthy();
-  expect(componentCode.includes(checkboxInput.form.checkboxList[0].label)).toBeTruthy();
+  expect(componentCode.includes(checkboxInput.checkboxList[0].label)).toBeTruthy();
   expect(componentCode.includes(
-    `pyb-answer="${checkboxInput.form.checkboxList[0]['pyb-answer']}"`)).toBeTruthy();
+    `pyb-answer="${checkboxInput.checkboxList[0]['pyb-answer']}"`)).toBeTruthy();
   expect(componentCode.includes(
-    `:initial-value="${checkboxInput.form.checkboxList[0]['initial-value'].value}"`
+    `:initial-value="${checkboxInput.checkboxList[0]['initial-value'].value}"`
   )).toBeTruthy();
-  expect(componentCode.includes(`id="${checkboxInput.form.checkboxList[0].id}"`)
+  expect(componentCode.includes(`id="${checkboxInput.checkboxList[0].id}"`)
   ).toBeTruthy();
-  expect(componentCode.includes(checkboxInput.form.checkboxList[1].label)).toBeTruthy();
+  expect(componentCode.includes(checkboxInput.checkboxList[1].label)).toBeTruthy();
   expect(componentCode.includes(
-    `pyb-answer="${checkboxInput.form.checkboxList[1]['pyb-answer']}"`)).toBeTruthy();
+    `pyb-answer="${checkboxInput.checkboxList[1]['pyb-answer']}"`)).toBeTruthy();
   expect(componentCode.includes(
-    `:initial-value="${checkboxInput.form.checkboxList[1]['initial-value'].value}"`
+    `:initial-value="${checkboxInput.checkboxList[1]['initial-value'].value}"`
   )).toBeTruthy();
-  expect(componentCode.includes(`id="${checkboxInput.form.checkboxList[1].id}"`)
+  expect(componentCode.includes(`id="${checkboxInput.checkboxList[1].id}"`)
   ).toBeTruthy();
 });

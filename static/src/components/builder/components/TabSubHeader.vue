@@ -122,7 +122,7 @@ export default {
       get () {
         let form = {};
         const getFormType =
-          types[`GET_${this.$route.params.componentName}_FORM`];
+          types[`GET_${this.$route.params.componentName}_PROPS`];
         if (getFormType) {
           form = this.$store.getters[getFormType];
         }

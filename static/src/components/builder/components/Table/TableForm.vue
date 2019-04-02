@@ -214,7 +214,7 @@ export default {
   computed: {
     form: {
       get () {
-        const form = this.$store.getters[types.GET_TABLE_FORM];
+        const form = this.$store.getters[types.GET_TABLE_PROPS];
         return form;
       },
       set (value) {

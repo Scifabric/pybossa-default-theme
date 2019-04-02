@@ -13,7 +13,7 @@ export const state = {
 };
 
 export const getters = {
-  [types.GET_TEXT_INPUT_FORM]: jest.fn().mockReturnValue({
+  [types.GET_TEXT_INPUT_PROPS]: jest.fn().mockReturnValue({
     id: { value: '1', isVariable: false },
     'pyb-answer': { value: 'pybanswer', isVariable: false },
     label: { value: 'label', isVariable: false },
@@ -21,12 +21,13 @@ export const getters = {
   })
 };
 export const mutations = {
-  [types.MUTATE_TEXT_INPUT_FORM]: jest.fn()
+  [types.MUTATE_TEXT_INPUT_FORM]: jest.fn(),
+  [types.MUTATE_CLEAR_TEXT_INPUT_FORM]: jest.fn()
+
 };
 
 export const actions = {
-  [types.UPDATE_TEXT_INPUT_FORM]: jest.fn(),
-  [types.CLEAR_TEXT_INPUT_FORM]: jest.fn()
+  [types.UPDATE_TEXT_INPUT_FORM]: jest.fn()
 };
 
 export default {

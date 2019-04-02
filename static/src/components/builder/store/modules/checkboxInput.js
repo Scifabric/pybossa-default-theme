@@ -1,6 +1,5 @@
 import * as types from '../types';
 import utils from '../../utils';
-
 const prop = (value, isVariable) => {
   return { value, isVariable };
 };
@@ -27,45 +26,48 @@ export const getCheckboxObject = () => {
 };
 
 export const state = {
-  form: initialState()
+  ...initialState()
 };
 
 export const getters = {
-  [types.GET_CHECKBOX_INPUT_FORM]: state => {
-    return { label: state.form.label,
-      labelAdded: state.form.labelAdded,
-      isValidForm: state.form.isValidForm,
-      checkboxList: state.form.checkboxIdKeys.map(id => (state.form.checkboxListObj[id])) };
+  [types.GET_CHECKBOX_INPUT_PROPS]: state => {
+    return { label: state.label,
+      labelAdded: state.labelAdded,
+      isValidForm: state.isValidForm,
+      checkboxList: state.checkboxIdKeys.map(id => (state.checkboxListObj[id])) };
   },
   [types.GET_CHECKBOXLIST]: state => {
-    return state.form.checkboxIdKeys.map(id => (state.form.checkboxListObj[id]));
+    return state.checkboxIdKeys.map(id => (state.checkboxListObj[id]));
   },
   [types.GET_CHECKBOX_INPUT_FORM_VALID]: () => {
-    return state.form.isValidForm;
+    return state.isValidForm;
   }
 };
 
 export const mutations = {
-  [types.MUTATE_CLEAR_CHECKBOX_INPUT_FORM]: (state, payload) => {
-    state.form = initialState();
+  [types.MUTATE_CLEAR_CHECKBOX_INPUT_FORM]: (state) => {
+    const initial = initialState();
+    Object.keys(initial).forEach(key => {
+      state[key] = initial[key];
+    });
   },
   [types.MUTATE_CHECKBOX_LABEL_ADDED]: (state, payload) => {
-    state.form.labelAdded = payload;
+    state.labelAdded = payload;
   },
   [types.MUTATE_CHECKBOX_LABEL]: (state, payload) => {
-    state.form.label = payload;
+    state.label = payload;
   },
   [types.MUTATE_CHECKBOX_UPDATE_LIST_ITEM]: (state, payload) => {
-    state.form.checkboxListObj[payload.id] = payload;
+    state.checkboxListObj[payload.id] = payload;
   },
   [types.MUTATE_CHECKBOX_DELETE_LIST_ITEM]: (state, id) => {
-    delete state.form.checkboxListObj[id];
-    state.form.checkboxIdKeys = state.form.checkboxIdKeys.filter(i => i !== id);
+    delete state.checkboxListObj[id];
+    state.checkboxIdKeys = state.checkboxIdKeys.filter(i => i !== id);
   },
   [types.MUTATE_CHECKBOX_ADD_LIST_ITEM]: (state) => {
     const newObj = getCheckboxObject();
-    state.form.checkboxIdKeys.push(newObj.id);
-    state.form.checkboxListObj = { ...state.form.checkboxListObj, [newObj.id]: newObj };
+    state.checkboxIdKeys.push(newObj.id);
+    state.checkboxListObj = { ...state.checkboxListObj, [newObj.id]: newObj };
   }
 };
 

@@ -33,7 +33,7 @@ describe('TextInput', () => {
   });
 
   it('It should get form from store', () => {
-    expect(storeMocks.getters[types.GET_TEXT_INPUT_FORM]).toBeCalled();
+    expect(storeMocks.getters[types.GET_TEXT_INPUT_PROPS]).toBeCalled();
     expect(wrapper.vm.form['pyb-answer'].value).toBe('pybanswer');
   });
 
@@ -42,7 +42,7 @@ describe('TextInput', () => {
     input.element.value = 'anschanged';
     input.trigger('input');
     expect(wrapper.vm.form['pyb-answer'].value).toBe('anschanged');
-    expect(storeMocks.getters[types.GET_TEXT_INPUT_FORM]).toHaveBeenCalledTimes(
+    expect(storeMocks.getters[types.GET_TEXT_INPUT_PROPS]).toHaveBeenCalledTimes(
       2
     );
   });
@@ -52,7 +52,7 @@ describe('TextInput', () => {
     const checkbox = wrapper.find('input[type="checkbox"]');
     checkbox.trigger('click');
     expect(wrapper.vm.form.labelAdded).toBe(true);
-    expect(storeMocks.getters[types.GET_TEXT_INPUT_FORM]).toHaveBeenCalledTimes(
+    expect(storeMocks.getters[types.GET_TEXT_INPUT_PROPS]).toHaveBeenCalledTimes(
       3
     );
   });
