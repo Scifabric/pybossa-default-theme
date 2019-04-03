@@ -25,7 +25,7 @@
           <form class="form-horizontal">
             <div class="col-md-12">
               <label v-if="form.labelAdded">
-                {{ form.label.value }}
+                {{ form.label.value || form.label }}
               </label>
               <ComponentRender
                 :selected-component="
@@ -92,7 +92,7 @@ export default {
       get () {
         let form = { isValidForm: true };
         const getFormType =
-          types[`GET_${this.$route.params.componentName}_FORM`];
+          types[`GET_${this.$route.params.componentName}_PROPS`];
         if (getFormType) {
           form = {
             ...this.$store.getters[getFormType],

@@ -7,7 +7,7 @@ import table from './modules/table';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: { message: { text: '' } },
+  state: {},
   getters: {},
   mutations: {},
   actions: {},

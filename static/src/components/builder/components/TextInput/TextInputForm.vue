@@ -58,7 +58,7 @@ export default {
   computed: {
     form: {
       get () {
-        return this.$store.getters[types.GET_TEXT_INPUT_FORM];
+        return this.$store.getters[types.GET_TEXT_INPUT_PROPS];
       },
       set (value) {
         this.$store.dispatch(types.UPDATE_TEXT_INPUT_FORM, value);

@@ -122,7 +122,7 @@ export default {
       get () {
         let form = {};
         const getFormType =
-          types[`GET_${this.$route.params.componentName}_FORM`];
+          types[`GET_${this.$route.params.componentName}_PROPS`];
         if (getFormType) {
           form = this.$store.getters[getFormType];
         }
@@ -137,8 +137,8 @@ export default {
   },
   methods: {
     clearForm: function () {
-      this.$store.dispatch(
-        types[`CLEAR_${this.$route.params.componentName}_FORM`]
+      this.$store.commit(
+        types[`MUTATE_CLEAR_${this.$route.params.componentName}_FORM`]
       );
     }
   }

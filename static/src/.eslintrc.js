@@ -4,21 +4,23 @@ module.exports = {
   root: true,
   parserOptions: {
     parser: 'babel-eslint',
-    sourceType: "module",
+    sourceType: 'module',
     ecmaVersion: 2017
   },
   env: {
     browser: true,
+    jest: true
   },
   // required to lint *.vue files
   plugins: [
-    'vue'
+    'vue',
+    'jest'
   ],
   // https://github.com/standard/standard/blob/master/docs/RULES-en.md
   // https://github.com/vuejs/eslint-plugin-vue
   extends: [
     'plugin:vue/recommended',
-    "standard",
+    'standard',
   ],
   // custom rules here
   rules: {

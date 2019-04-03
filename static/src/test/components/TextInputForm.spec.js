@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 import Vuex from 'vuex';
 import { mount, createLocalVue } from '@vue/test-utils';
 import { __createMocks as createStoreMocks } from '../../components/builder/store';
@@ -32,27 +30,27 @@ describe('TextInput', () => {
     });
   });
 
-  test('It should get form from store', () => {
-    expect(storeMocks.getters[types.GET_TEXT_INPUT_FORM]).toBeCalled();
+  it('It should get form from store', () => {
+    expect(storeMocks.getters[types.GET_TEXT_INPUT_PROPS]).toBeCalled();
     expect(wrapper.vm.form['pyb-answer'].value).toBe('pybanswer');
   });
 
-  test('It should update form data.', () => {
+  it('It should update form data.', () => {
     const input = wrapper.find('input[type="text"]');
     input.element.value = 'anschanged';
     input.trigger('input');
     expect(wrapper.vm.form['pyb-answer'].value).toBe('anschanged');
-    expect(storeMocks.getters[types.GET_TEXT_INPUT_FORM]).toHaveBeenCalledTimes(
+    expect(storeMocks.getters[types.GET_TEXT_INPUT_PROPS]).toHaveBeenCalledTimes(
       2
     );
   });
 
-  test('Label should be hide until it is clicked.', () => {
+  it('Label should be hide until it is clicked.', () => {
     expect(wrapper.vm.form.labelAdded).toBe(false);
     const checkbox = wrapper.find('input[type="checkbox"]');
     checkbox.trigger('click');
     expect(wrapper.vm.form.labelAdded).toBe(true);
-    expect(storeMocks.getters[types.GET_TEXT_INPUT_FORM]).toHaveBeenCalledTimes(
+    expect(storeMocks.getters[types.GET_TEXT_INPUT_PROPS]).toHaveBeenCalledTimes(
       3
     );
   });
