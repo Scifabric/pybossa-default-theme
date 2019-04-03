@@ -94,16 +94,16 @@
               </label>
               <input
                 id="table-name"
-                v-model="form.name.value"
+                :value="name.value"
                 :class="{
                   'form-control form-control-sm': true,
-                  'danger-validation': form.name.value === ''
+                  'danger-validation': name.value === ''
                 }"
                 type="text"
-                @click="form.name.isDirty = true"
-                @blur="form.name.isDirty = true"
+                @input="updateName({value: $event.target.value, isDirty: true})"
+                @blur="updateName({value: name.value, isDirty: true})"
               >
-              <p v-if="form.name.value === '' && form.name.isDirty">
+              <p v-if="name.value === '' && name.isDirty">
                 This field is required!
               </p>
             </div>
@@ -112,9 +112,9 @@
                 <label>Data</label><br>
                 <input
                   id="dynamic"
-                  v-model="form.data.isVariable"
-                  :value="true"
+                  :checked="data.isVariable"
                   type="radio"
+                  @change="updateData({value: data.value, isVariable: $event.target.value})"
                 >
                 <label
                   class="col-lables right-padding-radio"
@@ -124,9 +124,9 @@
                 </label>
                 <input
                   id="static"
-                  v-model="form.data.isVariable"
-                  :value="false"
+                  :checked="!data.isVariable"
                   type="radio"
+                  @change="updateData({value: data.value, isVariable: false})"
                 >
                 <label
                   class="col-lables"
@@ -137,28 +137,31 @@
               </div>
             </div>
             <label
-              v-if="form.data.isVariable"
+              v-if="data.isVariable"
               class="col-form-label-md pull-left"
             >
               * Field Data Source Name
             </label>
             <label
-              v-if="!form.data.isVariable"
+              v-if="!data.isVariable"
               class="col-form-label-md"
             >
               Add Table Data
             </label>
             <input
-              v-if="form.data.isVariable"
-              v-model="form.data.value"
+              v-if="data.isVariable"
+              :name="data.value"
               class="form-control form-control-sm"
               type="text"
+              @input="updateData({value: $event.target.value, isVariable: data.isVariable})"
             >
             <br>
           </div>
         </div>
         <div class="col-md-12">
-          <static-data v-if="!form.data.isVariable" />
+          <static-data
+            v-if="!data.isVariable"
+          />
         </div>
       </div>
     </div>
@@ -196,7 +199,7 @@
 
 <script>
 import Vue from 'vue';
-import {mapMutations, mapGetters, mapState} from 'vuex'
+import { mapState, mapMutations } from 'vuex';
 import StaticData from './StaticData.vue';
 import * as types from '../../store/types';
 import { ClientTable } from 'vue-tables-2';
@@ -214,21 +217,10 @@ export default {
   },
   computed: {
     ...mapState({
-      label: state.table.label,
-      name: state.table.name,
-      list: state.table.data.list,
-      dataSourceName: state.table.name,
+      name: (state) => state.table.name,
+      data: (state) => state.table.data
 
     }),
-    form: {
-      get () {
-        const form = this.$store.getters[types.GET_TABLE_PROPS];
-        return form;
-      },
-      set (value) {
-        this.$store.dispatch(types.UPDATE_TABLE_FORM, value);
-      }
-    },
     columnWithComponent: {
       get () {
         return (
@@ -260,6 +252,10 @@ export default {
     this.scrollToEnd();
   },
   methods: {
+    ...mapMutations({
+      'updateName': types.MUTATE_TABLE_NAME,
+      'updateData': types.MUTATE_TABLE_DATA
+    }),
     scrollToEnd () {
       var container = document.querySelector('.scroll');
       var scrollHeight = container.scrollHeight;

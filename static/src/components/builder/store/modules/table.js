@@ -1,6 +1,6 @@
 import * as types from '../types';
 import utils from '../../utils';
-
+import cloneDeep from 'lodash';
 const prop = (value, isVariable) => {
   return { value, isVariable };
 };
@@ -20,16 +20,12 @@ export const initialState = () => {
   const columnListObj = { [firstElement.id2]: firstElement };
   return {
     id: utils.uniqueID(),
-    label: { value: '', isDirty: false },
+    // label: { value: '', isDirty: false },
     name: { value: '', isDirty: false },
     data: { ...prop('', true), list: [], isDirty: false },
     columnIdKeys: [],
     columnListObj,
     columns: [getColumnObject(1)],
-    options:
-      {
-        headings: {}
-      },
     colCounter: 1
   };
 };
@@ -40,7 +36,15 @@ export const state = {
 
 export const getters = {
   [types.GET_TABLE_PROPS]: state => {
-    return state;
+    const options = {
+      headings: {}
+    };
+
+    state.columns.forEach(col => {
+      options.headings[col.name] = col.header ? col.header : col.name;
+    });
+
+    return { ...state, options };
   },
 
   [types.GET_TABLE_FORM_VALID]: state => {
@@ -82,6 +86,14 @@ export const getters = {
 export const mutations = {
   [types.MUTATE_TABLE_FORM]: (state, payload) => {
     state = payload;
+  },
+  [types.MUTATE_TABLE_NAME]: (state, payload) => {
+    console.log(payload);
+    state.name = payload;
+  },
+  [types.MUTATE_TABLE_DATA]: (state, payload) => {
+    state.data.value = payload.value;
+    state.data.isVariable = payload.isVariable;
   },
   [types.MUTATE_TABLE_COLUMNS_FORM]: (state, payload) => {
     state.table.form.columns = payload.columnns;

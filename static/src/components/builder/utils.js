@@ -107,7 +107,7 @@ export default {
           ? form.data.value
           : '',
       columns: JSON.stringify(columns),
-      options: JSON.stringify(this.getOptions(form.columns), null, '\t')
+      options: JSON.stringify(form.options, null, '\t')
     };
 
     const slotColumns = form.columns.filter(

@@ -1,5 +1,6 @@
 <template>
   <div class="row">
+    {{ form }}
     <table-element
       :data="data"
       :columns="columns"

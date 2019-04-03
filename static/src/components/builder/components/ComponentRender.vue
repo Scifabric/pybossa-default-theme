@@ -60,7 +60,7 @@ export default {
             form: {
               columns: this.form.columns,
               data,
-              options: getOptions(this.form.columns),
+              options: this.form.options,
               name: 'TableCreator'
             }
           }

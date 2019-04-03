@@ -85,8 +85,7 @@ export default {
     },
     options: {
       get () {
-        const options = this.form.options;
-        options.headings['hide-delete'] = 'Delete';
+        const options = { headings: { ...this.form.options.headings, 'hide-delete': 'Delete' } };
         options.filterByColumn = false;
         options.filterable = [];
         options.sortable = [];
