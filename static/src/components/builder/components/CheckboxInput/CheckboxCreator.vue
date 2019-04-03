@@ -10,9 +10,9 @@
           <checkbox-input
             :id="c.id"
             :initial-value="c['initial-value'].value"
-            pyb-answer="c['pyb-answer'].value"
+            pyb-answer="c['pyb-answer']"
           />
-          {{ c.label.value }}
+          {{ c.label }}
         </label>
       </div>
     </div>

@@ -41,8 +41,8 @@ export default {
       if (this.selectedComponent === 'text-input') {
         return {
           name: 'text-input',
-          attrs: { id: this.form.id.value },
-          props: { 'pyb-answer': this.form['pyb-answer'].value }
+          attrs: { id: this.id },
+          props: { 'pyb-answer': this.form['pyb-answer'] }
         };
       } else if (this.selectedComponent === 'checkbox-creator') {
         return {

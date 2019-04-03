@@ -37,7 +37,7 @@ export const state = {
 };
 
 export const getters = {
-  [types.GET_TABLE_FORM]: state => {
+  [types.GET_TABLE_PROPS]: state => {
     return state.table.form;
   },
 
@@ -84,15 +84,16 @@ export const mutations = {
   },
   [types.MUTATE_TABLE_COLUMNS_FORM]: (state, payload) => {
     state.table.form.columns = payload.columnns;
+  },
+  [types.MUTATE_CLEAR_TABLE_FORM]: (state) => {
+    state.table.form = initialState();
   }
+
 };
 
 export const actions = {
   [types.UPDATE_TABLE_FORM]: ({ commit }, payload) => {
     commit(types.MUTATE_TABLE_FORM, payload);
-  },
-  [types.CLEAR_TABLE_FORM]: ({ commit }) => {
-    commit(types.MUTATE_TABLE_FORM, initialState());
   }
 };
 

@@ -49,10 +49,11 @@ export default {
   methods: {
     navigateToHome: function () {
       const getClearType =
-        types[`CLEAR_${this.$route.params.componentName}_FORM`];
+        types[`MUTATE_CLEAR_${this.$route.params.componentName}_FORM`];
       if (getClearType) {
-        this.$store.dispatch(getClearType);
+        this.$store.commit(getClearType);
       }
+
       this.$router.push({ name: 'home' });
     }
   },
