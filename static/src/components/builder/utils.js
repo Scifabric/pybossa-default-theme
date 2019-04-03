@@ -100,7 +100,7 @@ export default {
     const columns = form.columns.map(col => col.name);
     const data = this.getTableData(form);
     const formForTemplate = {
-      name: form.name.value,
+      name: form.name,
       data: !form.data.isVariable
         ? JSON.stringify(data)
         : form.data.value

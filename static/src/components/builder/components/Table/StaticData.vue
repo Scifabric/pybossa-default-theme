@@ -11,7 +11,7 @@
       <div slot="afterTable">
         <button
           class="btn btn-sm btn-default pull-right"
-          @click="addRow"
+          @click="addDataListItem"
         >
           Add Row
         </button>
@@ -29,10 +29,10 @@
         >
           <input
             id="table-name"
-            v-model="props.row[c.id]"
+            :value="props.row[c.id]"
             class="form-control form-control-sm"
             type="text"
-            @input="editRow(props.row)"
+            @input="updateDataListItem(props.row, c.id, $event.target.value)"
           >
         </div>
         <div
@@ -48,7 +48,7 @@
       >
         <button
           class="btn btn-link fa fa-times"
-          @click="removeRow(props.row)"
+          @click="deleteDataListItem(props.row.id)"
         />
       </template>
     </v-client-table>
@@ -61,7 +61,8 @@ import Vue from 'vue';
 import * as types from '../../store/types';
 import { ClientTable } from 'vue-tables-2';
 import utils from '../../utils';
-
+import cloneDeep from 'lodash';
+import { mapGetters, mapMutations } from 'vuex';
 Vue.use(ClientTable, {});
 export default {
   name: 'TableCreator',
@@ -74,15 +75,9 @@ export default {
     };
   },
   computed: {
-    form: {
-      get () {
-        const form = this.$store.getters[types.GET_TABLE_PROPS];
-        return form;
-      },
-      set (value) {
-        this.$store.dispatch(types.UPDATE_TABLE_FORM, value);
-      }
-    },
+    ...mapGetters({
+      form: types.GET_TABLE_PROPS
+    }),
     options: {
       get () {
         const options = { headings: { ...this.form.options.headings, 'hide-delete': 'Delete' } };
@@ -101,28 +96,15 @@ export default {
     }
   },
   methods: {
-    editRow: function (row) {
-      const index = this.form.data.list.findIndex(
-        r => r.staticDataId === row.staticDataId
-      );
-      this.form.data.list[index] = { ...row };
-      this.$store.dispatch(types.UPDATE_TABLE_FORM, this.form);
-    },
-    addRow: function () {
-      this.form.data.list.push(this.getRow());
-    },
-    removeRow: function (row) {
-      const index = this.form.data.list.findIndex(
-        r => r.staticDataId === row.staticDataId
-      );
-      this.form.data.list.splice(index, 1);
-    },
-    getRow: function () {
-      const row = { staticDataId: utils.uniqueID() };
-      this.columns.forEach(function (col) {
-        row[col] = '';
-      });
-      return row;
+    ...mapMutations({
+      'addDataListItem': types.MUTATE_TABLE_ADD_DATA_ROW,
+      'deleteDataListItem': types.MUTATE_TABLE_DELETE_DATA_ROW
+    }),
+
+    updateDataListItem: function (row, fieldName, value) {
+      const newRow = { ...row };
+      newRow[fieldName] = value;
+      this.$store.commit(types.MUTATE_TABLE_UPDATE_DATA_ROW, newRow);
     }
   }
 };

@@ -25,7 +25,7 @@
           <form class="form-horizontal">
             <div class="col-md-12">
               <label v-if="form.labelAdded">
-                {{ form.label.value || form.label }}
+                {{ form.label }}
               </label>
               <ComponentRender
                 :selected-component="
@@ -33,7 +33,6 @@
                 "
                 :form="form"
               />
-              {{form}}
             </div>
           </form>
         </div>

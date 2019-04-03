@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-md-12">
               <div
-                v-for="(col, index) in form.columns"
+                v-for="(col, index) in columns"
                 :key="index"
                 class="row"
                 name="columns"
@@ -23,24 +23,24 @@
                 >
                 <label> {{ col.id }}</label>
                 <button
-                  v-if="form.columns.length > 1"
+                  v-if="columns.length > 1"
                   id="column-delete"
                   class="btn btn-times-delete pull-right fa fa-times"
-                  @click="removeColumn(col)"
+                  @click="removeColumn(col.id)"
                 /><br>
                 <label class="col-lables">
                   * Column Name
                 </label>
                 <input
-                  v-model="col.name"
+                  :value="col.name"
                   :class="{
                     'form-control form-control-sm': true,
                     'danger-validation': invalidColumn(col)
                   }"
                   name="name"
                   type="text"
-                  @blur="col.isDirty = true"
-                  @click="col.isDirty = true"
+                  @blur="updateColumn(col)"
+                  @input="updateColumn(col, 'name', $event.target.value)"
                 >
                 <p v-if="col.name === '' && col.isDirty">
                   This field is required!
@@ -49,16 +49,20 @@
                   Column Heading
                 </label>
                 <input
-                  v-model="col.header"
+                  :value="col.header"
                   class="form-control form-control-sm"
                   type="text"
+                  @blur="updateColumn(col)"
+                  @input="updateColumn(col, 'header', $event.target.value)"
                 >
                 <label class="col-lables">
                   Column Display
                 </label>
                 <select
-                  v-model="col.component"
+                  :value="col.component"
                   class="form-control form-control-sm"
+                  @blur="updateColumn(col)"
+                  @input="updateColumn(col, 'component', $event.target.value)"
                 >
                   <option
                     v-for="component in columnsComponent"
@@ -199,11 +203,10 @@
 
 <script>
 import Vue from 'vue';
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapGetters } from 'vuex';
 import StaticData from './StaticData.vue';
 import * as types from '../../store/types';
 import { ClientTable } from 'vue-tables-2';
-import { getColumnObject } from '../../store/modules/table';
 
 Vue.use(ClientTable, {});
 
@@ -216,32 +219,19 @@ export default {
     };
   },
   computed: {
+    ...mapGetters({
+      columns: types.GET_TABLE_COLUMNS_LIST
+    }),
     ...mapState({
       name: (state) => state.table.name,
       data: (state) => state.table.data
-
     }),
+
     columnWithComponent: {
       get () {
         return (
-          this.form.columns.filter(col => col.component !== 'plain-text').length > 0
+          this.columns.filter(col => col.component !== 'plain-text').length > 0
         );
-      }
-    },
-    inValidColumns: {
-      get () {
-        return !(
-          this.form.columns.length === this.form.columns.filter(col => col.name.value !== '').length
-        );
-      }
-    },
-    columns: {
-      get () {
-        return [
-          ...this.form.columns
-            .filter(col => col.component === 'plain-text' && col.name !== '')
-            .map(col => col.name)
-        ];
       }
     }
   },
@@ -254,36 +244,30 @@ export default {
   methods: {
     ...mapMutations({
       'updateName': types.MUTATE_TABLE_NAME,
-      'updateData': types.MUTATE_TABLE_DATA
+      'updateData': types.MUTATE_TABLE_DATA,
+      'addColumn': types.MUTATE_TABLE_ADD_COLUMN,
+      'removeColumn': types.MUTATE_TABLE_DELETE_COLUMN
     }),
+    updateColumn (column, fieldName, value) {
+      const newColumn = { ...column };
+      if (fieldName) {
+        newColumn[fieldName] = value;
+      }
+      newColumn.isDirty = true;
+      this.$store.commit(types.MUTATE_TABLE_UPDATE_COLUMN, newColumn);
+      this.scrollToEnd();
+    },
     scrollToEnd () {
       var container = document.querySelector('.scroll');
       var scrollHeight = container.scrollHeight;
       container.scrollTop = scrollHeight;
     },
-    addRow: function () {
-      this.form.data.list.push({});
-      this.$store.dispatch(types.UPDATE_TABLE_FORM, this.form);
-      this.scrollToEnd();
-    },
-    addColumn: function () {
-      this.form.colCounter++;
-      this.form.columns.push(getColumnObject(this.form.colCounter));
-      this.$store.dispatch(types.UPDATE_TABLE_FORM, this.form);
-      this.scrollToEnd();
-    },
-    removeColumn: function (colToRemove) {
-      this.form.columns = this.form.columns.filter(col => col !== colToRemove);
-      this.form.data.list.forEach(function (row) {
-        delete row[colToRemove.id];
-      });
-      this.$store.dispatch(types.UPDATE_TABLE_FORM, this.form);
-    },
+
     invalidColumn: function (col) {
-      const cols = this.form.columns.filter(c => c.name === col.name);
+      const cols = this.columns.filter(c => c.name === col.name);
       return (
         cols.length > 1 ||
-        (this.form.columns.length > 1 && col.name === '') ||
+        (this.columns.length > 1 && col.name === '') ||
         (col.name === '' && col.isDirty)
       );
     }

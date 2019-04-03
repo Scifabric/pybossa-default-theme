@@ -1,6 +1,5 @@
 import * as types from '../types';
 import utils from '../../utils';
-import cloneDeep from 'lodash';
 const prop = (value, isVariable) => {
   return { value, isVariable };
 };
@@ -10,22 +9,21 @@ export const getColumnObject = id => {
     header: '',
     component: 'plain-text',
     id: `Columns ${id}`,
-    id2: utils.uniqueID(),
     isDirty: false
   };
 };
 
 export const initialState = () => {
   const firstElement = getColumnObject(1);
-  const columnListObj = { [firstElement.id2]: firstElement };
+  const columnsListObj = { [firstElement.id]: firstElement };
   return {
     id: utils.uniqueID(),
-    // label: { value: '', isDirty: false },
     name: { value: '', isDirty: false },
     data: { ...prop('', true), list: [], isDirty: false },
-    columnIdKeys: [],
-    columnListObj,
-    columns: [getColumnObject(1)],
+    columnKeys: [firstElement.id],
+    columnsListObj,
+    dataRowKeys: [],
+    dataRowObj: {},
     colCounter: 1
   };
 };
@@ -39,48 +37,60 @@ export const getters = {
     const options = {
       headings: {}
     };
+    const columns = state.columnKeys.map(id => (state.columnsListObj[id]));
 
-    state.columns.forEach(col => {
+    columns.forEach(col => {
       options.headings[col.name] = col.header ? col.header : col.name;
     });
+    const list = state.dataRowKeys.map(id => (state.dataRowObj[id]));
+    const data = { ...state.data, list };
 
-    return { ...state, options };
+    return { data, options, columns };
+  },
+  [types.GET_TABLE_COLUMNS_LIST]: state => {
+    return state.columnKeys.map(id => (state.columnsListObj[id]));
+  },
+
+  [types.GET_TABLE_DATA_LIST]: state => {
+    return state.dataRowKeys.map(id => (state.dataRowObj[id]));
   },
 
   [types.GET_TABLE_FORM_VALID]: state => {
-    /* Determine if Table Form is valid */
+    /* Determine if Table Props are completed and valid */
+    const columns = state.columnKeys.map(id2 => (state.columnsListObj[id2]));
     const anyColumnNameEmpty =
-      state.columns.filter(c => c.name === '').length > 0;
+        columns.filter(c => c.name === '').length > 0;
     const anyDirtyEmptyColumn =
-      state.columns.filter(c => c.name === '' && c.isDirty).length > 0;
+        columns.filter(c => c.name === '' && c.isDirty).length > 0;
     const isAnswerFieldDirty =
-      (state.name.value === '' && state.isVariable) ||
-      (state.name.value === '' && state.name.isDirty);
-    const anyDirtyColumn = state.columns.filter(c => c.isDirty).length > 0;
+        (state.name.value === '' && state.isVariable) ||
+        (state.name.value === '' && state.name.isDirty);
+    const anyDirtyColumn = columns.filter(c => c.isDirty).length > 0;
     const isFormUntouched = !state.name.isDirty && !anyDirtyColumn;
     const anyColumnComponent =
-      state.columns.filter(col => col.component !== 'plain-text').length > 0;
+        columns.filter(col => col.component !== 'plain-text').length > 0;
     const repeatedColName =
-      state.columns.length !==
-      [...new Set(state.columns.map(c => c.name))].length;
+        columns.length !==
+        [...new Set(columns.map(c => c.name))].length;
     const isDataNameEmptyAndRequired =
-      state.data.isVariable && state.data.value === '';
+        state.data.isVariable && state.data.value === '';
     const isAnswerFieldRequired = anyColumnComponent && state.name.value === '';
 
     if (
       isFormUntouched ||
-      isDataNameEmptyAndRequired ||
-      isAnswerFieldRequired ||
-      anyColumnNameEmpty ||
-      isAnswerFieldDirty ||
-      anyDirtyEmptyColumn ||
-      repeatedColName
+        isDataNameEmptyAndRequired ||
+        isAnswerFieldRequired ||
+        anyColumnNameEmpty ||
+        isAnswerFieldDirty ||
+        anyDirtyEmptyColumn ||
+        repeatedColName
     ) {
       return false;
     } else {
       return true;
     }
   }
+
 };
 
 export const mutations = {
@@ -88,20 +98,52 @@ export const mutations = {
     state = payload;
   },
   [types.MUTATE_TABLE_NAME]: (state, payload) => {
-    console.log(payload);
     state.name = payload;
   },
   [types.MUTATE_TABLE_DATA]: (state, payload) => {
     state.data.value = payload.value;
     state.data.isVariable = payload.isVariable;
   },
-  [types.MUTATE_TABLE_COLUMNS_FORM]: (state, payload) => {
-    state.table.form.columns = payload.columnns;
+  [types.MUTATE_TABLE_UPDATE_COLUMN]: (state, payload) => {
+    state.columnsListObj[payload.id] = payload;
   },
-  [types.MUTATE_CLEAR_TABLE_FORM]: (state) => {
-    state.table.form = initialState();
-  }
+  [types.MUTATE_TABLE_DELETE_COLUMN]: (state, id) => {
+    delete state.columnsListObj[id];
+    state.columnKeys = state.columnKeys.filter(i => i !== id);
+  },
+  [types.MUTATE_TABLE_UPDATE_DATA_ROW]: (state, payload) => {
+    state.dataRowObj[payload.id] = payload;
+  },
+  [types.MUTATE_TABLE_ADD_COLUMN]: (state) => {
+    state.colCounter++;
+    const newObj = getColumnObject(state.colCounter);
+    state.columnKeys.push(newObj.id);
+    state.columnsListObj = { ...state.columnsListObj, [newObj.id]: newObj };
+  },
 
+  [types.MUTATE_TABLE_ADD_DATA_ROW]: (state) => {
+    const id = utils.uniqueID();
+    state.dataRowKeys.push(id);
+    const row = { };
+    const columns = state.columnKeys.map(id => (state.columnsListObj[id]));
+    columns.forEach(function (col) {
+      row[col.id] = '';
+    });
+    row.id = id;
+    state.dataRowObj = { ...state.dataRowObj, [id]: row };
+  },
+
+  [types.MUTATE_TABLE_DELETE_DATA_ROW]: (state, id) => {
+    delete state.dataRowObj[id];
+    state.dataRowKeys = state.dataRowKeys.filter(i => i !== id);
+  },
+
+  [types.MUTATE_CLEAR_TABLE_FORM]: (state) => {
+    const initial = initialState();
+    Object.keys(initial).forEach(key => {
+      state[key] = initial[key];
+    });
+  }
 };
 
 export const actions = {
