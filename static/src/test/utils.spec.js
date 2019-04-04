@@ -1,18 +1,17 @@
 import utils from '../components/builder/utils';
-import { state as textInputState } from '../components/builder/store/modules/textInput';
+import { state as textInput } from '../components/builder/store/modules/textInput';
 import { state as checkboxInput } from '../components/builder/store/modules/checkboxInput';
-const { textInput } = textInputState;
-it('getTextInputCode for TEXT_INPUT', () => {
-  textInput.form['pyb-answer'].value = 'answername';
-  textInput.form['label'].value = 'labelName';
-  const componentCode = utils.getTextInputCode(textInput.form, 'TEXT_INPUT');
+test('getTextInputCode for TEXT_INPUT', () => {
+  textInput['pyb-answer'] = 'answername';
+  textInput['label'] = 'labelName';
+  const componentCode = utils.getTextInputCode(textInput, 'TEXT_INPUT');
 
   expect(componentCode.includes('<text-input')).toBeTruthy();
   expect(componentCode.includes('</text-input>')).toBeTruthy();
   expect(
-    componentCode.includes(`pyb-answer="${textInput.form['pyb-answer'].value}"`)
+    componentCode.includes(`pyb-answer="${textInput['pyb-answer']}"`)
   ).toBeTruthy();
-  expect(componentCode.includes(`id="${textInput.form.id.value}"`)).toBeTruthy();
+  expect(componentCode.includes(`id="${textInput.id}"`)).toBeTruthy();
 });
 
 it('getCheckboxInputCode for CHECKBOX_INPUT', () => {

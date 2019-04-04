@@ -1,7 +1,7 @@
 import Vuex from 'vuex';
 import { mount, createLocalVue } from '@vue/test-utils';
 import { __createMocks as createStoreMocks } from '../../components/builder/store';
-import TextInput from '../../components/builder/components/TextInput/TextInputForm';
+import TextInputForm from '../../components/builder/components/TextInput/TextInputForm';
 import * as types from '../../components/builder/store/types';
 
 jest.mock('../../components/builder/store');
@@ -16,7 +16,7 @@ describe('TextInput', () => {
   beforeEach(() => {
     const freshLocalVue = createLocalVue();
     storeMocks = { ...createStoreMocks(), dispatch: jest.fn() };
-    wrapper = mount(TextInput, {
+    wrapper = mount(TextInputForm, {
       freshLocalVue,
       mocks: {
         $route: {
@@ -30,28 +30,24 @@ describe('TextInput', () => {
     });
   });
 
-  it('It should get form from store', () => {
-    expect(storeMocks.getters[types.GET_TEXT_INPUT_PROPS]).toBeCalled();
-    expect(wrapper.vm.form['pyb-answer'].value).toBe('pybanswer');
-  });
-
-  it('It should update form data.', () => {
-    const input = wrapper.find('input[type="text"]');
+  it('Update pyb-answer.', () => {
+    const input = wrapper.find('#pyb-answer');
     input.element.value = 'anschanged';
     input.trigger('input');
-    expect(wrapper.vm.form['pyb-answer'].value).toBe('anschanged');
-    expect(storeMocks.getters[types.GET_TEXT_INPUT_PROPS]).toHaveBeenCalledTimes(
-      2
-    );
+    expect(storeMocks.mutations[types.MUTATE_TEXT_INPUT_PYB_ANSWER]).toBeCalledWith(storeMocks.state, 'anschanged');
   });
 
-  it('Label should be hide until it is clicked.', () => {
-    expect(wrapper.vm.form.labelAdded).toBe(false);
-    const checkbox = wrapper.find('input[type="checkbox"]');
+  it('Update labeladded.', () => {
+    expect(wrapper.html()).toContain('component-label');
+    const input = wrapper.find('#component-label');
+    input.element.value = 'labelupdated';
+    input.trigger('input');
+    expect(storeMocks.mutations[types.MUTATE_TEXT_INPUT_LABEL]).toBeCalledWith(storeMocks.state, 'labelupdated');
+  });
+
+  it('Update label.', () => {
+    const checkbox = wrapper.find('#add-label');
     checkbox.trigger('click');
-    expect(wrapper.vm.form.labelAdded).toBe(true);
-    expect(storeMocks.getters[types.GET_TEXT_INPUT_PROPS]).toHaveBeenCalledTimes(
-      3
-    );
+    expect(storeMocks.mutations[types.MUTATE_TEXT_INPUT_LABEL_ADDED]).toBeCalledWith(storeMocks.state, false);
   });
 });
