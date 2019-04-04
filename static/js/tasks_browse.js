@@ -41,7 +41,8 @@ $(document).ready(function() {
         filter_data.task_id = $(this).val();
     });
 
-    $('#gold_task').change(function() {
+    $('#gold_task').val(filter_data.gold_task)
+    .change(function() {
         dirtyView();
         filter_data.gold_task = $(this).val();
     });
