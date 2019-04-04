@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8" style="margin-top: 50px;">
-                {% if enforce_privacy and (current_user.is_anonymous() or (current_user.is_authenticated and not current_user.admin)) %}
+                {% if enforce_privacy and (current_user.is_anonymous or (current_user.is_authenticated and not current_user.admin)) %}
                 {{ privacy.render_lock_page() }}
                 {% else %}
                 <h1><i class="icon-trophy"></i> <strong>{{_('Community Leaderboard')}}</strong></h1>
@@ -28,13 +28,13 @@
                             <td><strong>{{user.rank}}</strong></td>
                             <td><strong><a style="color:white" href="{{url_for('account.profile', name=user.name)}}">{{user.fullname}}</a></strong></td>
                             <td><strong>{{user.score}}</strong></td>
-                        </tr> 
+                        </tr>
                         {% else %}
                         <tr>
                             <td>{{user.rank}}</td>
                             <td><strong><a href="{{url_for('account.profile', name=user.name)}}">{{user.fullname}}</a></strong></td>
                             <td>{{user.score}}</td>
-                        </tr> 
+                        </tr>
                         {%endif%}
                         {% endfor %}
                     </tbody>

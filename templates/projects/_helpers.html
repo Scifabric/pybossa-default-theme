@@ -49,7 +49,7 @@
     <a class="list-group-item {% if active_link=='settings'%}active{% endif %}" href="{{url_for('project.settings', short_name=project.short_name)}}">{{_('Settings')}}<i class="fa fa-chevron-right pull-right"></i></a>
     <a class="list-group-item {% if active_link=='auditlog'%}active{% endif %}" href="{{url_for('project.auditlog', short_name=project.short_name)}}">{{_('Audit Logs')}}<i class="fa fa-chevron-right pull-right"></i></a>
     {% endif %}
-    {% if (current_user.is_authenticated() and current_user.id in project.owners_ids
+    {% if (current_user.is_authenticated and current_user.id in project.owners_ids
     and current_user.pro) or current_user.admin %}
         {% if pro_features.get('webhooks_enabled') %}
         <a class="list-group-item {% if active_link=='webhook'%}active{% endif %}"  href="{{url_for('project.webhook_handler', short_name=project.short_name)}}">{{_('Webhooks')}}<i class="fa fa-chevron-right pull-right"></i></a>

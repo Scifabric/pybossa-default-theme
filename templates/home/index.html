@@ -13,7 +13,7 @@
         </div>
     </div>
 </section>
-{% if current_user.is_authenticated() %}
+{% if current_user.is_authenticated %}
 {% if historical_contributions %}
 {{ helper.render_grid_projects(historical_contributions, 'Historical Contributions', upload_method, current_user, section_class='home projects', title_size='2') }}
 {% endif %}

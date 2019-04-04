@@ -7,7 +7,7 @@
 {% block content %}
 <section class="project categories selector">
     <div class="container">
-        {% if current_user.is_authenticated() and (current_user.admin or current_user.subadmin) %}
+        {% if current_user.is_authenticated and (current_user.admin or current_user.subadmin) %}
         <div class="row" style="margin-top:30px;">
             <form id="project_search_form" method="get" action="{{ url_for('project.search') }}">
                 <fieldset>
@@ -40,7 +40,7 @@
                         {% for c in categories %}
                             <a class="floating-box {% if active_cat.short_name==c.short_name%}active{% endif %}" href="{{url_for('project.project_cat_index', category=c.short_name)}}" rel="nofollow">{{ c.name }}<i class="icon-chevron-right"></i></a>
                         {% endfor %}
-                        {% if current_user.is_authenticated() and current_user.admin %}
+                        {% if current_user.is_authenticated and current_user.admin %}
                             <a class="floating-box {% if active_cat.short_name=='draft'%}active{% endif %}" href="{{url_for('project.draft')}}" rel="nofollow">{{ _('Draft') }}<i class="icon-chevron-right"></i></a>
                         {% endif %}
                     </div>
