@@ -1,5 +1,6 @@
 <template>
   <div class="row">
+    {{ columns }} {{ data }}
     <table-element
       :data="data"
       :columns="columns"
@@ -25,7 +26,9 @@
         <div
           v-else
           :key="i"
-        />
+        >
+          {{ props.row[c.name] }}
+        </div>
       </template>
     </table-element>
   </div>

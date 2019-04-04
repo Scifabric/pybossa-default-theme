@@ -63,6 +63,8 @@ export const getters = {
 
   [types.GET_TABLE_FORM_VALID]: state => {
     /* Determine if Table Props are completed and valid */
+
+    /// Split
     const columns = state.columnKeys.map(id2 => (state.columnsListObj[id2]));
     const anyColumnNameEmpty =
         columns.filter(c => c.name === '').length > 0;
@@ -108,16 +110,15 @@ export const mutations = {
     delete state.columnsListObj[id];
     state.columnKeys = state.columnKeys.filter(i => i !== id);
   },
-  [types.MUTATE_TABLE_UPDATE_DATA_ROW]: (state, payload) => {
-    state.dataRowObj[payload.id] = payload;
-  },
   [types.MUTATE_TABLE_ADD_COLUMN]: (state) => {
     state.colCounter++;
     const newObj = getColumnObject(state.colCounter);
     state.columnKeys.push(newObj.id);
     state.columnsListObj = { ...state.columnsListObj, [newObj.id]: newObj };
   },
-
+  [types.MUTATE_TABLE_UPDATE_DATA_ROW]: (state, payload) => {
+    state.dataRowObj[payload.id] = payload;
+  },
   [types.MUTATE_TABLE_ADD_DATA_ROW]: (state) => {
     const id = utils.uniqueID();
     state.dataRowKeys.push(id);
