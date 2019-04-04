@@ -1,14 +1,12 @@
 import * as types from '../types';
 import utils from '../../utils';
-const prop = (value, isVariable) => {
-  return { value, isVariable };
-};
+
 export const getColumnObject = id => {
   return {
     name: '',
     header: '',
     component: 'plain-text',
-    id: `Columns ${id}`,
+    id: `Column ${id}`,
     isDirty: false
   };
 };
@@ -19,7 +17,7 @@ export const initialState = () => {
   return {
     id: utils.uniqueID(),
     name: { value: '', isDirty: false },
-    data: { ...prop('', true), list: [], isDirty: false },
+    data: { value: '', isVariable: true, isDirty: false },
     columnKeys: [firstElement.id],
     columnsListObj,
     dataRowKeys: [],
@@ -42,10 +40,18 @@ export const getters = {
     columns.forEach(col => {
       options.headings[col.name] = col.header ? col.header : col.name;
     });
-    const list = state.dataRowKeys.map(id => (state.dataRowObj[id]));
-    const data = { ...state.data, list };
 
-    return { data, options, columns };
+    const list = state.dataRowKeys.map(id => {
+      const row = {};
+      columns.forEach(col => {
+        row[col.name] = state.dataRowObj[id][col.id];
+      });
+      return row;
+    });
+
+    const data = { ...state.data, list };
+    const name = state.name.value;
+    return { name, data, options, columns };
   },
   [types.GET_TABLE_COLUMNS_LIST]: state => {
     return state.columnKeys.map(id => (state.columnsListObj[id]));
@@ -76,27 +82,18 @@ export const getters = {
         state.data.isVariable && state.data.value === '';
     const isAnswerFieldRequired = anyColumnComponent && state.name.value === '';
 
-    if (
-      isFormUntouched ||
-        isDataNameEmptyAndRequired ||
-        isAnswerFieldRequired ||
-        anyColumnNameEmpty ||
-        isAnswerFieldDirty ||
-        anyDirtyEmptyColumn ||
-        repeatedColName
-    ) {
-      return false;
-    } else {
-      return true;
-    }
+    return !(isFormUntouched ||
+      isDataNameEmptyAndRequired ||
+      isAnswerFieldRequired ||
+      anyColumnNameEmpty ||
+      isAnswerFieldDirty ||
+      anyDirtyEmptyColumn ||
+      repeatedColName);
   }
-
 };
 
 export const mutations = {
-  [types.MUTATE_TABLE_FORM]: (state, payload) => {
-    state = payload;
-  },
+
   [types.MUTATE_TABLE_NAME]: (state, payload) => {
     state.name = payload;
   },
@@ -146,15 +143,9 @@ export const mutations = {
   }
 };
 
-export const actions = {
-  [types.UPDATE_TABLE_FORM]: ({ commit }, payload) => {
-    commit(types.MUTATE_TABLE_FORM, payload);
-  }
-};
-
 export default {
   state,
   mutations,
-  actions,
+  actions: {},
   getters
 };

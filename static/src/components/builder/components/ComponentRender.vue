@@ -53,7 +53,7 @@ export default {
       } else if (this.selectedComponent === 'table-creator') {
         const data = this.form.data.isVariable
           ? [{}]
-          : utils.getTableData(this.form);
+          : this.form.data.list;
         return {
           name: 'table-creator',
           props: {

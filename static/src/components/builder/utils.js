@@ -46,23 +46,6 @@ export default {
     });
     return options;
   },
-  getTableData: function (form) {
-    const columnsObjects = form.columns.map(col => {
-      return { id: col.id, name: col.name };
-    });
-    const cleanData = form.data.list.map(function (obj) {
-      const item = { ...obj };
-
-      delete item.staticDataId;
-      delete item['hide-delete'];
-      columnsObjects.forEach(e => {
-        item[e.name] = item[e.id];
-        delete item[e.id];
-      });
-      return item;
-    });
-    return cleanData;
-  },
   getSnippet: function (component, form) {
     if (component === 'TABLE') {
       return this.getTableCode(form);
@@ -98,11 +81,11 @@ export default {
 
   getTableCode: function (form) {
     const columns = form.columns.map(col => col.name);
-    const data = this.getTableData(form);
+
     const formForTemplate = {
       name: form.name,
       data: !form.data.isVariable
-        ? JSON.stringify(data)
+        ? JSON.stringify(form.data.list)
         : form.data.value
           ? form.data.value
           : '',

@@ -153,8 +153,8 @@
               Add Table Data
             </label>
             <input
-              v-if="data.isVariable"
-              :name="data.value"
+              v-show="data.isVariable"
+              :value="data.value"
               class="form-control form-control-sm"
               type="text"
               @input="updateData({value: $event.target.value, isVariable: data.isVariable})"

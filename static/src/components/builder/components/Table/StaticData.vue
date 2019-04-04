@@ -1,9 +1,8 @@
-/* eslint-disable vue/require-prop-types */
 <template>
   <div class="row">
     <v-client-table
       ref="staticDataTable"
-      :data="form.data.list"
+      :data="data"
       :columns="columns"
       :options="options"
       name="staticDataTable"
@@ -60,8 +59,7 @@
 import Vue from 'vue';
 import * as types from '../../store/types';
 import { ClientTable } from 'vue-tables-2';
-import utils from '../../utils';
-import cloneDeep from 'lodash';
+
 import { mapGetters, mapMutations } from 'vuex';
 Vue.use(ClientTable, {});
 export default {
@@ -76,7 +74,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      form: types.GET_TABLE_PROPS
+      form: types.GET_TABLE_PROPS,
+      data: types.GET_TABLE_DATA_LIST
     }),
     options: {
       get () {

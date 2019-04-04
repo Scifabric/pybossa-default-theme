@@ -40,7 +40,7 @@ export const getters = {
     return state.checkboxIdKeys.map(id => (state.checkboxListObj[id]));
   },
   [types.GET_CHECKBOX_INPUT_FORM_VALID]: () => {
-    return state.isValidForm;
+    return { isValidForm: state.isValidForm };
   }
 };
 
