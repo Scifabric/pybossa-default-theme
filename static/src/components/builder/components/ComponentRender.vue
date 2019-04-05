@@ -4,22 +4,12 @@ import components from '@dtwebservices/task-presenter-components';
 import TableCreator from './Table/TableCreator.vue';
 import CheckboxCreator from './CheckboxInput/CheckboxCreator.vue';
 import { ClientTable } from 'vue-tables-2';
-import utils from '../utils';
 
 Vue.component('static-task-timer', {
   template: '<p>Time Remaining: 59 minute s, 43 seconds</p>'
 });
 
 Vue.use(ClientTable, {});
-export const getOptions = function (columnDetails) {
-  const options = utils.getOptions(columnDetails);
-  options.filterByColumn = false;
-  options.filterable = [];
-  options.sortable = [];
-  options.texts = { filter: '', count: '' };
-
-  return options;
-};
 
 export default {
   name: 'ComponentRender',

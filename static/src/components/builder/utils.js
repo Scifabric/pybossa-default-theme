@@ -14,7 +14,7 @@ import submitButtonTemplate from './components/helpers/submitButtonTemplate.html
 import submitLastButtonTemplate from './components/helpers/submitLastButtonTemplate.html';
 import slotTemplate from './components/Table/slotTemplate.html';
 
-const templates = {
+export const templates = {
   TEXT_INPUT: textInputTemplate,
   CHECKBOX_INPUT: checkboxInputTemplate,
   TABLE: tableTemplate,
@@ -36,16 +36,7 @@ export default {
         .substr(2, 9)
     );
   },
-  getOptions: function (columns) {
-    const options = {
-      headings: {}
-    };
 
-    columns.forEach(col => {
-      options.headings[col.name] = col.header ? col.header : col.name;
-    });
-    return options;
-  },
   getSnippet: function (component, form) {
     if (component === 'TABLE') {
       return this.getTableCode(form);
@@ -80,6 +71,7 @@ export default {
   },
 
   getTableCode: function (form) {
+    console.log(form);
     const columns = form.columns.map(col => col.name);
 
     const formForTemplate = {
