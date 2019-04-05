@@ -1,9 +1,14 @@
 /* eslint-disable no-undef */
-import { mutations, getters, state, getColumnObject, initialState } from '../../components/builder/store/modules/table';
+import { mutations, getters, state, getColumnObject, initialState, isAnyDirtyColumn, isAnswerFieldDirty, isAnswerFieldRequired,
+  isAnyColumnComponent, isAnyColumnNameEmpty, isAnyColumnNameRepeated, isAnyDirtyEmptyColumn,
+  isDataNameEmptyAndRequired, isFormUntouched } from '../../components/builder/store/modules/table';
 import * as types from '../../components/builder/store/types';
 describe('Table store', () => {
-  let localState = { ...state };
+  let localState = { };
 
+  beforeEach(() => {
+    localState = initialState();
+  });
   it('Initial State', () => {
     expect(localState.id).toBeDefined();
     expect(localState.name).toBeDefined();
@@ -33,16 +38,15 @@ describe('Table store', () => {
   });
 
   it('GET_TABLE_PROPS ', () => {
-    const currState = initialState();
-    currState.columnsListObj[currState.columnKeys[0]].name = 'testColName';
-    currState.columnsListObj[currState.columnKeys[0]].header = 'Header testColName';
-    currState.dataRowKeys = ['id1'];
-    currState.dataRowObj['id1'] = { id: 'id1', [currState.columnKeys[0]]: 'test data for testName' };
-    currState.data.isVariable = false;
-    currState.data.value = 'dataName';
-    currState.name.value = 'ansTableName';
+    localState.columnsListObj[localState.columnKeys[0]].name = 'testColName';
+    localState.columnsListObj[localState.columnKeys[0]].header = 'Header testColName';
+    localState.dataRowKeys = ['id1'];
+    localState.dataRowObj['id1'] = { id: 'id1', [localState.columnKeys[0]]: 'test data for testName' };
+    localState.data.isVariable = false;
+    localState.data.value = 'dataName';
+    localState.name.value = 'ansTableName';
 
-    const props = getters[types.GET_TABLE_PROPS](currState);
+    const props = getters[types.GET_TABLE_PROPS](localState);
     const expectedOptions = { headings: { testColName: 'Header testColName' } };
     expect(props.options).toEqual(expectedOptions);
 
@@ -65,10 +69,9 @@ describe('Table store', () => {
   });
 
   it('GET_TABLE_COLUMNS_LIST', () => {
-    const currState = initialState();
-    currState.columnsListObj[currState.columnKeys[0]].name = 'testColName';
-    currState.columnsListObj[currState.columnKeys[0]].header = 'Header testColName';
-    const columns = getters[types.GET_TABLE_COLUMNS_LIST](currState);
+    localState.columnsListObj[localState.columnKeys[0]].name = 'testColName';
+    localState.columnsListObj[localState.columnKeys[0]].header = 'Header testColName';
+    const columns = getters[types.GET_TABLE_COLUMNS_LIST](localState);
     const expectedColumns = [{
       component: 'plain-text',
       header: 'Header testColName',
@@ -80,73 +83,160 @@ describe('Table store', () => {
   });
 
   it('GET_TABLE_DATA_LIST', () => {
-    const currState = initialState();
-    let data = getters[types.GET_TABLE_DATA_LIST](currState);
+    let data = getters[types.GET_TABLE_DATA_LIST](localState);
     let expectedData = [];
 
-    currState.columnsListObj[currState.columnKeys[0]].name = 'testColName';
-    currState.columnsListObj[currState.columnKeys[0]].header = 'Header testColName';
-    currState.dataRowKeys = ['id1'];
-    currState.dataRowObj['id1'] = { id: 'id1', [currState.columnKeys[0]]: 'test data for testName' };
-    data = getters[types.GET_TABLE_DATA_LIST](currState);
+    localState.columnsListObj[localState.columnKeys[0]].name = 'testColName';
+    localState.columnsListObj[localState.columnKeys[0]].header = 'Header testColName';
+    localState.dataRowKeys = ['id1'];
+    localState.dataRowObj['id1'] = { id: 'id1', [localState.columnKeys[0]]: 'test data for testName' };
+    data = getters[types.GET_TABLE_DATA_LIST](localState);
     expectedData = [{ id: 'id1', 'Column 1': 'test data for testName' }];
     expect(data).toEqual(expectedData);
   });
 
-  it('GET_TABLE_FORM_VALID repeatedColName', () => {
-    const currState = initialState();
-    // repeatedColName
-    currState.data.isVariable = false;
-    currState.columnKeys.push('Column 2');
-    currState.columnsListObj[currState.columnKeys[0]].name = 'testColName';
-    currState.columnsListObj[currState.columnKeys[0]].header = 'Header testColName';
-    currState.columnsListObj[currState.columnKeys[1]] = { ...currState.columnsListObj[currState.columnKeys[0]] };
-    currState.columnsListObj[currState.columnKeys[1]].id = 'Column 2';
-    currState.columnsListObj[currState.columnKeys[1]].isDirty = true;
+  it('Validation isAnyDirtyColumn', () => {
+    const columns = [{
+      component: 'plain-text',
+      header: '',
+      id: 'Column 1',
+      isDirty: true,
+      name: ''
+    }];
+    expect(isAnyDirtyColumn(columns)).toBeTruthy();
+  });
 
-    currState.columnsListObj[currState.columnKeys[1]].name = 'Column 2adfsadfas';
-    let isValid = getters[types.GET_TABLE_FORM_VALID](currState);
-    expect(isValid).toBeTruthy();
+  it('Validation isAnyColumnComponent', () => {
+    const columns = [{
+      component: 'text-input',
+      header: '',
+      id: 'Column 1',
+      isDirty: false,
+      name: ''
+    }];
+    expect(isAnyColumnComponent(columns)).toBeTruthy();
+  });
+
+  it('Validation isAnyColumnNameEmpty', () => {
+    const columns = [{
+      component: 'plain-text',
+      header: 'Header testColName',
+      id: 'Column 1',
+      isDirty: false,
+      name: ''
+    }];
+    expect(isAnyColumnNameEmpty(columns)).toBeTruthy();
+  });
+
+  it('Validation isAnyDirtyEmptyColumn', () => {
+    const columns = [{
+      component: 'plain-text',
+      header: 'Header testColName',
+      id: 'Column 1',
+      isDirty: true,
+      name: ''
+    }];
+    expect(isAnyDirtyEmptyColumn(columns)).toBeTruthy();
+  });
+
+  it('Validation isAnyColumnNameRepeated', () => {
+    const columns = [{
+      component: 'plain-text',
+      header: '',
+      id: 'Column 1',
+      isDirty: true,
+      name: 'sameName'
+    },
+    {
+      component: 'plain-text',
+      header: '',
+      id: 'Column 2',
+      isDirty: true,
+      name: 'sameName'
+    }];
+    expect(isAnyColumnNameRepeated(columns)).toBeTruthy();
+  });
+
+  it('Validation isDataNameEmptyAndRequired', () => {
+    const state = { data: { value: '', isDirty: true, isVariable: true } };
+    expect(isDataNameEmptyAndRequired(state)).toBeTruthy();
+    state.data.isVariable = false;
+    expect(isDataNameEmptyAndRequired(state)).toBeFalsy();
+  });
+
+  it('Validation isFormUntouched', () => {
+    const state = { name: { value: '', isDirty: true } };
+    expect(isFormUntouched(state, false)).toBeFalsy();
+    state.name.isDirty = false;
+    expect(isFormUntouched(state, true)).toBeFalsy();
+    expect(isFormUntouched(state, false)).toBeTruthy();
+  });
+
+  it('Validation isAnswerFieldDirty', () => {
+    const state = { name: { value: '', isDirty: true } };
+    expect(isAnswerFieldDirty(state)).toBeTruthy();
+  });
+
+  it('Validation isFormUntouched', () => {
+    const state = { name: { value: '', isDirty: true } };
+    expect(isAnswerFieldRequired(state, true)).toBeTruthy();
+    expect(isAnswerFieldRequired(state, false)).toBeFalsy();
+  });
+
+  it('GET_TABLE_FORM_VALID repeatedColName', () => {
+    localState.data.isVariable = false;
+    localState.columnKeys.push('Column 2');
+    localState.columnsListObj[localState.columnKeys[0]].name = 'testColName';
+    localState.columnsListObj[localState.columnKeys[0]].header = 'Header testColName';
+    localState.columnsListObj[localState.columnKeys[1]] = { ...localState.columnsListObj[localState.columnKeys[0]] };
+    localState.columnsListObj[localState.columnKeys[1]].id = 'Column 2';
+    localState.columnsListObj[localState.columnKeys[1]].isDirty = true;
+
+    localState.columnsListObj[localState.columnKeys[1]].name = 'testColName';
+    let isValid = getters[types.GET_TABLE_FORM_VALID](localState);
+    expect(isValid).toBeFalsy();
   });
 
   it('GET_TABLE_FORM_VALID isFormUntouched ', () => {
-    const currState = initialState();
-    const isValid = getters[types.GET_TABLE_FORM_VALID](currState);
+    const isValid = getters[types.GET_TABLE_FORM_VALID](localState);
     expect(isValid).toBeFalsy();
   });
 
   it('GET_TABLE_FORM_VALID anyDirtyColumn', () => {
-    const currState = initialState();
-    currState.columnsListObj[currState.columnKeys[0]].isDirty = true;
-    const isValid = getters[types.GET_TABLE_FORM_VALID](currState);
+    localState.columnsListObj[localState.columnKeys[0]].isDirty = true;
+    const isValid = getters[types.GET_TABLE_FORM_VALID](localState);
     expect(isValid).toBeFalsy();
   });
 
   it('GET_TABLE_FORM_VALID isDataNameEmptyAndRequired', () => {
-    const currState = initialState();
-    currState.data.isVariable = true;
-    currState.data.value = '';
-    currState.data.isDirty = true;
-    const isValid = getters[types.GET_TABLE_FORM_VALID](currState);
+    localState.data.isVariable = true;
+    localState.data.value = '';
+    localState.data.isDirty = true;
+    const isValid = getters[types.GET_TABLE_FORM_VALID](localState);
     expect(isValid).toBeFalsy();
   });
 
   it('GET_TABLE_FORM_VALID isAnswerFieldDirty', () => {
-    const currState = initialState();
-    currState.columnsListObj[currState.columnKeys[0]].component = 'text-input';
-    currState.name.isDirty = true;
-    const isValid = getters[types.GET_TABLE_FORM_VALID](currState);
+    localState.columnsListObj[localState.columnKeys[0]].component = 'text-input';
+    localState.name.isDirty = true;
+    const isValid = getters[types.GET_TABLE_FORM_VALID](localState);
     expect(isValid).toBeFalsy();
   });
 
   it('MUTATE_TABLE_NAME', () => {
-    mutations[types.MUTATE_TABLE_NAME](localState, 'name');
-    expect(localState.name).toBe('name');
+    mutations[types.MUTATE_TABLE_NAME](localState, { value: 'name' });
+    expect(localState.name.value).toBe('name');
+    expect(localState.name.isDirty).toBeTruthy();
+
+    mutations[types.MUTATE_TABLE_NAME](localState, { });
+    expect(localState.name.isDirty).toBeTruthy();
   });
 
   it('MUTATE_TABLE_DATA', () => {
-    mutations[types.MUTATE_TABLE_DATA](localState, { value: 'name', isVariable: true, isDirty: false });
-    expect(localState.data).toEqual({ value: 'name', isVariable: true, isDirty: false });
+    mutations[types.MUTATE_TABLE_DATA](localState, { value: 'name', isVariable: true });
+    expect(localState.data).toEqual({ value: 'name', isVariable: true, isDirty: true });
+    mutations[types.MUTATE_TABLE_DATA](localState, { });
+    expect(localState.data).toEqual({ value: 'name', isVariable: true, isDirty: true });
   });
 
   it('MUTATE_TABLE_UPDATE_COLUMN', () => {
@@ -161,44 +251,44 @@ describe('Table store', () => {
       name: 'colName'
     });
   });
-  it('MUTATE_TABLE_ADD_COLUMN MUTATE_TABLE_DELETE_COLUMN', () => {
-    const currState = initialState();
-    mutations[types.MUTATE_TABLE_ADD_COLUMN](currState);
-    expect(currState.columnKeys).toEqual(['Column 1', 'Column 2']);
 
-    mutations[types.MUTATE_TABLE_DELETE_COLUMN](currState, 'Column 1');
-    expect(currState.columnKeys).toEqual(['Column 2']);
+  it('MUTATE_TABLE_ADD_COLUMN MUTATE_TABLE_DELETE_COLUMN', () => {
+    mutations[types.MUTATE_TABLE_ADD_COLUMN](localState);
+    expect(localState.columnKeys).toEqual(['Column 1', 'Column 2']);
+    const props = getters[types.GET_TABLE_PROPS](localState);
+    expect(props.columns.length).toBe(2);
+
+    mutations[types.MUTATE_TABLE_DELETE_COLUMN](localState, 'Column 1');
+    expect(localState.columnKeys).toEqual(['Column 2']);
   });
 
   it('MUTATE_TABLE_ADD_DATA_ROW and MUTATE_TABLE_DELETE_DATA_ROW, MUTATE_TABLE_UPDATE_DATA_ROW', () => {
-    const currState = initialState();
-    mutations[types.MUTATE_TABLE_ADD_DATA_ROW](currState);
-    expect(currState.dataRowKeys.length).toBe(1);
-    expect(currState.dataRowObj[currState.dataRowKeys[0]]['Column 1']).toBeDefined();
+    mutations[types.MUTATE_TABLE_ADD_DATA_ROW](localState);
+    expect(localState.dataRowKeys.length).toBe(1);
+    expect(localState.dataRowObj[localState.dataRowKeys[0]]['Column 1']).toBeDefined();
 
-    mutations[types.MUTATE_TABLE_UPDATE_DATA_ROW](currState, { 'Column 1': 'TEST', id: currState.dataRowKeys[0] });
-    expect(currState.dataRowObj[currState.dataRowKeys[0]]['Column 1']).toBe('TEST');
-    mutations[types.MUTATE_TABLE_DELETE_DATA_ROW](currState, currState.dataRowKeys[0]);
-    expect(currState.dataRowKeys.length).toBe(0);
+    mutations[types.MUTATE_TABLE_UPDATE_DATA_ROW](localState, { 'Column 1': 'TEST', id: localState.dataRowKeys[0] });
+    expect(localState.dataRowObj[localState.dataRowKeys[0]]['Column 1']).toBe('TEST');
+    mutations[types.MUTATE_TABLE_DELETE_DATA_ROW](localState, localState.dataRowKeys[0]);
+    expect(localState.dataRowKeys.length).toBe(0);
   });
 
   it('MUTATE_CLEAR_TABLE_FORM', () => {
-    const currState = initialState();
-    const col = { ...currState.columnsListObj[currState.columnKeys[0]] };
+    const col = { ...localState.columnsListObj[localState.columnKeys[0]] };
     col.name = 'colName';
     mutations[types.MUTATE_TABLE_UPDATE_COLUMN](localState, col);
-    mutations[types.MUTATE_TABLE_ADD_DATA_ROW](currState);
-    mutations[types.MUTATE_TABLE_UPDATE_DATA_ROW](currState, { 'Column 1': 'TEST', id: currState.dataRowKeys[0] });
-    expect(currState).not.toEqual(initialState());
-    mutations[types.MUTATE_CLEAR_TABLE_FORM](currState);
+    mutations[types.MUTATE_TABLE_ADD_DATA_ROW](localState);
+    mutations[types.MUTATE_TABLE_UPDATE_DATA_ROW](localState, { 'Column 1': 'TEST', id: localState.dataRowKeys[0] });
+    expect(localState).not.toEqual(initialState());
+    mutations[types.MUTATE_CLEAR_TABLE_FORM](localState);
 
     const initial = initialState();
-    expect(currState.name).toEqual(initial.name);
-    expect(currState.data).toEqual(initial.data);
-    expect(currState.dataRowKeys.length).toBe(0);
-    expect(currState.dataRowObj).toEqual({});
-    expect(currState.columnKeys.length).toBe(1);
-    expect(currState.columnsListObj['Column 1']).toBeDefined();
-    expect(currState.colCounter).toBe(1);
+    expect(localState.name).toEqual(initial.name);
+    expect(localState.data).toEqual(initial.data);
+    expect(localState.dataRowKeys.length).toBe(0);
+    expect(localState.dataRowObj).toEqual({});
+    expect(localState.columnKeys.length).toBe(1);
+    expect(localState.columnsListObj['Column 1']).toBeDefined();
+    expect(localState.colCounter).toBe(1);
   });
 });

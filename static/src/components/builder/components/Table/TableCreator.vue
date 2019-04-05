@@ -1,6 +1,5 @@
 <template>
   <div class="row">
-    {{ columns }} {{ data }}
     <table-element
       :data="data"
       :columns="columns"

@@ -1,6 +1,40 @@
 import * as types from '../types';
 import utils from '../../utils';
 
+export const isAnyColumnNameEmpty = (columns) => {
+  return columns.filter(c => c.name === '').length > 0;
+};
+
+export const isAnyDirtyEmptyColumn = (columns) => {
+  return columns.filter(c => c.name === '' && c.isDirty).length > 0;
+};
+
+export const isAnswerFieldDirty = (state) => {
+  return state.name.value === '' && state.name.isDirty;
+};
+export const isAnyDirtyColumn = (columns) => {
+  return columns.filter(c => c.isDirty).length > 0;
+};
+
+export const isFormUntouched = (state, anyDirtyColumn) => {
+  return !state.name.isDirty && !anyDirtyColumn;
+};
+export const isAnyColumnComponent = (columns) => {
+  return columns.filter(col => col.component !== 'plain-text').length > 0;
+};
+export const isAnyColumnNameRepeated = (columns) => {
+  return columns.length !==
+  [...new Set(columns.map(c => c.name))].length;
+};
+
+export const isDataNameEmptyAndRequired = (state) => {
+  return state.data.isVariable && state.data.value === '';
+};
+
+export const isAnswerFieldRequired = (state, anyColumnComponent) => {
+  return anyColumnComponent && state.name.value === '';
+};
+
 export const getColumnObject = id => {
   return {
     name: '',
@@ -60,35 +94,23 @@ export const getters = {
   [types.GET_TABLE_DATA_LIST]: state => {
     return state.dataRowKeys.map(id => (state.dataRowObj[id]));
   },
-
   [types.GET_TABLE_FORM_VALID]: state => {
-    /* Determine if Table Props are completed and valid */
-
-    /// Split
     const columns = state.columnKeys.map(id2 => (state.columnsListObj[id2]));
-    const anyColumnNameEmpty =
-        columns.filter(c => c.name === '').length > 0;
-    const anyDirtyEmptyColumn =
-        columns.filter(c => c.name === '' && c.isDirty).length > 0;
-    const isAnswerFieldDirty =
-        (state.name.value === '' && state.isVariable) ||
-        (state.name.value === '' && state.name.isDirty);
-    const anyDirtyColumn = columns.filter(c => c.isDirty).length > 0;
-    const isFormUntouched = !state.name.isDirty && !anyDirtyColumn;
-    const anyColumnComponent =
-        columns.filter(col => col.component !== 'plain-text').length > 0;
-    const repeatedColName =
-        columns.length !==
-        [...new Set(columns.map(c => c.name))].length;
-    const isDataNameEmptyAndRequired =
-        state.data.isVariable && state.data.value === '';
-    const isAnswerFieldRequired = anyColumnComponent && state.name.value === '';
+    const anyDirtyColumn = isAnyDirtyColumn(columns);
+    const anyColumnComponent = isAnyColumnComponent(columns);
+    const dataNameEmptyAndRequired = isDataNameEmptyAndRequired(state);
+    const anyColumnNameEmpty = isAnyColumnNameEmpty(columns);
+    const anyDirtyEmptyColumn = isAnyDirtyEmptyColumn(columns);
+    const answerFieldDirty = isAnswerFieldDirty(state);
+    const formUntouched = isFormUntouched(state, anyDirtyColumn);
+    const repeatedColName = isAnyColumnNameRepeated(columns);
+    const answerFieldRequired = isAnswerFieldRequired(state, anyColumnComponent);
 
-    return !(isFormUntouched ||
-      isDataNameEmptyAndRequired ||
-      isAnswerFieldRequired ||
+    return !(formUntouched ||
+      dataNameEmptyAndRequired ||
+      answerFieldRequired ||
       anyColumnNameEmpty ||
-      isAnswerFieldDirty ||
+      answerFieldDirty ||
       anyDirtyEmptyColumn ||
       repeatedColName);
   }
@@ -97,11 +119,16 @@ export const getters = {
 export const mutations = {
 
   [types.MUTATE_TABLE_NAME]: (state, payload) => {
-    state.name = payload;
+    const name = { value: '', isDirty: true };
+    name.value = payload.value !== undefined ? payload.value : state.name.value;
+    name.isDirty = true;
+
+    state.name = name;
   },
   [types.MUTATE_TABLE_DATA]: (state, payload) => {
-    state.data.value = payload.value;
-    state.data.isVariable = payload.isVariable;
+    state.data.value = payload.value !== undefined ? payload.value : state.data.value;
+    state.data.isVariable = payload.isVariable !== undefined ? payload.isVariable : state.data.isVariable;
+    state.data.isDirty = true;
   },
   [types.MUTATE_TABLE_UPDATE_COLUMN]: (state, payload) => {
     state.columnsListObj[payload.id] = payload;

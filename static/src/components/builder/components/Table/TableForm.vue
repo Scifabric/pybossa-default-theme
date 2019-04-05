@@ -104,8 +104,8 @@
                   'danger-validation': name.value === ''
                 }"
                 type="text"
-                @input="updateName({value: $event.target.value, isDirty: true})"
-                @blur="updateName({value: name.value, isDirty: true})"
+                @input="updateName({value: $event.target.value})"
+                @blur="updateName"
               >
               <p v-if="name.value === '' && name.isDirty">
                 This field is required!
@@ -132,6 +132,7 @@
                   type="radio"
                   @change="updateData({value: data.value, isVariable: false})"
                 >
+
                 <label
                   class="col-lables"
                   for="static"
@@ -155,10 +156,17 @@
             <input
               v-show="data.isVariable"
               :value="data.value"
-              class="form-control form-control-sm"
               type="text"
+              :class="{
+                'form-control form-control-sm': true,
+                'danger-validation': data.value === '' && data.isDirty
+              }"
+              @blur="updateData"
               @input="updateData({value: $event.target.value, isVariable: data.isVariable})"
             >
+            <p v-if="data.isVariable && data.value === '' && data.isDirty ">
+              This field is required!
+            </p>
             <br>
           </div>
         </div>
