@@ -1,5 +1,4 @@
 <script>
-/* eslint-disable vue/require-default-prop */
 import Vue from 'vue';
 import components from '@dtwebservices/task-presenter-components';
 import { ClientTable } from 'vue-tables-2';
@@ -23,8 +22,6 @@ export default {
     renderFunctions: function () {
       if (this.selectedComponent === 'text-input') {
         return {
-          name: 'TextInput',
-          attrs: { id: this.form.id },
           props: {
             row: this.form['row'],
             'pyb-table-answer': this.form['pyb-table-answer']
@@ -32,10 +29,9 @@ export default {
         };
       } else if (this.selectedComponent === 'checkbox-input') {
         return {
-          attrs: { id: this.form.id },
           props: {
             row: this.form['row'],
-            'initial-value': 'true',
+            'initial-value': false,
             'pyb-table-answer': this.form['pyb-table-answer']
           }
         };

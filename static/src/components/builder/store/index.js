@@ -8,7 +8,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   strict: true,
-  state: {},
+  state: { message: { text: '' } },
   getters: {},
   mutations: {},
   actions: {},
