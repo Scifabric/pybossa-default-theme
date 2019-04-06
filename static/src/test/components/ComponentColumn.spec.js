@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, mount } from '@vue/test-utils';
 import ComponentColumns from '../../../src/components/builder/components/Table/ComponentColumns';
 
 describe('ComponentColumn', () => {
@@ -10,10 +10,16 @@ describe('ComponentColumn', () => {
       } });
 
     expect(wrapper.find('checkbox-input')).toEqual({ 'selector': 'checkbox-input' });
+    expect(wrapper.vm.renderFunctions().props).toEqual({
+      'initial-value': false,
+      'pyb-table-answer': {
+        '__col-id': 0
+      },
+      'row': {
+        '__col-id': 0
+      } });
   });
-});
 
-describe('ComponentColumn', () => {
   it('Preview TextInput', () => {
     const wrapper = shallowMount(ComponentColumns, {
       propsData: {
@@ -22,5 +28,18 @@ describe('ComponentColumn', () => {
       } });
 
     expect(wrapper.find('text-input')).toEqual({ 'selector': 'text-input' });
+    expect(wrapper.vm.renderFunctions().props).toEqual({
+      'pyb-table-answer': { '__col-id': 0 },
+      'row': { '__col-id': 0 } });
+  });
+
+  it('Preview Nothing', () => {
+    const wrapper = shallowMount(ComponentColumns, {
+      propsData: {
+        selectedComponent: '',
+        form: { }
+      } });
+
+    expect(wrapper.vm.renderFunctions()).toEqual(undefined);
   });
 });
