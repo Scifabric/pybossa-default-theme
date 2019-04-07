@@ -99,7 +99,6 @@ export default {
             isValidForm: this.isValidForm
           };
         }
-        console.log(form);
         return form;
       }
     },

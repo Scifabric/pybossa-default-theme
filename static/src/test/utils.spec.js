@@ -1,5 +1,4 @@
 import utils from '../components/builder/utils';
-import { templates } from '../components/builder/utils';
 import { state as textInput } from '../components/builder/store/modules/textInput';
 import { state as checkboxInput } from '../components/builder/store/modules/checkboxInput';
 

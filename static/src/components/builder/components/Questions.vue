@@ -206,6 +206,7 @@ export default {
         }
       } catch (error) {
         console.warn(error);
+        this.snippet = 'Currently unable to show a start template.';
         // eslint-disable-next-line no-undef
         pybossaNotify('An error occurred.', true, 'error');
       }

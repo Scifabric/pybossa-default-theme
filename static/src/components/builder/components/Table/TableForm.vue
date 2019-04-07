@@ -24,7 +24,7 @@
                 <label> {{ col.id }}</label>
                 <button
                   v-if="columns.length > 1"
-                  id="column-delete"
+                  :id="`delete-column-${index}`"
                   class="btn btn-times-delete pull-right fa fa-times"
                   @click="removeColumn(col.id)"
                 /><br>
@@ -32,6 +32,7 @@
                   * Column Name
                 </label>
                 <input
+                  :id="`column-name-${index}`"
                   :value="col.name"
                   :class="{
                     'form-control form-control-sm': true,
@@ -49,6 +50,7 @@
                   Column Heading
                 </label>
                 <input
+                  :id="`column-header-${index}`"
                   :value="col.header"
                   class="form-control form-control-sm"
                   type="text"
@@ -59,6 +61,7 @@
                   Column Display
                 </label>
                 <select
+                  :id="`column-component-${index}`"
                   :value="col.component"
                   class="form-control form-control-sm"
                   @blur="updateColumn(col)"
@@ -79,7 +82,7 @@
         </div>
         <div class="col-sm-10 col-md-11" />
         <button
-          id="add"
+          id="addButton"
           class="btn btn-default btn-sm col-sm-2 col-md-1"
           @click="addColumn"
         >
@@ -97,7 +100,7 @@
                 * Table Answer field Name
               </label>
               <input
-                id="table-name"
+                id="table-answer-name"
                 :value="name.value"
                 :class="{
                   'form-control form-control-sm': true,
@@ -132,7 +135,6 @@
                   type="radio"
                   @change="updateData({value: data.value, isVariable: false})"
                 >
-
                 <label
                   class="col-lables"
                   for="static"
@@ -155,6 +157,7 @@
             </label>
             <input
               v-show="data.isVariable"
+              id="data-source-name"
               :value="data.value"
               type="text"
               :class="{
@@ -243,9 +246,6 @@ export default {
       }
     }
   },
-  mounted () {
-    this.scrollToEnd();
-  },
   updated () {
     this.scrollToEnd();
   },
@@ -267,8 +267,10 @@ export default {
     },
     scrollToEnd () {
       var container = document.querySelector('.scroll');
-      var scrollHeight = container.scrollHeight;
-      container.scrollTop = scrollHeight;
+      if (container) {
+        var scrollHeight = container.scrollHeight;
+        container.scrollTop = scrollHeight;
+      }
     },
 
     invalidColumn: function (col) {

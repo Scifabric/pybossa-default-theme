@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import * as types from '../../types';
 
 export const state = {
@@ -18,7 +17,7 @@ export const state = {
       'Column 2': {
         name: 'col2',
         header: 'col2 header',
-        component: 'plain-text',
+        component: 'text-input',
         id: 'Column 2',
         isDirty: true
       }
@@ -30,6 +29,10 @@ export const state = {
 };
 
 export const getters = {
+  [types.GET_TABLE_COLUMNS_LIST]: jest.fn().mockReturnValue(
+    state.table.columnKeys.map(id => (state.table.columnsListObj[id]))
+  ),
+
   [types.GET_TABLE_DATA_LIST]: jest.fn().mockReturnValue(
     [{ id: 'id1', 'Column 1': 'testCol1Value', 'Column 2': 'testCol2Value' }]
   ),
