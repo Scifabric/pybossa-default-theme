@@ -1,67 +1,67 @@
 /* eslint-disable no-undef */
 import * as types from '../../types';
-export const state = {
-  checkboxInput: {
-    label: 'testLabel',
-    labelAdded: false,
-    checkboxIdKeys: ['id1', 'id2'],
-    checkboxListObj: {
-      'id1': {
-        id: 'id1',
-        'pyb-answer': 'checkboxanswer',
-        label: 'test checkbox1 label',
-        labelAdded: false,
-        'initial-value': { value: false },
-        isVariable: true
-      },
-      'id2': {
-        id: 'id2',
-        'pyb-answer': 'checkboxanswer2',
-        label: 'test checkbox2 label',
-        labelAdded: false,
-        'initial-value': { value: false },
-        isVariable: true
-      },
-      isValidForm: true
-    }
 
+export const state = {
+  table: {
+    id: 'idTable',
+    name: { value: 'ansName', isDirty: true },
+    data: { value: 'sourceData', isVariable: true, isDirty: true },
+    columnKeys: ['Column 1', 'Column 2'],
+    columnsListObj: {
+      'Column 1': {
+        name: 'col1',
+        header: 'col1 header',
+        component: 'plain-text',
+        id: 'Column 1',
+        isDirty: true
+      },
+      'Column 2': {
+        name: 'col2',
+        header: 'col2 header',
+        component: 'plain-text',
+        id: 'Column 2',
+        isDirty: true
+      }
+    },
+    dataRowKeys: ['id1'],
+    dataRowObj: { 'id1': { id: 'id1', 'Column 1': 'testCol1Value', 'Column 2': 'testCol2Value' } },
+    colCounter: 2
   }
 };
 
 export const getters = {
-  [types.GET_CHECKBOX_INPUT_PROPS]: jest.fn().mockReturnValue({ label: state.checkboxInput.label,
-    labelAdded: state.checkboxInput.labelAdded,
-    isValidForm: state.checkboxInput.isValidForm,
-    checkboxList: state.checkboxInput.checkboxIdKeys.map(id => (state.checkboxInput.checkboxListObj[id]))
-  }),
-  [types.GET_CHECKBOXLIST]: jest.fn().mockReturnValue(
-    [{
-      id: 'id1',
-      'pyb-answer': 'checkboxanswer',
-      label: 'test checkbox1 label',
-      labelAdded: false,
-      'initial-value': { value: false },
-      isVariable: true
-    },
-    {
-      id: 'id2',
-      'pyb-answer': 'checkboxanswer',
-      label: 'test checkbox2 label',
-      labelAdded: false,
-      'initial-value': { value: false },
-      isVariable: true
-    }]
+  [types.GET_TABLE_DATA_LIST]: jest.fn().mockReturnValue(
+    [{ id: 'id1', 'Column 1': 'testCol1Value', 'Column 2': 'testCol2Value' }]
   ),
-  [types.GET_CHECKBOX_INPUT_PROPS_VALID]: jest.fn().mockReturnValue(true)
+  [types.GET_TABLE_PROPS]: jest.fn().mockReturnValue(
+    { 'columns': [{ name: 'col1',
+      header: 'col1 header',
+      component: 'plain-text',
+      id: 'Column 1',
+      isDirty: true },
+    { name: 'col2',
+      header: 'col2 header',
+      component: 'plain-text',
+      id: 'Column 2',
+      isDirty: true }
+    ],
+    'data': [{ 'col1': 'testCol1Value' }, { 'col2': 'testCol2Value' }],
+    'options': { 'headings': { 'col1': 'col1 header', 'col2': 'col2 header' } },
+    'name': 'ansName' }
+  ),
+  [types.GET_TABLE_FORM_VALID]: jest.fn().mockReturnValue(true)
 };
 
 export const mutations = {
-  [types.MUTATE_CLEAR_CHECKBOX_INPUT_FORM]: jest.fn(),
-  [types.MUTATE_CHECKBOX_LABEL_ADDED]: jest.fn(),
-  [types.MUTATE_CHECKBOX_LABEL]: jest.fn(),
-  [types.MUTATE_CHECKBOX_UPDATE_LIST_ITEM]: jest.fn(),
-  [types.MUTATE_CHECKBOX_DELETE_LIST_ITEM]: jest.fn(),
-  [types.MUTATE_CHECKBOX_ADD_LIST_ITEM]: jest.fn()
+  [types.MUTATE_TABLE_DELETE_DATA_ROW]: jest.fn(),
+  [types.MUTATE_TABLE_ADD_DATA_ROW]: jest.fn(),
+  [types.MUTATE_TABLE_UPDATE_DATA_ROW]: jest.fn(),
+  [types.MUTATE_TABLE_ADD_COLUMN]: jest.fn(),
+  [types.MUTATE_TABLE_DELETE_COLUMN]: jest.fn(),
+  [types.MUTATE_TABLE_UPDATE_COLUMN]: jest.fn(),
+  [types.MUTATE_TABLE_DATA]: jest.fn(),
+  [types.MUTATE_TABLE_NAME]: jest.fn()
+
 };
 
 export default {

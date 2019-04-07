@@ -95,7 +95,7 @@ export const getters = {
     return state.dataRowKeys.map(id => (state.dataRowObj[id]));
   },
   [types.GET_TABLE_FORM_VALID]: state => {
-    const columns = state.columnKeys.map(id2 => (state.columnsListObj[id2]));
+    const columns = state.columnKeys.map(id => (state.columnsListObj[id]));
     const anyDirtyColumn = isAnyDirtyColumn(columns);
     const anyColumnComponent = isAnyColumnComponent(columns);
     const dataNameEmptyAndRequired = isDataNameEmptyAndRequired(state);

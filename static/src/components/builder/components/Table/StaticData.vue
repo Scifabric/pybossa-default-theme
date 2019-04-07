@@ -9,6 +9,7 @@
     >
       <div slot="afterTable">
         <button
+          id="addButton"
           class="btn btn-sm btn-default pull-right"
           @click="addDataListItem"
         >
@@ -27,7 +28,7 @@
           class=""
         >
           <input
-            id="table-name"
+            :id="`column-${i}`"
             :value="props.row[c.id]"
             class="form-control form-control-sm"
             type="text"
@@ -46,6 +47,7 @@
         slot-scope="props"
       >
         <button
+          :id="`delete-${props.row.id}`"
           class="btn btn-link fa fa-times"
           @click="deleteDataListItem(props.row.id)"
         />
