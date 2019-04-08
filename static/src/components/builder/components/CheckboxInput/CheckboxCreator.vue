@@ -25,10 +25,7 @@ export default {
   components: { ...components },
   props: {
     checkboxList: {
-      type: Array,
-      default: function () {
-        return [];
-      }
+      type: Array
     }
   }
 };
