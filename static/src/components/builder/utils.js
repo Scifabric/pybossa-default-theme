@@ -71,7 +71,6 @@ export default {
   },
 
   getTableCode: function (form) {
-    console.log(form);
     const columns = form.columns.map(col => col.name);
 
     const formForTemplate = {
