@@ -18,7 +18,7 @@ describe('TableCreator', () => {
   it('Render TableCreator', () => {
     const propsData = { 'name': 'table-creator',
       'form': { 'columns': [{ 'name': 'testCol1', 'header': 'Col 1', 'component': 'plain-text', 'id': 'Column 1', 'isDirty': true }],
-        'data': 'sourceName',
+        'data': [{}],
         'options': { 'headings': { 'testCol1': 'Col 1' } },
         'name': 'TableCreator' } };
     const wrapper = mount(TableCreator, {

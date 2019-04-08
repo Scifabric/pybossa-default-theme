@@ -1,13 +1,9 @@
-import Vuex from 'vuex';
 import { mount, createLocalVue } from '@vue/test-utils';
 import { __createMocks as createStoreMocks } from '../../components/builder/store';
 import TableForm from '../../components/builder/components/Table/TableForm';
 import * as types from '../../components/builder/store/types';
 
 jest.mock('../../components/builder/store');
-
-const localVue = createLocalVue();
-localVue.use(Vuex);
 
 describe('TableForm', () => {
   let storeMocks;

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { mutations, getters, state, getColumnObject, initialState, isAnyDirtyColumn, isAnswerFieldDirty, isAnswerFieldRequired,
+import { mutations, getters, getColumnObject, initialState, isAnyDirtyColumn, isAnswerFieldDirty, isAnswerFieldRequired,
   isAnyColumnComponent, isAnyColumnNameEmpty, isAnyColumnNameRepeated, isAnyDirtyEmptyColumn,
   isDataNameEmptyAndRequired, isFormUntouched } from '../../components/builder/store/modules/table';
 import * as types from '../../components/builder/store/types';

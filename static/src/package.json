@@ -92,6 +92,9 @@
   },
   "jest": {
     "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "node_modules"
+    ],
     "moduleFileExtensions": [
       "js",
       "vue",
@@ -101,6 +104,7 @@
       ".*\\.(vue)$": "vue-jest",
       "^.+\\.(js)$": "babel-jest",
       "^.+\\.html$": "<rootDir>/test/utils/htmlLoader.js"
-    }
+    },
+    "verbose": false
   }
 }

@@ -1,13 +1,9 @@
-import Vuex from 'vuex';
 import { mount, createLocalVue } from '@vue/test-utils';
 import { __createMocks as createStoreMocks } from '../../components/builder/store';
 import StaticData from '../../components/builder/components/Table/StaticData';
 import * as types from '../../components/builder/store/types';
 
 jest.mock('../../components/builder/store');
-
-const localVue = createLocalVue();
-localVue.use(Vuex);
 
 describe('StaticData', () => {
   let storeMocks;
