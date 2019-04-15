@@ -249,7 +249,7 @@
                     {% if t.calibration %}
                     <td>{{ 'Y' }}</td>
                     {% else %}
-                    <td>{{ 'N' }}</td>
+                    <td>{{ 'N' }}&nbsp;&nbsp;<a class="label label-warning" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) + '?mode=gold' }}">Make Gold</a>&nbsp;&nbsp;</td>
                     {% endif %}
                 {% endif %}
                 {% if 'actions' in filter_data.display_columns %}
