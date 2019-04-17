@@ -1,13 +1,9 @@
-import Vuex from 'vuex';
 import { mount, createLocalVue } from '@vue/test-utils';
 import { __createMocks as createStoreMocks } from '../../components/builder/store';
 import CheckboxInputForm from '../../components/builder/components/CheckboxInput/CheckboxInputForm';
 import * as types from '../../components/builder/store/types';
 
 jest.mock('../../components/builder/store');
-
-const localVue = createLocalVue();
-localVue.use(Vuex);
 
 describe('Checkbox', () => {
   let storeMocks;

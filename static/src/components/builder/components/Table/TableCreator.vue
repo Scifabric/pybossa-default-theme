@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <table-element
-      :data="data"
+      :data="form.data"
       :columns="columns"
       :name="form.name"
       :options="form.options"
@@ -47,15 +47,11 @@ export default {
   },
   data () {
     return {
-      columnsDetails: { name: 'text-input', link: 'checkbox-input' }
     };
   },
   computed: {
     columns: function () {
       return this.form.columns.map(col => col.name);
-    },
-    data: function () {
-      return this.form.data.isVariable ? [{}] : this.form.data;
     }
   }
 };

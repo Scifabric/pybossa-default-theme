@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-md-12">
               <div
-                v-for="(col, index) in form.columns"
+                v-for="(col, index) in columns"
                 :key="index"
                 class="row"
                 name="columns"
@@ -23,42 +23,49 @@
                 >
                 <label> {{ col.id }}</label>
                 <button
-                  v-if="form.columns.length > 1"
-                  id="column-delete"
+                  v-if="columns.length > 1"
+                  :id="`delete-column-${index}`"
                   class="btn btn-times-delete pull-right fa fa-times"
-                  @click="removeColumn(col)"
+                  @click="removeColumn(col.id)"
                 /><br>
                 <label class="col-lables">
                   * Column Name
                 </label>
                 <input
-                  v-model="col.name"
+                  :id="`column-name-${index}`"
+                  :value="col.name"
                   :class="{
                     'form-control form-control-sm': true,
                     'danger-validation': invalidColumn(col)
                   }"
                   name="name"
                   type="text"
-                  @blur="col.dirty = true"
-                  @click="col.dirty = true"
+                  @blur="updateColumn(col)"
+                  @input="updateColumn(col, 'name', $event.target.value)"
                 >
-                <p v-if="col.name === '' && col.dirty">
+                <p v-if="col.name === '' && col.isDirty">
                   This field is required!
                 </p>
                 <label class="col-lables">
                   Column Heading
                 </label>
                 <input
-                  v-model="col.header"
+                  :id="`column-header-${index}`"
+                  :value="col.header"
                   class="form-control form-control-sm"
                   type="text"
+                  @blur="updateColumn(col)"
+                  @input="updateColumn(col, 'header', $event.target.value)"
                 >
                 <label class="col-lables">
                   Column Display
                 </label>
                 <select
-                  v-model="col.component"
+                  :id="`column-component-${index}`"
+                  :value="col.component"
                   class="form-control form-control-sm"
+                  @blur="updateColumn(col)"
+                  @input="updateColumn(col, 'component', $event.target.value)"
                 >
                   <option
                     v-for="component in columnsComponent"
@@ -75,7 +82,7 @@
         </div>
         <div class="col-sm-10 col-md-11" />
         <button
-          id="add"
+          id="addButton"
           class="btn btn-default btn-sm col-sm-2 col-md-1"
           @click="addColumn"
         >
@@ -93,17 +100,17 @@
                 * Table Answer field Name
               </label>
               <input
-                id="table-name"
-                v-model="form.name.value"
+                id="table-answer-name"
+                :value="name.value"
                 :class="{
                   'form-control form-control-sm': true,
-                  'danger-validation': form.name.value === ''
+                  'danger-validation': name.value === ''
                 }"
                 type="text"
-                @click="form.name.dirty = true"
-                @blur="form.name.dirty = true"
+                @input="updateName({value: $event.target.value})"
+                @blur="updateName"
               >
-              <p v-if="form.name.value === '' && form.name.dirty">
+              <p v-if="name.value === '' && name.isDirty">
                 This field is required!
               </p>
             </div>
@@ -112,9 +119,9 @@
                 <label>Data</label><br>
                 <input
                   id="dynamic"
-                  v-model="form.data.isVariable"
-                  :value="true"
+                  :checked="data.isVariable"
                   type="radio"
+                  @change="updateData({value: data.value, isVariable: $event.target.value})"
                 >
                 <label
                   class="col-lables right-padding-radio"
@@ -124,9 +131,9 @@
                 </label>
                 <input
                   id="static"
-                  v-model="form.data.isVariable"
-                  :value="false"
+                  :checked="!data.isVariable"
                   type="radio"
+                  @change="updateData({value: data.value, isVariable: false})"
                 >
                 <label
                   class="col-lables"
@@ -137,28 +144,39 @@
               </div>
             </div>
             <label
-              v-if="form.data.isVariable"
+              v-if="data.isVariable"
               class="col-form-label-md pull-left"
             >
               * Field Data Source Name
             </label>
             <label
-              v-if="!form.data.isVariable"
+              v-if="!data.isVariable"
               class="col-form-label-md"
             >
               Add Table Data
             </label>
             <input
-              v-if="form.data.isVariable"
-              v-model="form.data.value"
-              class="form-control form-control-sm"
+              v-show="data.isVariable"
+              id="data-source-name"
+              :value="data.value"
               type="text"
+              :class="{
+                'form-control form-control-sm': true,
+                'danger-validation': data.value === '' && data.isDirty
+              }"
+              @blur="updateData"
+              @input="updateData({value: $event.target.value, isVariable: data.isVariable})"
             >
+            <p v-if="data.isVariable && data.value === '' && data.isDirty ">
+              This field is required!
+            </p>
             <br>
           </div>
         </div>
         <div class="col-md-12">
-          <static-data v-if="!form.data.isVariable" />
+          <static-data
+            v-if="!data.isVariable"
+          />
         </div>
       </div>
     </div>
@@ -196,10 +214,10 @@
 
 <script>
 import Vue from 'vue';
+import { mapState, mapMutations, mapGetters } from 'vuex';
 import StaticData from './StaticData.vue';
 import * as types from '../../store/types';
 import { ClientTable } from 'vue-tables-2';
-import { getColumnObject } from '../../store/modules/table';
 
 Vue.use(ClientTable, {});
 
@@ -212,78 +230,55 @@ export default {
     };
   },
   computed: {
-    form: {
-      get () {
-        const form = this.$store.getters[types.GET_TABLE_PROPS];
-        return form;
-      },
-      set (value) {
-        this.$store.dispatch(types.UPDATE_TABLE_FORM, value);
-      }
-    },
+    ...mapGetters({
+      columns: types.GET_TABLE_COLUMNS_LIST
+    }),
+    ...mapState({
+      name: (state) => state.table.name,
+      data: (state) => state.table.data
+    }),
+
     columnWithComponent: {
       get () {
         return (
-          this.form.columns.filter(col => col.component !== 'plain-text')
-            .length > 0
+          this.columns.filter(col => col.component !== 'plain-text').length > 0
         );
-      }
-    },
-
-    inValidColumns: {
-      get () {
-        return !(
-          this.form.columns.length ===
-          this.form.columns.filter(col => col.name !== '').length
-        );
-      }
-    },
-    columns: {
-      get () {
-        return [
-          ...this.form.columns
-            .filter(col => col.component === 'plain-text' && col.name !== '')
-            .map(col => col.name)
-        ];
       }
     }
-  },
-  mounted () {
-    this.scrollToEnd();
   },
   updated () {
     this.scrollToEnd();
   },
   methods: {
+    ...mapMutations({
+      'updateName': types.MUTATE_TABLE_NAME,
+      'updateData': types.MUTATE_TABLE_DATA,
+      'addColumn': types.MUTATE_TABLE_ADD_COLUMN,
+      'removeColumn': types.MUTATE_TABLE_DELETE_COLUMN
+    }),
+    updateColumn (column, fieldName, value) {
+      const newColumn = { ...column };
+      if (fieldName) {
+        newColumn[fieldName] = value;
+      }
+      newColumn.isDirty = true;
+      this.$store.commit(types.MUTATE_TABLE_UPDATE_COLUMN, newColumn);
+      this.scrollToEnd();
+    },
     scrollToEnd () {
       var container = document.querySelector('.scroll');
-      var scrollHeight = container.scrollHeight;
-      container.scrollTop = scrollHeight;
+      if (container) {
+        var scrollHeight = container.scrollHeight;
+        container.scrollTop = scrollHeight;
+      }
     },
-    addRow: function () {
-      this.form.data.list.push({});
-      this.$store.dispatch(types.UPDATE_TABLE_FORM, this.form);
-      this.scrollToEnd();
-    },
-    addColumn: function () {
-      this.form.colCounter++;
-      this.form.columns.push(getColumnObject(this.form.colCounter));
-      this.$store.dispatch(types.UPDATE_TABLE_FORM, this.form);
-      this.scrollToEnd();
-    },
-    removeColumn: function (colToRemove) {
-      this.form.columns = this.form.columns.filter(col => col !== colToRemove);
-      this.form.data.list.forEach(function (row) {
-        delete row[colToRemove.id];
-      });
-      this.$store.dispatch(types.UPDATE_TABLE_FORM, this.form);
-    },
+
     invalidColumn: function (col) {
-      const cols = this.form.columns.filter(c => c.name === col.name);
+      const cols = this.columns.filter(c => c.name === col.name);
       return (
         cols.length > 1 ||
-        (this.form.columns.length > 1 && col.name === '') ||
-        (col.name === '' && col.dirty)
+        (this.columns.length > 1 && col.name === '') ||
+        (col.name === '' && col.isDirty)
       );
     }
   }

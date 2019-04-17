@@ -14,7 +14,7 @@ import submitButtonTemplate from './components/helpers/submitButtonTemplate.html
 import submitLastButtonTemplate from './components/helpers/submitLastButtonTemplate.html';
 import slotTemplate from './components/Table/slotTemplate.html';
 
-const templates = {
+export const templates = {
   TEXT_INPUT: textInputTemplate,
   CHECKBOX_INPUT: checkboxInputTemplate,
   TABLE: tableTemplate,
@@ -36,33 +36,7 @@ export default {
         .substr(2, 9)
     );
   },
-  getOptions: function (columns) {
-    const options = {
-      headings: {}
-    };
 
-    columns.forEach(col => {
-      options.headings[col.name] = col.header ? col.header : col.name;
-    });
-    return options;
-  },
-  getTableData: function (form) {
-    const columnsObjects = form.columns.map(col => {
-      return { id: col.id, name: col.name };
-    });
-    const cleanData = form.data.list.map(function (obj) {
-      const item = { ...obj };
-
-      delete item.staticDataId;
-      delete item['hide-delete'];
-      columnsObjects.forEach(e => {
-        item[e.name] = item[e.id];
-        delete item[e.id];
-      });
-      return item;
-    });
-    return cleanData;
-  },
   getSnippet: function (component, form) {
     if (component === 'TABLE') {
       return this.getTableCode(form);
@@ -98,16 +72,16 @@ export default {
 
   getTableCode: function (form) {
     const columns = form.columns.map(col => col.name);
-    const data = this.getTableData(form);
+
     const formForTemplate = {
-      name: form.name.value,
+      name: form.name,
       data: !form.data.isVariable
-        ? JSON.stringify(data)
+        ? JSON.stringify(form.data.list)
         : form.data.value
           ? form.data.value
           : '',
       columns: JSON.stringify(columns),
-      options: JSON.stringify(this.getOptions(form.columns), null, '\t')
+      options: JSON.stringify(form.options, null, '\t')
     };
 
     const slotColumns = form.columns.filter(
