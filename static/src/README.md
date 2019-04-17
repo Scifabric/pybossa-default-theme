@@ -4,7 +4,10 @@
 2. Install webpack globally (with yarn or npm)
 3. Follow instructions:
 
-```
-yarn
-webpack
+```sh
+yarn # or npm install
+yarn webpack
+yarn watch # during development
+yarn test # to run tests
+yarn lint # to lint
 ```

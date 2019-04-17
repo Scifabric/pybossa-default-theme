@@ -7,6 +7,26 @@
 {% block projectcontent %}
 
 <div id="answerfieldsconfig">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            Warning
+        </div>
+        <div class="panel-body">
+            <p>
+                When these settings are present, all future consensus fields will be driven by the configurations below.
+                The "default" consensus fields will not be present unless they are explicitly configured below.
+            </p>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-body">
+            <p>The form below can be used to setup configurations for</p>
+            <ol>
+                <li><strong>Worker statistics</strong> (e.g. to measure the quality of a worker's answers)</li>
+                <li><strong>Consensus</strong> (to give a confidence scores to a task's answers)</li>
+            </ol>
+        </div>
+    </div>
     <fields-config></fields-config>
 </div>
 
