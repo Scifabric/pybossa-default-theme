@@ -193,8 +193,8 @@
                     <div>
                         <select id="gold_task" class="input-sm">
                             <option value="" style="font-weight: lighter;">--select--</option>
-                            <option value="1">Y</option>
-                            <option value="0">N</option>
+                            <option value="1">Update</option>
+                            <option value="0">Make Gold</option>
                             <option value="All">All</option>
                         </select>
                     </div>
@@ -247,9 +247,9 @@
                 {% endif %}
                 {% if 'gold_task' in filter_data.display_columns %}
                     {% if t.calibration %}
-                    <td>{{ 'Y' }}</td>
+                    <td style="width: 100%"><a class="label label-warning" style="display: block; margin: 0 0.25rem" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) + '?mode=gold' }}">Update</a></td>
                     {% else %}
-                    <td>{{ 'N' }}&nbsp;&nbsp;<a class="label label-warning" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) + '?mode=gold' }}">Make Gold</a>&nbsp;&nbsp;</td>
+                    <td style="width: 100%"><a class="label label-info" style="display: block; margin: 0 0.25rem" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) + '?mode=gold' }}">Make Gold</a></td>
                     {% endif %}
                 {% endif %}
                 {% if 'actions' in filter_data.display_columns %}
