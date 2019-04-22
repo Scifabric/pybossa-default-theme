@@ -13,7 +13,7 @@ const taskPresenterStoreOptions = getStoreOptions();
 taskPresenterStoreOptions.namespaced = true;
 
 export default new Vuex.Store({
-  state: { message: { text: '' } },
+  state: {},
   getters: {},
   mutations: {},
   actions: {},
