@@ -51,7 +51,7 @@
 import 'prismjs';
 import 'prismjs/themes/prism.css';
 import Prism from 'vue-prism-component';
-import ComponentRender from './ComponentRender';
+import ComponentRender from './ComponentRender/ComponentRender';
 import components from '@dtwebservices/task-presenter-components';
 import * as types from '../store/types';
 import utils from '../utils';
