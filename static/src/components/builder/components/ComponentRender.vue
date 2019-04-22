@@ -288,13 +288,6 @@ export default {
             }
           }
         };
-      } else if (this.selectedComponent === 'task-timer') {
-        return {
-          name: 'task-timer',
-          props: {
-            granularity: this.form.granularity
-          }
-        };
       }
       return {};
     }
