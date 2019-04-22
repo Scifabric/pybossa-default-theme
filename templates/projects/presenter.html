@@ -14,6 +14,10 @@
           <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
 <script>
+
+    if('{{mode}}' === 'gold'){
+        window.pybossa.isGoldMode = true;
+    }
     Modernizr.load({
         test: window.JSON,
         nope: '{{url_for('static', filename='js/vendor/json2.min.js')}}'
@@ -22,6 +26,7 @@
 <link rel="stylesheet" href="{{url_for('static', filename='css/small-navbar.css')}}"/>
 
 <div class="container" style="min-height:400px;">
+
     <div class="row">
         <div class="col-md-12" style="margin-top:-10px;">
             <h3><a href="{{url_for('project.details', short_name=project.short_name)}}">{{ project.name }}</a>: {{ _('Contribute') }}</h3>
