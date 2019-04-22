@@ -7,10 +7,30 @@
 {% block projectcontent %}
 
 <div id="answerfieldsconfig">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            Warning
+        </div>
+        <div class="panel-body">
+            <p>
+                When configurations are present below, all future consensus fields will be driven by them.
+                Default consensus fields will be present when no configurations are set.
+            </p>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-body">
+            <p>The form below can be used to setup configurations for</p>
+            <ol>
+                <li><strong>Worker statistics</strong> (e.g. to measure the quality of a worker's answers)</li>
+                <li><strong>Consensus</strong> (to give a confidence scores to a task's answers)</li>
+            </ol>
+        </div>
+    </div>
     <fields-config></fields-config>
 </div>
 
-<script src="/static/js/gen/answerfieldsconfig.min.js?2a8c9e707c3aef6f9ca0"></script>
+<script src="/static/js/gen/answerfieldsconfig.min.8de5cb0cf60607930d42.js"></script>
 
 <script>
 answerFields.setData({
