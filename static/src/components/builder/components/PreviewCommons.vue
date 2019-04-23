@@ -51,7 +51,7 @@
 import 'prismjs';
 import 'prismjs/themes/prism.css';
 import Prism from 'vue-prism-component';
-import ComponentRender from './ComponentRender';
+import ComponentRender from './ComponentRender/ComponentRender';
 import components from '@dtwebservices/task-presenter-components';
 import * as types from '../store/types';
 import utils from '../utils';
@@ -68,7 +68,7 @@ export default {
         TEXT_INPUT: 'text-input',
         CHECKBOX_INPUT: 'checkbox-creator',
         TABLE: 'table-creator',
-        TIMER: 'static-task-timer',
+        TIMER: 'task-timer',
         TASK_PRESENTER: 'task-presenter',
         CANCEL_BUTTON: 'cancel-button',
         SUBMIT_BUTTON: 'submit-button',
