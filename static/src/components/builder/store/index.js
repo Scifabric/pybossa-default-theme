@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import textInput from './modules/textInput';
 import checkboxInput from './modules/checkboxInput';
 import table from './modules/table';
-import components, {getStoreOptions, setNamespace} from '@dtwebservices/task-presenter-components';
+import { getStoreOptions, setNamespace } from '@dtwebservices/task-presenter-components';
 
 Vue.use(Vuex);
 

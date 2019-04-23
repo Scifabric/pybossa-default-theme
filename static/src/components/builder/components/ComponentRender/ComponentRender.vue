@@ -1,10 +1,10 @@
 <script>
-import Vue from 'vue'
-import components from '@dtwebservices/task-presenter-components'
-import TableCreator from '../Table/TableCreator.vue'
-import CheckboxCreator from '../CheckboxInput/CheckboxCreator.vue'
-import { ClientTable } from 'vue-tables-2'
-import componentStates from './states'
+import Vue from 'vue';
+import components from '@dtwebservices/task-presenter-components';
+import TableCreator from '../Table/TableCreator.vue';
+import CheckboxCreator from '../CheckboxInput/CheckboxCreator.vue';
+import { ClientTable } from 'vue-tables-2';
+import componentStates from './states';
 
 Vue.use(ClientTable, {});
 
@@ -24,13 +24,13 @@ export default {
     }
   },
 
-  data() {
+  data () {
     return {
       inProgress: true
     };
   },
 
-  async mounted() {
+  async mounted () {
     const { intervalSeconds, states } = componentStates[this.selectedComponent] || componentStates.default;
 
     // If there is just a single state then set it and return.
@@ -53,20 +53,20 @@ export default {
       await seconds(intervalSeconds);
     }
 
-    function* iterator() {
-      while(true) {
-        yield* states;
+    function* iterator () {
+      while (true) {
+        yield * states;
       }
     }
 
-    function seconds(num) {
-      return new Promise(function(fulfill, reject) {
-        window.setTimeout(fulfill, num * 1000);
+    function seconds (num) {
+      return new Promise(function (resolve) {
+        window.setTimeout(resolve, num * 1000);
       });
     }
   },
 
-  beforeDestroy() {
+  beforeDestroy () {
     this.inProgress = false;
   },
 
