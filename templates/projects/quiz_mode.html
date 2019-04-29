@@ -4,5 +4,30 @@
 {% set active_project  = "all" %}
 {% set active_link = "settings" %}
 {% block projectcontent %}
-{{ render_form(form, action_url=action_url) }}
+{{ render_form(form, action_url=action_url, form_id="quiz_form") }}
+<table id="quiz_result_table" class="table table-bordered table-striped table-hover" style="margin-top:15px">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Status</th>
+            <th>Right</th>
+            <th>Wrong</th>
+            <th>Remaining</th>
+            <th>Pass</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for user in all_user_quizzes %}
+        <tr>
+            <td>{{user.fullname}}</td>
+            <td>{{user.quiz.status}}</td>
+            <td>{{user.quiz.result.right}}</td>
+            <td>{{user.quiz.result.wrong}}</td>
+            <td>{{user.quiz.config.questions - user.quiz.result.right - user.quiz.result.wrong}}</td>
+            <td>{{user.quiz.config.pass}}</td>
+            <td><button name="reset" value="{{user.id}}" form="quiz_form">Reset</button></td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
 {% endblock %}
