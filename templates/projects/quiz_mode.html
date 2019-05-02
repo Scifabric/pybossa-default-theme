@@ -12,19 +12,19 @@
             <th>Status</th>
             <th>Right</th>
             <th>Wrong</th>
-            <th>Remaining</th>
-            <th>Pass</th>
+            <th>Questions</th>
+            <th>Passing</th>
         </tr>
     </thead>
     <tbody>
 {% for user in all_user_quizzes %}
         <tr>
             <td>{{user.fullname}}</td>
-            <td>{{user.quiz.status}}</td>
+            <td class="{{ {'passed':'bg-success','failed':'bg-danger'}.get(user.quiz.status, '') }}">{{user.quiz.status}}</td>
             <td>{{user.quiz.result.right}}</td>
             <td>{{user.quiz.result.wrong}}</td>
-            <td>{{user.quiz.config.questions - user.quiz.result.right - user.quiz.result.wrong}}</td>
-            <td>{{user.quiz.config.pass}}</td>
+            <td>{{user.quiz.config.questions}}</td>
+            <td>{{user.quiz.config.passing}}</td>
             <td><button name="reset" value="{{user.id}}" form="quiz_form">Reset</button></td>
         </tr>
 {% endfor %}
