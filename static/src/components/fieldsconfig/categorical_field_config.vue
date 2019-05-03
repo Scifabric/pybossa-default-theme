@@ -2,51 +2,51 @@
   <div class="row">
     <div class="col-md-12">
       <field-config-base
-          :name="name"
-          :type="type"
-          :retryForConsensus="retryForConsensus"
-          :editable="true"
-          :edit="this.editing"
-          @edit="editing=!editing"
-        />
+        :name="name"
+        :type="type"
+        :retry-for-consensus="retryForConsensus"
+        :editable="true"
+        :edit="editing"
+        @edit="editing=!editing"
+      />
     </div>
     <div class="row col-md-12">
-       <div class="col-md-12">
-      <p>
-        Labels: <span
-          v-for="(label, index) in labels || []"
-          :key="index"
-          class="pill label label-primary"
-        >{{ label }}</span>
-      </p>
-    </div>
-    <div
-      v-if="editing"
-      class="form-inline col-md-12"
-    >
-      <p>Add single label or multiple comma separated labels. The labels must exactly match the possible values of the response field.</p>
-      <div class="form-group">
-        <input
-          v-model="newLabel"
-          type="text"
-          class="form-control input-sm"
-        >
-        <div style="margin-top: 8px">
-          <span
-            class="btn btn-sm btn-primary"
-            @click="addLabels(false)"
+      <div class="col-md-12">
+        <p>
+          Labels: <span
+            v-for="(label, index) in labels || []"
+            :key="index"
+            class="pill label label-primary"
+          >{{ label }}</span>
+        </p>
+      </div>
+      <div
+        v-if="editing"
+        class="form-inline col-md-12"
+      >
+        <p>Add single label or multiple comma separated labels. The labels must exactly match the possible values of the response field.</p>
+        <div class="form-group">
+          <input
+            v-model="newLabel"
+            type="text"
+            class="form-control input-sm"
           >
-            Add Single
-          </span>
-          <span
-            class="btn btn-sm btn-primary"
-            @click="addLabels(true)"
-          >
-            Add Many
-          </span>
+          <div style="margin-top: 8px">
+            <span
+              class="btn btn-sm btn-primary"
+              @click="addLabels(false)"
+            >
+              Add Single
+            </span>
+            <span
+              class="btn btn-sm btn-primary"
+              @click="addLabels(true)"
+            >
+              Add Many
+            </span>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </template>

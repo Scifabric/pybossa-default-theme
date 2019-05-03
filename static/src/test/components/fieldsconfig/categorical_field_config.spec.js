@@ -1,5 +1,5 @@
 import Vuex from 'vuex';
-import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import CategoricalFieldConfig from '../../../components/fieldsconfig/categorical_field_config';
 import { storeSpecs } from '../../../components/fieldsconfig/store';
 import { cloneDeep } from 'lodash';

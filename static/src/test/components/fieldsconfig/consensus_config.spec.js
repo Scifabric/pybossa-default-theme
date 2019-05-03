@@ -2,11 +2,9 @@ import Vuex from 'vuex';
 import { mount, createLocalVue } from '@vue/test-utils';
 import ConsensusConfig from '../../../components/fieldsconfig/consensus_config.vue';
 import { storeSpecs } from '../../../components/fieldsconfig/store';
-import { shallowMount } from '@vue/test-utils'
+
 // import { storeSpecs } from '../../../components/fieldsconfig/store';
 import { cloneDeep } from 'lodash';
-import { wrap } from 'module';
-import { V4MAPPED } from 'dns';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -33,8 +31,8 @@ describe('ConsensusConfig', () => {
       propsData: {
         consensus_config: { threshold: 70, maxRetries: 10, redundancyDelta: 1 }
       }
-    })
-    wrapper.setProps({'consensus_config' : { threshold: 70, maxRetries: 10, redundancyDelta: 1 }});
+    });
+    wrapper.setProps({ 'consensus_config': { threshold: 70, maxRetries: 10, redundancyDelta: 1 } });
     const p = wrapper.findAll('p');
     expect(p).toHaveLength(9);
   });

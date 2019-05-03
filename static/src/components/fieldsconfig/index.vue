@@ -1,62 +1,66 @@
 <template>
   <div class="stats-config row">
     <div class="col-md-12">
-        <div
-          class="form-group"
-          :class="{'has-error': error}"
-        >
+      <div
+        class="form-group"
+        :class="{'has-error': error}"
+      >
         <div class="row">
-              <div class="col-md-7">
-                  <p> Path to answer field: </p>
-                  <input
-                    v-model="fieldName"
-                    type="text"
-                    class="form-control"
-                  >
-              </div>
-              <div class="col-md-5 pull-right">
-                  <p> Type of answer </p>
-                  <select
-                    v-model="fieldType"
-                    name="field-type"
-                    class="form-control"
-                    >
-                  <option
-                    v-for="(conf, type, index) in labelTypes.config"
-                    :key="index"
-                    :value="type"
-                  >
-                    {{ conf.display }}
-                  </option>
-                    </select>
-              </div>
+          <div class="col-md-7">
+            <p> Path to answer field: </p>
+            <input
+              v-model="fieldName"
+              type="text"
+              class="form-control"
+            >
+          </div>
+          <div class="col-md-5 pull-right">
+            <p> Type of answer </p>
+            <select
+              v-model="fieldType"
+              name="field-type"
+              class="form-control"
+            >
+              <option
+                v-for="(conf, type, index) in labelTypes.config"
+                :key="index"
+                :value="type"
+              >
+                {{ conf.display }}
+              </option>
+            </select>
+          </div>
         </div>
 
         <div class="checkbox">
-          <label >
-            <input type="checkbox"
-                  :checked="retryForConsensus"
-                  v-model="retryForConsensus">
-            Retry: Add redundancy if answers does not reach consensus.
+          <label>
+            <input
+              v-model="retryForConsensus"
+              type="checkbox"
+            >
+            Retry: Add redundancy if answers do not reach consensus.
           </label>
         </div>
-          <button
-            class="btn btn-sm btn-primary"
-            :disabled="!fieldName"
-            @click="_addField"
-          >
-            Add Field
-          </button>
-          <span
-            v-if="error"
-            class="help-block"
-          >{{ error }}</span>
-        </div>
+        <button
+          class="btn btn-sm btn-primary"
+          :disabled="!fieldName"
+          @click="_addField"
+        >
+          Add Field
+        </button>
+        <span
+          v-if="error"
+          class="help-block"
+        >{{ error }}</span>
+      </div>
 
       <div v-if="!Object.keys(answerFields).length">
         <p>No fields currently configured.</p>
       </div>
-      <div v-else class="scroll">
+      <div
+        v-else
+        class="scroll"
+      >
         <div
           v-for="(field, name) in answerFields"
           :key="name"
@@ -68,7 +72,7 @@
                 :is="labelTypes.config[field.type].component"
                 :key="name"
                 :name="name"
-                :retryForConsensus="answerFields[name].retryForConsensus"
+                :retry-for-consensus="answerFields[name].retryForConsensus"
                 :edit="isNewField(name)"
                 v-bind="field.config"
                 :type="labelTypes.config[field.type].display"
@@ -86,7 +90,6 @@
     </div>
   </div>
 </template>
-
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';
@@ -147,7 +150,7 @@ export default {
             'X-CSRFToken': this.csrfToken
           },
           credentials: 'same-origin',
-          body: JSON.stringify({'answerFieldsConfig': this.answerFields})
+          body: JSON.stringify({ 'answerFieldsConfig': this.answerFields })
         });
         if (res.ok) {
           const data = await res.json();
@@ -157,7 +160,7 @@ export default {
         }
       } catch (error) {
         console.warn(error);
-        console.log("an error occurred");
+        console.log('an error occurred');
         window.pybossaNotify('An error occurred.', true, 'error');
       }
     }

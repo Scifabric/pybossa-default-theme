@@ -1,92 +1,97 @@
 <template>
-    <div class="stats-config row">
+  <div class="stats-config row">
     <div class="col-md-12">
-        <div class="form-inline ">
-            <p> Consensus threshold: </p>
-            <div class="input-group">
-                    <input
-                    v-model="threshold"
-                    type="text"
-                    class="form-control "
-                    id="percentage-input"
-                    style="width: 100%"
-                >
-                <span class="input-group-addon" style="width:10%"> % </span>
-            </div>
-            <p> Add redundancy to retry: </p>
-            <input
-                v-model="redundancyDelta"
-                type="text"
-                class="form-control"
-                value="%"
-                style="width: 100%"
-            >
-            <p> Maximum redundancy: </p>
-            <input
-                v-model="maxRetries"
-                type="text"
-                class="form-control "
-                style="width: 100%"
-            >
-            <div class="error_msg" v-if="this.error_msg != ''"> {{ this.error_msg }} </div>
-            <br></br>
-            <div>
-                <button
-                    class="btn btn-primary"
-                    @click="save"
-                >
-                    Update
-                </button>
-            </div>
+      <div class="form-inline ">
+        <p> Consensus threshold: </p>
+        <div class="input-group">
+          <input
+            v-model="threshold"
+            type="text"
+            class="form-control "
+            style="width: 100%"
+          >
+          <span
+            class="input-group-addon"
+            style="width:10%"
+          > % </span>
         </div>
-
-        <div v-if="this.isDefined && this.threshold!=0">
-            <div class="row">
-                <div class="col-md-9">
-                    <p> Consensus threshold</p>
-                    <p> Add redundancy to retry</p>
-                    <p> Maximum redundancy</p>
-                </div>
-                <div class="col-md-3 align-right">
-                    <p> {{ this.threshold }}</p>
-                    <p> {{ this.redundancyDelta }}</p>
-                    <p> {{ this.maxRetries }}</p>
-                </div>
-            </div>
-            <button
-                class="btn btn-danger"
-                @click="remove"
-            >
-                Delete
-            </button>
+        <p> Add redundancy to retry: </p>
+        <input
+          v-model="redundancyDelta"
+          type="text"
+          class="form-control"
+          style="width: 100%"
+        >
+        <p> Maximum redundancy: </p>
+        <input
+          v-model="maxRetries"
+          type="text"
+          class="form-control "
+          style="width: 100%"
+        >
+        <div
+          v-if="errorMsg != ''"
+          class="errorMsg"
+        >
+          {{ errorMsg }}
         </div>
-        <div v-else>
-            <p>No consensus currently configured.</p>
+        <br>
+        <div>
+          <button
+            class="btn btn-primary"
+            @click="save"
+          >
+            Update
+          </button>
         </div>
       </div>
+
+      <div v-if="isDefined && threshold!=0">
+        <div class="row">
+          <div class="col-md-9">
+            <p> Consensus threshold</p>
+            <p> Add redundancy to retry</p>
+            <p> Maximum redundancy</p>
+          </div>
+          <div class="col-md-3 align-right">
+            <p> {{ threshold }}</p>
+            <p> {{ redundancyDelta }}</p>
+            <p> {{ maxRetries }}</p>
+          </div>
+        </div>
+        <button
+          class="btn btn-danger"
+          @click="remove"
+        >
+          Delete
+        </button>
+      </div>
+      <div v-else>
+        <p>No consensus currently configured.</p>
+      </div>
     </div>
+  </div>
 </template>
 <script>
 
 import { mapGetters, mapMutations } from 'vuex';
 
 export default {
+  props: {
+      'consensus_config': {
+          type: Object,
+          default: () => ({ threshold: 0, maxRetries: 0, redundancyDelta: 0 })
+      }
+  },
   data () {
     return {
         threshold: this.consensus_config.threshold,
         maxRetries: this.consensus_config.maxRetries,
         redundancyDelta: this.consensus_config.redundancyDelta,
-        error_msg: '',
+        errorMsg: '',
         isDefined: true,
         capacity: 10000
-    }
-
-  },
-  props: {
-      'consensus_config': {
-          type: Object,
-          default:  () => ( {threshold: 0, maxRetries: 0, redundancyDelta: 0} )
-      }
+    };
   },
 
   computed: {
@@ -94,45 +99,45 @@ export default {
   },
 
   methods: {
-    ... mapMutations(['updateConfig']),
+    ...mapMutations(['updateConfig']),
 
-    _isIntegerNumeric: function ( n ) {
-        var _n = Number(n)
-        return Math.floor(_n) == _n
+    _isIntegerNumeric: function (n) {
+        var _n = Number(n);
+        return Math.floor(_n) === _n;
     },
 
-    _write: function() {
+    _write: function () {
         if (!this.redundancyDelta && !this.maxRetries && !this.threshold) {
             return true;
         }
 
         if (!this._isIntegerNumeric(this.threshold) || this.threshold <= 50 ||
                 this.threshold > 100) {
-            this.error_msg = 'Threshold should be integer in 1 - 100';
+            this.errorMsg = 'Threshold should be integer in 1 - 100';
             return false;
         }
         if (!this._isIntegerNumeric(this.redundancyDelta) || this.redundancyDelta <= 0) {
-            this.error_msg = 'Redundancy should be positive integer';
+            this.errorMsg = 'Redundancy should be positive integer';
             return false;
         }
         if (!this._isIntegerNumeric(this.maxRetries) || this.maxRetries <= 0 ||
                 this.maxRetries > this.capacity) {
-            this.error_msg = 'Maximum redundancy should be integer in 1 - ' + this.capacity;
+            this.errorMsg = 'Maximum redundancy should be integer in 1 - ' + this.capacity;
             return false;
         }
-        this.error_msg = '';
+        this.errorMsg = '';
         this.isDefined = true;
         return true;
     },
-    async remove () {
+    remove () {
         this.threshold = 0;
         this.maxRetries = 0;
         this.redundancyDelta = 0;
         this.save();
     },
     async save () {
-        if (!this._write()){
-            return ;
+        if (!this._write()) {
+            return;
         }
         try {
             const res = await fetch(window.location.pathname, {
@@ -142,28 +147,28 @@ export default {
                     'X-CSRFToken': this.csrfToken
                 },
                 credentials: 'same-origin',
-                body: JSON.stringify({'consensusConfig': {
+                body: JSON.stringify({ 'consensusConfig': {
                     threshold: this.threshold,
                     maxRetries: this.maxRetries,
-                    redundancyDelta: this.redundancyDelta}
+                    redundancyDelta: this.redundancyDelta }
                     })
-            })
+            });
             if (res.ok) {
-            const data = await res.json();
-            window.pybossaNotify(data.flash, true, data.status);
-            this.isDefined = this.threshold!=0;
+                const data = await res.json();
+                window.pybossaNotify(data.flash, true, data.status);
+                this.isDefined = this.threshold !== 0;
             } else {
-            window.pybossaNotify('An error occurred.', true, 'error');
+                window.pybossaNotify('An error occurred.', true, 'error');
             }
         } catch (error) {
-            window.pybossaNotify('An error occurred.', true, 'error');
+                window.pybossaNotify('An error occurred.', true, 'error');
         }
     }
   }
-}
+};
 </script>
 <style>
-.error_msg {
+.errorMsg {
     color: red;
 }
 

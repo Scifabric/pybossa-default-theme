@@ -157,7 +157,7 @@ describe('fieldsconfig', () => {
     });
     const wrapper = mount(FieldsConfig, { store, localVue });
     const expandButton = wrapper.find('.fa-angle-up');
-    expandButton.trigger('click')
+    expandButton.trigger('click');
     const deleteButton = wrapper.find('.btn-danger');
     deleteButton.trigger('click');
     const p = wrapper.findAll('p').at(2);
@@ -170,9 +170,9 @@ describe('fieldsconfig', () => {
         testField: {
           type: 'categorical',
           config: {
-            labels: ['A', 'B', 'C'],
+            labels: ['A', 'B', 'C']
           }
-        },
+        }
 
       }
     });
@@ -193,13 +193,13 @@ describe('fieldsconfig', () => {
             labels: ['A', 'B', 'C']
           },
           retryForConsensus: false
-        },
+        }
       }
     });
     const wrapper = mount(FieldsConfig, { store, localVue });
     expect(wrapper.findAll('.retry').length).toEqual(0);
     const expandButton = wrapper.find('.fa-angle-up');
-    expandButton.trigger('click')
+    expandButton.trigger('click');
     const enableButton = wrapper.find('.btn-success');
     enableButton.trigger('click');
     expect(wrapper.findAll('.retry').length).toEqual(1);
@@ -214,13 +214,13 @@ describe('fieldsconfig', () => {
             labels: ['A', 'B', 'C']
           },
           retryForConsensus: true
-        },
+        }
       }
     });
     const wrapper = mount(FieldsConfig, { store, localVue });
     expect(wrapper.findAll('.retry').length).toEqual(1);
     const expandButton = wrapper.find('.fa-angle-up');
-    expandButton.trigger('click')
+    expandButton.trigger('click');
     const disableButton = wrapper.find('.btn-default');
     disableButton.trigger('click');
     expect(wrapper.findAll('.retry').length).toEqual(0);

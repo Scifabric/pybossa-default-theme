@@ -1,38 +1,51 @@
 <template>
   <div class="field-config">
     <div class="row col-md-12">
-      <div v-if="!this.collaps" class="btn-group pull-right">
-        <div  class="pull-right" stylr="margin-bottom: 5px">
-          <span v-if="editing"
-                :disabled="!editable"
-                class="btn btn-sm btn-success"
-                id="disable-edit"
-                @click="toggleEdit"
+      <div
+        v-if="!collapse"
+        class="btn-group pull-right"
+      >
+        <div
+          class="pull-right"
+          stylr="margin-bottom: 5px"
+        >
+          <span
+            v-if="editing"
+            :disabled="!editable"
+            class="btn btn-sm btn-success"
+            @click="toggleEdit"
           >
-                Finish
+            Finish
           </span>
-          <span v-else
-                :disabled="!editable"
-                class="btn btn-sm btn-warning"
-                id="enable-edit"
-                @click="toggleEdit"
+          <span
+            v-else
+            :disabled="!editable"
+            class="btn btn-sm btn-warning"
+            @click="toggleEdit"
           >
-                Edit
+            Edit
           </span>
-          <span v-if="this.retry" type="button"
-                class="btn btn-sm btn-default"
-                @click="changeRetryStatus">
-                Disable Retry
-          </span>
-          <span v-else type="button"
-                class="btn btn-sm btn-success"
-                @click="changeRetryStatus">
-                Enable Retry
-          </span>
-          <span class="btn btn-sm btn-danger"
-                 @click="deleteField({ name })"
+          <span
+            v-if="retry"
+            type="button"
+            class="btn btn-sm btn-default"
+            @click="changeRetryStatus"
           >
-                Delete
+            Disable Retry
+          </span>
+          <span
+            v-else
+            type="button"
+            class="btn btn-sm btn-success"
+            @click="changeRetryStatus"
+          >
+            Enable Retry
+          </span>
+          <span
+            class="btn btn-sm btn-danger"
+            @click="deleteField({ name })"
+          >
+            Delete
           </span>
         </div>
       </div>
@@ -40,12 +53,15 @@
     <div class="row">
       <div class="col-md-10">
         <label> {{ type }} Field - {{ name }} </label>
-        <span v-if="this.retry" class="retry">  (Retry) </span>
+        <span
+          v-if="retry"
+          class="retry"
+        >  (Retry) </span>
       </div>
-      <div class="col-md-2" >
-        <span @click="changeCollapsStatus">
+      <div class="col-md-2">
+        <span @click="changeCollapseStatus">
           <i
-            v-if="this.collaps"
+            v-if="collapse"
             class="fa fa-angle-up"
             aria-hidden="true"
           />
@@ -77,7 +93,7 @@ export default {
     return {
       editing: this.edit,
       retry: this.retryForConsensus,
-      collaps: !this.edit
+      collapse: !this.edit
     };
   },
 
@@ -92,19 +108,16 @@ export default {
       this.$emit('edit', this.editing);
     },
 
-    changeRetryStatus() {
-
+    changeRetryStatus () {
       this.retry = !this.retry;
-      this.$emit('retryForConsensus', this.retry)
-      this.changeRetryConfig({name: this.name,
-                              retry: this.retry});
-
+      this.$emit('retryForConsensus', this.retry);
+      this.changeRetryConfig({ name: this.name,
+                              retry: this.retry });
     },
 
-    changeCollapsStatus() {
-      this.collaps = !this.collaps;
+    changeCollapseStatus () {
+      this.collapse = !this.collapse;
     }
   }
 };
 </script>
-

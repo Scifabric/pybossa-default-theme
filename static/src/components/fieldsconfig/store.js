@@ -1,7 +1,6 @@
 import Vue from 'vue';
 
 function _addField (state, { name, type, config, retryForConsensus, newField = false }) {
-
   if (state.answerFields.hasOwnProperty(name)) {
     return;
   }
@@ -60,7 +59,7 @@ const storeSpecs = {
       delete state.answerFields[name];
     },
 
-    changeRetryConfig (state, {name, retry}) {
+    changeRetryConfig (state, { name, retry }) {
       state.answerFields[name].retryForConsensus = retry;
     },
 
