@@ -31,6 +31,9 @@
 
 (you can use Markdown to give format to your description!)')) }}
             {{ render_field(form.password, class_="span4", placeholder=_('Enter project password')) }}
+            {{ render_field(form.product) }}
+            {{ render_field(form.subproduct) }}
+            {{ render_field(form.kpi, class_="span4", placeholder=_('Key performance indicator')) }}
             <div class="form-actions">
                 <input type="submit" value={{_('Create the project')}} class="btn btn-primary" />
                 <a href="{{url_for('account.profile', name=current_user.name)}}" class="btn btn-default">{{_('Cancel')}}</a>
