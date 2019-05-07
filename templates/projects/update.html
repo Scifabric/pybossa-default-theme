@@ -31,6 +31,9 @@
         {{ render_field(form.name, class_="input-xlarge", placeholder=_('The name of the project')) }}
         {{ render_field(form.description, class_="input-xlarge", placeholder=_('Give some details about the project')) }}
         {{ render_field(form.long_description, class_="input-xlarge", placeholder=_('Explain the project (use Markdown!)')) }}
+        {{ render_field(form.product) }}
+        {{ render_field(form.subproduct) }}
+        {{ render_field(form.kpi, class_="span4", placeholder=_('Key performance indicator')) }}
         {{ render_field(form.category_id) }}
         {{ render_checkbox_field(form.allow_anonymous_contributors, tooltip=_('Check if you want to allow anonymous users contribute to your project')) }}
         {{ render_checkbox_field(form.hidden, tooltip=_('Check if you want to hide your project'))}}
