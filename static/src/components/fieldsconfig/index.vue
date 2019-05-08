@@ -6,11 +6,14 @@
           class="form-group"
           :class="{'has-error': error}"
         >
+          <p> Path to answer field: </p>
           <input
             v-model="fieldName"
             type="text"
             class="form-control input-sm"
+            placeholder="eg: Q1.ans1"
           >
+          <p> Type of answer </p>
           <select
             v-model="fieldType"
             name="field-type"
@@ -24,6 +27,13 @@
               {{ conf.display }}
             </option>
           </select>
+          <br> </br>
+          <input
+            type="checkbox"
+            v-model="retryForConsensus"
+          >
+          <label for="checkbox" display="inline"><p> retry to reach consensus on this field</p></label>
+          <br></br>
           <button
             class="btn btn-sm btn-primary"
             :disabled="!fieldName"
@@ -81,6 +91,7 @@ export default {
     return {
       fieldName: '',
       fieldType: labelTypes.default,
+      retryForConsensus: false,
       error: false,
       labelTypes
     };
@@ -101,6 +112,7 @@ export default {
       this.addField({
         name: this.fieldName,
         type: this.fieldType,
+        retryForConsensus: this.retryForConsensus,
         config: labelTypes.config[this.fieldType].defaultConfig(),
         newField: true
       });
@@ -110,26 +122,31 @@ export default {
     reset () {
       this.fieldName = '';
       this.fieldType = labelTypes.default;
+      this.retryForConsensus = false;
     },
-
     async save () {
       try {
+        console.log(JSON.stringify(this.answerFields))
         const res = await fetch(window.location.pathname, {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
             'X-CSRFToken': this.csrfToken
           },
+          // body: JSON.stringify({'answerFieldsConfig': this.answerFields})
           body: JSON.stringify(this.answerFields)
         });
         if (res.ok) {
           const data = await res.json();
+          console.log(data.flash)
+          console.log(data.status)
           window.pybossaNotify(data.flash, true, data.status);
         } else {
           window.pybossaNotify('An error occurred.', true, 'error');
         }
       } catch (error) {
         console.warn(error);
+        console.log("an error occurred");
         window.pybossaNotify('An error occurred.', true, 'error');
       }
     }

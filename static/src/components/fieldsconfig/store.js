@@ -1,13 +1,15 @@
 import Vue from 'vue';
 
-function _addField (state, { name, type, config, newField = false }) {
+function _addField (state, { name, type, config, retryForConsensus, newField = false }) {
+
+  console.log(retryForConsensus)
   if (state.answerFields.hasOwnProperty(name)) {
     return;
   }
   if (newField) {
     state.newFields[name] = true;
   }
-  Vue.set(state.answerFields, name, { type, config });
+  Vue.set(state.answerFields, name, { type, config, retryForConsensus });
   state.fieldNames.push(name);
 }
 
@@ -15,6 +17,11 @@ const storeSpecs = {
   state: {
     csrf: '',
     fieldNames: [],
+    consensusConfig: {
+      threshold: undefined,
+      maxRetries: undefined,
+      redundancyDelta: undefined
+    },
     answerFields: {},
     newFields: {}
   },
@@ -35,6 +42,10 @@ const storeSpecs = {
     isNewField: (state) => (name) => {
       const f = state.newFields[name] || false;
       return f;
+    },
+
+    consensusConfig (state) {
+      return state.consensusConfig;
     }
   },
 
@@ -61,7 +72,12 @@ const storeSpecs = {
       for (const name in answerFields) {
         _addField(state, { name, ...fields[name] });
       }
+    },
+
+    updateConfig (state, config) {
+      state.consensusConfig = config;
     }
+
   }
 };
 

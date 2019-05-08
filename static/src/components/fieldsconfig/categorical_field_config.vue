@@ -55,6 +55,7 @@ export default {
   props: {
     name: String,
     type: String,
+    retryForConsensus: Boolean,
     labels: Array,
     edit: Boolean
   },

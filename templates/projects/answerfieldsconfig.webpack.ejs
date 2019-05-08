@@ -1,12 +1,13 @@
 {% extends "projects/base.html" %}
 {% set active_page = "projects" %}
 {% set active_link  = "settings" %}
-{% set section = _('Answer Fields Configuration') %}
+{% set section = _('Configuration') %}
 {% from "_formhelpers.html" import render_form %}
 
 {% block projectcontent %}
 
 <div id="answerfieldsconfig">
+<<<<<<< HEAD
     <div class="panel panel-danger">
         <div class="panel-heading">
             Warning
@@ -27,6 +28,22 @@
             </ol>
         </div>
     </div>
+=======
+    <!-- <table left-padding="10%" width="100%"> <tr valign="top">
+        <th>
+        <h3> consensus configuration </h3>
+        <consensus-config></consensus-config>
+        </th>
+        <th>
+        <h3> answer field configuration </h3>
+        <fields-config></fields-config>
+        </th>
+
+    </tr></table> -->
+    <h3> consensus configuration </h3>
+    <consensus-config></consensus-config>
+    <h3> answer field configuration </h3>
+>>>>>>> 5d5e096... tmp
     <fields-config></fields-config>
 </div>
 
