@@ -29,10 +29,10 @@ describe('ConsensusConfig', () => {
   it('load non-empty config', () => {
     const wrapper = mount(ConsensusConfig, {
       propsData: {
-        consensus_config: { threshold: 70, maxRetries: 10, redundancyDelta: 1 }
+        consensusConfig: { threshold: 70, maxRetries: 10, redundancyDelta: 1 }
       }
     });
-    wrapper.setProps({ 'consensus_config': { threshold: 70, maxRetries: 10, redundancyDelta: 1 } });
+    wrapper.setProps({ 'consensusConfig': { threshold: 70, maxRetries: 10, redundancyDelta: 1 } });
     const p = wrapper.findAll('p');
     expect(p).toHaveLength(9);
   });

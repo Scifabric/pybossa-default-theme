@@ -35,8 +35,8 @@
         >
           {{ errorMsg }}
         </div>
-        <br>
         <div>
+          <br>
           <button
             class="btn btn-primary"
             @click="save"
@@ -47,6 +47,7 @@
       </div>
 
       <div v-if="isDefined && threshold!=0">
+        <br>
         <div class="row">
           <div class="col-md-9">
             <p> Consensus threshold</p>
@@ -78,16 +79,16 @@ import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   props: {
-      'consensus_config': {
+      'consensusConfig': {
           type: Object,
           default: () => ({ threshold: 0, maxRetries: 0, redundancyDelta: 0 })
       }
   },
   data () {
     return {
-        threshold: this.consensus_config.threshold,
-        maxRetries: this.consensus_config.maxRetries,
-        redundancyDelta: this.consensus_config.redundancyDelta,
+        threshold: this.consensusConfig.threshold,
+        maxRetries: this.consensusConfig.maxRetries,
+        redundancyDelta: this.consensusConfig.redundancyDelta,
         errorMsg: '',
         isDefined: true,
         capacity: 10000
@@ -177,10 +178,5 @@ export default {
 }
 .align-right {
     text-align:right;
-}
-
-.form-control-custom {
-    width: 100%;
-
 }
 </style>

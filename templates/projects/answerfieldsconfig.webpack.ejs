@@ -7,21 +7,16 @@
 {% block projectcontent %}
 
 <div id="answerfieldsconfig">
-    <!-- <table left-padding="10%" width="100%"> <tr valign="top">
-        <th>
-        <h3> consensus configuration </h3>
-        <consensus-config></consensus-config>
-        </th>
-        <th>
-        <h3> answer field configuration </h3>
-        <fields-config></fields-config>
-        </th>
-
-    </tr></table> -->
-    <h3> consensus configuration </h3>
-    <consensus-config></consensus-config>
-    <h3> answer field configuration </h3>
-    <fields-config></fields-config>
+    <div class="row">
+        <div class="col-md-5">
+            <h3> Consensus Configuration </h3>
+            <consensus-config :consensus-config="{{consensus_config}}"></consensus-config>
+        </div>
+        <div class="col-md-7 pull-right">
+            <h3> Answer Field Configuration </h3>
+            <fields-config></fields-config>
+        </div>
+    </div>
 </div>
 
 <script src="<%= htmlWebpackPlugin.files.chunks.answerfieldsconfig.entry %>"></script>

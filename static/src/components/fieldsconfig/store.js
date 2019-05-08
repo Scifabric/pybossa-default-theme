@@ -35,10 +35,6 @@ const storeSpecs = {
     isNewField: (state) => (name) => {
       const f = state.newFields[name] || false;
       return f;
-    },
-
-    consensusConfig (state) {
-      return state.consensusConfig;
     }
   },
 
