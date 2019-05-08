@@ -62,7 +62,6 @@ const storeSpecs = {
 
     changeRetryConfig (state, {name, retry}) {
       state.answerFields[name].retryForConsensus = retry;
-      this.retryForConsensus = retry;
     },
 
     setData (state, { csrf, answerFields }) {

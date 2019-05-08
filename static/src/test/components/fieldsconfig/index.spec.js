@@ -184,7 +184,7 @@ describe('fieldsconfig', () => {
     expect(fields.length).toEqual(1);
   });
 
-  it('trigger enable redundancy', () => {
+  it('trigger enable retry', () => {
     store.commit('setData', {
       answerFields: {
         testField: {
@@ -205,7 +205,7 @@ describe('fieldsconfig', () => {
     expect(wrapper.findAll('.retry').length).toEqual(1);
   });
 
-  it('trigger disable redundancy', () => {
+  it('trigger disable retry', () => {
     store.commit('setData', {
       answerFields: {
         testField: {
