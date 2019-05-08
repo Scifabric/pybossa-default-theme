@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import FieldsConfig from './components/fieldsconfig/index';
+import ConsensusConfig from './components/fieldsconfig/consensus_config';
 import { storeSpecs } from './components/fieldsconfig/store';
 
 Vue.use(Vuex);
@@ -13,7 +14,8 @@ const app = new Vue({
   el: '#answerfieldsconfig',
   store,
   components: {
-    FieldsConfig
+    FieldsConfig,
+    ConsensusConfig
   }
 });
 

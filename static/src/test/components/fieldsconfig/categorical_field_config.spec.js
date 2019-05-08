@@ -1,5 +1,5 @@
 import Vuex from 'vuex';
-import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import CategoricalFieldConfig from '../../../components/fieldsconfig/categorical_field_config';
 import { storeSpecs } from '../../../components/fieldsconfig/store';
 import { cloneDeep } from 'lodash';
@@ -68,22 +68,5 @@ describe('fieldsconfig', () => {
     expect(store.state.answerFields.field_1.config.labels[0]).toBe('label_1');
     expect(store.state.answerFields.field_1.config.labels[1]).toBe('label_2');
     expect(store.state.answerFields.field_1.config.labels[2]).toBe('label_3');
-  });
-
-  it('edits', () => {
-    const wrapper = mount(CategoricalFieldConfig, { store, localVue });
-    wrapper.setProps({
-      name: 'field_1',
-      type: 'categorical',
-      labels: ['LA', 'LB']
-    });
-    const labels = wrapper.findAll('.label');
-    expect(labels.length).toBe(2);
-    expect(labels.at(0).text()).toBe('LA');
-    expect(labels.at(1).text()).toBe('LB');
-    expect(wrapper.findAll('button')).toHaveLength(0);
-    const editButton = wrapper.find('.fa-pencil-square-o');
-    editButton.trigger('click');
-    expect(wrapper.findAll('.btn-primary')).toHaveLength(2);
   });
 });

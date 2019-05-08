@@ -1,33 +1,22 @@
 {% extends "projects/base.html" %}
 {% set active_page = "projects" %}
 {% set active_link  = "settings" %}
-{% set section = _('Answer Fields Configuration') %}
+{% set section = _('Configuration') %}
 {% from "_formhelpers.html" import render_form %}
 
 {% block projectcontent %}
 
 <div id="answerfieldsconfig">
-    <div class="panel panel-danger">
-        <div class="panel-heading">
-            Warning
+    <div class="row">
+        <div class="col-md-5">
+            <h3> Consensus Configuration </h3>
+            <consensus-config :consensus-config="{{consensus_config}}"></consensus-config>
         </div>
-        <div class="panel-body">
-            <p>
-                When configurations are present below, all future consensus fields will be driven by them.
-                Default consensus fields will be present when no configurations are set.
-            </p>
-        </div>
-    </div>
-    <div class="panel">
-        <div class="panel-body">
-            <p>The form below can be used to setup configurations for</p>
-            <ol>
-                <li><strong>Worker statistics</strong> (e.g. to measure the quality of a worker's answers)</li>
-                <li><strong>Consensus</strong> (to give a confidence scores to a task's answers)</li>
-            </ol>
+        <div class="col-md-7 pull-right">
+            <h3> Answer Field Configuration </h3>
+            <fields-config></fields-config>
         </div>
     </div>
-    <fields-config></fields-config>
 </div>
 
 <script src="<%= htmlWebpackPlugin.files.chunks.answerfieldsconfig.entry %>"></script>

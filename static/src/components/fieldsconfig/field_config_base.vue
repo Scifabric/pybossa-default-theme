@@ -1,54 +1,104 @@
 <template>
   <div class="field-config">
-    <h4>
-      <span
-        :disabled="!editable"
-        class="btn btn-sm btn-warning"
-        @click="toggleEdit"
+    <div class="row col-md-12">
+      <div
+        v-if="!collapse"
+        class="btn-group pull-right"
       >
-        <i
-          v-if="editing"
-          class="fa fa-angle-up"
-          aria-hidden="true"
-        />
-        <i
-          v-else
-          class="fa fa-pencil-square-o"
-          aria-hidden="true"
-        />
-      </span>
-      <span
-        class="btn btn-sm btn-danger"
-        @click="deleteField({ name })"
-      >
-        <i
-          class="fa fa-trash"
-          aria-hidden="true"
-        />
-      </span>
-      {{ type }} Field - {{ name }}
-    </h4>
+        <div
+          class="pull-right"
+          stylr="margin-bottom: 5px"
+        >
+          <span
+            v-if="editing"
+            :disabled="!editable"
+            class="btn btn-sm btn-success"
+            @click="toggleEdit"
+          >
+            Finish
+          </span>
+          <span
+            v-else
+            :disabled="!editable"
+            class="btn btn-sm btn-warning"
+            @click="toggleEdit"
+          >
+            Edit
+          </span>
+          <span
+            v-if="retry"
+            type="button"
+            class="btn btn-sm btn-default"
+            @click="changeRetryStatus"
+          >
+            Disable Retry
+          </span>
+          <span
+            v-else
+            type="button"
+            class="btn btn-sm btn-success"
+            @click="changeRetryStatus"
+          >
+            Enable Retry
+          </span>
+          <span
+            class="btn btn-sm btn-danger"
+            @click="deleteField({ name })"
+          >
+            Delete
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <label> {{ type }} Field - {{ name }} </label>
+        <span
+          v-if="retry"
+          class="retry"
+        >  (Retry) </span>
+      </div>
+      <div class="col-md-2">
+        <span @click="changeCollapseStatus">
+          <i
+            v-if="collapse"
+            class="fa fa-angle-up"
+            aria-hidden="true"
+          />
+          <i
+            v-else
+            class="fa fa-angle-down"
+            aria-hidden="true"
+          />
+        </span>
+      </div>
+    </div>
   </div>
 </template>
+
 <script>
+
 import { mapMutations } from 'vuex';
 
 export default {
   props: {
     name: String,
     type: String,
+    retryForConsensus: Boolean,
     editable: Boolean,
     edit: Boolean
   },
 
   data () {
     return {
-      editing: this.edit
+      editing: this.edit,
+      retry: this.retryForConsensus,
+      collapse: !this.edit
     };
   },
 
   methods: {
-    ...mapMutations(['deleteField']),
+    ...mapMutations(['deleteField', 'changeRetryConfig']),
 
     toggleEdit () {
       if (!this.editable) {
@@ -56,12 +106,18 @@ export default {
       }
       this.editing = !this.editing;
       this.$emit('edit', this.editing);
+    },
+
+    changeRetryStatus () {
+      this.retry = !this.retry;
+      this.$emit('retryForConsensus', this.retry);
+      this.changeRetryConfig({ name: this.name,
+                              retry: this.retry });
+    },
+
+    changeCollapseStatus () {
+      this.collapse = !this.collapse;
     }
   }
 };
 </script>
-<style scoped>
-.field-config .btn {
-    width: 2.5em
-}
-</style>

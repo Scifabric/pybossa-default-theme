@@ -1,13 +1,13 @@
 import Vue from 'vue';
 
-function _addField (state, { name, type, config, newField = false }) {
+function _addField (state, { name, type, config, retryForConsensus, newField = false }) {
   if (state.answerFields.hasOwnProperty(name)) {
     return;
   }
   if (newField) {
     state.newFields[name] = true;
   }
-  Vue.set(state.answerFields, name, { type, config });
+  Vue.set(state.answerFields, name, { type, config, retryForConsensus });
   state.fieldNames.push(name);
 }
 
@@ -53,6 +53,10 @@ const storeSpecs = {
         state.fieldNames.splice(ix, 1);
       }
       delete state.answerFields[name];
+    },
+
+    changeRetryConfig (state, { name, retry }) {
+      state.answerFields[name].retryForConsensus = retry;
     },
 
     setData (state, { csrf, answerFields }) {

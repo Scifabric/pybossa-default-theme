@@ -20,7 +20,7 @@ describe('fieldsconfig', () => {
 
   it('loads', () => {
     const wrapper = mount(FieldsConfig, { store, localVue });
-    const p = wrapper.find('p');
+    const p = wrapper.findAll('p').at(2);
     expect(p.text()).toEqual('No fields currently configured.');
     const fields = wrapper.findAll('.field-config');
     expect(fields.length).toEqual(0);
@@ -47,6 +47,7 @@ describe('fieldsconfig', () => {
   it('shows error if name is empty', () => {
     const wrapper = mount(FieldsConfig, { store, localVue });
     wrapper.vm._addField();
+
     const fields = wrapper.findAll('.field-config');
     expect(fields.length).toEqual(0);
     expect(wrapper.vm.error).toBe('Field Name is Required.');
@@ -155,9 +156,11 @@ describe('fieldsconfig', () => {
       }
     });
     const wrapper = mount(FieldsConfig, { store, localVue });
-    const deleteButton = wrapper.find('span.btn-danger');
+    const expandButton = wrapper.find('.fa-angle-up');
+    expandButton.trigger('click');
+    const deleteButton = wrapper.find('.btn-danger');
     deleteButton.trigger('click');
-    const p = wrapper.find('p');
+    const p = wrapper.findAll('p').at(2);
     expect(p.text()).toEqual('No fields currently configured.');
   });
 
@@ -170,6 +173,7 @@ describe('fieldsconfig', () => {
             labels: ['A', 'B', 'C']
           }
         }
+
       }
     });
     const wrapper = mount(FieldsConfig, { store, localVue });
@@ -178,5 +182,47 @@ describe('fieldsconfig', () => {
     button.trigger('click');
     const fields = wrapper.findAll('.field-config');
     expect(fields.length).toEqual(1);
+  });
+
+  it('trigger enable retry', () => {
+    store.commit('setData', {
+      answerFields: {
+        testField: {
+          type: 'categorical',
+          config: {
+            labels: ['A', 'B', 'C']
+          },
+          retryForConsensus: false
+        }
+      }
+    });
+    const wrapper = mount(FieldsConfig, { store, localVue });
+    expect(wrapper.findAll('.retry').length).toEqual(0);
+    const expandButton = wrapper.find('.fa-angle-up');
+    expandButton.trigger('click');
+    const enableButton = wrapper.find('.btn-success');
+    enableButton.trigger('click');
+    expect(wrapper.findAll('.retry').length).toEqual(1);
+  });
+
+  it('trigger disable retry', () => {
+    store.commit('setData', {
+      answerFields: {
+        testField: {
+          type: 'categorical',
+          config: {
+            labels: ['A', 'B', 'C']
+          },
+          retryForConsensus: true
+        }
+      }
+    });
+    const wrapper = mount(FieldsConfig, { store, localVue });
+    expect(wrapper.findAll('.retry').length).toEqual(1);
+    const expandButton = wrapper.find('.fa-angle-up');
+    expandButton.trigger('click');
+    const disableButton = wrapper.find('.btn-default');
+    disableButton.trigger('click');
+    expect(wrapper.findAll('.retry').length).toEqual(0);
   });
 });
