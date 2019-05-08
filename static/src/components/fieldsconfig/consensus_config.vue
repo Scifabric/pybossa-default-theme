@@ -1,39 +1,70 @@
 <template>
-  <div class="stats-config row">
-    <div class="col-xs-12">
-      <div class="form-inline">
-        <p> Consensus threshold: </p>
-        <input
-            v-model="threshold"
-            type="text"
-            class="form-control input-sm"
-            placeholder="eg: 70"
-        ><span> %</span>
-        <p> Add redundancy to retry: </p>
-        <input
-            v-model="redundancyDelta"
-            type="text"
-            class="form-control input-sm"
-            value="%"
-        >
-        <p> Maximum redundancy: </p>
-        <input
-            v-model="maxRetries"
-            type="text"
-            class="form-control input-sm"
-        >
-        <div>
-            <br> </br>
-            <button
-                class="btn btn-primary"
-                @click="save"
+    <div class="stats-config row">
+    <div class="col-md-12">
+        <div class="form-inline ">
+            <p> Consensus threshold: </p>
+            <div class="input-group">
+                    <input
+                    v-model="threshold"
+                    type="text"
+                    class="form-control "
+                    id="percentage-input"
+                    style="width: 100%"
+                >
+                <span class="input-group-addon" style="width:10%"> % </span>
+            </div>
+            <p> Add redundancy to retry: </p>
+            <input
+                v-model="redundancyDelta"
+                type="text"
+                class="form-control"
+                value="%"
+                style="width: 100%"
             >
-                Save
+            <p> Maximum redundancy: </p>
+            <input
+                v-model="maxRetries"
+                type="text"
+                class="form-control "
+                style="width: 100%"
+            >
+            <div class="error_msg" v-if="this.error_msg != ''"> {{ this.error_msg }} </div>
+            <br></br>
+            <div>
+                <button
+                    class="btn btn-primary"
+                    @click="save"
+                >
+                    Update
+                </button>
+            </div>
+        </div>
+
+        <div v-if="this.isDefined && this.threshold!=0">
+            <div class="row">
+                <div class="col-md-9">
+                    <p> Consensus threshold</p>
+                    <p> Add redundancy to retry</p>
+                    <p> Maximum redundancy</p>
+                </div>
+                <div class="col-md-3 align-right">
+                    <p> {{ this.threshold }}</p>
+                    <p> {{ this.redundancyDelta }}</p>
+                    <p> {{ this.maxRetries }}</p>
+                </div>
+            </div>
+            <button
+                class="btn btn-danger"
+                @click="remove"
+            >
+                Delete
             </button>
+        </div>
+        <div v-else>
+            <p>No consensus currently configured.</p>
         </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
 
@@ -42,125 +73,109 @@ import { mapGetters, mapMutations } from 'vuex';
 export default {
   data () {
     return {
-        isDefined: false,
-        // mutableThreshold: this.threshold,
-        // mutableMaxRetries: this.maxRetries,
-        // mutableRedundancyDelta: this.redundancyDelta
-        threshold: 0,
-        maxRetries: 0,
-        redundancyDelta: 0
+        threshold: this.consensus_config.threshold,
+        maxRetries: this.consensus_config.maxRetries,
+        redundancyDelta: this.consensus_config.redundancyDelta,
+        error_msg: '',
+        isDefined: true,
+        capacity: 10000
     }
+
+  },
+  props: {
+      'consensus_config': {
+          type: Object,
+          default:  () => ( {threshold: 0, maxRetries: 0, redundancyDelta: 0} )
+      }
   },
 
-//   props: {
-//     threshold: Number,
-//     maxRetries: Number,
-//     redundancyDelta: Number
-//   },
-
   computed: {
-    ...mapGetters(['csrfToken', 'consensusConfig'])
+    ...mapGetters(['csrfToken'])
   },
 
   methods: {
     ... mapMutations(['updateConfig']),
 
-    _write: function() {
-        if (!this.redundancyDelta || !this.maxRetries || !this.threshold) {
-            this.error = 'error: missing information.';
-            return false;
-        }
-        if (this.threshold <= 50 || this.threshold > 100) {
-            this.error = 'error: threshold should be greater than 50';
-            return false;
-        }
-        if (this.redundancyDelta <= 0) {
-            this.error = 'invalid redundancy value';
-            return false;
-        }
-        if (this.maxRetries <= 0) {
-            this.error = 'invalid maximum redundancy value';
-            return false;
-        }
-        this.isDefined = true;
-        this.updateConfig({
-            threshold: this.threshold,
-            redundancyDelta: this.redundancyDelta,
-            maxRetries: this.maxRetries
-        });
-        return true;
+    _isIntegerNumeric: function ( n ) {
+        var _n = Number(n)
+        return Math.floor(_n) == _n
     },
 
+    _write: function() {
+        if (!this.redundancyDelta && !this.maxRetries && !this.threshold) {
+            return true;
+        }
+
+        if (!this._isIntegerNumeric(this.threshold) || this.threshold <= 50 ||
+                this.threshold > 100) {
+            this.error_msg = 'Threshold should be integer in 1 - 100';
+            return false;
+        }
+        if (!this._isIntegerNumeric(this.redundancyDelta) || this.redundancyDelta <= 0) {
+            this.error_msg = 'Redundancy should be positive integer';
+            return false;
+        }
+        if (!this._isIntegerNumeric(this.maxRetries) || this.maxRetries <= 0 ||
+                this.maxRetries > this.capacity) {
+            this.error_msg = 'Maximum redundancy should be integer in 1 - ' + this.capacity;
+            return false;
+        }
+        this.error_msg = '';
+        this.isDefined = true;
+        return true;
+    },
+    async remove () {
+        this.threshold = 0;
+        this.maxRetries = 0;
+        this.redundancyDelta = 0;
+        this.save();
+    },
     async save () {
-        if (!this._write())
+        if (!this._write()){
             return ;
+        }
         try {
-            console.log(JSON.stringify(this.consensusConfig))
             const res = await fetch(window.location.pathname, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-                'X-CSRFToken': this.csrfToken
-            },
-            body: JSON.stringify({consensusConfig: this.consensusConfig})
-            });
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    'X-CSRFToken': this.csrfToken
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify({'consensusConfig': {
+                    threshold: this.threshold,
+                    maxRetries: this.maxRetries,
+                    redundancyDelta: this.redundancyDelta}
+                    })
+            })
             if (res.ok) {
             const data = await res.json();
             window.pybossaNotify(data.flash, true, data.status);
+            this.isDefined = this.threshold!=0;
             } else {
             window.pybossaNotify('An error occurred.', true, 'error');
             }
         } catch (error) {
-            console.warn(error);
             window.pybossaNotify('An error occurred.', true, 'error');
         }
     }
   }
 }
-//   data () {
-//     return {
-//       editing: this.edit,
-//       newLabel: undefined
-//     };
-//   },
-
-//   methods: {
-//     ...mapMutations(['addFieldConfig']),
-
-//     addLabels (split) {
-//       let newLabels;
-//       if (split) {
-//         newLabels = this.newLabel
-//           .split(',')
-//           .map((token) => token.trim());
-//       } else {
-//         newLabels = [this.newLabel];
-//       }
-
-//       const dedupe = {};
-//       newLabels.forEach((el) => {
-//         dedupe[el] = true;
-//       });
-//       newLabels = Object.keys(dedupe)
-//         .filter((el) => !this.labels.includes(el));
-
-//       this.addFieldConfig({
-//         name: this.name,
-//         config: {
-//           labels: this.labels.concat(newLabels).sort()
-//         }
-//       });
-//       this.newLabel = undefined;
-//     }
-//   }
-// };
 </script>
 <style>
-.pill {
-    margin-right: 0.3em;
-    display: inline-block
+.error_msg {
+    color: red;
 }
-.field-config-wrapper {
-    margin-bottom: 0.5em
+
+.form-control.input-sm {
+    width: 280px;
+}
+.align-right {
+    text-align:right;
+}
+
+.form-control-custom {
+    width: 100%;
+
 }
 </style>

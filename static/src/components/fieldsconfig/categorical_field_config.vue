@@ -1,23 +1,28 @@
 <template>
-  <div class="categorical-field">
-    <field-config-base
-      :name="name"
-      :type="type"
-      :editable="true"
-      @edit="editing=!editing"
-    />
-    <div class="labels">
-      <h4>
+  <div class="row">
+    <div class="col-md-12">
+      <field-config-base
+          :name="name"
+          :type="type"
+          :retryForConsensus="retryForConsensus"
+          :editable="true"
+          :edit="this.editing"
+          @edit="editing=!editing"
+        />
+    </div>
+    <div class="row col-md-12">
+       <div class="col-md-12">
+      <p>
         Labels: <span
           v-for="(label, index) in labels || []"
           :key="index"
           class="pill label label-primary"
         >{{ label }}</span>
-      </h4>
+      </p>
     </div>
     <div
       v-if="editing"
-      class="form-inline"
+      class="form-inline col-md-12"
     >
       <p>Add single label or multiple comma separated labels. The labels must exactly match the possible values of the response field.</p>
       <div class="form-group">
@@ -26,19 +31,22 @@
           type="text"
           class="form-control input-sm"
         >
-        <div
-          class="btn btn-sm btn-primary"
-          @click="addLabels(false)"
-        >
-          Add Single
-        </div>
-        <div
-          class="btn btn-sm btn-primary"
-          @click="addLabels(true)"
-        >
-          Add Many
+        <div style="margin-top: 8px">
+          <span
+            class="btn btn-sm btn-primary"
+            @click="addLabels(false)"
+          >
+            Add Single
+          </span>
+          <span
+            class="btn btn-sm btn-primary"
+            @click="addLabels(true)"
+          >
+            Add Many
+          </span>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -67,7 +75,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(['addFieldConfig']),
+    ...mapMutations(['addFieldConfig', 'changeRetryConfig']),
 
     addLabels (split) {
       let newLabels;
@@ -100,6 +108,18 @@ export default {
 <style>
 .pill {
     margin-right: 0.3em;
-    display: inline-block
+    display: inline-block;
+}
+
+.card {
+  padding-left: 2px;
+  padding-right: 10px;
+}
+
+.card-body {
+  box-shadow: 1px 1px 4px 0px grey;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 3px;
 }
 </style>

@@ -2,7 +2,6 @@ import Vue from 'vue';
 
 function _addField (state, { name, type, config, retryForConsensus, newField = false }) {
 
-  console.log(retryForConsensus)
   if (state.answerFields.hasOwnProperty(name)) {
     return;
   }
@@ -17,11 +16,6 @@ const storeSpecs = {
   state: {
     csrf: '',
     fieldNames: [],
-    consensusConfig: {
-      threshold: undefined,
-      maxRetries: undefined,
-      redundancyDelta: undefined
-    },
     answerFields: {},
     newFields: {}
   },
@@ -66,18 +60,18 @@ const storeSpecs = {
       delete state.answerFields[name];
     },
 
+    changeRetryConfig (state, {name, retry}) {
+      state.answerFields[name].retryForConsensus = retry;
+      this.retryForConsensus = retry;
+    },
+
     setData (state, { csrf, answerFields }) {
       state.csrf = csrf;
       const fields = answerFields;
       for (const name in answerFields) {
         _addField(state, { name, ...fields[name] });
       }
-    },
-
-    updateConfig (state, config) {
-      state.consensusConfig = config;
     }
-
   }
 };
 
