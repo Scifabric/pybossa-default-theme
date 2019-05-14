@@ -8,13 +8,11 @@
 
 <div id="answerfieldsconfig">
     <div class="row">
-        <div class="col-md-5">
-            <h3> Consensus Configuration </h3>
-            <consensus-config :consensus-config="{{consensus_config}}"></consensus-config>
-        </div>
-        <div class="col-md-7 pull-right">
-            <h3> Answer Field Configuration </h3>
+        <div class="col-md-7">
             <fields-config></fields-config>
+        </div>
+        <div class="col-md-5 pull-right">
+            <consensus-config :consensus-config="{{consensus_config}}"></consensus-config>
         </div>
     </div>
 </div>
@@ -24,7 +22,8 @@
 <script>
 answerFields.setData({
     csrf: '{{csrf}}',
-    answerFields: {{answer_fields | safe}}
+    answerFields: {{answer_fields | safe}},
+    consensus: {{consensus_config | safe}}
 });
 </script>
 {% endblock %}

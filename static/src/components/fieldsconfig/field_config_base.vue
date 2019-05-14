@@ -27,7 +27,6 @@
           </span>
           <span
             v-if="retry"
-            type="button"
             class="btn btn-sm btn-default"
             @click="changeRetryStatus"
           >
@@ -35,7 +34,6 @@
           </span>
           <span
             v-else
-            type="button"
             class="btn btn-sm btn-success"
             @click="changeRetryStatus"
           >

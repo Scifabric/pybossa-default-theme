@@ -1,6 +1,7 @@
 import Vue from 'vue';
 
 function _addField (state, { name, type, config, retryForConsensus, newField = false }) {
+  name = name.toLowerCase();
   if (state.answerFields.hasOwnProperty(name)) {
     return;
   }
@@ -11,11 +12,16 @@ function _addField (state, { name, type, config, retryForConsensus, newField = f
   state.fieldNames.push(name);
 }
 
+function _updateConsensusConfig (state, config) {
+  state.consensusConfig = config;
+}
+
 const storeSpecs = {
   state: {
     csrf: '',
     fieldNames: [],
     answerFields: {},
+    consensusConfig: {},
     newFields: {}
   },
 
@@ -35,6 +41,19 @@ const storeSpecs = {
     isNewField: (state) => (name) => {
       const f = state.newFields[name] || false;
       return f;
+    },
+
+    hasConsensusConfig (state) {
+      return (state.consensusConfig && state.consensusConfig.threshold);
+    },
+
+    hasRetryFields (state) {
+      for (const name in state.answerFields) {
+        if (state.answerFields[name].retryForConsensus) {
+            return true;
+        }
+      }
+      return false;
     }
   },
 
@@ -52,19 +71,25 @@ const storeSpecs = {
       if (ix >= 0) {
         state.fieldNames.splice(ix, 1);
       }
+      state.answerFields[name].retryForConsensus = false;
       delete state.answerFields[name];
+    },
+
+    updateConsensusConfig (state, config) {
+      _updateConsensusConfig(state, config);
     },
 
     changeRetryConfig (state, { name, retry }) {
       state.answerFields[name].retryForConsensus = retry;
     },
 
-    setData (state, { csrf, answerFields }) {
+    setData (state, { csrf, answerFields, consensus }) {
       state.csrf = csrf;
       const fields = answerFields;
       for (const name in answerFields) {
         _addField(state, { name, ...fields[name] });
       }
+      _updateConsensusConfig(state, consensus);
     }
   }
 };

@@ -41,7 +41,7 @@ describe('fieldsconfig', () => {
     const fields = wrapper.findAll('.field-config');
     expect(fields.length).toEqual(1);
     const field = fields.at(0);
-    expect(field.text()).toContain('Categorical Field - testField');
+    expect(field.text()).toContain('Categorical Field - testfield');
   });
 
   it('shows error if name is empty', () => {

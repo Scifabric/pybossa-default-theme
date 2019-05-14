@@ -1,6 +1,10 @@
 <template>
-  <div class="stats-config row">
+  <div
+    v-if="hasRetryFields"
+    class="stats-config row"
+  >
     <div class="col-md-12">
+      <h3> Consensus Configuration </h3>
       <div class="form-inline ">
         <p> Consensus threshold: </p>
         <div class="input-group">
@@ -45,8 +49,7 @@
           </button>
         </div>
       </div>
-
-      <div v-if="isDefined && threshold!=0">
+      <div v-if="hasConsensusConfig">
         <br>
         <div class="row">
           <div class="col-md-9">
@@ -68,7 +71,7 @@
         </button>
       </div>
       <div v-else>
-        <p>No consensus currently configured.</p>
+        <p> No consensus currently configured.</p>
       </div>
     </div>
   </div>
@@ -81,7 +84,7 @@ export default {
   props: {
       'consensusConfig': {
           type: Object,
-          default: () => ({ threshold: 0, maxRetries: 0, redundancyDelta: 0 })
+          default: () => ({ threshold: undefined, maxRetries: undefined, redundancyDelta: undefined })
       }
   },
   data () {
@@ -90,17 +93,16 @@ export default {
         maxRetries: this.consensusConfig.maxRetries,
         redundancyDelta: this.consensusConfig.redundancyDelta,
         errorMsg: '',
-        isDefined: true,
         capacity: 10000
     };
   },
 
   computed: {
-    ...mapGetters(['csrfToken'])
+    ...mapGetters(['csrfToken', 'hasRetryFields', 'hasConsensusConfig'])
   },
 
   methods: {
-    ...mapMutations(['updateConfig']),
+    ...mapMutations(['updateConsensusConfig']),
 
     _isIntegerNumeric: function (n) {
         var _n = Number(n);
@@ -108,10 +110,6 @@ export default {
     },
 
     _write: function () {
-        if (!this.redundancyDelta && !this.maxRetries && !this.threshold) {
-            return true;
-        }
-
         if (!this._isIntegerNumeric(this.threshold) || this.threshold <= 50 ||
                 this.threshold > 100) {
             this.errorMsg = 'Threshold should be integer in 1 - 100';
@@ -127,15 +125,9 @@ export default {
             return false;
         }
         this.errorMsg = '';
-        this.isDefined = true;
         return true;
     },
-    remove () {
-        this.threshold = 0;
-        this.maxRetries = 0;
-        this.redundancyDelta = 0;
-        this.save();
-    },
+
     async save () {
         if (!this._write()) {
             return;
@@ -157,7 +149,37 @@ export default {
             if (res.ok) {
                 const data = await res.json();
                 window.pybossaNotify(data.flash, true, data.status);
-                this.isDefined = this.threshold !== 0;
+                this.updateConsensusConfig({
+                    threshold: this.threshold,
+                    maxRetries: this.maxRetries,
+                    redundancyDelta: this.redundancyDelta
+                });
+            } else {
+                window.pybossaNotify('An error occurred.', true, 'error');
+            }
+        } catch (error) {
+                window.pybossaNotify('An error occurred.', true, 'error');
+        }
+    },
+
+    async remove () {
+        try {
+            const res = await fetch(window.location.pathname, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    'X-CSRFToken': this.csrfToken
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify({ 'consensusConfig': {} })
+            });
+            if (res.ok) {
+                const data = await res.json();
+                window.pybossaNotify(data.flash, true, data.status);
+                this.threshold = 0;
+                this.maxRetries = 0;
+                this.redundancyDelta = 0;
+                this.updateConsensusConfig({});
             } else {
                 window.pybossaNotify('An error occurred.', true, 'error');
             }

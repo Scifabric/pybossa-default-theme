@@ -1,30 +1,84 @@
-{% extends "projects/base.html" %}
-{% set active_page = "projects" %}
-{% set active_link  = "settings" %}
-{% set section = _('Configuration') %}
-{% from "_formhelpers.html" import render_form %}
-
-{% block projectcontent %}
-
-<div id="answerfieldsconfig">
-    <div class="row">
-        <div class="col-md-5">
-            <h3> Consensus Configuration </h3>
-            <consensus-config :consensus-config="{{consensus_config}}"></consensus-config>
-        </div>
-        <div class="col-md-7 pull-right">
-            <h3> Answer Field Configuration </h3>
-            <fields-config></fields-config>
-        </div>
-    </div>
-</div>
-
-<script src="/static/js/gen/answerfieldsconfig.min.5f5a2083d51e71cb3b88.js"></script>
-
-<script>
-answerFields.setData({
-    csrf: '{{csrf}}',
-    answerFields: {{answer_fields | safe}}
-});
-</script>
-{% endblock %}
+Html Webpack Plugin:
+<pre>
+  Error: Child compilation failed:
+  Module build failed: Error: ENOENT: no such file or directory, open '/Users/wyuan35/work/pybossa/pybossa/themes/default/static/src/node_modules/lodash/lodash.js':
+  Error: ENOENT: no such file or directory, open '/Users/wyuan35/work/pybossa/pybossa/themes/default/static/src/node_modules/lodash/lodash.js'
+  
+  - compiler.js:79 childCompiler.runAsChild
+    [src]/[html-webpack-plugin]/lib/compiler.js:79:16
+  
+  - Compiler.js:306 compile
+    [src]/[webpack]/lib/Compiler.js:306:11
+  
+  - Compiler.js:631 hooks.afterCompile.callAsync.err
+    [src]/[webpack]/lib/Compiler.js:631:15
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [src]/[tapable]/lib/Hook.js:154:20
+  
+  - Compiler.js:628 compilation.seal.err
+    [src]/[webpack]/lib/Compiler.js:628:31
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [src]/[tapable]/lib/Hook.js:154:20
+  
+  - Compilation.js:1329 hooks.optimizeAssets.callAsync.err
+    [src]/[webpack]/lib/Compilation.js:1329:35
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [src]/[tapable]/lib/Hook.js:154:20
+  
+  - Compilation.js:1320 hooks.optimizeChunkAssets.callAsync.err
+    [src]/[webpack]/lib/Compilation.js:1320:32
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [src]/[tapable]/lib/Hook.js:154:20
+  
+  - Compilation.js:1315 hooks.additionalAssets.callAsync.err
+    [src]/[webpack]/lib/Compilation.js:1315:36
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [src]/[tapable]/lib/Hook.js:154:20
+  
+  - Compilation.js:1311 hooks.optimizeTree.callAsync.err
+    [src]/[webpack]/lib/Compilation.js:1311:32
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [src]/[tapable]/lib/Hook.js:154:20
+  
+  - Compilation.js:1248 Compilation.seal
+    [src]/[webpack]/lib/Compilation.js:1248:27
+  
+  - Compiler.js:625 compilation.finish.err
+    [src]/[webpack]/lib/Compiler.js:625:18
+  
+  - Compilation.js:1171 hooks.finishModules.callAsync.err
+    [src]/[webpack]/lib/Compilation.js:1171:4
+  
+  
+  - Hook.js:154 AsyncSeriesHook.lazyCompileHook
+    [src]/[tapable]/lib/Hook.js:154:20
+  
+  - Compilation.js:1163 Compilation.finish
+    [src]/[webpack]/lib/Compilation.js:1163:28
+  
+  - Compiler.js:622 hooks.make.callAsync.err
+    [src]/[webpack]/lib/Compiler.js:622:17
+  
+  
+  - Compilation.js:1095 _addModuleChain
+    [src]/[webpack]/lib/Compilation.js:1095:12
+  
+  - Compilation.js:1007 processModuleDependencies.err
+    [src]/[webpack]/lib/Compilation.js:1007:9
+  
+  - task_queues.js:79 processTicksAndRejections
+    internal/process/task_queues.js:79:9
+  
+</pre>
