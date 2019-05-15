@@ -29,12 +29,12 @@
               v-model="fieldName"
               type="text"
               class="form-control"
-              :v-bind:title="message1"
+              :title="message1"
             >
           </div>
         </div>
         <div class="checkbox">
-          <label :v-bind:title="message2">
+          <label :title="message2">
             <input
               v-model="retryForConsensus"
               type="checkbox"
