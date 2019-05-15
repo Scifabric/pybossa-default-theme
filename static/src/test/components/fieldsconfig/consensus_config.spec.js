@@ -36,7 +36,7 @@ describe('ConsensusConfig', () => {
     const wrapper = mount(ConsensusConfig, { store, localVue });
     const p = wrapper.findAll('p');
     expect(p).toHaveLength(0);
-  })
+  });
 
   it('loads empty config', () => {
     store.commit('setData', {

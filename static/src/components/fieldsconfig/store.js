@@ -70,8 +70,9 @@ const storeSpecs = {
       const ix = state.fieldNames.indexOf(name);
       if (ix >= 0) {
         state.fieldNames.splice(ix, 1);
+        state.answerFields[name].retryForConsensus = false;
       }
-      state.answerFields[name].retryForConsensus = false;
+
       delete state.answerFields[name];
     },
 
