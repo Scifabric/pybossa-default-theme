@@ -184,14 +184,4 @@ export default {
   overflow-y: scroll;
   margin-bottom: 20px;
 }
-.tooltip-inner {
-  max-width: 350px !important;
-  font-size: 15px;
-  padding: 10px 15px 10px 20px;
-  background: #ffffff;
-  color: rgb(0, 0, 0, .7);
-  border: 1px snow #737373;
-  text-align: left;
-  opacity: 1;
-}
 </style>
