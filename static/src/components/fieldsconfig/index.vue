@@ -1,20 +1,13 @@
 <template>
   <div class="stats-config row">
     <div class="col-md-12">
+      <h3> Answer Field Configuration </h3>
       <div
         class="form-group"
         :class="{'has-error': error}"
       >
         <div class="row">
-          <div class="col-md-7">
-            <p> Path to answer field: </p>
-            <input
-              v-model="fieldName"
-              type="text"
-              class="form-control"
-            >
-          </div>
-          <div class="col-md-5 pull-right">
+          <div class="col-md-5">
             <p> Type of answer </p>
             <select
               v-model="fieldType"
@@ -30,10 +23,18 @@
               </option>
             </select>
           </div>
+          <div class="col-md-7  pull-right">
+            <p> Answer field path: </p>
+            <input
+              v-model="fieldName"
+              type="text"
+              class="form-control"
+              :title="message1"
+            >
+          </div>
         </div>
-
         <div class="checkbox">
-          <label>
+          <label :title="message2">
             <input
               v-model="retryForConsensus"
               type="checkbox"
@@ -82,6 +83,7 @@
         </div>
       </div>
       <button
+        :disabled="hasRetryFields && !hasConsensusConfig"
         class="btn btn-primary"
         @click="save"
       >
@@ -92,6 +94,7 @@
 </template>
 
 <script>
+
 import { mapGetters, mapMutations } from 'vuex';
 import FieldConfigBase from './field_config_base';
 import CategoricalFieldConfig from './categorical_field_config';
@@ -110,12 +113,14 @@ export default {
       fieldType: labelTypes.default,
       retryForConsensus: false,
       error: false,
-      labelTypes
+      labelTypes,
+      message1: 'This should match "pyb-answer" in your task presenter',
+      message2: 'Consensus configuration must be filled out to enable retry feature'
     };
   },
 
   computed: {
-    ...mapGetters(['answerFields', 'csrfToken', 'isNewField'])
+    ...mapGetters(['answerFields', 'csrfToken', 'isNewField', 'hasConsensusConfig', 'hasRetryFields'])
   },
 
   methods: {
@@ -141,6 +146,7 @@ export default {
       this.fieldType = labelTypes.default;
       this.retryForConsensus = false;
     },
+
     async save () {
       try {
         const res = await fetch(window.location.pathname, {
@@ -159,8 +165,6 @@ export default {
           window.pybossaNotify('An error occurred.', true, 'error');
         }
       } catch (error) {
-        console.warn(error);
-        console.log('an error occurred');
         window.pybossaNotify('An error occurred.', true, 'error');
       }
     }
