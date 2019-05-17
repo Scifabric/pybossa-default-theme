@@ -44,7 +44,7 @@ const storeSpecs = {
     },
 
     hasConsensusConfig (state) {
-      return (state.consensusConfig && state.consensusConfig.threshold);
+      return (state.consensusConfig && state.consensusConfig.consensusThreshold);
     },
 
     hasRetryFields (state) {

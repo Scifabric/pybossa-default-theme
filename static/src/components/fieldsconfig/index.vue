@@ -156,7 +156,7 @@ export default {
             'X-CSRFToken': this.csrfToken
           },
           credentials: 'same-origin',
-          body: JSON.stringify({ 'answerFieldsConfig': this.answerFields })
+          body: JSON.stringify({ answerFieldsConfig: this.answerFields })
         });
         if (res.ok) {
           const data = await res.json();
