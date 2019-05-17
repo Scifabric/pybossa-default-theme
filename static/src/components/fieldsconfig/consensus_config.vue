@@ -104,24 +104,23 @@ export default {
   methods: {
     ...mapMutations(['updateConsensusConfig']),
 
-    _isIntegerNumeric: function (n) {
-        var _n = parseInt(n, 10);
+    _isIntegerNumeric: function (_n) {
         return Math.floor(_n) === _n;
     },
 
-    _write: function () {
-        if (!this._isIntegerNumeric(this.consensusThreshold) || this.consensusThreshold <= 50 ||
-                this.consensusThreshold > 100) {
-            this.errorMsg = 'Threshold should be integer in 1 - 100';
+    _write: function (_consensusThreshold, _redundancyConfig, _maxRetries) {
+        if (!this._isIntegerNumeric(_consensusThreshold) || _consensusThreshold <= 50 ||
+          _consensusThreshold > 100) {
+            this.errorMsg = 'Threshold should be integer within 50 - 100';
             return false;
         }
-        if (!this._isIntegerNumeric(this.redundancyConfig) || this.redundancyConfig <= 0) {
+        if (!this._isIntegerNumeric(_redundancyConfig) || _redundancyConfig <= 0) {
             this.errorMsg = 'Redundancy should be positive integer';
             return false;
         }
-        if (!this._isIntegerNumeric(this.maxRetries) || this.maxRetries <= 0 ||
-                this.maxRetries > this.capacity) {
-            this.errorMsg = 'Maximum redundancy should be integer in 1 - ' + this.capacity;
+        if (!this._isIntegerNumeric(_maxRetries) || _maxRetries <= 0 ||
+                _maxRetries > this.capacity) {
+            this.errorMsg = 'Maximum redundancy should be integer within 1 - ' + this.capacity;
             return false;
         }
         this.errorMsg = '';
@@ -129,12 +128,12 @@ export default {
     },
 
     async save () {
-        if (!this._write()) {
-            return;
-        }
         var _consensusThreshold = parseInt(this.consensusThreshold, 10);
         var _redundancyConfig = parseInt(this.redundancyConfig, 10);
         var _maxRetries = parseInt(this.maxRetries, 10);
+        if (!this._write(_consensusThreshold, _redundancyConfig, _maxRetries)) {
+            return;
+        }
         try {
             const res = await fetch(window.location.pathname, {
                 method: 'POST',
