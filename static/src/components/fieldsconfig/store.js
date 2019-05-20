@@ -8,12 +8,19 @@ function _addField (state, { name, type, config, retryForConsensus, newField = f
   if (newField) {
     state.newFields[name] = true;
   }
-  Vue.set(state.answerFields, name, { type, config, retryForConsensus });
+  Vue.set(state.answerFields, name, { type, config, 'retry_for_consensus': retryForConsensus });
   state.fieldNames.push(name);
 }
 
 function _updateConsensusConfig (state, config) {
-  state.consensusConfig = config;
+  if (config) {
+    const cf = {
+      consensusThreshold: config['consensus_threshold'],
+      maxRetries: config['max_retries'],
+      redundancyConfig: config['redundancy_config']
+    };
+    state.consensusConfig = cf;
+  }
 }
 
 const storeSpecs = {
@@ -44,12 +51,12 @@ const storeSpecs = {
     },
 
     hasConsensusConfig (state) {
-      return (state.consensusConfig && state.consensusConfig.threshold);
+      return (state.consensusConfig && state.consensusConfig.consensusThreshold > 0);
     },
 
     hasRetryFields (state) {
       for (const name in state.answerFields) {
-        if (state.answerFields[name].retryForConsensus) {
+        if (state.answerFields[name]['retry_for_consensus']) {
             return true;
         }
       }
@@ -70,9 +77,8 @@ const storeSpecs = {
       const ix = state.fieldNames.indexOf(name);
       if (ix >= 0) {
         state.fieldNames.splice(ix, 1);
-        state.answerFields[name].retryForConsensus = false;
+        state.answerFields[name]['retry_for_consensus'] = false;
       }
-
       delete state.answerFields[name];
     },
 
@@ -81,14 +87,16 @@ const storeSpecs = {
     },
 
     changeRetryConfig (state, { name, retry }) {
-      state.answerFields[name].retryForConsensus = retry;
+      state.answerFields[name]['retry_for_consensus'] = retry;
     },
 
     setData (state, { csrf, answerFields, consensus }) {
       state.csrf = csrf;
       const fields = answerFields;
       for (const name in answerFields) {
-        _addField(state, { name, ...fields[name] });
+        const retryForConsensus = fields[name]['retry_for_consensus'];
+        const { type, config } = fields[name];
+        _addField(state, { name, type, config, retryForConsensus });
       }
       _updateConsensusConfig(state, consensus);
     }

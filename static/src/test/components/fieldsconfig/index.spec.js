@@ -213,7 +213,7 @@ describe('fieldsconfig', () => {
           config: {
             labels: ['A', 'B', 'C']
           },
-          retryForConsensus: true
+          retry_for_consensus: true
         }
       }
     });

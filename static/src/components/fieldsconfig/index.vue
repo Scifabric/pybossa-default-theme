@@ -73,7 +73,7 @@
                 :is="labelTypes.config[field.type].component"
                 :key="name"
                 :name="name"
-                :retry-for-consensus="answerFields[name].retryForConsensus"
+                :retry-for-consensus="answerFields[name]['retry_for_consensus']"
                 :edit="isNewField(name)"
                 v-bind="field.config"
                 :type="labelTypes.config[field.type].display"
@@ -156,7 +156,7 @@ export default {
             'X-CSRFToken': this.csrfToken
           },
           credentials: 'same-origin',
-          body: JSON.stringify({ 'answerFieldsConfig': this.answerFields })
+          body: JSON.stringify({ 'answer_fields': this.answerFields })
         });
         if (res.ok) {
           const data = await res.json();

@@ -46,7 +46,7 @@ describe('ConsensusConfig', () => {
           config: {
             labels: ['A', 'B', 'C']
           },
-          retryForConsensus: true
+          retry_for_consensus: true
         }
       },
       consensus: { }
@@ -58,7 +58,7 @@ describe('ConsensusConfig', () => {
 
   it('load non-empty config', () => {
     const propsData = {
-      consensusConfig: { threshold: 70, maxRetries: 10, redundancyDelta: 1 }
+      consensusConfig: { consensusThreshold: 70, maxRetries: 10, redundancyConfig: 1 }
     };
     store.commit('setData', {
       answerFields: {
@@ -67,13 +67,13 @@ describe('ConsensusConfig', () => {
           config: {
             labels: ['A', 'B', 'C']
           },
-          retryForConsensus: true
+          retry_for_consensus: true
         }
       },
       consensus: {
-        threshold: 70,
-        maxRetries: 10,
-        redundancyDelta: 1
+        consensus_threshold: 70,
+        max_retries: 10,
+        redundancy_config: 1
       }
     });
     const wrapper = mount(ConsensusConfig, { store, localVue, propsData });
@@ -95,12 +95,12 @@ describe('ConsensusConfig', () => {
           config: {
             labels: ['A', 'B', 'C']
           },
-          retryForConsensus: true
+          retry_for_consensus: true
         }
       }
     });
     const wrapper = mount(ConsensusConfig, { store, localVue });
-    wrapper.setData({ threshold: 80, maxRetries: 15, redundancyDelta: 3 });
+    wrapper.setData({ consensusThreshold: 80, maxRetries: 15, redundancyConfig: 3 });
     const saveButton = wrapper.findAll('button').at(0);
     saveButton.trigger('click');
     await localVue.nextTick();
@@ -118,7 +118,7 @@ describe('ConsensusConfig', () => {
       json: () => Promise.resolve({ flash: 'hello', status: 'success' })
     }));
     const propsData = {
-      consensusConfig: { threshold: 70, maxRetries: 10, redundancyDelta: 1 }
+      consensusConfig: { consensusThreshold: 70, maxRetries: 10, redundancyConfig: 1 }
     };
     store.commit('setData', {
       answerFields: {
@@ -127,13 +127,13 @@ describe('ConsensusConfig', () => {
           config: {
             labels: ['A', 'B', 'C']
           },
-          retryForConsensus: true
+          retry_for_consensus: true
         }
       },
       consensus: {
-        threshold: 70,
-        maxRetries: 10,
-        redundancyDelta: 1
+        consensus_threshold: 70,
+        max_retries: 10,
+        redundancy_config: 1
       }
     });
     const wrapper = mount(ConsensusConfig, { store, localVue, propsData });

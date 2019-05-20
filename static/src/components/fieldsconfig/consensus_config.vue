@@ -9,7 +9,7 @@
         <p> Consensus threshold: </p>
         <div class="input-group">
           <input
-            v-model="threshold"
+            v-model="consensusThreshold"
             type="text"
             class="form-control "
             style="width: 100%"
@@ -21,7 +21,7 @@
         </div>
         <p> Add redundancy to retry: </p>
         <input
-          v-model="redundancyDelta"
+          v-model="redundancyConfig"
           type="text"
           class="form-control"
           style="width: 100%"
@@ -58,8 +58,8 @@
             <p> Maximum redundancy</p>
           </div>
           <div class="col-md-3 align-right">
-            <p> {{ threshold }}</p>
-            <p> {{ redundancyDelta }}</p>
+            <p> {{ consensusThreshold }}</p>
+            <p> {{ redundancyConfig }}</p>
             <p> {{ maxRetries }}</p>
           </div>
         </div>
@@ -84,14 +84,14 @@ export default {
   props: {
       'consensusConfig': {
           type: Object,
-          default: () => ({ threshold: undefined, maxRetries: undefined, redundancyDelta: undefined })
+          default: () => ({ consensusThreshold: undefined, maxRetries: undefined, redundancyConfig: undefined })
       }
   },
   data () {
     return {
-        threshold: this.consensusConfig.threshold,
-        maxRetries: this.consensusConfig.maxRetries,
-        redundancyDelta: this.consensusConfig.redundancyDelta,
+        consensusThreshold: this.consensusConfig['consensus_threshold'],
+        maxRetries: this.consensusConfig['max_retries'],
+        redundancyConfig: this.consensusConfig['redundancy_config'],
         errorMsg: '',
         capacity: 10000
     };
@@ -104,24 +104,23 @@ export default {
   methods: {
     ...mapMutations(['updateConsensusConfig']),
 
-    _isIntegerNumeric: function (n) {
-        var _n = Number(n);
+    _isIntegerNumeric: function (_n) {
         return Math.floor(_n) === _n;
     },
 
-    _write: function () {
-        if (!this._isIntegerNumeric(this.threshold) || this.threshold <= 50 ||
-                this.threshold > 100) {
-            this.errorMsg = 'Threshold should be integer in 1 - 100';
+    _write: function (_consensusThreshold, _redundancyConfig, _maxRetries) {
+        if (!this._isIntegerNumeric(_consensusThreshold) || _consensusThreshold <= 50 ||
+          _consensusThreshold > 100) {
+            this.errorMsg = 'Threshold should be integer within 50 - 100';
             return false;
         }
-        if (!this._isIntegerNumeric(this.redundancyDelta) || this.redundancyDelta <= 0) {
+        if (!this._isIntegerNumeric(_redundancyConfig) || _redundancyConfig <= 0) {
             this.errorMsg = 'Redundancy should be positive integer';
             return false;
         }
-        if (!this._isIntegerNumeric(this.maxRetries) || this.maxRetries <= 0 ||
-                this.maxRetries > this.capacity) {
-            this.errorMsg = 'Maximum redundancy should be integer in 1 - ' + this.capacity;
+        if (!this._isIntegerNumeric(_maxRetries) || _maxRetries <= 0 ||
+                _maxRetries > this.capacity) {
+            this.errorMsg = 'Maximum redundancy should be integer within 1 - ' + this.capacity;
             return false;
         }
         this.errorMsg = '';
@@ -129,7 +128,10 @@ export default {
     },
 
     async save () {
-        if (!this._write()) {
+        const _consensusThreshold = parseInt(this.consensusThreshold, 10);
+        const _redundancyConfig = parseInt(this.redundancyConfig, 10);
+        const _maxRetries = parseInt(this.maxRetries, 10);
+        if (!this._write(_consensusThreshold, _redundancyConfig, _maxRetries)) {
             return;
         }
         try {
@@ -140,19 +142,19 @@ export default {
                     'X-CSRFToken': this.csrfToken
                 },
                 credentials: 'same-origin',
-                body: JSON.stringify({ 'consensusConfig': {
-                    threshold: this.threshold,
-                    maxRetries: this.maxRetries,
-                    redundancyDelta: this.redundancyDelta }
+                body: JSON.stringify({ 'consensus_config': {
+                    'consensus_threshold': _consensusThreshold,
+                    'max_retries': _maxRetries,
+                    'redundancy_config': _redundancyConfig }
                     })
             });
             if (res.ok) {
                 const data = await res.json();
                 window.pybossaNotify(data.flash, true, data.status);
                 this.updateConsensusConfig({
-                    threshold: this.threshold,
-                    maxRetries: this.maxRetries,
-                    redundancyDelta: this.redundancyDelta
+                    'consensus_threshold': _consensusThreshold,
+                    'max_retries': _maxRetries,
+                    'redundancy_config': _redundancyConfig
                 });
             } else {
                 window.pybossaNotify('An error occurred.', true, 'error');
@@ -171,14 +173,14 @@ export default {
                     'X-CSRFToken': this.csrfToken
                 },
                 credentials: 'same-origin',
-                body: JSON.stringify({ 'consensusConfig': {} })
+                body: JSON.stringify({ consensusConfig: {} })
             });
             if (res.ok) {
                 const data = await res.json();
                 window.pybossaNotify(data.flash, true, data.status);
-                this.threshold = 0;
+                this.consensusThreshold = 0;
                 this.maxRetries = 0;
-                this.redundancyDelta = 0;
+                this.redundancyConfig = 0;
                 this.updateConsensusConfig({});
             } else {
                 window.pybossaNotify('An error occurred.', true, 'error');
