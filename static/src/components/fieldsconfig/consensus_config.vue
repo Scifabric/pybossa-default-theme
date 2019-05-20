@@ -89,9 +89,9 @@ export default {
   },
   data () {
     return {
-        consensusThreshold: this.consensusConfig.consensusThreshold,
-        maxRetries: this.consensusConfig.maxRetries,
-        redundancyConfig: this.consensusConfig.redundancyConfig,
+        consensusThreshold: this.consensusConfig['consensus_threshold'],
+        maxRetries: this.consensusConfig['max_retries'],
+        redundancyConfig: this.consensusConfig['redundancy_config'],
         errorMsg: '',
         capacity: 10000
     };
@@ -128,9 +128,9 @@ export default {
     },
 
     async save () {
-        var _consensusThreshold = parseInt(this.consensusThreshold, 10);
-        var _redundancyConfig = parseInt(this.redundancyConfig, 10);
-        var _maxRetries = parseInt(this.maxRetries, 10);
+        const _consensusThreshold = parseInt(this.consensusThreshold, 10);
+        const _redundancyConfig = parseInt(this.redundancyConfig, 10);
+        const _maxRetries = parseInt(this.maxRetries, 10);
         if (!this._write(_consensusThreshold, _redundancyConfig, _maxRetries)) {
             return;
         }
@@ -142,19 +142,19 @@ export default {
                     'X-CSRFToken': this.csrfToken
                 },
                 credentials: 'same-origin',
-                body: JSON.stringify({ consensusConfig: {
-                    consensusThreshold: _consensusThreshold,
-                    maxRetries: _maxRetries,
-                    redundancyConfig: _redundancyConfig }
+                body: JSON.stringify({ 'consensus_config': {
+                    'consensus_threshold': _consensusThreshold,
+                    'max_retries': _maxRetries,
+                    'redundancy_config': _redundancyConfig }
                     })
             });
             if (res.ok) {
                 const data = await res.json();
                 window.pybossaNotify(data.flash, true, data.status);
                 this.updateConsensusConfig({
-                    consensusThreshold: _consensusThreshold,
-                    maxRetries: _maxRetries,
-                    redundancyConfig: _redundancyConfig
+                    'consensus_threshold': _consensusThreshold,
+                    'max_retries': _maxRetries,
+                    'redundancy_config': _redundancyConfig
                 });
             } else {
                 window.pybossaNotify('An error occurred.', true, 'error');

@@ -108,12 +108,12 @@ export default {
 
     changeRetryStatus () {
       this.retry = !this.retry;
-      this.$emit('retryForConsensus', this.retry);
       this.changeRetryConfig({ name: this.name,
                               retry: this.retry });
     },
 
     changeCollapseStatus () {
+      console.log(this.retry);
       this.collapse = !this.collapse;
     }
   }

@@ -46,7 +46,7 @@ describe('ConsensusConfig', () => {
           config: {
             labels: ['A', 'B', 'C']
           },
-          retryForConsensus: true
+          retry_for_consensus: true
         }
       },
       consensus: { }
@@ -67,13 +67,13 @@ describe('ConsensusConfig', () => {
           config: {
             labels: ['A', 'B', 'C']
           },
-          retryForConsensus: true
+          retry_for_consensus: true
         }
       },
       consensus: {
-        consensusThreshold: 70,
-        maxRetries: 10,
-        redundancyConfig: 1
+        consensus_threshold: 70,
+        max_retries: 10,
+        redundancy_config: 1
       }
     });
     const wrapper = mount(ConsensusConfig, { store, localVue, propsData });
@@ -95,7 +95,7 @@ describe('ConsensusConfig', () => {
           config: {
             labels: ['A', 'B', 'C']
           },
-          retryForConsensus: true
+          retry_for_consensus: true
         }
       }
     });
@@ -127,13 +127,13 @@ describe('ConsensusConfig', () => {
           config: {
             labels: ['A', 'B', 'C']
           },
-          retryForConsensus: true
+          retry_for_consensus: true
         }
       },
       consensus: {
-        consensusThreshold: 70,
-        maxRetries: 10,
-        redundancyConfig: 1
+        consensus_threshold: 70,
+        max_retries: 10,
+        redundancy_config: 1
       }
     });
     const wrapper = mount(ConsensusConfig, { store, localVue, propsData });
