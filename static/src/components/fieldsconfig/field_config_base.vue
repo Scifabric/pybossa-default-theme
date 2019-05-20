@@ -113,7 +113,6 @@ export default {
     },
 
     changeCollapseStatus () {
-      console.log(this.retry);
       this.collapse = !this.collapse;
     }
   }

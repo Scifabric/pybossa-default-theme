@@ -91,7 +91,6 @@ const storeSpecs = {
     },
 
     setData (state, { csrf, answerFields, consensus }) {
-      console.log(answerFields);
       state.csrf = csrf;
       const fields = answerFields;
       for (const name in answerFields) {
