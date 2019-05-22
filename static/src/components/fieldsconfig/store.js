@@ -1,7 +1,6 @@
 import Vue from 'vue';
 
 function _addField (state, { name, type, config, retryForConsensus, newField = false }) {
-  name = name.toLowerCase();
   if (state.answerFields.hasOwnProperty(name)) {
     return;
   }

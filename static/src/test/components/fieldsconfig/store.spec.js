@@ -25,7 +25,7 @@ describe('fieldsconfig', () => {
       }
     });
     expect(store.state.fieldNames).toHaveLength(1);
-    expect(store.state.fieldNames[0]).toBe('testfield');
+    expect(store.state.fieldNames[0]).toBe('testField');
   });
 
   it('does not delete invalid fields', () => {
