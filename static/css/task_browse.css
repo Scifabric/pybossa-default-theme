@@ -32,6 +32,10 @@
 #tasksGrid th.sortable {
     cursor: pointer;
 }
+#tasksGrid .gold-task {
+    display: block;
+    margin: 0 0.25rem;
+}
 #date_from {
     z-index: 1051;
 }

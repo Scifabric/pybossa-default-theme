@@ -718,11 +718,13 @@ function prepareFilters() {
 }
 
 function refresh(dropFilters) {
-    var location = first_page_url + (!isNaN(records_per_page) ? ('/1/' + records_per_page) : '');
+    let location = (first_page_url || '') + (!isNaN(records_per_page) ? ('/1/' + records_per_page) : '');
+
     if (!dropFilters) {
-        var preparedFilters = prepareFilters();
+        const preparedFilters = prepareFilters();
         location += '?' + $.param(preparedFilters);
     }
+
     window.location.replace(location);
 }
 
@@ -731,9 +733,11 @@ window.addEventListener('clearFilters', function() {
 });
 
 function exportTasks(downloadType) {
-    var location = first_page_url + (!isNaN(records_per_page) ? ('/1/' + records_per_page) : '');
-    var preparedFilters = prepareFilters();
+    let location = (first_page_url || '') + (!isNaN(records_per_page) ? ('/1/' + records_per_page) : '');
+    const preparedFilters = prepareFilters();
+
     location += '?' + $.param(preparedFilters) + '&download_type=' + downloadType;
+
     window.location.replace(location);
 }
 
