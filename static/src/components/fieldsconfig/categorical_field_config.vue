@@ -79,12 +79,17 @@ export default {
 
     addLabels (split) {
       let newLabels;
+      const label = (this.newLabel || '').trim();
+      if (!label) {
+        return;
+      }
       if (split) {
-        newLabels = this.newLabel
+        newLabels = label
           .split(',')
-          .map((token) => token.trim());
+          .map(token => token.trim())
+          .filter(token => token);
       } else {
-        newLabels = [this.newLabel];
+        newLabels = [label];
       }
 
       const dedupe = {};
