@@ -3,13 +3,17 @@
     <h4>Precision-Recall By Label</h4>
     <div class="form-inline">
       <div class="form-group">
-        <label for="beta">Beta: </label>
+        <label for="beta">&beta;: </label>
         <input
           id="beta"
           v-model="beta"
           type="text"
           class="form-control input-sm"
         >
+        (see <a
+          href="https://en.wikipedia.org/wiki/F1_score#Definition"
+          target="_blank"
+        >definition of F&beta;</a>)
       </div>
     </div>
     <table class="table table-bordered">
@@ -25,7 +29,7 @@
             Recall
           </th>
           <th class="col-xs-2">
-            F1
+            F&beta;
           </th>
         </tr>
       </thead>
@@ -37,7 +41,7 @@
           <th>{{ label }}</th>
           <td>{{ fmtNum(precision[ix]) }}</td>
           <td>{{ fmtNum(recall[ix]) }}</td>
-          <td>{{ fmtNum(f1[ix]) }}</td>
+          <td>{{ fmtNum(fbeta[ix]) }}</td>
         </tr>
         <tr>
           <th>Average</th>
@@ -109,7 +113,7 @@ export default {
         .map((row, ix) => row[ix]);
     },
 
-    f1 () {
+    fbeta () {
       return this.precision.map((p, ix) => {
         const r = this.recall[ix];
         const b2 = Math.pow(this.beta, 2);
@@ -118,7 +122,7 @@ export default {
     },
 
     averages () {
-      return [this.precision, this.recall, this.f1]
+      return [this.precision, this.recall, this.fbeta]
         .map(values => (values.reduce((a, b) => a + b)) / values.length);
     }
   },
