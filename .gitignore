@@ -9,6 +9,7 @@ _gcs_form.html
 static/.webassets-cache/*
 static/css/gen/*
 static/js/gen/*
+static/js/img
 *.sublime-*
 static/src/node_modules/*
 coverage/
