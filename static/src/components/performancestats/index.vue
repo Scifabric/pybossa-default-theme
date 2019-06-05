@@ -126,6 +126,7 @@ export default {
       }
       url.searchParams.append('field', selectedField);
       url.searchParams.append('project_id', projectId);
+      url.searchParams.append('all', 1);
       try {
         const res = await fetch(url);
         this.stats = await res.json();
