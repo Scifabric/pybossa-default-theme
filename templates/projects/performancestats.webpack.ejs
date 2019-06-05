@@ -8,7 +8,8 @@
     <performance-stats
         :project-id="{{project.id}}"
         :users="{{contributors | tojson | forceescape}}"
-        :fields="{{answer_fields | tojson | forceescape}}">
+        :fields="{{answer_fields | tojson | forceescape}}"
+        csrf-token="{{csrf_token()}}">
     </performance-stats>
 </div>
 

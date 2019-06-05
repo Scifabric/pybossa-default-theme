@@ -54,6 +54,13 @@
           >
             Show
           </button>
+          <button
+            v-if="stats.length"
+            class="btn btn-danger btn-sm"
+            @click="deleteStats(selectedField, user, projectId)"
+          >
+            Delete <strong>{{ activeField }}</strong> stats for <strong>{{ user==='project' ? user : users[activeUser] }}</strong>
+          </button>
         </div>
       </div>
     </div>
@@ -63,12 +70,13 @@
     >
       <div class="col-xs-12">
         <gig-spinner v-if="waiting" />
-        <component
-          :is="displayComponent"
-          v-else
-          v-bind="fields[activeField].config"
-          :stats="stats"
-        />
+        <div v-else>
+          <component
+            :is="displayComponent"
+            v-bind="fields[activeField].config"
+            :stats="stats"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -77,6 +85,14 @@
 import ConfusionMatrix from './confusion_matrix.vue';
 import AccuracyTable from './accuracy_table.vue';
 import GigSpinner from '../common/gig_spinner.vue';
+
+function setStatsQueryParams (url, userId, projectId, field) {
+  if (userId !== 'project') {
+    url.searchParams.append('user_id', userId);
+  }
+  url.searchParams.append('field', field);
+  url.searchParams.append('project_id', projectId);
+}
 
 export default {
 
@@ -95,6 +111,9 @@ export default {
       type: Object,
       default: () => {}
     },
+    csrfToken: {
+      type: String
+    },
     projectId: Number
   },
 
@@ -103,6 +122,7 @@ export default {
       user: '',
       selectedField: '',
       activeField: '',
+      activeUser: '',
       stats: [],
       displayComponent: null,
       waiting: false
@@ -119,13 +139,10 @@ export default {
     async show (selectedField, user, projectId) {
       this.waiting = true;
       this.activeField = selectedField;
+      this.activeUser = user;
 
       const url = new URL('/api/performancestats', window.location.href);
-      if (user !== 'project') {
-        url.searchParams.append('user_id', user);
-      }
-      url.searchParams.append('field', selectedField);
-      url.searchParams.append('project_id', projectId);
+      setStatsQueryParams(url, user, projectId, selectedField);
       url.searchParams.append('all', 1);
       try {
         const res = await fetch(url);
@@ -137,6 +154,30 @@ export default {
         this.waiting = false;
       }
       this.showStats();
+    },
+
+    async deleteStats (selectedField, user, projectId) {
+      this.waiting = true;
+      const url = new URL(window.location.href);
+      setStatsQueryParams(url, user, projectId, selectedField);
+      try {
+        const res = await fetch(url, {
+          method: 'delete',
+          headers: {
+            'X-CSRF-Token': this.csrfToken
+          }
+        });
+        if (res.ok) {
+          this.stats = [];
+          window.pybossaNotify('Stats Deleted.', true, 'success');
+        } else {
+          window.pybossaNotify('An Error Occurred.', true, 'error');
+        }
+      } catch (e) {
+        window.pybossaNotify('An Error Occurred.', true, 'error');
+      } finally {
+        this.waiting = false;
+      }
     },
 
     showStats () {

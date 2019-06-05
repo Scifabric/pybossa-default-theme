@@ -8,10 +8,11 @@
     <performance-stats
         :project-id="{{project.id}}"
         :users="{{contributors | tojson | forceescape}}"
-        :fields="{{answer_fields | tojson | forceescape}}">
+        :fields="{{answer_fields | tojson | forceescape}}"
+        csrf-token="{{csrf_token()}}">
     </performance-stats>
 </div>
 
-<script src="/static/js/gen/performancestats.min.8841680024f46531f471.js"></script>
+<script src="/static/js/gen/performancestats.min.5f7c01eff4299debdb9b.js"></script>
 {{ helper.broken_image() }}
 {% endblock %}
