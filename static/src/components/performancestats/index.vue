@@ -54,28 +54,44 @@
           >
             Show
           </button>
-          <button
-            v-if="stats.length"
-            class="btn btn-danger btn-sm"
-            @click="deleteStats(selectedField, user, projectId)"
-          >
-            Delete <strong>{{ activeField }}</strong> stats for <strong>{{ user==='project' ? user : users[activeUser] }}</strong>
-          </button>
         </div>
       </div>
     </div>
     <div
       v-if="waiting || stats.length"
-      class="row"
     >
-      <div class="col-xs-12">
-        <gig-spinner v-if="waiting" />
-        <div v-else>
-          <component
-            :is="displayComponent"
-            v-bind="fields[activeField].config"
-            :stats="stats"
-          />
+      <div class="row">
+        <div class="col-xs-12">
+          <gig-spinner v-if="waiting" />
+          <div v-else>
+            <component
+              :is="displayComponent"
+              v-bind="fields[activeField].config"
+              :stats="stats"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        v-if="!waiting && editable"
+        class="row"
+      >
+        <div class="col-xs-12">
+          <div class="form-inline">
+            <input
+              v-model="inputProjectName"
+              type="text"
+              class="form-control input-sm"
+              placeholder="Enter Project Name to Delete"
+            >
+            <button
+              class="btn btn-danger btn-sm"
+              :disabled="projectName !== inputProjectName"
+              @click="deleteStats(selectedField, user, projectId)"
+            >
+              Delete <strong>{{ activeField }}</strong> stats for <strong>{{ user==='project' ? user : users[activeUser] }}</strong>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -114,6 +130,10 @@ export default {
     csrfToken: {
       type: String
     },
+    editable: {
+      type: Boolean,
+      default: false
+    },
     projectId: Number
   },
 
@@ -125,7 +145,9 @@ export default {
       activeUser: '',
       stats: [],
       displayComponent: null,
-      waiting: false
+      waiting: false,
+      projectName: '-',
+      inputProjectName: ''
     };
   },
 
@@ -133,6 +155,11 @@ export default {
     selectedFields () {
       return Object.keys(this.fields).sort();
     }
+  },
+
+  mounted () {
+    this.projectName = window.location.pathname.split('/')[2];
+    console.log(this.projectName);
   },
 
   methods: {
@@ -164,11 +191,13 @@ export default {
         const res = await fetch(url, {
           method: 'delete',
           headers: {
-            'X-CSRF-Token': this.csrfToken
+            'X-CSRF-Token': this.csrfToken,
+            'content-type': 'application/json'
           }
         });
         if (res.ok) {
           this.stats = [];
+          this.inputProjectName = '';
           window.pybossaNotify('Stats Deleted.', true, 'success');
         } else {
           window.pybossaNotify('An Error Occurred.', true, 'error');

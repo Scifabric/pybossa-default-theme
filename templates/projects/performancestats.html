@@ -9,10 +9,11 @@
         :project-id="{{project.id}}"
         :users="{{contributors | tojson | forceescape}}"
         :fields="{{answer_fields | tojson | forceescape}}"
+        :editable="'{{can_update}}' === 'True'"
         csrf-token="{{csrf_token()}}">
     </performance-stats>
 </div>
 
-<script src="/static/js/gen/performancestats.min.5f7c01eff4299debdb9b.js"></script>
+<script src="/static/js/gen/performancestats.min.f55555ca178653062b7b.js"></script>
 {{ helper.broken_image() }}
 {% endblock %}

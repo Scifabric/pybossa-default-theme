@@ -9,6 +9,7 @@
         :project-id="{{project.id}}"
         :users="{{contributors | tojson | forceescape}}"
         :fields="{{answer_fields | tojson | forceescape}}"
+        :editable="'{{can_update}}' === 'True'"
         csrf-token="{{csrf_token()}}">
     </performance-stats>
 </div>
