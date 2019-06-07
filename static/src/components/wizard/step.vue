@@ -77,7 +77,7 @@ export default {
   },
   methods: {
       fetchPage: function () {
-          window.location.href = `${window.location.origin}${this.href}`;
+          if (this.href) { window.location.href = `${window.location.origin}${this.href}`; }
       }
   }
 

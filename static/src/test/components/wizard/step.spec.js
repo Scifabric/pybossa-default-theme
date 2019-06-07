@@ -13,10 +13,10 @@ describe('Step', () => {
   let wrapper = shallowMount(Step, { propsData });
   const origin = 'https://www.url-test.com/';
 
-  beforeAll(() => {
+  beforeEach(() => {
     delete window.location;
     window.location = { origin };
-  });
+});
 
   it('Load step default props', () => {
     wrapper = shallowMount(Step, { });
@@ -77,4 +77,20 @@ describe('Step', () => {
     button.trigger('click');
     expect(window.location.href).toBe(`${origin}test-path`);
     });
+
+    it('step click should not update window.location.href', () => {
+      propsData = {
+        done: true,
+        active: true,
+        enable: true,
+        href: '',
+        title: 'Step Title',
+        icon: 'fa fa-test'
+      };
+      wrapper = shallowMount(Step, { propsData });
+      expect(window.location.href).not.toBeDefined();
+      const button = wrapper.find('button');
+      button.trigger('click');
+      expect(window.location.href).toBe(undefined);
+      });
 });
