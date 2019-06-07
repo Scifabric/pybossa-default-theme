@@ -48,31 +48,21 @@ export default {
   computed: {
       stepClass: function () {
           let classes = 'btn btn-circle btn-lg';
-          if (this.active || this.enable) {
-            classes = `${classes} btn-border`;
-          }
-          if (this.done) {
-            classes = `${classes} step-done`;
-          } else {
-            classes = `${classes} step-disable`;
-          }
+          classes = this.enable ? `${classes} btn-border` : classes;
+          classes = this.done ? `${classes} step-done` : classes;
         return classes;
       },
       iconClass: function () {
           if (this.done) {
             return `${this.icon} icon-white`;
           }
-          if (this.active || this.enable) {
+          if (this.enable) {
             return `${this.icon} icon-blue`;
           }
           return `${this.icon} icon-default`;
       },
       activeClass: function () {
-        let activeClass = '';
-        if (this.active) {
-            activeClass = 'active-title';
-        }
-        return activeClass;
+        return this.active ? 'active-title' : '';
       }
   },
   methods: {
