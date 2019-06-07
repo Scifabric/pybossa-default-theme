@@ -10,10 +10,10 @@
         :users="{{contributors | tojson | forceescape}}"
         :fields="{{answer_fields | tojson | forceescape}}"
         :editable="'{{can_update}}' === 'True'"
-        csrf-token="{{csrf_token()}}">
+        csrf-token="{{csrf}}">
     </performance-stats>
 </div>
 
-<script src="/static/js/gen/performancestats.min.f55555ca178653062b7b.js"></script>
+<script src="/static/js/gen/performancestats.min.a4d6e42c2a68e97c9006.js"></script>
 {{ helper.broken_image() }}
 {% endblock %}
