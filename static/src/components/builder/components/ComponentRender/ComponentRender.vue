@@ -104,13 +104,15 @@ export default {
     }
   },
   render (h) {
-    if (this.form.isValidForm) {
+    if (this.form.isValidForm.isValid) {
       return h(this.selectedComponent, {
         ...this.renderFunctions()
       });
-    } else {
-      return h('span', null, 'No preview available');
     }
+    
+    const message = (this.form.isValidForm.messages || ['No preview available']).join('\n');
+    
+    return h('span', { attrs: { style: "white-space: pre" }}, message);
   }
 };
 </script>
