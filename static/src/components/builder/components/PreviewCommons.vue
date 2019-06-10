@@ -24,7 +24,7 @@
           <h4>Preview</h4>
           <form class="form-horizontal">
             <div class="col-md-12">
-              <label v-if="form.labelAdded">
+              <label v-if="form.isValidForm.isValid && form.labelAdded">
                 {{ form.label }}
               </label>
               <ComponentRender
@@ -68,6 +68,7 @@ export default {
       componentsNames: {
         TEXT_INPUT: 'text-input',
         CHECKBOX_INPUT: 'checkbox-creator',
+        RADIO_INPUT: 'radio-creator',
         TABLE: 'table-creator',
         TIMER: 'task-timer',
         TASK_PRESENTER: 'task-presenter',

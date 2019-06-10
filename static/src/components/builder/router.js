@@ -5,6 +5,7 @@ import CheckboxForm from './components/CheckboxInput/CheckboxInputForm.vue';
 import TextInputForm from './components/TextInput/TextInputForm.vue';
 import TableForm from './components/Table/TableForm.vue';
 import PreviewCommons from './components/PreviewCommons.vue';
+import RadioForm from './components/RadioInput/RadioInputForm.vue';
 
 export const routes = [
   {
@@ -36,6 +37,28 @@ export const routes = [
       {
         path: 'code',
         name: 'TEXT_INPUT_CODE',
+        components: { default: PreviewCommons }
+      }
+    ]
+  },
+  {
+    path: '/radioinput',
+    name: 'RADIO_INPUT',
+    components: { default: Content, header: Header },
+    children: [
+      {
+        path: 'form',
+        name: 'RADIO_INPUT_FORM',
+        components: { default: RadioForm }
+      },
+      {
+        path: 'preview',
+        name: 'RADIO_INPUT_PREVIEW',
+        components: { default: PreviewCommons }
+      },
+      {
+        path: 'code',
+        name: 'RADIO_INPUT_CODE',
         components: { default: PreviewCommons }
       }
     ]

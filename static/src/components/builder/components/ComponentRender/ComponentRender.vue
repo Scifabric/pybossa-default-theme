@@ -3,6 +3,7 @@ import Vue from 'vue';
 import components from '@dtwebservices/task-presenter-components';
 import TableCreator from '../Table/TableCreator.vue';
 import CheckboxCreator from '../CheckboxInput/CheckboxCreator.vue';
+import RadioCreator from '../RadioInput/RadioCreator.vue';
 import { ClientTable } from 'vue-tables-2';
 import componentStates from './states';
 
@@ -10,7 +11,7 @@ Vue.use(ClientTable, {});
 
 export default {
   name: 'ComponentRender',
-  components: { ...components, TableCreator, CheckboxCreator },
+  components: { ...components, TableCreator, CheckboxCreator, RadioCreator },
   props: {
     form: {
       type: Object,
@@ -83,6 +84,17 @@ export default {
           name: 'checkbox-creator',
           attrs: { id: 'test' },
           props: { checkboxList: this.form.checkboxList }
+        };
+      } else if (this.selectedComponent === 'radio-creator') {
+        return {
+          name: 'radio-creator',
+          attrs: { id: 'test' },
+          props: {
+            radioList: this.form.radioList,
+            pybAnswer: this.form.pybAnswer,
+            initialValue: this.form.initialValue,
+            name: this.form.name
+          }
         };
       } else if (this.selectedComponent === 'table-creator') {
         const data = this.form.data.isVariable
