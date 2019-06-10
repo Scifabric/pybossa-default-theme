@@ -21,7 +21,7 @@ describe('Step', () => {
   it('Load step default props', () => {
     wrapper = shallowMount(Step, { });
     expect(wrapper.html()).toContain('icon-default');
-    expect(wrapper.html()).toContain('btn btn-circle btn-lg');
+    expect(wrapper.html()).toContain('btn btn-circle btn-lg step-disable');
     expect(wrapper.html()).not.toContain('active-title');
     expect(wrapper.html()).not.toContain('Step Title');
   });

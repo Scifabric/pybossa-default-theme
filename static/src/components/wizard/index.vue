@@ -1,24 +1,18 @@
 <template>
-  <div class="pad-from-nav">
-    <div class="stepwizard ">
-      <div
-        class="stepwizard-row "
-      />
-
-      <step
-        v-for="tab in steps.list"
-        :key="tab.id"
-        :step-number="0"
-        :active="tab.active"
-        :enable="tab.enable"
-        :href="tab.href"
-        :title="tab.title"
-        :icon="tab.icon"
-        :fetch-page="tab.fetchPage"
-        :done="tab.done"
-      />
-    </div>
-  </div>
+  <nav class="stepwizard ">
+    <step
+      v-for="tab in steps.list"
+      :key="tab.id"
+      :step-number="0"
+      :active="tab.active"
+      :enable="tab.enable"
+      :href="tab.href"
+      :title="tab.title"
+      :icon="tab.icon"
+      :fetch-page="tab.fetchPage"
+      :done="tab.done"
+    />
+  </nav>
 </template>
 
 <script>
@@ -39,24 +33,15 @@ export default {
 
 <style>
 
-.pad-from-nav{
-  padding-top: 20px
-}
-
-.stepwizard-row {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 20px
-}
-
 .stepwizard {
-    margin-top:20px;
-    display: table;
+    margin-top: 40px;
+    display: flex;
     width: 100%;
     position: relative;
+    justify-content: space-between;
 }
 
-.stepwizard-row:before {
+.stepwizard:before {
     top: 25px;
     bottom: 0;
     position: absolute;

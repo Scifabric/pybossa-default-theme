@@ -50,6 +50,8 @@ export default {
           let classes = 'btn btn-circle btn-lg';
           classes = this.enable ? `${classes} btn-border` : classes;
           classes = this.done ? `${classes} step-done` : classes;
+          classes = !this.done && !this.enable ? `${classes} step-disable` : classes;
+
         return classes;
       },
       iconClass: function () {
@@ -75,9 +77,9 @@ export default {
 </script>
 
 <style>
-.active-title {
-font-weight: bold!important;
-color: #3AB0D5!important;
+.stepwizard-step .active-title {
+  font-weight: bold;
+  color: #3498db;
 }
 
 .stepwizard-step {
@@ -85,31 +87,19 @@ color: #3AB0D5!important;
     text-align: center;
     position: relative;
 }
-.btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 12px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-}
-.btn-circle.btn-lg {
+
+.stepwizard-step > .btn-circle {
   width: 50px;
   height: 50px;
   text-align: center;
   padding: 14px 16px;
-  font-size: 18px;
-  line-height: 1.33;
+  font-size: 1.2em;
   border-radius: 35px;
   background-color: white;
   border-color: #ccc;
-  z-index:0;
-
-}
-
-.btn-border {
-  border-color: #3AB0D5!important
+  line-height: 1;
+  z-index: 0;
+  outline: 0;
 }
 
 .stepwizard-step > span {
@@ -119,43 +109,49 @@ color: #3AB0D5!important;
     top: 3.5em;
     text-align: center;
     width: 100%;
-    padding: 0 25%;
 }
 
-.step-done {
-  background-color: #3AB0D5!important
+.stepwizard-step > .btn-circle:active:focus {
+  outline: 0;
+}
+.stepwizard-step > .btn-circle.btn-border {
+  border-color: #3498db;
 }
 
-.step-disable{
-  background-color: #ccc
+.stepwizard-step >.btn-circle.step-done {
+  background-color: #3498db;
 }
 
-.icon-color::before {
+.stepwizard-step > .btn-circle.step-disable {
+  cursor:auto;
+}
+
+.stepwizard-step > .btn-circle > .icon-color::before {
     color: #546e7b;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.icon-white::before {
+.stepwizard-step > .btn-circle > .icon-white::before {
   color: white;
   display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  align-items: center;
+  justify-content: center;
+}
 
-.icon-blue{
-    color: #3AB0D5;
+.stepwizard-step > .btn-circle > .icon-blue {
+    color: #3498db;
     display: flex;
     align-items: center;
-    -ms-flex-pack: center;
-    justify-content: center;}
+    justify-content: center;
+}
 
-.icon-default{
+.stepwizard-step > .btn-circle > .icon-default{
     color: #ccc;
     display: flex;
     align-items: center;
-    -ms-flex-pack: center;
-    justify-content: center;}
+    justify-content: center;
+}
 
 </style>

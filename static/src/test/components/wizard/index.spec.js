@@ -31,11 +31,4 @@ describe('wizard', () => {
     wrapper = shallowMount(Wizard, { propsData });
     expect(wrapper.findAll(Step).length).toBe(2);
   });
-
-  it('Wizard classes', () => {
-    expect(wrapper.html()).toContain('pad-from-nav');
-    expect(wrapper.html()).toContain('tepwizard-row');
-    expect(wrapper.html()).toContain('stepwizard');
-    expect(wrapper.html()).toContain('stepwizard-row');
-  });
 });
