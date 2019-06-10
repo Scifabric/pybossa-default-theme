@@ -3,7 +3,6 @@
     <step
       v-for="tab in steps.list"
       :key="tab.id"
-      :step-number="0"
       :active="tab.active"
       :enable="tab.enable"
       :href="tab.href"

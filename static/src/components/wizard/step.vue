@@ -10,9 +10,9 @@
         aria-hidden="false"
       />
     </button>
-    <span :class="activeClass">
+    <div :class="activeClass">
       {{ title }}
-    </span>
+    </div>
   </div>
 </template>
 
@@ -102,11 +102,8 @@ export default {
   outline: 0;
 }
 
-.stepwizard-step > span {
+.stepwizard-step > div {
     color: #666;
-    position: absolute;
-    left: 0;
-    top: 3.5em;
     text-align: center;
     width: 100%;
 }
