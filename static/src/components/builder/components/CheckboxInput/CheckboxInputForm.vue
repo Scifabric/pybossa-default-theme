@@ -19,7 +19,7 @@
       @change="updateCheckboxLabel($event.target.value)"
     >
     <hr>
-    <h4 for="add-label">
+    <h4>
       Checkbox Group
     </h4>
     <div class="scroll col-md-12">
@@ -43,7 +43,7 @@
               @click="deleteCheckboxListItem(checkbox.id)"
             /><br>
             <label
-              class="col-lables"
+              class="col-labels"
               for="component-label"
             >
               Checkbox Description Label
@@ -56,7 +56,7 @@
               @input="updateCheckboxItem(checkbox, 'label', $event.target.value)"
             >
             <label
-              class="col-lables"
+              class="col-labels"
               for="pyb-answer"
             >
               Answer field name
@@ -69,7 +69,7 @@
               @input="updateCheckboxItem(checkbox, 'pyb-answer', $event.target.value)"
             >
             <label
-              class="col-lables"
+              class="col-labels"
               for="initial-value"
             >
               Initial Value
@@ -104,7 +104,7 @@
   </div>
 </template>
 <style>
-.col-lables {
+.col-labels {
   color: black;
   font-size: 16px;
   font-weight: 400;
@@ -125,7 +125,7 @@ import * as types from '../../store/types';
 import { cloneDeep } from 'lodash';
 
 export default {
-  name: 'TextInputForm',
+  name: 'CheckboxInputForm',
   components: {},
   data () {
     return {

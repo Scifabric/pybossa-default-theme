@@ -21,7 +21,6 @@ export const getCheckboxObject = () => {
     id: utils.uniqueID(),
     'pyb-answer': '',
     label: '',
-    labelAdded: false,
     'initial-value': { ...prop(false, true) } };
 };
 

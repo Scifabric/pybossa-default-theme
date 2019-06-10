@@ -10,7 +10,7 @@
           <checkbox-input
             :id="c.id"
             :initial-value="c['initial-value'].value"
-            pyb-answer="c['pyb-answer']"
+            :pyb-answer="c['pyb-answer']"
           />
           {{ c.label }}
         </label>
@@ -21,7 +21,7 @@
 <script>
 import components from '@dtwebservices/task-presenter-components';
 export default {
-  name: 'TableCreator',
+  name: 'CheckboxCreator',
   components: { ...components },
   props: {
     checkboxList: {
