@@ -21,7 +21,6 @@ export const getCheckboxObject = () => {
     id: utils.uniqueID(),
     'pyb-answer': '',
     label: '',
-    labelAdded: false,
     'initial-value': { ...prop(false, true) } };
 };
 
@@ -40,7 +39,7 @@ export const getters = {
     return state.checkboxIdKeys.map(id => (state.checkboxListObj[id]));
   },
   [types.GET_CHECKBOX_INPUT_FORM_VALID]: () => {
-    return { isValidForm: state.isValidForm };
+    return state.isValidForm;
   }
 };
 
