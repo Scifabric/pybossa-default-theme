@@ -8,10 +8,10 @@
         >
           <h4>Task presenter code</h4>
           <span
-            v-if="!form.isValidForm"
+            v-if="!form.isValidForm.isValid"
             class="message-color"
           >
-            ** Component properties are not complete, please review form **
+            <template v-for="message in form.isValidForm.messages || ['Component properties are not complete, please review form']">                ** {{message}} **{{'\n'}}</template>
           </span>
           <!-- This line is space sensives it can lose the code format  -->
           <!-- eslint-disable-next-line vue/singleline-html-element-content-newline -->
@@ -44,6 +44,7 @@
 <style>
 .message-color {
   color: crimson;
+  white-space: pre;
 }
 </style>
 
