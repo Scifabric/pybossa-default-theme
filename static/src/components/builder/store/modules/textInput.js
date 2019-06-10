@@ -20,8 +20,7 @@ export const getters = {
     return state;
   },
   [types.GET_TEXT_INPUT_FORM_VALID]: () => {
-    return { isValidForm: state.isValidForm }
-    ;
+    return state.isValidForm;
   }
 };
 

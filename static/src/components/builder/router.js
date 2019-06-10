@@ -24,17 +24,17 @@ export const routes = [
     },
     children: [
       {
-        path: '/textinput/form',
+        path: 'form',
         name: 'TEXT_INPUT_FORM',
         components: { default: TextInputForm }
       },
       {
-        path: '/textinput/preview',
+        path: 'preview',
         name: 'TEXT_INPUT_PREVIEW',
         components: { default: PreviewCommons }
       },
       {
-        path: '/textinput/code',
+        path: 'code',
         name: 'TEXT_INPUT_CODE',
         components: { default: PreviewCommons }
       }
@@ -46,17 +46,17 @@ export const routes = [
     components: { default: Content, header: Header },
     children: [
       {
-        path: '/checkboxinput/form',
+        path: 'form',
         name: 'CHECKBOX_INPUT_FORM',
         components: { default: CheckboxForm }
       },
       {
-        path: '/checkboxinput/preview',
+        path: 'preview',
         name: 'CHECKBOX_INPUT_PREVIEW',
         components: { default: PreviewCommons }
       },
       {
-        path: '/checkboxinput/code',
+        path: 'code',
         name: 'CHECKBOX_INPUT_CODE',
         components: { default: PreviewCommons }
       }
@@ -68,17 +68,17 @@ export const routes = [
     components: { default: Content, header: Header },
     children: [
       {
-        path: '/table/form',
+        path: 'form',
         name: 'TABLE_FORM',
         components: { default: TableForm }
       },
       {
-        path: '/table/preview',
+        path: 'preview',
         name: 'TABLE_PREVIEW',
         components: { default: PreviewCommons }
       },
       {
-        path: '/table/code',
+        path: 'code',
         name: 'TABLE_CODE',
         components: { default: PreviewCommons }
       }
@@ -90,62 +90,62 @@ export const routes = [
     components: { default: Content, header: Header },
     children: [
       {
-        path: '/helper/timer/preview',
+        path: 'timer/preview',
         name: 'TIMER_PREVIEW',
         components: { default: PreviewCommons }
       },
       {
-        path: '/helper/buttonRow/preview',
+        path: 'buttonRow/preview',
         name: 'BUTTON_ROW_PREVIEW',
         components: { default: PreviewCommons }
       },
       {
-        path: '/helper/tasPresenter/preview',
+        path: 'taskPresenter/preview',
         name: 'TASK_PRESENTER_PREVIEW',
         components: { default: PreviewCommons }
       },
       {
-        path: '/helper/cancelButton/preview',
+        path: 'cancelButton/preview',
         name: 'CANCEL_BUTTON_PREVIEW',
         components: { default: PreviewCommons }
       },
       {
-        path: '/helper/submitButton/preview',
+        path: 'submitButton/preview',
         name: 'SUBMIT_BUTTON_PREVIEW',
         components: { default: PreviewCommons }
       },
       {
-        path: '/helper/submitLastButton/preview',
+        path: 'submitLastButton/preview',
         name: 'SUBMIT_LAST_BUTTON_PREVIEW',
         components: { default: PreviewCommons }
       },
       {
-        path: '/helper/timer/code',
+        path: 'timer/code',
         name: 'TIMER_CODE',
         components: { default: PreviewCommons }
       },
       {
-        path: '/helper/buttonRow/code',
+        path: 'buttonRow/code',
         name: 'BUTTON_ROW_CODE',
         components: { default: PreviewCommons }
       },
       {
-        path: '/helper/tasPresenter/code',
+        path: 'taskPresenter/code',
         name: 'TASK_PRESENTER_CODE',
         components: { default: PreviewCommons }
       },
       {
-        path: '/helper/cancelButton/code',
+        path: 'cancelButton/code',
         name: 'CANCEL_BUTTON_CODE',
         components: { default: PreviewCommons }
       },
       {
-        path: '/helper/submitButton/code',
+        path: 'submitButton/code',
         name: 'SUBMIT_BUTTON_CODE',
         components: { default: PreviewCommons }
       },
       {
-        path: '/helper/submitLastButton/code',
+        path: 'submitLastButton/code',
         name: 'SUBMIT_LAST_BUTTON_CODE',
         components: { default: PreviewCommons }
       }

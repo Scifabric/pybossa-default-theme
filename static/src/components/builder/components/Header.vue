@@ -2,25 +2,24 @@
   <div class="row text-color">
     <div
       v-if="$route.name !== 'home'"
-      class="col-md-12 icon-pointer"
+      class="col-md-12 bread-crumbs"
     >
       <i
-        class="fa fa-angle-double-left fa-w-14 fa-1x"
+        class="fa fa-angle-double-left fa-w-14 fa-1x icon-pointer"
         style="text-decoration: none"
         @click="navigateToHome"
       />
       <span>
-        {{ $route.params.header ? $route.params.header : "Questions" }}
+        {{ $route.params.header || "Questions" }}
       </span>
     </div>
     <div
-      v-if="$route.name == 'home'"
-      class="col-md-12 icon-pointer"
+      v-else
+      class="col-md-12 bread-crumbs"
     >
       <i
         class="fa fa-home fa-w-14 fa-1x"
         style="text-decoration: none"
-        @click="navigateToHome"
       />
       <span>{{ "Task Presenter Components" }}</span>
     </div>
@@ -33,6 +32,8 @@
 }
 .icon-pointer {
   cursor: pointer;
+}
+.bread-crumbs {
   font-size: 2em;
   margin-left: 0.25em;
 }
