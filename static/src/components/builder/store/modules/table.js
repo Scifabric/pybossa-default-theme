@@ -2,7 +2,7 @@ import * as types from '../types';
 import utils from '../../utils';
 import { flow } from 'lodash';
 
-function* _isAnyColumnNameEmpty(columns) {
+function* _isAnyColumnNameEmpty (columns) {
   for (const column of columns) {
     if (column.name === '') {
       yield `${column.id} name is missing.`;
@@ -30,14 +30,14 @@ export const isAnyColumnComponent = (columns) => {
   return columns.filter(col => col.component !== 'plain-text').length > 0;
 };
 
-function iteratorToBool(iterator) {
+function iteratorToBool (iterator) {
   const messages = [...iterator];
-  return messages.length ? true : false;
+  return !!messages.length;
 }
 
 export const isAnyColumnNameRepeated = flow(_isAnyColumnNameRepeated, iteratorToBool);
 
-function* _isAnyColumnNameRepeated(columns) {
+function* _isAnyColumnNameRepeated (columns) {
   const uniqueNames = new Set();
 
   for (const column of columns) {
@@ -52,9 +52,9 @@ function* _isAnyColumnNameRepeated(columns) {
 
 export const isDataNameEmptyAndRequired = flow(_isDataNameEmptyAndRequired, iteratorToBool);
 
-function* _isDataNameEmptyAndRequired(state) {
+function* _isDataNameEmptyAndRequired (state) {
   if (state.data.isVariable && state.data.value === '') {
-    yield 'Table data source name is missing.'; 
+    yield 'Table data source name is missing.';
   }
 }
 
@@ -127,21 +127,21 @@ export const getters = {
   },
   [types.GET_TABLE_FORM_VALID]: state => {
     const messages = [...getErrors()];
-    const isValid = messages.length ? false : true;
+    const isValid = !messages.length;
     return { isValid, messages };
 
-    function* getErrors() {
+    function* getErrors () {
       const columns = state.columnKeys.map(id => (state.columnsListObj[id]));
       const anyDirtyColumn = isAnyDirtyColumn(columns);
       const anyColumnComponent = isAnyColumnComponent(columns);
 
-      yield* _isDataNameEmptyAndRequired(state);
-      yield* _isAnyColumnNameEmpty(columns);
+      yield * _isDataNameEmptyAndRequired(state);
+      yield * _isAnyColumnNameEmpty(columns);
       if (isAnyDirtyEmptyColumn(columns)) yield 'A dirty column has empty name.';
       if (isAnswerFieldDirty(state)) yield 'Answer field is dirty.';
       if (isFormUntouched(state, anyDirtyColumn)) yield 'Form is untouched.';
-      yield* _isAnyColumnNameRepeated(columns);
-      yield* _isAnswerFieldRequired(state, anyColumnComponent);
+      yield * _isAnyColumnNameRepeated(columns);
+      yield * _isAnswerFieldRequired(state, anyColumnComponent);
     }
   }
 };
