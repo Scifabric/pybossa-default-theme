@@ -1,5 +1,8 @@
 <template>
-  <nav class="stepwizard ">
+  <nav
+    v-if="steps.list.length> 0"
+    class="stepwizard "
+  >
     <step
       v-for="tab in steps.list"
       :key="tab.id"
