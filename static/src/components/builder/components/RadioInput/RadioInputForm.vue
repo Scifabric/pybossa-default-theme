@@ -55,9 +55,10 @@
       </label>
       <select
         id="initial-value"
+        v-model="initialValue"
         class="form-control form-control-sm"
-        v-model="initialValue">
-        <option selected></option>
+      >
+        <option selected />
         <option
           v-for="value in values"
           :key="value"
@@ -215,7 +216,7 @@ export default {
     updateRadioItem (radio, index, fieldName, value) {
       const newRadio = cloneDeep(radio);
       newRadio[fieldName] = value;
-      this.$store.commit(types.MUTATE_RADIO_GROUP_UPDATE_LIST_ITEM, {radio: newRadio, index});
+      this.$store.commit(types.MUTATE_RADIO_GROUP_UPDATE_LIST_ITEM, { radio: newRadio, index });
       this.scrollToEnd();
     },
     scrollToEnd () {

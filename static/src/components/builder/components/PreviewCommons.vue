@@ -11,7 +11,7 @@
             v-if="!form.isValidForm.isValid"
             class="message-color"
           >
-            <template v-for="message in form.isValidForm.messages || ['Component properties are not complete, please review form']">                ** {{message}} **{{'\n'}}</template>
+            <template v-for="message in form.isValidForm.messages || ['Component properties are not complete, please review form']">                ** {{ message }} **{{ '\n' }}</template>
           </span>
           <!-- This line is space sensives it can lose the code format  -->
           <!-- eslint-disable-next-line vue/singleline-html-element-content-newline -->

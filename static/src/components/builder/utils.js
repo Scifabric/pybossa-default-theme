@@ -162,7 +162,7 @@ export default {
     return output;
   },
 
-  getRadioGroupCode({radioList, labelAdded, label, pybAnswer, initialValue, name}) {
+  getRadioGroupCode ({ radioList, labelAdded, label, pybAnswer, initialValue, name }) {
     const radioHTMLs = radioList.map(radio => {
       const formForTemplate = {
         ...this.getValuesForTemplate(radio),

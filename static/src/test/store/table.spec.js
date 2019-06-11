@@ -193,18 +193,18 @@ describe('Table store', () => {
     localState.columnsListObj[localState.columnKeys[1]].isDirty = true;
 
     localState.columnsListObj[localState.columnKeys[1]].name = 'testColName';
-    let {isValid} = getters[types.GET_TABLE_FORM_VALID](localState);
+    let { isValid } = getters[types.GET_TABLE_FORM_VALID](localState);
     expect(isValid).toBeFalsy();
   });
 
   it('GET_TABLE_FORM_VALID isFormUntouched ', () => {
-    const {isValid} = getters[types.GET_TABLE_FORM_VALID](localState);
+    const { isValid } = getters[types.GET_TABLE_FORM_VALID](localState);
     expect(isValid).toBeFalsy();
   });
 
   it('GET_TABLE_FORM_VALID anyDirtyColumn', () => {
     localState.columnsListObj[localState.columnKeys[0]].isDirty = true;
-    const {isValid} = getters[types.GET_TABLE_FORM_VALID](localState);
+    const { isValid } = getters[types.GET_TABLE_FORM_VALID](localState);
     expect(isValid).toBeFalsy();
   });
 
@@ -212,14 +212,14 @@ describe('Table store', () => {
     localState.data.isVariable = true;
     localState.data.value = '';
     localState.data.isDirty = true;
-    const {isValid} = getters[types.GET_TABLE_FORM_VALID](localState);
+    const { isValid } = getters[types.GET_TABLE_FORM_VALID](localState);
     expect(isValid).toBeFalsy();
   });
 
   it('GET_TABLE_FORM_VALID isAnswerFieldDirty', () => {
     localState.columnsListObj[localState.columnKeys[0]].component = 'text-input';
     localState.name.isDirty = true;
-    const {isValid} = getters[types.GET_TABLE_FORM_VALID](localState);
+    const { isValid } = getters[types.GET_TABLE_FORM_VALID](localState);
     expect(isValid).toBeFalsy();
   });
 

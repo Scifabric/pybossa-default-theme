@@ -1,7 +1,6 @@
 import * as types from '../types';
-import utils from '../../utils';
 
-export function initialState() {
+export function initialState () {
   const firstElement = getRadioObject();
   const secondElement = getRadioObject();
   return {
@@ -14,7 +13,7 @@ export function initialState() {
   };
 }
 
-export function getRadioObject() {
+export function getRadioObject () {
   return {
     label: '',
     value: ''
@@ -38,15 +37,15 @@ export const getters = {
   },
   [types.GET_RADIO_INPUT_FORM_VALID] (state) {
     const messages = [...getErrors()];
-    const isValid = messages.length ? false : true;
-    return {isValid, messages};
+    const isValid = !messages.length;
+    return { isValid, messages };
 
-    function* getErrors() {
-      if (!state.name) yield "HTML Name cannot be blank.";
+    function* getErrors () {
+      if (!state.name) yield 'HTML Name cannot be blank.';
       const uniqueValues = new Set();
-      for (const [index, {value}] of state.radioList.entries()) {
-        if (!value) yield `Radio ${index+1} value cannot be blank.`
-        else if (uniqueValues.has(value)) yield `Radio ${index+1} value is not unique.`;
+      for (const [index, { value }] of state.radioList.entries()) {
+        if (!value) yield `Radio ${index + 1} value cannot be blank.`;
+        else if (uniqueValues.has(value)) yield `Radio ${index + 1} value is not unique.`;
         else uniqueValues.add(value);
       }
     }
@@ -54,13 +53,13 @@ export const getters = {
 };
 
 export const mutations = {
-  [types.MUTATE_RADIO_GROUP_ANSWER_FIELD](state, payload) {
+  [types.MUTATE_RADIO_GROUP_ANSWER_FIELD] (state, payload) {
     state.pybAnswer = payload;
   },
-  [types.MUTATE_RADIO_GROUP_INITIAL_VALUE](state, payload) {
+  [types.MUTATE_RADIO_GROUP_INITIAL_VALUE] (state, payload) {
     state.initialValue = payload;
   },
-  [types.MUTATE_RADIO_GROUP_NAME](state, payload) {
+  [types.MUTATE_RADIO_GROUP_NAME] (state, payload) {
     state.name = payload;
   },
   [types.MUTATE_CLEAR_RADIO_INPUT_FORM] (state) {
@@ -75,11 +74,11 @@ export const mutations = {
   [types.MUTATE_RADIO_GROUP_LABEL] (state, payload) {
     state.label = payload;
   },
-  [types.MUTATE_RADIO_GROUP_UPDATE_LIST_ITEM] (state, {radio, index}) {
+  [types.MUTATE_RADIO_GROUP_UPDATE_LIST_ITEM] (state, { radio, index }) {
     state.radioList.splice(index, 1, radio);
   },
   [types.MUTATE_RADIO_GROUP_DELETE_LIST_ITEM] (state, index) {
-    state.radioList.splice(index, 1)
+    state.radioList.splice(index, 1);
   },
   [types.MUTATE_RADIO_GROUP_ADD_LIST_ITEM] (state) {
     const newObj = getRadioObject();

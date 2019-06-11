@@ -121,10 +121,10 @@ export default {
         ...this.renderFunctions()
       });
     }
-    
+
     const message = (this.form.isValidForm.messages || ['No preview available']).join('\n');
-    
-    return h('span', { attrs: { style: "white-space: pre" }}, message);
+
+    return h('span', { attrs: { style: 'white-space: pre' } }, message);
   }
 };
 </script>
