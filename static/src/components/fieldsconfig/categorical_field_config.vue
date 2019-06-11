@@ -10,6 +10,22 @@
         @edit="editing=!editing"
       />
     </div>
+    <div
+      v-if="editing"
+      class="col-md-12 form-group"
+    >
+      <div class="checkbox">
+        <label for="boolean-type-checkbox">
+          <input
+            id="boolean-type-checkbox"
+            v-model="isTrueFalse"
+            type="checkbox"
+            @input="setTrueFalse"
+          >
+          <p>True/False</p>
+        </label>
+      </div>
+    </div>
     <div class="row col-md-12">
       <div class="col-md-12">
         <p>
@@ -21,7 +37,7 @@
         </p>
       </div>
       <div
-        v-if="editing"
+        v-if="editing && !isTrueFalse"
         class="form-inline col-md-12"
       >
         <p>Add single label or multiple comma separated labels. The labels must exactly match the possible values of the response field.</p>
@@ -70,12 +86,38 @@ export default {
   data () {
     return {
       editing: this.edit,
-      newLabel: undefined
+      newLabel: undefined,
+      isTrueFalse: this.checkIfTrueFalse()
     };
   },
 
   methods: {
     ...mapMutations(['addFieldConfig', 'changeRetryConfig']),
+
+    setLabels (labels) {
+      this.addFieldConfig({
+        name: this.name,
+        config: {
+          labels
+        }
+      });
+    },
+
+    setTrueFalse (evt) {
+      this.isTrueFalse = evt.target.checked;
+      if (this.isTrueFalse) {
+        this.setLabels([true, false]);
+      } else {
+        this.setLabels([]);
+      }
+    },
+
+    checkIfTrueFalse () {
+      return this.labels.length === 2 &&
+        [true, false].every(b => {
+          return this.labels.includes(b);
+        });
+    },
 
     addLabels (split) {
       let newLabels;
@@ -99,12 +141,7 @@ export default {
       newLabels = Object.keys(dedupe)
         .filter((el) => !this.labels.includes(el));
 
-      this.addFieldConfig({
-        name: this.name,
-        config: {
-          labels: this.labels.concat(newLabels).sort()
-        }
-      });
+      this.setLabels(this.labels.concat(newLabels).sort());
       this.newLabel = undefined;
     }
   }
