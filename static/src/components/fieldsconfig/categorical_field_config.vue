@@ -113,9 +113,10 @@ export default {
     },
 
     checkIfTrueFalse () {
-      return this.labels.length === 2 &&
+      const labels = this.labels || [];
+      return labels.length === 2 &&
         [true, false].every(b => {
-          return this.labels.includes(b);
+          return labels.includes(b);
         });
     },
 
