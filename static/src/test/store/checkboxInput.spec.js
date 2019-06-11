@@ -27,7 +27,7 @@ describe('Checkbox setup', () => {
     });
 
     it('Get if form is valid', () => {
-      const {isValid} = getters[types.GET_CHECKBOX_INPUT_FORM_VALID](localState);
+      const { isValid } = getters[types.GET_CHECKBOX_INPUT_FORM_VALID](localState);
       expect(isValid).toBeTruthy();
     });
 
