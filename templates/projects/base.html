@@ -7,13 +7,19 @@
 {% block content %}
 <style>
 .navigation-element {
-  margin-top: 25px;
-  border-radius: 5px;
+    margin-top: 25px;
+    border-radius: 5px;
+}
+.padding-top-wizard {
+    margin-top: 25px;
 }
 </style>
 <script>
 
-</script>       
+</script>
+<div class ="container padding-top-wizard ">
+        {% include "projects/wizard.html" %}
+</div>
 <div class="container" id="main-container">
     {% if project %}
     <div id ="menu" class="col-sm-3 col-md-3" style="margin-top:50px;">

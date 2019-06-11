@@ -5,11 +5,18 @@
 
 {% block content %}
 <div class="container">
-    <div class="col-md-3">
-        {{ helper.render_project_local_nav(project, active_link, current_user, pro_features, upload_method) }}
+    <div class="row" style="margin-top:25px;">
+        <div class="col-md-12">
+            {% include "projects/wizard.html" %}
+        </div>
     </div>
-    <div class="col-md-9">
-        {% include "projects/snippets/options.html" %}
-    </div>
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-3">
+            {{ helper.render_project_local_nav(project, active_link, current_user, pro_features, upload_method) }}
+        </div>
+        <div class="col-md-9">
+            {% include "projects/snippets/options.html" %}
+        </div>
+</div>
 </div>
 {% endblock %}
