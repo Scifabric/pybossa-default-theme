@@ -52,6 +52,21 @@ describe('fieldsconfig', () => {
     expect(store.state.answerFields.field_1.config.labels[0]).toBe('label_1');
   });
 
+  it('does not add empty label', async () => {
+    const propsData = {
+      name: 'field_1',
+      type: 'categorical',
+      labels: [],
+      edit: true
+    };
+    const wrapper = shallowMount(CategoricalFieldConfig, { store, localVue, propsData });
+
+    wrapper.setData({ newLabel: undefined });
+    const addButton = wrapper.findAll('.btn').at(0);
+    addButton.trigger('click');
+    expect(store.state.answerFields.field_1.config.labels).toHaveLength(0);
+  });
+
   it('adds many label', async () => {
     const propsData = {
       name: 'field_1',

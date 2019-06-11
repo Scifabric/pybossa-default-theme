@@ -164,6 +164,26 @@ describe('fieldsconfig', () => {
     expect(p.text()).toEqual('No fields currently configured.');
   });
 
+  it('deleting saved field displays warning', () => {
+    store.commit('setData', {
+      answerFields: {
+        testField: {
+          type: 'categorical',
+          config: {
+            labels: ['A', 'B', 'C']
+          }
+        }
+      }
+    });
+    const wrapper = mount(FieldsConfig, { store, localVue });
+    const expandButton = wrapper.find('.fa-angle-up');
+    expandButton.trigger('click');
+    const deleteButton = wrapper.find('.btn-danger');
+    deleteButton.trigger('click');
+    const warning = wrapper.find('.alert-danger');
+    expect(warning.text().replace(/[\n ]+/g, ' ')).toContain('changing or updating a field configuration will delete the associated performance statistics.');
+  });
+
   it('does not add duplicate fields', () => {
     store.commit('setData', {
       answerFields: {

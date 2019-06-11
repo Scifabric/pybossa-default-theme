@@ -22,13 +22,24 @@ function _updateConsensusConfig (state, config) {
   }
 }
 
+function _isNewField (state, field) {
+  return !!state.newFields[field];
+}
+
+function _showWarning (state, field) {
+  if (!_isNewField(state, field)) {
+    state.showWarning = true;
+  }
+}
+
 const storeSpecs = {
   state: {
     csrf: '',
     fieldNames: [],
     answerFields: {},
     consensusConfig: {},
-    newFields: {}
+    newFields: {},
+    showWarning: false
   },
 
   getters: {
@@ -60,6 +71,10 @@ const storeSpecs = {
         }
       }
       return false;
+    },
+
+    showWarning (state) {
+      return state.showWarning;
     }
   },
 
@@ -70,10 +85,12 @@ const storeSpecs = {
 
     addFieldConfig (state, { name, config }) {
       state.answerFields[name].config = config;
+      _showWarning(state, name);
     },
 
     deleteField (state, { name }) {
       const ix = state.fieldNames.indexOf(name);
+      _showWarning(state, name);
       if (ix >= 0) {
         state.fieldNames.splice(ix, 1);
         state.answerFields[name]['retry_for_consensus'] = false;

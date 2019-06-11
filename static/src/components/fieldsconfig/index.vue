@@ -82,6 +82,14 @@
           </div>
         </div>
       </div>
+      <div
+        v-if="showWarning"
+        class="alert alert-danger"
+      >
+        <strong>Warning:</strong>
+        changing or updating a field configuration will delete the associated
+        performance statistics.
+      </div>
       <button
         :disabled="hasRetryFields && !hasConsensusConfig"
         class="btn btn-primary"
@@ -120,7 +128,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['answerFields', 'csrfToken', 'isNewField', 'hasConsensusConfig', 'hasRetryFields'])
+    ...mapGetters(['answerFields', 'csrfToken', 'isNewField', 'hasConsensusConfig', 'hasRetryFields', 'showWarning'])
   },
 
   methods: {
