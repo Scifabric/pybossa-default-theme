@@ -27,17 +27,6 @@ describe('Radio setup', () => {
       expect(isValid).toBe(false);
     });
 
-    // it('Get Form', () => {
-    //   const keyCheckbox0 = localState.checkboxIdKeys[0];
-    //   const form = getters[types.GET_RADIO_INPUT_PROPS](localState);
-    //   expect({
-    //     checkboxList: [localState.checkboxListObj[keyCheckbox0]],
-    //     label: 'testLabel',
-    //     labelAdded: true,
-    //     isValidForm: true
-    //   }).toEqual(form);
-    // });
-
     it('Add and Delete item', () => {
       mutations[types.MUTATE_RADIO_GROUP_ADD_LIST_ITEM](localState);
       expect(localState.radioList.length).toBe(3);
