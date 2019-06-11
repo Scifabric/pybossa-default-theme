@@ -159,7 +159,6 @@ export default {
 
   mounted () {
     this.projectName = window.location.pathname.split('/')[2];
-    console.log(this.projectName);
   },
 
   methods: {
