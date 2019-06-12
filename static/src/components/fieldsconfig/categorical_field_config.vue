@@ -15,10 +15,9 @@
       class="col-md-12 form-group"
     >
       <div class="checkbox">
-        <label for="boolean-type-checkbox">
+        <label>
           <input
-            id="boolean-type-checkbox"
-            v-model="isTrueFalse"
+            v-model="isBoolean"
             type="checkbox"
             @input="setTrueFalse"
           >
@@ -37,7 +36,7 @@
         </p>
       </div>
       <div
-        v-if="editing && !isTrueFalse"
+        v-if="editing && !isBoolean"
         class="form-inline col-md-12"
       >
         <p>Add single label or multiple comma separated labels. The labels must exactly match the possible values of the response field.</p>
@@ -87,7 +86,7 @@ export default {
     return {
       editing: this.edit,
       newLabel: undefined,
-      isTrueFalse: this.checkIfTrueFalse()
+      isBoolean: this.checkIfTrueFalse()
     };
   },
 
@@ -104,8 +103,9 @@ export default {
     },
 
     setTrueFalse (evt) {
-      this.isTrueFalse = evt.target.checked;
-      if (this.isTrueFalse) {
+      console.log(this.name);
+      this.isBoolean = evt.target.checked;
+      if (this.isBoolean) {
         this.setLabels([true, false]);
       } else {
         this.setLabels([]);

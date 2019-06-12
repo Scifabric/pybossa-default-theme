@@ -94,7 +94,7 @@ describe('fieldsconfig', () => {
     };
     const wrapper = shallowMount(CategoricalFieldConfig, { store, localVue, propsData });
 
-    const boolCheckbox = wrapper.find('#boolean-type-checkbox');
+    const boolCheckbox = wrapper.find('input[type=checkbox]');
     boolCheckbox.trigger('click');
     const labels = store.state.answerFields.field_1.config.labels;
     expect(labels).toHaveLength(2);
@@ -115,7 +115,7 @@ describe('fieldsconfig', () => {
 
     let labelInput = wrapper.find('input[type=text]');
     expect(labelInput.exists()).toBe(false);
-    const boolCheckbox = wrapper.find('#boolean-type-checkbox');
+    const boolCheckbox = wrapper.find('input[type=checkbox]');
     boolCheckbox.trigger('click');
     labelInput = wrapper.find('input[type=text]');
     expect(labelInput.exists()).toBe(true);

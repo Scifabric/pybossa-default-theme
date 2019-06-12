@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils';
+import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
 import PerformanceStats from '../../../components/performancestats/index';
 
 const localVue = createLocalVue();
@@ -48,5 +48,28 @@ describe('performancestats', () => {
     expect(msg).toBe('An Error Occurred.');
     expect(dismissable).toBe(true);
     expect(status).toBe('error');
+  });
+
+  it('deletes stats', async () => {
+    fetch.mockImplementation(() => Promise.resolve({
+      ok: true,
+      json: () => [{
+        info: {
+          wrong: 0,
+          right: 4
+        },
+        user_id: 1,
+        field: 'field_1',
+        project_id: 2,
+        stat_type: 'accuracy',
+        id: 3
+      }]
+    }));
+    const wrapper = mount(PerformanceStats, { localVue, propsData });
+    wrapper.setData({ user: 'user_1', selectedField: 'field_1' });
+    const show = wrapper.find('button');
+    show.trigger('click');
+    await localVue.nextTick();
+    console.log(wrapper.html());
   });
 });
