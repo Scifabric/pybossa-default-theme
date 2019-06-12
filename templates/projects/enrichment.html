@@ -1,0 +1,83 @@
+{% extends "projects/base.html" %}
+{% set active_page = "projects" %}
+{% set active_link  = "settings" %}
+{% set section = _('Configure Enrichment') %}
+
+{% import "projects/_helpers.html" as helper %}
+
+{% block projectcontent %}
+<div id="enrichmentconfig">
+    <div id="jsGrid" style="margin-top:120px;">
+    </div> 
+    <button id="saveenrich" type='button' disabled class="btn btn-primary" onclick="saveEnrichments('{{project.short_name}}');"/>{{ _('Save') }}</button>
+    <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
+</div>
+
+
+{% assets output="css/gen/enrichment.min.css",
+          "css/jsgrid.min.css",
+          "css/jsgrid-theme.min.css"
+%}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
+
+{% assets filters="jsmin", output="js/gen/enrichment.min.js",
+          "js/vendor/jsgrid.min.js"
+%}
+<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+
+<script>
+    var enrich_data = {{ enrichments | safe }};
+    var enrichment_types = {{ enrichment_types | safe }};
+    
+    var enrich_types = [];
+    for(var et in enrichment_types) enrich_types.push({ Name: et, Value: et });
+    for (var first_etype in enrichment_types) break;
+    var enrichment_subtypes = enrichment_types[first_etype];
+
+    var enrich_subtypes = [];
+    enrichment_subtypes.forEach(element => {
+        enrich_subtypes.push({ Name: element, Value: element });
+    });
+
+    var enrich_taskstates = [
+        { Name: "ENRICH", Value: "ENRICH" }
+    ];
+    
+    $("#jsGrid").jsGrid({
+        width: "100%",
+        height: "400px",
+    
+        inserting: true,
+        editing: true,
+        sorting: true,
+        paging: true,
+        deleteConfirm: function(item) {
+            console.log(item)
+            return "The enrichment for input field \"" + item.in_field_name + "\" will be removed. Are you sure?";
+        },
+        onItemInserted: function(item) {
+            document.getElementById("saveenrich").disabled = false;
+        }, 
+        onItemUpdated: function(args) {
+            document.getElementById("saveenrich").disabled = false;
+        },
+        onItemDeleted: function(args) {
+            document.getElementById("saveenrich").disabled = false;
+        },
+        data: enrich_data,
+        fields: [
+            { title: "Type", name: 'type', type: "select", items: enrich_types, valueField: "Value", textField: "Name", validate: "required" },
+            { title: "Subtype", name: 'sub_type', type: "select", items: enrich_subtypes, valueField: "Value", textField: "Name", validate: "required" },
+            { title: "Input Field", name: 'in_field_name', type: "text", width: 200, validate: "required" },
+            { title: "Enrichment Field", name: 'out_field_name', type: "text", width: 200, validate: "required" },
+            { title: "Task State", name: 'task_state', type: "select", items: enrich_taskstates, valueField: "Value", textField: "Name", validate: "required" },
+            { type: "control" }
+        ]
+    });
+</script>
+{% endblock %}
+{% block extrajs %}
+{% include "projects/js/enrichment.js" %}
+{% endblock %}
