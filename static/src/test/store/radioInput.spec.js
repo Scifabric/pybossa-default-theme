@@ -18,7 +18,7 @@ describe('Radio setup', () => {
       expect(localState.radioList.length).toBe(2);
       const obj = { ...localState.radioList[0] };
       obj.label = 'labelUpdated';
-      mutations[types.MUTATE_RADIO_GROUP_UPDATE_LIST_ITEM](state, {radio:obj, index:0});
+      mutations[types.MUTATE_RADIO_GROUP_UPDATE_LIST_ITEM](state, { radio: obj, index: 0 });
       expect(localState.radioList[0]).toBe(obj);
     });
 
