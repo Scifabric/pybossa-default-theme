@@ -84,4 +84,40 @@ describe('fieldsconfig', () => {
     expect(store.state.answerFields.field_1.config.labels[1]).toBe('label_2');
     expect(store.state.answerFields.field_1.config.labels[2]).toBe('label_3');
   });
+
+  it('adds bool labels', async () => {
+    const propsData = {
+      name: 'field_1',
+      type: 'categorical',
+      labels: [],
+      edit: true
+    };
+    const wrapper = shallowMount(CategoricalFieldConfig, { store, localVue, propsData });
+
+    const boolCheckbox = wrapper.find('input[type=checkbox]');
+    boolCheckbox.trigger('click');
+    const labels = store.state.answerFields.field_1.config.labels;
+    expect(labels).toHaveLength(2);
+    expect(labels).toContain(true);
+    expect(labels).toContain(false);
+    boolCheckbox.trigger('click');
+    expect(store.state.answerFields.field_1.config.labels).toHaveLength(0);
+  });
+
+  it('toggles text labels', async () => {
+    const propsData = {
+      name: 'field_1',
+      type: 'categorical',
+      labels: [true, false],
+      edit: true
+    };
+    const wrapper = shallowMount(CategoricalFieldConfig, { store, localVue, propsData });
+
+    let labelInput = wrapper.find('input[type=text]');
+    expect(labelInput.exists()).toBe(false);
+    const boolCheckbox = wrapper.find('input[type=checkbox]');
+    boolCheckbox.trigger('click');
+    labelInput = wrapper.find('input[type=text]');
+    expect(labelInput.exists()).toBe(true);
+  });
 });

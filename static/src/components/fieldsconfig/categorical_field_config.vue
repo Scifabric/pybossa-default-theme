@@ -10,6 +10,21 @@
         @edit="editing=!editing"
       />
     </div>
+    <div
+      v-if="editing"
+      class="col-md-12 form-group"
+    >
+      <div class="checkbox">
+        <label>
+          <input
+            v-model="isBoolean"
+            type="checkbox"
+            @input="setTrueFalse"
+          >
+          <p>True/False</p>
+        </label>
+      </div>
+    </div>
     <div class="row col-md-12">
       <div class="col-md-12">
         <p>
@@ -21,7 +36,7 @@
         </p>
       </div>
       <div
-        v-if="editing"
+        v-if="editing && !isBoolean"
         class="form-inline col-md-12"
       >
         <p>Add single label or multiple comma separated labels. The labels must exactly match the possible values of the response field.</p>
@@ -70,12 +85,39 @@ export default {
   data () {
     return {
       editing: this.edit,
-      newLabel: undefined
+      newLabel: undefined,
+      isBoolean: this.checkIfTrueFalse()
     };
   },
 
   methods: {
     ...mapMutations(['addFieldConfig', 'changeRetryConfig']),
+
+    setLabels (labels) {
+      this.addFieldConfig({
+        name: this.name,
+        config: {
+          labels
+        }
+      });
+    },
+
+    setTrueFalse (evt) {
+      this.isBoolean = evt.target.checked;
+      if (this.isBoolean) {
+        this.setLabels([true, false]);
+      } else {
+        this.setLabels([]);
+      }
+    },
+
+    checkIfTrueFalse () {
+      const labels = this.labels || [];
+      return labels.length === 2 &&
+        [true, false].every(b => {
+          return labels.includes(b);
+        });
+    },
 
     addLabels (split) {
       let newLabels;
@@ -99,12 +141,7 @@ export default {
       newLabels = Object.keys(dedupe)
         .filter((el) => !this.labels.includes(el));
 
-      this.addFieldConfig({
-        name: this.name,
-        config: {
-          labels: this.labels.concat(newLabels).sort()
-        }
-      });
+      this.setLabels(this.labels.concat(newLabels).sort());
       this.newLabel = undefined;
     }
   }
