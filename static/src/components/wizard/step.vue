@@ -1,15 +1,15 @@
 <template>
   <div class="stepwizard-step">
-    <button
+    <a
       role="button"
       :class="stepClass"
-      @click="fetchPage"
+      :href="href"
     >
       <i
         :class="iconClass"
         aria-hidden="false"
       />
-    </button>
+    </a>
     <div :class="activeClass">
       {{ title }}
     </div>
@@ -65,11 +65,6 @@ export default {
       },
       activeClass: function () {
         return this.active ? 'active-title' : '';
-      }
-  },
-  methods: {
-      fetchPage: function () {
-          if (this.href) { window.location.href = `${window.location.origin}${this.href}`; }
       }
   }
 
