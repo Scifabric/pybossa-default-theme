@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import textInput from './modules/textInput';
 import checkboxInput from './modules/checkboxInput';
 import table from './modules/table';
+import radioInput from './modules/radioInput';
 import { getStoreOptions, setNamespace } from '@dtwebservices/task-presenter-components';
 
 Vue.use(Vuex);
@@ -21,6 +22,7 @@ export default new Vuex.Store({
     [TASK_PRESENTER]: taskPresenterStoreOptions,
     checkboxInput,
     textInput,
-    table
+    table,
+    radioInput
   }
 });

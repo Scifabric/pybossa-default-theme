@@ -1,6 +1,7 @@
 import utils from '../components/builder/utils';
 import { state as textInput } from '../components/builder/store/modules/textInput';
 import { state as checkboxInput } from '../components/builder/store/modules/checkboxInput';
+import { state as radioInput } from '../components/builder/store/modules/radioInput';
 
 test('getTextInputCode for TEXT_INPUT', () => {
   textInput['pyb-answer'] = 'answername';
@@ -60,6 +61,37 @@ it('getCheckboxInputCode for CHECKBOX_INPUT', () => {
   )).toBeTruthy();
   expect(componentCode.includes(`id="${checkboxInput.checkboxList[1].id}"`)
   ).toBeTruthy();
+});
+
+it('getRadioGroupCode for RADIO_INPUT', () => {
+  radioInput.labelAdded = true;
+  radioInput.label = 'Test label';
+  radioInput.pybAnswer = 'radioanswer';
+  radioInput.initialValue = 'A';
+  radioInput.name = 'radio group';
+  radioInput.radioList = [
+    {
+      label: 'test radio0 label',
+      value: 'A'
+    },
+    {
+      label: 'test radio1 label',
+      value: 'B'
+    }
+  ];
+  const componentCode = utils.getSnippet('RADIO_INPUT', radioInput);
+  expect(componentCode.includes('<radio-input')).toBeTruthy();
+  expect(componentCode.includes('</radio-input>')).toBeTruthy();
+  expect(componentCode.includes(radioInput.label)).toBeTruthy();
+  expect(componentCode.includes(radioInput.radioList[0].label)).toBeTruthy();
+  expect(componentCode.includes(
+    `pyb-answer="${radioInput.pybAnswer}"`)).toBeTruthy();
+  expect(componentCode.includes(radioInput.radioList[1].label)).toBeTruthy();
+  expect(componentCode.includes(`:initial-value="true"`)).toBeTruthy();
+  expect(componentCode.includes(`:initial-value="false"`)).toBeTruthy();
+  expect(componentCode.includes(`value="${radioInput.radioList[0].value}"`)).toBeTruthy();
+  expect(componentCode.includes(`value="${radioInput.radioList[1].value}"`)).toBeTruthy();
+  expect(componentCode.includes(`name="${radioInput.name}"`)).toBeTruthy();
 });
 
 it('getTableInputCode for TABLE', () => {

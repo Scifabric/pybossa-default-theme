@@ -11,6 +11,7 @@
       <custom-router-link :component="timer" />
       <custom-router-link :component="textInput" />
       <custom-router-link :component="checkboxInput" />
+      <custom-router-link :component="radioInput" />
       <custom-router-link :component="table" />
     </div>
     <div class="col-md-8">
@@ -112,6 +113,13 @@ export default {
       loading: false,
       error: false,
       snippet: '',
+      radioInput: {
+        name: 'RADIO_INPUT_FORM',
+        params: {
+          componentName: 'RADIO_INPUT',
+          header: 'Radio Group Input'
+        }
+      },
       checkboxInput: {
         name: 'CHECKBOX_INPUT_FORM',
         params: {

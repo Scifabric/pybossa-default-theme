@@ -13,6 +13,8 @@ import buttonRowTemplate from './components/helpers/buttonRowTemplate.html';
 import submitButtonTemplate from './components/helpers/submitButtonTemplate.html';
 import submitLastButtonTemplate from './components/helpers/submitLastButtonTemplate.html';
 import slotTemplate from './components/Table/slotTemplate.html';
+import radioGroupTemplate from './components/RadioInput/radioGroupTemplate.html';
+import radioInputTemplate from './components/RadioInput/radioInputTemplate.html';
 
 export const templates = {
   TEXT_INPUT: textInputTemplate,
@@ -42,6 +44,8 @@ export default {
       return this.getTableCode(form);
     } else if (component === 'CHECKBOX_INPUT') {
       return this.getCheckboxInputCode(form, component);
+    } else if (component === 'RADIO_INPUT') {
+      return this.getRadioGroupCode(form);
     } else if (component === 'TEXT_INPUT') {
       return this.getTextInputCode(form, component);
     } else {
@@ -153,6 +157,36 @@ export default {
         label: form.label
       };
       output = Mustache.render(labelTemplate, label);
+    }
+
+    return output;
+  },
+
+  getRadioGroupCode ({ radioList, labelAdded, label, pybAnswer, initialValue, name }) {
+    const radioHTMLs = radioList.map(radio => {
+      const formForTemplate = {
+        ...this.getValuesForTemplate(radio),
+        pybAnswer,
+        name,
+        initialValue: !!initialValue && (radio.value === initialValue)
+      };
+      let radioOutput = Mustache.render(
+        radioInputTemplate,
+        formForTemplate
+      ).trim();
+      radioOutput = this.addBindSymbolIfNeedIt(radio, radioOutput);
+      return radioOutput.trim();
+    });
+
+    let output = Mustache.render(radioGroupTemplate, {
+      radioHTMLs
+    });
+    if (labelAdded) {
+      const labelArgs = {
+        component: output,
+        label
+      };
+      output = Mustache.render(labelTemplate, labelArgs);
     }
 
     return output;
