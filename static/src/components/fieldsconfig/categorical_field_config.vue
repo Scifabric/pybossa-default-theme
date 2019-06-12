@@ -103,7 +103,6 @@ export default {
     },
 
     setTrueFalse (evt) {
-      console.log(this.name);
       this.isBoolean = evt.target.checked;
       if (this.isBoolean) {
         this.setLabels([true, false]);
