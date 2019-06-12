@@ -57,40 +57,4 @@ describe('Step', () => {
     expect(wrapper.html()).toContain('active-title');
     expect(wrapper.html()).toContain('Step Title');
   });
-
-  it('has a button', () => {
-    expect(wrapper.contains('button')).toBe(true);
-  });
-
-  it('step click should update window.location.href', () => {
-    propsData = {
-      done: true,
-      active: true,
-      enable: true,
-      href: 'test-path',
-      title: 'Step Title',
-      icon: 'fa fa-test'
-    };
-    wrapper = shallowMount(Step, { propsData });
-    expect(window.location.href).not.toBeDefined();
-    const button = wrapper.find('button');
-    button.trigger('click');
-    expect(window.location.href).toBe(`${origin}test-path`);
-    });
-
-    it('step click should not update window.location.href', () => {
-      propsData = {
-        done: true,
-        active: true,
-        enable: true,
-        href: '',
-        title: 'Step Title',
-        icon: 'fa fa-test'
-      };
-      wrapper = shallowMount(Step, { propsData });
-      expect(window.location.href).not.toBeDefined();
-      const button = wrapper.find('button');
-      button.trigger('click');
-      expect(window.location.href).toBe(undefined);
-      });
 });
