@@ -58,11 +58,7 @@
     var ps = {{ prodsubprods | safe }};
 </script>
 
-{% assets filters="jsmin", output="js/gen/projects_new.min.js",
-          "js/forms.js",
-          "js/vendor/select2.min.js",
-          "js/project_forms.js"
-%}
-<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% assets "js_project_new" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
 {% endblock %}

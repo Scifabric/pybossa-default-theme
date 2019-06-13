@@ -12,9 +12,7 @@
     <meta name="author" content="Scifabric">
 
     <!-- Le styles -->
-    {% assets filters="libsass", output="css/gen/pybossa.min.css",
-              depends="sass/**/*.scss",
-              "sass/_pybossa.scss"%}
+    {% assets "css_pybossa" %}
         <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
     {% endassets %}
 
@@ -52,12 +50,8 @@
     {% include '_gcs.html' ignore missing %}
     <!-- Le javascript -->
     {% if not jstop %}
-    {% assets filters="jsmin", output="js/gen/default.min.js",
-              "js/vendor/jquery-2.2.3.js", "js/vendor/bootstrap.js",
-              "js/vendor/modernizr.min.js", "js/flashmessages.js",
-              "js/vendor/cookieconsent.min.js"
-              %}
-              <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% assets "js_base" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
     {% endif %}
   </head>
