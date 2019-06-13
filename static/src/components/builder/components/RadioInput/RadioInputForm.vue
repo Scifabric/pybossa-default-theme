@@ -51,7 +51,7 @@
         class="col-labels"
         for="initial-value"
       >
-        Initial Value
+        Initial Value (will populate with values entered below)
       </label>
       <select
         id="initial-value"
