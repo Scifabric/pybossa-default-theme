@@ -31,6 +31,34 @@
     .hide-text {
         margin-right: 15px;
         border-radius: 5px;
+    }
+    a.accordion-panel {
+      color: #fff;
+      text-decoration: none;
+    }
+    a.accordion-panel .panel-heading {
+      background: #3498DB;
+    }
+    #sync-panels table {
+      margin-top: 6px;
+      margin-bottom: 0;
+    }
+    #sync-panels .message {
+      margin-top: 10px;
+    }
+    #sync-panels .panel-body {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .panel-heading .accordion-panel:after {
+    /* symbol for "opening" panels */
+    font-family: 'FontAwesome';
+    content: "\f078"; /* font-awesome.min.css */
+    float: right;
+}
+.panel-heading .accordion-panel.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\f054"; /* font-awesome.min.css */
 }
 </style>
 <!-- Task Presenter Editor -->
@@ -77,14 +105,29 @@
                     {% include "projects/component_helper.html" %}
 
             </div>
+
             <div class="row">
-                    <div class="col-md-12">
-                        <h2>Latest GitHub Push Info</h2>
-                        {% if project.info.pusher and project.info.timestamp and project.info.ref_url and project.info.ref%}
-                            <table class="table table-hover table-condensed">
+              <div class="col-md-12">&nbsp;</div>
+            </div>
+
+            <div id="sync-panels" class="row">
+                    <div class="col-md-6">
+                      <div class="panel panel-info">
+                        <div class="panel-heading">
+                          <a class="accordion-panel" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-github" aria-expanded="true" aria-controls="panel-github">
+                            Latest GitHub Push Details
+                          </a>
+                        </div>
+                        <div id="panel-github" class="panel-body collapse in">
+                          {% if project.info.pusher and project.info.timestamp and project.info.ref_url and project.info.ref%}
+                              <table class="table table-hover table-condensed" >
                                 <tr>
-                                    <td><p>Pusher:</p></td>
+                                    <td ><p>Author:</p></td>
                                     <td><p>{{ project.info.pusher }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p>Message:</p></td>
+                                    <td><p>{{ project.info.message }}</p></td>
                                 </tr>
                                 <tr>
                                     <td><p>Last Updated:</p></td>
@@ -94,48 +137,55 @@
                                     <td><p>Last Commit:</p></td>
                                     <td><a href={{ project.info.ref_url }} target="_blank">{{ project.info.ref }}</a></td>
                                 </tr>
-                            </table>
-                        {% else %}
-                            <p>Task presenter code was not updated via GitHub</p>
-                        {% endif %}
+                              </table>
+                          {% else %}
+                              <p class="message">Task presenter code was not updated via GitHub</p>
+                          {% endif %}
+                        </div>
+                      </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>Latest Project Sync Info</h2>
-                        {% if project.info.sync %}
+                    <div class="col-md-6">
+                      <div class="panel panel-info">
+                        <div class="panel-heading">
+                          <a class="accordion-panel" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-sync" aria-expanded="true" aria-controls="panel-sync">
+                            Latest Project Sync Details
+                          </a>
+                        </div>
+                        <div id="panel-sync" class="panel-body collapse in">
+                          {% if project.info.sync %}
                             {% if project.info.sync.syncer and project.info.sync.latest_sync and project.info.sync.source_url %}
                                 <table class="table table-hover table-condensed">
-                                    <tr>
-                                        <td><p>Syncer:</p></td>
-                                        <td><p>{{ project.info.sync.syncer }}</p></td>
-                                    </tr>
-                                    <tr>
-                                        <td><p>Last Synced:</p></td>
-                                        <td><p>{{ project.info.sync.latest_sync }}</p></td>
-                                    </tr>
-                                    <tr>
-                                        <td><p>Synced With:</p></td>
-                                        <td><a href={{ project.info.sync.source_url + '/project/' + project.short_name }} target="_blank">
-                                                {{ project.info.sync.source_url + '/project/' + project.short_name }}
-                                        </a></td>
-                                    </tr>
-                                    {% if project.info.sync.ref and project.info.sync.ref_url %}
-                                        <tr>
-                                            <td><p>GitHub Reference:</p></td>
-                                            <td><a href={{ project.info.sync.ref_url }} target="_blank">
-                                                    {{ project.info.sync.ref }}
-                                            </a></td>
-                                        </tr>
-                                    {% endif %}
+                                  <tr>
+                                      <td><p>Syncer:</p></td>
+                                      <td><p>{{ project.info.sync.syncer }}</p></td>
+                                  </tr>
+                                  <tr>
+                                      <td><p>Last Synced:</p></td>
+                                      <td><p>{{ project.info.sync.latest_sync }}</p></td>
+                                  </tr>
+                                  <tr>
+                                      <td><p>Synced With:</p></td>
+                                      <td><a href={{ project.info.sync.source_url + '/project/' + project.short_name }} target="_blank">
+                                              {{ project.info.sync.source_url + '/project/' + project.short_name }}
+                                      </a></td>
+                                  </tr>
+                                  {% if project.info.sync.ref and project.info.sync.ref_url %}
+                                  <tr>
+                                      <td><p>GitHub Reference:</p></td>
+                                      <td><a href={{ project.info.sync.ref_url }} target="_blank">
+                                              {{ project.info.sync.ref }}
+                                      </a></td>
+                                  </tr>
+                                  {% endif %}
                                 </table>
                             {% else %}
-                                <p>Task presenter code was not updated via project syncing</p>
+                                <p class="message">Task presenter code was not updated via project syncing</p>
                             {% endif %}
-                        {% else %}
-                            <p>Task presenter code was not updated via project syncing</p>
-                        {% endif %}
+                          {% else %}
+                            <p class="message">Task presenter code was not updated via project syncing</p>
+                          {% endif %}
+                        </div>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -268,7 +318,7 @@ var main = function() {
  var menu = document.getElementById("menu");
  var mirror = document.getElementById("mirror");
  componentBuilderHideLink.style.visibility = "hidden";
- vue.style.visibility = "hidden";
+ vue.style.display = "none";
  vue.classList.toggle("col-md-0");
 
  hideVueComponent.click(function() {
@@ -281,7 +331,7 @@ var main = function() {
     containerContent.classList =[];
     containerContent.classList.toggle("col-md-9");
     if(!containerContent.classList.contains("container-fluid")){
-        vue.style.visibility = "hidden";
+        vue.style.display = "none";
         componentBuilderHideLink.style.visibility = "hidden";
         componentBuilderDescription.style.visibility = "visible";
     }
@@ -299,7 +349,7 @@ var main = function() {
     vue.classList.toggle("col-md-6");
     containerContent.classList =[];
     containerContent.classList.toggle("col-md-12");
-    vue.style.visibility = "visible";
+    vue.style.display = "";
     componentBuilderDescription.style.visibility = "hidden";
     if (componentBuilderHideLink) componentBuilderHideLink.style.visibility = "visible" ;
     slide.toggle('slow');
