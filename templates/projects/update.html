@@ -144,13 +144,7 @@
     var ps = {{ prodsubprods | safe }};
 </script>
 
-{% assets filters="jsmin", output="js/gen/projects_update.min.js",
-          "js/vendor/cropper.min.js",
-          "js/image_crop.js",
-          "js/vendor/select2.min.js",
-          "js/vendor/jquery-ui-1.12.1.min.js",
-          "js/project_forms.js"
-%}
-<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% assets "js_projects_update" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
 {% endblock %}

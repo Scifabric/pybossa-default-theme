@@ -27,9 +27,7 @@
 </form>
 <!-- Le javascript -->
 {% if not jstop %}
-{% assets filters="jsmin", output="js/gen/multi.min.js",
-          "js/vendor/multi.js"
-          %}
+{% assets "js_multi" %}
     <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
 {% endif %}
@@ -49,9 +47,7 @@
     });
 </script>
 <!-- Le styles -->
-{% assets output="css/gen/multi.min.css",
-          "css/multi.css"
-          %}
+{% assets "css_multi" %}
     <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
 <style>

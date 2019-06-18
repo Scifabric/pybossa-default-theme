@@ -211,27 +211,8 @@
 {% endblock %}
 
 {% block extrajs %}
-    {% assets filters="jsmin", output="js/gen/pybossa.taskpresentereditor.min.js",
-              'vendor/codemirror/codemirror.js',
-              'vendor/codemirror/mode/xml/xml.js',
-              'vendor/codemirror/mode/javascript/javascript.js',
-              'vendor/codemirror/mode/css/css.js',
-              'vendor/codemirror/mode/htmlmixed/htmlmixed.js',
-              'vendor/codemirror/addons/search/search.js',
-              'vendor/codemirror/addons/search/searchcursor.js',
-              'vendor/codemirror/addons/search/jump-to-line.js',
-              'vendor/codemirror/addons/edit/closebrackets.js',
-              'vendor/codemirror/addons/edit/closetag.js',
-              'vendor/codemirror/addons/edit/continuelist.js',
-              'vendor/codemirror/addons/edit/matchbrackets.js',
-              'vendor/codemirror/addons/edit/matchtags.js',
-              'vendor/codemirror/addons/edit/trailingspace.js',
-              'vendor/codemirror/addons/fold/xml-fold.js',
-              'vendor/codemirror/addons/display/fullscreen.js',
-              'vendor/codemirror/addons/dialog/dialog.js'
-              %}
-              <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-
+    {% assets "js_taskpresentereditor" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
 <script type="text/javascript">
 (function() {

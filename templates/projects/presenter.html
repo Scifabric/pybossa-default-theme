@@ -4,14 +4,8 @@
 {% set jstop = True %}
 
 {% block content %}
-{% assets filters="jsmin", output="js/gen/full.min.js",
-          "js/vendor/jquery-2.2.3.js", "js/vendor/bootstrap.js",
-          "js/vendor/modernizr.min.js", "js/flashmessages.js",
-          "js/vendor/cookieconsent.min.js",
-          "js/pybossa/pybossa.js",
-          "js/pybossa-player/dist/pybossa-player.min.js"
-          %}
-          <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% assets "js_full" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
 <script>
 

@@ -8,11 +8,7 @@
 {% block projectcontent %}
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-{% assets output="css/gen/taskbrowse.min.css",
-          "vendor/slider/css/slider.css",
-          "css/task_browse.css",
-          "css/select2.min.css"
-%}
+{% assets "css_taskbrowse" %}
     <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
 
@@ -585,7 +581,7 @@
 </div>
 </div>
 
-<script src="/static/js/gen/task_browse.min.be3439e15fcb949692ec.js"></script>
+<script src="/static/js/gen/task_browse.min.6807cad4fc0c03ba264a.js"></script>
 <script type="text/javascript">
     var filter_data = {{ filter_data|tojson }};
     taskBrowse.setFilters(filter_data);
@@ -606,13 +602,8 @@
 </script>
 {{ helper.confirm_delete(project, config.IS_QA) }}
 
-{% assets filters="jsmin", output="js/gen/taskbrowse.min.js",
-          "js/vendor/jquery-ui-1.12.1.min.js",
-          "js/vendor/select2.min.js",
-          "vendor/slider/js/bootstrap-slider.js",
-          "js/tasks_browse.js"
-%}
-<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% assets "js_taskbrowse" %}
+  <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
 
 {% endblock %}
