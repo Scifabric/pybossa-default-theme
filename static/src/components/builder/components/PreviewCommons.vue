@@ -86,13 +86,13 @@ export default {
           types[`GET_${this.$route.params.componentName}_FORM_VALID`];
         const isValidForm = getFormValidType
           ? this.$store.getters[getFormValidType]
-          : true;
+          : { isValid: true };
         return isValidForm;
       }
     },
     form: {
       get () {
-        let form = { isValidForm: true };
+        let form = { isValidForm: this.isValidForm };
         const getFormType =
           types[`GET_${this.$route.params.componentName}_PROPS`];
         if (getFormType) {
