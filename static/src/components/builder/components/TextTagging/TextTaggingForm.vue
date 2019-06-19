@@ -73,8 +73,10 @@
       v-model="textSource"
       type="text"
       class="form-control form-control-sm"
+      :class="{'danger-validation':getErrors(`text.${textSourceType}`)}"
       :title="(textSourceType === 'variable') ? 'The variable in your code that holds the text to display. For example, task.info.text.' : 'The static text to display'"
     >
+    <div>{{ getErrors(`text.${textSourceType}`) }}</div>
     <hr>
     <h4>
       Tags
@@ -112,9 +114,11 @@
               id="component-label"
               v-model="tag.name"
               class="form-control form-control-sm"
+              :class="{'danger-validation':getErrors(`tagList[${index}].name`)}"
               type="text"
               title="The tag name to store in the answer"
             >
+            <div>{{ getErrors(`tagList[${index}].name`) }}</div>
             <label
               class="col-labels"
               for="value"
@@ -125,9 +129,11 @@
               id="value"
               v-model="tag.display"
               class="form-control form-control-sm"
+              :class="{'danger-validation':getErrors(`tagList[${index}].display`)}"
               type="text"
               title="The tag name to display in the selection menu"
             >
+            <div>{{ getErrors(`tagList[${index}].display`) }}</div>
             <label
               class="col-labels"
               for="value"
@@ -138,9 +144,11 @@
               id="value"
               v-model="tag.color"
               class="form-control form-control-sm"
+              :class="{'danger-validation':getErrors(`tagList[${index}].color`)}"
               type="text"
               title="The background color for the tag. Can be any valid CSS color specification. For example, blue, #8A2BE2, RGB(80, 80, 80), HSL(0, 100%, 50%)."
             >
+            <div>{{ getErrors(`tagList[${index}].color`) }}</div>
           </div>
           <br>
         </div>
@@ -199,8 +207,10 @@
         v-model="entitySource"
         type="text"
         class="form-control form-control-sm"
+        :class="{'danger-validation':getErrors(`entities.variable`)}"
         title="The variable in your code that contains the entities. For example, task.info.entities."
       >
+      <div>{{ getErrors(`entities.variable`) }}</div>
       <div class="form-group">
         <input
           id="useStatic"
@@ -248,9 +258,11 @@
                 id="headoffset"
                 v-model.number="entity.headoffset"
                 class="form-control form-control-sm"
+                :class="{'danger-validation':getErrors(`entities.static[${index}].headoffset`)}"
                 type="text"
                 title="The character position where the entity starts. Count starts with 0."
               >
+              <div>{{ getErrors(`entities.static[${index}].headoffset`) }}</div>
               <label
                 class="col-labels"
                 for="tailoffset"
@@ -261,9 +273,11 @@
                 id="tailoffset"
                 v-model.number="entity.tailoffset"
                 class="form-control form-control-sm"
+                :class="{'danger-validation':getErrors(`entities.static[${index}].tailoffset`)}"
                 type="text"
                 title="The character position after the entity ends. Count starts with 0."
               >
+              <div>{{ getErrors(`entities.static[${index}].tailoffset`) }}</div>
               <label
                 class="col-labels"
                 for="taggedtype"
@@ -273,6 +287,7 @@
               <select
                 id="taggedtype"
                 v-model="entity.taggedtype"
+                :class="{'danger-validation':getErrors(`entities.static[${index}].taggedtype`)}"
                 class="form-control form-control-sm"
                 title="The tag to apply to the entity. Must be one of the configured tags."
               >
@@ -284,6 +299,7 @@
                   {{ tagName }}
                 </option>
               </select>
+              <div>{{ getErrors(`entities.static[${index}].taggedtype`) }}</div>
             </div>
             <br>
           </div>
@@ -315,6 +331,9 @@
   max-height: 600px;
   overflow-y: scroll;
   margin-bottom: 20px;
+}
+.danger-validation {
+  border-color: #d9534f;
 }
 </style>
 <script>
@@ -430,6 +449,9 @@ export default {
       'deleteTag': types.MUTATE_TEXT_TAGGING_DELETE_TAG,
       'deleteEntity': types.MUTATE_TEXT_TAGGING_DELETE_ENTITY
     }),
+    getErrors (key) {
+      return (this.$store.getters[types.GET_TEXT_TAGGING_ERRORS][key] || []).join('\n');
+    },
     addTag () {
       this.$store.commit(types.MUTATE_TEXT_TAGGING_ADD_TAG);
       this.scrollToEndSelectors.push('#tags');

@@ -19,6 +19,7 @@ export const GET_RADIO_INPUT_FORM_VALID = 'radioInput/FORM_VALID';
 
 export const GET_TEXT_TAGGING_PROPS = 'textTagging/PROPS';
 export const GET_TEXT_TAGGING_FORM_VALID = 'textTagging/FORM_VALID';
+export const GET_TEXT_TAGGING_ERRORS = 'textTagging/GET_TEXT_TAGGING_ERRORS';
 
 // Mutations
 export const MUTATE_CLEAR_CHECKBOX_INPUT_FORM = 'checkboxInput/MUTATE_CLEAR_CHECKBOX_FORM';

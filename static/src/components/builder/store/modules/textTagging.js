@@ -1,4 +1,5 @@
 import * as types from '../types';
+import { flatten } from 'lodash';
 
 export function initialState () {
   const firstTag = getTagObject();
@@ -106,38 +107,61 @@ export const getters = {
       entities: getEntities(state)
     };
   },
-  [types.GET_TEXT_TAGGING_FORM_VALID] (state) {
-    const messages = [...getErrors()];
+  [types.GET_TEXT_TAGGING_FORM_VALID] (state, getters) {
+    const messages = flatten(Object.values(getters[types.GET_TEXT_TAGGING_ERRORS]));
     const isValid = !messages.length;
     return { isValid, messages };
+  },
+  [types.GET_TEXT_TAGGING_ERRORS] (state) {
+    const errors = {};
+    for (const [key, message] of getErrors()) {
+      let messages = errors[key];
+      if (!messages) {
+        messages = errors[key] = [];
+      }
+      messages.push(message);
+    }
+    return errors;
 
     function* getErrors () {
       const uniqueTagNames = new Set();
       for (const [index, { name, display, color }] of getTrimmedTags(state.tagList).entries()) {
         const tagId = `Tag ${index + 1}`;
-        if (!display) yield `${tagId} display cannot be blank.`;
+        let key = `tagList[${index}].display`;
+        if (!display) yield [key, `${tagId} display cannot be blank.`];
 
-        if (!color) yield `${tagId} color cannot be blank.`;
-        else if (!isValidColor(color)) yield `${tagId} color is not a valid color.`;
+        key = `tagList[${index}].color`;
+        if (!color) yield [key, `${tagId} color cannot be blank.`];
+        else if (!isValidColor(color)) yield [key, `${tagId} color is not a valid color.`];
 
-        if (!name) yield `${tagId} name cannot be blank.`;
-        else if (uniqueTagNames.has(name)) yield `${tagId} name is not unique.`;
+        key = `tagList[${index}].name`;
+        if (!name) yield [key, `${tagId} name cannot be blank.`];
+        else if (uniqueTagNames.has(name)) yield [key, `${tagId} name is not unique.`];
         else uniqueTagNames.add(name);
       }
 
       if (state.entities.sourceType === 'static') {
           for (const [index, { headoffset, tailoffset, taggedtype }] of state.entities.static.entries()) {
             const entityId = `Entity ${index + 1}`;
-            if (!taggedtype) yield `${entityId} tag name cannot be blank.`;
-            if (!isNonNegativeInteger(headoffset)) yield `${entityId} head offset must be a non-negative integer.`;
-            if (!isNonNegativeInteger(tailoffset)) yield `${entityId} tail offset must be a non-negative integer.`;
+            let key = `entities.static[${index}].`;
+            if (!taggedtype) yield [key + 'taggedtype', `${entityId} tag name cannot be blank.`];
+            if (!isNonNegativeInteger(headoffset)) yield [key + 'headoffset', `${entityId} head offset must be a non-negative integer.`];
+
+            if (!isNonNegativeInteger(tailoffset)) yield [key + 'tailoffset', `${entityId} tail offset must be a non-negative integer.`];
+            else if (state.text.sourceType === 'static') {
+              if (state.text.static.length < tailoffset) {
+                const message = `${entityId} tail offset exceeds the length of the text.`;
+                yield [key + 'tailoffset', message];
+                yield ['text.static', message];
+              }
+            }
           }
       } else if (state.entities.sourceType === 'variable') {
-          if (!state.entities.variable.trim()) yield 'Entities variable cannot be blank.';
+          if (!state.entities.variable.trim()) yield ['entities.variable', 'Entities variable cannot be blank.'];
       }
 
-      if (state.text.sourceType === 'static' && !state.text.static.trim()) yield 'Text is required.';
-      if (state.text.sourceType === 'variable' && !state.text.variable.trim()) yield 'Text variable is required.';
+      if (state.text.sourceType === 'static' && !state.text.static.trim()) yield ['text.static', 'Text is required.'];
+      if (state.text.sourceType === 'variable' && !state.text.variable.trim()) yield ['text.variable', 'Text variable is required.'];
     }
   }
 };
