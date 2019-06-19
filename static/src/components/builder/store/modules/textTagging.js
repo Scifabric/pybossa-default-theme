@@ -1,5 +1,5 @@
 import * as types from '../types';
-import { flatten } from 'lodash';
+import { flatten, uniq, flow } from 'lodash';
 
 export function initialState () {
   const firstTag = getTagObject();
@@ -108,7 +108,7 @@ export const getters = {
     };
   },
   [types.GET_TEXT_TAGGING_FORM_VALID] (state, getters) {
-    const messages = flatten(Object.values(getters[types.GET_TEXT_TAGGING_ERRORS]));
+    const messages = flow(Object.values, flatten, uniq)(getters[types.GET_TEXT_TAGGING_ERRORS]);
     const isValid = !messages.length;
     return { isValid, messages };
   },
@@ -145,7 +145,15 @@ export const getters = {
             const entityId = `Entity ${index + 1}`;
             let key = `entities.static[${index}].`;
             if (!taggedtype) yield [key + 'taggedtype', `${entityId} tag name cannot be blank.`];
+
             if (!isNonNegativeInteger(headoffset)) yield [key + 'headoffset', `${entityId} head offset must be a non-negative integer.`];
+            else if (state.text.sourceType === 'static') {
+              if (state.text.static.length <= headoffset) {
+                const message = `${entityId} head offset exceeds the length of the text.`;
+                yield [key + 'headoffset', message];
+                yield ['text.static', message];
+              }
+            }
 
             if (!isNonNegativeInteger(tailoffset)) yield [key + 'tailoffset', `${entityId} tail offset must be a non-negative integer.`];
             else if (state.text.sourceType === 'static') {
