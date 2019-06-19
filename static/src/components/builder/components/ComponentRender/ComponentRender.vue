@@ -96,6 +96,18 @@ export default {
             name: this.form.name
           }
         };
+      } else if (this.selectedComponent === 'text-tagging') {
+        return {
+          name: 'text-tagging',
+          attrs: { id: 'test' },
+          props: {
+            readOnly: this.form.readOnly,
+            pybAnswer: this.form.pybAnswer,
+            tags: this.form.tagList.reduce((acc, tag)=> (acc[tag.name] = tag, acc), {}),
+            text: this.form.text.preview,
+            nlpnedEntities: this.form.entities.preview
+          }
+        };
       } else if (this.selectedComponent === 'table-creator') {
         const data = this.form.data.isVariable
           ? [{}]

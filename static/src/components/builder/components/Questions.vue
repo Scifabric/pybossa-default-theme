@@ -13,6 +13,7 @@
       <custom-router-link :component="checkboxInput" />
       <custom-router-link :component="radioInput" />
       <custom-router-link :component="table" />
+      <custom-router-link :component="textTagging" />
     </div>
     <div class="col-md-8">
       <div class="row">
@@ -181,6 +182,13 @@ export default {
         params: {
           componentName: 'CANCEL_BUTTON',
           header: 'Cancel Button'
+        }
+      },
+      textTagging: {
+        name: 'TEXT_TAGGING_FORM',
+        params: {
+          componentName: 'TEXT_TAGGING',
+          header: 'NLP Enrichment'
         }
       }
     };

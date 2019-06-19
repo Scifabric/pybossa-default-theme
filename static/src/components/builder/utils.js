@@ -15,6 +15,7 @@ import submitLastButtonTemplate from './components/helpers/submitLastButtonTempl
 import slotTemplate from './components/Table/slotTemplate.html';
 import radioGroupTemplate from './components/RadioInput/radioGroupTemplate.html';
 import radioInputTemplate from './components/RadioInput/radioInputTemplate.html';
+import textTaggingTemplate from './components/TextTagging/textTaggingTemplate.html';
 
 export const templates = {
   TEXT_INPUT: textInputTemplate,
@@ -48,6 +49,8 @@ export default {
       return this.getRadioGroupCode(form);
     } else if (component === 'TEXT_INPUT') {
       return this.getTextInputCode(form, component);
+    } else if (component === 'TEXT_TAGGING') {
+      return this.getTextTaggingCode(form);
     } else {
       return this.getHelperComponentCode(component);
     }
@@ -190,6 +193,45 @@ export default {
     }
 
     return output;
+  },
+
+  getTextTaggingCode (textTagging) {
+    const {
+      pybAnswer,
+      labelAdded,
+      label,
+      tagList: tags,
+      text: { snippet, preview },
+      readOnly,
+      entities
+    } = textTagging;
+
+    let output = Mustache.render(
+      textTaggingTemplate,
+      {
+        pybAnswer,
+        tags,
+        text: snippet,
+        readOnly,
+        entities: getEntitiesString(),
+        bindText: (snippet === preview) ? '' : ':'
+      }
+    );
+
+    if (labelAdded) {
+      const labelArgs = {
+        component: output,
+        label
+      };
+      output = Mustache.render(labelTemplate, labelArgs);
+    }
+    return output;
+
+    function getEntitiesString() {
+      const snippet = entities.snippet;
+      if (typeof(snippet) === 'string') return snippet;
+      else return JSON.stringify(snippet).replace(/"/g, "'");
+    }
   },
 
   getTextInputCode: function (form, component) {
