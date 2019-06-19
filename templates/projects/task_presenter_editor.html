@@ -43,6 +43,9 @@
       margin-top: 6px;
       margin-bottom: 0;
     }
+    #sync-panels table td.ref-details {
+      word-break: break-word;
+    }
     #sync-panels .message {
       margin-top: 10px;
     }
@@ -135,7 +138,7 @@
                                 </tr>
                                 <tr>
                                     <td><p>Last Commit:</p></td>
-                                    <td><a href={{ project.info.ref_url }} target="_blank">{{ project.info.ref }}</a></td>
+                                    <td class="ref-details"><a href={{ project.info.ref_url }} target="_blank">{{ project.info.ref }}</a></td>
                                 </tr>
                               </table>
                           {% else %}
@@ -165,14 +168,14 @@
                                   </tr>
                                   <tr>
                                       <td><p>Synced With:</p></td>
-                                      <td><a href={{ project.info.sync.source_url + '/project/' + project.short_name }} target="_blank">
+                                      <td class="ref-details"><a href={{ project.info.sync.source_url + '/project/' + project.short_name }} target="_blank">
                                               {{ project.info.sync.source_url + '/project/' + project.short_name }}
                                       </a></td>
                                   </tr>
                                   {% if project.info.sync.ref and project.info.sync.ref_url %}
                                   <tr>
                                       <td><p>GitHub Reference:</p></td>
-                                      <td><a href={{ project.info.sync.ref_url }} target="_blank">
+                                      <td class="ref-details"><a href={{ project.info.sync.ref_url }} target="_blank">
                                               {{ project.info.sync.ref }}
                                       </a></td>
                                   </tr>
