@@ -75,7 +75,8 @@ export default {
         CANCEL_BUTTON: 'cancel-button',
         SUBMIT_BUTTON: 'submit-button',
         BUTTON_ROW: 'button-row',
-        SUBMIT_LAST_BUTTON: 'submit-last-button'
+        SUBMIT_LAST_BUTTON: 'submit-last-button',
+        TEXT_TAGGING: 'text-tagging'
       }
     };
   },

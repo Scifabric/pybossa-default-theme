@@ -4,6 +4,7 @@ import textInput from './modules/textInput';
 import checkboxInput from './modules/checkboxInput';
 import table from './modules/table';
 import radioInput from './modules/radioInput';
+import textTagging from './modules/textTagging';
 import { getStoreOptions, setNamespace } from '@dtwebservices/task-presenter-components';
 
 Vue.use(Vuex);
@@ -23,6 +24,7 @@ export default new Vuex.Store({
     checkboxInput,
     textInput,
     table,
-    radioInput
+    radioInput,
+    textTagging
   }
 });
