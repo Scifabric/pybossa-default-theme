@@ -35,7 +35,7 @@ export function getEntityObject () {
     headoffset: '',
     tailoffset: '',
     taggedtype: ''
-  }
+  };
 };
 
 export const state = {
@@ -44,14 +44,14 @@ export const state = {
 
 function getTrimmedTags (tagList) {
   return tagList.map(trimTag);
-  
-  function trimTag({ name, display, color }) {
+
+  function trimTag ({ name, display, color }) {
     return { name: name.trim(), display: display.trim(), color: color.trim() };
   }
 }
 
 function getColorCSS (colorString) {
-    var ele = document.createElement("div");
+    const ele = document.createElement('div');
     ele.style.color = colorString;
     return ele.style.color.split(/\s+/).join('').toLowerCase();
 }
@@ -66,30 +66,30 @@ function isNonNegativeInteger (value) {
 
 function getEntities (state) {
   switch (state.entities.sourceType) {
-    case "none":
+    case 'none':
       return { snippet: [], preview: [] };
-    case "variable":
+    case 'variable':
       const preview = state.entities.useStaticInPreview ? getStaticEntities() : [];
       return {
         snippet: state.entities.variable,
         preview
       };
-    case "static":
+    case 'static':
       const staticEntities = getStaticEntities();
       return { snippet: staticEntities, preview: staticEntities };
   }
 
-  function getStaticEntities() {
+  function getStaticEntities () {
       return state.entities.static.map(entity => ({ recognized: entity }));
   }
 }
 
 function getText (state) {
   switch (state.text.sourceType) {
-    case "static":
+    case 'static':
       const staticText = state.text.static.trim();
       return { snippet: staticText, preview: staticText };
-    case "variable":
+    case 'variable':
       return { snippet: state.text.variable.trim(), preview: '' };
   }
 }
@@ -128,12 +128,12 @@ export const getters = {
       if (state.entities.sourceType === 'static') {
           for (const [index, { headoffset, tailoffset, taggedtype }] of state.entities.static.entries()) {
             const entityId = `Entity ${index + 1}`;
-            if (!taggedtype) yield `${entityId} tag name cannot be blank.`
+            if (!taggedtype) yield `${entityId} tag name cannot be blank.`;
             if (!isNonNegativeInteger(headoffset)) yield `${entityId} head offset must be a non-negative integer.`;
             if (!isNonNegativeInteger(tailoffset)) yield `${entityId} tail offset must be a non-negative integer.`;
           }
       } else if (state.entities.sourceType === 'variable') {
-          if (!state.entities.variable.trim()) yield 'Entities variable cannot be blank.'; 
+          if (!state.entities.variable.trim()) yield 'Entities variable cannot be blank.';
       }
 
       if (state.text.sourceType === 'static' && !state.text.static.trim()) yield 'Text is required.';

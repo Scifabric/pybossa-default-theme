@@ -103,7 +103,10 @@ export default {
           props: {
             readOnly: this.form.readOnly,
             pybAnswer: this.form.pybAnswer,
-            tags: this.form.tagList.reduce((acc, tag)=> (acc[tag.name] = tag, acc), {}),
+            tags: this.form.tagList.reduce((acc, tag) => {
+              acc[tag.name] = tag;
+              return acc;
+            }, {}),
             text: this.form.text.preview,
             nlpnedEntities: this.form.entities.preview
           }
