@@ -50,8 +50,8 @@
           class="col-labels right-padding-radio"
         >
           <input
-            value="variable"
             v-model="textSourceType"
+            value="variable"
             type="radio"
           >
           Get text from variable
@@ -60,8 +60,8 @@
           class="col-labels"
         >
           <input
-            value="static"
             v-model="textSourceType"
+            value="static"
             type="radio"
           >
           Enter static text
@@ -79,7 +79,10 @@
     <h4>
       Tags
     </h4>
-    <div id="tags" class="scroll col-md-12">
+    <div
+      id="tags"
+      class="scroll col-md-12"
+    >
       <div class="row">
         <div class="col-md-12">
           <div
@@ -96,8 +99,8 @@
               v-if="tagList.length > 1"
               :id="`column-delete${index}`"
               class="btn btn-times-delete pull-right fa fa-times"
-              @click="deleteTag(index)"
               :title="`Delete Tag ${index + 1}`"
+              @click="deleteTag(index)"
             /><br>
             <label
               class="col-labels"
@@ -120,9 +123,9 @@
             </label>
             <input
               id="value"
+              v-model="tag.display"
               class="form-control form-control-sm"
               type="text"
-              v-model="tag.display"
               title="The tag name to display in the selection menu"
             >
             <label
@@ -133,9 +136,9 @@
             </label>
             <input
               id="value"
+              v-model="tag.color"
               class="form-control form-control-sm"
               type="text"
-              v-model="tag.color"
               title="The background color for the tag. Can be any valid CSS color specification. For example, blue, #8A2BE2, RGB(80, 80, 80), HSL(0, 100%, 50%)."
             >
           </div>
@@ -147,8 +150,8 @@
     <button
       id="add"
       class="btn btn-default btn-sm col-sm-2 col-md-1"
-      @click="addTag"
       title="Add a tag"
+      @click="addTag"
     >
       Add
     </button>
@@ -162,8 +165,8 @@
           class="col-labels right-padding-radio"
         >
           <input
-            value="none"
             v-model="entitySourceType"
+            value="none"
             type="radio"
           >
           None
@@ -172,8 +175,8 @@
           class="col-labels right-padding-radio"
         >
           <input
-            value="variable"
             v-model="entitySourceType"
+            value="variable"
             type="radio"
           >
           From Variable
@@ -182,8 +185,8 @@
           class="col-labels"
         >
           <input
-            value="static"
             v-model="entitySourceType"
+            value="static"
             type="radio"
           >
           Static
@@ -201,18 +204,22 @@
       <div class="form-group">
         <input
           id="useStatic"
-          type="checkbox"
           v-model="useStaticInPreview"
+          type="checkbox"
         >
         <label
           title="Check this and enter some static entities if you want to see pre-tagged entites in the preview while still using a variable in your code."
-          for="useStatic">
+          for="useStatic"
+        >
           Use static in preview
         </label>
       </div>
     </template>
     <template v-else-if="entitySourceType==='static'">
-      <div id="entities" class="scroll col-md-12">
+      <div
+        id="entities"
+        class="scroll col-md-12"
+      >
         <div class="row">
           <div class="col-md-12">
             <div
@@ -228,8 +235,8 @@
               <button
                 :id="`column-delete${index}`"
                 class="btn btn-times-delete pull-right fa fa-times"
-                @click="deleteEntity(index)"
                 :title="`Delete Entity ${index + 1}`"
+                @click="deleteEntity(index)"
               /><br>
               <label
                 class="col-labels"
@@ -252,9 +259,9 @@
               </label>
               <input
                 id="tailoffset"
+                v-model.number="entity.tailoffset"
                 class="form-control form-control-sm"
                 type="text"
-                v-model.number="entity.tailoffset"
                 title="The character position after the entity ends. Count starts with 0."
               >
               <label
@@ -265,11 +272,12 @@
               </label>
               <select
                 id="taggedtype"
-                class="form-control form-control-sm"
                 v-model="entity.taggedtype"
+                class="form-control form-control-sm"
                 title="The tag to apply to the entity. Must be one of the configured tags."
               >
-                <option v-for="tagName in tagNames"
+                <option
+                  v-for="tagName in tagNames"
                   :key="tagName"
                   :value="tagName"
                 >
@@ -285,8 +293,8 @@
       <button
         id="addEntity"
         class="btn btn-default btn-sm col-sm-2 col-md-1"
-        @click="addEntity"
         title="Add an entity"
+        @click="addEntity"
       >
         Add
       </button>
@@ -312,7 +320,7 @@
 <script>
 import { mapMutations, mapState } from 'vuex';
 import * as types from '../../store/types';
-import { cloneDeep, chain } from 'lodash';
+import { chain } from 'lodash';
 
 function scrollToEnd (selector) {
   const container = document.querySelector(selector);
@@ -420,7 +428,7 @@ export default {
   methods: {
     ...mapMutations({
       'deleteTag': types.MUTATE_TEXT_TAGGING_DELETE_TAG,
-      'deleteEntity': types.MUTATE_TEXT_TAGGING_DELETE_ENTITY,
+      'deleteEntity': types.MUTATE_TEXT_TAGGING_DELETE_ENTITY
     }),
     addTag () {
       this.$store.commit(types.MUTATE_TEXT_TAGGING_ADD_TAG);

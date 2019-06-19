@@ -227,9 +227,9 @@ export default {
     }
     return output;
 
-    function getEntitiesString() {
+    function getEntitiesString () {
       const snippet = entities.snippet;
-      if (typeof(snippet) === 'string') return snippet;
+      if (typeof snippet === 'string') return snippet;
       else return JSON.stringify(snippet).replace(/"/g, "'");
     }
   },
