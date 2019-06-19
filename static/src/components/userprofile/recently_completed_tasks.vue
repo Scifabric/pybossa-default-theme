@@ -1,10 +1,10 @@
 <template>
-<p style="cursor:default" title="Since 12AM in your browser's timezone.">
-    <strong><i class="fa fa-list-ol"></i> Tasks Completed Today:</strong>
+  <p style="cursor:default" title="Since 12AM in your browser's timezone.">
+    <strong><i class="fa fa-list-ol" /> Tasks Completed Today:</strong>
     <span v-if="count !== -1 && !error">{{ count }}</span>
     <span v-if="count === -1 && !error">Loading...</span>
     <span v-if="error">There was an error fetching the data.  Please try again.</span>
-</p>
+  </p>
 </template>
 <script>
 export default {
@@ -44,10 +44,11 @@ export default {
         if (res.ok) {
           const data = await res.json();
 
-          if (data.hasOwnProperty('count'))
-            this.count = data.count;
-          else
-            this.error = true;
+          if (data.hasOwnProperty('count')) {
+              this.count = data.count;
+          } else {
+              this.error = true;
+          }
         } else {
           this.error = true;
         }
