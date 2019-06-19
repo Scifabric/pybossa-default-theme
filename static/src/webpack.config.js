@@ -17,6 +17,7 @@ module.exports = {
     component_helper: './component_helper.js',
     performancestats: './performancestats.js',
     task_browse: './task_browse.js',
+    userprofile: './userprofile.js',
     wizard: './wizard.js'
   },
   // where to place the compiled bundle
@@ -74,6 +75,12 @@ module.exports = {
     child_process: 'empty'
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: false,
+      filename: '../../../templates/account/profile.html',
+      template: '../../templates/account/profile.webpack.ejs'
+    }),
     new HtmlWebpackPlugin({
       inject: false,
       hash: false,
