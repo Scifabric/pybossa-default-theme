@@ -73,6 +73,7 @@
       v-model="textSource"
       type="text"
       class="form-control form-control-sm"
+      :title="(textSourceType === 'variable') ? 'The variable in your code that holds the text to display. For example, task.info.text.' : 'The static text to display'"
     >
     <hr>
     <h4>
@@ -96,6 +97,7 @@
               :id="`column-delete${index}`"
               class="btn btn-times-delete pull-right fa fa-times"
               @click="deleteTag(index)"
+              :title="`Delete Tag ${index + 1}`"
             /><br>
             <label
               class="col-labels"
@@ -108,6 +110,7 @@
               v-model="tag.name"
               class="form-control form-control-sm"
               type="text"
+              title="The tag name to store in the answer"
             >
             <label
               class="col-labels"
@@ -120,6 +123,7 @@
               class="form-control form-control-sm"
               type="text"
               v-model="tag.display"
+              title="The tag name to display in the selection menu"
             >
             <label
               class="col-labels"
@@ -132,6 +136,7 @@
               class="form-control form-control-sm"
               type="text"
               v-model="tag.color"
+              title="The background color for the tag. Can be any valid CSS color specification. For example, blue, #8A2BE2, RGB(80, 80, 80), HSL(0, 100%, 50%)."
             >
           </div>
           <br>
@@ -143,6 +148,7 @@
       id="add"
       class="btn btn-default btn-sm col-sm-2 col-md-1"
       @click="addTag"
+      title="Add a tag"
     >
       Add
     </button>
@@ -190,6 +196,7 @@
         v-model="entitySource"
         type="text"
         class="form-control form-control-sm"
+        title="The variable in your code that contains the entities. For example, task.info.entities."
       >
       <div class="form-group">
         <input
@@ -222,6 +229,7 @@
                 :id="`column-delete${index}`"
                 class="btn btn-times-delete pull-right fa fa-times"
                 @click="deleteEntity(index)"
+                :title="`Delete Entity ${index + 1}`"
               /><br>
               <label
                 class="col-labels"
@@ -234,6 +242,7 @@
                 v-model.number="entity.headoffset"
                 class="form-control form-control-sm"
                 type="text"
+                title="The character position where the entity starts. Count starts with 0."
               >
               <label
                 class="col-labels"
@@ -246,6 +255,7 @@
                 class="form-control form-control-sm"
                 type="text"
                 v-model.number="entity.tailoffset"
+                title="The character position after the entity ends. Count starts with 0."
               >
               <label
                 class="col-labels"
@@ -257,6 +267,7 @@
                 id="taggedtype"
                 class="form-control form-control-sm"
                 v-model="entity.taggedtype"
+                title="The tag to apply to the entity. Must be one of the configured tags."
               >
                 <option v-for="tagName in tagNames"
                   :key="tagName"
@@ -275,6 +286,7 @@
         id="addEntity"
         class="btn btn-default btn-sm col-sm-2 col-md-1"
         @click="addEntity"
+        title="Add an entity"
       >
         Add
       </button>
@@ -347,9 +359,6 @@ export default {
       set (newValue) {
         this.$store.commit(types.MUTATE_TEXT_TAGGING_ENTITY_SOURCE_TYPE, newValue);
       }
-    },
-    textIsVariable () {
-      return this.textSourceType === 'variable';
     },
     textSourceType: {
       get () {
