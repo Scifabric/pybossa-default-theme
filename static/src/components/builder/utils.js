@@ -200,7 +200,7 @@ export default {
       pybAnswer,
       labelAdded,
       label,
-      tagList: tags,
+      tags,
       text: { snippet, preview },
       readOnly,
       entities
@@ -210,7 +210,7 @@ export default {
       textTaggingTemplate,
       {
         pybAnswer,
-        tags,
+        tags: JSON.stringify(tags),
         text: snippet,
         readOnly,
         entities: getEntitiesString(),
@@ -229,8 +229,10 @@ export default {
 
     function getEntitiesString () {
       const snippet = entities.snippet;
+      // If the snippet is a string then it is a variable name so leave it alone.
       if (typeof snippet === 'string') return snippet;
-      else return JSON.stringify(snippet).replace(/"/g, "'");
+      // Otherwise it's an array so stringify it.
+      else return JSON.stringify(snippet);
     }
   },
 
