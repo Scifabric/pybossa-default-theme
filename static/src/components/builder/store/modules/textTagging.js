@@ -108,6 +108,81 @@ function getTagDict (state) {
   }
 }
 
+function toMultiDict (keyValueIterator) {
+  const dict = {};
+  for (const [key, value] of keyValueIterator) {
+    let values = dict[key];
+    if (!values) {
+      values = dict[key] = [];
+    }
+    values.push(value);
+  }
+  return dict;
+}
+
+function* getErrors (state) {
+  const uniqueTagNames = new Set();
+  for (const [index, { name, display, color }] of getTrimmedTags(state.tagList).entries()) {
+    const tagId = `Tag ${index + 1}`;
+    let key = `tagList[${index}].display`;
+    if (!display) yield [key, `${tagId} display is required.`];
+
+    key = `tagList[${index}].color`;
+    if (!color) yield [key, `${tagId} color is required.`];
+    else if (!isValidColor(color)) yield [key, `${tagId} color is not a valid color.`];
+
+    key = `tagList[${index}].name`;
+    if (!name) yield [key, `${tagId} name is required.`];
+    else if (uniqueTagNames.has(name)) yield [key, `${tagId} name is not unique.`];
+    else uniqueTagNames.add(name);
+  }
+
+  if (state.sourceType === 'static' || state.useStaticInPreview) {
+    for (const [index, { headoffset, tailoffset, taggedtype }] of state.entities.static.entries()) {
+      const entityId = `Entity ${index + 1}`;
+      let key = `entities.static[${index}].`;
+      if (!taggedtype) yield [key + 'taggedtype', `${entityId} tag name is required.`];
+
+      const headValid = isNonNegativeInteger(headoffset);
+      const headKey = key + 'headoffset';
+      if (!headValid) yield [headKey, `${entityId} head offset must be a non-negative integer.`];
+      else if (state.sourceType === 'static') {
+        if (state.text.static.length <= headoffset) {
+          const message = `${entityId} head offset exceeds the length of the text.`;
+          yield [headKey, message];
+          yield ['text.static', message];
+        }
+      }
+
+      const tailValid = isPositiveInteger(tailoffset);
+      const tailKey = key + 'tailoffset';
+      if (!tailValid) yield [tailKey, `${entityId} tail offset must be a positive integer.`];
+      else if (state.sourceType === 'static') {
+        if (state.text.static.length < tailoffset) {
+          const message = `${entityId} tail offset exceeds the length of the text.`;
+          yield [tailKey, message];
+          yield ['text.static', message];
+        }
+      }
+
+      if (headValid && tailValid) {
+        if (tailoffset <= headoffset) {
+          const message = `${entityId} tail offset must be greater than head offset.`;
+          yield [tailKey, message];
+          yield [headKey, message];
+        }
+      }
+    }
+  }
+
+  if (state.sourceType === 'variable') {
+      if (!state.entities.variable.trim()) yield ['entities.variable', 'Entities variable is required.'];
+  }
+
+  if ((state.sourceType === 'static' || state.useStaticInPreview) && !state.text.static.trim()) yield ['text.static', 'Text is required.'];
+  if (state.sourceType === 'variable' && !state.text.variable.trim()) yield ['text.variable', 'Text variable is required.'];
+}
+
 export const getters = {
   [types.GET_TEXT_TAGGING_PROPS] (state) {
     return {
@@ -126,78 +201,7 @@ export const getters = {
     return { isValid, messages };
   },
   [types.GET_TEXT_TAGGING_ERRORS] (state) {
-    const errors = {};
-    for (const [key, message] of getErrors()) {
-      let messages = errors[key];
-      if (!messages) {
-        messages = errors[key] = [];
-      }
-      messages.push(message);
-    }
-    return errors;
-
-    function* getErrors () {
-      const uniqueTagNames = new Set();
-      for (const [index, { name, display, color }] of getTrimmedTags(state.tagList).entries()) {
-        const tagId = `Tag ${index + 1}`;
-        let key = `tagList[${index}].display`;
-        if (!display) yield [key, `${tagId} display is required.`];
-
-        key = `tagList[${index}].color`;
-        if (!color) yield [key, `${tagId} color is required.`];
-        else if (!isValidColor(color)) yield [key, `${tagId} color is not a valid color.`];
-
-        key = `tagList[${index}].name`;
-        if (!name) yield [key, `${tagId} name is required.`];
-        else if (uniqueTagNames.has(name)) yield [key, `${tagId} name is not unique.`];
-        else uniqueTagNames.add(name);
-      }
-
-      if (state.sourceType === 'static' || state.useStaticInPreview) {
-        for (const [index, { headoffset, tailoffset, taggedtype }] of state.entities.static.entries()) {
-          const entityId = `Entity ${index + 1}`;
-          let key = `entities.static[${index}].`;
-          if (!taggedtype) yield [key + 'taggedtype', `${entityId} tag name is required.`];
-
-          const headValid = isNonNegativeInteger(headoffset);
-          const headKey = key + 'headoffset';
-          if (!headValid) yield [headKey, `${entityId} head offset must be a non-negative integer.`];
-          else if (state.sourceType === 'static') {
-            if (state.text.static.length <= headoffset) {
-              const message = `${entityId} head offset exceeds the length of the text.`;
-              yield [headKey, message];
-              yield ['text.static', message];
-            }
-          }
-
-          const tailValid = isPositiveInteger(tailoffset);
-          const tailKey = key + 'tailoffset';
-          if (!tailValid) yield [tailKey, `${entityId} tail offset must be a positive integer.`];
-          else if (state.sourceType === 'static') {
-            if (state.text.static.length < tailoffset) {
-              const message = `${entityId} tail offset exceeds the length of the text.`;
-              yield [tailKey, message];
-              yield ['text.static', message];
-            }
-          }
-
-          if (headValid && tailValid) {
-            if (tailoffset <= headoffset) {
-              const message = `${entityId} tail offset must be greater than head offset.`;
-              yield [tailKey, message];
-              yield [headKey, message];
-            }
-          }
-        }
-      }
-
-      if (state.sourceType === 'variable') {
-          if (!state.entities.variable.trim()) yield ['entities.variable', 'Entities variable is required.'];
-      }
-
-      if ((state.sourceType === 'static' || state.useStaticInPreview) && !state.text.static.trim()) yield ['text.static', 'Text is required.'];
-      if (state.sourceType === 'variable' && !state.text.variable.trim()) yield ['text.variable', 'Text variable is required.'];
-    }
+    return toMultiDict(getErrors(state));
   }
 };
 
