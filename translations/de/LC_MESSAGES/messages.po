@@ -2844,7 +2844,7 @@ msgstr "Wertung"
 #~ msgid "Your profile has been updated!"
 #~ msgstr "Dein Profil wurde aktualisiert"
 
-#~ msgid "Yay, you changed your password succesfully!"
+#~ msgid "Yay, you changed your password successfully!"
 #~ msgstr "Du hast Dein Passwort erfolgreich geändert."
 
 #~ msgid "Your current password doesn't match the one in our records"
@@ -2948,4 +2948,3 @@ msgstr "Wertung"
 
 #~ msgid "Grant Crowdcrafting access to your Flickr albums to select one..."
 #~ msgstr ""
-

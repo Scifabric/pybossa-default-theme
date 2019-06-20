@@ -2862,7 +2862,7 @@ msgstr "Punteggio"
 #~ msgid "Your profile has been updated!"
 #~ msgstr "Il tuo profilo è stato aggiornato!"
 
-#~ msgid "Yay, you changed your password succesfully!"
+#~ msgid "Yay, you changed your password successfully!"
 #~ msgstr "Bene, hai cambiato la tua password correttamente!"
 
 #~ msgid "Your current password doesn't match the one in our records"
@@ -2966,4 +2966,3 @@ msgstr "Punteggio"
 
 #~ msgid "Grant Crowdcrafting access to your Flickr albums to select one..."
 #~ msgstr ""
-

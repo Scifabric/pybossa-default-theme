@@ -2847,7 +2847,7 @@ msgstr "Pontuação"
 #~ msgid "Your profile has been updated!"
 #~ msgstr "Seu perfil foi atualizado!"
 
-#~ msgid "Yay, you changed your password succesfully!"
+#~ msgid "Yay, you changed your password successfully!"
 #~ msgstr "Yay, você alterou sua senha com sucesso!"
 
 #~ msgid "Your current password doesn't match the one in our records"
@@ -2951,4 +2951,3 @@ msgstr "Pontuação"
 
 #~ msgid "No"
 #~ msgstr "Não"
-

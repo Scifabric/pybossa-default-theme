@@ -2792,7 +2792,7 @@ msgstr "スコア"
 #~ msgid "Your profile has been updated!"
 #~ msgstr "プロファイルが更新されました！"
 
-#~ msgid "Yay, you changed your password succesfully!"
+#~ msgid "Yay, you changed your password successfully!"
 #~ msgstr "確かに、パスワードは変更されました！"
 
 #~ msgid "Your current password doesn't match the one in our records"
@@ -2896,4 +2896,3 @@ msgstr "スコア"
 
 #~ msgid "No"
 #~ msgstr "いいえ"
-
