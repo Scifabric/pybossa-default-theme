@@ -9,16 +9,15 @@ export function initialState () {
     tagList: [firstTag],
     pybAnswer: '',
     readOnly: false,
+    sourceType: 'variable',
+    useStaticInPreview: false,
     text: {
-      sourceType: 'variable',
       variable: '',
       static: ''
     },
     entities: {
-      sourceType: 'none',
       static: [],
-      variable: '',
-      useStaticInPreview: false
+      variable: ''
     }
   };
 }
@@ -65,12 +64,14 @@ function isNonNegativeInteger (value) {
   return Number.isInteger(value) && value >= 0;
 }
 
+function isPositiveInteger (value) {
+  return Number.isInteger(value) && value > 0;
+}
+
 function getEntities (state) {
-  switch (state.entities.sourceType) {
-    case 'none':
-      return { snippet: [], preview: [] };
+  switch (state.sourceType) {
     case 'variable':
-      const preview = state.entities.useStaticInPreview ? getStaticEntities() : [];
+      const preview = state.useStaticInPreview ? getStaticEntities() : [];
       return {
         snippet: state.entities.variable,
         preview
@@ -86,19 +87,20 @@ function getEntities (state) {
 }
 
 function getText (state) {
-  switch (state.text.sourceType) {
+  switch (state.sourceType) {
     case 'static':
       const staticText = state.text.static.trim();
       return { snippet: staticText, preview: staticText };
     case 'variable':
-      return { snippet: state.text.variable.trim(), preview: '' };
+      const preview = state.useStaticInPreview ? state.text.static.trim() : '';
+      return { snippet: state.text.variable.trim(), preview };
   }
 }
 
 function getTagDict (state) {
   return getTrimmedTags(state.tagList).reduce(reducer, {});
 
-  function reducer(result, tag) {
+  function reducer (result, tag) {
     result[tag.name] = tag;
     // This tag is a clone of the state so it's OK to mutate it.
     delete tag.name;
@@ -151,36 +153,50 @@ export const getters = {
         else uniqueTagNames.add(name);
       }
 
-      if (state.entities.sourceType === 'static') {
+      if (state.sourceType === 'static' || state.useStaticInPreview) {
         for (const [index, { headoffset, tailoffset, taggedtype }] of state.entities.static.entries()) {
           const entityId = `Entity ${index + 1}`;
           let key = `entities.static[${index}].`;
           if (!taggedtype) yield [key + 'taggedtype', `${entityId} tag name is required.`];
 
-          if (!isNonNegativeInteger(headoffset)) yield [key + 'headoffset', `${entityId} head offset must be a non-negative integer.`];
-          else if (state.text.sourceType === 'static') {
+          const headValid = isNonNegativeInteger(headoffset);
+          const headKey = key + 'headoffset';
+          if (!headValid) yield [headKey, `${entityId} head offset must be a non-negative integer.`];
+          else if (state.sourceType === 'static') {
             if (state.text.static.length <= headoffset) {
               const message = `${entityId} head offset exceeds the length of the text.`;
-              yield [key + 'headoffset', message];
+              yield [headKey, message];
               yield ['text.static', message];
             }
           }
 
-          if (!isNonNegativeInteger(tailoffset)) yield [key + 'tailoffset', `${entityId} tail offset must be a non-negative integer.`];
-          else if (state.text.sourceType === 'static') {
+          const tailValid = isPositiveInteger(tailoffset);
+          const tailKey = key + 'tailoffset';
+          if (!tailValid) yield [tailKey, `${entityId} tail offset must be a positive integer.`];
+          else if (state.sourceType === 'static') {
             if (state.text.static.length < tailoffset) {
               const message = `${entityId} tail offset exceeds the length of the text.`;
-              yield [key + 'tailoffset', message];
+              yield [tailKey, message];
               yield ['text.static', message];
+            }
+          }
+
+          if (headValid && tailValid) {
+            if (tailoffset <= headoffset) {
+              const message = `${entityId} tail offset must be greater than head offset.`;
+              yield [tailKey, message];
+              yield [headKey, message];
             }
           }
         }
-      } else if (state.entities.sourceType === 'variable') {
+      }
+
+      if (state.sourceType === 'variable') {
           if (!state.entities.variable.trim()) yield ['entities.variable', 'Entities variable is required.'];
       }
 
-      if (state.text.sourceType === 'static' && !state.text.static.trim()) yield ['text.static', 'Text is required.'];
-      if (state.text.sourceType === 'variable' && !state.text.variable.trim()) yield ['text.variable', 'Text variable is required.'];
+      if ((state.sourceType === 'static' || state.useStaticInPreview) && !state.text.static.trim()) yield ['text.static', 'Text is required.'];
+      if (state.sourceType === 'variable' && !state.text.variable.trim()) yield ['text.variable', 'Text variable is required.'];
     }
   }
 };
@@ -190,10 +206,7 @@ export const mutations = {
     state.pybAnswer = payload;
   },
   [types.MUTATE_TEXT_TAGGING_TEXT] (state, payload) {
-    state.text[state.text.sourceType] = payload;
-  },
-  [types.MUTATE_TEXT_TAGGING_TEXT_SOURCE_TYPE] (state, payload) {
-    state.text.sourceType = payload;
+    state.text[state.sourceType] = payload;
   },
   [types.MUTATE_CLEAR_TEXT_TAGGING_FORM] (state) {
     Object.assign(state, initialState());
@@ -207,14 +220,14 @@ export const mutations = {
   [types.MUTATE_TEXT_TAGGING_READONLY] (state, payload) {
     state.readOnly = payload;
   },
-  [types.MUTATE_TEXT_TAGGING_ENTITY_SOURCE_TYPE] (state, payload) {
-    state.entities.sourceType = payload;
+  [types.MUTATE_TEXT_TAGGING_SOURCE_TYPE] (state, payload) {
+    state.sourceType = payload;
   },
   [types.MUTATE_TEXT_TAGGING_ENTITY_SOURCE] (state, payload) {
     state.entities.variable = payload;
   },
   [types.MUTATE_TEXT_TAGGING_USE_STATIC_IN_PREVIEW] (state, payload) {
-    state.entities.useStaticInPreview = payload;
+    state.useStaticInPreview = payload;
   },
   [types.MUTATE_TEXT_TAGGING_DELETE_TAG] (state, index) {
     state.tagList.splice(index, 1);

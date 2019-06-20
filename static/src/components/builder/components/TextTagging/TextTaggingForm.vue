@@ -32,51 +32,26 @@
       >
     </div>
     <div class="form-group">
-      <input
-        id="readOnly"
-        v-model="readOnly"
-        type="checkbox"
-      >
       <label
-        for="readOnly"
+        for="editMode"
       >
-        Read-only
+        Edit mode
       </label>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <label>Text</label><br>
-        <label
-          class="col-labels right-padding-radio"
+      <select
+        id="editMode"
+        v-model="editMode"
+      >
+        <option
+          selected
+          value="readWrite"
         >
-          <input
-            v-model="textSourceType"
-            value="variable"
-            type="radio"
-          >
-          Get text from variable
-        </label>
-        <label
-          class="col-labels"
-        >
-          <input
-            v-model="textSourceType"
-            value="static"
-            type="radio"
-          >
-          Enter static text
-        </label>
-      </div>
+          Add new tags and edit/remove existing tags
+        </option>
+        <option value="readOnly">
+          Only view existing tags
+        </option>
+      </select>
     </div>
-    <input
-      id="textSource"
-      v-model="textSource"
-      type="text"
-      class="form-control form-control-sm"
-      :class="{'danger-validation':getErrors(`text.${textSourceType}`)}"
-      :title="(textSourceType === 'variable') ? 'The variable in your code that holds the text to display. For example, task.info.text.' : 'The static text to display'"
-    >
-    <div>{{ getErrors(`text.${textSourceType}`) }}</div>
     <hr>
     <h4>
       Tags
@@ -154,36 +129,24 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-10 col-md-11" />
     <button
       id="add"
-      class="btn btn-default btn-sm col-sm-2 col-md-1"
-      title="Add a tag"
+      class="btn btn-default btn-sm col-sm-2 col-md-2"
       @click="addTag"
     >
-      Add
+      Add Tag
     </button>
-    <hr>
-    <h4>
-      Entities (Optional)
-    </h4>
     <div class="row">
+      <hr>
+      <h4 class="col-sm-12">
+        Text &amp; Entities
+      </h4>
       <div class="col-sm-12">
         <label
           class="col-labels right-padding-radio"
         >
           <input
-            v-model="entitySourceType"
-            value="none"
-            type="radio"
-          >
-          None
-        </label>
-        <label
-          class="col-labels right-padding-radio"
-        >
-          <input
-            v-model="entitySourceType"
+            v-model="sourceType"
             value="variable"
             type="radio"
           >
@@ -193,7 +156,7 @@
           class="col-labels"
         >
           <input
-            v-model="entitySourceType"
+            v-model="sourceType"
             value="static"
             type="radio"
           >
@@ -201,7 +164,43 @@
         </label>
       </div>
     </div>
-    <template v-if="entitySourceType==='variable'">
+    <div
+      v-if="sourceType==='variable'"
+      class="form-group"
+    >
+      <input
+        id="useStatic"
+        v-model="useStaticInPreview"
+        style="vertical-align:top"
+        type="checkbox"
+      >
+      <label
+        for="useStatic"
+      >
+        Use static in preview.<br>Check this if you want to configure some sample data under the static option for preview purposes while using a variable in your code.</label>
+    </div>
+    <label
+      class="col-labels"
+      for="textSource"
+    >
+      Text {{ sourceType === "variable" ? "Variable": "" }}
+    </label>
+    <input
+      id="textSource"
+      v-model="textSource"
+      type="text"
+      class="form-control form-control-sm"
+      :class="{'danger-validation':getErrors(`text.${sourceType}`)}"
+      :title="(sourceType === 'variable') ? 'The variable in your code that holds the text to display. For example, task.info.text.' : 'The static text to display'"
+    >
+    <div>{{ getErrors(`text.${sourceType}`) }}</div>
+    <template v-if="sourceType==='variable'">
+      <label
+        class="col-labels"
+        for="entitySource"
+      >
+        Entities Variable
+      </label>
       <input
         id="entitySource"
         v-model="entitySource"
@@ -211,21 +210,11 @@
         title="The variable in your code that contains the entities. For example, task.info.entities."
       >
       <div>{{ getErrors(`entities.variable`) }}</div>
-      <div class="form-group">
-        <input
-          id="useStatic"
-          v-model="useStaticInPreview"
-          type="checkbox"
-        >
-        <label
-          title="Check this and enter some static entities if you want to see pre-tagged entites in the preview while still using a variable in your code."
-          for="useStatic"
-        >
-          Use static in preview
-        </label>
-      </div>
     </template>
-    <template v-else-if="entitySourceType==='static'">
+    <template v-else-if="sourceType==='static'">
+      <label class="col-labels">
+        {{ entityList.length ? "Entities" : "No Entities" }}
+      </label>
       <div
         id="entities"
         class="scroll col-md-12"
@@ -275,7 +264,7 @@
                 class="form-control form-control-sm"
                 :class="{'danger-validation':getErrors(`entities.static[${index}].tailoffset`)}"
                 type="text"
-                title="The character position after the entity ends. Count starts with 0."
+                title="The character position AFTER the entity ends. Count starts with 0."
               >
               <div>{{ getErrors(`entities.static[${index}].tailoffset`) }}</div>
               <label
@@ -305,14 +294,12 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-10 col-md-11" />
       <button
         id="addEntity"
-        class="btn btn-default btn-sm col-sm-2 col-md-1"
-        title="Add an entity"
+        class="btn btn-default btn-sm col-sm-2 col-md-2"
         @click="addEntity"
       >
-        Add
+        Add Entity
       </button>
     </template>
   </div>
@@ -360,7 +347,7 @@ export default {
   computed: {
     useStaticInPreview: {
       get () {
-        return this.$store.state.textTagging.entities.useStaticInPreview;
+        return this.$store.state.textTagging.useStaticInPreview;
       },
       set (newValue) {
         this.$store.commit(types.MUTATE_TEXT_TAGGING_USE_STATIC_IN_PREVIEW, newValue);
@@ -379,36 +366,28 @@ export default {
         this.$store.commit(types.MUTATE_TEXT_TAGGING_ENTITY_SOURCE, newValue);
       }
     },
-    entitySourceType: {
+    sourceType: {
       get () {
-        return this.$store.state.textTagging.entities.sourceType;
+        return this.$store.state.textTagging.sourceType;
       },
       set (newValue) {
-        this.$store.commit(types.MUTATE_TEXT_TAGGING_ENTITY_SOURCE_TYPE, newValue);
-      }
-    },
-    textSourceType: {
-      get () {
-        return this.$store.state.textTagging.text.sourceType;
-      },
-      set (newValue) {
-        this.$store.commit(types.MUTATE_TEXT_TAGGING_TEXT_SOURCE_TYPE, newValue);
+        this.$store.commit(types.MUTATE_TEXT_TAGGING_SOURCE_TYPE, newValue);
       }
     },
     textSource: {
       get () {
-        return this.$store.state.textTagging.text[this.textSourceType];
+        return this.$store.state.textTagging.text[this.sourceType];
       },
       set (newValue) {
         this.$store.commit(types.MUTATE_TEXT_TAGGING_TEXT, newValue);
       }
     },
-    readOnly: {
+    editMode: {
       get () {
-        return this.$store.state.textTagging.readOnly;
+        return this.$store.state.textTagging.readOnly ? 'readOnly' : 'readWrite';
       },
       set (newValue) {
-        this.$store.commit(types.MUTATE_TEXT_TAGGING_READONLY, newValue);
+        this.$store.commit(types.MUTATE_TEXT_TAGGING_READONLY, newValue === 'readOnly');
       }
     },
     pybAnswer: {
