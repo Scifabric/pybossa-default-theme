@@ -52,7 +52,9 @@
           Only view existing tags
         </option>
       </select>
-      <div class="danger-validation-text">{{ getErrors(`readOnly`) }}</div>
+      <div class="danger-validation-text">
+        {{ getErrors(`readOnly`) }}
+      </div>
     </div>
     <hr>
     <h4>
@@ -95,7 +97,9 @@
               type="text"
               title="The tag name to store in the answer"
             >
-            <div class="danger-validation-text">{{ getErrors(`tagList[${index}].name`) }}</div>
+            <div class="danger-validation-text">
+              {{ getErrors(`tagList[${index}].name`) }}
+            </div>
             <label
               class="col-labels"
               for="value"
@@ -110,7 +114,9 @@
               type="text"
               title="The tag name to display in the selection menu"
             >
-            <div class="danger-validation-text">{{ getErrors(`tagList[${index}].display`) }}</div>
+            <div class="danger-validation-text">
+              {{ getErrors(`tagList[${index}].display`) }}
+            </div>
             <label
               class="col-labels"
               for="value"
@@ -125,7 +131,9 @@
               type="text"
               title="The background color for the tag. Can be any valid CSS color specification. For example, blue, #8A2BE2, RGB(80, 80, 80), HSL(0, 100%, 50%)."
             >
-            <div class="danger-validation-text">{{ getErrors(`tagList[${index}].color`) }}</div>
+            <div class="danger-validation-text">
+              {{ getErrors(`tagList[${index}].color`) }}
+            </div>
           </div>
           <br>
         </div>
@@ -181,7 +189,9 @@
       >
         Use static in preview.<br>Check this if you want to configure some sample data under the static option for preview purposes while using a variable in your code.
       </label>
-      <div class="danger-validation-text">{{ getErrors(`useStaticInPreview`) }}</div>
+      <div class="danger-validation-text">
+        {{ getErrors(`useStaticInPreview`) }}
+      </div>
     </div>
     <label
       class="col-labels"
@@ -197,7 +207,9 @@
       :class="{'danger-validation':getErrors(`text.${sourceType}`)}"
       :title="(sourceType === 'variable') ? 'The variable in your code that holds the text to display. For example, task.info.text.' : 'The static text to display'"
     >
-    <div class="danger-validation-text">{{ getErrors(`text.${sourceType}`) }}</div>
+    <div class="danger-validation-text">
+      {{ getErrors(`text.${sourceType}`) }}
+    </div>
     <template v-if="sourceType==='variable'">
       <label
         class="col-labels"
@@ -213,15 +225,20 @@
         :class="{'danger-validation':getErrors(`entities.variable`)}"
         title="The variable in your code that contains the entities. For example, task.info.entities."
       >
-      <div class="danger-validation-text">{{ getErrors(`entities.variable`) }}</div>
+      <div class="danger-validation-text">
+        {{ getErrors(`entities.variable`) }}
+      </div>
     </template>
     <template v-else-if="sourceType==='static'">
-      <label class="col-labels"
+      <label
+        class="col-labels"
         :class="{'danger-validation-text':getErrors(`entities.static`)}"
       >
         {{ entityList.length ? "Entities" : "No Entities" }}
       </label>
-      <div class="danger-validation-text">{{ getErrors(`entities.static`) }}</div>
+      <div class="danger-validation-text">
+        {{ getErrors(`entities.static`) }}
+      </div>
       <div
         id="entities"
         class="scroll col-md-12"
@@ -258,7 +275,9 @@
                 type="text"
                 title="The character position where the entity starts. Count starts with 0."
               >
-              <div class="danger-validation-text">{{ getErrors(`entities.static[${index}].headoffset`) }}</div>
+              <div class="danger-validation-text">
+                {{ getErrors(`entities.static[${index}].headoffset`) }}
+              </div>
               <label
                 class="col-labels"
                 for="tailoffset"
@@ -273,7 +292,9 @@
                 type="text"
                 title="The character position AFTER the entity ends. Count starts with 0."
               >
-              <div class="danger-validation-text">{{ getErrors(`entities.static[${index}].tailoffset`) }}</div>
+              <div class="danger-validation-text">
+                {{ getErrors(`entities.static[${index}].tailoffset`) }}
+              </div>
               <label
                 class="col-labels"
                 for="taggedtype"
@@ -295,7 +316,9 @@
                   {{ tagName }}
                 </option>
               </select>
-              <div class="danger-validation-text">{{ getErrors(`entities.static[${index}].taggedtype`) }}</div>
+              <div class="danger-validation-text">
+                {{ getErrors(`entities.static[${index}].taggedtype`) }}
+              </div>
             </div>
             <br>
           </div>

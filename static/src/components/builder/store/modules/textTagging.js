@@ -126,7 +126,7 @@ function* getErrors (state) {
     else uniqueTagNames.add(name);
   }
 
-  if (state.sourceType === 'static') yield* validateStatic(state);
+  if (state.sourceType === 'static') yield * validateStatic(state);
   else { // sourceType === 'variable'
     if (state.useStaticInPreview) {
       for (const [key, message] of validateStatic(state)) {
@@ -138,14 +138,14 @@ function* getErrors (state) {
     if (!state.text.variable.trim()) yield ['text.variable', 'Text variable is required.'];
   }
 
-  yield* validateReadOnly(state);
+  yield * validateReadOnly(state);
 }
 
 function* validateReadOnly (state) {
   if (!state.readOnly) return;
-  
+
   const message = 'Read-Only mode requires entities';
-  
+
   if (state.sourceType === 'static' && !state.entities.static.length) yield ['entities.static', message];
   else if (state.sourceType === 'variable' && !state.entities.variable.trim()) yield ['entities.variable', message];
   else return;
