@@ -19,7 +19,7 @@ export default {
     }
   },
   methods: {
-    renderFunctions: function () {
+    renderFunctions () {
       if (this.selectedComponent === 'text-input') {
         return {
           props: {

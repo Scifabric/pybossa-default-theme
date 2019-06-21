@@ -193,7 +193,7 @@ export default {
       }
     };
   },
-  mounted: function () {
+  mounted () {
     this.loading = true;
     this.getTaskPresenterTemplate();
   },

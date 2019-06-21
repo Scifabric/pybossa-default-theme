@@ -50,7 +50,7 @@ export default {
     };
   },
   computed: {
-    columns: function () {
+    columns () {
       return this.form.columns.map(col => col.name);
     }
   }

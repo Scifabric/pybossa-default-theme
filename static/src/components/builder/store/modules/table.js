@@ -111,7 +111,7 @@ function* getErrors (state) {
 }
 
 export const getters = {
-  [types.GET_TABLE_PROPS]: state => {
+  [types.GET_TABLE_PROPS] (state) {
     const options = {
       headings: {}
     };
@@ -133,11 +133,11 @@ export const getters = {
     const name = state.name.value;
     return { name, data, options, columns };
   },
-  [types.GET_TABLE_COLUMNS_LIST]: state => {
+  [types.GET_TABLE_COLUMNS_LIST] (state) {
     return state.columnKeys.map(id => (state.columnsListObj[id]));
   },
 
-  [types.GET_TABLE_DATA_LIST]: state => {
+  [types.GET_TABLE_DATA_LIST] (state) {
     return state.dataRowKeys.map(id => (state.dataRowObj[id]));
   },
   [types.GET_TABLE_FORM_VALID] (state, getters) {
@@ -150,35 +150,35 @@ export const getters = {
 
 export const mutations = {
 
-  [types.MUTATE_TABLE_NAME]: (state, payload) => {
+  [types.MUTATE_TABLE_NAME] (state, payload) {
     const name = { value: '', isDirty: true };
     name.value = payload.value !== undefined ? payload.value : state.name.value;
     name.isDirty = true;
 
     state.name = name;
   },
-  [types.MUTATE_TABLE_DATA]: (state, payload) => {
+  [types.MUTATE_TABLE_DATA] (state, payload) {
     state.data.value = payload.value !== undefined ? payload.value : state.data.value;
     state.data.isVariable = payload.isVariable !== undefined ? payload.isVariable : state.data.isVariable;
     state.data.isDirty = true;
   },
-  [types.MUTATE_TABLE_UPDATE_COLUMN]: (state, payload) => {
+  [types.MUTATE_TABLE_UPDATE_COLUMN] (state, payload) {
     state.columnsListObj[payload.id] = payload;
   },
-  [types.MUTATE_TABLE_DELETE_COLUMN]: (state, id) => {
+  [types.MUTATE_TABLE_DELETE_COLUMN] (state, id) {
     delete state.columnsListObj[id];
     state.columnKeys = state.columnKeys.filter(i => i !== id);
   },
-  [types.MUTATE_TABLE_ADD_COLUMN]: (state) => {
+  [types.MUTATE_TABLE_ADD_COLUMN] (state) {
     state.colCounter++;
     const newObj = getColumnObject(state.colCounter);
     state.columnKeys.push(newObj.id);
     state.columnsListObj = { ...state.columnsListObj, [newObj.id]: newObj };
   },
-  [types.MUTATE_TABLE_UPDATE_DATA_ROW]: (state, payload) => {
+  [types.MUTATE_TABLE_UPDATE_DATA_ROW] (state, payload) {
     state.dataRowObj[payload.id] = payload;
   },
-  [types.MUTATE_TABLE_ADD_DATA_ROW]: (state) => {
+  [types.MUTATE_TABLE_ADD_DATA_ROW] (state) {
     const id = utils.uniqueID();
     state.dataRowKeys.push(id);
     const row = { };
@@ -190,12 +190,12 @@ export const mutations = {
     state.dataRowObj = { ...state.dataRowObj, [id]: row };
   },
 
-  [types.MUTATE_TABLE_DELETE_DATA_ROW]: (state, id) => {
+  [types.MUTATE_TABLE_DELETE_DATA_ROW] (state, id) {
     delete state.dataRowObj[id];
     state.dataRowKeys = state.dataRowKeys.filter(i => i !== id);
   },
 
-  [types.MUTATE_CLEAR_TABLE_FORM]: (state) => {
+  [types.MUTATE_CLEAR_TABLE_FORM] (state) {
     const initial = initialState();
     Object.keys(initial).forEach(key => {
       state[key] = initial[key];

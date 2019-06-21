@@ -102,7 +102,7 @@ export default {
       'deleteDataListItem': types.MUTATE_TABLE_DELETE_DATA_ROW
     }),
 
-    updateDataListItem: function (row, fieldName, value) {
+    updateDataListItem (row, fieldName, value) {
       const newRow = { ...row };
       newRow[fieldName] = value;
       this.$store.commit(types.MUTATE_TABLE_UPDATE_DATA_ROW, newRow);

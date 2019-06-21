@@ -136,7 +136,7 @@ export default {
     }
   },
   methods: {
-    clearForm: function () {
+    clearForm () {
       this.$store.commit(
         types[`MUTATE_CLEAR_${this.$route.params.componentName}_FORM`]
       );

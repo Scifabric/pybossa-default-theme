@@ -48,7 +48,7 @@ export default {
     return {};
   },
   methods: {
-    navigateToHome: function () {
+    navigateToHome () {
       const getClearType =
         types[`MUTATE_CLEAR_${this.$route.params.componentName}_FORM`];
       if (getClearType) {

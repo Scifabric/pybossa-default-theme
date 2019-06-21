@@ -16,26 +16,26 @@ export const state = {
 };
 
 export const getters = {
-  [types.GET_TEXT_INPUT_PROPS]: state => {
+  [types.GET_TEXT_INPUT_PROPS] (state) {
     return state;
   },
-  [types.GET_TEXT_INPUT_FORM_VALID]: () => {
+  [types.GET_TEXT_INPUT_FORM_VALID] () {
     return { isValid: state.isValidForm }
     ;
   }
 };
 
 export const mutations = {
-  [types.MUTATE_TEXT_INPUT_LABEL]: (state, payload) => {
+  [types.MUTATE_TEXT_INPUT_LABEL] (state, payload) {
     state.label = payload;
   },
-  [types.MUTATE_TEXT_INPUT_LABEL_ADDED]: (state, payload) => {
+  [types.MUTATE_TEXT_INPUT_LABEL_ADDED] (state, payload) {
     state.labelAdded = payload;
   },
-  [types.MUTATE_TEXT_INPUT_PYB_ANSWER]: (state, payload) => {
+  [types.MUTATE_TEXT_INPUT_PYB_ANSWER] (state, payload) {
     state['pyb-answer'] = payload;
   },
-  [types.MUTATE_CLEAR_TEXT_INPUT_FORM]: (state) => {
+  [types.MUTATE_CLEAR_TEXT_INPUT_FORM] (state) {
     const initial = initialState();
     Object.keys(initial).forEach(key => {
       state[key] = initial[key];

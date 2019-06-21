@@ -15,7 +15,7 @@ export default {
   props: {
     form: {
       type: Object,
-      default: function () {
+      default () {
         return { label: {}, isValidForm: true };
       }
     },
@@ -72,7 +72,7 @@ export default {
   },
 
   methods: {
-    renderFunctions: function () {
+    renderFunctions () {
       if (this.selectedComponent === 'text-input') {
         return {
           name: 'text-input',
