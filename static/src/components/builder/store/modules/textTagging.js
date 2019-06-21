@@ -127,18 +127,18 @@ function* getErrors (state) {
   }
 
   if (state.sourceType === 'static') yield* validateStatic(state);
-  else if (state.useStaticInPreview) {
-    for (const [key, message] of validateStatic(state)) {
-      yield [key, message];
-      yield ['useStaticInPreview', message];
+  else {
+    if (state.useStaticInPreview) {
+      for (const [key, message] of validateStatic(state)) {
+        yield [key, message];
+        yield ['useStaticInPreview', message];
+      }
     }
-  }
 
-  if (state.sourceType === 'variable') {
-      if (!state.entities.variable.trim()) yield ['entities.variable', 'Entities variable is required.'];
-  }
+    if (!state.entities.variable.trim()) yield ['entities.variable', 'Entities variable is required.'];
 
-  if (state.sourceType === 'variable' && !state.text.variable.trim()) yield ['text.variable', 'Text variable is required.'];
+    if (!state.text.variable.trim()) yield ['text.variable', 'Text variable is required.'];
+  }
 }
 
 function* validateStatic (state) {
