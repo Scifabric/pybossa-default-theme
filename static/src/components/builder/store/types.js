@@ -16,6 +16,7 @@ export const GET_TABLE_LABEL = 'table/LABEL';
 
 export const GET_RADIO_INPUT_PROPS = 'radioInput/PROPS';
 export const GET_RADIO_INPUT_FORM_VALID = 'radioInput/FORM_VALID';
+export const GET_RADIO_INPUT_ERRORS = 'radioInput/GET_RADIO_INPUT_ERRORS';
 
 export const GET_TEXT_TAGGING_PROPS = 'textTagging/PROPS';
 export const GET_TEXT_TAGGING_FORM_VALID = 'textTagging/FORM_VALID';
