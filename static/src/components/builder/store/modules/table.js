@@ -3,9 +3,9 @@ import utils from '../../utils';
 import { flow } from 'lodash';
 
 function* _isAnyColumnNameEmpty (columns) {
-  for (const column of columns) {
+  for (const [index, column] of columns.entries()) {
     if (column.name === '') {
-      yield `${column.id} name is missing.`;
+      yield [`columns[${index}].name`, `${column.id} name is missing.`];
     }
   }
 }
@@ -40,10 +40,10 @@ export const isAnyColumnNameRepeated = flow(_isAnyColumnNameRepeated, iteratorTo
 function* _isAnyColumnNameRepeated (columns) {
   const uniqueNames = new Set();
 
-  for (const column of columns) {
+  for (const [index, column] of columns.entries()) {
     if (column.name === '') continue;
     if (uniqueNames.has(column.name)) {
-      yield `${column.id} has a duplicate name.`;
+      yield [`columns[${index}].name`, `${column.id} has a duplicate name.`];
     } else {
       uniqueNames.add(column.name);
     }
@@ -54,7 +54,8 @@ export const isDataNameEmptyAndRequired = flow(_isDataNameEmptyAndRequired, iter
 
 function* _isDataNameEmptyAndRequired (state) {
   if (state.data.isVariable && state.data.value === '') {
-    yield 'Table data source name is missing.';
+    const message = 'Table data source name is missing.';
+    yield ['data.value', message];
   }
 }
 
@@ -62,7 +63,7 @@ export const isAnswerFieldRequired = flow(_isAnswerFieldRequired, iteratorToBool
 
 function* _isAnswerFieldRequired (state, anyColumnComponent) {
   if (anyColumnComponent && state.name.value === '') {
-    yield 'Table answer field name is missing.';
+    yield ['name', 'Table answer field name is missing.'];
   }
 }
 
@@ -95,6 +96,20 @@ export const state = {
   ...initialState()
 };
 
+function* getErrors (state) {
+  const columns = state.columnKeys.map(id => (state.columnsListObj[id]));
+  const anyDirtyColumn = isAnyDirtyColumn(columns);
+  const anyColumnComponent = isAnyColumnComponent(columns);
+
+  yield * _isDataNameEmptyAndRequired(state);
+  yield * _isAnyColumnNameEmpty(columns);
+  if (isAnyDirtyEmptyColumn(columns)) yield ['', 'A dirty column has empty name.'];
+  if (isAnswerFieldDirty(state)) yield ['name', 'Answer field is dirty.'];
+  if (isFormUntouched(state, anyDirtyColumn)) yield ['', 'Form is untouched.'];
+  yield * _isAnyColumnNameRepeated(columns);
+  yield * _isAnswerFieldRequired(state, anyColumnComponent);
+}
+
 export const getters = {
   [types.GET_TABLE_PROPS]: state => {
     const options = {
@@ -125,24 +140,11 @@ export const getters = {
   [types.GET_TABLE_DATA_LIST]: state => {
     return state.dataRowKeys.map(id => (state.dataRowObj[id]));
   },
-  [types.GET_TABLE_FORM_VALID]: state => {
-    const messages = [...getErrors()];
-    const isValid = !messages.length;
-    return { isValid, messages };
-
-    function* getErrors () {
-      const columns = state.columnKeys.map(id => (state.columnsListObj[id]));
-      const anyDirtyColumn = isAnyDirtyColumn(columns);
-      const anyColumnComponent = isAnyColumnComponent(columns);
-
-      yield * _isDataNameEmptyAndRequired(state);
-      yield * _isAnyColumnNameEmpty(columns);
-      if (isAnyDirtyEmptyColumn(columns)) yield 'A dirty column has empty name.';
-      if (isAnswerFieldDirty(state)) yield 'Answer field is dirty.';
-      if (isFormUntouched(state, anyDirtyColumn)) yield 'Form is untouched.';
-      yield * _isAnyColumnNameRepeated(columns);
-      yield * _isAnswerFieldRequired(state, anyColumnComponent);
-    }
+  [types.GET_TABLE_FORM_VALID] (state, getters) {
+    return utils.toFormValidation(getters[types.GET_TABLE_ERRORS]);
+  },
+  [types.GET_TABLE_ERRORS] (state) {
+    return utils.toMultiDict(getErrors(state));
   }
 };
 

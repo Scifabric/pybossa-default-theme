@@ -16,6 +16,7 @@ import slotTemplate from './components/Table/slotTemplate.html';
 import radioGroupTemplate from './components/RadioInput/radioGroupTemplate.html';
 import radioInputTemplate from './components/RadioInput/radioInputTemplate.html';
 import textTaggingTemplate from './components/TextTagging/textTaggingTemplate.html';
+import { flatten, uniq, flow } from 'lodash';
 
 export const templates = {
   TEXT_INPUT: textInputTemplate,
@@ -265,5 +266,11 @@ export default {
       values.push(value);
     }
     return dict;
+  },
+
+  toFormValidation (errorsMultiDict) {
+    const messages = flow(Object.values, flatten, uniq)(errorsMultiDict);
+    const isValid = !messages.length;
+    return { isValid, messages };
   }
 };

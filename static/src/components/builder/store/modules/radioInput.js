@@ -1,6 +1,5 @@
 import * as types from '../types';
 import utils from '../../utils';
-import { flatten, uniq, flow } from 'lodash';
 
 export function initialState () {
   const firstElement = getRadioObject();
@@ -48,9 +47,7 @@ export const getters = {
     };
   },
   [types.GET_RADIO_INPUT_FORM_VALID] (state, getters) {
-    const messages = flow(Object.values, flatten, uniq)(getters[types.GET_RADIO_INPUT_ERRORS]);
-    const isValid = !messages.length;
-    return { isValid, messages };
+    return utils.toFormValidation(getters[types.GET_RADIO_INPUT_ERRORS]);
   },
   [types.GET_RADIO_INPUT_ERRORS] (state) {
     return utils.toMultiDict(getErrors(state));

@@ -1,5 +1,4 @@
 import * as types from '../types';
-import { flatten, uniq, flow } from 'lodash';
 import utils from '../../utils';
 
 export function initialState () {
@@ -202,9 +201,7 @@ export const getters = {
     };
   },
   [types.GET_TEXT_TAGGING_FORM_VALID] (state, getters) {
-    const messages = flow(Object.values, flatten, uniq)(getters[types.GET_TEXT_TAGGING_ERRORS]);
-    const isValid = !messages.length;
-    return { isValid, messages };
+    return utils.toFormValidation(getters[types.GET_TEXT_TAGGING_ERRORS]);
   },
   [types.GET_TEXT_TAGGING_ERRORS] (state) {
     return utils.toMultiDict(getErrors(state));
