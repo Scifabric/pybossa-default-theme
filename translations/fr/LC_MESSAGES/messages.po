@@ -3732,7 +3732,7 @@ msgstr ""
 #~ msgid "Your profile has been updated!"
 #~ msgstr "Votre profil a été mis à jour !"
 
-#~ msgid "Yay, you changed your password succesfully!"
+#~ msgid "Yay, you changed your password successfully!"
 #~ msgstr "Yay, vous avez changé votre mot de passe avec succès"
 
 #~ msgid "Your current password doesn't match the one in our records"
@@ -3833,4 +3833,3 @@ msgstr ""
 
 #~ msgid "Grant Crowdcrafting access to your Flickr albums to select one..."
 #~ msgstr ""
-

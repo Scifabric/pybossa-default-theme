@@ -2618,7 +2618,7 @@ msgid "Your profile has been updated!"
 msgstr "プロファイルが更新されました！"
 
 #: view/account.py:500
-msgid "Yay, you changed your password succesfully!"
+msgid "Yay, you changed your password successfully!"
 msgstr "確かに、パスワードは変更されました！"
 
 #: view/account.py:503
@@ -2799,4 +2799,3 @@ msgstr "ブログ投稿は更新されました。"
 
 #~ msgid "<strong>注意</strong> You will need to upload the tasks using the"
 #~ msgstr ""
-
