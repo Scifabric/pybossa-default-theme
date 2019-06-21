@@ -127,7 +127,7 @@ function* getErrors (state) {
   }
 
   if (state.sourceType === 'static') yield* validateStatic(state);
-  else {
+  else { // sourceType === 'variable'
     if (state.useStaticInPreview) {
       for (const [key, message] of validateStatic(state)) {
         yield [key, message];
@@ -135,10 +135,22 @@ function* getErrors (state) {
       }
     }
 
-    if (!state.entities.variable.trim()) yield ['entities.variable', 'Entities variable is required.'];
-
     if (!state.text.variable.trim()) yield ['text.variable', 'Text variable is required.'];
   }
+
+  yield* validateReadOnly(state);
+}
+
+function* validateReadOnly (state) {
+  if (!state.readOnly) return;
+  
+  const message = 'Read-Only mode requires entities';
+  
+  if (state.sourceType === 'static' && !state.entities.static.length) yield ['entities.static', message];
+  else if (state.sourceType === 'variable' && !state.entities.variable.trim()) yield ['entities.variable', message];
+  else return;
+
+  yield ['readOnly', message];
 }
 
 function* validateStatic (state) {

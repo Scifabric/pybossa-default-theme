@@ -40,6 +40,7 @@
       <select
         id="editMode"
         v-model="editMode"
+        :class="{'danger-validation':getErrors(`readOnly`)}"
       >
         <option
           selected
@@ -51,6 +52,7 @@
           Only view existing tags
         </option>
       </select>
+      <div class="danger-validation-text">{{ getErrors(`readOnly`) }}</div>
     </div>
     <hr>
     <h4>
@@ -214,9 +216,12 @@
       <div class="danger-validation-text">{{ getErrors(`entities.variable`) }}</div>
     </template>
     <template v-else-if="sourceType==='static'">
-      <label class="col-labels">
+      <label class="col-labels"
+        :class="{'danger-validation-text':getErrors(`entities.static`)}"
+      >
         {{ entityList.length ? "Entities" : "No Entities" }}
       </label>
+      <div class="danger-validation-text">{{ getErrors(`entities.static`) }}</div>
       <div
         id="entities"
         class="scroll col-md-12"
