@@ -32,49 +32,30 @@
       >
     </div>
     <div class="form-group">
-      <input
-        id="readOnly"
-        v-model="readOnly"
-        type="checkbox"
-      >
       <label
-        for="readOnly"
+        for="editMode"
       >
-        Read-only
+        Edit mode
       </label>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <label>Text</label><br>
-        <label
-          class="col-labels right-padding-radio"
+      <select
+        id="editMode"
+        v-model="editMode"
+        :class="{'danger-validation':getErrors(`readOnly`)}"
+      >
+        <option
+          selected
+          value="readWrite"
         >
-          <input
-            v-model="textSourceType"
-            value="variable"
-            type="radio"
-          >
-          Get text from variable
-        </label>
-        <label
-          class="col-labels"
-        >
-          <input
-            v-model="textSourceType"
-            value="static"
-            type="radio"
-          >
-          Enter static text
-        </label>
+          Add new tags and edit/remove existing tags
+        </option>
+        <option value="readOnly">
+          Only view existing tags
+        </option>
+      </select>
+      <div class="danger-validation-text">
+        {{ getErrors(`readOnly`) }}
       </div>
     </div>
-    <input
-      id="textSource"
-      v-model="textSource"
-      type="text"
-      class="form-control form-control-sm"
-      :title="(textSourceType === 'variable') ? 'The variable in your code that holds the text to display. For example, task.info.text.' : 'The static text to display'"
-    >
     <hr>
     <h4>
       Tags
@@ -112,9 +93,13 @@
               id="component-label"
               v-model="tag.name"
               class="form-control form-control-sm"
+              :class="{'danger-validation':getErrors(`tagList[${index}].name`)}"
               type="text"
               title="The tag name to store in the answer"
             >
+            <div class="danger-validation-text">
+              {{ getErrors(`tagList[${index}].name`) }}
+            </div>
             <label
               class="col-labels"
               for="value"
@@ -125,9 +110,13 @@
               id="value"
               v-model="tag.display"
               class="form-control form-control-sm"
+              :class="{'danger-validation':getErrors(`tagList[${index}].display`)}"
               type="text"
               title="The tag name to display in the selection menu"
             >
+            <div class="danger-validation-text">
+              {{ getErrors(`tagList[${index}].display`) }}
+            </div>
             <label
               class="col-labels"
               for="value"
@@ -138,44 +127,36 @@
               id="value"
               v-model="tag.color"
               class="form-control form-control-sm"
+              :class="{'danger-validation':getErrors(`tagList[${index}].color`)}"
               type="text"
               title="The background color for the tag. Can be any valid CSS color specification. For example, blue, #8A2BE2, RGB(80, 80, 80), HSL(0, 100%, 50%)."
             >
+            <div class="danger-validation-text">
+              {{ getErrors(`tagList[${index}].color`) }}
+            </div>
           </div>
           <br>
         </div>
       </div>
     </div>
-    <div class="col-sm-10 col-md-11" />
     <button
       id="add"
-      class="btn btn-default btn-sm col-sm-2 col-md-1"
-      title="Add a tag"
+      class="btn btn-default btn-sm col-sm-2 col-md-2"
       @click="addTag"
     >
-      Add
+      Add Tag
     </button>
-    <hr>
-    <h4>
-      Entities (Optional)
-    </h4>
     <div class="row">
+      <hr>
+      <h4 class="col-sm-12">
+        Text &amp; Entities
+      </h4>
       <div class="col-sm-12">
         <label
           class="col-labels right-padding-radio"
         >
           <input
-            v-model="entitySourceType"
-            value="none"
-            type="radio"
-          >
-          None
-        </label>
-        <label
-          class="col-labels right-padding-radio"
-        >
-          <input
-            v-model="entitySourceType"
+            v-model="sourceType"
             value="variable"
             type="radio"
           >
@@ -185,7 +166,7 @@
           class="col-labels"
         >
           <input
-            v-model="entitySourceType"
+            v-model="sourceType"
             value="static"
             type="radio"
           >
@@ -193,29 +174,71 @@
         </label>
       </div>
     </div>
-    <template v-if="entitySourceType==='variable'">
+    <div
+      v-if="sourceType==='variable'"
+      class="form-group"
+    >
+      <input
+        id="useStatic"
+        v-model="useStaticInPreview"
+        style="vertical-align:top"
+        type="checkbox"
+      >
+      <label
+        for="useStatic"
+      >
+        Use static in preview.<br>Check this if you want to configure some sample data under the static option for preview purposes while using a variable in your code.
+      </label>
+      <div class="danger-validation-text">
+        {{ getErrors(`useStaticInPreview`) }}
+      </div>
+    </div>
+    <label
+      class="col-labels"
+      for="textSource"
+    >
+      Text {{ sourceType === "variable" ? "Variable": "" }}
+    </label>
+    <input
+      id="textSource"
+      v-model="textSource"
+      type="text"
+      class="form-control form-control-sm"
+      :class="{'danger-validation':getErrors(`text.${sourceType}`)}"
+      :title="(sourceType === 'variable') ? 'The variable in your code that holds the text to display. For example, task.info.text.' : 'The static text to display'"
+    >
+    <div class="danger-validation-text">
+      {{ getErrors(`text.${sourceType}`) }}
+    </div>
+    <template v-if="sourceType==='variable'">
+      <label
+        class="col-labels"
+        for="entitySource"
+      >
+        Entities Variable
+      </label>
       <input
         id="entitySource"
         v-model="entitySource"
         type="text"
         class="form-control form-control-sm"
+        :class="{'danger-validation':getErrors(`entities.variable`)}"
         title="The variable in your code that contains the entities. For example, task.info.entities."
       >
-      <div class="form-group">
-        <input
-          id="useStatic"
-          v-model="useStaticInPreview"
-          type="checkbox"
-        >
-        <label
-          title="Check this and enter some static entities if you want to see pre-tagged entites in the preview while still using a variable in your code."
-          for="useStatic"
-        >
-          Use static in preview
-        </label>
+      <div class="danger-validation-text">
+        {{ getErrors(`entities.variable`) }}
       </div>
     </template>
-    <template v-else-if="entitySourceType==='static'">
+    <template v-else-if="sourceType==='static'">
+      <label
+        class="col-labels"
+        :class="{'danger-validation-text':getErrors(`entities.static`)}"
+      >
+        {{ entityList.length ? "Entities" : "No Entities" }}
+      </label>
+      <div class="danger-validation-text">
+        {{ getErrors(`entities.static`) }}
+      </div>
       <div
         id="entities"
         class="scroll col-md-12"
@@ -248,9 +271,13 @@
                 id="headoffset"
                 v-model.number="entity.headoffset"
                 class="form-control form-control-sm"
+                :class="{'danger-validation':getErrors(`entities.static[${index}].headoffset`)}"
                 type="text"
                 title="The character position where the entity starts. Count starts with 0."
               >
+              <div class="danger-validation-text">
+                {{ getErrors(`entities.static[${index}].headoffset`) }}
+              </div>
               <label
                 class="col-labels"
                 for="tailoffset"
@@ -261,9 +288,13 @@
                 id="tailoffset"
                 v-model.number="entity.tailoffset"
                 class="form-control form-control-sm"
+                :class="{'danger-validation':getErrors(`entities.static[${index}].tailoffset`)}"
                 type="text"
-                title="The character position after the entity ends. Count starts with 0."
+                title="The character position AFTER the entity ends. Count starts with 0."
               >
+              <div class="danger-validation-text">
+                {{ getErrors(`entities.static[${index}].tailoffset`) }}
+              </div>
               <label
                 class="col-labels"
                 for="taggedtype"
@@ -273,6 +304,7 @@
               <select
                 id="taggedtype"
                 v-model="entity.taggedtype"
+                :class="{'danger-validation':getErrors(`entities.static[${index}].taggedtype`)}"
                 class="form-control form-control-sm"
                 title="The tag to apply to the entity. Must be one of the configured tags."
               >
@@ -284,19 +316,20 @@
                   {{ tagName }}
                 </option>
               </select>
+              <div class="danger-validation-text">
+                {{ getErrors(`entities.static[${index}].taggedtype`) }}
+              </div>
             </div>
             <br>
           </div>
         </div>
       </div>
-      <div class="col-sm-10 col-md-11" />
       <button
         id="addEntity"
-        class="btn btn-default btn-sm col-sm-2 col-md-1"
-        title="Add an entity"
+        class="btn btn-default btn-sm col-sm-2 col-md-2"
         @click="addEntity"
       >
-        Add
+        Add Entity
       </button>
     </template>
   </div>
@@ -315,6 +348,12 @@
   max-height: 600px;
   overflow-y: scroll;
   margin-bottom: 20px;
+}
+.danger-validation {
+  border-color: #d9534f;
+}
+.danger-validation-text {
+  color: #d9534f;
 }
 </style>
 <script>
@@ -341,7 +380,7 @@ export default {
   computed: {
     useStaticInPreview: {
       get () {
-        return this.$store.state.textTagging.entities.useStaticInPreview;
+        return this.$store.state.textTagging.useStaticInPreview;
       },
       set (newValue) {
         this.$store.commit(types.MUTATE_TEXT_TAGGING_USE_STATIC_IN_PREVIEW, newValue);
@@ -360,36 +399,28 @@ export default {
         this.$store.commit(types.MUTATE_TEXT_TAGGING_ENTITY_SOURCE, newValue);
       }
     },
-    entitySourceType: {
+    sourceType: {
       get () {
-        return this.$store.state.textTagging.entities.sourceType;
+        return this.$store.state.textTagging.sourceType;
       },
       set (newValue) {
-        this.$store.commit(types.MUTATE_TEXT_TAGGING_ENTITY_SOURCE_TYPE, newValue);
-      }
-    },
-    textSourceType: {
-      get () {
-        return this.$store.state.textTagging.text.sourceType;
-      },
-      set (newValue) {
-        this.$store.commit(types.MUTATE_TEXT_TAGGING_TEXT_SOURCE_TYPE, newValue);
+        this.$store.commit(types.MUTATE_TEXT_TAGGING_SOURCE_TYPE, newValue);
       }
     },
     textSource: {
       get () {
-        return this.$store.state.textTagging.text[this.textSourceType];
+        return this.$store.state.textTagging.text[this.sourceType];
       },
       set (newValue) {
         this.$store.commit(types.MUTATE_TEXT_TAGGING_TEXT, newValue);
       }
     },
-    readOnly: {
+    editMode: {
       get () {
-        return this.$store.state.textTagging.readOnly;
+        return this.$store.state.textTagging.readOnly ? 'readOnly' : 'readWrite';
       },
       set (newValue) {
-        this.$store.commit(types.MUTATE_TEXT_TAGGING_READONLY, newValue);
+        this.$store.commit(types.MUTATE_TEXT_TAGGING_READONLY, newValue === 'readOnly');
       }
     },
     pybAnswer: {
@@ -430,6 +461,9 @@ export default {
       'deleteTag': types.MUTATE_TEXT_TAGGING_DELETE_TAG,
       'deleteEntity': types.MUTATE_TEXT_TAGGING_DELETE_ENTITY
     }),
+    getErrors (key) {
+      return (this.$store.getters[types.GET_TEXT_TAGGING_ERRORS][key] || []).join('\n');
+    },
     addTag () {
       this.$store.commit(types.MUTATE_TEXT_TAGGING_ADD_TAG);
       this.scrollToEndSelectors.push('#tags');

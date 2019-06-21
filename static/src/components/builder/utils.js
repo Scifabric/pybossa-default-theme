@@ -200,7 +200,7 @@ export default {
       pybAnswer,
       labelAdded,
       label,
-      tagList: tags,
+      tags,
       text: { snippet, preview },
       readOnly,
       entities
@@ -210,10 +210,12 @@ export default {
       textTaggingTemplate,
       {
         pybAnswer,
-        tags,
+        tags: JSON.stringify(tags),
         text: snippet,
         readOnly,
         entities: getEntitiesString(),
+        // If text snippet and preview are the same then it is static text so no Vue binding.
+        // Otherwise it is a variable name so do Vue binding.
         bindText: (snippet === preview) ? '' : ':'
       }
     );
@@ -229,8 +231,10 @@ export default {
 
     function getEntitiesString () {
       const snippet = entities.snippet;
+      // If the snippet is a string then it is a variable name so leave it alone.
       if (typeof snippet === 'string') return snippet;
-      else return JSON.stringify(snippet).replace(/"/g, "'");
+      // Otherwise it's an array so stringify it.
+      else return JSON.stringify(snippet);
     }
   },
 
@@ -249,5 +253,17 @@ export default {
     output = this.addBindSymbolIfNeedIt(form, output);
 
     return output;
+  },
+
+  toMultiDict (keyValueIterator) {
+    const dict = {};
+    for (const [key, value] of keyValueIterator) {
+      let values = dict[key];
+      if (!values) {
+        values = dict[key] = [];
+      }
+      values.push(value);
+    }
+    return dict;
   }
 };
