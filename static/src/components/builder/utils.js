@@ -253,5 +253,17 @@ export default {
     output = this.addBindSymbolIfNeedIt(form, output);
 
     return output;
+  },
+
+  toMultiDict (keyValueIterator) {
+    const dict = {};
+    for (const [key, value] of keyValueIterator) {
+      let values = dict[key];
+      if (!values) {
+        values = dict[key] = [];
+      }
+      values.push(value);
+    }
+    return dict;
   }
 };

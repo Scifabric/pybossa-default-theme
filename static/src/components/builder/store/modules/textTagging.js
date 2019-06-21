@@ -1,5 +1,6 @@
 import * as types from '../types';
 import { flatten, uniq, flow } from 'lodash';
+import utils from '../../utils';
 
 export function initialState () {
   const firstTag = getTagObject();
@@ -108,18 +109,6 @@ function getTagDict (state) {
   }
 }
 
-function toMultiDict (keyValueIterator) {
-  const dict = {};
-  for (const [key, value] of keyValueIterator) {
-    let values = dict[key];
-    if (!values) {
-      values = dict[key] = [];
-    }
-    values.push(value);
-  }
-  return dict;
-}
-
 function* getErrors (state) {
   const uniqueTagNames = new Set();
   for (const [index, { name, display, color }] of getTrimmedTags(state.tagList).entries()) {
@@ -137,41 +126,11 @@ function* getErrors (state) {
     else uniqueTagNames.add(name);
   }
 
-  if (state.sourceType === 'static' || state.useStaticInPreview) {
-    for (const [index, { headoffset, tailoffset, taggedtype }] of state.entities.static.entries()) {
-      const entityId = `Entity ${index + 1}`;
-      let key = `entities.static[${index}].`;
-      if (!taggedtype) yield [key + 'taggedtype', `${entityId} tag name is required.`];
-
-      const headValid = isNonNegativeInteger(headoffset);
-      const headKey = key + 'headoffset';
-      if (!headValid) yield [headKey, `${entityId} head offset must be a non-negative integer.`];
-      else if (state.sourceType === 'static') {
-        if (state.text.static.length <= headoffset) {
-          const message = `${entityId} head offset exceeds the length of the text.`;
-          yield [headKey, message];
-          yield ['text.static', message];
-        }
-      }
-
-      const tailValid = isPositiveInteger(tailoffset);
-      const tailKey = key + 'tailoffset';
-      if (!tailValid) yield [tailKey, `${entityId} tail offset must be a positive integer.`];
-      else if (state.sourceType === 'static') {
-        if (state.text.static.length < tailoffset) {
-          const message = `${entityId} tail offset exceeds the length of the text.`;
-          yield [tailKey, message];
-          yield ['text.static', message];
-        }
-      }
-
-      if (headValid && tailValid) {
-        if (tailoffset <= headoffset) {
-          const message = `${entityId} tail offset must be greater than head offset.`;
-          yield [tailKey, message];
-          yield [headKey, message];
-        }
-      }
+  if (state.sourceType === 'static') yield* validateStatic(state);
+  else if (state.useStaticInPreview) {
+    for (const [key, message] of validateStatic(state)) {
+      yield [key, message];
+      yield ['useStaticInPreview', message];
     }
   }
 
@@ -179,8 +138,43 @@ function* getErrors (state) {
       if (!state.entities.variable.trim()) yield ['entities.variable', 'Entities variable is required.'];
   }
 
-  if ((state.sourceType === 'static' || state.useStaticInPreview) && !state.text.static.trim()) yield ['text.static', 'Text is required.'];
   if (state.sourceType === 'variable' && !state.text.variable.trim()) yield ['text.variable', 'Text variable is required.'];
+}
+
+function* validateStatic (state) {
+  for (const [index, { headoffset, tailoffset, taggedtype }] of state.entities.static.entries()) {
+    const entityId = `Entity ${index + 1}`;
+    let key = `entities.static[${index}].`;
+    if (!taggedtype) yield [key + 'taggedtype', `${entityId} tag name is required.`];
+
+    const headValid = isNonNegativeInteger(headoffset);
+    const headKey = key + 'headoffset';
+    if (!headValid) yield [headKey, `${entityId} head offset must be a non-negative integer.`];
+    else if (state.text.static.length <= headoffset) {
+      const message = `${entityId} head offset exceeds the length of the text.`;
+      yield [headKey, message];
+      yield ['text.static', message];
+    }
+
+    const tailValid = isPositiveInteger(tailoffset);
+    const tailKey = key + 'tailoffset';
+    if (!tailValid) yield [tailKey, `${entityId} tail offset must be a positive integer.`];
+    else if (state.text.static.length < tailoffset) {
+      const message = `${entityId} tail offset exceeds the length of the text.`;
+      yield [tailKey, message];
+      yield ['text.static', message];
+    }
+
+    if (headValid && tailValid) {
+      if (tailoffset <= headoffset) {
+        const message = `${entityId} tail offset must be greater than head offset.`;
+        yield [tailKey, message];
+        yield [headKey, message];
+      }
+    }
+  }
+
+  if (!state.text.static.trim()) yield ['text.static', 'Text is required.'];
 }
 
 export const getters = {
@@ -201,7 +195,7 @@ export const getters = {
     return { isValid, messages };
   },
   [types.GET_TEXT_TAGGING_ERRORS] (state) {
-    return toMultiDict(getErrors(state));
+    return utils.toMultiDict(getErrors(state));
   }
 };
 

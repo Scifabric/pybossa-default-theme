@@ -10,8 +10,7 @@
           <span
             v-if="!form.isValidForm.isValid"
             class="message-color"
-          >
-            <template v-for="message in form.isValidForm.messages || ['Component properties are not complete, please review form']">                ** {{ message }} **{{ '\n' }}</template>
+          >{{ validationErrors }}
           </span>
           <!-- This line is space sensives it can lose the code format  -->
           <!-- eslint-disable-next-line vue/singleline-html-element-content-newline -->
@@ -22,6 +21,11 @@
           class="card-body"
         >
           <h4>Preview</h4>
+          <span
+            v-if="!form.isValidForm.isValid"
+            class="message-color"
+          >{{ validationErrors }}
+          </span>
           <form class="form-horizontal">
             <div class="col-md-12">
               <label v-if="form.isValidForm.isValid && form.labelAdded">
@@ -81,6 +85,13 @@ export default {
     };
   },
   computed: {
+    validationErrors: {
+      get () {
+        return (this.form.isValidForm.messages || ['Component properties are not complete, please review form'])
+          .map(message => `                ** ${message} **`)
+          .join('\n');
+      }
+    },
     isValidForm: {
       get () {
         const getFormValidType =
