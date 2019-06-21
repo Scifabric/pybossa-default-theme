@@ -1,7 +1,10 @@
-import { mutations, getters, state } from '../../components/builder/store/modules/radioInput';
+import { mutations, getters as _getters, state } from '../../components/builder/store/modules/radioInput';
 import * as types from '../../components/builder/store/types';
+import { bindGetters } from '../utils/getters';
+
 describe('Radio setup', () => {
-  let localState = { ...state };
+  const localState = { ...state };
+  const getters = bindGetters(_getters, localState);
 
   it('Update Label', () => {
     mutations[types.MUTATE_RADIO_GROUP_LABEL](localState, 'testLabel');
@@ -23,7 +26,7 @@ describe('Radio setup', () => {
     });
 
     it('Get if form is valid', () => {
-      const { isValid } = getters[types.GET_RADIO_INPUT_FORM_VALID](localState);
+      const { isValid } = getters[types.GET_RADIO_INPUT_FORM_VALID];
       expect(isValid).toBe(false);
     });
 
@@ -44,7 +47,7 @@ describe('Radio setup', () => {
       mutations[types.MUTATE_CLEAR_RADIO_INPUT_FORM](localState);
       expect(localState.label).toBeFalsy();
       expect(localState.radioList.length).toBe(2);
-      expect(getters[types.GET_RADIO_INPUT_FORM_VALID](localState).isValid).toBe(false);
+      expect(getters[types.GET_RADIO_INPUT_FORM_VALID].isValid).toBe(false);
     });
 
     it('Pass validation', () => {
@@ -55,7 +58,7 @@ describe('Radio setup', () => {
         const radio2 = { ...localState.radioList[1] };
         radio2.value = 'b';
         mutations[types.MUTATE_RADIO_GROUP_UPDATE_LIST_ITEM](localState, { radio: radio2, index: 1 });
-        expect(getters[types.GET_RADIO_INPUT_FORM_VALID](localState).isValid).toBe(true);
+        expect(getters[types.GET_RADIO_INPUT_FORM_VALID].isValid).toBe(true);
     });
   });
 });
