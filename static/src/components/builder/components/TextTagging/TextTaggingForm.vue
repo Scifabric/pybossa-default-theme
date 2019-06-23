@@ -128,7 +128,7 @@
               v-model="tag.color"
               class="form-control form-control-sm"
               :class="{'danger-validation':getErrors(`tagList[${index}].color`)}"
-              type="text"
+              type="color"
               title="The background color for the tag. Can be any valid CSS color specification. For example, blue, #8A2BE2, RGB(80, 80, 80), HSL(0, 100%, 50%)."
             >
             <div class="danger-validation-text">
