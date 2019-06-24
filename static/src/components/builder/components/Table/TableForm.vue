@@ -29,7 +29,7 @@
                   @click="removeColumn(col.id)"
                 /><br>
                 <label class="col-lables">
-                  * Column Name
+                  * Column Name | <span class="label-tip">The field within a row where the column's data is read from and written to.</span>
                 </label>
                 <input
                   :id="`column-name-${index}`"
@@ -47,7 +47,7 @@
                   {{ getErrors(`columns[${index}].name`) }}
                 </div>
                 <label class="col-lables">
-                  Column Heading
+                  Column Heading | <span class="label-tip">The heading to display for the column. Uses Column Name if not specified.</span>
                 </label>
                 <input
                   :id="`column-header-${index}`"
@@ -58,7 +58,7 @@
                   @input="updateColumn(col, 'header', $event.target.value)"
                 >
                 <label class="col-lables">
-                  Column Display
+                  Column Display | <span class="label-tip">The type of input control to display in the column.</span>
                 </label>
                 <select
                   :id="`column-component-${index}`"
@@ -97,7 +97,7 @@
               class="form-group"
             >
               <label for="add-label">
-                * Table Answer field Name
+                * Table Answer field Name | <span class="label-tip">The field where the worker's answers for the table are stored.</span>
               </label>
               <input
                 id="table-answer-name"
@@ -147,7 +147,7 @@
               v-if="data.isVariable"
               class="col-form-label-md pull-left"
             >
-              * Field Data Source Name
+              * Field Data Source Name | <span class="label-tip">The variable in your code that contains the table data. For example, task.info.tableData.</span>
             </label>
             <label
               v-if="!data.isVariable"
@@ -189,7 +189,11 @@
   font-size: 16px;
   font-weight: 400;
 }
-
+.label-tip {
+  font-style: italic;
+  font-weight: 400;
+  font-size: smaller;
+}
 .btn-times-delete {
   color: #d9534f;
 }

@@ -23,7 +23,7 @@
         class="col-labels"
         for="pyb-answer"
       >
-        Answer field name
+        Answer field name | <span class="label-tip">The field where the worker's answer is stored.</span>
       </label>
       <input
         id="pyb-answer"
@@ -37,7 +37,7 @@
         class="col-labels"
         for="html-name"
       >
-        HTML Name
+        HTML Name | <span class="label-tip">The unique name of the radio group on the page. Is needed to enforce single selection within the group.</span>
       </label>
       <input
         id="html-name"
@@ -55,7 +55,7 @@
         class="col-labels"
         for="initial-value"
       >
-        Initial Value (will populate with values entered below)
+        Initial Value | <span class="label-tip">Must be one of the configured radio values.</span>
       </label>
       <select
         id="initial-value"
@@ -100,7 +100,7 @@
               class="col-labels"
               for="component-label"
             >
-              Radio Description Label
+              Radio Description Label | <span class="label-tip">Text to display for the radio button.</span>
             </label>
             <input
               id="component-label"
@@ -113,7 +113,7 @@
               class="col-labels"
               for="value"
             >
-              Value
+              Value | <span class="label-tip">The value to store as the answer when selected.</span>
             </label>
             <input
               id="value"
@@ -147,7 +147,11 @@
   font-size: 16px;
   font-weight: 400;
 }
-
+.label-tip {
+  font-style: italic;
+  font-weight: 400;
+  font-size: smaller;
+}
 .scroll {
   width: flex;
   max-height: 300px;
