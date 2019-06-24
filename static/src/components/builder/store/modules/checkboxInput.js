@@ -29,41 +29,41 @@ export const state = {
 };
 
 export const getters = {
-  [types.GET_CHECKBOX_INPUT_PROPS]: state => {
+  [types.GET_CHECKBOX_INPUT_PROPS] (state) {
     return { label: state.label,
       labelAdded: state.labelAdded,
       isValidForm: state.isValidForm,
       checkboxList: state.checkboxIdKeys.map(id => (state.checkboxListObj[id])) };
   },
-  [types.GET_CHECKBOXLIST]: state => {
+  [types.GET_CHECKBOXLIST] (state) {
     return state.checkboxIdKeys.map(id => (state.checkboxListObj[id]));
   },
-  [types.GET_CHECKBOX_INPUT_FORM_VALID]: () => {
+  [types.GET_CHECKBOX_INPUT_FORM_VALID] () {
     return { isValid: state.isValidForm };
   }
 };
 
 export const mutations = {
-  [types.MUTATE_CLEAR_CHECKBOX_INPUT_FORM]: (state) => {
+  [types.MUTATE_CLEAR_CHECKBOX_INPUT_FORM] (state) {
     const initial = initialState();
     Object.keys(initial).forEach(key => {
       state[key] = initial[key];
     });
   },
-  [types.MUTATE_CHECKBOX_LABEL_ADDED]: (state, payload) => {
+  [types.MUTATE_CHECKBOX_LABEL_ADDED] (state, payload) {
     state.labelAdded = payload;
   },
-  [types.MUTATE_CHECKBOX_LABEL]: (state, payload) => {
+  [types.MUTATE_CHECKBOX_LABEL] (state, payload) {
     state.label = payload;
   },
-  [types.MUTATE_CHECKBOX_UPDATE_LIST_ITEM]: (state, payload) => {
+  [types.MUTATE_CHECKBOX_UPDATE_LIST_ITEM] (state, payload) {
     state.checkboxListObj[payload.id] = payload;
   },
-  [types.MUTATE_CHECKBOX_DELETE_LIST_ITEM]: (state, id) => {
+  [types.MUTATE_CHECKBOX_DELETE_LIST_ITEM] (state, id) {
     delete state.checkboxListObj[id];
     state.checkboxIdKeys = state.checkboxIdKeys.filter(i => i !== id);
   },
-  [types.MUTATE_CHECKBOX_ADD_LIST_ITEM]: (state) => {
+  [types.MUTATE_CHECKBOX_ADD_LIST_ITEM] (state) {
     const newObj = getCheckboxObject();
     state.checkboxIdKeys.push(newObj.id);
     state.checkboxListObj = { ...state.checkboxListObj, [newObj.id]: newObj };

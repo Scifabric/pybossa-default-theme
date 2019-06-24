@@ -16,6 +16,7 @@ import slotTemplate from './components/Table/slotTemplate.html';
 import radioGroupTemplate from './components/RadioInput/radioGroupTemplate.html';
 import radioInputTemplate from './components/RadioInput/radioInputTemplate.html';
 import textTaggingTemplate from './components/TextTagging/textTaggingTemplate.html';
+import { flatten, uniq, flow } from 'lodash';
 
 export const templates = {
   TEXT_INPUT: textInputTemplate,
@@ -31,7 +32,7 @@ export const templates = {
   SUBMIT_LAST_BUTTON: submitLastButtonTemplate
 };
 export default {
-  uniqueID: () => {
+  uniqueID () {
     return (
       '_' +
       Math.random()
@@ -40,7 +41,7 @@ export default {
     );
   },
 
-  getSnippet: function (component, form) {
+  getSnippet (component, form) {
     if (component === 'TABLE') {
       return this.getTableCode(form);
     } else if (component === 'CHECKBOX_INPUT') {
@@ -77,7 +78,7 @@ export default {
     return values;
   },
 
-  getTableCode: function (form) {
+  getTableCode (form) {
     const columns = form.columns.map(col => col.name);
 
     const formForTemplate = {
@@ -131,11 +132,11 @@ export default {
     return output;
   },
 
-  getHelperComponentCode: function (component) {
+  getHelperComponentCode (component) {
     return Mustache.render(templates[component], {});
   },
 
-  getCheckboxInputCode: function (form, component) {
+  getCheckboxInputCode (form, component) {
     const checkboxList = [];
 
     form.checkboxList.forEach(checkbox => {
@@ -238,7 +239,7 @@ export default {
     }
   },
 
-  getTextInputCode: function (form, component) {
+  getTextInputCode (form, component) {
     const formForTemplate = this.getValuesForTemplate(form);
 
     let output = Mustache.render(templates[component], formForTemplate);
@@ -265,5 +266,11 @@ export default {
       values.push(value);
     }
     return dict;
+  },
+
+  toFormValidation (errorsMultiDict) {
+    const messages = flow(Object.values, flatten, uniq)(errorsMultiDict);
+    const isValid = !messages.length;
+    return { isValid, messages };
   }
 };

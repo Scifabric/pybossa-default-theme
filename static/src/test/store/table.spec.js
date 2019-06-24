@@ -1,13 +1,16 @@
 /* eslint-disable no-undef */
-import { mutations, getters, getColumnObject, initialState, isAnyDirtyColumn, isAnswerFieldDirty, isAnswerFieldRequired,
+import { mutations, getters as _getters, getColumnObject, initialState, isAnyDirtyColumn, isAnswerFieldDirty, isAnswerFieldRequired,
   isAnyColumnComponent, isAnyColumnNameEmpty, isAnyColumnNameRepeated, isAnyDirtyEmptyColumn,
   isDataNameEmptyAndRequired, isFormUntouched } from '../../components/builder/store/modules/table';
 import * as types from '../../components/builder/store/types';
+import { bindGetters } from '../utils/getters';
+
 describe('Table store', () => {
-  let localState = { };
+  const localState = { };
+  const getters = bindGetters(_getters, localState);
 
   beforeEach(() => {
-    localState = initialState();
+    Object.assign(localState, initialState());
   });
   it('Initial State', () => {
     expect(localState.id).toBeDefined();
@@ -46,7 +49,7 @@ describe('Table store', () => {
     localState.data.value = 'dataName';
     localState.name.value = 'ansTableName';
 
-    const props = getters[types.GET_TABLE_PROPS](localState);
+    const props = getters[types.GET_TABLE_PROPS];
     const expectedOptions = { headings: { testColName: 'Header testColName' } };
     expect(props.options).toEqual(expectedOptions);
 
@@ -71,7 +74,7 @@ describe('Table store', () => {
   it('GET_TABLE_COLUMNS_LIST', () => {
     localState.columnsListObj[localState.columnKeys[0]].name = 'testColName';
     localState.columnsListObj[localState.columnKeys[0]].header = 'Header testColName';
-    const columns = getters[types.GET_TABLE_COLUMNS_LIST](localState);
+    const columns = getters[types.GET_TABLE_COLUMNS_LIST];
     const expectedColumns = [{
       component: 'plain-text',
       header: 'Header testColName',
@@ -83,14 +86,14 @@ describe('Table store', () => {
   });
 
   it('GET_TABLE_DATA_LIST', () => {
-    let data = getters[types.GET_TABLE_DATA_LIST](localState);
+    let data = getters[types.GET_TABLE_DATA_LIST];
     let expectedData = [];
 
     localState.columnsListObj[localState.columnKeys[0]].name = 'testColName';
     localState.columnsListObj[localState.columnKeys[0]].header = 'Header testColName';
     localState.dataRowKeys = ['id1'];
     localState.dataRowObj['id1'] = { id: 'id1', [localState.columnKeys[0]]: 'test data for testName' };
-    data = getters[types.GET_TABLE_DATA_LIST](localState);
+    data = getters[types.GET_TABLE_DATA_LIST];
     expectedData = [{ id: 'id1', 'Column 1': 'test data for testName' }];
     expect(data).toEqual(expectedData);
   });
@@ -193,18 +196,18 @@ describe('Table store', () => {
     localState.columnsListObj[localState.columnKeys[1]].isDirty = true;
 
     localState.columnsListObj[localState.columnKeys[1]].name = 'testColName';
-    let { isValid } = getters[types.GET_TABLE_FORM_VALID](localState);
+    let { isValid } = getters[types.GET_TABLE_FORM_VALID];
     expect(isValid).toBeFalsy();
   });
 
   it('GET_TABLE_FORM_VALID isFormUntouched ', () => {
-    const { isValid } = getters[types.GET_TABLE_FORM_VALID](localState);
+    const { isValid } = getters[types.GET_TABLE_FORM_VALID];
     expect(isValid).toBeFalsy();
   });
 
   it('GET_TABLE_FORM_VALID anyDirtyColumn', () => {
     localState.columnsListObj[localState.columnKeys[0]].isDirty = true;
-    const { isValid } = getters[types.GET_TABLE_FORM_VALID](localState);
+    const { isValid } = getters[types.GET_TABLE_FORM_VALID];
     expect(isValid).toBeFalsy();
   });
 
@@ -212,14 +215,14 @@ describe('Table store', () => {
     localState.data.isVariable = true;
     localState.data.value = '';
     localState.data.isDirty = true;
-    const { isValid } = getters[types.GET_TABLE_FORM_VALID](localState);
+    const { isValid } = getters[types.GET_TABLE_FORM_VALID];
     expect(isValid).toBeFalsy();
   });
 
   it('GET_TABLE_FORM_VALID isAnswerFieldDirty', () => {
     localState.columnsListObj[localState.columnKeys[0]].component = 'text-input';
     localState.name.isDirty = true;
-    const { isValid } = getters[types.GET_TABLE_FORM_VALID](localState);
+    const { isValid } = getters[types.GET_TABLE_FORM_VALID];
     expect(isValid).toBeFalsy();
   });
 
@@ -255,7 +258,7 @@ describe('Table store', () => {
   it('MUTATE_TABLE_ADD_COLUMN MUTATE_TABLE_DELETE_COLUMN', () => {
     mutations[types.MUTATE_TABLE_ADD_COLUMN](localState);
     expect(localState.columnKeys).toEqual(['Column 1', 'Column 2']);
-    const props = getters[types.GET_TABLE_PROPS](localState);
+    const props = getters[types.GET_TABLE_PROPS];
     expect(props.columns.length).toBe(2);
 
     mutations[types.MUTATE_TABLE_DELETE_COLUMN](localState, 'Column 1');

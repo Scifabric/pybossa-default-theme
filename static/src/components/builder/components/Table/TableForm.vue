@@ -36,16 +36,16 @@
                   :value="col.name"
                   :class="{
                     'form-control form-control-sm': true,
-                    'danger-validation': invalidColumn(col)
+                    'danger-validation': getErrors(`columns[${index}].name`)
                   }"
                   name="name"
                   type="text"
                   @blur="updateColumn(col)"
                   @input="updateColumn(col, 'name', $event.target.value)"
                 >
-                <p v-if="col.name === '' && col.isDirty">
-                  This field is required!
-                </p>
+                <div class="danger-validation-text">
+                  {{ getErrors(`columns[${index}].name`) }}
+                </div>
                 <label class="col-lables">
                   Column Heading
                 </label>
@@ -104,15 +104,15 @@
                 :value="name.value"
                 :class="{
                   'form-control form-control-sm': true,
-                  'danger-validation': name.value === ''
+                  'danger-validation': getErrors(`name`)
                 }"
                 type="text"
                 @input="updateName({value: $event.target.value})"
                 @blur="updateName"
               >
-              <p v-if="name.value === '' && name.isDirty">
-                This field is required!
-              </p>
+              <div class="danger-validation-text">
+                {{ getErrors(`name`) }}
+              </div>
             </div>
             <div class="row">
               <div class="col-sm-12">
@@ -162,14 +162,14 @@
               type="text"
               :class="{
                 'form-control form-control-sm': true,
-                'danger-validation': data.value === '' && data.isDirty
+                'danger-validation': getErrors(`data.value`)
               }"
               @blur="updateData"
               @input="updateData({value: $event.target.value, isVariable: data.isVariable})"
             >
-            <p v-if="data.isVariable && data.value === '' && data.isDirty ">
-              This field is required!
-            </p>
+            <div class="danger-validation-text">
+              {{ getErrors(`data.value`) }}
+            </div>
             <br>
           </div>
         </div>
@@ -198,6 +198,9 @@
 }
 .danger-validation {
   border-color: #d9534f;
+}
+.danger-validation-text {
+  color: #d9534f;
 }
 .scroll {
   width: flex;
@@ -272,14 +275,8 @@ export default {
         container.scrollTop = scrollHeight;
       }
     },
-
-    invalidColumn: function (col) {
-      const cols = this.columns.filter(c => c.name === col.name);
-      return (
-        cols.length > 1 ||
-        (this.columns.length > 1 && col.name === '') ||
-        (col.name === '' && col.isDirty)
-      );
+    getErrors (key) {
+      return (this.$store.getters[types.GET_TABLE_ERRORS][key] || []).join('\n');
     }
   }
 };

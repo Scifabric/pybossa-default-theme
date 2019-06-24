@@ -10,12 +10,13 @@ export const GET_TABLE_PROPS = 'table/PROPS';
 export const GET_TABLE_DATA_LIST = 'table/GET_TABLE_DATA_LIST';
 export const GET_TABLE_FORM_VALID = 'table/FORM_VALID';
 export const GET_TABLE_COLUMNS_LIST = 'table/COLUMN_LIST';
-
+export const GET_TABLE_ERRORS = 'table/GET_TABLE_ERRORS';
 export const GET_TABLE_NAME = 'table/NAME';
 export const GET_TABLE_LABEL = 'table/LABEL';
 
 export const GET_RADIO_INPUT_PROPS = 'radioInput/PROPS';
 export const GET_RADIO_INPUT_FORM_VALID = 'radioInput/FORM_VALID';
+export const GET_RADIO_INPUT_ERRORS = 'radioInput/GET_RADIO_INPUT_ERRORS';
 
 export const GET_TEXT_TAGGING_PROPS = 'textTagging/PROPS';
 export const GET_TEXT_TAGGING_FORM_VALID = 'textTagging/FORM_VALID';

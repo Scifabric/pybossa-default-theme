@@ -1,4 +1,5 @@
 import * as types from '../types';
+import utils from '../../utils';
 
 export function initialState () {
   const firstElement = getRadioObject();
@@ -24,6 +25,16 @@ export const state = {
   ...initialState()
 };
 
+function* getErrors (state) {
+  if (!state.name) yield ['name', 'HTML Name is required.'];
+  const uniqueValues = new Set();
+  for (const [index, { value }] of state.radioList.entries()) {
+    if (!value) yield [`radioList[${index}].value`, `Radio ${index + 1} value is required.`];
+    else if (uniqueValues.has(value)) yield [`radioList[${index}].value`, `Radio ${index + 1} value is not unique.`];
+    else uniqueValues.add(value);
+  }
+}
+
 export const getters = {
   [types.GET_RADIO_INPUT_PROPS] (state) {
     return {
@@ -35,20 +46,11 @@ export const getters = {
       initialValue: state.initialValue
     };
   },
-  [types.GET_RADIO_INPUT_FORM_VALID] (state) {
-    const messages = [...getErrors()];
-    const isValid = !messages.length;
-    return { isValid, messages };
-
-    function* getErrors () {
-      if (!state.name) yield 'HTML Name cannot be blank.';
-      const uniqueValues = new Set();
-      for (const [index, { value }] of state.radioList.entries()) {
-        if (!value) yield `Radio ${index + 1} value cannot be blank.`;
-        else if (uniqueValues.has(value)) yield `Radio ${index + 1} value is not unique.`;
-        else uniqueValues.add(value);
-      }
-    }
+  [types.GET_RADIO_INPUT_FORM_VALID] (state, getters) {
+    return utils.toFormValidation(getters[types.GET_RADIO_INPUT_ERRORS]);
+  },
+  [types.GET_RADIO_INPUT_ERRORS] (state) {
+    return utils.toMultiDict(getErrors(state));
   }
 };
 

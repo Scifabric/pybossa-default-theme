@@ -3,9 +3,9 @@ import utils from '../../utils';
 import { flow } from 'lodash';
 
 function* _isAnyColumnNameEmpty (columns) {
-  for (const column of columns) {
+  for (const [index, column] of columns.entries()) {
     if (column.name === '') {
-      yield `${column.id} name is missing.`;
+      yield [`columns[${index}].name`, `${column.id} name is missing.`];
     }
   }
 }
@@ -40,10 +40,10 @@ export const isAnyColumnNameRepeated = flow(_isAnyColumnNameRepeated, iteratorTo
 function* _isAnyColumnNameRepeated (columns) {
   const uniqueNames = new Set();
 
-  for (const column of columns) {
+  for (const [index, column] of columns.entries()) {
     if (column.name === '') continue;
     if (uniqueNames.has(column.name)) {
-      yield `${column.id} has a duplicate name.`;
+      yield [`columns[${index}].name`, `${column.id} has a duplicate name.`];
     } else {
       uniqueNames.add(column.name);
     }
@@ -54,7 +54,8 @@ export const isDataNameEmptyAndRequired = flow(_isDataNameEmptyAndRequired, iter
 
 function* _isDataNameEmptyAndRequired (state) {
   if (state.data.isVariable && state.data.value === '') {
-    yield 'Table data source name is missing.';
+    const message = 'Table data source name is missing.';
+    yield ['data.value', message];
   }
 }
 
@@ -62,7 +63,7 @@ export const isAnswerFieldRequired = flow(_isAnswerFieldRequired, iteratorToBool
 
 function* _isAnswerFieldRequired (state, anyColumnComponent) {
   if (anyColumnComponent && state.name.value === '') {
-    yield 'Table answer field name is missing.';
+    yield ['name', 'Table answer field name is missing.'];
   }
 }
 
@@ -95,8 +96,22 @@ export const state = {
   ...initialState()
 };
 
+function* getErrors (state) {
+  const columns = state.columnKeys.map(id => (state.columnsListObj[id]));
+  const anyDirtyColumn = isAnyDirtyColumn(columns);
+  const anyColumnComponent = isAnyColumnComponent(columns);
+
+  yield * _isDataNameEmptyAndRequired(state);
+  yield * _isAnyColumnNameEmpty(columns);
+  if (isAnyDirtyEmptyColumn(columns)) yield ['', 'A dirty column has empty name.'];
+  if (isAnswerFieldDirty(state)) yield ['name', 'Answer field is dirty.'];
+  if (isFormUntouched(state, anyDirtyColumn)) yield ['', 'Form is untouched.'];
+  yield * _isAnyColumnNameRepeated(columns);
+  yield * _isAnswerFieldRequired(state, anyColumnComponent);
+}
+
 export const getters = {
-  [types.GET_TABLE_PROPS]: state => {
+  [types.GET_TABLE_PROPS] (state) {
     const options = {
       headings: {}
     };
@@ -118,65 +133,52 @@ export const getters = {
     const name = state.name.value;
     return { name, data, options, columns };
   },
-  [types.GET_TABLE_COLUMNS_LIST]: state => {
+  [types.GET_TABLE_COLUMNS_LIST] (state) {
     return state.columnKeys.map(id => (state.columnsListObj[id]));
   },
 
-  [types.GET_TABLE_DATA_LIST]: state => {
+  [types.GET_TABLE_DATA_LIST] (state) {
     return state.dataRowKeys.map(id => (state.dataRowObj[id]));
   },
-  [types.GET_TABLE_FORM_VALID]: state => {
-    const messages = [...getErrors()];
-    const isValid = !messages.length;
-    return { isValid, messages };
-
-    function* getErrors () {
-      const columns = state.columnKeys.map(id => (state.columnsListObj[id]));
-      const anyDirtyColumn = isAnyDirtyColumn(columns);
-      const anyColumnComponent = isAnyColumnComponent(columns);
-
-      yield * _isDataNameEmptyAndRequired(state);
-      yield * _isAnyColumnNameEmpty(columns);
-      if (isAnyDirtyEmptyColumn(columns)) yield 'A dirty column has empty name.';
-      if (isAnswerFieldDirty(state)) yield 'Answer field is dirty.';
-      if (isFormUntouched(state, anyDirtyColumn)) yield 'Form is untouched.';
-      yield * _isAnyColumnNameRepeated(columns);
-      yield * _isAnswerFieldRequired(state, anyColumnComponent);
-    }
+  [types.GET_TABLE_FORM_VALID] (state, getters) {
+    return utils.toFormValidation(getters[types.GET_TABLE_ERRORS]);
+  },
+  [types.GET_TABLE_ERRORS] (state) {
+    return utils.toMultiDict(getErrors(state));
   }
 };
 
 export const mutations = {
 
-  [types.MUTATE_TABLE_NAME]: (state, payload) => {
+  [types.MUTATE_TABLE_NAME] (state, payload) {
     const name = { value: '', isDirty: true };
     name.value = payload.value !== undefined ? payload.value : state.name.value;
     name.isDirty = true;
 
     state.name = name;
   },
-  [types.MUTATE_TABLE_DATA]: (state, payload) => {
+  [types.MUTATE_TABLE_DATA] (state, payload) {
     state.data.value = payload.value !== undefined ? payload.value : state.data.value;
     state.data.isVariable = payload.isVariable !== undefined ? payload.isVariable : state.data.isVariable;
     state.data.isDirty = true;
   },
-  [types.MUTATE_TABLE_UPDATE_COLUMN]: (state, payload) => {
+  [types.MUTATE_TABLE_UPDATE_COLUMN] (state, payload) {
     state.columnsListObj[payload.id] = payload;
   },
-  [types.MUTATE_TABLE_DELETE_COLUMN]: (state, id) => {
+  [types.MUTATE_TABLE_DELETE_COLUMN] (state, id) {
     delete state.columnsListObj[id];
     state.columnKeys = state.columnKeys.filter(i => i !== id);
   },
-  [types.MUTATE_TABLE_ADD_COLUMN]: (state) => {
+  [types.MUTATE_TABLE_ADD_COLUMN] (state) {
     state.colCounter++;
     const newObj = getColumnObject(state.colCounter);
     state.columnKeys.push(newObj.id);
     state.columnsListObj = { ...state.columnsListObj, [newObj.id]: newObj };
   },
-  [types.MUTATE_TABLE_UPDATE_DATA_ROW]: (state, payload) => {
+  [types.MUTATE_TABLE_UPDATE_DATA_ROW] (state, payload) {
     state.dataRowObj[payload.id] = payload;
   },
-  [types.MUTATE_TABLE_ADD_DATA_ROW]: (state) => {
+  [types.MUTATE_TABLE_ADD_DATA_ROW] (state) {
     const id = utils.uniqueID();
     state.dataRowKeys.push(id);
     const row = { };
@@ -188,12 +190,12 @@ export const mutations = {
     state.dataRowObj = { ...state.dataRowObj, [id]: row };
   },
 
-  [types.MUTATE_TABLE_DELETE_DATA_ROW]: (state, id) => {
+  [types.MUTATE_TABLE_DELETE_DATA_ROW] (state, id) {
     delete state.dataRowObj[id];
     state.dataRowKeys = state.dataRowKeys.filter(i => i !== id);
   },
 
-  [types.MUTATE_CLEAR_TABLE_FORM]: (state) => {
+  [types.MUTATE_CLEAR_TABLE_FORM] (state) {
     const initial = initialState();
     Object.keys(initial).forEach(key => {
       state[key] = initial[key];

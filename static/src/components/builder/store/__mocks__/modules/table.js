@@ -52,7 +52,8 @@ export const getters = {
     'options': { 'headings': { 'col1': 'col1 header', 'col2': 'col2 header' } },
     'name': 'ansName' }
   ),
-  [types.GET_TABLE_FORM_VALID]: jest.fn().mockReturnValue(true)
+  [types.GET_TABLE_FORM_VALID]: jest.fn().mockReturnValue(true),
+  [types.GET_TABLE_ERRORS]: jest.fn().mockReturnValue({})
 };
 
 export const mutations = {

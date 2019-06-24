@@ -43,8 +43,12 @@
         id="html-name"
         v-model="name"
         class="form-control form-control-sm"
+        :class="{'danger-validation':getErrors(`name`)}"
         type="text"
       >
+      <div class="danger-validation-text">
+        {{ getErrors(`name`) }}
+      </div>
     </div>
     <div class="form-group">
       <label
@@ -116,8 +120,12 @@
               class="form-control form-control-sm"
               type="text"
               :value="radio.value"
+              :class="{'danger-validation':getErrors(`radioList[${index}].value`)}"
               @input="updateRadioItem(radio, index, 'value', $event.target.value)"
             >
+            <div class="danger-validation-text">
+              {{ getErrors(`radioList[${index}].value`) }}
+            </div>
           </div>
           <br>
         </div>
@@ -147,6 +155,12 @@
   max-height: 600px;
   overflow-y: scroll;
   margin-bottom: 20px;
+}
+.danger-validation {
+  border-color: #d9534f;
+}
+.danger-validation-text {
+  color: #d9534f;
 }
 </style>
 <script>
@@ -213,6 +227,9 @@ export default {
       'deleteRadioListItem': types.MUTATE_RADIO_GROUP_DELETE_LIST_ITEM,
       'addRadioListItem': types.MUTATE_RADIO_GROUP_ADD_LIST_ITEM
     }),
+    getErrors (key) {
+      return (this.$store.getters[types.GET_RADIO_INPUT_ERRORS][key] || []).join('\n');
+    },
     updateRadioItem (radio, index, fieldName, value) {
       const newRadio = cloneDeep(radio);
       newRadio[fieldName] = value;
