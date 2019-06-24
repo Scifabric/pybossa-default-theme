@@ -26,7 +26,7 @@ export function getTagObject () {
   return {
     name: '',
     display: '',
-    color: ''
+    color: '#000000'
   };
 }
 

@@ -1,6 +1,5 @@
 <template>
-  <div class="row">
-    <h4>Text Tagging Settings</h4>
+  <div class="row" style="margin-top:15px">
     <div class="form-group">
       <input
         id="add-label"
@@ -8,7 +7,7 @@
         type="checkbox"
       >
       <label for="add-label">
-        Add Text Tagging Label
+        Add Label
       </label>
       <input
         v-if="labelAdded === true"
@@ -22,7 +21,7 @@
       <label
         for="pyb-answer"
       >
-        Answer field name
+        Answer field name | <span class="label-tip">The field where the worker's answer is stored.</span>
       </label>
       <input
         id="pyb-answer"
@@ -87,7 +86,7 @@
               class="col-labels"
               for="component-label"
             >
-              Name
+              Name | <span class="label-tip">The tag name to store in the answer</span>
             </label>
             <input
               id="component-label"
@@ -95,7 +94,6 @@
               class="form-control form-control-sm"
               :class="{'danger-validation':getErrors(`tagList[${index}].name`)}"
               type="text"
-              title="The tag name to store in the answer"
             >
             <div class="danger-validation-text">
               {{ getErrors(`tagList[${index}].name`) }}
@@ -104,7 +102,7 @@
               class="col-labels"
               for="value"
             >
-              Display
+              Display | <span class="label-tip">The tag name to display in the selection menu</span>
             </label>
             <input
               id="value"
@@ -112,7 +110,6 @@
               class="form-control form-control-sm"
               :class="{'danger-validation':getErrors(`tagList[${index}].display`)}"
               type="text"
-              title="The tag name to display in the selection menu"
             >
             <div class="danger-validation-text">
               {{ getErrors(`tagList[${index}].display`) }}
@@ -121,15 +118,14 @@
               class="col-labels"
               for="value"
             >
-              Color
+              Color | <span class="label-tip">The background color for the tag.</span>
             </label>
             <input
               id="value"
               v-model="tag.color"
               class="form-control form-control-sm"
               :class="{'danger-validation':getErrors(`tagList[${index}].color`)}"
-              type="text"
-              title="The background color for the tag. Can be any valid CSS color specification. For example, blue, #8A2BE2, RGB(80, 80, 80), HSL(0, 100%, 50%)."
+              type="color"
             >
             <div class="danger-validation-text">
               {{ getErrors(`tagList[${index}].color`) }}
@@ -147,7 +143,6 @@
       Add Tag
     </button>
     <div class="row">
-      <hr>
       <h4 class="col-sm-12">
         Text &amp; Entities
       </h4>
@@ -187,7 +182,7 @@
       <label
         for="useStatic"
       >
-        Use static in preview.<br>Check this if you want to configure some sample data under the static option for preview purposes while using a variable in your code.
+        Use static in preview.<br><span class="label-tip">Check this if you want to configure some sample data under the static option for preview purposes while using a variable in your code.</span>
       </label>
       <div class="danger-validation-text">
         {{ getErrors(`useStaticInPreview`) }}
@@ -197,7 +192,7 @@
       class="col-labels"
       for="textSource"
     >
-      Text {{ sourceType === "variable" ? "Variable": "" }}
+      Text {{ sourceType === "variable" ? "Variable": "" }} | <span class="label-tip">{{ (sourceType === 'variable') ? 'The variable in your code that holds the text to display. For example, task.info.text.' : 'The static text to display' }}</span>
     </label>
     <input
       id="textSource"
@@ -205,7 +200,6 @@
       type="text"
       class="form-control form-control-sm"
       :class="{'danger-validation':getErrors(`text.${sourceType}`)}"
-      :title="(sourceType === 'variable') ? 'The variable in your code that holds the text to display. For example, task.info.text.' : 'The static text to display'"
     >
     <div class="danger-validation-text">
       {{ getErrors(`text.${sourceType}`) }}
@@ -215,7 +209,7 @@
         class="col-labels"
         for="entitySource"
       >
-        Entities Variable
+        Entities Variable | <span class="label-tip">The variable in your code that contains the entities. For example, task.info.entities.</span>
       </label>
       <input
         id="entitySource"
@@ -223,7 +217,6 @@
         type="text"
         class="form-control form-control-sm"
         :class="{'danger-validation':getErrors(`entities.variable`)}"
-        title="The variable in your code that contains the entities. For example, task.info.entities."
       >
       <div class="danger-validation-text">
         {{ getErrors(`entities.variable`) }}
@@ -265,7 +258,7 @@
                 class="col-labels"
                 for="headoffset"
               >
-                Head Offset
+                Head Offset | <span class="label-tip">The character position where the entity starts. Count starts with 0.</span>
               </label>
               <input
                 id="headoffset"
@@ -273,7 +266,6 @@
                 class="form-control form-control-sm"
                 :class="{'danger-validation':getErrors(`entities.static[${index}].headoffset`)}"
                 type="text"
-                title="The character position where the entity starts. Count starts with 0."
               >
               <div class="danger-validation-text">
                 {{ getErrors(`entities.static[${index}].headoffset`) }}
@@ -282,7 +274,7 @@
                 class="col-labels"
                 for="tailoffset"
               >
-                Tail Offset
+                Tail Offset | <span class="label-tip">The character position AFTER the entity ends. Count starts with 0.</span>
               </label>
               <input
                 id="tailoffset"
@@ -290,7 +282,6 @@
                 class="form-control form-control-sm"
                 :class="{'danger-validation':getErrors(`entities.static[${index}].tailoffset`)}"
                 type="text"
-                title="The character position AFTER the entity ends. Count starts with 0."
               >
               <div class="danger-validation-text">
                 {{ getErrors(`entities.static[${index}].tailoffset`) }}
@@ -299,14 +290,13 @@
                 class="col-labels"
                 for="taggedtype"
               >
-                Tag Name
+                Tag Name | <span class="label-tip">The tag to apply to the entity. Must be one of the configured tags.</span>
               </label>
               <select
                 id="taggedtype"
                 v-model="entity.taggedtype"
                 :class="{'danger-validation':getErrors(`entities.static[${index}].taggedtype`)}"
                 class="form-control form-control-sm"
-                title="The tag to apply to the entity. Must be one of the configured tags."
               >
                 <option
                   v-for="tagName in tagNames"
@@ -340,7 +330,11 @@
   font-size: 16px;
   font-weight: 400;
 }
-
+.label-tip {
+  font-style: italic;
+  font-weight: 400;
+  font-size: smaller;
+}
 .scroll {
   width: flex;
   max-height: 300px;
