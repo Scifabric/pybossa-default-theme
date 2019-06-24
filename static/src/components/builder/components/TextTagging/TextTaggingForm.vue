@@ -1,6 +1,5 @@
 <template>
-  <div class="row">
-    <h4>Text Tagging Settings</h4>
+  <div class="row" style="margin-top:15px">
     <div class="form-group">
       <input
         id="add-label"
@@ -8,7 +7,7 @@
         type="checkbox"
       >
       <label for="add-label">
-        Add Text Tagging Label
+        Add Label
       </label>
       <input
         v-if="labelAdded === true"
@@ -144,7 +143,6 @@
       Add Tag
     </button>
     <div class="row">
-      <hr>
       <h4 class="col-sm-12">
         Text &amp; Entities
       </h4>
