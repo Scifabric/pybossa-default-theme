@@ -111,8 +111,6 @@
 }
 
 .scroll {
-  width: flex;
-  max-height: 300px;
   overflow-x: hidden;
   max-height: 600px;
   overflow-y: scroll;
