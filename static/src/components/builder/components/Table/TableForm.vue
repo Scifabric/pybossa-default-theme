@@ -28,53 +28,51 @@
                   class="btn btn-times-delete pull-right fa fa-times"
                   @click="removeColumn(col.id)"
                 /><br>
-                <label class="col-labels">
+                <label class="block-label">
                   * Column Name | <span class="label-tip">The field within a row where the column's data is read from and written to.</span>
+                  <input
+                    :id="`column-name-${index}`"
+                    :value="col.name"
+                    :class="{
+                      'form-control form-control-sm': true,
+                      'danger-validation': getErrors(`columns[${index}].name`)
+                    }"
+                    name="name"
+                    type="text"
+                    @blur="updateColumn(col)"
+                    @input="updateColumn(col, 'name', $event.target.value)"
+                  >
                 </label>
-                <input
-                  :id="`column-name-${index}`"
-                  :value="col.name"
-                  :class="{
-                    'form-control form-control-sm': true,
-                    'danger-validation': getErrors(`columns[${index}].name`)
-                  }"
-                  name="name"
-                  type="text"
-                  @blur="updateColumn(col)"
-                  @input="updateColumn(col, 'name', $event.target.value)"
-                >
                 <div class="danger-validation-text">
                   {{ getErrors(`columns[${index}].name`) }}
                 </div>
-                <label class="col-labels">
+                <label class="block-label">
                   Column Heading | <span class="label-tip">The heading to display for the column. Uses Column Name if not specified.</span>
-                </label>
-                <input
-                  :id="`column-header-${index}`"
-                  :value="col.header"
-                  class="form-control form-control-sm"
-                  type="text"
-                  @blur="updateColumn(col)"
-                  @input="updateColumn(col, 'header', $event.target.value)"
-                >
-                <label class="col-labels">
-                  Column Display | <span class="label-tip">The type of input control to display in the column.</span>
-                </label>
-                <select
-                  :id="`column-component-${index}`"
-                  :value="col.component"
-                  class="form-control form-control-sm"
-                  @blur="updateColumn(col)"
-                  @input="updateColumn(col, 'component', $event.target.value)"
-                >
-                  <option
-                    v-for="component in columnsComponent"
-                    :key="component"
-                    :value="component"
+                  <input
+                    :value="col.header"
+                    class="form-control form-control-sm"
+                    type="text"
+                    @blur="updateColumn(col)"
+                    @input="updateColumn(col, 'header', $event.target.value)"
                   >
-                    {{ component }}
-                  </option>
-                </select>
+                </label>
+                <label class="block-label">
+                  Column Display | <span class="label-tip">The type of input control to display in the column.</span>
+                  <select
+                    :value="col.component"
+                    class="form-control form-control-sm"
+                    @blur="updateColumn(col)"
+                    @input="updateColumn(col, 'component', $event.target.value)"
+                  >
+                    <option
+                      v-for="component in columnsComponent"
+                      :key="component"
+                      :value="component"
+                    >
+                      {{ component }}
+                    </option>
+                  </select>
+                </label>
               </div>
               <br>
             </div>
@@ -188,6 +186,12 @@
   color: black;
   font-size: 16px;
   font-weight: 400;
+}
+.block-label {
+  color: black;
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
 }
 .label-tip {
   font-style: italic;
