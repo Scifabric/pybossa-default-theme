@@ -24,12 +24,14 @@
                 <label> {{ col.id }}</label>
                 <button
                   v-if="columns.length > 1"
+                  :id="`delete-column-${index}`"
                   class="btn btn-times-delete pull-right fa fa-times"
                   @click="removeColumn(col.id)"
                 /><br>
                 <label class="block-label">
                   * Column Name | <span class="label-tip">The field within a row where the column's data is read from and written to.</span>
                   <input
+                    :id="`column-name-${index}`"
                     :value="col.name"
                     :class="{
                       'form-control form-control-sm': true,
