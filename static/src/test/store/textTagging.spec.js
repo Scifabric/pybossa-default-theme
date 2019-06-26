@@ -6,11 +6,11 @@ describe('Text Tagging setup', () => {
   const localState = { ...state };
   const getters = bindGetters(_getters, localState);
 
-  function isValid() {
+  function isValid () {
     expect(getters[types.GET_TEXT_TAGGING_FORM_VALID].isValid).toBe(true);
   }
 
-  function isNotValid() {
+  function isNotValid () {
     expect(getters[types.GET_TEXT_TAGGING_FORM_VALID].isValid).toBe(false);
   }
 
