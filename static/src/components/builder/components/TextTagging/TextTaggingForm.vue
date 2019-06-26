@@ -200,7 +200,7 @@
         class="col-labels"
         for="textSource"
       >
-        Text {{ sourceType === "variable" ? "Variable": "" }} | <span class="label-tip">{{ (sourceType === 'variable') ? 'A JavaScript expression that returns the text to display. For example, task.info.text.' : 'The static text to display.' }}</span>
+        {{ textSourceLabel }} | <span class="label-tip">{{ textSourceLabelTip }}</span>
       </label>
       <input
         id="textSource"
@@ -379,6 +379,12 @@ export default {
     };
   },
   computed: {
+    textSourceLabel () {
+      return `Text ${this.sourceType === 'variable' ? 'Variable' : ''}`;
+    },
+    textSourceLabelTip () {
+      return (this.sourceType === 'variable') ? 'A JavaScript expression that returns the text to display. For example, task.info.text.' : 'The static text to display.';
+    },
     useStaticInPreview: {
       get () {
         return this.$store.state.textTagging.useStaticInPreview;
