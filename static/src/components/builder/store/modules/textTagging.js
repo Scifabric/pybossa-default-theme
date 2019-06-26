@@ -143,7 +143,7 @@ function* getErrors (state) {
 function* validateReadOnly (state) {
   if (!state.readOnly) return;
 
-  const message = 'Read-Only mode requires entities';
+  const message = 'Read-Only mode requires entities.';
 
   if (state.sourceType === 'static' && !state.entities.static.length) yield ['entities.static', message];
   else if (state.sourceType === 'variable' && !state.entities.variable.trim()) yield ['entities.variable', message];
