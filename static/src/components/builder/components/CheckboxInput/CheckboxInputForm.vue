@@ -103,7 +103,7 @@
     </button>
   </div>
 </template>
-<style>
+<style scoped>
 .col-labels {
   color: black;
   font-size: 16px;

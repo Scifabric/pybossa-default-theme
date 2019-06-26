@@ -28,7 +28,7 @@
                   class="btn btn-times-delete pull-right fa fa-times"
                   @click="removeColumn(col.id)"
                 /><br>
-                <label class="col-lables">
+                <label class="col-labels">
                   * Column Name | <span class="label-tip">The field within a row where the column's data is read from and written to.</span>
                 </label>
                 <input
@@ -46,7 +46,7 @@
                 <div class="danger-validation-text">
                   {{ getErrors(`columns[${index}].name`) }}
                 </div>
-                <label class="col-lables">
+                <label class="col-labels">
                   Column Heading | <span class="label-tip">The heading to display for the column. Uses Column Name if not specified.</span>
                 </label>
                 <input
@@ -57,7 +57,7 @@
                   @blur="updateColumn(col)"
                   @input="updateColumn(col, 'header', $event.target.value)"
                 >
-                <label class="col-lables">
+                <label class="col-labels">
                   Column Display | <span class="label-tip">The type of input control to display in the column.</span>
                 </label>
                 <select
@@ -124,7 +124,7 @@
                   @change="updateData({value: data.value, isVariable: $event.target.value})"
                 >
                 <label
-                  class="col-lables right-padding-radio"
+                  class="col-labels right-padding-radio"
                   for="dynamic"
                 >
                   Get table data from source
@@ -136,7 +136,7 @@
                   @change="updateData({value: data.value, isVariable: false})"
                 >
                 <label
-                  class="col-lables"
+                  class="col-labels"
                   for="static"
                 >
                   Enter table data manually
@@ -183,8 +183,8 @@
   </div>
 </template>
 
-<style>
-.col-lables {
+<style scoped>
+.col-labels {
   color: black;
   font-size: 16px;
   font-weight: 400;
