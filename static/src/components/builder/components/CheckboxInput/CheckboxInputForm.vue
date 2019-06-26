@@ -38,56 +38,50 @@
             <label>Checkbox {{ index + 1 }}</label>
             <button
               v-if="checkboxList.length > 1"
-              :id="`column-delete${index}`"
               class="btn btn-times-delete pull-right fa fa-times"
               @click="deleteCheckboxListItem(checkbox.id)"
             /><br>
             <label
-              class="col-labels"
-              for="component-label"
+              class="block-label"
             >
               Checkbox Description Label
+              <input
+                :value="checkbox.label"
+                class="form-control form-control-sm"
+                type="text"
+                @input="updateCheckboxItem(checkbox, 'label', $event.target.value)"
+              >
             </label>
-            <input
-              id="component-label"
-              :value="checkbox.label"
-              class="form-control form-control-sm"
-              type="text"
-              @input="updateCheckboxItem(checkbox, 'label', $event.target.value)"
-            >
             <label
-              class="col-labels"
-              for="pyb-answer"
+              class="block-label"
             >
               Answer field name
+              <input
+                id="pyb-answer"
+                :value="checkbox['pyb-answer']"
+                class="form-control form-control-sm"
+                type="text"
+                @input="updateCheckboxItem(checkbox, 'pyb-answer', $event.target.value)"
+              >
             </label>
-            <input
-              id="pyb-answer"
-              :value="checkbox['pyb-answer']"
-              class="form-control form-control-sm"
-              type="text"
-              @input="updateCheckboxItem(checkbox, 'pyb-answer', $event.target.value)"
-            >
             <label
-              class="col-labels"
-              for="initial-value"
+              class="block-label"
             >
               Initial Value
-            </label>
-            <select
-              id="initial-value"
-              class="form-control form-control-sm"
-              :value="checkbox['initial-value'].value"
-              @input="updateCheckboxItem(checkbox, 'initial-value', {value: $event.target.value, isVariable:true})"
-            >
-              <option
-                v-for="e in booleanValues"
-                :key="e"
-                :value="e"
+              <select
+                class="form-control form-control-sm"
+                :value="checkbox['initial-value'].value"
+                @input="updateCheckboxItem(checkbox, 'initial-value', {value: $event.target.value, isVariable:true})"
               >
-                {{ e }}
-              </option>
-            </select>
+                <option
+                  v-for="e in booleanValues"
+                  :key="e"
+                  :value="e"
+                >
+                  {{ e }}
+                </option>
+              </select>
+            </label>
           </div>
           <br>
         </div>
@@ -104,17 +98,23 @@
   </div>
 </template>
 <style scoped>
-.col-labels {
+.block-label {
   color: black;
   font-size: 16px;
   font-weight: 400;
+  display: block;
 }
-
 .scroll {
   overflow-x: hidden;
   max-height: 600px;
   overflow-y: scroll;
   margin-bottom: 20px;
+}
+.btn-times-delete {
+  color: #d9534f;
+}
+.btn-times-delete:hover {
+  color: #d9534f;
 }
 </style>
 <script>

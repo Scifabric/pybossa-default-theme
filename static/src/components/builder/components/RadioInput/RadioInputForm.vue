@@ -92,37 +92,33 @@
             <label>Radio {{ index + 1 }}</label>
             <button
               v-if="radioList.length > 2"
-              :id="`column-delete${index}`"
               class="btn btn-times-delete pull-right fa fa-times"
               @click="deleteRadioListItem(index)"
             /><br>
             <label
-              class="col-labels"
-              for="component-label"
+              class="block-label"
             >
               Radio Description Label | <span class="label-tip">Text to display for the radio button.</span>
+              <input
+                :value="radio.label"
+                class="form-control form-control-sm"
+                type="text"
+                @input="updateRadioItem(radio, index, 'label', $event.target.value)"
+              >
             </label>
-            <input
-              id="component-label"
-              :value="radio.label"
-              class="form-control form-control-sm"
-              type="text"
-              @input="updateRadioItem(radio, index, 'label', $event.target.value)"
-            >
             <label
-              class="col-labels"
-              for="value"
+              class="block-label"
             >
               Value | <span class="label-tip">The value to store as the answer when selected.</span>
+              <input
+                id="value"
+                class="form-control form-control-sm"
+                type="text"
+                :value="radio.value"
+                :class="{'danger-validation':getErrors(`radioList[${index}].value`)}"
+                @input="updateRadioItem(radio, index, 'value', $event.target.value)"
+              >
             </label>
-            <input
-              id="value"
-              class="form-control form-control-sm"
-              type="text"
-              :value="radio.value"
-              :class="{'danger-validation':getErrors(`radioList[${index}].value`)}"
-              @input="updateRadioItem(radio, index, 'value', $event.target.value)"
-            >
             <div class="danger-validation-text">
               {{ getErrors(`radioList[${index}].value`) }}
             </div>
@@ -152,6 +148,12 @@
   font-weight: 400;
   font-size: smaller;
 }
+.block-label {
+  color: black;
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
+}
 .scroll {
   overflow-x: hidden;
   max-height: 600px;
@@ -162,6 +164,12 @@
   border-color: #d9534f;
 }
 .danger-validation-text {
+  color: #d9534f;
+}
+.btn-times-delete {
+  color: #d9534f;
+}
+.btn-times-delete:hover {
   color: #d9534f;
 }
 </style>

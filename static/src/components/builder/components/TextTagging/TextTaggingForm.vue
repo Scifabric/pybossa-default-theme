@@ -77,56 +77,49 @@
         <label>Tag {{ index + 1 }}</label>
         <button
           v-if="tagList.length > 1"
-          :id="`column-delete${index}`"
           class="btn btn-times-delete pull-right fa fa-times"
           :title="`Delete Tag ${index + 1}`"
           @click="deleteTag(index)"
         /><br>
         <label
-          class="col-labels"
-          for="component-label"
+          class="block-label"
         >
           Name | <span class="label-tip">The tag name to store in the answer.</span>
+          <input
+            v-model="tag.name"
+            class="form-control form-control-sm"
+            :class="{'danger-validation':getErrors(`tagList[${index}].name`)}"
+            type="text"
+          >
         </label>
-        <input
-          id="component-label"
-          v-model="tag.name"
-          class="form-control form-control-sm"
-          :class="{'danger-validation':getErrors(`tagList[${index}].name`)}"
-          type="text"
-        >
         <div class="danger-validation-text">
           {{ getErrors(`tagList[${index}].name`) }}
         </div>
         <label
-          class="col-labels"
-          for="value"
+          class="block-label"
         >
           Display | <span class="label-tip">The tag name to display in the selection menu.</span>
+          <input
+            v-model="tag.display"
+            class="form-control form-control-sm"
+            :class="{'danger-validation':getErrors(`tagList[${index}].display`)}"
+            type="text"
+          >
         </label>
-        <input
-          id="value"
-          v-model="tag.display"
-          class="form-control form-control-sm"
-          :class="{'danger-validation':getErrors(`tagList[${index}].display`)}"
-          type="text"
-        >
         <div class="danger-validation-text">
           {{ getErrors(`tagList[${index}].display`) }}
         </div>
         <label
-          class="col-labels"
-          for="value"
+          class="block-label"
         >
           Color | <span class="label-tip">The background color for the tag.</span>
-        </label>
-        <input
-          id="value"
-          v-model="tag.color"
-          class="form-control form-control-sm"
-          :class="{'danger-validation':getErrors(`tagList[${index}].color`)}"
-          type="color"
-        >
+          <input
+            v-model="tag.color"
+            class="form-control form-control-sm"
+            :class="{'danger-validation':getErrors(`tagList[${index}].color`)}"
+            type="color"
+          >
+          </label>
         <div class="danger-validation-text">
           {{ getErrors(`tagList[${index}].color`) }}
         </div>
@@ -179,6 +172,7 @@
           type="checkbox"
         >
         <label
+          class="col-labels"
           for="useStatic"
         >
           Use static in preview.
@@ -197,36 +191,33 @@
     </div>
     <div>
       <label
-        class="col-labels"
-        for="textSource"
+        class="block-label"
       >
         {{ textSourceLabel }} | <span class="label-tip">{{ textSourceLabelTip }}</span>
+        <input
+          id="textSource"
+          v-model="textSource"
+          type="text"
+          class="form-control form-control-sm"
+          :class="{'danger-validation':getErrors(`text.${sourceType}`)}"
+        >
       </label>
-      <input
-        id="textSource"
-        v-model="textSource"
-        type="text"
-        class="form-control form-control-sm"
-        :class="{'danger-validation':getErrors(`text.${sourceType}`)}"
-      >
       <div class="danger-validation-text">
         {{ getErrors(`text.${sourceType}`) }}
       </div>
     </div>
     <template v-if="sourceType==='variable'">
       <label
-        class="col-labels"
-        for="entitySource"
+        class="block-label"
       >
         Entities Variable | <span class="label-tip">A JavaScript expression that returns the entities. For example, task.info.entities.</span>
+        <input
+          v-model="entitySource"
+          type="text"
+          class="form-control form-control-sm"
+          :class="{'danger-validation':getErrors(`entities.variable`)}"
+        >
       </label>
-      <input
-        id="entitySource"
-        v-model="entitySource"
-        type="text"
-        class="form-control form-control-sm"
-        :class="{'danger-validation':getErrors(`entities.variable`)}"
-      >
       <div class="danger-validation-text">
         {{ getErrors(`entities.variable`) }}
       </div>
@@ -255,63 +246,56 @@
           >
           <label>Entity {{ index + 1 }}</label>
           <button
-            :id="`column-delete${index}`"
             class="btn btn-times-delete pull-right fa fa-times"
             :title="`Delete Entity ${index + 1}`"
             @click="deleteEntity(index)"
           /><br>
           <label
-            class="col-labels"
-            for="headoffset"
+            class="block-label"
           >
             Head Offset | <span class="label-tip">The character position where the entity starts. Count starts with 0.</span>
+            <input
+              v-model.number="entity.headoffset"
+              class="form-control form-control-sm"
+              :class="{'danger-validation':getErrors(`entities.static[${index}].headoffset`)}"
+              type="text"
+            >
           </label>
-          <input
-            id="headoffset"
-            v-model.number="entity.headoffset"
-            class="form-control form-control-sm"
-            :class="{'danger-validation':getErrors(`entities.static[${index}].headoffset`)}"
-            type="text"
-          >
           <div class="danger-validation-text">
             {{ getErrors(`entities.static[${index}].headoffset`) }}
           </div>
           <label
-            class="col-labels"
-            for="tailoffset"
+            class="block-label"
           >
             Tail Offset | <span class="label-tip">The character position AFTER the entity ends. Count starts with 0.</span>
+            <input
+              v-model.number="entity.tailoffset"
+              class="form-control form-control-sm"
+              :class="{'danger-validation':getErrors(`entities.static[${index}].tailoffset`)}"
+              type="text"
+            >
           </label>
-          <input
-            id="tailoffset"
-            v-model.number="entity.tailoffset"
-            class="form-control form-control-sm"
-            :class="{'danger-validation':getErrors(`entities.static[${index}].tailoffset`)}"
-            type="text"
-          >
           <div class="danger-validation-text">
             {{ getErrors(`entities.static[${index}].tailoffset`) }}
           </div>
           <label
-            class="col-labels"
-            for="taggedtype"
+            class="block-label"
           >
             Tag Name | <span class="label-tip">The tag to apply to the entity. Must be one of the configured tags.</span>
-          </label>
-          <select
-            id="taggedtype"
-            v-model="entity.taggedtype"
-            :class="{'danger-validation':getErrors(`entities.static[${index}].taggedtype`)}"
-            class="form-control form-control-sm"
-          >
-            <option
-              v-for="tagName in tagNames"
-              :key="tagName"
-              :value="tagName"
+            <select
+              v-model="entity.taggedtype"
+              :class="{'danger-validation':getErrors(`entities.static[${index}].taggedtype`)}"
+              class="form-control form-control-sm"
             >
-              {{ tagName }}
-            </option>
-          </select>
+              <option
+                v-for="tagName in tagNames"
+                :key="tagName"
+                :value="tagName"
+              >
+                {{ tagName }}
+              </option>
+            </select>
+          </label>
           <div class="danger-validation-text">
             {{ getErrors(`entities.static[${index}].taggedtype`) }}
           </div>
@@ -329,6 +313,12 @@
   </div>
 </template>
 <style scoped>
+.block-label {
+  color: black;
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
+}
 .col-labels {
   color: black;
   font-size: 16px;
@@ -352,6 +342,12 @@
   border-color: #d9534f;
 }
 .danger-validation-text {
+  color: #d9534f;
+}
+.btn-times-delete {
+  color: #d9534f;
+}
+.btn-times-delete:hover {
   color: #d9534f;
 }
 </style>
