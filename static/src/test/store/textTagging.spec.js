@@ -6,6 +6,14 @@ describe('Text Tagging setup', () => {
   const localState = { ...state };
   const getters = bindGetters(_getters, localState);
 
+  function isValid() {
+    expect(getters[types.GET_TEXT_TAGGING_FORM_VALID].isValid).toBe(true);
+  }
+
+  function isNotValid() {
+    expect(getters[types.GET_TEXT_TAGGING_FORM_VALID].isValid).toBe(false);
+  }
+
   it('Update Label', () => {
     mutations[types.MUTATE_TEXT_TAGGING_LABEL](localState, 'testLabel');
     expect(localState.label).toBe('testLabel');
@@ -60,11 +68,34 @@ describe('Text Tagging setup', () => {
 
     it('Pass validation', () => {
         const tag1 = localState.tagList[0];
+        isNotValid();
         tag1.name = 'a';
+        isNotValid();
         tag1.display = 'b';
+        isNotValid();
         tag1.color = 'red';
+        isNotValid();
         mutations[types.MUTATE_TEXT_TAGGING_TEXT](localState, 'task.info.text');
-        expect(getters[types.GET_TEXT_TAGGING_FORM_VALID].isValid).toBe(true);
+        isValid();
+        mutations[types.MUTATE_TEXT_TAGGING_READONLY](localState, true);
+        isNotValid();
+        mutations[types.MUTATE_TEXT_TAGGING_ENTITY_SOURCE](localState, 'task.info.entities');
+        isValid();
+        mutations[types.MUTATE_TEXT_TAGGING_SOURCE_TYPE](localState, 'static');
+        isNotValid();
+        mutations[types.MUTATE_TEXT_TAGGING_TEXT](localState, 'Four score and seven years ago');
+        isNotValid();
+        mutations[types.MUTATE_TEXT_TAGGING_ADD_ENTITY](localState);
+        isNotValid();
+        const entity1 = localState.entities.static[0];
+        entity1.headoffset = 1;
+        isNotValid();
+        entity1.tailoffset = 2;
+        isNotValid();
+        entity1.taggedtype = 'a';
+        isValid();
+        entity1.headoffset = -1;
+        isNotValid();
     });
   });
 });
