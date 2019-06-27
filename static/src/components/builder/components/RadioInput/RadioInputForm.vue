@@ -23,7 +23,7 @@
         class="col-labels"
         for="pyb-answer"
       >
-        Answer field name | <span class="label-tip">The field where the worker's answer is stored.</span>
+        Answer field name | <span class="label-tip">The field where the worker's answer is stored. Can be JSON path like a.b.c.</span>
       </label>
       <input
         id="pyb-answer"

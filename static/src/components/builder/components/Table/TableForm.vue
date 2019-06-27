@@ -94,8 +94,8 @@
               v-if="columnWithComponent"
               class="form-group"
             >
-              <label for="add-label">
-                * Table Answer field Name | <span class="label-tip">The field where the worker's answers for the table are stored.</span>
+              <label for="table-answer-name">
+                * Table Answer field Name | <span class="label-tip">The field where the worker's answers for the table are stored. Can be JSON path like a.b.c.</span>
               </label>
               <input
                 id="table-answer-name"
@@ -143,6 +143,7 @@
             </div>
             <label
               v-if="data.isVariable"
+              for="data-source-name"
               class="col-form-label-md pull-left"
             >
               * Field Data Source Name | <span class="label-tip">The variable in your code that contains the table data. For example, task.info.tableData.</span>

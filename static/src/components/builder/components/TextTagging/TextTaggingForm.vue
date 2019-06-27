@@ -42,6 +42,7 @@
       <select
         id="editMode"
         v-model="editMode"
+        class="form-control"
         :class="{'danger-validation':getErrors(`readOnly`)}"
       >
         <option
@@ -85,12 +86,15 @@
           class="block-label"
         >
           Name | <span class="label-tip">The tag name to store in the answer.</span>
-          <input
+          <select
             v-model="tag.name"
             class="form-control form-control-sm"
             :class="{'danger-validation':getErrors(`tagList[${index}].name`)}"
-            type="text"
           >
+            <option>ORG</option>
+            <option>PER</option>
+            <option>CUR</option>
+          </select>
         </label>
         <div class="danger-validation-text">
           {{ getErrors(`tagList[${index}].name`) }}
@@ -131,7 +135,7 @@
       class="btn btn-default btn-sm col-sm-2"
       @click="addTag"
     >
-      Add Tag
+      New Tag
     </button>
     <br>
     <div>
@@ -328,9 +332,6 @@
   font-style: italic;
   font-weight: 400;
   font-size: smaller;
-}
-.label-tip:hover {
-  font-size: larger
 }
 .scroll {
   overflow-x: hidden;
