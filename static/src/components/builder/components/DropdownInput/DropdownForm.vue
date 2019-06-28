@@ -96,7 +96,6 @@
           >
         </label>
       </div>
-      <br>
     </div>
     <button
       id="add"
