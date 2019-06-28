@@ -49,7 +49,7 @@
     <h4>
       Choices
     </h4>
-    <div 
+    <div
         id="choices"
         class="scroll"
     >

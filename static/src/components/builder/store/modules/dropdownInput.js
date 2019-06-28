@@ -42,11 +42,11 @@ export const state = {
 
 function* getErrors (state) {
     const uniqueValues = new Set();
-    for (const [index, { display, value }] of state.choiceList.entries()) {
-        const key = `choiceList[${index}].value`
+    for (const [index, { value }] of state.choiceList.entries()) {
+        const key = `choiceList[${index}].value`;
         const trimmedValue = value.trim();
-        if (!trimmedValue) yield [key, `Choice ${index+1} value is required.`];
-        else if (uniqueValues.has(trimmedValue)) yield [key, `Choice ${index+1} value is not unique.`];
+        if (!trimmedValue) yield [key, `Choice ${index + 1} value is required.`];
+        else if (uniqueValues.has(trimmedValue)) yield [key, `Choice ${index + 1} value is not unique.`];
         else uniqueValues.add(trimmedValue);
     }
 }
