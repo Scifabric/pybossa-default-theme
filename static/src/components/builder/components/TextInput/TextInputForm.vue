@@ -32,7 +32,7 @@
                 for="pyb-answer"
                 class="col-form-label-sm"
               >
-                Answer field name
+                Answer field name | <span class="label-tip">The field where the worker's answer is stored. Can be JSON path like a.b.c.</span>
               </label>
               <input
                 id="pyb-answer"
@@ -48,7 +48,13 @@
     </div>
   </div>
 </template>
-
+<style scoped>
+.label-tip {
+  font-style: italic;
+  font-weight: 400;
+  font-size: smaller;
+}
+</style>
 <script>
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';

@@ -56,7 +56,7 @@
             <label
               class="block-label"
             >
-              Answer field name
+              Answer field name | <span class="label-tip">The field where the worker's answer is stored. Can be JSON path like a.b.c.</span>
               <input
                 id="pyb-answer"
                 :value="checkbox['pyb-answer']"
@@ -104,6 +104,11 @@
   font-size: 16px;
   font-weight: 400;
   display: block;
+}
+.label-tip {
+  font-style: italic;
+  font-weight: 400;
+  font-size: smaller;
 }
 .scroll {
   overflow-x: hidden;
