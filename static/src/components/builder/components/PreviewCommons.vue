@@ -80,7 +80,8 @@ export default {
         SUBMIT_BUTTON: 'submit-button',
         BUTTON_ROW: 'button-row',
         SUBMIT_LAST_BUTTON: 'submit-last-button',
-        TEXT_TAGGING: 'text-tagging'
+        TEXT_TAGGING: 'text-tagging',
+        DROPDOWN_INPUT: 'dropdown-input'
       }
     };
   },

@@ -7,6 +7,7 @@ import TableForm from './components/Table/TableForm.vue';
 import PreviewCommons from './components/PreviewCommons.vue';
 import RadioForm from './components/RadioInput/RadioInputForm.vue';
 import TextTaggingForm from './components/TextTagging/TextTaggingForm.vue';
+import DropdownForm from './components/DropdownInput/DropdownForm.vue';
 
 export const routes = [
   {
@@ -60,6 +61,28 @@ export const routes = [
       {
         path: 'code',
         name: 'RADIO_INPUT_CODE',
+        components: { default: PreviewCommons }
+      }
+    ]
+  },
+  {
+    path: '/dropdowninput',
+    name: 'DROPDOWN_INPUT',
+    components: { default: Content, header: Header },
+    children: [
+      {
+        path: 'form',
+        name: 'DROPDOWN_INPUT_FORM',
+        components: { default: DropdownForm }
+      },
+      {
+        path: 'preview',
+        name: 'DROPDOWN_INPUT_PREVIEW',
+        components: { default: PreviewCommons }
+      },
+      {
+        path: 'code',
+        name: 'DROPDOWN_INPUT_CODE',
         components: { default: PreviewCommons }
       }
     ]

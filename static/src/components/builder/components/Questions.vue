@@ -12,6 +12,7 @@
       <custom-router-link :component="textInput" />
       <custom-router-link :component="checkboxInput" />
       <custom-router-link :component="radioInput" />
+      <custom-router-link :component="dropdownInput" />
       <custom-router-link :component="table" />
       <custom-router-link :component="textTagging" />
     </div>
@@ -189,6 +190,13 @@ export default {
         params: {
           componentName: 'TEXT_TAGGING',
           header: 'NLP Enrichment'
+        }
+      },
+      dropdownInput: {
+        name: 'DROPDOWN_INPUT_FORM',
+        params: {
+          componentName: 'DROPDOWN_INPUT',
+          header: 'Dropdown Input'
         }
       }
     };
