@@ -11,7 +11,7 @@
             :id="radio.id"
             :value="radio.value"
             :pyb-answer="pybAnswer"
-            :initial-value="!!initialValue && (initialValue == radio.value)"
+            :initial-value="initialValue"
             :name="name"
           />
           {{ radio.label }}
