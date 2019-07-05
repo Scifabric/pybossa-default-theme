@@ -172,7 +172,7 @@ export default {
         ...this.getValuesForTemplate(radio),
         pybAnswer,
         name,
-        initialValue: !!initialValue && (radio.value === initialValue)
+        initialValue
       };
       let radioOutput = Mustache.render(
         radioInputTemplate,
