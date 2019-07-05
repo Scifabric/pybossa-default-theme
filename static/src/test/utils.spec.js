@@ -87,8 +87,7 @@ it('getRadioGroupCode for RADIO_INPUT', () => {
   expect(componentCode.includes(
     `pyb-answer="${radioInput.pybAnswer}"`)).toBeTruthy();
   expect(componentCode.includes(radioInput.radioList[1].label)).toBeTruthy();
-  expect(componentCode.includes(`:initial-value="true"`)).toBeTruthy();
-  expect(componentCode.includes(`:initial-value="false"`)).toBeTruthy();
+  expect(componentCode.includes(`initial-value="A"`)).toBeTruthy();
   expect(componentCode.includes(`value="${radioInput.radioList[0].value}"`)).toBeTruthy();
   expect(componentCode.includes(`value="${radioInput.radioList[1].value}"`)).toBeTruthy();
   expect(componentCode.includes(`name="${radioInput.name}"`)).toBeTruthy();
