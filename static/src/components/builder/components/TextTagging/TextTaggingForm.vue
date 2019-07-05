@@ -135,7 +135,7 @@
       class="btn btn-default btn-sm col-sm-2"
       @click="addTag"
     >
-      New Tag
+      Add Another Tag
     </button>
     <br>
     <div>
@@ -311,7 +311,7 @@
         class="btn btn-default btn-sm col-sm-2 col-md-2"
         @click="addEntity"
       >
-        Add Entity
+        Add {{ entityList.length ? 'Another ' : '' }}Entity
       </button>
     </template>
   </div>

@@ -73,7 +73,7 @@ function getEntities (state) {
     case 'variable':
       const preview = state.useStaticInPreview ? getStaticEntities() : [];
       return {
-        snippet: state.entities.variable,
+        snippet: state.entities.variable.trim() || [],
         preview
       };
     case 'static':
