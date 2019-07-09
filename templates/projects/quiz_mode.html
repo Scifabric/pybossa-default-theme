@@ -9,6 +9,7 @@
     <thead>
         <tr>
             <th>User</th>
+            <th>Enabled</th>
             <th>Status</th>
             <th>Right</th>
             <th>Wrong</th>
@@ -20,6 +21,7 @@
 {% for user in all_user_quizzes %}
         <tr>
             <td>{{user.fullname}}</td>
+            <td>{{'Yes' if user.quiz.config.enabled else 'No'}}</td>
             <td class="{{ {'passed':'bg-success','failed':'bg-danger'}.get(user.quiz.status, '') }}">{{user.quiz.status}}</td>
             <td>{{user.quiz.result.right}}</td>
             <td>{{user.quiz.result.wrong}}</td>
