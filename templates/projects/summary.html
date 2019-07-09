@@ -20,7 +20,7 @@
                     <span><em>External Configurations</em></span>
                     <a href="{{url_for('project.ext_config', short_name=project.short_name)}}" >
                         <button type="button" class="btn btn-sm" action="{{url_for('project.coowners', short_name=project.short_name)}}">
-                            <i class="fa fa-caret-square-o-right"></i>
+                            <i class="fa fa-external-link"></i>
                         </button>
                     </a>
                 </div>
@@ -52,7 +52,7 @@
                     <span><em>Project Users</em></span>
                     <a href="{{url_for('project.assign_users', short_name=project.short_name)}}" >
                         <button type="button" class="btn btn-sm" action="{{url_for('project.coowners', short_name=project.short_name)}}">
-                            <i class="fa fa-caret-square-o-right"></i>
+                            <i class="fa fa-external-link"></i>
                         </button>
                     </a>
                 </div>
@@ -85,7 +85,7 @@
                     <span><em>Manage Owners</em></span>
                     <a href="{{url_for('project.coowners', short_name=project.short_name)}}" >
                         <button type="button" class="btn btn-sm" action="{{url_for('project.coowners', short_name=project.short_name)}}">
-                            <i class="fa fa-caret-square-o-right"></i>
+                            <i class="fa fa-external-link"></i>
                         </button>
                     </a>
                 </div>
@@ -121,7 +121,7 @@
                     <span><em>Task Scheduler</em></span>
                     <a href="{{url_for('project.task_scheduler', short_name=project.short_name)}}">
                         <button type="button" class="btn btn-sm">
-                            <i class="fa fa-caret-square-o-right"></i>
+                            <i class="fa fa-external-link"></i>
                         </button>
                     </a>
                 </div>
@@ -138,7 +138,7 @@
                     <span><em>Task Redundancy</em></span>
                     <a href="{{url_for('project.task_n_answers', short_name=project.short_name)}}">
                         <button type="button" class="btn btn-sm">
-                            <i class="fa fa-caret-square-o-right"></i>
+                            <i class="fa fa-external-link"></i>
                         </button>
                     </a>
                 </div>
@@ -155,7 +155,7 @@
                     <span><em>Task Timeout</em></span>
                     <a href="{{url_for('project.task_timeout', short_name=project.short_name)}}">
                         <button type="button" class="btn btn-sm">
-                            <i class="fa fa-caret-square-o-right"></i>
+                            <i class="fa fa-external-link"></i>
                         </button>
                     </a>
                 </div>
@@ -168,17 +168,6 @@
                     </dev>
 
                 </div>
-                <!-- <form id="task_timeout" method="post" action="{{ url_for('project.task_timeout', short_name=project.short_name) }}">
-                        {{ form.hidden_tag() }}
-                        <fieldset>
-                            {{ render_field(form.minutes, placeholder= _('Minutes')) }}
-                            {{ render_field(form.seconds, placeholder= _('Seconds')) }}
-                            <div class="form-actions">
-                                <input type="submit" value={{_('Set timeout')}} class="btn btn-primary" />
-                                <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
-                            </div>
-                        </fieldset>
-                    </form> -->
             </div>
 
         </div>
@@ -189,34 +178,44 @@
                     <span><em>Answer Fields Configuration</em></span>
                     <a href="{{url_for('project.answerfieldsconfig', short_name=project.short_name)}}">
                         <button type="button" class="btn btn-sm">
-                            <i class="fa fa-caret-square-o-right"></i>
+                            <i class="fa fa-external-link"></i>
                         </button>
                     </a>
                 </div>
-
-                {% for key, value in answer_fields.items() %}
-                <div class="row">
-                    <div class="col-md-2">
-                        <p> {{ key }}</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p> {{ value['type'] }}</p>
-                    </div>
-                    <div class="col-md-3">
-                        <P>{{ 'retry enabled' if value['retry_for_consensus'] else 'retry disabled' }}</P>
-                    </div>
-                    <div class="col-md-5">
-                        {% for l in value['config']['labels'] %}
-                        <span> {{l}} </span>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endfor %}
+                <table class="table table-bordered table-striped table-hover"
+                    style="margin-top:15px">
+                    <thead>
+                        <tr>
+                            <th>Answer Field Name</th>
+                            <th>Answer Type</th>
+                            <th>Retry For Consensus</th>
+                            <th>Labels</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, value in answer_fields.items() %}
+                        <tr>
+                            <td>{{key}}</td>
+                            <td>{{value['type']}}</td>
+                            <td>{{'enabled' if value['retry_for_consensus'] else 'disabled'}}</td>
+                            <td>
+                                {% for l in value['config']['labels'] %}
+                                {% if loop.index == loop.length %}
+                                <span>{{l}}</span>
+                                {% else %}
+                                <span>{{l}},</span>
+                                {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
                 <div>
                     <span><em>Consensus Configuration</em></span>
                     <a href="{{url_for('project.answerfieldsconfig', short_name=project.short_name)}}">
                         <button type="button" class="btn btn-sm">
-                            <i class="fa fa-caret-square-o-right"></i>
+                            <i class="fa fa-external-link"></i>
                         </button>
                     </a>
                 </div>
@@ -253,7 +252,7 @@
                     <span><em>Quiz Configuration</em></span>
                     <a href="{{url_for('project.quiz_mode', short_name=project.short_name)}}">
                         <button type="button" class="btn btn-sm">
-                            <i class="fa fa-caret-square-o-right"></i>
+                            <i class="fa fa-external-link"></i>
                         </button>
                     </a>
                 </div>
@@ -291,41 +290,39 @@
                     </dev>
                 </div>
                 {% endif %}
+                <table id="quiz_result_table"
+                    class="table table-bordered table-striped table-hover"
+                    style="margin-top:15px">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Status</th>
+                            <th>Right</th>
+                            <th>Wrong</th>
+                            <th>Questions</th>
+                            <th>Passing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in all_user_quizzes %}
+                        <tr>
+                            <td>{{user.fullname}}</td>
+                            <td class="{{ {'passed':'bg-success','failed':'bg-danger'}.get(user.quiz.status, '') }}">{{user.quiz.status}}</td>
+                            <td>{{user.quiz.result.right}}</td>
+                            <td>{{user.quiz.result.wrong}}</td>
+                            <td>{{user.quiz.config.questions}}</td>
+                            <td>{{user.quiz.config.passing}}</td>
+                            <td><button class="btn btn-primary btn-sm" name="reset" value="{{user.id}}" form="quiz_form">Reset</button></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
-            <!-- <table id="quiz_result_table" class="table table-bordered table-striped table-hover" style="margin-top:15px">
-                <thead>
-                    <tr>
-                        <th>User</th>
-                        <th>Status</th>
-                        <th>Right</th>
-                        <th>Wrong</th>
-                        <th>Questions</th>
-                        <th>Passing</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for user in all_user_quizzes %}
-                    <tr>
-                        <td>{{user.fullname}}</td>
-                        <td class="{{ {'passed':'bg-success','failed':'bg-danger'}.get(user.quiz.status, '') }}">{{user.quiz.status}}</td>
-                        <td>{{user.quiz.result.right}}</td>
-                        <td>{{user.quiz.result.wrong}}</td>
-                        <td>{{user.quiz.config.questions}}</td>
-                        <td>{{user.quiz.config.passing}}</td>
-                        <td><button class="btn btn-primary btn-sm" name="reset" value="{{user.id}}" form="quiz_form">Reset</button></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table> -->
         </div>
     </div>
 </div>
 
 <style>
-.content{
-    background-color: white
-}
-
 .nav-tabs li.active{
     border: 1px solid #c9d8dfe3;
     border-bottom: 2px solid white
