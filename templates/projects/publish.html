@@ -52,7 +52,8 @@
         <h3>{{_('Project Sync')}}</h3>
         {% if server_url != target_url and (current_user.admin or (current_user.subadmin and current_user.id in project.owners_ids)) %}
             <strong>{{ _('Sync project to production') }}</strong>
-            <p>{{ _('  To get your API key follow: ') }}&nbsp;
+            <p>{{  _('  If your project is already on production, please ensure that the ‘Enable Project Syncing’ setting is checked on the Production job.') }}
+                    {{ _('  Then get your API key from production as follow: ') }}&nbsp;
                     <b>
                         <a href="{{ target_url }}" target="_blank">{{ target_url }}</a>
                         {{  _(' > My Profile > API Key ') }}
