@@ -20,7 +20,7 @@
 
     {% if project.published and (current_user.admin or (current_user.subadmin and current_user.id in project.owners_ids))%}
         <h3> Unpublish Project </h3>
-        <strong>{{ _('Unpublish project from ') }} <a href="https://{{ server_url }}" target="_blank">{{ server_url }}</a></strong>
+        <strong>{{ _('Unpublish project from ') }} {{ server_type }}</strong>
         <p>{{ _('You are about to unpublish your project. Once your project has been unpublished, people will not be able to contribute to it. ') }}</p>
 
         <form class="form-horizontal" method="post" action="{{ url_for('project.publish', short_name=project.short_name, published=0) }}">
@@ -32,9 +32,10 @@
 
     {% else %}
         <h3> Publish Project </h3>
-        <strong>{{ _('Publish project in ') }} <a href="https://{{ server_url }}" target="_blank">{{ server_url }}</a></strong>
-        <p>{{ _('You are about to publish your project. Once your project has been published, people will be able to contribute to it. ') }}
-            {{ _('It means that your project should be working properly, so please make sure it does. Otherwise you can work on it and publish it once it works fine.') }}</p>
+        <strong>{{ _('Publish project on ') }} {{ server_type }}</strong>
+        <p>
+            {{ _('You are about to publish your project in ') }} {{server_type}} {{_(' Gigwork environment. Once your project is published, it can be tested by other users with ')}} {{server_type}} {{ _(' GIGwork accounts.') }}
+            {{ _('This action will not push your project to the production environment. To do this, please use the Sync Project to Production tab so that your workforce can access it.')}}</p>
         <form class="form-horizontal" method="post" action="{{ url_for('project.publish', short_name = project.short_name, published=1) }}">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                 <label >
@@ -55,7 +56,7 @@
             <p>{{  _('  If your project is already on production, please ensure that the ‘Enable Project Syncing’ setting is checked on the Production job.') }}
                     {{ _('  Then get your API key from production as follow: ') }}&nbsp;
                     <b>
-                        <a href="{{ target_url }}" target="_blank">{{ target_url }}</a>
+                        <a href="{{ target_url }}" target="_blank">Production GIGwork</a>
                         {{  _(' > My Profile > API Key ') }}
                     </b></p>
 
