@@ -39,6 +39,7 @@
         {{ render_checkbox_field(form.hidden, tooltip=_('Check if you want to hide your project'))}}
         {{ render_checkbox_field(form.email_notif, tooltip=_('Check if you want to send email notifications to your workers when new tasks are loaded'))}}
         {% if sync_enabled %}
+            <h3>{{_('Enable project syncing')}}</h3>
             {{ render_checkbox_field(form.sync_enabled, class_="", tooltip=_('Check if you want to enable project syncing')) }}
         {% endif %}
         <div id='password'>{{ render_field(form.password, placeholder="Leave blank to maintain set password") }}</div>
@@ -51,37 +52,6 @@
         </div>
     </fieldset>
 </form>
-
-<h3>{{_('Project Sync')}}</h3>
-    {% if server_url != target_url and (current_user.admin or (current_user.subadmin and current_user.id in project.owners_ids)) %}
-        <form method="post" action="{{ url_for('project.sync_project', short_name = project.short_name) }}">
-            <fieldset>
-                {{ render_field(sync_form.target_key, placeholder=_('Enter your API key from ' + target_url)) }}
-                <div class="form-actions">
-                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-                    <button type="submit" name='btn' value="sync" class="btn btn-primary">
-                        {{_('Sync Project')}}
-                    </button>
-                    <button type="submit" name='btn' value="undo" class="btn btn-default">
-                        {{_('Undo Last Sync')}}
-                    </button>
-                </div>
-            </fieldset>
-            <p>
-                <span class="label label-info"><i class="fa fa-bullhorn"></i>{{_('Note')}}</span>&nbsp;
-                {{ _('  To get your API key follow: ') }}&nbsp;
-                <b>
-                    <a href="{{ target_url }}" target="_blank">{{ target_url }}</a>
-                    {{  _(' > My Profile > API Key ') }}
-                </b>
-            </p>
-        </form>
-    {% else %}
-        <p>
-            <span class="label label-info"><i class="fa fa-bullhorn"></i>{{_('Note')}}</span>&nbsp;
-            {{ _('  Project syncing from this domain is disabled.') }}
-        </p>
-    {% endif %}
 
 <h3>{{_('Project secret key')}}</h3>
 <div class="input-group">

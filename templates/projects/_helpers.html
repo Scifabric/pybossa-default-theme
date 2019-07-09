@@ -223,7 +223,6 @@
         <form class="form-horizontal" method="post" action="{{ url_for('project.publish', short_name=project.short_name, published=0) }}">
           <div class="form-actions">
               <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
-              <button type="submit" class="btn btn-lg btn-default"/>{{_('Unpublish Project')}}</button>
               <a href="{{ url_for('project.presenter', short_name=project.short_name)}}" class="btn btn-lg btn-primary">{{ _('Start Contributing Now!') }}</a>
           </div>
         </form>

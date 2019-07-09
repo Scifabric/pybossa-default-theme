@@ -1,30 +1,82 @@
 {% extends "projects/base.html" %}
 {% set active_page = "projects" %}
 {% import "projects/_helpers.html" as helper %}
-{% set section = _("Publish the project") %}
 
 {% block projectcontent %}
-{% if project %}
-  <div class="alert alert-danger">
-      <strong>{{ _('Please read carefully!') }}</strong>
-      <br>{{ _('You are about to publish your project. Once your project has been published, people will be able to contribute to it. ') }}
-      {{ _('It means that your project should be working properly, so please make sure it does. Otherwise you can work on it and publish it once it works fine.') }}</br>
+{% from "_formhelpers.html" import render_field, render_checkbox_field, render_select2_field %}
+
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#basics" aria-controls="basics" role="tab" data-toggle="tab">Publish/Unpublish Project</a></li>
+    <li role="presentation"><a href="#sync" aria-controls="wdev" role="tab" data-toggle="tab">Sync Project to Production</a></li>
+
+  </ul>
+
+  <!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active col-md-12" id="basics">
+
+    {% if project.published and (current_user.admin or (current_user.subadmin and current_user.id in project.owners_ids))%}
+        <h3> Unpublish Project </h3>
+        <strong>{{ _('Unpublish project from ') }} {{ server_type }}</strong>
+        <p>{{ _('You are about to unpublish your project. Once your project has been unpublished, people will not be able to contribute to it. ') }}</p>
+
+        <form class="form-horizontal" method="post" action="{{ url_for('project.publish', short_name=project.short_name, published=0) }}">
+            <div class="form-actions">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                <input type="submit" class="btn btn-md btn-primary" value="{{ _('Unpublish') }}"/>
+            </div>
+        </form>
+
+    {% else %}
+        <h3> Publish Project </h3>
+        <strong>{{ _('Publish project on ') }} {{ server_type }}</strong>
+        <p>
+            {{ _('You are about to publish your project in ') }} {{server_type}} {{_(' Gigwork environment. Once your project is published, it can be tested by other users with ')}} {{server_type}} {{ _(' GIGwork accounts.') }}
+            {{ _('This action will not push your project to the production environment. To do this, please use the Sync Project to Production tab so that your workforce can access it.')}}</p>
+        <form class="form-horizontal" method="post" action="{{ url_for('project.publish', short_name = project.short_name, published=1) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                <label >
+                    <input type="checkbox" name="force_reset"> {{_('Force remove taskruns and results when publish.')}}
+                </label>
+                <br>
+                <div class="form-actions">
+                    <input type="submit" class="btn btn-md btn-primary" value="{{ _('Publish') }}"/>
+                </div>
+        </form>
+    {% endif %}
   </div>
-  <form class="form-horizontal" method="post" action="{{ url_for('project.publish', short_name = project.short_name, published = published) }}">
-    <fieldset>
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-        <input type="checkbox" name="force_reset"> {{_('Force remove taskruns and results.')}}
-        <h3><strong>{{ _('Are you sure you want to publish this project?') }}</strong></h3>
-        <div class="form-actions">
-          <input type="submit" class="btn btn-lg btn-default" value="{{ _('Yes, publish it') }}"/>
-          <a href="{{ url_for('project.settings', short_name = project.short_name) }}" class="btn btn-lg btn-primary">{{ _('No, do not publish it!') }}</a>
-        </div>
-    </fieldset>
-  </form>
-{% else %}
-  <div class="page-header">
-    <h1>{{ _('Sorry! This project does not exist.') }}</h1>
-  </div>
-{% endif %}
-{{ helper.broken_image() }}
+
+  <div role="tabpanel" class="tab-pane fade" id="sync">
+        <h3>{{_('Project Sync')}}</h3>
+        {% if server_url != target_url and (current_user.admin or (current_user.subadmin and current_user.id in project.owners_ids)) %}
+            <strong>{{ _('Sync project to production') }}</strong>
+            <p>{{  _('  If your project is already on production, please ensure that the ‘Enable Project Syncing’ setting is checked on the Production job.') }}
+                    {{ _('  Then get your API key from production as follow: ') }}&nbsp;
+                    <b>
+                        <a href="{{ target_url }}" target="_blank">Production GIGwork</a>
+                        {{  _(' > My Profile > API Key ') }}
+                    </b></p>
+
+            <form method="post" action="{{ url_for('project.sync_project', short_name = project.short_name) }}">
+                <fieldset>
+                    {{ render_field(sync_form.target_key, placeholder=_('Enter your API key from ' + target_url)) }}
+                    <div class="form-actions">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                        <button type="submit" name='btn' value="sync" class="btn btn-md btn-primary">
+                            {{_('Sync Project')}}
+                        </button>
+                        <button type="submit" name='btn' value="undo" class="btn btn-md btn-default">
+                            {{_('Undo Last Sync')}}
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        {% else %}
+            <p>{{ _('  Project syncing from this domain is disabled.') }}</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
