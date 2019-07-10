@@ -2,8 +2,7 @@
     <div class="navbar-inner" style="min-height:100px;">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ url_for('home.home') }}"><img src="{{url_for('static',filename='img/' + logo)}}" alt="{{brand}}">
-                <span class="label label-warning env-name">{{server_type}}</span></a>
+            <a class="navbar-brand" href="{{ url_for('home.home') }}"><img src="{{url_for('static',filename='img/' + logo)}}" alt="{{brand}}"></a>
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                 {{_('Menu')}}
             </button>
@@ -48,8 +47,6 @@
 </div>
 <style>
 .env-name{
-    margin-left: 4em;
-    position: absolute;
-    bottom: 1em;
+
 }
 </style>
