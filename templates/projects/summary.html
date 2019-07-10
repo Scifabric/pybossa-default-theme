@@ -15,7 +15,7 @@
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="project">
             <div class="col-md-12">
-                {% if private_instance %}
+
                 <div>
                     <span><em>External Configurations</em></span>
                     <a href="{{url_for('project.ext_config', short_name=project.short_name)}}" >
@@ -38,6 +38,7 @@
                         {% endif %}
                     </dev>
                 </div>
+                {% if private_instance %}
                 <div class="row">
 
                     <dev class="col-md-3">
@@ -47,7 +48,6 @@
                         <p> {{data_access}} </p>
                     </dev>
                 </div>
-
                 <div>
                     <span><em>Project Users</em></span>
                     <a href="{{url_for('project.assign_users', short_name=project.short_name)}}" >
@@ -73,8 +73,6 @@
                         </p>
                     </dev>
                 </div>
-                {% else %}
-                <p> No configuration required</p>
                 {% endif %}
             </div>
         </div>
