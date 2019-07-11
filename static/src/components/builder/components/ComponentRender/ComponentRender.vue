@@ -96,6 +96,16 @@ export default {
             name: this.form.name
           }
         };
+      } else if (this.selectedComponent === 'dropdown-input') {
+        return {
+          name: 'dropdown-input',
+          attrs: { id: 'test' },
+          props: {
+            pybAnswer: this.form.pybAnswer,
+            choices: this.form.choices,
+            initialValue: this.form.initialValue
+          }
+        };
       } else if (this.selectedComponent === 'text-tagging') {
         return {
           name: 'text-tagging',

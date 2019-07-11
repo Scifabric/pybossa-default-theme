@@ -16,6 +16,7 @@ import slotTemplate from './components/Table/slotTemplate.html';
 import radioGroupTemplate from './components/RadioInput/radioGroupTemplate.html';
 import radioInputTemplate from './components/RadioInput/radioInputTemplate.html';
 import textTaggingTemplate from './components/TextTagging/textTaggingTemplate.html';
+import dropdownTemplate from './components/DropdownInput/dropdownTemplate.html';
 import { flatten, uniq, flow } from 'lodash';
 
 export const templates = {
@@ -52,6 +53,8 @@ export default {
       return this.getTextInputCode(form, component);
     } else if (component === 'TEXT_TAGGING') {
       return this.getTextTaggingCode(form);
+    } else if (component === 'DROPDOWN_INPUT') {
+      return this.getDropdownCode(form);
     } else {
       return this.getHelperComponentCode(component);
     }
@@ -237,6 +240,26 @@ export default {
       // Otherwise it's an array so stringify it.
       else return JSON.stringify(snippet);
     }
+  },
+
+  getDropdownCode ({ pybAnswer, choices, labelAdded, label, initialValue }) {
+    let output = Mustache.render(
+      dropdownTemplate,
+      {
+        pybAnswer,
+        choices: JSON.stringify(choices),
+        initialValue
+      }
+    );
+
+    if (labelAdded) {
+      const labelArgs = {
+        component: output,
+        label
+      };
+      output = Mustache.render(labelTemplate, labelArgs);
+    }
+    return output;
   },
 
   getTextInputCode (form, component) {
