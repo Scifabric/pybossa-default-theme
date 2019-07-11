@@ -28,23 +28,6 @@
         type="text"
       >
     </label>
-    <label
-      class="block-label"
-    >
-      Initial Value | <span class="label-tip">Must be one of the configured choice values.</span>
-      <select
-        v-model="initialValue"
-        class="form-control form-control-sm"
-      >
-        <option selected />
-        <option
-          v-for="value in values"
-          :key="value"
-        >
-          {{ value }}
-        </option>
-      </select>
-    </label>
     <hr>
     <h4>
       Choices
@@ -102,8 +85,27 @@
       class="btn btn-default btn-sm col-sm-2"
       @click="addChoice"
     >
-      New Choice
+      Add Another Choice
     </button>
+    <br>
+    <hr>
+    <label
+      class="block-label"
+    >
+      Initial Value
+      <select
+        v-model="initialValue"
+        class="form-control form-control-sm"
+      >
+        <option selected />
+        <option
+          v-for="value in values"
+          :key="value"
+        >
+          {{ value }}
+        </option>
+      </select>
+    </label>
   </div>
 </template>
 <style scoped>
@@ -134,6 +136,7 @@
 }
 .danger-validation-text {
   color: #d9534f;
+  margin-bottom: 10px;
 }
 .btn-times-delete {
   color: #d9534f;
