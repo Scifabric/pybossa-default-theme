@@ -18,7 +18,8 @@ module.exports = {
     performancestats: './performancestats.js',
     task_browse: './task_browse.js',
     userprofile: './userprofile.js',
-    wizard: './wizard.js'
+    wizard: './wizard.js',
+    setting: './setting.js'
   },
   // where to place the compiled bundle
   output: {
@@ -123,6 +124,12 @@ module.exports = {
       filename: '../../../templates/projects/wizard.html',
       template: '../../templates/projects/wizard.webpack.ejs'
     }),
-    new VueLoaderPlugin()
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: false,
+      filename: '../../../templates/projects/summary.html',
+      template: '../../templates/projects/summary.webpack.ejs'
+    }),
+    new VueLoaderPlugin(),
   ]
 };

@@ -10,22 +10,6 @@
           stylr="margin-bottom: 5px"
         >
           <span
-            v-if="editing"
-            :disabled="!editable"
-            class="btn btn-sm btn-success"
-            @click="toggleEdit"
-          >
-            Finish
-          </span>
-          <span
-            v-else
-            :disabled="!editable"
-            class="btn btn-sm btn-warning"
-            @click="toggleEdit"
-          >
-            Edit
-          </span>
-          <span
             v-if="retry"
             class="btn btn-sm btn-default"
             @click="changeRetryStatus"
@@ -43,7 +27,7 @@
             class="btn btn-sm btn-danger"
             @click="deleteField({ name })"
           >
-            Delete
+            Delete Field
           </span>
         </div>
       </div>
@@ -56,7 +40,7 @@
           class="retry"
         >  (Retry) </span>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-1 pull-right">
         <span @click="changeCollapseStatus">
           <i
             v-if="collapse"
@@ -83,8 +67,8 @@ export default {
     name: String,
     type: String,
     retryForConsensus: Boolean,
-    editable: Boolean,
-    edit: Boolean
+    edit: Boolean,
+    isEditable: Boolean
   },
 
   data () {
@@ -98,13 +82,6 @@ export default {
   methods: {
     ...mapMutations(['deleteField', 'changeRetryConfig']),
 
-    toggleEdit () {
-      if (!this.editable) {
-        return;
-      }
-      this.editing = !this.editing;
-      this.$emit('edit', this.editing);
-    },
 
     changeRetryStatus () {
       this.retry = !this.retry;
@@ -113,7 +90,11 @@ export default {
     },
 
     changeCollapseStatus () {
+
       this.collapse = !this.collapse;
+      this.$emit('edit', !this.collapse);
+
+
     }
   }
 };

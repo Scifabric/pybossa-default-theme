@@ -1,0 +1,132 @@
+{% extends "/projects/base.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block projectcontent %}
+<div role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist" style="border-bottom: 1px solid #c9d8dfe3">
+        <li role="presentation" class="active"><a href="#project" aria-controls="project" role="tab" data-toggle="tab">Project</a></li>
+        <li role="presentation"><a href="#ownership" aria-controls="ownership" role="tab" data-toggle="tab">Ownership</a></li>
+        <li role="presentation"><a href="#task" aria-controls="task" role="tab" data-toggle="tab">Task</a></li>
+        <li role="presentation"><a href="#answer" aria-controls="answer" role="tab" data-toggle="tab">Answer</a></li>
+        <li role="presentation"><a href="#quiz" aria-controls="quiz" role="tab" data-toggle="tab">Quiz</a></li>
+    </ul>
+    <br>
+
+    <div id="setting" class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="project">
+            <div class="col-md-12">
+                <!-- <setting
+                    :external-config="{{external_config}}"
+                    :assign-users="{{assign_user}}"
+                    :all-users="{{users}}"
+                    :data-access="{{data_access}}"
+                    v-bind:is-private="{{private_instance|lower}}">
+                </setting> -->
+                <setting
+                    csrf-token="{{csrf}}"
+                    :external-config="{{external_config}}"
+                    :assign-users="{{assign_user}}"
+                    :all-users="{{users}}"
+                    :data-access="{{data_access}}"
+                    :is-private="true">
+                </setting>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="ownership">
+            <div class="col-md-12 ">
+                <ownership-setting
+                    csrf-token="{{csrf}}"
+                    owner="{{owner}}"
+                    :owner-id="{{owner_id}}"
+                    :co-owners="{{coowners}}">
+                </ownership-setting>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="task">
+            <div class="col-md-12">
+                <task-setting
+                    csrf-token="{{csrf}}"
+                    :config="{{sched_config}}"
+                    :task-timeout="{{timeout}}"
+                    :task-redundancy="{{default_task_redundancy}}">
+                </task-setting>
+
+            </div>
+
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="answer">
+            <div class="col-md-12">
+                <div >
+                    <fields-config >
+                </fields-config>
+                </div>
+                <div>
+                    <br>
+                    <consensus-config :consensus-config="{{consensus_config}}"></consensus-config>
+                </div>
+            </div>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="quiz">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <quiz-setting csrf-token="{{csrf}}" :config="{{quiz_config}}" > </quiz-setting>
+                    </div>
+                </div>
+
+                <table id="quiz_result_table"
+                    class="table table-bordered table-striped table-hover"
+                    style="margin-top:15px">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Status</th>
+                            <th>Right</th>
+                            <th>Wrong</th>
+                            <th>Questions</th>
+                            <th>Passing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in all_user_quizzes %}
+                        <tr>
+                            <td>{{user.fullname}}</td>
+                            <td class="{{ {'passed':'bg-success','failed':'bg-danger'}.get(user.quiz.status, '') }}">{{user.quiz.status}}</td>
+                            <td>{{user.quiz.result.right}}</td>
+                            <td>{{user.quiz.result.wrong}}</td>
+                            <td>{{user.quiz.config.questions}}</td>
+                            <td>{{user.quiz.config.passing}}</td>
+                            <td><button class="btn btn-primary btn-sm" name="reset" value="{{user.id}}" form="quiz_form">Reset</button></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+<script src="<%= htmlWebpackPlugin.files.chunks.setting.entry %>"></script>
+<script>
+answerFields.setData({
+    csrf: '{{csrf}}',
+    answerFields: {{answer_fields | safe}},
+    consensus: {{consensus_config | safe}}
+});
+</script>
+
+<style>
+.nav-tabs li.active{
+    border: 1px solid #c9d8dfe3;
+    border-bottom: 2px solid white
+}
+</style>
+{% endblock %}
+
+
