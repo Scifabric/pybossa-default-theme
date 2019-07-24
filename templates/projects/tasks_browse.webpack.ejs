@@ -24,9 +24,7 @@
             {{_(' As gold tasks has no redundancy, this would be blank for gold tasks')}}.</li>
             {% endif %}
             <li><strong>{{_('Priority')}}</strong>: {{_('Shows the priority of the task, priority ranges from 0.0 (lowest value) to 1.0 (highest priority)')}}.</li>
-            {% if can_know_task_is_gold %}
             <li><strong>%{{_('Complete')}}</strong>: {{_('Shows the percentage that has been completed of the task')}}.{{_(' This would be blank for gold tasks as such tasks has no redundancy and would never complete')}}.</li>
-            {% endif %}
             <li><strong>{{_('Created')}}</strong>: {{_('When the task was created')}}.</li>
             <li><strong>{{_('Completed')}}</strong>: {{_('When the task became fully completed')}}.</li>
             {% if can_know_task_is_gold %}
@@ -73,9 +71,7 @@
             <ul class="dropdown-menu" aria-labelledby="btnColumnsSettings">
                 <li><a href="#" class="columns_settings" data-value="task_id" tabIndex="-1"><input type="checkbox" {{ "checked" if "task_id" in filter_data.display_columns }} disabled="disabled" />&nbsp;Task Id</a></li>
                 <li><a href="#" class="columns_settings" data-value="priority" tabIndex="-1"><input type="checkbox" {{ "checked" if "priority" in filter_data.display_columns }}/>&nbsp;Priority</a></li>
-                {% if can_know_task_is_gold %}
                 <li><a href="#" class="columns_settings" data-value="pcomplete" tabIndex="-1"><input type="checkbox" {{ "checked" if "pcomplete" in filter_data.display_columns }}/>&nbsp;%Complete</a></li>
-                {% endif %}
                 <li><a href="#" class="columns_settings" data-value="created" tabIndex="-1"><input type="checkbox" {{ "checked" if "created" in filter_data.display_columns }}/>&nbsp;Created</a></li>
                 <li><a href="#" class="columns_settings" data-value="finish_time" tabIndex="-1"><input type="checkbox" {{ "checked" if "finish_time" in filter_data.display_columns }}/>&nbsp;Completed</a></li>
                 {% if can_know_task_is_gold %}
