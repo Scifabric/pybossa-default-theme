@@ -7,6 +7,7 @@
 {% from "_formhelpers.html" import render_field %}
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/codemirror.css')}}"/>
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/addons/display/fullscreen.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/addons/dialog/dialog.css')}}"/>
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/summernote/summernote.css')}}"/>
 <link  href="{{url_for('static', filename='vendor/summernote/font/summernote.eot')}}"/>
 <link  href="{{url_for('static', filename='vendor/summernote/font/summernote.ttf')}}"/>
@@ -76,12 +77,25 @@
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#presenter" aria-controls="basics" role="tab" data-toggle="tab">Task Presenter</a></li>
-      <li role="presentation"><a href="#guidelines" aria-controls="wdev" role="tab" data-toggle="tab">Annotation guidelines</a></li>
+      <li role="presentation" class="active"><a href="#guidelines" aria-controls="basics" role="tab" data-toggle="tab">Annotation Guidelines</a></li>
+      <li role="presentation"><a href="#presenter" aria-controls="basics" role="tab" data-toggle="tab">Task Presenter</a></li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
-          <div role="tabpanel" class="tab-pane fade in active col-md-12 " id="presenter">
+          <div role="tabpanel" class="tab-pane fade in active col-md-12" id="guidelines">
+              <!-- <link rel="stylesheet" href="{{url_for('static', filename='vendor/editor.md/css/editormd.css')}}"/> -->
+                  <div class = "row">
+                      <textarea id='guidelines-editor' rows='10'></textarea>
+                      <script>
+                          $(document).ready(function() {
+                              $('#guidelines-editor').summernote(
+                                { height: 500 }
+                              );
+                          });
+                      </script>
+                  </div>
+          </div>
+          <div role="tabpanel"  class="tab-pane fade col-md-12" id="presenter">
 
               <!-- Task Presenter Editor -->
               <div class="row padding-top-tab-content ">
@@ -229,40 +243,6 @@
                   </div><!-- /.modal-dialog -->
               </div><!-- /.modal -->
           </div> <!-- End Task Presenter Tab-->
-
-          <div role="tabpanel" class="tab-pane fade col-md-12" id="guidelines">
-              <!-- <link rel="stylesheet" href="{{url_for('static', filename='vendor/editor.md/css/editormd.css')}}"/> -->
-                  <div class = "row">
-                      <textarea id='guidelines-editor' rows='10'></textarea>
-                      <script>
-                          $(document).ready(function() {
-                              $('#guidelines-editor').summernote(
-                                { height: 500 }
-                              );
-                          });
-
-                          var updateGuidelines = function() {
-                              var markup = $('#guidelines-editor').summernote('code');
-                              alert(markup);
-                          };
-
-                          var cancelGuidelines = function() {
-                              var markup = $('#guidelines-editor').summernote('code');
-                              alert(markup);
-                          };
-                      </script>
-                  </div>
-
-                  <div class = "row padding-top-tab-content">
-                      <div class="form-actions">
-                          {% if not disable_editor %}
-                          <button id="update-guidelines" class="btn btn-primary" onclick="updateGuidelines()" type="button">Update</button>
-                          <button id="cancel-guidelines" class="btn btn-warning" onclick="cancelGuidelines()" type="button">Cancel</button>
-                          {% endif %}
-                      </div>
-                  </div>
-
-          </div>
     </div>
 </div>
 
@@ -342,6 +322,11 @@ var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     }
   }
 });
+
+setInterval(function() {
+  editor.refresh();
+}, 10);
+
 function showPreview() {
     render(editor.getValue());
     $("#modal-preview").modal('show');
