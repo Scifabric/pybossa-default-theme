@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/codemirror.css')}}"/>
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/addons/display/fullscreen.css')}}"/>
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/codemirror/addons/dialog/dialog.css')}}"/>
+<link rel="stylesheet" href="{{url_for('static', filename='vendor/summernote/summernote.css')}}"/>
+<link  href="{{url_for('static', filename='vendor/summernote/font/summernote.eot')}}"/>
+<link  href="{{url_for('static', filename='vendor/summernote/font/summernote.ttf')}}"/>
+<link  href="{{url_for('static', filename='vendor/summernote/font/summernote.woff')}}"/>
+
 <style>
     .cursor-link {
         cursor: pointer;
@@ -63,160 +68,197 @@
     /* symbol for "collapsed" panels */
     content: "\f054"; /* font-awesome.min.css */
 }
+.padding-top-tab-content {
+  padding-top: 20px;
+}
+
 </style>
-<!-- Task Presenter Editor -->
-<div class="row ">
-    <div class="col-md-2 pull-right text-right">
-        <a class="btn btn-info" href="http://docs.pybossa.com/user/overview/#creating-the-task-presenter_1"><i class="fa fa-book"></i> {{ _('Help') }}</a></h1>
-    </div>
-    <div class="col-md-10">
-        <p id="component-builder-description">
-            Click <a id = "show-builder" class = "cursor-link" >Graphical Component Builder</a>
-            to build your job with our interactive GUI.
 
-        </p>
-    </div>
-</div>
-            <div class="row ">
-                <div  id="mirror" class="col-md-12">
-                    <h2>Task Presenter</h2>
-                    <form class="col-md-12" method="post"
-                         action="{{ url_for('project.task_presenter_editor', short_name=project.short_name) }}">
-                        {{ form.hidden_tag() }}
-                        <fieldset>
-                            {{ render_field(form.editor)}}
-                            <div class="form-actions">
-                                {% if disable_editor %}
-                                <input type="submit" value={{ _('Update the project task presenter') }} class="btn btn-primary" disabled />
-                                {% else %}
-                                <input type="submit" value={{ _('Update the project task presenter') }} class="btn btn-primary" />
-                                {% endif %}
-                                <a href="#" class="btn btn-default btn-preview" value="preview">{{ _('Preview the task presenter') }}</a>
-                                {% if current_user.admin or current_user.subadmin %}
-                                    <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-warning">{{ _('Cancel') }}</a>
-                                {% else %}
-                                    <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn btn-warning">{{ _('Cancel') }}</a>
-                                {% endif %}
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
+<div role="tabpanel">
 
-                    <p id = "component-builder-hide">
-                        <a class="pull-right text-right hide-text cursor-link" id = "hide-builder">Hide Graphical Component Builder</a>
-                    </p>
-                    {% include "projects/component_helper.html" %}
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#guidelines" aria-controls="basics" role="tab" data-toggle="tab">Annotation Guidelines</a></li>
+      <li role="presentation"><a id="tab-presenter" href="#presenter" aria-controls="basics" role="tab" data-toggle="tab">Task Presenter</a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade in active col-md-12" id="guidelines">
+              <!-- <link rel="stylesheet" href="{{url_for('static', filename='vendor/editor.md/css/editormd.css')}}"/> -->
+                  <div class = "row">
+                      <textarea id='guidelines-editor' rows='10'></textarea>
+                      <script>
+                          $(document).ready(function() {
+                              $('#guidelines-editor').summernote(
+                                { height: 500 }
+                              );
+                          });
+                      </script>
+                  </div>
+          </div>
+          <div role="tabpanel"  class="tab-pane fade col-md-12" id="presenter">
 
-            </div>
+              <!-- Task Presenter Editor -->
+              <div class="row padding-top-tab-content ">
+                  <div class="col-md-2 pull-right text-right">
+                      <a class="btn btn-info" href="http://docs.pybossa.com/user/overview/#creating-the-task-presenter_1"><i class="fa fa-book"></i> {{ _('Help') }}</a></h1>
+                  </div>
+                  <div class="col-md-10">
+                      <p id="component-builder-description">
+                          Click <a id = "show-builder" class = "cursor-link" >Graphical Component Builder</a>
+                          to build your job with our interactive GUI.
+                      </p>
+                  </div>
+              </div>
 
-            <div class="row">
-              <div class="col-md-12">&nbsp;</div>
-            </div>
+              <div class="row ">
+                  <div  id="mirror" class="col-md-12">
+                      <form class="col-md-12" method="post"
+                          action="{{ url_for('project.task_presenter_editor', short_name=project.short_name) }}">
+                          {{ form.hidden_tag() }}
+                          <fieldset>
+                              {{ render_field(form.editor)}}
 
-            <div id="sync-panels" class="row">
-                    <div class="col-md-6">
-                      <div class="panel panel-info">
-                        <div class="panel-heading">
-                          <a class="accordion-panel" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-github" aria-expanded="true" aria-controls="panel-github">
-                            Latest GitHub Push Details
-                          </a>
-                        </div>
-                        <div id="panel-github" class="panel-body collapse in">
-                          {% if project.info.pusher and project.info.timestamp and project.info.ref_url and project.info.ref%}
-                              <table class="table table-hover table-condensed" >
-                                <tr>
-                                    <td ><p>Author:</p></td>
-                                    <td><p>{{ project.info.pusher }}</p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>Message:</p></td>
-                                    <td><p>{{ project.info.message }}</p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>Last Updated:</p></td>
-                                    <td><p>{{ project.info.timestamp }}</p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>Last Commit:</p></td>
-                                    <td class="ref-details"><a href={{ project.info.ref_url }} target="_blank">{{ project.info.ref }}</a></td>
-                                </tr>
-                              </table>
-                          {% else %}
-                              <p class="message">Task presenter code was not updated via GitHub</p>
-                          {% endif %}
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="panel panel-info">
-                        <div class="panel-heading">
-                          <a class="accordion-panel" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-sync" aria-expanded="true" aria-controls="panel-sync">
-                            Latest Project Sync Details
-                          </a>
-                        </div>
-                        <div id="panel-sync" class="panel-body collapse in">
-                          {% if project.info.sync %}
-                            {% if project.info.sync.syncer and project.info.sync.latest_sync and project.info.sync.source_url %}
-                                <table class="table table-hover table-condensed">
-                                  <tr>
-                                      <td><p>Syncer:</p></td>
-                                      <td><p>{{ project.info.sync.syncer }}</p></td>
-                                  </tr>
-                                  <tr>
-                                      <td><p>Last Synced:</p></td>
-                                      <td><p>{{ project.info.sync.latest_sync }}</p></td>
-                                  </tr>
-                                  <tr>
-                                      <td><p>Synced With:</p></td>
-                                      <td class="ref-details"><a href={{ project.info.sync.source_url + '/project/' + project.short_name }} target="_blank">
-                                              {{ project.info.sync.source_url + '/project/' + project.short_name }}
-                                      </a></td>
-                                  </tr>
-                                  {% if project.info.sync.ref and project.info.sync.ref_url %}
-                                  <tr>
-                                      <td><p>GitHub Reference:</p></td>
-                                      <td class="ref-details"><a href={{ project.info.sync.ref_url }} target="_blank">
-                                              {{ project.info.sync.ref }}
-                                      </a></td>
-                                  </tr>
+                              <div class="form-actions">
+                                  {% if disable_editor %}
+                                  <input type="submit" value={{ _('Update the project task presenter') }} class="btn btn-primary" disabled />
+                                  {% else %}
+                                  <input type="submit" value={{ _('Update the project task presenter') }} class="btn btn-primary" />
                                   {% endif %}
+                                  <a href="#" class="btn btn-default btn-preview" value="preview">{{ _('Preview the task presenter') }}</a>
+                                  {% if current_user.admin or current_user.subadmin %}
+                                      <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-warning">{{ _('Cancel') }}</a>
+                                  {% else %}
+                                      <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn btn-warning">{{ _('Cancel') }}</a>
+                                  {% endif %}
+                              </div>
+                          </fieldset>
+                      </form>
+                  </div>
+
+                  <p id = "component-builder-hide">
+                      <a class="pull-right text-right hide-text cursor-link" id = "hide-builder">Hide Graphical Component Builder</a>
+                  </p>
+                  {% include "projects/component_helper.html" %}
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">&nbsp;</div>
+              </div>
+
+              <div id="sync-panels" class="row">
+                      <div class="col-md-6">
+                        <div class="panel panel-info">
+                          <div class="panel-heading">
+                            <a class="accordion-panel" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-github" aria-expanded="true" aria-controls="panel-github">
+                              Latest GitHub Push Details
+                            </a>
+                          </div>
+                          <div id="panel-github" class="panel-body collapse in">
+                            {% if project.info.pusher and project.info.timestamp and project.info.ref_url and project.info.ref%}
+                                <table class="table table-hover table-condensed" >
+                                  <tr>
+                                      <td ><p>Author:</p></td>
+                                      <td><p>{{ project.info.pusher }}</p></td>
+                                  </tr>
+                                  <tr>
+                                      <td><p>Message:</p></td>
+                                      <td><p>{{ project.info.message }}</p></td>
+                                  </tr>
+                                  <tr>
+                                      <td><p>Last Updated:</p></td>
+                                      <td><p>{{ project.info.timestamp }}</p></td>
+                                  </tr>
+                                  <tr>
+                                      <td><p>Last Commit:</p></td>
+                                      <td class="ref-details"><a href={{ project.info.ref_url }} target="_blank">{{ project.info.ref }}</a></td>
+                                  </tr>
                                 </table>
                             {% else %}
-                                <p class="message">Task presenter code was not updated via project syncing</p>
+                                <p class="message">Task presenter code was not updated via GitHub</p>
                             {% endif %}
-                          {% else %}
-                            <p class="message">Task presenter code was not updated via project syncing</p>
-                          {% endif %}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                </div>
-            </div>
+                      <div class="col-md-6">
+                        <div class="panel panel-info">
+                          <div class="panel-heading">
+                            <a class="accordion-panel" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-sync" aria-expanded="true" aria-controls="panel-sync">
+                              Latest Project Sync Details
+                            </a>
+                          </div>
+                          <div id="panel-sync" class="panel-body collapse in">
+                            {% if project.info.sync %}
+                              {% if project.info.sync.syncer and project.info.sync.latest_sync and project.info.sync.source_url %}
+                                  <table class="table table-hover table-condensed">
+                                    <tr>
+                                        <td><p>Syncer:</p></td>
+                                        <td><p>{{ project.info.sync.syncer }}</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p>Last Synced:</p></td>
+                                        <td><p>{{ project.info.sync.latest_sync }}</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p>Synced With:</p></td>
+                                        <td class="ref-details"><a href={{ project.info.sync.source_url + '/project/' + project.short_name }} target="_blank">
+                                                {{ project.info.sync.source_url + '/project/' + project.short_name }}
+                                        </a></td>
+                                    </tr>
+                                    {% if project.info.sync.ref and project.info.sync.ref_url %}
+                                    <tr>
+                                        <td><p>GitHub Reference:</p></td>
+                                        <td class="ref-details"><a href={{ project.info.sync.ref_url }} target="_blank">
+                                                {{ project.info.sync.ref }}
+                                        </a></td>
+                                    </tr>
+                                    {% endif %}
+                                  </table>
+                              {% else %}
+                                  <p class="message">Task presenter code was not updated via project syncing</p>
+                              {% endif %}
+                            {% else %}
+                              <p class="message">Task presenter code was not updated via project syncing</p>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+              </div>
 
-<div id="modal-preview" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><strong>{{project.name}}</strong>: {{ _('Task Presenter Preview') }}</h4>
-            </div>
-            <div class="modal-body">
-                <section id="output">
-                    <iframe frameBorder="0"></iframe>
-                </section>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+              <div id="modal-preview" class="modal fade" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title"><strong>{{project.name}}</strong>: {{ _('Task Presenter Preview') }}</h4>
+                          </div>
+                          <div class="modal-body">
+                              <section id="output">
+                                  <iframe frameBorder="0"></iframe>
+                              </section>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                      </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+          </div> <!-- End Task Presenter Tab-->
+    </div>
+</div>
+
 {% endblock %}
 
 {% block extrajs %}
     {% assets "js_taskpresentereditor" %}
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
+
+    {% assets "js_annotationguidelineeditor" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+
 <script type="text/javascript">
 (function() {
  var render = function(presenterSource) {
@@ -282,6 +324,11 @@ var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     }
   }
 });
+
+$('#tab-presenter').on('shown.bs.tab', function (e) {
+    editor.refresh();
+})
+
 function showPreview() {
     render(editor.getValue());
     $("#modal-preview").modal('show');
