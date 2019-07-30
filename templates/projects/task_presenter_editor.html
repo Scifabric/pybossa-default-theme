@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="{{url_for('static', filename='vendor/summernote/summernote.css')}}"/>
 <link  href="{{url_for('static', filename='vendor/summernote/font/summernote.eot')}}"/>
 <link  href="{{url_for('static', filename='vendor/summernote/font/summernote.ttf')}}"/>
-<link  href="{{url_for('static', filename='vendor/summernote/font/summernote.wolf')}}"/>
+<link  href="{{url_for('static', filename='vendor/summernote/font/summernote.woff')}}"/>
 
 <style>
     .cursor-link {
@@ -73,12 +73,13 @@
 }
 
 </style>
+
 <div role="tabpanel">
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#guidelines" aria-controls="basics" role="tab" data-toggle="tab">Annotation Guidelines</a></li>
-      <li role="presentation"><a href="#presenter" aria-controls="basics" role="tab" data-toggle="tab">Task Presenter</a></li>
+      <li role="presentation"><a id="tab-presenter" href="#presenter" aria-controls="basics" role="tab" data-toggle="tab">Task Presenter</a></li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
@@ -117,6 +118,7 @@
                           {{ form.hidden_tag() }}
                           <fieldset>
                               {{ render_field(form.editor)}}
+
                               <div class="form-actions">
                                   {% if disable_editor %}
                                   <input type="submit" value={{ _('Update the project task presenter') }} class="btn btn-primary" disabled />
@@ -323,9 +325,9 @@ var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   }
 });
 
-setInterval(function() {
-  editor.refresh();
-}, 10);
+$('#tab-presenter').on('shown.bs.tab', function (e) {
+    editor.refresh();
+})
 
 function showPreview() {
     render(editor.getValue());
