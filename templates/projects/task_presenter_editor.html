@@ -75,28 +75,31 @@
 </style>
 
 <div role="tabpanel">
-
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#guidelines" aria-controls="basics" role="tab" data-toggle="tab">Annotation Guidelines</a></li>
-      <li role="presentation"><a id="tab-presenter" href="#presenter" aria-controls="basics" role="tab" data-toggle="tab">Task Presenter</a></li>
+      <li id="tab-nav-guidelines" role="presentation"><a href="#content-guidelines" aria-controls="basics" role="tab" data-toggle="tab">Annotation Guidelines</a></li>
+      <li id="tab-nav-presenter" role="presentation"><a href="#content-presenter" aria-controls="basics" role="tab" data-toggle="tab">Task Presenter</a></li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
-          <div role="tabpanel" class="tab-pane fade in active col-md-12" id="guidelines">
-              <!-- <link rel="stylesheet" href="{{url_for('static', filename='vendor/editor.md/css/editormd.css')}}"/> -->
-                  <div class = "row">
-                      <textarea id='guidelines-editor' rows='10'></textarea>
-                      <script>
-                          $(document).ready(function() {
-                              $('#guidelines-editor').summernote(
-                                { height: 500 }
-                              );
-                          });
-                      </script>
-                  </div>
+          <div role="tabpanel" id="content-guidelines" class="tab-pane fade in col-md-12">
+              <div class = "row">
+                  <form method="post" action="{{ url_for('project.task_presenter_editor', short_name=project.short_name) }}">
+                      {{ form.hidden_tag() }}
+                      <fieldset>
+                          {{render_field(form.guidelines)}}
+                          <div class="form-actions">
+                              {% if disable_editor %}
+                              <input type="submit" name="task-guidelines" value={{ _('Update the project guidelines') }} class="btn btn-primary" disabled />
+                              {% else %}
+                              <input type="submit" name="task-guidelines" value={{ _('Update the project guidelines') }} class="btn btn-primary" />
+                              {% endif %}
+                          </div>
+                      <fieldset>
+                  </form>
+              </div>
           </div>
-          <div role="tabpanel"  class="tab-pane fade col-md-12" id="presenter">
+          <div role="tabpanel" id="content-presenter" class="tab-pane fade in col-md-12" id="presenter">
 
               <!-- Task Presenter Editor -->
               <div class="row padding-top-tab-content ">
@@ -121,9 +124,9 @@
 
                               <div class="form-actions">
                                   {% if disable_editor %}
-                                  <input type="submit" value={{ _('Update the project task presenter') }} class="btn btn-primary" disabled />
+                                  <input type="submit" name="task-presenter" value={{ _('Update the project task presenter') }} class="btn btn-primary" disabled />
                                   {% else %}
-                                  <input type="submit" value={{ _('Update the project task presenter') }} class="btn btn-primary" />
+                                  <input type="submit" name="task-presenter" value={{ _('Update the project task presenter') }} class="btn btn-primary" />
                                   {% endif %}
                                   <a href="#" class="btn btn-default btn-preview" value="preview">{{ _('Preview the task presenter') }}</a>
                                   {% if current_user.admin or current_user.subadmin %}
@@ -305,6 +308,8 @@
      "</html>";
 return baseTemplate;
  }
+
+
 var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   mode:'text/html',
   lineNumbers: true,
@@ -324,20 +329,41 @@ var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     }
   }
 });
+//set tabs classes, default tab is guidelines
+if ('{{guidelines_tab_on}}' == 'True' || '{{presenter_tab_on}}' == 'False') {
+    $('#tab-nav-guidelines').addClass('active');
+    $('#content-guidelines').addClass('active');
+}
+if ('{{presenter_tab_on}}' == 'True') {
+    $('#tab-nav-presenter').addClass('active');
+    $('#content-presenter').addClass('active');
+}
 
-$('#tab-presenter').on('shown.bs.tab', function (e) {
+//Codemirror needs to be refreshed in order to render properly
+if ('{{presenter_tab_on}}' == 'True')
     editor.refresh();
+
+$('#tab-nav-presenter').on('shown.bs.tab', function (e) {
+    editor.refresh();
+    console.log('hellloooooooo')
 })
 
 function showPreview() {
     render(editor.getValue());
     $("#modal-preview").modal('show');
 }
+
 $(".btn-preview").off('click').on('click', function(){
         showPreview();
         });
 })();
 var main = function() {
+
+ // Create markup
+ $('#guidelines').summernote(
+      { height: 500}
+ );
+
  var slide = $('.navigation-element');
  var showVueComponent = $('#show-builder');
  var hideVueComponent = $('#hide-builder');
