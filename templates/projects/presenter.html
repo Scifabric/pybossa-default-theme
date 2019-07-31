@@ -35,6 +35,17 @@
         </div>
     </div>
     {% endif %}
+    <p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-guidelines" aria-expanded="false" aria-controls="collapse-guidelines">
+       Annotations Guidelines
+    </button>
+    </p>
+    <div class="collapse" id="collapse-guidelines">
+    <div class="card card-body">
+            {{ project.info.task_guidelines|safe }}
+        </div>
+    </div>
+
     {{ project.info.task_presenter|safe }}
 
     <div id='PYBOSSA_USER_LOCALE' hidden>
