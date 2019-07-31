@@ -11,7 +11,6 @@
         </div>
         <div class="col-sm-4">
           <input
-            :disabled="!editable"
             v-model="fieldName"
             type="text"
             class="form-control input-sm"
@@ -41,7 +40,7 @@
         </div>
         <div class="col-sm-4">
           <label class="switch">
-            <input type="checkbox" :disabled="!editable" v-model="retryForConsensus">
+            <input type="checkbox" v-model="retryForConsensus">
             <span class="slider"></span>
          </label>
         </div>
@@ -64,7 +63,7 @@
       </div>
 
       <div v-if="!Object.keys(answerFields).length">
-        <p>No fields currently configured.</p>
+        <p> * No fields currently configured.</p>
       </div>
       <div
         v-else
@@ -83,7 +82,6 @@
                 :name="name"
                 :retry-for-consensus="answerFields[name]['retry_for_consensus']"
                 :edit="isNewField(name)"
-                :isEditable="editable"
                 v-bind="field.config"
                 :type="labelTypes.config[field.type].display"
               />
@@ -98,22 +96,6 @@
         <strong>Warning:</strong>
         changing or updating a field configuration will delete the associated
         performance statistics.
-      </div>
-      <div v-if="!editable">
-        <button
-        class="btn btn-sm btn-primary"
-        @click="toggleEditable"
-        >
-        Edit
-        </button>
-      </div>
-      <div v-else>
-        <button
-        class="btn btn-sm btn-primary"
-        @click="save"
-        >
-        Save
-        </button>
       </div>
     </div>
   </div>
@@ -141,8 +123,7 @@ export default {
       error: false,
       labelTypes,
       message1: 'This should match "pyb-answer" in your task presenter',
-      message2: 'Consensus configuration must be filled out to enable retry feature',
-      editable: false
+      message2: 'Consensus configuration must be filled out to enable retry feature'
     };
   },
 
@@ -153,10 +134,6 @@ export default {
   methods: {
     ...mapMutations(['addField']),
 
-    toggleEditable: function () {
-      this.editable = !this.editable;
-
-    },
     _addField () {
       if (!this.fieldName) {
         this.error = 'Field Name is Required.';
@@ -176,28 +153,6 @@ export default {
       this.fieldName = '';
       this.fieldType = labelTypes.default;
       this.retryForConsensus = false;
-    },
-
-    async save () {
-      try {
-        const res = await fetch(window.location.pathname, {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-            'X-CSRFToken': this.csrfToken
-          },
-          credentials: 'same-origin',
-          body: JSON.stringify({ 'answer_fields': this.answerFields })
-        });
-        if (res.ok) {
-          // const data = await res.json();
-          // window.pybossaNotify(data.flash, true, data.status);
-        } else {
-          window.pybossaNotify('An error occurred.', true, 'error');
-        }
-      } catch (error) {
-        window.pybossaNotify('An error occurred.', true, 'error');
-      }
     }
   }
 };

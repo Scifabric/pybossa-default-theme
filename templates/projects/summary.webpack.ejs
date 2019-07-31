@@ -15,20 +15,13 @@
     <div id="setting" class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="project">
             <div class="col-md-12">
-                <!-- <setting
-                    :external-config="{{external_config}}"
-                    :assign-users="{{assign_user}}"
-                    :all-users="{{users}}"
-                    :data-access="{{data_access}}"
-                    v-bind:is-private="{{private_instance|lower}}">
-                </setting> -->
                 <setting
                     csrf-token="{{csrf}}"
                     :external-config="{{external_config}}"
                     :assign-users="{{assign_user}}"
                     :all-users="{{users}}"
                     :data-access="{{data_access}}"
-                    :is-private="true">
+                    :is-private="{{private_instance|lower}}">
                 </setting>
             </div>
         </div>
@@ -37,8 +30,7 @@
             <div class="col-md-12 ">
                 <ownership-setting
                     csrf-token="{{csrf}}"
-                    owner="{{owner}}"
-                    :owner-id="{{owner_id}}"
+                    :owner="{{owner}}"
                     :co-owners="{{coowners}}">
                 </ownership-setting>
             </div>
@@ -65,7 +57,6 @@
                 </fields-config>
                 </div>
                 <div>
-                    <br>
                     <consensus-config :consensus-config="{{consensus_config}}"></consensus-config>
                 </div>
             </div>
@@ -76,37 +67,14 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-sm-12">
-                        <quiz-setting csrf-token="{{csrf}}" :config="{{quiz_config}}" > </quiz-setting>
+                        <quiz-setting
+                            csrf-token="{{csrf}}"
+                            :config="{{quiz_config}}"
+                            :all-user-quiz="{{all_user_quizzes}}"> </quiz-setting>
                     </div>
                 </div>
 
-                <table id="quiz_result_table"
-                    class="table table-bordered table-striped table-hover"
-                    style="margin-top:15px">
-                    <thead>
-                        <tr>
-                            <th>User</th>
-                            <th>Status</th>
-                            <th>Right</th>
-                            <th>Wrong</th>
-                            <th>Questions</th>
-                            <th>Passing</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for user in all_user_quizzes %}
-                        <tr>
-                            <td>{{user.fullname}}</td>
-                            <td class="{{ {'passed':'bg-success','failed':'bg-danger'}.get(user.quiz.status, '') }}">{{user.quiz.status}}</td>
-                            <td>{{user.quiz.result.right}}</td>
-                            <td>{{user.quiz.result.wrong}}</td>
-                            <td>{{user.quiz.config.questions}}</td>
-                            <td>{{user.quiz.config.passing}}</td>
-                            <td><button class="btn btn-primary btn-sm" name="reset" value="{{user.id}}" form="quiz_form">Reset</button></td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+
             </div>
         </div>
     </div>

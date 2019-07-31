@@ -1,12 +1,13 @@
 <template>
   <div class="stats-config row">
     <div class="col-sm-12">
+
       <div class="form-group row">
         <div class="col-sm-4">
           <p> project owner </p>
         </div>
         <div class="col-sm-8 pull-right">
-          <p> name </p>
+          <p> {{owner.fullname}} </p>
         </div>
       </div>
       <div class="form-group row">
@@ -14,24 +15,26 @@
           <p> co-owners </p>
         </div>
         <div class="col-sm-8 pull-right">
+
           <div v-if="Object.keys(coowners).length">
             <p>
               <span
                 v-for="u in coowners"
                 :key="u.name"
                 class=" label label-lg label-info"
-                @click="remove($event, u.id)"
+
               >
                 {{u.fullname}}
+                <i v-if="u.id!=owner.id" class="fa fa-times"
+                  @click="remove($event, u.id)"
+                  aria-hidden="true" />
               </span>
             </p>
           </div>
-          <div v-else>
-            <p> This project doesn't have co-owners </p>
-          </div>
+
         </div>
       </div>
-      <div v-if="editable" class="form-group row">
+      <div class="form-group row">
         <div class="col-sm-4">
           <p> manage co-owners </p>
         </div>
@@ -39,7 +42,6 @@
             <div class="input-group">
               <input
                 type="text"
-                :disabled="!editable"
                 v-model="search"
                 class="form-control input-sm"
                 placeholder="Try with full name or nick name"
@@ -54,32 +56,22 @@
                 </button>
               </span>
             </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div v-for="u in searchResult" :key="u.id" :value="u" class="col-sm-3">
-          <div class="thumbnail card-body text-center" >
-            <p class="card-title">{{u.fullname}}</p>
-            <p class="card-text">{{u.name}}</p>
-              <button
-                class="btn btn-sm btn-link"
+            <div v-if="searchResult.length" class="dropdown-content">
+              <div class="scroll" style="max-height: 150px;">
+              <div
+                v-for="u in searchResult"
+                :key="u.id"
+                :value="u"
+                class="row"
                 @click="add($event, u)"
-                >
-                Add to Co-owners
-              </button>
-          </div>
+              >
+              <p> {{u['fullname']}} </p>
+              </div>
+              </div>
+            </div>
         </div>
       </div>
-
-      <div v-if="!editable">
-        <button
-        class="btn btn-sm btn-primary"
-        @click="toggleEditable"
-        >
-        Edit
-        </button>
-      </div>
-      <div v-else>
+      <div>
         <button
         class="btn btn-sm btn-primary"
         @click="save"
@@ -94,8 +86,13 @@
 
 <script>
 import Vue from 'vue';
+import Multiselect from 'vue-multiselect'
 
 export default {
+
+  components: {
+    Multiselect
+  },
 
   props: {
     csrfToken: {
@@ -103,11 +100,7 @@ export default {
       default: null
     },
     owner: {
-      type: String,
-      default: null
-    },
-    ownerId: {
-      type: Number,
+      type: Object,
       default: null
     },
     coOwners: {
@@ -120,8 +113,7 @@ export default {
     return {
       coowners: {},
       searchResult: [],
-      search: "",
-      editable: false
+      search: ""
 
     };
   },
@@ -133,35 +125,38 @@ export default {
   },
 
   methods: {
-    toggleEditable() {
-      this.editable = !this.editable;
-    },
 
     getCoowners() {
       var users = {}
       for (var i=0; i < this.coOwners.length; i++) {
-        if (this.coOwners[i].id != this.ownerId){
           users[this.coOwners[i].id] = this.coOwners[i]
-        }
-
       }
       return users
     },
 
-    add( event, ur ){
-      if (this.editable) {
-        Vue.set(this.coowners, ur.id, ur)
-        this.coowners[ur.id] = ur
+    prepareResult() {
+      var found = this.searchResult;
+      this.searchResult = []
+      for (var i=0; i< found.length; i++){
+        var u = {id: found[i].id, user: found[i]}
+        this.searchResult.push(u)
       }
+    },
+
+    add( event, ur ){
+      Vue.set(this.coowners, ur.id, ur)
+      this.coowners[ur.id] = ur
     },
 
     remove( event, id ) {
-      if (this.editable) {
-        Vue.delete(this.coowners, id)
-      }
+      Vue.delete(this.coowners, id)
     },
-    async getData() {
 
+    customLabel (option) {
+      return `${option.user.fullname}`
+    },
+
+    async getData() {
       try {
         const res = await fetch(window.location.pathname + '/coowners', {
           method: 'POST',
@@ -173,20 +168,16 @@ export default {
           body: JSON.stringify({query: this.search})
         });
         const data = await res.json();
-        console.log(data)
         this.searchResult = data['found']
       }
       catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
-
     },
 
     async save () {
       var coownerId = Object.keys(this.coowners)
-      coownerId.push(this.ownerId)
       try {
-        console.log("try")
         const res = await fetch(window.location.pathname, {
           method: 'POST',
           headers: {
@@ -198,10 +189,9 @@ export default {
             coowners: coownerId
           }})
         });
-        console.log(res)
         if (res.ok) {
-          this.toggleEditable();
           this.searchResult = []
+          window.pybossaNotify('Ownership data Saved.', true, 'success');
         } else {
           window.pybossaNotify('An error occurred.', true, 'error');
         }
@@ -213,3 +203,31 @@ export default {
 };
 
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style>
+.label {
+  font-size: 100%;
+  margin-right: 10px
+}
+.fa-times {
+  margin-left:3px;
+  color:silver
+}
+.fa-times:hover {
+  color: red
+}
+.dropdown-content {
+  position: absolute;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 15px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content .row:hover {background-color: #ddd}
+.dropdown-content .row {padding-left: 30px; box-sizing: border-box;}
+</style>

@@ -1,15 +1,12 @@
 <template>
   <div class="stats-config row">
     <div class="col-sm-12">
-      {{assignee}}
-  {{assignUsers}}
       <div class="form-group row">
         <div class="col-sm-4">
           <p> bcos bucket </p>
         </div>
         <div class="col-sm-8 pull-right">
           <input
-            :disabled="!editable"
             v-model="bcos"
             type="text"
             class="form-control input-sm"
@@ -18,86 +15,81 @@
       </div>
       <div v-if="isPrivate" class="form-group row">
         <div class="col-sm-4">
-          <p> data_access </p>
+          <p> data access </p>
         </div>
         <div class="col-sm-8 pull-right">
-          <span >
-            <div class="form-check">
-              <input :disabled="!editable" class="form-check-input" type="checkbox" v-model="L1">
-              <label class="form-check-label" for="defaultCheck1">
-                <p > L1  </p>
-              </label>
-              <input :disabled="!editable" class="form-check-input" type="checkbox" v-model="L2">
-              <label class="form-check-label" for="defaultCheck1">
-                <p> L2  </p>
-              </label>
-              <input :disabled="!editable" class="form-check-input" type="checkbox" v-model="L3">
-              <label class="form-check-label" for="defaultCheck1">
-                 <p> L3  </p>
-              </label>
-              <input :disabled="!editable" class="form-check-input" type="checkbox" v-model="L4">
-              <label class="form-check-label" for="defaultCheck1">
-                 <p> L4  </p>
-              </label>
-            </div>
-          </span>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" v-model="L1">
+            <label class="form-check-label" for="defaultCheck1">
+              <p> L1: Personnel access </p>
+            </label>
+          </div>
+          <div class="form-check">
+            <input  class="form-check-input" type="checkbox" v-model="L2">
+            <label class="form-check-label" for="defaultCheck1">
+              <p> L2: Vendor, Contingent Worker and users in L1 access </p>
+            </label>
+          </div>
+          <div class="form-check">
+            <input  class="form-check-input" type="checkbox" v-model="L3">
+            <label class="form-check-label" for="defaultCheck1">
+                <p> L3: Freelancer and users in L2 access</p>
+            </label>
+          </div>
+          <div class="form-check">
+            <input  class="form-check-input" type="checkbox" v-model="L4">
+            <label class="form-check-label" for="defaultCheck1">
+                <p> L4: Crowdsourcing Worker and users in L3 access  </p>
+            </label>
+          </div>
         </div>
+
       </div>
       <div v-if="isPrivate" class="form-group row">
         <div class="col-sm-4">
           <p> assign users </p>
         </div>
         <div class="col-sm-8 pull-right">
-          <div v-if="Object.keys(assignee).length">
-            <p>
-              <span
-                v-for="u in assignee"
-                :key="u.name"
-                :value="u.field"
-                class=" label label-lg label-info"
-                @click="remove($event, u.id)"
-              >
-                {{u.fullname}}
-              </span>
-            </p>
-          </div>
-          <div v-else> <p> No users are assigned to this project yet </p></div>
-          <div v-if="editable" class="dropdown-content">
-            <input :disabled="!editable"
-              class="form-group input-sm"
-              type="text"
-              placeholder="Search for name.."
-              style="min-width: 250px"
-              v-on:keyup.enter="filter"
-              v-model="search"
-            >
-            <div class="scroll" style="max-height: 150px;">
-            <div
-              v-for="u in searchResult"
-              :key="u['id']"
-              :value="u"
-              class="row"
-              @click="add($event, u)"
-            >
-            <p> {{u['fullname']}} </p>
-            </div>
-            </div>
-        </div>
-        </div>
-      </div>
-      <div  class="row">
+        <table class="table table-striped table-hover" style="border: 1px ridge silver">
+          <thead>
+              <tr style="border-top: 1px ridge silver">
+                  <th style="border-right: 1px ridge silver; text-align: center">All Users</th>
+                  <th style="text-align: center">Assigned Users</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="border-right: 1px ridge silver; width:50%">
+                <input
+                  class="form-group input-sm"
+                  type="text"
+                  placeholder="Search for name.."
+                  style="min-width: 250px"
+                  v-on:keyup.enter="filter"
+                  v-model="search"
+                >
+                <div class="col-sm-12 scroll" >
+                  <div class="row" id="users" v-for="u in searchResult" :key="u.id" :value="u" @click="add($event, u)">
+                  <p v-if="Object.keys(assignee).includes(u.id)" style="color:teal"> {{u.fullname}}</p>
+                  <p v-else> {{u.fullname}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="col-sm-12 scroll" >
+                  <div class="row" id="users" v-for="u in assignee" :key="u.name" :value="u.field" @click="remove($event, u.id)">
+                    <p> {{u.fullname}}</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
+        </div>
       </div>
-
-      <div v-if="!editable">
-        <button
-        class="btn btn-sm btn-primary"
-        @click="toggleEditable"
-        >
-        Edit
-        </button>
-      </div>
-      <div v-else>
+      <div>
         <button
         class="btn btn-sm btn-primary"
         @click="save"
@@ -142,21 +134,23 @@ export default {
 
   data () {
     return {
-      editable: false,
-      bcos: null,
+      bcos: this.externalConfig.gigwork_poller.target_bucket,
       assignee: {},
+      users: {},
       L1: false,
       L2: false,
       L3: false,
       L4: false,
       search: "",
-      searchResult: this.allUsers
+      searchResult: this.users
     };
   },
 
   mounted: function () {
     var _this = this
-    _this.assignee = _this.getUsers()
+    _this.assignee = _this.getAssignedUsers()
+    _this.users = _this.getUsers()
+    _this.searchResult = _this.users
     _this.L1 = _this.hasLevel("L1")
     _this.L2 = _this.hasLevel("L2")
     _this.L3 = _this.hasLevel("L3")
@@ -164,11 +158,6 @@ export default {
   },
 
   methods: {
-
-    toggleEditable() {
-      this.editable = !this.editable;
-    },
-
     hasLevel(level) {
       for(var i=0; i<this.dataAccess.length; i++){
         if (this.dataAccess[i] === level){
@@ -178,7 +167,7 @@ export default {
       return false
     },
 
-    getUsers() {
+    getAssignedUsers(){
       var users = {}
       for (var i=0; i < this.assignUsers.length; i++) {
         users[this.assignUsers[i].id] = this.assignUsers[i]
@@ -186,17 +175,26 @@ export default {
       return users
     },
 
-    add( event, ur ){
-      if (this.editable) {
-        Vue.set(this.assignee, ur.id, ur)
-        this.assignee[ur.id] = ur
+    getUsers() {
+      var users = {}
+      for (var i=0; i<this.allUsers.length; i++) {
+        var u = this.allUsers[i]
+        u['assigned'] = Object.keys(this.assignee).includes(u.id)
+        users[u.id] = u
       }
+      return users
+    },
+
+    add( event, ur ){
+      Vue.set(this.assignee, ur.id, ur)
+      this.assignee[ur.id] = ur
+
     },
 
     remove( event, id ) {
-      if (this.editable) {
-        Vue.delete(this.assignee, id)
-      }
+
+      Vue.delete(this.assignee, id)
+
     },
 
     filter(){
@@ -244,9 +242,7 @@ export default {
           }})
         });
         if (res.ok) {
-          this.toggleEditable();
-          const data = await res.json();
-          window.pybossaNotify(data.flash, true, data.status);
+          window.pybossaNotify('Project data Saved.', true, 'success');
         } else {
           window.pybossaNotify('An error occurred.', true, 'error');
         }
@@ -259,32 +255,16 @@ export default {
 
 </script>
 <style>
-ƒ
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #3e8e41;
-}
-
-.dropdown-content {
-
-  position: absolute;
-  min-width: 230px;
-  overflow: auto;
-  border: 1px solid #ddd;
-}
-
-.dropdown-content a {
+.scroll #users:hover {background-color: #ddd}
+.scroll #users {padding-left: 10px; box-sizing: border-box;}
+.scroll p {
   color: black;
-  padding: 12px 15px;
+  padding: 2px 2px;
   text-decoration: none;
   display: block;
 }
-
-.dropdown-content a:hover {background-color: #ddd;}
-.dropdown-content .row:hover {background-color: #ddd}
-.dropdown-content .row {padding-left: 30px; box-sizing: border-box;}
-
-.scroll #users {
+.scroll {
   overflow-x: hidden;
   max-height: 150px;
   overflow-y: scroll;
@@ -292,4 +272,5 @@ export default {
 .form-check-label p {
   margin-right:10px
 }
+
 </style>

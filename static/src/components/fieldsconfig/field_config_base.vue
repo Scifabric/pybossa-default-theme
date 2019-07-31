@@ -67,8 +67,7 @@ export default {
     name: String,
     type: String,
     retryForConsensus: Boolean,
-    edit: Boolean,
-    isEditable: Boolean
+    edit: Boolean
   },
 
   data () {

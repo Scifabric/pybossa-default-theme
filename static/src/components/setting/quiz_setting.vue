@@ -7,7 +7,7 @@
         </div>
         <div class="col-sm-6 pull-right">
           <label class="switch">
-            <input type="checkbox" :disabled="!editable" v-model="enabled">
+            <input type="checkbox" v-model="enabled">
             <span class="slider"></span>
          </label>
         </div>
@@ -18,7 +18,6 @@
         </div>
         <div class="col-sm-6 pull-right">
           <input
-            :disabled="!editable"
             v-model="questions"
             type="text"
             class="form-control input-sm"
@@ -31,7 +30,6 @@
         </div>
         <div class="col-sm-6 pull-right">
           <input
-            :disabled="!editable"
             v-model="passing"
             type="text"
             class="form-control input-sm"
@@ -43,7 +41,7 @@
           <p> quiz completion mode </p>
         </div>
         <div class="col-sm-6">
-          <select :disabled="!editable" v-model="mode"  class="form-control input-sm" >
+          <select v-model="mode"  class="form-control input-sm" >
             <option
               v-for="opt in getOptions()"
               v-bind:key="opt.text"
@@ -54,15 +52,36 @@
           </select>
         </div>
       </div>
-      <div v-if="!editable">
-        <button
-        class="btn btn-sm btn-primary"
-        @click="toggleEditable"
-        >
-        Edit
-        </button>
-      </div>
-      <div v-else>
+      {{allUserQuiz}}
+      <table id="quiz_result_table" class="table table-bordered table-striped table-hover" style="margin-top:15px">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Enabled</th>
+            <th>Status</th>
+            <th>Right</th>
+            <th>Wrong</th>
+            <th>Questions</th>
+            <th>Passing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="user in users" :key="user.id" :value="user">
+            <td>{{user.fullname}}</td>
+            <td>{{user.quiz.config.enabled}}</td>
+            <td>{{user.quiz.status}}</td>
+            <td>{{user.quiz.result.right}}</td>
+            <td>{{user.quiz.result.wrong}}</td>
+            <td>{{user.quiz.config.questions}}</td>
+            <td>{{user.quiz.config.passing}}</td>
+            <td>
+              <button v-if="!resetUser.includes(user.id)" class="btn btn-sm btn-primary" @click="reset($event, user.id)">Reset</button>
+              <button v-else class="btn btn-sm btn-primary active" @click="reset($event, user.id)">Reset</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
         <button
         class="btn btn-sm btn-primary"
         @click="save"
@@ -88,6 +107,10 @@ export default {
     config: {
       tyoe: Object,
       default: () => ({ enabled: false, questions: 0, passing: 0, complete_mode: null, short_circuit: false, mode_choices: []})
+    },
+    allUserQuiz: {
+      type: Array,
+      default: []
     }
   },
 
@@ -97,8 +120,14 @@ export default {
       questions: this.config.questions,
       passing: this.config.passing,
       mode: this.config.completion_mode,
-      editable: false,
+      resetUser: [],
+      users: {},
     };
+  },
+
+  mounted: function() {
+    var _this = this
+    _this.users = _this.getQuizUser()
   },
 
   methods: {
@@ -116,9 +145,24 @@ export default {
       return options
     },
 
-    toggleEditable: function () {
-      this.editable = !this.editable;
+    getQuizUser() {
+      var users = {}
+      for (var i=0; i<this.allUserQuiz.length; i++) {
+        var u = this.allUserQuiz[i]
+        if (u.quiz.status === "bg-success"){
+          u.quiz.status = 'pass'
+        }
+        else if (u.quiz.status === "bg-danger"){
+          u.quiz.status = 'fail'
+        }
+        users[u.id] = u
+      }
+      return users
     },
+
+   reset (event, id) {
+     this.resetUser.push(id)
+   },
 
     _isIntegerNumeric: function (_n) {
         return Math.floor(_n) === _n;
@@ -128,11 +172,9 @@ export default {
       const _questions = parseInt(this.questions)
       const _passing = parseInt(this.passing)
       if (!this._isIntegerNumeric(_questions) || !this._isIntegerNumeric(_passing)){
-        console.log("error")
         return ;
       }
       try {
-        console.log("try")
         const res = await fetch(window.location.pathname, {
           method: 'POST',
           headers: {
@@ -141,15 +183,17 @@ export default {
           },
           credentials: 'same-origin',
           body: JSON.stringify({ 'quiz': {
-            enabled: this.enabled,
-            questions: _questions,
-            passing: _passing,
-            completion_mode: this.mode
+            config: {
+              enabled: this.enabled,
+              questions: _questions,
+              passing: _passing,
+              completion_mode: this.mode
+            },
+            reset: this.resetUser
           }})
         });
-        console.log(res)
         if (res.ok) {
-          this.toggleEditable();
+          window.pybossaNotify('quiz data Saved.', true, 'success');
         } else {
           window.pybossaNotify('An error occurred.', true, 'error');
         }
@@ -212,9 +256,6 @@ input:checked + .slider:before {
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-
-
-
 
 .field-config-wrapper {
     margin-bottom: 0.5em;

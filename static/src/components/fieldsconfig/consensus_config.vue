@@ -1,16 +1,14 @@
 <template>
   <div
-    v-if="hasRetryFields"
     class="stats-config row"
   >
-    <div class="col-md-12" style="width:85%">
+    <div v-if="hasRetryFields" class="col-md-12" style="width:85%">
       <div class="form-group row">
         <div class="col-sm-4">
           <p> consensus threshold </p>
         </div>
         <div class="col-sm-8">
           <input
-            :disabled="!editable"
             v-model="consensusThreshold"
             type="text"
             class="form-control input-sm"
@@ -23,7 +21,6 @@
         </div>
         <div class="col-sm-8 pull-right">
           <input
-            :disabled="!editable"
             v-model="redundancyConfig"
             type="text"
             class="form-control input-sm"
@@ -36,22 +33,15 @@
         </div>
         <div class="col-sm-8 pull-right">
           <input
-            :disabled="!editable"
             v-model="maxRetries"
             type="text"
             class="form-control input-sm"
             />
         </div>
       </div>
-      <div v-if="!editable">
-        <button
-        class="btn btn-sm btn-primary"
-        @click="toggleEditable"
-        >
-        Edit
-        </button>
-      </div>
-      <div v-else>
+    </div>
+    <div class="col-md-12">
+      <div>
         <button
         class="btn btn-sm btn-primary"
         @click="save"
@@ -60,7 +50,6 @@
         </button>
       </div>
     </div>
-
   </div>
 </template>
 <script>
@@ -79,7 +68,6 @@ export default {
         consensusThreshold: this.consensusConfig['consensus_threshold'],
         maxRetries: this.consensusConfig['max_retries'],
         redundancyConfig: this.consensusConfig['redundancy_config'],
-        editable: false,
         errorMsg: '',
         capacity: 10000
     };
@@ -91,11 +79,6 @@ export default {
 
   methods: {
     ...mapMutations(['updateConsensusConfig']),
-
-    toggleEditable: function () {
-      this.editable = !this.editable;
-
-    },
 
     _isIntegerNumeric: function (_n) {
         return Math.floor(_n) === _n;
@@ -140,12 +123,12 @@ export default {
                     'consensus_threshold': _consensusThreshold,
                     'max_retries': _maxRetries,
                     'redundancy_config': _redundancyConfig
-                  }
+                  },
+                  answer_fields: this.answerFields
                 })
             });
             if (res.ok) {
-                // const data = await res.json();
-                // window.pybossaNotify(data.flash, true, data.status);
+                window.pybossaNotify("Answer Fields saved", true, 'success');
                 this.updateConsensusConfig({
                     'consensus_threshold': _consensusThreshold,
                     'max_retries': _maxRetries,
@@ -156,32 +139,6 @@ export default {
             }
         } catch (error) {
             window.pybossaNotify('An error occurred.', true, 'error');
-        }
-    },
-
-    async remove () {
-        try {
-            const res = await fetch(window.location.pathname, {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    'X-CSRFToken': this.csrfToken
-                },
-                credentials: 'same-origin',
-                body: JSON.stringify({ consensusConfig: {} })
-            });
-            if (res.ok) {
-                const data = await res.json();
-                window.pybossaNotify(data.flash, true, data.status);
-                this.consensusThreshold = 0;
-                this.maxRetries = 0;
-                this.redundancyConfig = 0;
-                this.updateConsensusConfig({});
-            } else {
-                window.pybossaNotify('An error occurred.', true, 'error');
-            }
-        } catch (error) {
-                window.pybossaNotify('An error occurred.', true, 'error');
         }
     }
   }
