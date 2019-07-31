@@ -4,7 +4,7 @@
 {% block projectcontent %}
 <div role="tabpanel">
     <ul class="nav nav-tabs" role="tablist" style="border-bottom: 1px solid #c9d8dfe3">
-        <li role="presentation" class="active"><a href="#project" aria-controls="project" role="tab" data-toggle="tab">Porject</a></li>
+        <li role="presentation" class="active"><a href="#project" aria-controls="project" role="tab" data-toggle="tab">Project</a></li>
         <li role="presentation"><a href="#ownership" aria-controls="ownership" role="tab" data-toggle="tab">Ownership</a></li>
         <li role="presentation"><a href="#task" aria-controls="task" role="tab" data-toggle="tab">Task</a></li>
         <li role="presentation"><a href="#answer" aria-controls="answer" role="tab" data-toggle="tab">Answer</a></li>
@@ -12,313 +12,82 @@
     </ul>
     <br>
 
-    <div class="tab-content">
+    <div id="setting" class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="project">
             <div class="col-md-12">
-
-                <div>
-                    <span><em>External Configurations</em></span>
-                    <a href="{{url_for('project.ext_config', short_name=project.short_name)}}" >
-                        <button type="button" class="btn btn-sm" action="{{url_for('project.coowners', short_name=project.short_name)}}">
-                            <i class="fa fa-external-link"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <div class="row">
-
-                    <dev class="col-md-3">
-                        <p> bcos bucket </p>
-                    </dev>
-                    <dev class="col-md-9 pull-right">
-                        {% if external_config and external_config.gigwork_poller %}
-                        <p> {{ external_config.gigwork_poller.target_bucket }}</p>
-                        {% else %}
-                        <p>None</p>
-                        {% endif %}
-                    </dev>
-                </div>
-                {% if private_instance %}
-                <div class="row">
-
-                    <dev class="col-md-3">
-                        <p> data_access </p>
-                    </dev>
-                    <dev class="col-md-9 pull-right">
-                        <p> {{data_access}} </p>
-                    </dev>
-                </div>
-                <div>
-                    <span><em>Project Users</em></span>
-                    <a href="{{url_for('project.assign_users', short_name=project.short_name)}}" >
-                        <button type="button" class="btn btn-sm" action="{{url_for('project.coowners', short_name=project.short_name)}}">
-                            <i class="fa fa-external-link"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <div class="row">
-                    <dev class="col-md-3">
-                        <p> assigned users </p>
-                    </dev>
-                    <dev class="col-md-9 pull-right">
-                        <p>
-                            {% for u in assign_user %}
-                            {% if loop.index == loop.length %}
-                            <span>{{u.name}}</span>
-                            {% else %}
-                            <span>{{u.name}},</span>
-                            {% endif %}
-                            {% endfor %}
-                        </p>
-                    </dev>
-                </div>
-                {% endif %}
+                <setting
+                    csrf-token="{{csrf}}"
+                    :external-config="{{external_config}}"
+                    :assign-users="{{assign_user}}"
+                    :all-users="{{users}}"
+                    :data-access="{{data_access}}"
+                    :is-private="{{private_instance|lower}}">
+                </setting>
             </div>
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="ownership">
             <div class="col-md-12 ">
-                <div>
-                    <span><em>Manage Owners</em></span>
-                    <a href="{{url_for('project.coowners', short_name=project.short_name)}}" >
-                        <button type="button" class="btn btn-sm" action="{{url_for('project.coowners', short_name=project.short_name)}}">
-                            <i class="fa fa-external-link"></i>
-                        </button>
-                    </a>
-                </div>
-                <div class="row">
-                    <dev class="col-md-3">
-                        <p> project owner </p>
-                    </dev>
-                    <dev class="col-md-9 pull-right">
-                        <p> {{ owner.name }}</p>
-                    </dev>
-                </div>
-                <div class="row">
-                    <dev class="col-md-3">
-                        <p> project co-owners </p>
-                    </dev>
-                    <dev class="col-md-9 pull-right">
-                        <p>
-                            {% for u in coowners%}
-                            {% if loop.index == loop.length %}
-                            <span>{{u.name}}</span>
-                            {% else %}
-                            <span>{{u.name}},</span>
-                            {% endif %}
-                            {% endfor %}
-                        </p>
-                    </dev>
-                </div>
+                <ownership-setting
+                    csrf-token="{{csrf}}"
+                    :owner="{{owner}}"
+                    :co-owners="{{coowners}}">
+                </ownership-setting>
             </div>
         </div>
+
         <div role="tabpanel" class="tab-pane fade" id="task">
             <div class="col-md-12">
-                <div>
-                    <span><em>Task Scheduler</em></span>
-                    <a href="{{url_for('project.task_scheduler', short_name=project.short_name)}}">
-                        <button type="button" class="btn btn-sm">
-                            <i class="fa fa-external-link"></i>
-                        </button>
-                    </a>
-                </div>
-                <div class="row">
-                    <dev class="col-md-4">
-                        <p> current task scheduler </p>
-                    </dev>
-                    <dev class="col-md-8 pull-right">
-                        <p> {{ scheduler }}</p>
-                    </dev>
-                </div>
+                <task-setting
+                    csrf-token="{{csrf}}"
+                    :config="{{sched_config}}"
+                    :task-timeout="{{timeout}}"
+                    :task-redundancy="{{default_task_redundancy}}">
+                </task-setting>
 
-                <div>
-                    <span><em>Task Redundancy</em></span>
-                    <a href="{{url_for('project.task_n_answers', short_name=project.short_name)}}">
-                        <button type="button" class="btn btn-sm">
-                            <i class="fa fa-external-link"></i>
-                        </button>
-                    </a>
-                </div>
-                <div class="row">
-                    <dev class="col-md-4">
-                        <p> default redundancy </p>
-                    </dev>
-                    <dev class="col-md-8 pull-right">
-                        <p> {{default_task_redundancy}} </p>
-                    </dev>
-                </div>
-
-                <div>
-                    <span><em>Task Timeout</em></span>
-                    <a href="{{url_for('project.task_timeout', short_name=project.short_name)}}">
-                        <button type="button" class="btn btn-sm">
-                            <i class="fa fa-external-link"></i>
-                        </button>
-                    </a>
-                </div>
-                <div class="row">
-                    <dev class="col-md-4">
-                        <p> time limit for each task </p>
-                    </dev>
-                    <dev class="col-md-8 pull-right">
-                        <p> {{(timeout/60)|int}} min,  {{timeout%60}} sec</p>
-                    </dev>
-
-                </div>
             </div>
+
 
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="answer">
             <div class="col-md-12">
+                <div >
+                    <fields-config >
+                </fields-config>
+                </div>
                 <div>
-                    <span><em>Answer Fields Configuration</em></span>
-                    <a href="{{url_for('project.answerfieldsconfig', short_name=project.short_name)}}">
-                        <button type="button" class="btn btn-sm">
-                            <i class="fa fa-external-link"></i>
-                        </button>
-                    </a>
-                </div>
-                <table class="table table-bordered table-striped table-hover"
-                    style="margin-top:15px">
-                    <thead>
-                        <tr>
-                            <th>Answer Field Name</th>
-                            <th>Answer Type</th>
-                            <th>Retry For Consensus</th>
-                            <th>Labels</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for key, value in answer_fields.items() %}
-                        <tr>
-                            <td>{{key}}</td>
-                            <td>{{value['type']}}</td>
-                            <td>{{'enabled' if value['retry_for_consensus'] else 'disabled'}}</td>
-                            <td>
-                                {% for l in value['config']['labels'] %}
-                                {% if loop.index == loop.length %}
-                                <span>{{l}}</span>
-                                {% else %}
-                                <span>{{l}},</span>
-                                {% endif %}
-                                {% endfor %}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-                <div>
-                    <span><em>Consensus Configuration</em></span>
-                    <a href="{{url_for('project.answerfieldsconfig', short_name=project.short_name)}}">
-                        <button type="button" class="btn btn-sm">
-                            <i class="fa fa-external-link"></i>
-                        </button>
-                    </a>
-                </div>
-                <div class="row">
-                    <dev class="col-md-3">
-                        <p> threshold </p>
-                    </dev>
-                    <dev class="col-md-8 pull-right">
-                        <p> {{consensus_config.consensus_threshold}} </p>
-                    </dev>
-                </div>
-                <div class="row">
-                    <dev class="col-md-3">
-                        <p> retry redundancy </p>
-                    </dev>
-                    <dev class="col-md-8 pull-right">
-                        <p> {{consensus_config.redundancy_config}}</p>
-                    </dev>
-                </div>
-                <div class="row">
-                    <dev class="col-md-3">
-                        <p> max retries </p>
-                    </dev>
-                    <dev class="col-md-8 pull-right">
-                        <p>{{consensus_config.max_retries}}</p>
-                    </dev>
+                    <consensus-config :consensus-config="{{consensus_config}}"></consensus-config>
                 </div>
             </div>
 
         </div>
+
         <div role="tabpanel" class="tab-pane fade" id="quiz">
             <div class="col-md-12">
-                <div>
-                    <span><em>Quiz Configuration</em></span>
-                    <a href="{{url_for('project.quiz_mode', short_name=project.short_name)}}">
-                        <button type="button" class="btn btn-sm">
-                            <i class="fa fa-external-link"></i>
-                        </button>
-                    </a>
-                </div>
                 <div class="row">
-                    <dev class="col-md-5">
-                        <p> quiz status</p>
-                    </dev>
-                    <dev class="col-md-7 pull-right">
-                        <p> {{ 'enabled' if quiz_config.enabled else 'disabled'}}</p>
-                    </dev>
+                    <div class="col-sm-12">
+                        <quiz-setting
+                            csrf-token="{{csrf}}"
+                            :config="{{quiz_config}}"
+                            :all-user-quiz="{{all_user_quizzes}}"> </quiz-setting>
+                    </div>
                 </div>
-                {% if quiz_config.enabled %}
-                <div class="row">
-                    <dev class="col-md-5">
-                        <p> number of questions per quiz </p>
-                    </dev>
-                    <dev class="col-md-7 pull-right">
-                        <p> {{ quiz_config.questions }}</p>
-                    </dev>
-                </div>
-                <div class="row">
-                    <dev class="col-md-5">
-                        <p> number of correct answers to pass quiz </p>
-                    </dev>
-                    <dev class="col-md-7 pull-right">
-                        <p> {{ quiz_config.passing }}</p>
-                    </dev>
-                </div>
-                <div class="row">
-                    <dev class="col-md-5">
-                        <p> completion mode </p>
-                    </dev>
-                    <dev class="col-md-7 pull-right">
-                        <p> {{ quiz_config.completion_mode }}</p>
-                    </dev>
-                </div>
-                {% endif %}
-                <table id="quiz_result_table"
-                    class="table table-bordered table-striped table-hover"
-                    style="margin-top:15px">
-                    <thead>
-                        <tr>
-                            <th>User</th>
-                            <th>Status</th>
-                            <th>Right</th>
-                            <th>Wrong</th>
-                            <th>Questions</th>
-                            <th>Passing</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for user in all_user_quizzes %}
-                        <tr>
-                            <td>{{user.fullname}}</td>
-                            <td class="{{ {'passed':'bg-success','failed':'bg-danger'}.get(user.quiz.status, '') }}">{{user.quiz.status}}</td>
-                            <td>{{user.quiz.result.right}}</td>
-                            <td>{{user.quiz.result.wrong}}</td>
-                            <td>{{user.quiz.config.questions}}</td>
-                            <td>{{user.quiz.config.passing}}</td>
-                            <td><button class="btn btn-primary btn-sm" name="reset" value="{{user.id}}" form="quiz_form">Reset</button></td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+
+
             </div>
         </div>
     </div>
-</div>
+
+
+<script src="/static/js/gen/setting.min.fcd64f8d481eb7bf1a5b.js"></script>
+<script>
+answerFields.setData({
+    csrf: '{{csrf}}',
+    answerFields: {{answer_fields | safe}},
+    consensus: {{consensus_config | safe}}
+});
+</script>
 
 <style>
 .nav-tabs li.active{
