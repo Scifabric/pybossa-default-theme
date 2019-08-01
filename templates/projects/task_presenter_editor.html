@@ -153,7 +153,8 @@
                     {% set github_data_exists = project.info.pusher and project.info.timestamp and project.info.ref_url and project.info.ref %}
                     <div class="panel-heading">
                       <a class="accordion-panel {{ 'collapsed' if not github_data_exists else '' }}" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-github" aria-expanded="true" aria-controls="panel-github">
-                        Latest GitHub Push Details
+                        <i class="fa fa-github-square" style='margin-right: 5px;'></i>
+                        <span>Latest GitHub Push Details</span>
                       </a>
                     </div>
                     <div id="panel-github" class="panel-body collapse {{ 'in' if github_data_exists else '' }}">
@@ -177,7 +178,7 @@
                             </tr>
                           </table>
                       {% else %}
-                          <p class="message">Task presenter code was not updated via GitHub</p>
+                          <p class="message">Task presenter code was not updated via GitHub.</p>
                       {% endif %}
                     </div>
                   </div>
@@ -187,7 +188,8 @@
                     {% set sync_data_exists = project.info.sync and project.info.sync.syncer and project.info.sync.latest_sync and project.info.sync.source_url %}
                     <div class="panel-heading">
                       <a class="accordion-panel {{ 'collapsed' if not sync_data_exists else '' }}" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-sync" aria-expanded="true" aria-controls="panel-sync">
-                        Latest Project Sync Details
+                        <i class="fa fa-retweet" style='margin-right: 5px;'></i>
+                        <span>Latest Project Sync Details</span>
                       </a>
                     </div>
                     <div id="panel-sync" class="panel-body collapse {{ 'in' if sync_data_exists else '' }}">
@@ -217,7 +219,7 @@
                           {% endif %}
                         </table>
                       {% else %}
-                        <p class="message">Task presenter code was not updated via project syncing</p>
+                        <p class="message">Task presenter code was not updated via project syncing.</p>
                       {% endif %}
                     </div>
                   </div>
