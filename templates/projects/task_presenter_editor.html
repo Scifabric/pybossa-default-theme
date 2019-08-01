@@ -148,82 +148,80 @@
               </div>
 
               <div id="sync-panels" class="row">
-                      <div class="col-md-6">
-                        <div class="panel panel-info">
-                          <div class="panel-heading">
-                            <a class="accordion-panel" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-github" aria-expanded="true" aria-controls="panel-github">
-                              Latest GitHub Push Details
-                            </a>
-                          </div>
-                          <div id="panel-github" class="panel-body collapse in">
-                            {% if project.info.pusher and project.info.timestamp and project.info.ref_url and project.info.ref%}
-                                <table class="table table-hover table-condensed" >
-                                  <tr>
-                                      <td ><p>Author:</p></td>
-                                      <td><p>{{ project.info.pusher }}</p></td>
-                                  </tr>
-                                  <tr>
-                                      <td><p>Message:</p></td>
-                                      <td><p>{{ project.info.message }}</p></td>
-                                  </tr>
-                                  <tr>
-                                      <td><p>Last Updated:</p></td>
-                                      <td><p>{{ project.info.timestamp }}</p></td>
-                                  </tr>
-                                  <tr>
-                                      <td><p>Last Commit:</p></td>
-                                      <td class="ref-details"><a href={{ project.info.ref_url }} target="_blank">{{ project.info.ref }}</a></td>
-                                  </tr>
-                                </table>
-                            {% else %}
-                                <p class="message">Task presenter code was not updated via GitHub</p>
-                            {% endif %}
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="panel panel-info">
-                          <div class="panel-heading">
-                            <a class="accordion-panel" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-sync" aria-expanded="true" aria-controls="panel-sync">
-                              Latest Project Sync Details
-                            </a>
-                          </div>
-                          <div id="panel-sync" class="panel-body collapse in">
-                            {% if project.info.sync %}
-                              {% if project.info.sync.syncer and project.info.sync.latest_sync and project.info.sync.source_url %}
-                                  <table class="table table-hover table-condensed">
-                                    <tr>
-                                        <td><p>Syncer:</p></td>
-                                        <td><p>{{ project.info.sync.syncer }}</p></td>
-                                    </tr>
-                                    <tr>
-                                        <td><p>Last Synced:</p></td>
-                                        <td><p>{{ project.info.sync.latest_sync }}</p></td>
-                                    </tr>
-                                    <tr>
-                                        <td><p>Synced With:</p></td>
-                                        <td class="ref-details"><a href={{ project.info.sync.source_url + '/project/' + project.short_name }} target="_blank">
-                                                {{ project.info.sync.source_url + '/project/' + project.short_name }}
-                                        </a></td>
-                                    </tr>
-                                    {% if project.info.sync.ref and project.info.sync.ref_url %}
-                                    <tr>
-                                        <td><p>GitHub Reference:</p></td>
-                                        <td class="ref-details"><a href={{ project.info.sync.ref_url }} target="_blank">
-                                                {{ project.info.sync.ref }}
-                                        </a></td>
-                                    </tr>
-                                    {% endif %}
-                                  </table>
-                              {% else %}
-                                  <p class="message">Task presenter code was not updated via project syncing</p>
-                              {% endif %}
-                            {% else %}
-                              <p class="message">Task presenter code was not updated via project syncing</p>
-                            {% endif %}
-                          </div>
-                        </div>
-                      </div>
+                <div class="col-md-6">
+                  <div class="panel panel-info">
+                    {% set github_data_exists = project.info.pusher and project.info.timestamp and project.info.ref_url and project.info.ref %}
+                    <div class="panel-heading">
+                      <a class="accordion-panel {{ 'collapsed' if not github_data_exists else '' }}" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-github" aria-expanded="true" aria-controls="panel-github">
+                        Latest GitHub Push Details
+                      </a>
+                    </div>
+                    <div id="panel-github" class="panel-body collapse {{ 'in' if github_data_exists else '' }}">
+                      {% if github_data_exists %}
+                          <table class="table table-hover table-condensed" >
+                            <tr>
+                                <td ><p>Author:</p></td>
+                                <td><p>{{ project.info.pusher }}</p></td>
+                            </tr>
+                            <tr>
+                                <td><p>Message:</p></td>
+                                <td><p>{{ project.info.message }}</p></td>
+                            </tr>
+                            <tr>
+                                <td><p>Last Updated:</p></td>
+                                <td><p>{{ project.info.timestamp }}</p></td>
+                            </tr>
+                            <tr>
+                                <td><p>Last Commit:</p></td>
+                                <td class="ref-details"><a href={{ project.info.ref_url }} target="_blank">{{ project.info.ref }}</a></td>
+                            </tr>
+                          </table>
+                      {% else %}
+                          <p class="message">Task presenter code was not updated via GitHub</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="panel panel-info">
+                    {% set sync_data_exists = project.info.sync and project.info.sync.syncer and project.info.sync.latest_sync and project.info.sync.source_url %}
+                    <div class="panel-heading">
+                      <a class="accordion-panel {{ 'collapsed' if not sync_data_exists else '' }}" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-sync" aria-expanded="true" aria-controls="panel-sync">
+                        Latest Project Sync Details
+                      </a>
+                    </div>
+                    <div id="panel-sync" class="panel-body collapse {{ 'in' if sync_data_exists else '' }}">
+                      {% if sync_data_exists %}
+                        <table class="table table-hover table-condensed">
+                          <tr>
+                              <td><p>Syncer:</p></td>
+                              <td><p>{{ project.info.sync.syncer }}</p></td>
+                          </tr>
+                          <tr>
+                              <td><p>Last Synced:</p></td>
+                              <td><p>{{ project.info.sync.latest_sync }}</p></td>
+                          </tr>
+                          <tr>
+                              <td><p>Synced With:</p></td>
+                              <td class="ref-details"><a href={{ project.info.sync.source_url + '/project/' + project.short_name }} target="_blank">
+                                      {{ project.info.sync.source_url + '/project/' + project.short_name }}
+                              </a></td>
+                          </tr>
+                          {% if project.info.sync.ref and project.info.sync.ref_url %}
+                          <tr>
+                              <td><p>GitHub Reference:</p></td>
+                              <td class="ref-details"><a href={{ project.info.sync.ref_url }} target="_blank">
+                                      {{ project.info.sync.ref }}
+                              </a></td>
+                          </tr>
+                          {% endif %}
+                        </table>
+                      {% else %}
+                        <p class="message">Task presenter code was not updated via project syncing</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div id="modal-preview" class="modal fade" tabindex="-1" role="dialog">
