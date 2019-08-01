@@ -130,6 +130,6 @@ module.exports = {
       filename: '../../../templates/projects/summary.html',
       template: '../../templates/projects/summary.webpack.ejs'
     }),
-    new VueLoaderPlugin(),
+    new VueLoaderPlugin()
   ]
 };

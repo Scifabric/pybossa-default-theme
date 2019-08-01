@@ -256,10 +256,9 @@ export default {
     filter () {
       if (!this.search.length) {
         this.searchResult = this.allUsers;
-      }
-      else {
+      } else {
         this.searchResult = this.allUsers.filter(
-          user => user.fullname.toLowerCase().includes(this.search.toLowerCase()))
+          user => user.fullname.toLowerCase().includes(this.search.toLowerCase()));
       }
     },
 
