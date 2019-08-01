@@ -67,7 +67,6 @@
           </select>
         </div>
       </div>
-      {{ allUserQuiz }}
       <table
         id="quiz_result_table"
         class="table table-bordered table-striped table-hover"
