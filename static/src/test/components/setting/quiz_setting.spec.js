@@ -78,7 +78,31 @@ mode_choices: []
         passing: 0,
         complete_mode: null,
         short_circuit: false,
-mode_choices: []
+        mode_choices: []
+      },
+      allUserQuiz: []
+    };
+    const wrapper = shallowMount(quizConfig, { propsData });
+    const saveButton = wrapper.findAll('button').at(0);
+    saveButton.trigger('click');
+    await localVue.nextTick();
+    expect(fetch.mock.calls).toHaveLength(1);
+    expect(notify.mock.calls).toHaveLength(1);
+  });
+
+  it('saves config fails', async () => {
+    fetch.mockImplementation((arg) => ({
+      ok: false
+    }));
+    propsData = {
+      csrfTRoken: null,
+      config: {
+        enabled: false,
+        questions: 0,
+        passing: 0,
+        complete_mode: null,
+        short_circuit: false,
+        mode_choices: []
       },
       allUserQuiz: []
     };

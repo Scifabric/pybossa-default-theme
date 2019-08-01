@@ -43,4 +43,22 @@ describe('taskConfig', () => {
     expect(fetch.mock.calls).toHaveLength(1);
     expect(notify.mock.calls).toHaveLength(1);
   });
+
+  it('saves config fails', async () => {
+    fetch.mockImplementation((arg) => ({
+      ok: false
+    }));
+    propsData = {
+      csrfTRoken: null,
+      config: { sched: 'default', rand_within_priority: false, sched_variants: [] },
+      taskTimeout: 600,
+      taskRedundancy: 2
+     };
+    const wrapper = shallowMount(taskConfig, { propsData });
+    const saveButton = wrapper.findAll('button').at(0);
+    saveButton.trigger('click');
+    await localVue.nextTick();
+    expect(fetch.mock.calls).toHaveLength(1);
+    expect(notify.mock.calls).toHaveLength(1);
+  });
 });

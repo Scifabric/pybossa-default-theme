@@ -49,14 +49,8 @@ describe('ownershipConfig', () => {
       coOwners: [{ id: 1, fullname: 'user1' }, { id: 2, fullname: 'user2' }]
     };
     const wrapper = shallowMount(ownershipConfig, { propsData });
-    console.log(wrapper.findAll('p').at(0).text());
-    console.log(wrapper.findAll('p').at(1).text());
-    console.log(wrapper.findAll('p').at(2).text());
-    console.log(wrapper.findAll('p').at(3).text());
-    console.log(wrapper.findAll('p').at(4).text());
     expect(wrapper.findAll('p')).toHaveLength(5);
     const searchButton = wrapper.findAll('button').at(0);
-    console.log(searchButton.text());
     searchButton.trigger('click');
     await localVue.nextTick();
     expect(wrapper.findAll('p')).toHaveLength(6);
@@ -98,6 +92,23 @@ describe('ownershipConfig', () => {
   it('saves config', async () => {
     fetch.mockImplementation((arg) => ({
       ok: true
+    }));
+    propsData = {
+      csrfToken: '',
+      owner: { id: 1, fullname: 'user1' },
+      coOwners: []
+    };
+    const wrapper = shallowMount(ownershipConfig, { propsData });
+    const saveButton = wrapper.findAll('button').at(1);
+    saveButton.trigger('click');
+    await localVue.nextTick();
+    expect(fetch.mock.calls).toHaveLength(1);
+    expect(notify.mock.calls).toHaveLength(1);
+  });
+
+  it('saves config fails', async () => {
+    fetch.mockImplementation((arg) => ({
+      ok: false
     }));
     propsData = {
       csrfToken: '',

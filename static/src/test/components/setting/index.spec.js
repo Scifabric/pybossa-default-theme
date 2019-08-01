@@ -109,4 +109,25 @@ describe('projectConfig', () => {
     expect(fetch.mock.calls).toHaveLength(1);
     expect(notify.mock.calls).toHaveLength(1);
   });
+
+  it('saves config fails', async () => {
+    fetch.mockImplementation((arg) => ({
+      ok: false
+    }));
+    propsData = {
+      csrfTRoken: null,
+      dataAccess: [],
+      assignUsers: [],
+      allUsers: [],
+      isPrivate: true,
+      externalConfig: { gigwork_poller: { target_bucket: null } }
+    };
+    const wrapper = shallowMount(projectConfig, { propsData });
+    const saveButton = wrapper.findAll('button').at(0);
+    saveButton.trigger('click');
+    await localVue.nextTick();
+    expect(fetch.mock.calls).toHaveLength(1);
+    expect(notify.mock.calls).toHaveLength(1);
+  });
+
 });
