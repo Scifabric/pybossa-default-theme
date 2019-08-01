@@ -15,7 +15,7 @@
     Modernizr.load({
         test: window.JSON,
         nope: '{{url_for('static', filename='js/vendor/json2.min.js')}}'
-});
+    });
 </script>
 <link rel="stylesheet" href="{{url_for('static', filename='css/small-navbar.css')}}"/>
 
@@ -35,16 +35,19 @@
         </div>
     </div>
     {% endif %}
-    <p>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-guidelines" aria-expanded="false" aria-controls="collapse-guidelines">
-       Annotations Guidelines
-    </button>
-    </p>
-    <div class="collapse" id="collapse-guidelines">
-    <div class="card card-body">
-            {{ project.info.task_guidelines|safe }}
+    {% if project.info.task_guidelines %}
+        <p>
+            <button class='btn btn-primary collapse-guidelines-button' data-toggle="collapse"
+                    data-target="#collapse-guidelines" aria-expanded="false"
+                    aria-controls="collapse-guidelines">Show Instructions</button>
+        </p>
+        <div class="collapse" id="collapse-guidelines">
+        <div class="card card-body">
+                {{ project.info.task_guidelines|safe }}
+            </div>
         </div>
-    </div>
+    {% endif %}
+
 
     {{ project.info.task_presenter|safe }}
 
@@ -56,6 +59,15 @@
         {% endif %}
     </div>
 </div>
+<script type="text/javascript">
+    $(".collapse-guidelines-button").on('click', function(){
+        var showInstructionsMsg = 'Show Instructions';
+        var hideInstructionsMsg = 'Hide Instructions';
+        $(this).text(function(i, v){
+            return v === showInstructionsMsg ? hideInstructionsMsg : showInstructionsMsg
+        });
+    });
+</script>
 {% endblock %}
 {% block extrajs %}
 {% include "_flash_messages.html" %}

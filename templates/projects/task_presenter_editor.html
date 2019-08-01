@@ -77,7 +77,7 @@
 <div role="tabpanel">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-      <li id="tab-nav-guidelines" role="presentation"><a href="#content-guidelines" aria-controls="basics" role="tab" data-toggle="tab">Annotation Guidelines</a></li>
+      <li id="tab-nav-guidelines" role="presentation"><a href="#content-guidelines" aria-controls="basics" role="tab" data-toggle="tab">Instructions</a></li>
       <li id="tab-nav-presenter" role="presentation"><a href="#content-presenter" aria-controls="basics" role="tab" data-toggle="tab">Task Presenter</a></li>
     </ul>
     <!-- Tab panes -->
@@ -345,7 +345,6 @@ if ('{{presenter_tab_on}}' == 'True')
 
 $('#tab-nav-presenter').on('shown.bs.tab', function (e) {
     editor.refresh();
-    console.log('hellloooooooo')
 })
 
 function showPreview() {
@@ -361,7 +360,7 @@ var main = function() {
 
  // Create markup
  $('#guidelines').summernote(
-      { height: 500}
+      { height: 554}
  );
 
  var slide = $('.navigation-element');
