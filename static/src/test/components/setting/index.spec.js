@@ -129,5 +129,4 @@ describe('projectConfig', () => {
     expect(fetch.mock.calls).toHaveLength(1);
     expect(notify.mock.calls).toHaveLength(1);
   });
-
 });
