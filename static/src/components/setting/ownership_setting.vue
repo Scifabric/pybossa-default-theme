@@ -1,13 +1,12 @@
 <template>
   <div class="stats-config row">
     <div class="col-sm-12">
-
       <div class="form-group row">
         <div class="col-sm-4">
           <p> project owner </p>
         </div>
         <div class="col-sm-8 pull-right">
-          <p> {{owner.fullname}} </p>
+          <p> {{ owner.fullname }} </p>
         </div>
       </div>
       <div class="form-group row">
@@ -15,23 +14,23 @@
           <p> co-owners </p>
         </div>
         <div class="col-sm-8 pull-right">
-
           <div v-if="Object.keys(coowners).length">
             <p>
               <span
                 v-for="u in coowners"
                 :key="u.name"
                 class=" label label-lg label-info"
-
               >
-                {{u.fullname}}
-                <i v-if="u.id!=owner.id" class="fa fa-times"
+                {{ u.fullname }}
+                <i
+                  v-if="u.id!=owner.id"
+                  class="fa fa-times"
+                  aria-hidden="true"
                   @click="remove($event, u.id)"
-                  aria-hidden="true" />
+                />
               </span>
             </p>
           </div>
-
         </div>
       </div>
       <div class="form-group row">
@@ -39,25 +38,31 @@
           <p> manage co-owners </p>
         </div>
         <div class="col-sm-8 pull-right">
-            <div class="input-group">
-              <input
-                type="text"
-                v-model="search"
-                class="form-control input-sm"
-                placeholder="Try with full name or nick name"
+          <div class="input-group">
+            <input
+              v-model="search"
+              type="text"
+              class="form-control input-sm"
+              placeholder="Try with full name or nick name"
+            >
+            <span class="input-group-append">
+              <button
+                class="btn btn-sm btn-primary "
+                @click="getData"
               >
-              <span class="input-group-append">
-                <button
-                  class="btn btn-sm btn-primary "
-                  @click="getData"
-                >
-                  <i class="fa fa-search"></i>
-                  Search
-                </button>
-              </span>
-            </div>
-            <div v-if="searchResult.length" class="dropdown-content">
-              <div class="scroll" style="max-height: 150px;">
+                <i class="fa fa-search" />
+                Search
+              </button>
+            </span>
+          </div>
+          <div
+            v-if="searchResult.length"
+            class="dropdown-content"
+          >
+            <div
+              class="scroll"
+              style="max-height: 150px;"
+            >
               <div
                 v-for="u in searchResult"
                 :key="u.id"
@@ -65,35 +70,28 @@
                 class="row"
                 @click="add($event, u)"
               >
-              <p> {{u['fullname']}} </p>
-              </div>
+                <p> {{ u['fullname'] }} </p>
               </div>
             </div>
+          </div>
         </div>
       </div>
       <div>
         <button
-        class="btn btn-sm btn-primary"
-        @click="save"
+          class="btn btn-sm btn-primary"
+          @click="save"
         >
-        Save
+          Save
         </button>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import Multiselect from 'vue-multiselect'
 
 export default {
-
-  components: {
-    Multiselect
-  },
-
   props: {
     csrfToken: {
       type: String,
@@ -105,7 +103,7 @@ export default {
     },
     coOwners: {
       type: Array,
-      default: []
+      default: function () { return []; }
     }
   },
 
@@ -113,70 +111,68 @@ export default {
     return {
       coowners: {},
       searchResult: [],
-      search: ""
+      search: ''
 
     };
   },
 
   mounted: function () {
-    var _this = this
-    _this.coowners = _this.getCoowners()
-
+    var _this = this;
+    _this.coowners = _this.getCoowners();
   },
 
   methods: {
 
-    getCoowners() {
-      var users = {}
-      for (var i=0; i < this.coOwners.length; i++) {
-          users[this.coOwners[i].id] = this.coOwners[i]
+    getCoowners () {
+      var users = {};
+      for (var i = 0; i < this.coOwners.length; i++) {
+          users[this.coOwners[i].id] = this.coOwners[i];
       }
-      return users
+      return users;
     },
 
-    prepareResult() {
+    prepareResult () {
       var found = this.searchResult;
-      this.searchResult = []
-      for (var i=0; i< found.length; i++){
-        var u = {id: found[i].id, user: found[i]}
-        this.searchResult.push(u)
+      this.searchResult = [];
+      for (var i = 0; i < found.length; i++) {
+        var u = { id: found[i].id, user: found[i] };
+        this.searchResult.push(u);
       }
     },
 
-    add( event, ur ){
-      Vue.set(this.coowners, ur.id, ur)
-      this.coowners[ur.id] = ur
+    add (event, ur) {
+      Vue.set(this.coowners, ur.id, ur);
+      this.coowners[ur.id] = ur;
     },
 
-    remove( event, id ) {
-      Vue.delete(this.coowners, id)
+    remove (event, id) {
+      Vue.delete(this.coowners, id);
     },
 
     customLabel (option) {
-      return `${option.user.fullname}`
+      return `${option.user.fullname}`;
     },
 
-    async getData() {
+    async getData () {
       try {
         const res = await fetch(window.location.pathname + '/coowners', {
           method: 'POST',
           headers: {
-            'content-type':  'application/json',
+            'content-type': 'application/json',
             'X-CSRFToken': this.csrfToken
           },
           credentials: 'same-origin',
-          body: JSON.stringify({query: this.search})
+          body: JSON.stringify({ query: this.search })
         });
         const data = await res.json();
-        this.searchResult = data['found']
-      }
-      catch (error) {
+        this.searchResult = data['found'];
+      } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
     },
 
     async save () {
-      var coownerId = Object.keys(this.coowners)
+      var coownerId = Object.keys(this.coowners);
       try {
         const res = await fetch(window.location.pathname, {
           method: 'POST',
@@ -187,10 +183,10 @@ export default {
           credentials: 'same-origin',
           body: JSON.stringify({ 'ownership': {
             coowners: coownerId
-          }})
+          } })
         });
         if (res.ok) {
-          this.searchResult = []
+          this.searchResult = [];
           window.pybossaNotify('Ownership data Saved.', true, 'success');
         } else {
           window.pybossaNotify('An error occurred.', true, 'error');
@@ -203,7 +199,6 @@ export default {
 };
 
 </script>
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style>
 .label {
   font-size: 100%;

@@ -6,10 +6,13 @@
           <p> task scheduler </p>
         </div>
         <div class="col-sm-6 pull-right">
-          <select v-model="sched" class="form-control input-sm" >
+          <select
+            v-model="sched"
+            class="form-control input-sm"
+          >
             <option
               v-for="opt in getOptions()"
-              v-bind:key="opt.text"
+              :key="opt.text"
               :value="opt.value"
             >
               {{ opt.text }}
@@ -23,9 +26,12 @@
         </div>
         <div class="col-sm-6 pull-right">
           <label class="switch">
-            <input type="checkbox" v-model="random">
-            <span class="slider"></span>
-         </label>
+            <input
+              v-model="random"
+              type="checkbox"
+            >
+            <span class="slider" />
+          </label>
         </div>
       </div>
       <div class="form-group row">
@@ -66,7 +72,7 @@
             v-model="defaultRedundancy"
             type="text"
             class="form-control input-sm"
-            />
+          >
         </div>
       </div>
       <div class="form-group row">
@@ -78,25 +84,23 @@
             v-model="currentRedundancy"
             type="text"
             class="form-control input-sm"
-            />
+          >
         </div>
       </div>
 
       <div>
         <button
-        class="btn btn-sm btn-primary"
-        @click="save"
+          class="btn btn-sm btn-primary"
+          @click="save"
         >
-        Save
+          Save
         </button>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
-
 
 export default {
 
@@ -107,7 +111,7 @@ export default {
     },
     config: {
       type: Object,
-      default: () => ({sched: "default", rand_within_priority: false, sched_variants: []})
+      default: () => ({ sched: 'default', rand_within_priority: false, sched_variants: [] })
     },
     taskTimeout: {
       type: Number
@@ -122,27 +126,25 @@ export default {
     return {
       sched: this.config.sched,
       random: this.config.rand_within_priority,
-      timeoutMinute: Math.floor(this.taskTimeout/60),
-      timeoutSecond: this.taskTimeout%60,
+      timeoutMinute: Math.floor(this.taskTimeout / 60),
+      timeoutSecond: this.taskTimeout % 60,
       defaultRedundancy: this.taskRedundancy,
       currentRedundancy: null
     };
   },
 
-
-
   methods: {
-    getOptions() {
-      var options = []
+    getOptions () {
+      var options = [];
       var i;
-      for (i = 0; i < this.config.sched_variants.length; i++){
+      for (i = 0; i < this.config.sched_variants.length; i++) {
         var opt = {
           text: this.config.sched_variants[i][1],
           value: this.config.sched_variants[i][0]
-        }
-        options.push(opt)
+        };
+        options.push(opt);
       }
-      return options
+      return options;
     },
 
     _isIntegerNumeric: function (_n) {
@@ -152,11 +154,11 @@ export default {
     async save () {
       const _defaultRedundancy = parseInt(this.defaultRedundancy);
       const _currentRedundancy = parseInt(this.currentRedundancy);
-      if (!this._isIntegerNumeric(_defaultRedundancy)){
-        return ;
+      if (!this._isIntegerNumeric(_defaultRedundancy)) {
+        return;
       }
-      if (this.currentRedundancy && !this._isIntegerNumeric(_currentRedundancy)){
-        return ;
+      if (this.currentRedundancy && !this._isIntegerNumeric(_currentRedundancy)) {
+        return;
       }
       try {
         const res = await fetch(window.location.pathname, {
@@ -168,11 +170,11 @@ export default {
           credentials: 'same-origin',
           body: JSON.stringify({ 'task': {
             sched: this.sched,
-            timeout: this.timeoutMinute*60 + this.timeoutSecond,
+            timeout: this.timeoutMinute * 60 + this.timeoutSecond,
             default_redundancy: _defaultRedundancy,
             current_redundancy: _currentRedundancy,
             random: this.random
-          }})
+          } })
         });
         if (res.ok) {
           window.pybossaNotify('task data Saved.', true, 'success');
@@ -187,4 +189,3 @@ export default {
 };
 
 </script>
-

@@ -81,7 +81,6 @@ export default {
   methods: {
     ...mapMutations(['deleteField', 'changeRetryConfig']),
 
-
     changeRetryStatus () {
       this.retry = !this.retry;
       this.changeRetryConfig({ name: this.name,
@@ -89,11 +88,8 @@ export default {
     },
 
     changeCollapseStatus () {
-
       this.collapse = !this.collapse;
       this.$emit('edit', !this.collapse);
-
-
     }
   }
 };

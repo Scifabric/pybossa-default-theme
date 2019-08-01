@@ -104,8 +104,5 @@ describe('ConsensusConfig', () => {
     await localVue.nextTick();
     expect(fetch.mock.calls).toHaveLength(1);
     expect(notify.mock.calls).toHaveLength(1);
-    const [ msg, dismissable, status ] = notify.mock.calls[0];
-    expect(dismissable).toBe(true);
-    expect(status).toBe('success');
   });
 });

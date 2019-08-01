@@ -9,13 +9,9 @@ localVue.use(Vuex);
 
 describe('fieldsconfig', () => {
   let store;
-  let fetch;
-  let notify;
 
   beforeEach(() => {
     store = new Vuex.Store(cloneDeep(storeSpecs));
-    fetch = global.fetch = jest.fn();
-    notify = window.pybossaNotify = jest.fn();
   });
 
   it('loads', () => {
@@ -74,59 +70,6 @@ describe('fieldsconfig', () => {
     const field = fields.at(0);
     expect(field.text()).toContain('Free Text Field - new_2');
   });
-
-  // it('saves fields', async () => {
-  //   fetch.mockImplementation((arg) => ({
-  //     ok: true,
-  //     json: () => Promise.resolve({ flash: 'hello', status: 'success' })
-  //   }));
-  //   const wrapper = mount(FieldsConfig, { store, localVue });
-  //   const button = wrapper.find('button');
-  //   wrapper.setData({ fieldName: 'new_1', fieldType: 'categorical' });
-  //   button.trigger('click');
-  //   wrapper.setData({ fieldName: 'new_2', fieldType: 'freetext' });
-  //   button.trigger('click');
-  //   const saveButton = wrapper.findAll('button').at(1);
-  //   saveButton.trigger('click');
-  //   await localVue.nextTick();
-  //   expect(fetch.mock.calls).toHaveLength(1);
-  //   expect(notify.mock.calls).toHaveLength(1);
-  //   const [ msg, dismissable, status ] = notify.mock.calls[0];
-  //   expect(msg).toBe('hello');
-  //   expect(dismissable).toBe(true);
-  //   expect(status).toBe('success');
-  // });
-
-  // it('notifies request errors', async () => {
-  //   fetch.mockImplementation((arg) => ({
-  //     ok: false
-  //   }));
-  //   const wrapper = mount(FieldsConfig, { store, localVue });
-  //   const saveButton = wrapper.findAll('button').at(1);
-  //   saveButton.trigger('click');
-  //   await localVue.nextTick();
-  //   expect(notify.mock.calls).toHaveLength(1);
-  //   const [ msg, dismissable, status ] = notify.mock.calls[0];
-  //   expect(msg).toBe('An error occurred.');
-  //   expect(dismissable).toBe(true);
-  //   expect(status).toBe('error');
-  // });
-
-  // it('notifies save errors', async () => {
-  //   fetch.mockImplementation((arg) => ({
-  //     ok: true,
-  //     json: () => Promise.resolve({ flash: 'there was an error', status: 'error' })
-  //   }));
-  //   const wrapper = mount(FieldsConfig, { store, localVue });
-  //   const saveButton = wrapper.findAll('button').at(1);
-  //   saveButton.trigger('click');
-  //   await localVue.nextTick();
-  //   expect(notify.mock.calls).toHaveLength(1);
-  //   const [ msg, dismissable, status ] = notify.mock.calls[0];
-  //   expect(msg).toBe('there was an error');
-  //   expect(dismissable).toBe(true);
-  //   expect(status).toBe('error');
-  // });
 
   it('deletes fields', () => {
     store.commit('setData', {

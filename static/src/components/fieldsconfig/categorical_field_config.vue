@@ -5,7 +5,7 @@
         :name="name"
         :type="type"
         :retry-for-consensus="retryForConsensus"
-        :isEditable="true"
+        :is-editable="true"
         :edit="editing"
         @edit="editing=!editing"
       />

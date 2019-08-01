@@ -2,7 +2,11 @@
   <div
     class="stats-config row"
   >
-    <div v-if="hasRetryFields" class="col-md-12" style="width:85%">
+    <div
+      v-if="hasRetryFields"
+      class="col-md-12"
+      style="width:85%"
+    >
       <div class="form-group row">
         <div class="col-sm-4">
           <p> consensus threshold </p>
@@ -12,7 +16,7 @@
             v-model="consensusThreshold"
             type="text"
             class="form-control input-sm"
-            />
+          >
         </div>
       </div>
       <div class="form-group row">
@@ -24,7 +28,7 @@
             v-model="redundancyConfig"
             type="text"
             class="form-control input-sm"
-            />
+          >
         </div>
       </div>
       <div class="form-group row">
@@ -36,17 +40,17 @@
             v-model="maxRetries"
             type="text"
             class="form-control input-sm"
-            />
+          >
         </div>
       </div>
     </div>
     <div class="col-md-12">
       <div>
         <button
-        class="btn btn-sm btn-primary"
-        @click="save"
+          class="btn btn-sm btn-primary"
+          @click="save"
         >
-        Save
+          Save
         </button>
       </div>
     </div>
@@ -128,7 +132,7 @@ export default {
                 })
             });
             if (res.ok) {
-                window.pybossaNotify("Answer Fields saved", true, 'success');
+                window.pybossaNotify('Answer Fields saved', true, 'success');
                 this.updateConsensusConfig({
                     'consensus_threshold': _consensusThreshold,
                     'max_retries': _maxRetries,

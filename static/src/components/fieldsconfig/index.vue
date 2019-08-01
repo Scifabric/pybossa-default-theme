@@ -1,28 +1,31 @@
 <template>
   <div class="stats-config row">
-    <div class="col-md-12" style="width:85%">
+    <div
+      class="col-md-12"
+      style="width:85%"
+    >
       <div
         class="form-group"
         :class="{'has-error': error}"
       >
-      <div class="form-group row">
-        <div class="col-sm-4">
-          <p> answer field name and type</p>
-        </div>
-        <div class="col-sm-4">
-          <input
-            v-model="fieldName"
-            type="text"
-            class="form-control input-sm"
-            id="answer-field"
-            />
-        </div>
+        <div class="form-group row">
           <div class="col-sm-4">
-           <select
+            <p> answer field name and type</p>
+          </div>
+          <div class="col-sm-4">
+            <input
+              id="answer-field"
+              v-model="fieldName"
+              type="text"
+              class="form-control input-sm"
+            >
+          </div>
+          <div class="col-sm-4">
+            <select
+              id="answer-field"
               v-model="fieldType"
               name="field-type"
               class="form-control input-sm"
-              id="answer-field"
             >
               <option
                 v-for="(conf, type, index) in labelTypes.config"
@@ -32,34 +35,37 @@
                 {{ conf.display }}
               </option>
             </select>
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-4">
-          <p> retry for consensus </p>
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <p> retry for consensus </p>
+          </div>
+          <div class="col-sm-4">
+            <label class="switch">
+              <input
+                v-model="retryForConsensus"
+                type="checkbox"
+              >
+              <span class="slider" />
+            </label>
+          </div>
+          <div class="col-sm-4 pull-right">
+            <button
+              class="btn btn-sm btn-primary"
+              :disabled="!fieldName"
+              @click="_addField"
+            >
+              Add Field
+            </button>
+            <span
+              v-if="error"
+              class="help-block"
+            >
+              {{ error }}
+            </span>
+          </div>
         </div>
-        <div class="col-sm-4">
-          <label class="switch">
-            <input type="checkbox" v-model="retryForConsensus">
-            <span class="slider"></span>
-         </label>
-        </div>
-        <div class="col-sm-4 pull-right">
-          <button
-            class="btn btn-sm btn-primary"
-            :disabled="!fieldName"
-            @click="_addField"
-          >
-            Add Field
-          </button>
-          <span
-            v-if="error"
-            class="help-block"
-          >
-          {{ error }}
-          </span>
-        </div>
-      </div>
       </div>
 
       <div v-if="!Object.keys(answerFields).length">
