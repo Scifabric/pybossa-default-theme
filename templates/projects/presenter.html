@@ -34,10 +34,9 @@
         </div>
     </div>
     {% endif %}
-    {% if project.info.task_guidelines %}
+    {% if project.info.task_guidelines != '<p><br></p>' %}
         {% include 'annotation_guidelines_button.html' %}
     {% endif %}
-
 
     {{ project.info.task_presenter|safe }}
 

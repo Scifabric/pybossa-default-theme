@@ -230,7 +230,6 @@
                 </div>
               </div>
           </div> <!-- End Task Presenter Tab-->
-
           <div id="modal-preview" class="modal fade" tabindex="-1" role="dialog">
               <div class="modal-dialog modal-lg">
                   <div class="modal-content">
@@ -341,7 +340,7 @@ var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
 
 function showPreviewGuidelines() {
     render(editor.getValue());
-    $("#annotations-guidelines-content").append($('#guidelines').summernote('code'))
+    $("#annotations-guidelines-content").html($('#guidelines').summernote('code'))
     $("#modal-preview").modal('show');
     $("#guidelines-section").show()
 }
