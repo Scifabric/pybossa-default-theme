@@ -84,7 +84,7 @@
     <div class="tab-content">
           <div role="tabpanel" id="content-guidelines" class="tab-pane fade in col-md-12">
               <div class = "row">
-                  <form method="post" action="{{ url_for('project.task_presenter_editor', short_name=project.short_name) }}">
+                  <form method="post" action="{{ url_for('project.task_presenter_editor', short_name=project.short_name, template=request.args.get('template')) }}">
                       {{ form.hidden_tag() }}
                       <fieldset>
                           {{render_field(form.guidelines)}}
