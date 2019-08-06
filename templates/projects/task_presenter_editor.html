@@ -75,28 +75,32 @@
 </style>
 
 <div role="tabpanel">
-
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#guidelines" aria-controls="basics" role="tab" data-toggle="tab">Annotation Guidelines</a></li>
-      <li role="presentation"><a id="tab-presenter" href="#presenter" aria-controls="basics" role="tab" data-toggle="tab">Task Presenter</a></li>
+    <ul class="nav nav-tabs editors" role="tablist" id="tabs">
+      <li id="tab-nav-guidelines" role="presentation"><a href="#content-guidelines" aria-controls="basics" role="tab" data-toggle="tab">Instructions</a></li>
+      <li id="tab-nav-presenter" role="presentation"><a href="#content-presenter" aria-controls="basics" role="tab" data-toggle="tab">Task Presenter</a></li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
-          <div role="tabpanel" class="tab-pane fade in active col-md-12" id="guidelines">
-              <!-- <link rel="stylesheet" href="{{url_for('static', filename='vendor/editor.md/css/editormd.css')}}"/> -->
-                  <div class = "row">
-                      <textarea id='guidelines-editor' rows='10'></textarea>
-                      <script>
-                          $(document).ready(function() {
-                              $('#guidelines-editor').summernote(
-                                { height: 500 }
-                              );
-                          });
-                      </script>
-                  </div>
+          <div role="tabpanel" id="content-guidelines" class="tab-pane fade in col-md-12">
+              <div class = "row">
+                  <form method="post" action="{{ url_for('project.task_presenter_editor', short_name=project.short_name, template=request.args.get('template')) }}">
+                      {{ form.hidden_tag() }}
+                      <fieldset>
+                          {{render_field(form.guidelines)}}
+                          <div class="form-actions">
+                              {% if disable_editor %}
+                              <input type="submit" name="task-guidelines" value={{ _('Update the project guidelines') }} class="btn btn-primary" disabled />
+                              {% else %}
+                              <input type="submit" name="task-guidelines" value={{ _('Update the project guidelines') }} class="btn btn-primary"/>
+                              {% endif %}
+                              <a class="btn btn-default btn-preview-guidelines" value="preview">{{ _('Preview the task') }}</a>
+                          </div>
+                      <fieldset>
+                  </form>
+              </div>
           </div>
-          <div role="tabpanel"  class="tab-pane fade col-md-12" id="presenter">
+          <div role="tabpanel" id="content-presenter" class="tab-pane fade in col-md-12" id="presenter">
 
               <!-- Task Presenter Editor -->
               <div class="row padding-top-tab-content ">
@@ -121,9 +125,9 @@
 
                               <div class="form-actions">
                                   {% if disable_editor %}
-                                  <input type="submit" value={{ _('Update the project task presenter') }} class="btn btn-primary" disabled />
+                                  <input type="submit" name="task-presenter" value={{ _('Update the project task presenter') }} class="btn btn-primary" disabled />
                                   {% else %}
-                                  <input type="submit" value={{ _('Update the project task presenter') }} class="btn btn-primary" />
+                                  <input type="submit" name="task-presenter" value={{ _('Update the project task presenter') }} class="btn btn-primary" />
                                   {% endif %}
                                   <a href="#" class="btn btn-default btn-preview" value="preview">{{ _('Preview the task presenter') }}</a>
                                   {% if current_user.admin or current_user.subadmin %}
@@ -225,26 +229,34 @@
                   </div>
                 </div>
               </div>
-
-              <div id="modal-preview" class="modal fade" tabindex="-1" role="dialog">
-                  <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                              <h4 class="modal-title"><strong>{{project.name}}</strong>: {{ _('Task Presenter Preview') }}</h4>
-                          </div>
-                          <div class="modal-body">
-                              <section id="output">
-                                  <iframe frameBorder="0"></iframe>
-                              </section>
-                          </div>
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          </div>
-                      </div><!-- /.modal-content -->
-                  </div><!-- /.modal-dialog -->
-              </div><!-- /.modal -->
           </div> <!-- End Task Presenter Tab-->
+          <div id="modal-preview" class="modal fade" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title"><strong>{{project.name}}</strong>: {{ _('Task Presenter Preview') }}</h4>
+                      </div>
+                      <div class="modal-body">
+                          <section id="output">
+                                <div class="col-md-1"></div>
+                                <div class="container project col-md-11">
+                                        <div class="project-content row">
+                                        <div id ="guidelines-section">
+                                            {% include 'annotation_guidelines_button.html' %}
+                                        </div>
+                                    </div>
+
+                                    </div>
+                            <iframe frameBorder="0"></iframe>
+                          </section>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                  </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
     </div>
 </div>
 
@@ -305,6 +317,7 @@
      "</html>";
 return baseTemplate;
  }
+
 var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   mode:'text/html',
   lineNumbers: true,
@@ -325,19 +338,81 @@ var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   }
 });
 
-$('#tab-presenter').on('shown.bs.tab', function (e) {
-    editor.refresh();
-})
+function showPreviewGuidelines() {
+    render(editor.getValue());
+    $("#annotations-guidelines-content").html($('#guidelines').summernote('code'))
+    $("#modal-preview").modal('show');
+    $("#guidelines-section").show()
+}
 
 function showPreview() {
     render(editor.getValue());
+    $("#guidelines-section").hide()
     $("#modal-preview").modal('show');
 }
+//set tabs classes, default tab is guidelines
+if ('{{guidelines_tab_on}}' == 'True' || '{{presenter_tab_on}}' == 'False') {
+    $('#tab-nav-guidelines').addClass('active');
+    $('#content-guidelines').addClass('active');
+    window.location.hash = window.location.hash  == '' ? "content-guidelines" : window.location.hash = window.location.hash;
+}
+if ('{{presenter_tab_on}}' == 'True') {
+    $('#tab-nav-presenter').addClass('active');
+    $('#content-presenter').addClass('active');
+    window.location.hash = "content-presenter";
+}
+
+//Codemirror needs to be refreshed in order to render properly
+if ('{{presenter_tab_on}}' == 'True'){
+    editor.refresh();
+}
+
+$('#tab-nav-presenter').on('shown.bs.tab', function (e) {
+    editor.refresh();
+    scrollTo(0,0);
+})
+
+$('#tab-nav-guidelines').on('shown.bs.tab', function (e) {
+    scrollTo(0,0);
+})
+
 $(".btn-preview").off('click').on('click', function(){
-        showPreview();
-        });
+    showPreview();
+    });
+
+$(".btn-preview-guidelines").off('click').on('click', function(){
+    showPreviewGuidelines();
+    });
+
 })();
+
+//to avoid form resubmission when refresh
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
+
+$('#tabs a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+});
+
+// store the currently selected tab in the hash value
+$("ul.nav-tabs.editors > li > a").on("shown.bs.tab", function (e) {
+    var id = $(e.target).attr("href").substr(1);
+    window.location.hash = id;
+});
+
+// on load of the page: switch to the currently selected tab
+var hash = window.location.hash;
+$('#tabs a[href="' + hash + '"]').tab('show');
+
 var main = function() {
+
+ // Create markup
+ $('#guidelines').summernote(
+      { height: 554}
+ );
+
  var slide = $('.navigation-element');
  var showVueComponent = $('#show-builder');
  var hideVueComponent = $('#hide-builder');
@@ -385,8 +460,11 @@ var main = function() {
     if (componentBuilderHideLink) componentBuilderHideLink.style.visibility = "visible" ;
     slide.toggle('slow');
  });
+ $("html, body").animate({ scrollTop: 0 }, "slow");
+
 }
 $(document).ready(main);
+
 </script>
 
 {% endblock %}
