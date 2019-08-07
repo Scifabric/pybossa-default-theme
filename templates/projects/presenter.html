@@ -34,10 +34,7 @@
         </div>
     </div>
     {% endif %}
-    {% if project.info.task_guidelines != '' %}
-        {% include 'annotation_guidelines_button.html' %}
-    {% endif %}
-
+    {% include 'annotation_guidelines_button.html' %}
     {{ project.info.task_presenter|safe }}
 
     <div id='PYBOSSA_USER_LOCALE' hidden>

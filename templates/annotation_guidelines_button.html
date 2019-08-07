@@ -1,4 +1,4 @@
-
+{% if "task_guidelines" in project.info and project.info.task_guidelines != '' %}
 <p id ="section-collapse-guidelines-button">
     <button class='btn btn-primary collapse-guidelines-button' data-toggle="collapse"
             data-target="#collapse-guidelines"
@@ -8,6 +8,7 @@
     <div class="card card-body guidelines" id="annotations-guidelines-content">
     </div>
 </div>
+{% endif %}
 
 <script type="text/javascript">
   $(".collapse-guidelines-button").on('click', function(){
