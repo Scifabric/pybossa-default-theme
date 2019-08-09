@@ -4,9 +4,11 @@
 {% set jstop = True %}
 
 {% block content %}
+
 {% assets "js_full" %}
     <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
+
 <script>
     if('{{mode}}' === 'gold'){
         window.pybossa.isGoldMode = true;
@@ -35,6 +37,7 @@
     </div>
     {% endif %}
     {% include 'annotation_guidelines_button.html' %}
+    {% include "projects/js/annotation_guidelines_button.js" %}
     {{ project.info.task_presenter|safe }}
 
     <div id='PYBOSSA_USER_LOCALE' hidden>
@@ -45,9 +48,13 @@
         {% endif %}
     </div>
 </div>
+{% assets "css_blpstrap3_style" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+{% endassets %}
 <script type="text/javascript">
     $("#annotations-guidelines-content").append('{{project.info.task_guidelines|safe}}')
 </script>
+
 {% endblock %}
 {% block extrajs %}
 {% include "_flash_messages.html" %}
