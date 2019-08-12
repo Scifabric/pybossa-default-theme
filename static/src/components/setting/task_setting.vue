@@ -159,8 +159,6 @@ export default {
         return;
       }
       try {
-        console.log(window.location.pathname);
-        console.log(window.location);
         const res = await fetch(window.location.pathname, {
           method: 'POST',
           headers: {

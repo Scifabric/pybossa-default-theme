@@ -222,8 +222,6 @@ export default {
       let levels = {};
       let access = this.dataAccessConfig;
       this.validAccessLevels.forEach(function (level) {
-        console.log(level);
-        // levels.push(access.includes(level))
         levels[level] = access.includes(level);
       });
       return levels;
@@ -311,9 +309,7 @@ export default {
            access.push(key);
          }
        }
-       console.log(access);
       let assigneeId = Object.keys(this.assignee);
-      console.log(this.constructExternalConfigFromDict());
       try {
         const res = await fetch(window.location.pathname, {
           method: 'POST',
