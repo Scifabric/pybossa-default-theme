@@ -1,11 +1,11 @@
 <template>
   <div class="stats-config row">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <div class="form-group row">
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <p> task scheduler </p>
         </div>
-        <div class="col-sm-6 pull-right">
+        <div class="col-md-6 pull-right">
           <select
             v-model="sched"
             class="form-control input-sm"
@@ -21,10 +21,10 @@
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <p> randomize order with same priority </p>
         </div>
-        <div class="col-sm-6 pull-right">
+        <div class="col-md-6 pull-right">
           <label class="switch">
             <input
               v-model="random"
@@ -35,10 +35,10 @@
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <p> timeout </p>
         </div>
-        <div class="col-sm-6 pull-right">
+        <div class="col-md-6 pull-right">
           <div class="input-group">
             <input
               v-model="timeoutMinute"
@@ -64,10 +64,10 @@
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <p> default task redundancy </p>
         </div>
-        <div class="col-sm-6 pull-right">
+        <div class="col-md-6 pull-right">
           <input
             v-model="defaultRedundancy"
             type="text"
@@ -76,10 +76,10 @@
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <p> change all current task redundancy to </p>
         </div>
-        <div class="col-sm-6 pull-right">
+        <div class="col-md-6 pull-right">
           <input
             v-model="currentRedundancy"
             type="text"
@@ -103,7 +103,6 @@
 <script>
 
 export default {
-
   props: {
     csrfToken: {
       type: String,
@@ -135,10 +134,9 @@ export default {
 
   methods: {
     getOptions () {
-      var options = [];
-      var i;
-      for (i = 0; i < this.config.sched_variants.length; i++) {
-        var opt = {
+      let options = [];
+      for (let i = 0; i < this.config.sched_variants.length; i++) {
+        let opt = {
           text: this.config.sched_variants[i][1],
           value: this.config.sched_variants[i][0]
         };
@@ -161,6 +159,8 @@ export default {
         return;
       }
       try {
+        console.log(window.location.pathname);
+        console.log(window.location);
         const res = await fetch(window.location.pathname, {
           method: 'POST',
           headers: {
@@ -170,10 +170,11 @@ export default {
           credentials: 'same-origin',
           body: JSON.stringify({ 'task': {
             sched: this.sched,
-            timeout: this.timeoutMinute * 60 + this.timeoutSecond,
-            default_redundancy: _defaultRedundancy,
-            current_redundancy: _currentRedundancy,
-            random: this.random
+            minutes: this.timeoutMinute,
+            seconds: this.timeoutSecond,
+            default_n_answers: _defaultRedundancy,
+            n_answers: _currentRedundancy,
+            rand_within_priority: this.random
           } })
         });
         if (res.ok) {

@@ -18,10 +18,12 @@
                 <setting
                     csrf-token="{{csrf}}"
                     :external-config="{{external_config}}"
+                    :external-config-form="{{external_config_form}}"
                     :assign-users="{{assign_user}}"
                     :all-users="{{users}}"
-                    :data-access="{{data_access}}"
-                    :is-private="{{private_instance|lower}}">
+                    :data-access-config="{{data_access}}"
+                    :valid-access-levels="{{valid_access_levels}}"
+                    :private-instance="{{private_instance|lower}}">
                 </setting>
             </div>
         </div>
@@ -44,23 +46,18 @@
                     :task-timeout="{{timeout}}"
                     :task-redundancy="{{default_task_redundancy}}">
                 </task-setting>
-
             </div>
-
-
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="answer">
             <div class="col-md-12">
                 <div >
-                    <fields-config >
-                </fields-config>
+                    <fields-config></fields-config>
                 </div>
                 <div>
                     <consensus-config :consensus-config="{{consensus_config}}"></consensus-config>
                 </div>
             </div>
-
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="quiz">
@@ -70,17 +67,16 @@
                         <quiz-setting
                             csrf-token="{{csrf}}"
                             :config="{{quiz_config}}"
-                            :all-user-quiz="{{all_user_quizzes}}"> </quiz-setting>
+                            :all-user-quiz="{{all_user_quizzes}}">
+                        </quiz-setting>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
+</div>
 
-
-<script src="/static/js/gen/setting.min.b8056bbed53a1d2ec0ad.js"></script>
+<script src="/static/js/gen/setting.min.086cdcbe39652a7ced53.js"></script>
 <script>
 answerFields.setData({
     csrf: '{{csrf}}',

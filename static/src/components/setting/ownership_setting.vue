@@ -1,19 +1,19 @@
 <template>
   <div class="stats-config row">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <div class="form-group row">
-        <div class="col-sm-4">
+        <div class="col-md-4">
           <p> project owner </p>
         </div>
-        <div class="col-sm-8 pull-right">
+        <div class="col-md-8 pull-right">
           <p> {{ owner.fullname }} </p>
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-4">
+        <div class="col-md-4">
           <p> co-owners </p>
         </div>
-        <div class="col-sm-8 pull-right">
+        <div class="col-md-8 pull-right">
           <div v-if="Object.keys(coowners).length">
             <p>
               <span
@@ -34,10 +34,10 @@
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-4">
+        <div class="col-md-4">
           <p> manage co-owners </p>
         </div>
-        <div class="col-sm-8 pull-right">
+        <div class="col-md-8 pull-right">
           <div class="input-group">
             <input
               v-model="search"
@@ -117,27 +117,17 @@ export default {
   },
 
   mounted: function () {
-    var _this = this;
-    _this.coowners = _this.getCoowners();
+    this.coowners = this.getCoowners();
   },
 
   methods: {
 
     getCoowners () {
       var users = {};
-      for (var i = 0; i < this.coOwners.length; i++) {
-          users[this.coOwners[i].id] = this.coOwners[i];
-      }
+      this.coOwners.forEach(function (u) {
+        users[u.id] = u;
+      });
       return users;
-    },
-
-    prepareResult () {
-      var found = this.searchResult;
-      this.searchResult = [];
-      for (var i = 0; i < found.length; i++) {
-        var u = { id: found[i].id, user: found[i] };
-        this.searchResult.push(u);
-      }
     },
 
     add (event, ur) {

@@ -1,88 +1,78 @@
 <template>
   <div class="stats-config row">
-    <div class="col-sm-12">
-      <div class="form-group row">
-        <div class="col-sm-4">
-          <p> bcos bucket </p>
+    <div class="col-md-12">
+      <div
+        v-for="category in inputFields"
+        :key="category.display"
+        class="form-group row"
+      >
+        <div class="col-md-5">
+          <p> {{ category.display }} </p>
         </div>
-        <div class="col-sm-8 pull-right">
-          <input
-            v-model="bcos"
-            type="text"
-            class="form-control input-sm"
+        <div class="col-md-7 pull-right">
+          <div
+            v-for="field in category.fields"
+            :key="field.name"
           >
+            <input
+              v-if="field.type==='TextField'"
+              v-model="externalConfigDict[field.name]"
+              type="text"
+              class="form-control input-sm"
+            >
+            <select
+              v-if="field.type==='SelectField'"
+              v-model="externalConfigDict[field.name]"
+              class="form-control input-sm"
+            >
+              <option
+                v-for="choice in field.choices"
+                :key="choice[0]"
+                :value="choice[0]"
+              >
+                {{ choice[1] }}
+              </option>
+            </select>
+          </div>
         </div>
       </div>
       <div
-        v-if="isPrivate"
+        v-if="privateInstance"
         class="form-group row"
       >
-        <div class="col-sm-4">
+        <div class="col-md-5">
           <p> data access </p>
         </div>
-        <div class="col-sm-8 pull-right">
+        <div class="col-md-7 pull-right">
           <div class="form-check">
-            <input
-              v-model="L1"
-              class="form-check-input"
-              type="checkbox"
+            <span
+              v-for="(lvalue, level) in accessLevels"
+              :key="level"
+              :value="lvalue"
             >
-            <label
-              class="form-check-label"
-              for="defaultCheck1"
-            >
-              <p> L1: Personnel access </p>
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              v-model="L2"
-              class="form-check-input"
-              type="checkbox"
-            >
-            <label
-              class="form-check-label"
-              for="defaultCheck1"
-            >
-              <p> L2: Vendor, Contingent Worker and users in L1 access </p>
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              v-model="L3"
-              class="form-check-input"
-              type="checkbox"
-            >
-            <label
-              class="form-check-label"
-              for="defaultCheck1"
-            >
-              <p> L3: Freelancer and users in L2 access</p>
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              v-model="L4"
-              class="form-check-input"
-              type="checkbox"
-            >
-            <label
-              class="form-check-label"
-              for="defaultCheck1"
-            >
-              <p> L4: Crowdsourcing Worker and users in L3 access  </p>
-            </label>
+              <input
+                v-model="accessLevels[level]"
+                class="form-check-input"
+                type="checkbox"
+              >
+              <label
+                class="form-check-label"
+                for="defaultCheck1"
+              >
+                <p> {{ level }} &nbsp;</p>
+              </label>
+            </span>
           </div>
         </div>
       </div>
       <div
-        v-if="isPrivate"
+        v-if="privateInstance"
         class="form-group row"
       >
-        <div class="col-sm-4">
+        <div class="col-md-5">
           <p> assign users </p>
         </div>
-        <div class="col-sm-8 pull-right">
+        <div class="col-md-7 pull-right">
           <table
             class="table table-striped table-hover"
             style="border: 1px ridge silver"
@@ -108,7 +98,7 @@
                     style="min-width: 250px"
                     @keyup.enter="filter"
                   >
-                  <div class="col-sm-12 scroll">
+                  <div class="col-md-12 scroll">
                     <div
                       v-for="u in searchResult"
                       id="users"
@@ -130,7 +120,7 @@
                   </div>
                 </td>
                 <td>
-                  <div class="col-sm-12 scroll">
+                  <div class="col-md-12 scroll">
                     <div
                       v-for="u in assignee"
                       id="users"
@@ -169,7 +159,7 @@ export default {
       type: String,
       default: null
     },
-    dataAccess: {
+    dataAccessConfig: {
       type: Array,
       default: function () { return []; }
     },
@@ -181,67 +171,119 @@ export default {
       type: Array,
       default: function () { return []; }
     },
-    isPrivate: {
+    privateInstance: {
       type: Boolean,
       default: true
     },
     externalConfig: {
       type: Object,
-      default: () => ({ gigwork_poller: { target_bucket: null } })
+      default: () => ({})
+    },
+    externalConfigForm: {
+      type: Object,
+      default: () => ({})
+    },
+    validAccessLevels: {
+      type: Array,
+      default: () => ([])
     }
   },
 
   data () {
     return {
-      bcos: this.externalConfig.gigwork_poller.target_bucket,
       assignee: {},
       users: {},
       L1: false,
       L2: false,
       L3: false,
       L4: false,
+      accessLevels: {},
       search: '',
-      searchResult: this.users
+      searchResult: this.users,
+      inputFields: [],
+      externalConfigDict: {}
     };
   },
 
-  mounted: function () {
-    var _this = this;
-    _this.assignee = _this.getAssignedUsers();
-    _this.users = _this.getUsers();
-    _this.searchResult = _this.users;
-    _this.L1 = _this.hasLevel('L1');
-    _this.L2 = _this.hasLevel('L2');
-    _this.L3 = _this.hasLevel('L3');
-    _this.L4 = _this.hasLevel('L4');
+  mounted () {
+    this.assignee = this.getAssignedUsers();
+    this.users = this.getUsers();
+    this.searchResult = this.users;
+    this.inputFields = this.getFieldsFromForm();
+    this.accessLevels = this.getAccessLevels();
   },
 
   methods: {
     hasLevel (level) {
-      for (var i = 0; i < this.dataAccess.length; i++) {
-        if (this.dataAccess[i] === level) {
-          return true;
-        }
-      }
-      return false;
+      return this.dataAccessConfig.includes(level);
+    },
+
+    getAccessLevels () {
+      let levels = {};
+      let access = this.dataAccessConfig;
+      this.validAccessLevels.forEach(function (level) {
+        console.log(level);
+        // levels.push(access.includes(level))
+        levels[level] = access.includes(level);
+      });
+      return levels;
     },
 
     getAssignedUsers () {
-      var users = {};
-      for (var i = 0; i < this.assignUsers.length; i++) {
-        users[this.assignUsers[i].id] = this.assignUsers[i];
-      }
+      let users = {};
+      this.assignUsers.forEach(function (u) {
+        users[u.id] = u;
+      });
       return users;
     },
 
     getUsers () {
-      var users = {};
-      for (var i = 0; i < this.allUsers.length; i++) {
-        var u = this.allUsers[i];
-        u['assigned'] = Object.keys(this.assignee).includes(u.id);
+      let users = {};
+      let assigneeId = Object.keys(this.assignee);
+      this.allUsers.forEach(function (u) {
+        u['assigned'] = assigneeId.includes(u.id);
         users[u.id] = u;
-      }
+      });
       return users;
+    },
+
+    // external configuration form is a tree-like distionary structure read from app.config
+    // convert it to flat key-value pair 'externalConfigDict'
+    // update 'externalConfigDict' based on current project configuration
+    getFieldsFromForm () {
+      let inputFields = [];
+      let configFields = {};
+      for (let [key, content] of Object.entries(this.externalConfigForm)) {
+        content = this.externalConfigForm[key];
+        inputFields.push(content);
+        content.fields.forEach(function (f) {
+          configFields[f.name] = null;
+        });
+      }
+      this.externalConfigDict = configFields;
+      this.updateExternalConfigDict();
+      return inputFields;
+    },
+
+    updateExternalConfigDict () {
+      for (let key of Object.keys(this.externalConfig)) {
+        if (typeof this.externalConfig[key] === 'object') {
+          Object.assign(this.externalConfigDict, this.externalConfig[key]);
+          } else this.externalConfigDict[key] = this.externalConfig[key];
+        }
+    },
+
+    constructExternalConfigFromDict () {
+      let config = {};
+      let dict = this.externalConfigDict;
+      for (let [key, content] of Object.entries(this.externalConfigForm)) {
+        let _cf = {};
+        content.fields.forEach(function (f) {
+          _cf[f.name] = dict[f.name];
+        });
+        config[key] = _cf;
+      }
+      return config;
     },
 
     add (event, ur) {
@@ -263,20 +305,15 @@ export default {
     },
 
     async save () {
-      var access = [];
-      if (this.L1) {
-        access.push('L1');
-      }
-      if (this.L2) {
-        access.push('L2');
-      }
-      if (this.L3) {
-        access.push('L3');
-      }
-      if (this.L4) {
-        access.push('L4');
-      }
-      var assigneeId = Object.keys(this.assignee);
+      let access = [];
+       for (let [key, value] of Object.entries(this.accessLevels)) {
+         if (value) {
+           access.push(key);
+         }
+       }
+       console.log(access);
+      let assigneeId = Object.keys(this.assignee);
+      console.log(this.constructExternalConfigFromDict());
       try {
         const res = await fetch(window.location.pathname, {
           method: 'POST',
@@ -286,9 +323,9 @@ export default {
           },
           credentials: 'same-origin',
           body: JSON.stringify({ 'project': {
-            target_bucket: this.bcos,
+            config: this.constructExternalConfigFromDict(),
             data_access: access,
-            project_users: assigneeId
+            select_users: assigneeId
           } })
         });
         if (res.ok) {
@@ -296,6 +333,34 @@ export default {
         } else {
           window.pybossaNotify('An error occurred.', true, 'error');
         }
+        // const res = await fetch('/project/weirantestproject/assign-users', {
+        //   method: 'POST',
+        //   headers: {
+        //     'content-type': 'application/json',
+        //     'X-CSRFToken': this.csrfToken
+        //   },
+        //   credentials: 'same-origin',
+        //   body: JSON.stringify({ 'project': {
+        //     select_users: assigneeId
+        //   } })
+        // });
+        // if (!res.ok) {
+        //   window.pybossaNotify('An error occurred.', true, 'error');
+        // }
+        // res = await fetch('/project/weirantestproject/ext-config', {
+        //   method: 'POST',
+        //   headers: {
+        //     'content-type': 'application/json',
+        //     'X-CSRFToken': this.csrfToken
+        //   },
+        //   credentials: 'same-origin',
+        //   body: JSON.stringify({ 'project': {
+        //     config: this.constructExternalConfigFromDict()
+        //   } })
+        // });
+        // if (!res.ok) {
+        //   window.pybossaNotify('An error occurred.', true, 'error');
+        // }
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }

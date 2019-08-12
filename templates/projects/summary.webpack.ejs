@@ -18,10 +18,12 @@
                 <setting
                     csrf-token="{{csrf}}"
                     :external-config="{{external_config}}"
+                    :external-config-form="{{external_config_form}}"
                     :assign-users="{{assign_user}}"
                     :all-users="{{users}}"
-                    :data-access="{{data_access}}"
-                    :is-private="{{private_instance|lower}}">
+                    :data-access-config="{{data_access}}"
+                    :valid-access-levels="{{valid_access_levels}}"
+                    :private-instance="{{private_instance|lower}}">
                 </setting>
             </div>
         </div>

@@ -1,11 +1,11 @@
 <template>
   <div class="stats-config row">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <div class="form-group row">
-        <div class="col-sm-6 ">
+        <div class="col-md-6 ">
           <p> quiz status </p>
         </div>
-        <div class="col-sm-6 pull-right">
+        <div class="col-md-6 pull-right">
           <label class="switch">
             <input
               v-model="enabled"
@@ -19,10 +19,10 @@
         v-if="enabled"
         class="form-group row"
       >
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <p> number of questions per quiz  </p>
         </div>
-        <div class="col-sm-6 pull-right">
+        <div class="col-md-6 pull-right">
           <input
             v-model="questions"
             type="text"
@@ -34,10 +34,10 @@
         v-if="enabled"
         class="form-group row"
       >
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <p> number of correct answers to pass quiz  </p>
         </div>
-        <div class="col-sm-6 pull-right">
+        <div class="col-md-6 pull-right">
           <input
             v-model="passing"
             type="text"
@@ -49,10 +49,10 @@
         v-if="enabled"
         class="form-group row"
       >
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <p> quiz completion mode </p>
         </div>
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <select
             v-model="mode"
             class="form-control input-sm"
@@ -158,8 +158,7 @@ export default {
   },
 
   mounted: function () {
-    var _this = this;
-    _this.users = _this.getQuizUser();
+    this.users = this.getQuizUser();
   },
 
   methods: {
@@ -214,12 +213,12 @@ export default {
           },
           credentials: 'same-origin',
           body: JSON.stringify({ 'quiz': {
-            config: {
+
               enabled: this.enabled,
               questions: _questions,
               passing: _passing,
-              completion_mode: this.mode
-            },
+              completion_mode: this.mode,
+
             reset: this.resetUser
           } })
         });

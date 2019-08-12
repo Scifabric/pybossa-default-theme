@@ -4,14 +4,13 @@
   >
     <div
       v-if="hasRetryFields"
-      class="col-md-12"
-      style="width:85%"
+      class="col-md-12 consensus"
     >
       <div class="form-group row">
-        <div class="col-sm-4">
+        <div class="col-md-4">
           <p> consensus threshold </p>
         </div>
-        <div class="col-sm-8">
+        <div class="col-md-8">
           <input
             v-model="consensusThreshold"
             type="text"
@@ -20,10 +19,10 @@
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-4">
+        <div class="col-md-4">
           <p> add redundancy to retry </p>
         </div>
-        <div class="col-sm-8 pull-right">
+        <div class="col-md-8 pull-right">
           <input
             v-model="redundancyConfig"
             type="text"
@@ -32,10 +31,10 @@
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-4">
+        <div class="col-md-4">
           <p> maximum retry </p>
         </div>
-        <div class="col-sm-8 pull-right">
+        <div class="col-md-8 pull-right">
           <input
             v-model="maxRetries"
             type="text"
@@ -158,5 +157,8 @@ export default {
 }
 .align-right {
     text-align:right;
+}
+.consensus {
+    width: 85%
 }
 </style>
