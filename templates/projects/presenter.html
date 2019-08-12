@@ -8,14 +8,13 @@
     <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
 <script>
-
     if('{{mode}}' === 'gold'){
         window.pybossa.isGoldMode = true;
     }
     Modernizr.load({
         test: window.JSON,
         nope: '{{url_for('static', filename='js/vendor/json2.min.js')}}'
-});
+    });
 </script>
 <link rel="stylesheet" href="{{url_for('static', filename='css/small-navbar.css')}}"/>
 
@@ -35,6 +34,7 @@
         </div>
     </div>
     {% endif %}
+    {% include 'annotation_guidelines_button.html' %}
     {{ project.info.task_presenter|safe }}
 
     <div id='PYBOSSA_USER_LOCALE' hidden>
@@ -45,6 +45,9 @@
         {% endif %}
     </div>
 </div>
+<script type="text/javascript">
+    $("#annotations-guidelines-content").append('{{project.info.task_guidelines|safe}}')
+</script>
 {% endblock %}
 {% block extrajs %}
 {% include "_flash_messages.html" %}

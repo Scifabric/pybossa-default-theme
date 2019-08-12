@@ -27,4 +27,10 @@
         </div>
 </div>
 </div>
+<script>
+//to avoid form resubmission when refresh
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
+</script>
 {% endblock %}

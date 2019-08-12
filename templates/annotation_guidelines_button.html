@@ -1,0 +1,27 @@
+{% if "task_guidelines" in project.info and project.info.task_guidelines != '' %}
+<p id ="section-collapse-guidelines-button">
+    <button class='btn btn-primary collapse-guidelines-button' data-toggle="collapse"
+            data-target="#collapse-guidelines"
+            aria-controls="collapse-guidelines">Hide Instructions</button>
+    </p>
+    <div class="collapse in" id="collapse-guidelines" aria-expanded="true">
+    <div class="card card-body guidelines" id="annotations-guidelines-content">
+    </div>
+</div>
+{% endif %}
+
+<script type="text/javascript">
+  $(".collapse-guidelines-button").on('click', function(){
+      var showInstructionsMsg = 'Show Instructions';
+      var hideInstructionsMsg = 'Hide Instructions';
+      $(this).text(function(i, v){
+          return v === showInstructionsMsg ? hideInstructionsMsg : showInstructionsMsg
+      });
+  });
+</script>
+
+<style>
+#section-collapse-guidelines-button{
+    padding-top: 10px;
+}
+</style>
