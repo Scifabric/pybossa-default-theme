@@ -1,5 +1,5 @@
 <template>
-  <div class="stepwizard-step">
+  <div class="stepwizard-step" :class="activeClass">
     <a
       role="button"
       :class="stepClass"
@@ -10,7 +10,7 @@
         aria-hidden="false"
       />
     </a>
-    <div :class="activeClass">
+    <div class="stepwizard-label">
       {{ title }}
     </div>
   </div>
@@ -64,7 +64,7 @@ export default {
           return `${this.icon} icon-default`;
       },
       activeClass: function () {
-        return this.active ? 'active-title' : '';
+        return this.active ? 'active' : '';
       }
   }
 
@@ -72,15 +72,19 @@ export default {
 </script>
 
 <style>
-.stepwizard-step .active-title {
-  font-weight: bold;
-  color: #3498db;
-}
-
 .stepwizard-step {
     display: table-cell;
     text-align: center;
     position: relative;
+}
+
+.stepwizard-step.active a {
+  box-shadow: 0 0 0 4px lightblue;
+}
+
+.stepwizard-step.active .stepwizard-label {
+  font-weight: bold;
+  color: #3498db;
 }
 
 .stepwizard-step > .btn-circle {
