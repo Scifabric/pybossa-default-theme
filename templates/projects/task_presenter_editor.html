@@ -271,22 +271,21 @@
 <script type="text/javascript">
 (function() {
  var render = function(presenterSource, showGuidelines) {
- var source = prepareSource(presenterSource);
+ var source = prepareSource(presenterSource, showGuidelines);
  var iframe = document.querySelector('#output iframe');
  if (showGuidelines) {
     iframe.onload = function(){
-        $("#preview-iframe").contents().find("#annotations-guidelines-content").html($('#guidelines').summernote('code'));
-        $("#preview-iframe").contents().find(".collapse-guidelines-button").on('click', function(){
-            var showInstructionsMsg = 'Show Instructions';
-            var hideInstructionsMsg = 'Hide Instructions';
-            $(this).text(function(i, v){
-                return v === showInstructionsMsg ? hideInstructionsMsg : showInstructionsMsg
+            var previewFrame = $("#preview-iframe").contents();
+            previewFrame.find("#annotations-guidelines-content").html($('#guidelines').summernote('code'));
+            previewFrame.find(".collapse-guidelines-button").on('click', function(){
+                $(this).text(function(i, v){
+                    var text = v.startsWith('Show') ? 'Hide' : 'Show';
+                    return text + ' Instructions';
+                });
             });
-        });
-    }
-
-
+        }
  }
+
 
  iframeDoc = iframe.contentDocument;
  iframeDoc.open();
@@ -296,7 +295,8 @@
  };
 
 
- function prepareSource(presenterSource) {
+ function prepareSource(presenterSource, showGuidelines) {
+
  var bootstrapCSS = "{{url_for('static', filename='css/gen/pybossa.min.css')}}",
  fontsCSS = "{{url_for('static', filename='css/fonts/stylesheet.css')}}",
  stylesCSS = "{{url_for('static', filename='css/styles.css')}}",
@@ -306,7 +306,7 @@
  pybossa = "{{url_for('static', filename='js/pybossa/pybossa.js')}}",
  defaultJs = "{{url_for('static', filename='js/gen/default.min.js')}}",
  blpstrap3CSS = "{{url_for('static', filename='css/bootstrap.blpstrap3.css')}}",
- guidelines = `{% include "annotation_guidelines_button.html" %}`,
+ guidelines = showGuidelines ? `{% include "annotation_guidelines_button.html" %}` : '',
  baseTemplate =
      "<!doctype html>\n" +
      "<html>\n\t" +
