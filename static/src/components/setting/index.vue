@@ -329,34 +329,6 @@ export default {
         } else {
           window.pybossaNotify('An error occurred.', true, 'error');
         }
-        // const res = await fetch('/project/weirantestproject/assign-users', {
-        //   method: 'POST',
-        //   headers: {
-        //     'content-type': 'application/json',
-        //     'X-CSRFToken': this.csrfToken
-        //   },
-        //   credentials: 'same-origin',
-        //   body: JSON.stringify({ 'project': {
-        //     select_users: assigneeId
-        //   } })
-        // });
-        // if (!res.ok) {
-        //   window.pybossaNotify('An error occurred.', true, 'error');
-        // }
-        // res = await fetch('/project/weirantestproject/ext-config', {
-        //   method: 'POST',
-        //   headers: {
-        //     'content-type': 'application/json',
-        //     'X-CSRFToken': this.csrfToken
-        //   },
-        //   credentials: 'same-origin',
-        //   body: JSON.stringify({ 'project': {
-        //     config: this.constructExternalConfigFromDict()
-        //   } })
-        // });
-        // if (!res.ok) {
-        //   window.pybossaNotify('An error occurred.', true, 'error');
-        // }
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
