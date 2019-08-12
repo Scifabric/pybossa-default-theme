@@ -279,8 +279,7 @@
             previewFrame.find("#annotations-guidelines-content").html($('#guidelines').summernote('code'));
             previewFrame.find(".collapse-guidelines-button").on('click', function(){
                 $(this).text(function(i, v){
-                    var text = v.startsWith('Show') ? 'Hide' : 'Show';
-                    return text + ' Instructions';
+                    return (v.startsWith('Show') ? 'Hide' : 'Show') + ' Instructions';
                 });
             });
         }
