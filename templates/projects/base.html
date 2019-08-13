@@ -15,22 +15,33 @@
     </div>
     <!-- Project -->
     <div id="container-content" class="col-sm-9 col-md-9">
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <h1>{{project.name}}</h1>
-                {% if section %}
-                <h2>{{section}}</h2>
-                {% endif %}
+        <div id="project-header">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h1>{{project.name}}</h1>
+                    {% if section %}
+                    <h2>{{section}}</h2>
+                    {% endif %}
+                </div>
+            </div>
+            {% if active_link == 'info' %}
+            <div id="percent-completed">
+                <p><strong>{{ overall_progress | round | int }}% {{_('completed')}}</strong></p>
+            </div>
+            {% endif %}
+            {% if project.long_description != project.description %}
+                <div class="row">
+                    <div id="project-grid-long-description" class="col-sm-12 col-md-12">
+                            {{ project.long_description | e | markdown }}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    {{helper.render_contribute_button(project, current_user, csrf_token())}}
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                {{helper.render_contribute_button(project, current_user, csrf_token())}}
-            </div>
-        </div>
-        {% if active_link == 'info' %}
-        <p><strong>{{ overall_progress | round | int }}% {{_('completed')}}</strong></p>
-        {% endif %}
         {% block projectcontent %}{% endblock %}
         <div id="ckan" style="display:none">
         <h2>Data repository: {{ ckan_name | default('CKAN server') }}</h2>
