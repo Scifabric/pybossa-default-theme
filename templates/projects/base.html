@@ -8,7 +8,7 @@
 <div id="wizard-container" class="container navigation-element">
     {% include "projects/wizard.html" %}
 </div>
-<div class="container" id="main-container">
+<div id="main-container" class="container">
     {% if project %}
     <div id="menu" class="col-sm-3 col-md-3 navigation-element">
         {{ helper.render_project_local_nav(project, active_link, current_user, pro_features, upload_method) }}

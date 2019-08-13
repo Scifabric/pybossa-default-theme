@@ -4,8 +4,8 @@
 {% import "projects/_helpers.html" as helper %}
 
 {% block content %}
-<div class="container" style="min-height:400px;">
-    <div class="col-md-3" style="margin-top:50px;">
+<div id="main-container" class="container" style="min-height:400px;">
+    <div id="menu" class="col-md-3" style="margin-top:50px;">
         {{helper.render_project_local_nav(project, 'stats', current_user, pro_features, upload_method)}}
     </div>
     <div class="col-md-9" style="margin-top:50px;">
