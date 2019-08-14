@@ -44,21 +44,19 @@
               v-model="timeoutMinute"
               type="text"
               class="form-control input-sm"
-              style="width: 100%"
+              style="width:100%"
             >
             <span
               class="input-group-addon input-sm"
-              style="width:10%"
             > min </span>
             <input
               v-model="timeoutSecond"
               type="text"
               class="form-control input-sm"
-              style="width: 100%"
+              style="width:100%"
             >
             <span
               class="input-group-addon input-sm"
-              style="width:10%"
             > sec </span>
           </div>
         </div>
@@ -188,3 +186,8 @@ export default {
 };
 
 </script>
+<style>
+.input-group-addon {
+  width: 10%
+}
+</style
