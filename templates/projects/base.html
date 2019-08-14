@@ -5,8 +5,10 @@
 {% from "account/_helpers.html" import render_pagination %}
 
 {% block content %}
-<div id="wizard-container" class="container navigation-element">
-    {% include "projects/wizard.html" %}
+<div id="wizard-container">
+    <div class="container navigation-element">
+        {% include "projects/wizard.html" %}
+    </div>
 </div>
 <div id="main-container" class="container">
     {% if project %}
