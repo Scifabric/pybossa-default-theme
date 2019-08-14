@@ -25,14 +25,13 @@
                 </div>
             </div>
             {% if active_link == 'info' %}
-
-            <div id="percent-completed" class="progress">
-              <div class="progress-bar progress-bar-striped progress-bar-info" role="progressbar" aria-valuenow={{ overall_progress | round | int }} aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ overall_progress | round | int }}%;">
-                <div>{{ overall_progress | round | int }}%</div>
-              </div>
-            </div>
+                <div id="percent-completed" class="progress">
+                  <div class="progress-bar progress-bar-striped progress-bar-info" role="progressbar" aria-valuenow={{ overall_progress | round | int }} aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ overall_progress | round | int }}%;">
+                    <div>{{ overall_progress | round | int }}%</div>
+                  </div>
+                </div>
             {% endif %}
-            {% if project.long_description != project.description %}
+            {% if active_link == 'info' and project.long_description != project.description %}
                 <div class="row">
                     <div id="project-grid-long-description" class="col-sm-12 col-md-12">
                             {{ project.long_description | e | markdown }}
