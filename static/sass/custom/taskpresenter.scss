@@ -13,3 +13,14 @@
   border: 1px solid #e0e0e0;
   border-bottom: none;
 }
+
+li.tab-nav-collapse-expand.tab-link a {
+  color: #3AB0D5;
+  border: none;
+
+  a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #F5F7F7;
+  }
+}
