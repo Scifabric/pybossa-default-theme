@@ -1,3 +1,13 @@
 #container-content {
   min-height: 400px;
 }
+
+#project-grid {
+  td:first-child {
+    white-space: nowrap;
+  }
+
+  td:last-child {
+    width: 100%;
+  }
+}
