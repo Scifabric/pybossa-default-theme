@@ -2,7 +2,14 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
+.nav-tabs>li>a, .nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
+  color: #c0c0c0;
+  border: 1px solid #f0f0f0;
+  border-bottom: none;
+}
+
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  color: #2488cb;
   border: 1px solid #e0e0e0;
   border-bottom: none;
 }
