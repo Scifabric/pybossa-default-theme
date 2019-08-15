@@ -2,12 +2,9 @@
 {% extends "/projects/base.html" %}
 
 {% block projectcontent %}
-    {% if project.long_description != project.description  %}
-    {{ project.long_description | e | markdown }}
-    {% endif %}
     <div class="row">
-        <div class="col-md-8">
-            <table class="table table-hover table-striped table-bordered">
+        <div class="col-sm-12 col-md-12">
+            <table id="project-grid" class="table table-hover table-striped table-bordered">
                 <tr>
                     <td><p>Project ID:</p></td>
                     <td><p>{{project.id}}</p></td>

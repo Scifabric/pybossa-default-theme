@@ -22,7 +22,7 @@ describe('Step', () => {
     wrapper = shallowMount(Step, { });
     expect(wrapper.html()).toContain('icon-default');
     expect(wrapper.html()).toContain('btn btn-circle btn-lg step-disable');
-    expect(wrapper.html()).not.toContain('active-title');
+    expect(wrapper.html()).not.toContain('active');
     expect(wrapper.html()).not.toContain('Step Title');
   });
 
@@ -36,9 +36,10 @@ describe('Step', () => {
       icon: 'fa fa-test'
     };
     wrapper = shallowMount(Step, { propsData });
+    console.log(wrapper.html());
     expect(wrapper.html()).toContain('fa fa-test icon-white');
     expect(wrapper.html()).toContain('btn btn-circle btn-lg btn-border step-done');
-    expect(wrapper.html()).toContain('active-title');
+    expect(wrapper.html()).toContain('active');
     expect(wrapper.html()).toContain('Step Title');
   });
 
@@ -54,7 +55,7 @@ describe('Step', () => {
     wrapper = shallowMount(Step, { propsData });
     expect(wrapper.html()).toContain('fa fa-test icon-blue');
     expect(wrapper.html()).toContain('btn btn-circle btn-lg btn-border');
-    expect(wrapper.html()).toContain('active-title');
+    expect(wrapper.html()).toContain('active');
     expect(wrapper.html()).toContain('Step Title');
   });
 });

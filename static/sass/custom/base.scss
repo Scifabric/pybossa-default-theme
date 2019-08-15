@@ -1,0 +1,26 @@
+.env-text-size {
+  font-size: 30px;
+  color: #3498db;
+  font-weight: bold;
+}
+
+.btn-contribute {
+  margin-top: 0;
+}
+
+#main-container {
+  #percent-completed {
+    height: 20px;
+
+    .progress-bar {
+      font-size: 16px;
+      padding-top: 4px;
+    }
+  }
+
+  #menu {
+    .list-group-item.active .fa-chevron-right {
+      color: white;
+    }
+  }
+}

@@ -5,46 +5,47 @@
 {% from "account/_helpers.html" import render_pagination %}
 
 {% block content %}
-<style>
-.navigation-element {
-    margin-top: 25px;
-}
-
-.env-text-size {
-font-size: 30px;
-color: #3498db;
-font-weight: bold;
-}
-</style>
-<script>
-
-</script>
-<div class ="container navigation-element">
+<div id="wizard-container">
+    <div class="container navigation-element">
         {% include "projects/wizard.html" %}
+    </div>
 </div>
-<div class="container" id="main-container">
+<div id="main-container" class="container">
     {% if project %}
-    <div id ="menu" class="col-sm-3 col-md-3 navigation-element">
-            {{ helper.render_project_local_nav(project, active_link, current_user, pro_features, upload_method) }}
+    <div id="menu" class="col-sm-3 col-md-3 navigation-element">
+        {{ helper.render_project_local_nav(project, active_link, current_user, pro_features, upload_method) }}
     </div>
     <!-- Project -->
-    <div id="container-content" class="col-sm-9 col-md-9" style="min-height:400px;margin-top:50px;">
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <h1>{{project.name}}</h1>
-                {% if section %}
-                <h2>{{section}}</h2>
-                {% endif %}
+    <div id="container-content" class="col-sm-9 col-md-9">
+        <div id="project-header">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h1>{{project.name}}</h1>
+                    {% if section %}
+                    <h2>{{section}}</h2>
+                    {% endif %}
+                </div>
+            </div>
+            {% if active_link == 'info' %}
+                <div id="percent-completed" class="progress">
+                  <div class="progress-bar progress-bar-striped progress-bar-info" role="progressbar" aria-valuenow={{ overall_progress | round | int }} aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ overall_progress | round | int }}%;">
+                    <div>{{ overall_progress | round | int }}%</div>
+                  </div>
+                </div>
+            {% endif %}
+            {% if active_link == 'info' and project.long_description != project.description %}
+                <div class="row">
+                    <div id="project-grid-long-description" class="col-sm-12 col-md-12">
+                            {{ project.long_description | e | markdown }}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    {{helper.render_contribute_button(project, current_user, csrf_token())}}
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                {{helper.render_contribute_button(project, current_user, csrf_token())}}
-            </div>
-        </div>
-        {% if active_link == 'info' %}
-        <p><strong>{{ overall_progress | round | int }}% {{_('completed')}}</strong></p>
-        {% endif %}
         {% block projectcontent %}{% endblock %}
         <div id="ckan" style="display:none">
         <h2>Data repository: {{ ckan_name | default('CKAN server') }}</h2>
