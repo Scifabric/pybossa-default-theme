@@ -162,7 +162,8 @@ export default {
     },
 
     async save () {
-      var coownerId = Object.keys(this.coowners);
+      let coownerId = Object.keys(this.coowners);
+      console.log(coownerId);
       try {
         const res = await fetch(window.location.pathname, {
           method: 'POST',

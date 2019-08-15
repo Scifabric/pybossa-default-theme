@@ -78,7 +78,7 @@
             style="border: 1px ridge silver"
           >
             <thead>
-              <tr style="border-top: 1px ridge silver">
+              <tr class="title">
                 <th style="border-right: 1px ridge silver; text-align: center">
                   All Users
                 </th>
@@ -89,7 +89,7 @@
             </thead>
             <tbody>
               <tr>
-                <td style="border-right: 1px ridge silver; width:50%">
+                <td id="assign-user-column">
                   <input
                     v-model="search"
                     class="form-group input-sm"
@@ -354,6 +354,12 @@ export default {
 }
 .form-check-label p {
   margin-right:10px
+}
+.title {
+  border-top: 1px ridge silver
+}
+#assign-user-column {
+  border-right: 1px ridge silver; width:50%
 }
 
 </style>

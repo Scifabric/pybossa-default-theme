@@ -1,8 +1,8 @@
 <template>
   <div class="stats-config row">
     <div
+      id="answer-field-config"
       class="col-md-12"
-      style="width:85%"
     >
       <div
         class="form-group"
@@ -176,5 +176,8 @@ export default {
 }
 #answer-field {
   width: 100%
+}
+#answer-field-config{
+  width: 85%
 }
 </style>
