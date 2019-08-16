@@ -10,7 +10,7 @@
       >
         <div class="form-group row">
           <div class="col-sm-4">
-            <p> answer field name and type</p>
+            <p> Answer Field Name And Type</p>
           </div>
           <div class="col-sm-4">
             <input
@@ -39,7 +39,7 @@
         </div>
         <div class="form-group row">
           <div class="col-sm-4">
-            <p> retry for consensus </p>
+            <p> Retry For Consensus </p>
           </div>
           <div class="col-sm-4">
             <label class="switch">

@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="form-group row">
         <div class="col-md-6">
-          <p> task scheduler </p>
+          <p> Task Scheduler </p>
         </div>
         <div class="col-md-6 pull-right">
           <select
@@ -22,7 +22,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-6">
-          <p> randomize order with same priority </p>
+          <p> Randomize Order With Same Priority </p>
         </div>
         <div class="col-md-6 pull-right">
           <label class="switch">
@@ -36,7 +36,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-6">
-          <p> timeout </p>
+          <p> Timeout </p>
         </div>
         <div class="col-md-6 pull-right">
           <div class="input-group">
@@ -63,7 +63,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-6">
-          <p> default task redundancy </p>
+          <p> Default Task Redundancy </p>
         </div>
         <div class="col-md-6 pull-right">
           <input
@@ -75,7 +75,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-6">
-          <p> change all current task redundancy to </p>
+          <p> Change All Current Task Redundancy To </p>
         </div>
         <div class="col-md-6 pull-right">
           <input
@@ -164,14 +164,14 @@ export default {
             'X-CSRFToken': this.csrfToken
           },
           credentials: 'same-origin',
-          body: JSON.stringify({ 'task': {
+          body: JSON.stringify({ task: {
             sched: this.sched,
             minutes: this.timeoutMinute,
             seconds: this.timeoutSecond,
             default_n_answers: _defaultRedundancy,
             n_answers: _currentRedundancy,
             rand_within_priority: this.random
-          } })
+            }} )
         });
         if (res.ok) {
           window.pybossaNotify('task data Saved.', true, 'success');

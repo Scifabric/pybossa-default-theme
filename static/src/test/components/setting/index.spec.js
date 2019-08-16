@@ -14,14 +14,10 @@ describe('projectConfig', () => {
     notify = window.pybossaNotify = jest.fn();
   });
 
-  it('public gigwork hides assigned users and data access', () => {
+  it('load empty data', () => {
     propsData = {
       csrfTRoken: null,
-      dataAccess: [],
-      assignUsers: [],
-      allUsers: [],
-      privateInstance: false,
-      externalConfig: { gigwork_poller: { target_bucket: null } },
+      externalConfig: {},
       externalConfigForm: []
     };
     const wrapper = shallowMount(projectConfig, { propsData });
@@ -31,30 +27,31 @@ describe('projectConfig', () => {
     expect(button).toHaveLength(1);
   });
 
-  it('private gigwork shows assigned users and data access', () => {
+  it('show assigned users config', () => {
     propsData = {
         csrfTRoken: null,
-        dataAccess: [],
         assignUsers: [],
-        allUsers: [],
-        privateInstance: true,
-        externalConfig: { gigwork_poller: { target_bucket: null } },
-        externalConfigForm: [],
-        validAccessLevels: []
+        allUsers: [{id: 1, fullname: 'user'}],
     };
     const wrapper = shallowMount(projectConfig, { propsData });
     const p = wrapper.findAll('p');
     expect(p).toHaveLength(2);
   });
 
-  it('render data to show external config in public', () => {
+  it('show data access config', () => {
+    propsData = {
+        csrfTRoken: null,
+        dataAccess: [],
+        validAccessLevels: ['L1', 'L2', 'L3', 'L4']
+    };
+    const wrapper = shallowMount(projectConfig, { propsData });
+    const p = wrapper.findAll('p');
+    expect(p).toHaveLength(5);
+  });
+
+  it('show external config', () => {
     propsData = {
       csrfTRoken: null,
-      dataAccess: [],
-      assignUsers: [{ id: 1, fullname: 'user1' }],
-      allUsers: [{ id: 1, fullname: 'user1' }],
-      privateInstance: false,
-      validAccessLevels: ['L1', 'L2', 'L3', 'L4'],
       externalConfig: { gigwork_poller: { target_bucket: 'bcos bucket' } },
       externalConfigForm: { gigwork_poller: { display: 'display', fields: [{ 'type': 'TextField', name: 'target_bucket' }] } }
     };
@@ -69,7 +66,6 @@ describe('projectConfig', () => {
       dataAccess: ['L1'],
       assignUsers: [{ id: 1, fullname: 'user1' }],
       allUsers: [{ id: 1, fullname: 'user1' }],
-      privateInstance: true,
       externalConfig: {},
       validAccessLevels: ['L1', 'L2', 'L3', 'L4']
     };
@@ -82,28 +78,26 @@ describe('projectConfig', () => {
     propsData = {
       csrfTRoken: null,
       assignUsers: [{ id: 1, fullname: 'user1' }],
-      allUsers: [{ id: 1, fullname: 'user1' }, { id: 2, fullname: 'user2' }],
-      privateInstance: true
+      allUsers: [{ id: 1, fullname: 'user1' }, { id: 2, fullname: 'user2' }]
     };
     const wrapper = shallowMount(projectConfig, { propsData });
-    expect(wrapper.findAll('p')).toHaveLength(5);
-    const user2 = wrapper.findAll('p').at(3);
+    expect(wrapper.findAll('p')).toHaveLength(4);
+    const user2 = wrapper.findAll('p').at(2);
     user2.trigger('click');
-    expect(wrapper.findAll('p')).toHaveLength(6);
+    expect(wrapper.findAll('p')).toHaveLength(5);
   });
 
   it('remove assigned user', () => {
     propsData = {
       csrfTRoken: null,
       assignUsers: [{ id: 1, fullname: 'user1' }],
-      allUsers: [{ id: 1, fullname: 'user1' }],
-      privateInstance: true
+      allUsers: [{ id: 1, fullname: 'user1' }]
     };
     const wrapper = shallowMount(projectConfig, { propsData });
-    expect(wrapper.findAll('p')).toHaveLength(4);
-    const user1 = wrapper.findAll('p').at(3);
-    user1.trigger('click');
     expect(wrapper.findAll('p')).toHaveLength(3);
+    const user1 = wrapper.findAll('p').at(2);
+    user1.trigger('click');
+    expect(wrapper.findAll('p')).toHaveLength(2);
   });
 
   it('saves config', async () => {
@@ -115,7 +109,6 @@ describe('projectConfig', () => {
       dataAccess: [],
       assignUsers: [],
       allUsers: [],
-      privateInstance: true,
       externalConfig: { gigwork_poller: { target_bucket: null } }
     };
     const wrapper = shallowMount(projectConfig, { propsData });
@@ -135,7 +128,6 @@ describe('projectConfig', () => {
       dataAccess: [],
       assignUsers: [],
       allUsers: [],
-      privateInstance: true,
       externalConfig: { gigwork_poller: { target_bucket: null } }
     };
     const wrapper = shallowMount(projectConfig, { propsData });

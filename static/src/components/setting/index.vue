@@ -37,11 +37,11 @@
         </div>
       </div>
       <div
-        v-if="privateInstance"
+        v-if="validAccessLevels.length"
         class="form-group row"
       >
         <div class="col-md-5">
-          <p> data access </p>
+          <p> Access Levels</p>
         </div>
         <div class="col-md-7 pull-right">
           <div class="form-check">
@@ -66,11 +66,11 @@
         </div>
       </div>
       <div
-        v-if="privateInstance"
+        v-if="allUsers.length"
         class="form-group row"
       >
         <div class="col-md-5">
-          <p> assign users </p>
+          <p> Assign Users </p>
         </div>
         <div class="col-md-7 pull-right">
           <table
@@ -170,10 +170,6 @@ export default {
     allUsers: {
       type: Array,
       default: function () { return []; }
-    },
-    privateInstance: {
-      type: Boolean,
-      default: true
     },
     externalConfig: {
       type: Object,

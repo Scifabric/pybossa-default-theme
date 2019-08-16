@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="form-group row">
         <div class="col-md-6 ">
-          <p> quiz status </p>
+          <p> Quiz Status </p>
         </div>
         <div class="col-md-6 pull-right">
           <label class="switch">
@@ -20,7 +20,7 @@
         class="form-group row"
       >
         <div class="col-md-6">
-          <p> number of questions per quiz  </p>
+          <p> Number Of Questions Per Quiz  </p>
         </div>
         <div class="col-md-6 pull-right">
           <input
@@ -35,7 +35,7 @@
         class="form-group row"
       >
         <div class="col-md-6">
-          <p> number of correct answers to pass quiz  </p>
+          <p> Number Of Correct Answers To Pass Quiz  </p>
         </div>
         <div class="col-md-6 pull-right">
           <input
@@ -50,7 +50,7 @@
         class="form-group row"
       >
         <div class="col-md-6">
-          <p> quiz completion mode </p>
+          <p> Quiz Completion Mode </p>
         </div>
         <div class="col-md-6">
           <select
@@ -153,7 +153,7 @@ export default {
       passing: this.config.passing,
       mode: this.config.completion_mode,
       resetUser: [],
-      users: {}
+      users: {},
     };
   },
 
@@ -190,12 +190,39 @@ export default {
       return users;
     },
 
+    getURL () {
+      let path = window.location.pathname
+      let res = path.split("/");
+      res[res.length-1] = "quiz-mode"
+      console.log(res.join("/"))
+      return res.join("/")
+    },
+
    reset (event, id) {
      this.resetUser.push(id);
    },
 
     _isIntegerNumeric: function (_n) {
         return Math.floor(_n) === _n;
+    },
+
+
+    async getData () {
+      console.log("here")
+      try {
+        const res = await fetch(this.getURL(), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json',
+            'X-CSRFToken': this.csrfToken
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        console.log(data)
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
+      }
     },
 
     async save () {

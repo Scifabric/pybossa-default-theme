@@ -8,7 +8,7 @@
     >
       <div class="form-group row">
         <div class="col-md-4">
-          <p> consensus threshold </p>
+          <p> Consensus Threshold </p>
         </div>
         <div class="col-md-8">
           <input
@@ -20,7 +20,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-4">
-          <p> add redundancy to retry </p>
+          <p> Add Redundancy To Retry </p>
         </div>
         <div class="col-md-8 pull-right">
           <input
@@ -32,7 +32,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-4">
-          <p> maximum retry </p>
+          <p> Maximum Retry </p>
         </div>
         <div class="col-md-8 pull-right">
           <input
@@ -44,6 +44,9 @@
       </div>
     </div>
     <div class="col-md-12">
+      <div v-if="errorMsg" class="error-msg">
+        {{errorMsg}}
+      </div>
       <div>
         <button
           class="btn btn-sm btn-primary"
@@ -87,6 +90,15 @@ export default {
         return Math.floor(_n) === _n;
     },
 
+    getURL () {
+      let path = window.location.pathname
+      let res = path.split("/");
+      res[res.length-1] = "answerfieldsconfig"
+      console.log(res.join("/"))
+      return res.join("/")
+    },
+
+
     _write: function (_consensusThreshold, _redundancyConfig, _maxRetries) {
         if (!this._isIntegerNumeric(_consensusThreshold) || _consensusThreshold <= 50 ||
           _consensusThreshold > 100) {
@@ -107,11 +119,19 @@ export default {
     },
 
     async save () {
-        const _consensusThreshold = parseInt(this.consensusThreshold, 10);
-        const _redundancyConfig = parseInt(this.redundancyConfig, 10);
-        const _maxRetries = parseInt(this.maxRetries, 10);
-        if (!this._write(_consensusThreshold, _redundancyConfig, _maxRetries)) {
-            return;
+        let data = {answer_fields: this.answerFields}
+        if (this.hasRetryFields){
+            const _consensusThreshold = parseInt(this.consensusThreshold, 10);
+            const _redundancyConfig = parseInt(this.redundancyConfig, 10);
+            const _maxRetries = parseInt(this.maxRetries, 10);
+            if (!this._write(_consensusThreshold, _redundancyConfig, _maxRetries)) {
+                return;
+            }
+            data['consensus_config'] = {
+                    'consensus_threshold': _consensusThreshold,
+                    'max_retries': _maxRetries,
+                    'redundancy_config': _redundancyConfig
+                  }
         }
         try {
             const res = await fetch(window.location.pathname, {
@@ -121,14 +141,7 @@ export default {
                     'X-CSRFToken': this.csrfToken
                 },
                 credentials: 'same-origin',
-                body: JSON.stringify({
-                  consensus_config: {
-                    'consensus_threshold': _consensusThreshold,
-                    'max_retries': _maxRetries,
-                    'redundancy_config': _redundancyConfig
-                  },
-                  answer_fields: this.answerFields
-                })
+                body: JSON.stringify(data)
             });
             if (res.ok) {
                 window.pybossaNotify('Answer Fields saved', true, 'success');
@@ -148,7 +161,7 @@ export default {
 };
 </script>
 <style>
-.errorMsg {
+.error-msg {
     color: red;
 }
 

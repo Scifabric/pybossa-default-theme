@@ -93,12 +93,11 @@ describe('ConsensusConfig', () => {
           config: {
             labels: ['A', 'B', 'C']
           },
-          retry_for_consensus: true
+          retry_for_consensus: false
         }
       }
     });
     const wrapper = mount(ConsensusConfig, { store, localVue });
-    wrapper.setData({ consensusThreshold: 80, maxRetries: 15, redundancyConfig: 3 });
     const saveButton = wrapper.findAll('button').at(0);
     saveButton.trigger('click');
     await localVue.nextTick();
