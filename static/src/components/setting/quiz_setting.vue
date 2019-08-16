@@ -67,10 +67,10 @@
           </select>
         </div>
       </div>
+      <br>
       <table
         id="quiz_result_table"
         class="table table-bordered table-striped table-hover"
-        style="margin-top:15px"
       >
         <thead>
           <tr>
@@ -107,7 +107,6 @@
               <button
                 v-else
                 class="btn btn-sm btn-primary active"
-                @click="reset($event, user.id)"
               >
                 Reset
               </button>
@@ -153,7 +152,7 @@ export default {
       passing: this.config.passing,
       mode: this.config.completion_mode,
       resetUser: [],
-      users: {},
+      users: {}
     };
   },
 
@@ -190,39 +189,12 @@ export default {
       return users;
     },
 
-    getURL () {
-      let path = window.location.pathname
-      let res = path.split("/");
-      res[res.length-1] = "quiz-mode"
-      console.log(res.join("/"))
-      return res.join("/")
-    },
-
    reset (event, id) {
      this.resetUser.push(id);
    },
 
     _isIntegerNumeric: function (_n) {
         return Math.floor(_n) === _n;
-    },
-
-
-    async getData () {
-      console.log("here")
-      try {
-        const res = await fetch(this.getURL(), {
-          method: 'GET',
-          headers: {
-            'content-type': 'application/json',
-            'X-CSRFToken': this.csrfToken
-          },
-          credentials: 'same-origin'
-        });
-        const data = await res.json();
-        console.log(data)
-      } catch (error) {
-        window.pybossaNotify('An error occurred.', true, 'error');
-      }
     },
 
     async save () {
@@ -240,13 +212,11 @@ export default {
           },
           credentials: 'same-origin',
           body: JSON.stringify({ 'quiz': {
-
               enabled: this.enabled,
               questions: _questions,
               passing: _passing,
               completion_mode: this.mode,
-
-            reset: this.resetUser
+              reset: this.resetUser
           } })
         });
         if (res.ok) {

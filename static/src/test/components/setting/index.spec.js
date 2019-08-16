@@ -31,7 +31,7 @@ describe('projectConfig', () => {
     propsData = {
         csrfTRoken: null,
         assignUsers: [],
-        allUsers: [{id: 1, fullname: 'user'}],
+        allUsers: [{ id: 1, fullname: 'user' }]
     };
     const wrapper = shallowMount(projectConfig, { propsData });
     const p = wrapper.findAll('p');

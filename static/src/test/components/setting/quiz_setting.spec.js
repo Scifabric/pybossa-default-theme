@@ -14,7 +14,7 @@ describe('quizConfig', () => {
     notify = window.pybossaNotify = jest.fn();
   });
 
-  it('render fields - switch quiz mode', () => {
+  it('render fields - disabled quiz mode', () => {
     propsData = {
       csrfTRoken: null,
       config: {
@@ -23,7 +23,7 @@ describe('quizConfig', () => {
         passing: 0,
         complete_mode: null,
         short_circuit: false,
-mode_choices: []
+        mode_choices: [('mode_1', 'show all data'), ('mode_2', 'show partial data')]
       },
       allUserQuiz: []
     };
@@ -40,7 +40,7 @@ mode_choices: []
         passing: 0,
         complete_mode: null,
         short_circuit: false,
-mode_choices: []
+        mode_choices: [('mode_1', 'show all data'), ('mode_2', 'show partial data')]
       },
       allUserQuiz: []
     };
@@ -58,13 +58,32 @@ mode_choices: []
         passing: 0,
         complete_mode: null,
         short_circuit: false,
-mode_choices: []
+        mode_choices: []
       },
-      allUserQuiz: []
+      allUserQuiz: [{ fullname: 'user', quiz: { config: { enabled: true, questions: 10, passing: 7 }, status: 'bg-success', result: { right: 8, wrong: 2 } } }]
     };
     const wrapper = shallowMount(quizConfig, { propsData });
     expect(wrapper.findAll('tr')).toHaveLength(propsData.allUserQuiz.length + 1);
   });
+
+  // it('reset users', () => {
+  //   propsData = {
+  //     csrfTRoken: null,
+  //     config: {
+  //       enabled: false,
+  //       questions: 0,
+  //       passing: 0,
+  //       complete_mode: null,
+  //       short_circuit: false,
+  //       mode_choices: []
+  //     },
+  //     allUserQuiz: [{ fullname: 'user', quiz: { config: { enabled: true, questions: 10, passing: 7 }, status: 'bg-success', result: { right: 8, wrong: 2 } } }]
+  //   };
+  //   const wrapper = shallowMount(quizConfig, { propsData });
+  //   expect(wrapper.findAll('.btn-primary')).toHaveLength(2);
+  //   wrapper.findAll('button').at(0);
+  //   expect(wrapper.findAll('.active')).toHaveLength(1);
+  // });
 
   it('saves config', async () => {
     fetch.mockImplementation((arg) => ({

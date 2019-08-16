@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="form-group row">
         <div class="col-md-4">
-          <p> project owner </p>
+          <p> Project Owner </p>
         </div>
         <div class="col-md-8 pull-right">
           <p> {{ owner.fullname }} </p>
@@ -11,7 +11,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-4">
-          <p> co-owners </p>
+          <p> Co-owners </p>
         </div>
         <div class="col-md-8 pull-right">
           <div v-if="Object.keys(coowners).length">
@@ -35,7 +35,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-4">
-          <p> manage co-owners </p>
+          <p> Manage Co-owners </p>
         </div>
         <div class="col-md-8 pull-right">
           <div class="input-group">
@@ -139,8 +139,11 @@ export default {
       Vue.delete(this.coowners, id);
     },
 
-    customLabel (option) {
-      return `${option.user.fullname}`;
+    getURL () {
+      let path = window.location.pathname;
+      let res = path.split('/');
+      res[res.length - 1] = 'quiz-mode';
+      return res.join('/');
     },
 
     async getData () {

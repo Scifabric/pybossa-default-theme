@@ -44,8 +44,11 @@
       </div>
     </div>
     <div class="col-md-12">
-      <div v-if="errorMsg" class="error-msg">
-        {{errorMsg}}
+      <div
+        v-if="errorMsg"
+        class="error-msg"
+      >
+        {{ errorMsg }}
       </div>
       <div>
         <button
@@ -90,15 +93,6 @@ export default {
         return Math.floor(_n) === _n;
     },
 
-    getURL () {
-      let path = window.location.pathname
-      let res = path.split("/");
-      res[res.length-1] = "answerfieldsconfig"
-      console.log(res.join("/"))
-      return res.join("/")
-    },
-
-
     _write: function (_consensusThreshold, _redundancyConfig, _maxRetries) {
         if (!this._isIntegerNumeric(_consensusThreshold) || _consensusThreshold <= 50 ||
           _consensusThreshold > 100) {
@@ -119,11 +113,11 @@ export default {
     },
 
     async save () {
-        let data = {answer_fields: this.answerFields}
-        if (this.hasRetryFields){
-            const _consensusThreshold = parseInt(this.consensusThreshold, 10);
-            const _redundancyConfig = parseInt(this.redundancyConfig, 10);
-            const _maxRetries = parseInt(this.maxRetries, 10);
+        let data = { answer_fields: this.answerFields };
+        if (this.hasRetryFields) {
+            let _consensusThreshold = parseInt(this.consensusThreshold, 10);
+            let _redundancyConfig = parseInt(this.redundancyConfig, 10);
+            let _maxRetries = parseInt(this.maxRetries, 10);
             if (!this._write(_consensusThreshold, _redundancyConfig, _maxRetries)) {
                 return;
             }
@@ -131,7 +125,12 @@ export default {
                     'consensus_threshold': _consensusThreshold,
                     'max_retries': _maxRetries,
                     'redundancy_config': _redundancyConfig
-                  }
+                  };
+            this.updateConsensusConfig({
+                    'consensus_threshold': _consensusThreshold,
+                    'max_retries': _maxRetries,
+                    'redundancy_config': _redundancyConfig
+                });
         }
         try {
             const res = await fetch(window.location.pathname, {
@@ -145,11 +144,6 @@ export default {
             });
             if (res.ok) {
                 window.pybossaNotify('Answer Fields saved', true, 'success');
-                this.updateConsensusConfig({
-                    'consensus_threshold': _consensusThreshold,
-                    'max_retries': _maxRetries,
-                    'redundancy_config': _redundancyConfig
-                });
             } else {
                 window.pybossaNotify('An error occurred.', true, 'error');
             }

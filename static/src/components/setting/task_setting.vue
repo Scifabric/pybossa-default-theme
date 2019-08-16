@@ -171,7 +171,7 @@ export default {
             default_n_answers: _defaultRedundancy,
             n_answers: _currentRedundancy,
             rand_within_priority: this.random
-            }} )
+            } })
         });
         if (res.ok) {
           window.pybossaNotify('task data Saved.', true, 'success');
