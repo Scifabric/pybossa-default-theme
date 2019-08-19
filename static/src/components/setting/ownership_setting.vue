@@ -142,20 +142,20 @@ export default {
     getURL () {
       let path = window.location.pathname;
       let res = path.split('/');
-      res[res.length - 1] = 'quiz-mode';
+      res[res.length - 1] = 'coowners';
       return res.join('/');
     },
 
     async getData () {
       try {
-        const res = await fetch(window.location.pathname + '/coowners', {
+        const res = await fetch(this.getURL(), {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
             'X-CSRFToken': this.csrfToken
           },
           credentials: 'same-origin',
-          body: JSON.stringify({ query: this.search })
+          body: JSON.stringify({ user: this.search })
         });
         const data = await res.json();
         this.searchResult = data['found'];
@@ -166,7 +166,6 @@ export default {
 
     async save () {
       let coownerId = Object.keys(this.coowners);
-      console.log(coownerId);
       try {
         const res = await fetch(window.location.pathname, {
           method: 'POST',
@@ -193,7 +192,7 @@ export default {
 };
 
 </script>
-<style>
+<style scoped>
 .label {
   font-size: 100%;
   margin-right: 10px
@@ -205,18 +204,7 @@ export default {
 .fa-times:hover {
   color: red
 }
-.dropdown-content {
-  position: absolute;
-  min-width: 230px;
-  overflow: auto;
-  border: 1px solid #ddd;
+.form-control.input-sm {
+    width: 280px;
 }
-.dropdown-content a {
-  color: black;
-  padding: 12px 15px;
-  text-decoration: none;
-  display: block;
-}
-.dropdown-content .row:hover {background-color: #ddd}
-.dropdown-content .row {padding-left: 30px; box-sizing: border-box;}
 </style>

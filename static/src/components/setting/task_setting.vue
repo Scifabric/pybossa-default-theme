@@ -186,7 +186,7 @@ export default {
 };
 
 </script>
-<style>
+<style scoped>
 .input-group-addon {
   width: 10%
 }

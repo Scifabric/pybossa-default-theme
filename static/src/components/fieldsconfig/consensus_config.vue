@@ -154,11 +154,10 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .error-msg {
     color: red;
 }
-
 .form-control.input-sm {
     width: 280px;
 }

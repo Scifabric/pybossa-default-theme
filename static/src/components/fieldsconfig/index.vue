@@ -164,10 +164,7 @@ export default {
 };
 
 </script>
-<style>
-.field-config-wrapper {
-    margin-bottom: 0.5em;
-}
+<style scoped>
 .scroll {
   overflow-x: hidden;
   max-height: 350px;

@@ -57,7 +57,6 @@
               >
               <label
                 class="form-check-label"
-                for="defaultCheck1"
               >
                 <p> {{ level }} &nbsp;</p>
               </label>
@@ -333,7 +332,7 @@ export default {
 };
 
 </script>
-<style>
+<style scoped>
 
 .scroll #users:hover {background-color: #ddd}
 .scroll #users {padding-left: 10px; box-sizing: border-box;}
