@@ -52,7 +52,7 @@
     <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
 <script type="text/javascript">
-    $("#annotations-guidelines-content").append({{project.info.task_guidelines|tojson}})
+    $("#annotations-guidelines-content").append('{{project.info.task_guidelines|safe}}')
 </script>
 
 {% endblock %}
