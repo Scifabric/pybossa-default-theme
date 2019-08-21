@@ -1,0 +1,14 @@
+.dropdown-content {
+  position: absolute;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 15px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content .row:hover {background-color: #ddd}
+.dropdown-content .row {padding-left: 30px; box-sizing: border-box;}

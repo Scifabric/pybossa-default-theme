@@ -30,15 +30,4 @@ describe('fieldsconfig', () => {
     });
     expect(wrapper.html()).toContain('freetext Field - field_1');
   });
-
-  it('is not editable', () => {
-    const wrapper = shallowMount(FieldConfigBase, { store, localVue });
-    wrapper.setProps({
-      name: 'field_1',
-      type: 'freetext'
-    });
-    expect(wrapper.vm.editing).toBe(false);
-    wrapper.vm.toggleEdit();
-    expect(wrapper.vm.editing).toBe(false);
-  });
 });

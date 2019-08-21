@@ -1,77 +1,62 @@
 <template>
   <div
-    v-if="hasRetryFields"
     class="stats-config row"
   >
-    <div class="col-md-12">
-      <h3> Consensus Configuration </h3>
-      <div class="form-inline ">
-        <p> Consensus threshold: </p>
-        <div class="input-group">
+    <div
+      v-if="hasRetryFields"
+      class="col-md-12 consensus"
+    >
+      <div class="form-group row">
+        <div class="col-md-4">
+          <p> Consensus Threshold </p>
+        </div>
+        <div class="col-md-8">
           <input
             v-model="consensusThreshold"
             type="text"
-            class="form-control "
-            style="width: 100%"
+            class="form-control input-sm"
           >
-          <span
-            class="input-group-addon"
-            style="width:10%"
-          > % </span>
-        </div>
-        <p> Add redundancy to retry: </p>
-        <input
-          v-model="redundancyConfig"
-          type="text"
-          class="form-control"
-          style="width: 100%"
-        >
-        <p> Maximum redundancy: </p>
-        <input
-          v-model="maxRetries"
-          type="text"
-          class="form-control "
-          style="width: 100%"
-        >
-        <div
-          v-if="errorMsg != ''"
-          class="errorMsg"
-        >
-          {{ errorMsg }}
-        </div>
-        <div>
-          <br>
-          <button
-            class="btn btn-primary"
-            @click="save"
-          >
-            Update
-          </button>
         </div>
       </div>
-      <div v-if="hasConsensusConfig">
-        <br>
-        <div class="row">
-          <div class="col-md-9">
-            <p> Consensus threshold</p>
-            <p> Add redundancy to retry</p>
-            <p> Maximum redundancy</p>
-          </div>
-          <div class="col-md-3 align-right">
-            <p> {{ consensusThreshold }}</p>
-            <p> {{ redundancyConfig }}</p>
-            <p> {{ maxRetries }}</p>
-          </div>
+      <div class="form-group row">
+        <div class="col-md-4">
+          <p> Add Redundancy To Retry </p>
         </div>
+        <div class="col-md-8 pull-right">
+          <input
+            v-model="redundancyConfig"
+            type="text"
+            class="form-control input-sm"
+          >
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-4">
+          <p> Maximum Retry </p>
+        </div>
+        <div class="col-md-8 pull-right">
+          <input
+            v-model="maxRetries"
+            type="text"
+            class="form-control input-sm"
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div
+        v-if="errorMsg"
+        class="error-msg"
+      >
+        {{ errorMsg }}
+      </div>
+      <div>
         <button
-          class="btn btn-danger"
-          @click="remove"
+          class="btn btn-sm btn-primary"
+          @click="save"
         >
-          Delete
+          Save
         </button>
-      </div>
-      <div v-else>
-        <p> No consensus currently configured.</p>
       </div>
     </div>
   </div>
@@ -98,7 +83,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['csrfToken', 'hasRetryFields', 'hasConsensusConfig'])
+    ...mapGetters(['csrfToken', 'hasRetryFields', 'hasConsensusConfig', 'answerFields'])
   },
 
   methods: {
@@ -128,43 +113,25 @@ export default {
     },
 
     async save () {
-        const _consensusThreshold = parseInt(this.consensusThreshold, 10);
-        const _redundancyConfig = parseInt(this.redundancyConfig, 10);
-        const _maxRetries = parseInt(this.maxRetries, 10);
-        if (!this._write(_consensusThreshold, _redundancyConfig, _maxRetries)) {
-            return;
-        }
-        try {
-            const res = await fetch(window.location.pathname, {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    'X-CSRFToken': this.csrfToken
-                },
-                credentials: 'same-origin',
-                body: JSON.stringify({ 'consensus_config': {
+        let data = { answer_fields: this.answerFields };
+        if (this.hasRetryFields) {
+            let _consensusThreshold = parseInt(this.consensusThreshold, 10);
+            let _redundancyConfig = parseInt(this.redundancyConfig, 10);
+            let _maxRetries = parseInt(this.maxRetries, 10);
+            if (!this._write(_consensusThreshold, _redundancyConfig, _maxRetries)) {
+                return;
+            }
+            data['consensus_config'] = {
                     'consensus_threshold': _consensusThreshold,
                     'max_retries': _maxRetries,
-                    'redundancy_config': _redundancyConfig }
-                    })
-            });
-            if (res.ok) {
-                const data = await res.json();
-                window.pybossaNotify(data.flash, true, data.status);
-                this.updateConsensusConfig({
+                    'redundancy_config': _redundancyConfig
+                  };
+            this.updateConsensusConfig({
                     'consensus_threshold': _consensusThreshold,
                     'max_retries': _maxRetries,
                     'redundancy_config': _redundancyConfig
                 });
-            } else {
-                window.pybossaNotify('An error occurred.', true, 'error');
-            }
-        } catch (error) {
-                window.pybossaNotify('An error occurred.', true, 'error');
         }
-    },
-
-    async remove () {
         try {
             const res = await fetch(window.location.pathname, {
                 method: 'POST',
@@ -173,34 +140,31 @@ export default {
                     'X-CSRFToken': this.csrfToken
                 },
                 credentials: 'same-origin',
-                body: JSON.stringify({ consensusConfig: {} })
+                body: JSON.stringify(data)
             });
             if (res.ok) {
-                const data = await res.json();
-                window.pybossaNotify(data.flash, true, data.status);
-                this.consensusThreshold = 0;
-                this.maxRetries = 0;
-                this.redundancyConfig = 0;
-                this.updateConsensusConfig({});
+                window.pybossaNotify('Answer Fields saved', true, 'success');
             } else {
                 window.pybossaNotify('An error occurred.', true, 'error');
             }
         } catch (error) {
-                window.pybossaNotify('An error occurred.', true, 'error');
+            window.pybossaNotify('An error occurred.', true, 'error');
         }
     }
   }
 };
 </script>
-<style>
-.errorMsg {
+<style scoped>
+.error-msg {
     color: red;
 }
-
 .form-control.input-sm {
     width: 280px;
 }
 .align-right {
     text-align:right;
+}
+.consensus {
+    width: 85%
 }
 </style>

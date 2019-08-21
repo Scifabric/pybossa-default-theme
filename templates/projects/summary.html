@@ -1,0 +1,89 @@
+{% extends "/projects/base.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block projectcontent %}
+<div role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist" style="border-bottom: 1px solid #c9d8dfe3">
+        <li role="presentation" class="active"><a href="#project" aria-controls="project" role="tab" data-toggle="tab">Project</a></li>
+        <li role="presentation"><a href="#ownership" aria-controls="ownership" role="tab" data-toggle="tab">Ownership</a></li>
+        <li role="presentation"><a href="#task" aria-controls="task" role="tab" data-toggle="tab">Task</a></li>
+        <li role="presentation"><a href="#answer" aria-controls="answer" role="tab" data-toggle="tab">Answer</a></li>
+        <li role="presentation"><a href="#quiz" aria-controls="quiz" role="tab" data-toggle="tab">Quiz</a></li>
+    </ul>
+    <br>
+
+    <div id="setting" class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="project">
+            <div class="col-md-12">
+                <setting
+                    csrf-token="{{csrf}}"
+                    :external-config="{{external_config}}"
+                    :external-config-form="{{external_config_form}}"
+                    :assign-users="{{assign_user}}"
+                    :all-users="{{users}}"
+                    :data-access-config="{{data_access}}"
+                    :valid-access-levels="{{valid_access_levels}}">
+                </setting>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="ownership">
+            <div class="col-md-12 ">
+                <ownership-setting
+                    csrf-token="{{csrf}}"
+                    :owner="{{owner}}"
+                    :co-owners="{{coowners}}">
+                </ownership-setting>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="task">
+            <div class="col-md-12">
+                <task-setting
+                    csrf-token="{{csrf}}"
+                    :config="{{sched_config}}"
+                    :task-timeout="{{timeout}}"
+                    :task-redundancy="{{default_task_redundancy}}">
+                </task-setting>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="answer">
+            <div class="col-md-12">
+                <div >
+                    <fields-config></fields-config>
+                </div>
+                <div>
+                    <consensus-config :consensus-config="{{consensus_config}}"></consensus-config>
+                </div>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="quiz">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <quiz-setting
+                            csrf-token="{{csrf}}"
+                            :config="{{quiz_config}}"
+                            :all-user-quiz="{{all_user_quizzes}}">
+                        </quiz-setting>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/gen/setting.min.05d787b7f7ced6905de5.js"></script>
+<script>
+answerFields.setData({
+    csrf: '{{csrf}}',
+    answerFields: {{answer_fields | safe}},
+    consensus: {{consensus_config | safe}}
+});
+</script>
+
+{% endblock %}
+
+
