@@ -39,6 +39,11 @@
     {% include 'annotation_guidelines_button.html' %}
     {% include "projects/js/annotation_guidelines_button.js" %}
     {{ project.info.task_presenter|safe }}
+    {% if "task_guidelines" in project.info and project.info.task_guidelines != '' %}
+        <script type="text/javascript">
+                $("#annotations-guidelines-content").append({{project.info.task_guidelines|tojson}})
+        </script>
+    {% endif %}
 
     <div id='PYBOSSA_USER_LOCALE' hidden>
         {% if current_user.is_anonymous %}
@@ -51,9 +56,6 @@
 {% assets "css_blpstrap3_style" %}
     <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
 {% endassets %}
-<script type="text/javascript">
-    $("#annotations-guidelines-content").append('{{project.info.task_guidelines|safe}}')
-</script>
 
 {% endblock %}
 {% block extrajs %}
