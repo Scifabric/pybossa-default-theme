@@ -29,11 +29,7 @@
 
         <div role="tabpanel" class="tab-pane fade" id="ownership">
             <div class="col-md-12 ">
-                <ownership-setting
-                    csrf-token="{{csrf}}"
-                    :owner="{{owner}}"
-                    :co-owners="{{coowners}}">
-                </ownership-setting>
+                <ownership-setting></ownership-setting>
             </div>
         </div>
 
@@ -63,11 +59,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-sm-12">
-                        <quiz-setting
-                            csrf-token="{{csrf}}"
-                            :config="{{quiz_config}}"
-                            :all-user-quiz="{{all_user_quizzes}}">
-                        </quiz-setting>
+                        <quiz-setting></quiz-setting>
                     </div>
                 </div>
             </div>
@@ -75,7 +67,11 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 <script src="/static/js/gen/setting.min.05d787b7f7ced6905de5.js"></script>
+=======
+<script src="/static/js/gen/setting.min.6492ab826e1233601cab.js"></script>
+>>>>>>> c9e53c7... refactor code, initial commit
 <script>
 answerFields.setData({
     csrf: '{{csrf}}',

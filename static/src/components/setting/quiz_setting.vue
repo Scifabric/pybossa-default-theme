@@ -58,11 +58,11 @@
             class="form-control input-sm"
           >
             <option
-              v-for="opt in getOptions()"
-              :key="opt.text"
-              :value="opt.value"
+              v-for="opt in mode_choices"
+              :key="opt[0]"
+              :value="opt[0]"
             >
-              {{ opt.text }}
+              {{ opt[1] }}
             </option>
           </select>
         </div>
@@ -130,58 +130,64 @@
 
 export default {
 
-  props: {
-    csrfToken: {
-      type: String,
-      default: null
-    },
-    config: {
-      type: Object,
-      default: () => ({ enabled: false, questions: 0, passing: 0, complete_mode: null, short_circuit: false, mode_choices: [] })
-    },
-    allUserQuiz: {
-      type: Array,
-      default: function () { return []; }
-    }
-  },
+  // props: {
+  //   csrfToken: {
+  //     type: String,
+  //     default: null
+  //   },
+  //   config: {
+  //     type: Object,
+  //     default: () => ({ enabled: false, questions: 0, passing: 0, complete_mode: null, short_circuit: false, mode_choices: [] })
+  //   },
+  //   allUserQuiz: {
+  //     type: Array,
+  //     default: function () { return []; }
+  //   }
+  // },
 
   data () {
     return {
-      enabled: this.config.enabled,
-      questions: this.config.questions,
-      passing: this.config.passing,
-      mode: this.config.completion_mode,
+      csrfToken: null,
+      enabled: false,
+      questions: null,
+      passing: null,
+      mode: null,
+      mode_choices: [],
       resetUser: [],
       users: {}
     };
   },
 
   mounted: function () {
-    this.users = this.getQuizUser();
+    this.getData()
   },
 
   methods: {
 
-    getOptions () {
-      var options = [];
-      var i;
-      for (i = 0; i < this.config.mode_choices.length; i++) {
-        var opt = {
-          text: this.config.mode_choices[i][1],
-          value: this.config.mode_choices[i][0]
-        };
-        options.push(opt);
-      }
-      return options;
+    initialize ( data ) {
+      this.csrfToken = data.csrf
+      this.users = this.getQuizUser(data.all_user_quizzes)
+      this.mode_choices = data.quiz_mode_choices;
+      this.enabled = data.form.enabled
+      this.questions = data.form.questions
+      this.passing = data.form.passing
+      this.mode = data.form.completion_mode
     },
 
-    getQuizUser () {
+    getQuizUser (allUserQuiz) {
       var users = {};
       for (var i = 0; i < this.allUserQuiz.length; i++) {
         var u = this.allUserQuiz[i];
         users[u.id] = u;
       }
       return users;
+    },
+
+    getURL () {
+      let path = window.location.pathname
+      let res = path.split("/");
+      res[res.length-1] = "quiz-mode"
+      return res.join("/")
     },
 
    reset (event, id) {
@@ -192,6 +198,22 @@ export default {
         return Math.floor(_n) === _n;
     },
 
+    async getData () {
+      try {
+        const res = await fetch(this.getURL(), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        this.initialize(data)
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
+      }
+    },
+
     async save () {
       const _questions = parseInt(this.questions);
       const _passing = parseInt(this.passing);
@@ -199,20 +221,20 @@ export default {
         return;
       }
       try {
-        const res = await fetch(window.location.pathname, {
+        const res = await fetch(this.getURL(), {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
             'X-CSRFToken': this.csrfToken
           },
           credentials: 'same-origin',
-          body: JSON.stringify({ 'quiz': {
+          body: JSON.stringify({
               enabled: this.enabled,
               questions: _questions,
               passing: _passing,
               completion_mode: this.mode,
               reset: this.resetUser
-          } })
+          })
         });
         if (res.ok) {
           window.pybossaNotify('quiz data Saved.', true, 'success');

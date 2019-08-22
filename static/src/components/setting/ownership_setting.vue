@@ -48,7 +48,7 @@
             <span class="input-group-append">
               <button
                 class="btn btn-sm btn-primary "
-                @click="getData"
+                @click="searchUsers"
               >
                 <i class="fa fa-search" />
                 Search
@@ -92,23 +92,9 @@
 import Vue from 'vue';
 
 export default {
-  props: {
-    csrfToken: {
-      type: String,
-      default: null
-    },
-    owner: {
-      type: Object,
-      default: null
-    },
-    coOwners: {
-      type: Array,
-      default: function () { return []; }
-    }
-  },
-
   data () {
     return {
+      owner: {},
       coowners: {},
       searchResult: [],
       search: ''
@@ -117,17 +103,30 @@ export default {
   },
 
   mounted: function () {
-    this.coowners = this.getCoowners();
+    this.getData()
   },
 
   methods: {
 
-    getCoowners () {
-      var users = {};
-      this.coOwners.forEach(function (u) {
+    initialize (data) {
+      this.coowners = this.getCoowners(data.coowners_dict)
+      this.owner = data.owner
+      this.csrfToken = data.form.csrf
+    },
+
+    getCoowners (coownerData) {
+      let users = {};
+      coownerData.forEach(function (u) {
         users[u.id] = u;
       });
       return users;
+    },
+
+    getURL () {
+      let path = window.location.pathname
+      let res = path.split("/");
+      res[res.length-1] = "coowners"
+      return res.join("/")
     },
 
     add (event, ur) {
@@ -146,7 +145,7 @@ export default {
       return res.join('/');
     },
 
-    async getData () {
+    async searchUsers () {
       try {
         const res = await fetch(this.getURL(), {
           method: 'POST',
@@ -164,19 +163,35 @@ export default {
       }
     },
 
+    async getData () {
+      try {
+        const res = await fetch(this.getURL(), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        this.initialize(data)
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
+      }
+    },
+
     async save () {
       let coownerId = Object.keys(this.coowners);
       try {
-        const res = await fetch(window.location.pathname, {
+        const res = await fetch(this.getURL(), {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
             'X-CSRFToken': this.csrfToken
           },
           credentials: 'same-origin',
-          body: JSON.stringify({ 'ownership': {
+          body: JSON.stringify({
             coowners: coownerId
-          } })
+          })
         });
         if (res.ok) {
           this.searchResult = [];

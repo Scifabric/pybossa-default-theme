@@ -101,33 +101,38 @@
 <script>
 
 export default {
-  props: {
-    csrfToken: {
-      type: String,
-      default: null
-    },
-    config: {
-      type: Object,
-      default: () => ({ sched: 'default', rand_within_priority: false, sched_variants: [] })
-    },
-    taskTimeout: {
-      type: Number
-    },
-    taskRedundancy: {
-      type: Number,
-      default: 1
-    }
-  },
+  // props: {
+  //   csrfToken: {
+  //     type: String,
+  //     default: null
+  //   },
+  //   config: {
+  //     type: Object,
+  //     default: () => ({ sched: 'default', rand_within_priority: false, sched_variants: [] })
+  //   },
+  //   taskTimeout: {
+  //     type: Number
+  //   },
+  //   taskRedundancy: {
+  //     type: Number,
+  //     default: 1
+  //   }
+  // },
 
   data () {
     return {
-      sched: this.config.sched,
-      random: this.config.rand_within_priority,
+      csrfToken: "",
+      sched: "",
+      random: false,
       timeoutMinute: Math.floor(this.taskTimeout / 60),
       timeoutSecond: this.taskTimeout % 60,
-      defaultRedundancy: this.taskRedundancy,
+      defaultRedundancy: null,
       currentRedundancy: null
     };
+  },
+
+  mounted: function () {
+    this.getData()
   },
 
   methods: {
@@ -143,8 +148,62 @@ export default {
       return options;
     },
 
+    getURL (keyword) {
+      let path = window.location.pathname
+      let res = path.split("/");
+      res[res.length-1] = keyword
+      return res.join("/")
+    },
+
     _isIntegerNumeric: function (_n) {
         return Math.floor(_n) === _n;
+    },
+
+    async getData () {
+      try {
+        const res = await fetch(this.getURL("tasks/redundancy"), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        this.defaultRedundancy = data.default_form.default_n_answers
+        this.csrfToken = data.default_form.csrf
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
+      }
+
+      try {
+        const res = await fetch(this.getURL("tasks/timeout"), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        this.timeoutMinute = data.form.minutes
+        this.timeoutSecond = data.form.seconds
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
+      }
+
+      try {
+        const res = await fetch(this.getURL("tasks/scheduler"), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        this.sched = data.form.sched
+        this.random = data.form.rand_within_priority
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
+      }
     },
 
     async save () {
