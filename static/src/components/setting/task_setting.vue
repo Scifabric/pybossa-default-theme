@@ -64,6 +64,7 @@
       <div class="form-group row">
         <div class="col-md-6">
           <p> Default Task Redundancy </p>
+          {{defaultRedundancy}}
         </div>
         <div class="col-md-6 pull-right">
           <input
@@ -114,7 +115,7 @@ export default {
     };
   },
 
-  mounted: function () {
+  created: function () {
     this.getData()
   },
 
@@ -156,6 +157,7 @@ export default {
           credentials: 'same-origin'
         });
         const data = await res.json();
+        console.log(data)
         this.timeoutMinute = data.form.minutes
         this.timeoutSecond = data.form.seconds
       } catch (error) {

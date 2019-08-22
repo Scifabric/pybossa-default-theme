@@ -15,7 +15,7 @@
     <div id="setting" class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="project">
             <div class="col-md-12">
-                <setting> </setting>
+                <!-- <setting> </setting> -->
             </div>
         </div>
 
@@ -27,12 +27,7 @@
 
         <div role="tabpanel" class="tab-pane fade" id="task">
             <div class="col-md-12">
-                <task-setting
-                    csrf-token="{{csrf}}"
-                    :config="{{sched_config}}"
-                    :task-timeout="{{timeout}}"
-                    :task-redundancy="{{default_task_redundancy}}">
-                </task-setting>
+                <task-setting></task-setting>
             </div>
         </div>
 
