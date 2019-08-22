@@ -11,11 +11,11 @@
             class="form-control input-sm"
           >
             <option
-              v-for="opt in getOptions()"
-              :key="opt.text"
-              :value="opt.value"
+              v-for="opt in sched_variants"
+              :key="opt[0]"
+              :value="opt[0]"
             >
-              {{ opt.text }}
+              {{ opt[1] }}
             </option>
           </select>
         </div>
@@ -101,28 +101,11 @@
 <script>
 
 export default {
-  // props: {
-  //   csrfToken: {
-  //     type: String,
-  //     default: null
-  //   },
-  //   config: {
-  //     type: Object,
-  //     default: () => ({ sched: 'default', rand_within_priority: false, sched_variants: [] })
-  //   },
-  //   taskTimeout: {
-  //     type: Number
-  //   },
-  //   taskRedundancy: {
-  //     type: Number,
-  //     default: 1
-  //   }
-  // },
-
   data () {
     return {
       csrfToken: "",
       sched: "",
+      sched_variants: null,
       random: false,
       timeoutMinute: Math.floor(this.taskTimeout / 60),
       timeoutSecond: this.taskTimeout % 60,
@@ -136,17 +119,6 @@ export default {
   },
 
   methods: {
-    getOptions () {
-      let options = [];
-      for (let i = 0; i < this.config.sched_variants.length; i++) {
-        let opt = {
-          text: this.config.sched_variants[i][1],
-          value: this.config.sched_variants[i][0]
-        };
-        options.push(opt);
-      }
-      return options;
-    },
 
     getURL (keyword) {
       let path = window.location.pathname
@@ -201,6 +173,7 @@ export default {
         const data = await res.json();
         this.sched = data.form.sched
         this.random = data.form.rand_within_priority
+        this.sched_variants = data.sched_variants
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
@@ -215,24 +188,43 @@ export default {
       if (this.currentRedundancy && !this._isIntegerNumeric(_currentRedundancy)) {
         return;
       }
-      try {
-        const res = await fetch(window.location.pathname, {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-            'X-CSRFToken': this.csrfToken
-          },
-          credentials: 'same-origin',
-          body: JSON.stringify({ task: {
+      let data = {
             sched: this.sched,
             minutes: this.timeoutMinute,
             seconds: this.timeoutSecond,
             default_n_answers: _defaultRedundancy,
             n_answers: _currentRedundancy,
             rand_within_priority: this.random
-            } })
+            };
+      try {
+        const timeoutRes = await fetch(this.getURL('tasks/timeout'), {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            'X-CSRFToken': this.csrfToken
+          },
+          credentials: 'same-origin',
+          body: JSON.stringify(data)
         });
-        if (res.ok) {
+        const redundancyRes = await fetch(this.getURL('tasks/redundancy'), {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            'X-CSRFToken': this.csrfToken
+          },
+          credentials: 'same-origin',
+          body: JSON.stringify(data)
+        });
+        const schedulerRes = await fetch('tasks/scheduler', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            'X-CSRFToken': this.csrfToken
+          },
+          credentials: 'same-origin',
+          body: JSON.stringify(data)
+        });
+        if (timeoutRes.ok && redundancyRes.ok && schedulerRes.ok) {
           window.pybossaNotify('task data Saved.', true, 'success');
         } else {
           window.pybossaNotify('An error occurred.', true, 'error');
