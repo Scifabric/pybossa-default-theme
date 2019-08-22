@@ -133,6 +133,10 @@ export default {
     };
   },
 
+  // created () {
+  //   this.getData()
+  // },
+
   computed: {
     ...mapGetters(['answerFields', 'csrfToken', 'isNewField', 'hasConsensusConfig', 'hasRetryFields', 'showWarning'])
   },
@@ -160,6 +164,34 @@ export default {
       this.fieldType = labelTypes.default;
       this.retryForConsensus = false;
     }
+
+    // getURL () {
+    //   let path = window.location.pathname
+    //   let res = path.split("/");
+    //   res[res.length-1] = "answerfieldsconfig"
+    //   return res.join("/")
+    // },
+
+    // async getData () {
+    //   try {
+    //     const res = await fetch(this.getURL(), {
+    //       method: 'GET',
+    //       headers: {
+    //         'content-type': 'application/json'
+    //       },
+    //       credentials: 'same-origin'
+    //     });
+    //     const data = await res.json();
+    //     this.setData({
+    //       csrf: data.csrf,
+    //       answerFields: JSON.parse(data.answer_fields) ,
+    //       consensus: JSON.parse(data.consensus_config)
+    //     })
+    //   } catch (error) {
+    //     window.pybossaNotify('An error occurred.', true, 'error');
+    //   }
+    // }
+
   }
 };
 

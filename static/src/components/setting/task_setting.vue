@@ -64,7 +64,6 @@
       <div class="form-group row">
         <div class="col-md-6">
           <p> Default Task Redundancy </p>
-          {{defaultRedundancy}}
         </div>
         <div class="col-md-6 pull-right">
           <input
@@ -142,7 +141,7 @@ export default {
           credentials: 'same-origin'
         });
         const data = await res.json();
-        this.defaultRedundancy = data.default_form.default_n_answers
+        this.defaultRedundancy = data.default_task_redundancy
         this.csrfToken = data.default_form.csrf
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
@@ -157,7 +156,6 @@ export default {
           credentials: 'same-origin'
         });
         const data = await res.json();
-        console.log(data)
         this.timeoutMinute = data.form.minutes
         this.timeoutSecond = data.form.seconds
       } catch (error) {

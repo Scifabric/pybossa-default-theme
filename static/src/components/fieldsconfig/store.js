@@ -12,6 +12,7 @@ function _addField (state, { name, type, config, retryForConsensus, newField = f
 }
 
 function _updateConsensusConfig (state, config) {
+  console.log('_updateConsensusConfig')
   if (config) {
     const cf = {
       consensusThreshold: config['consensus_threshold'],
@@ -99,6 +100,7 @@ const storeSpecs = {
     },
 
     updateConsensusConfig (state, config) {
+      console.log('here')
       _updateConsensusConfig(state, config);
     },
 
@@ -107,9 +109,12 @@ const storeSpecs = {
     },
 
     setData (state, { csrf, answerFields, consensus }) {
+      // console.log('this.setData')
+      // console.log(answerFields)
       state.csrf = csrf;
       const fields = answerFields;
-      for (const name in answerFields) {
+      // console.log(Object.keys(fields).length)
+      for (const name in fields) {
         const retryForConsensus = fields[name]['retry_for_consensus'];
         const { type, config } = fields[name];
         _addField(state, { name, type, config, retryForConsensus });
