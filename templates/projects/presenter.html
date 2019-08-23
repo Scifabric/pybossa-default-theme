@@ -10,9 +10,12 @@
 {% endassets %}
 
 <script>
-    if('{{mode}}' === 'gold'){
-        window.pybossa.isGoldMode = true;
-    }
+    {% if mode == 'gold' %}
+    window.pybossa.isGoldMode = true;
+    {% if bulk %}
+    window.pybossa.isBulk = true;
+    {% endif %}
+    {% endif %}
     Modernizr.load({
         test: window.JSON,
         nope: '{{url_for('static', filename='js/vendor/json2.min.js')}}'
