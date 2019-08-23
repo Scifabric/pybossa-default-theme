@@ -11,7 +11,7 @@
             class="form-control input-sm"
           >
             <option
-              v-for="opt in sched_variants"
+              v-for="opt in schedVariants"
               :key="opt[0]"
               :value="opt[0]"
             >
@@ -75,7 +75,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-6">
-          <p> Change All Current Task Redundancy To </p>
+          <p> Change All Current Task Redundancy To  (optional)</p>
         </div>
         <div class="col-md-6 pull-right">
           <input
@@ -103,9 +103,9 @@
 export default {
   data () {
     return {
-      csrfToken: "",
-      sched: "",
-      sched_variants: null,
+      csrfToken: '',
+      sched: '',
+      schedVariants: null,
       random: false,
       timeoutMinute: Math.floor(this.taskTimeout / 60),
       timeoutSecond: this.taskTimeout % 60,
@@ -115,16 +115,16 @@ export default {
   },
 
   created: function () {
-    this.getData()
+    this.getData();
   },
 
   methods: {
 
     getURL (keyword) {
-      let path = window.location.pathname
-      let res = path.split("/");
-      res[res.length-1] = keyword
-      return res.join("/")
+      let path = window.location.pathname;
+      let res = path.split('/');
+      res[res.length - 1] = keyword;
+      return res.join('/');
     },
 
     _isIntegerNumeric: function (_n) {
@@ -133,7 +133,7 @@ export default {
 
     async getData () {
       try {
-        const res = await fetch(this.getURL("tasks/redundancy"), {
+        const res = await fetch(this.getURL('tasks/redundancy'), {
           method: 'GET',
           headers: {
             'content-type': 'application/json'
@@ -141,14 +141,14 @@ export default {
           credentials: 'same-origin'
         });
         const data = await res.json();
-        this.defaultRedundancy = data.default_task_redundancy
-        this.csrfToken = data.default_form.csrf
+        this.defaultRedundancy = data.default_task_redundancy;
+        this.csrfToken = data.default_form.csrf;
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
 
       try {
-        const res = await fetch(this.getURL("tasks/timeout"), {
+        const res = await fetch(this.getURL('tasks/timeout'), {
           method: 'GET',
           headers: {
             'content-type': 'application/json'
@@ -156,14 +156,14 @@ export default {
           credentials: 'same-origin'
         });
         const data = await res.json();
-        this.timeoutMinute = data.form.minutes
-        this.timeoutSecond = data.form.seconds
+        this.timeoutMinute = data.form.minutes;
+        this.timeoutSecond = data.form.seconds;
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
 
       try {
-        const res = await fetch(this.getURL("tasks/scheduler"), {
+        const res = await fetch(this.getURL('tasks/scheduler'), {
           method: 'GET',
           headers: {
             'content-type': 'application/json'
@@ -171,32 +171,36 @@ export default {
           credentials: 'same-origin'
         });
         const data = await res.json();
-        this.sched = data.form.sched
-        this.random = data.form.rand_within_priority
-        this.sched_variants = data.sched_variants
+        this.sched = data.form.sched;
+        this.random = data.form.rand_within_priority;
+        this.schedVariants = data.sched_variants;
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
     },
 
     async save () {
-      const _defaultRedundancy = parseInt(this.defaultRedundancy);
-      const _currentRedundancy = parseInt(this.currentRedundancy);
-      if (!this._isIntegerNumeric(_defaultRedundancy)) {
-        return;
-      }
-      if (this.currentRedundancy && !this._isIntegerNumeric(_currentRedundancy)) {
-        return;
-      }
-      let data = {
-            sched: this.sched,
-            minutes: this.timeoutMinute,
-            seconds: this.timeoutSecond,
-            default_n_answers: _defaultRedundancy,
-            n_answers: _currentRedundancy,
-            rand_within_priority: this.random
-            };
       try {
+        let _defaultRedundancy = parseInt(this.defaultRedundancy);
+        let _currentRedundancy = parseInt(this.currentRedundancy);
+        let _minute = parseInt(this.timeoutMinute);
+        let _second = parseInt(this.timeoutSecond);
+        let data = {
+              sched: this.sched,
+              minutes: _minute,
+              seconds: _second,
+              default_n_answers: _defaultRedundancy,
+              rand_within_priority: this.random
+              };
+        if (this.currentRedundancy !== null) {
+          data['n_answers'] = _currentRedundancy;
+        }
+        if (!this._isIntegerNumeric(_minute) || !this._isIntegerNumeric(_second) ||
+            !this._isIntegerNumeric(_defaultRedundancy) ||
+            (this.currentRedundancy !== null && !this._isIntegerNumeric(_currentRedundancy))) {
+          throw Error('Parameter is not a number!');
+        }
+
         const timeoutRes = await fetch(this.getURL('tasks/timeout'), {
           method: 'POST',
           headers: {
@@ -225,7 +229,18 @@ export default {
           body: JSON.stringify(data)
         });
         if (timeoutRes.ok && redundancyRes.ok && schedulerRes.ok) {
-          window.pybossaNotify('task data Saved.', true, 'success');
+          const timeoutData = await timeoutRes.json();
+          const redundancyData = await redundancyRes.json();
+          const schedulerData = await schedulerRes.json();
+          if (schedulerData['status'] !== 'success') {
+            window.pybossaNotify(schedulerData['flash'], true, schedulerData['status']);
+          } else if (timeoutData['status'] !== 'success') {
+            window.pybossaNotify(timeoutData['flash'], true, timeoutData['status']);
+          } else if (redundancyData['status'] !== 'success') {
+            window.pybossaNotify(redundancyData['flash'], true, redundancyData['status']);
+          } else {
+            window.pybossaNotify('Configuration updated successfully', true, 'success');
+          }
         } else {
           window.pybossaNotify('An error occurred.', true, 'error');
         }

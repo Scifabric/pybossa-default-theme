@@ -70,7 +70,6 @@
       >
         <div class="col-md-5">
           <p> Assign Users </p>
-
         </div>
         <div class="col-md-7 pull-right">
           <table
@@ -124,8 +123,8 @@
                     <div
                       v-for="id in assignee"
                       id="users"
-                      class="row"
                       :key="id"
+                      class="row"
                       :value="id"
                       @click="remove($event, id)"
                     >
@@ -138,7 +137,6 @@
           </table>
         </div>
       </div>
-      {{assignee}}
       <div>
         <button
           class="btn btn-sm btn-primary"
@@ -152,15 +150,11 @@
 </template>
 
 <script>
-import Vue from 'vue';
-export default {
 
+export default {
   data () {
     return {
       csrfToken: null,
-      initialData: {},
-      externalConfigForm: {},
-      externalConfig: {},
       assignee: [],
       users: {},
       accessLevels: {},
@@ -172,7 +166,7 @@ export default {
     };
   },
   created () {
-    this.getData()
+    this.getData();
   },
 
   methods: {
@@ -199,84 +193,42 @@ export default {
 
     getUsers (allUsers) {
       let users = {};
-      let assigneeId = this.assignee;
       allUsers.forEach(function (u) {
-        u['assigned'] = assigneeId.includes(u.id);
         users[u.id] = u;
       });
       return users;
     },
 
     getURL (keyword) {
-      let path = window.location.pathname
-      let res = path.split("/");
-      res[res.length-1] = keyword
-      return res.join("/")
+      let path = window.location.pathname;
+      let res = path.split('/');
+      res[res.length - 1] = keyword;
+      return res.join('/');
     },
 
-    // external configuration form is a tree-like distionary structure read from app.config
-    // convert it to flat key-value pair 'externalConfigDict'
-    // update 'externalConfigDict' based on current project configuration
-    // getFieldsFromForm () {
-    //   let inputFields = [];
-    //   let configFields = {};
-    //   for (let [key, content] of Object.entries(this.externalConfigForm)) {
-    //     content = this.externalConfigForm[key];
-    //     inputFields.push(content);
-    //     content.fields.forEach(function (f) {
-    //       configFields[f.name] = null;
-    //     });
-    //   }
-    //   this.externalConfigDict = configFields;
-    //   this.updateExternalConfigDict();
-    //   return inputFields;
-    // },
-
-    // updateExternalConfigDict () {
-    //   for (let key of Object.keys(this.externalConfig)) {
-    //     if (typeof this.externalConfig[key] === 'object') {
-    //       Object.assign(this.externalConfigDict, this.externalConfig[key]);
-    //       } else this.externalConfigDict[key] = this.externalConfig[key];
-    //     }
-    // },
-
-    // constructExternalConfigFromDict () {
-    //   let config = {};
-    //   let dict = this.externalConfigDict;
-    //   for (let [key, content] of Object.entries(this.externalConfigForm)) {
-    //     let _cf = {};
-    //     content.fields.forEach(function (f) {
-    //       _cf[f.name] = dict[f.name];
-    //     });
-    //     config[key] = _cf;
-    //   }
-    //   return config;
-    // },
-
     add (event, ur) {
-      // Vue.set(this.assignee, ur.id, ur);
-      // this.assignee[ur.id] = ur;
-      this.assignee.push(ur.id)
+      if (!this.assignee.includes(ur.id)) {
+        this.assignee.push(ur.id);
+      }
     },
 
     remove (event, id) {
-      // Vue.delete(this.assignee, id);
-      this.assignee = this.assignee.filter(function(u) {
-        return u != id
-      })
+      this.assignee = this.assignee.filter(function (uid) {
+        return uid !== id;
+      });
     },
 
     filter () {
+      let userList = Object.values(this.users);
       if (!this.search.length) {
-        this.searchResult = this.users;
+        this.searchResult = userList;
       } else {
-        this.searchResult = this.users.filter(
+        this.searchResult = userList.filter(
           user => user.fullname.toLowerCase().includes(this.search.toLowerCase()));
       }
     },
 
     async getData () {
-      let initialData = {}
       try {
         const res = await fetch(this.getURL('project-config'), {
           method: 'GET',
@@ -286,16 +238,14 @@ export default {
           credentials: 'same-origin'
         });
         const data = await res.json();
-        // initialize data
-        this.csrfToken = data.csrf
-        this.validAccessLevels = data.valid_access_levels
-        this.inputFields = data.forms
-        this.externalConfigDict = data.external_config_dict
+        this.csrfToken = data.csrf;
+        this.validAccessLevels = data.valid_access_levels;
+        this.inputFields = data.forms;
+        this.externalConfigDict = JSON.parse(data.external_config_dict);
         this.accessLevels = this.getAccessLevels(data.data_access);
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
-
       try {
         const res = await fetch(this.getURL('assign-users'), {
           method: 'GET',
@@ -305,11 +255,9 @@ export default {
           credentials: 'same-origin'
         });
         const data = await res.json();
-        // console.log(data)
-        // this.assignee = this.getAssignedUsers(data.project_users);
-        this.assignee = data.project_users
-        this.users = this.getUsers(data.users);
-        this.searchResult = this.users
+        this.assignee = data.project_users;
+        this.users = this.getUsers(data.all_users);
+        this.searchResult = Object.values(this.users);
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
@@ -326,9 +274,9 @@ export default {
             config: this.externalConfigDict,
             data_access: access,
             select_users: this.assignee
-      }
+      };
       try {
-        const projectRes = await fetch(this.getURL('project-setting'), {
+        const projectRes = await fetch(this.getURL('project-config'), {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
@@ -349,7 +297,15 @@ export default {
         });
 
         if (projectRes.ok && assignRes.ok) {
-          window.pybossaNotify('Project data Saved.', true, 'success');
+          const projectData = await projectRes.json();
+          const assignData = await assignRes.json();
+          if (projectData['status'] !== 'success') {
+            window.pybossaNotify(projectData['flash'], true, projectData['status']);
+          } else if (assignData['status'] !== 'success') {
+            window.pybossaNotify(assignData['flash'], true, assignData['status']);
+          } else {
+            window.pybossaNotify('Configuration updated successfully', true, 'success');
+          }
         } else {
           window.pybossaNotify('An error occurred.', true, 'error');
         }

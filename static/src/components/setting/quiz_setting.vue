@@ -129,22 +129,6 @@
 <script>
 
 export default {
-
-  // props: {
-  //   csrfToken: {
-  //     type: String,
-  //     default: null
-  //   },
-  //   config: {
-  //     type: Object,
-  //     default: () => ({ enabled: false, questions: 0, passing: 0, complete_mode: null, short_circuit: false, mode_choices: [] })
-  //   },
-  //   allUserQuiz: {
-  //     type: Array,
-  //     default: function () { return []; }
-  //   }
-  // },
-
   data () {
     return {
       csrfToken: null,
@@ -158,36 +142,36 @@ export default {
     };
   },
 
-  created: function () {
-    this.getData()
+  created () {
+    this.getData();
   },
 
   methods: {
 
-    initialize ( data ) {
-      this.csrfToken = data.csrf
-      this.users = this.getQuizUser(data.all_user_quizzes)
+    initialize (data) {
+      this.csrfToken = data.csrf;
+      this.users = this.getQuizUser(data.all_user_quizzes);
       this.mode_choices = data.quiz_mode_choices;
-      this.enabled = data.form.enabled
-      this.questions = data.form.questions
-      this.passing = data.form.passing
-      this.mode = data.form.completion_mode
+      this.enabled = data.form.enabled;
+      this.questions = data.form.questions;
+      this.passing = data.form.passing;
+      this.mode = data.form.completion_mode;
     },
 
     getQuizUser (allUserQuiz) {
       var users = {};
-      for (var i = 0; i < this.allUserQuiz.length; i++) {
-        var u = this.allUserQuiz[i];
+      for (var i = 0; i < allUserQuiz.length; i++) {
+        var u = allUserQuiz[i];
         users[u.id] = u;
       }
       return users;
     },
 
     getURL () {
-      let path = window.location.pathname
-      let res = path.split("/");
-      res[res.length-1] = "quiz-mode"
-      return res.join("/")
+      let path = window.location.pathname;
+      let res = path.split('/');
+      res[res.length - 1] = 'quiz-mode';
+      return res.join('/');
     },
 
    reset (event, id) {
@@ -208,19 +192,19 @@ export default {
           credentials: 'same-origin'
         });
         const data = await res.json();
-        this.initialize(data)
+        this.initialize(data);
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
     },
 
     async save () {
-      const _questions = parseInt(this.questions);
-      const _passing = parseInt(this.passing);
-      if (!this._isIntegerNumeric(_questions) || !this._isIntegerNumeric(_passing)) {
-        return;
-      }
       try {
+        const _questions = parseInt(this.questions);
+        const _passing = parseInt(this.passing);
+        if (this.enabled && (!this._isIntegerNumeric(_questions) || !this._isIntegerNumeric(_passing))) {
+          throw Error('Parameter is not a number!');
+        }
         const res = await fetch(this.getURL(), {
           method: 'POST',
           headers: {
@@ -230,14 +214,15 @@ export default {
           credentials: 'same-origin',
           body: JSON.stringify({
               enabled: this.enabled,
-              questions: _questions,
-              passing: _passing,
+              questions: this.questions,
+              passing: this.passing,
               completion_mode: this.mode,
               reset: this.resetUser
           })
         });
         if (res.ok) {
-          window.pybossaNotify('quiz data Saved.', true, 'success');
+          const data = await res.json();
+          window.pybossaNotify(data['flash'], true, data['status']);
         } else {
           window.pybossaNotify('An error occurred.', true, 'error');
         }

@@ -23,7 +23,7 @@
               >
                 {{ u.fullname }}
                 <i
-                  v-if="u.id!=owner.id"
+                  v-if="u.id!==owner.id"
                   class="fa fa-times"
                   aria-hidden="true"
                   @click="remove($event, u.id)"
@@ -102,16 +102,16 @@ export default {
     };
   },
 
-  created: function () {
-    this.getData()
+  created () {
+    this.getData();
   },
 
   methods: {
 
     initialize (data) {
-      this.coowners = this.getCoowners(data.coowners_dict)
-      this.owner = data.owner
-      this.csrfToken = data.form.csrf
+      this.coowners = this.getCoowners(data.coowners_dict);
+      this.owner = data.owner;
+      this.csrfToken = data.form.csrf;
     },
 
     getCoowners (coownerData) {
@@ -123,10 +123,10 @@ export default {
     },
 
     getURL () {
-      let path = window.location.pathname
-      let res = path.split("/");
-      res[res.length-1] = "coowners"
-      return res.join("/")
+      let path = window.location.pathname;
+      let res = path.split('/');
+      res[res.length - 1] = 'coowners';
+      return res.join('/');
     },
 
     add (event, ur) {
@@ -136,13 +136,6 @@ export default {
 
     remove (event, id) {
       Vue.delete(this.coowners, id);
-    },
-
-    getURL () {
-      let path = window.location.pathname;
-      let res = path.split('/');
-      res[res.length - 1] = 'coowners';
-      return res.join('/');
     },
 
     async searchUsers () {
@@ -158,6 +151,9 @@ export default {
         });
         const data = await res.json();
         this.searchResult = data['found'];
+        if (data['flash']) {
+          window.pybossaNotify(data['flash'], true, data['status']);
+        }
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
@@ -173,7 +169,7 @@ export default {
           credentials: 'same-origin'
         });
         const data = await res.json();
-        this.initialize(data)
+        this.initialize(data);
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
@@ -195,7 +191,8 @@ export default {
         });
         if (res.ok) {
           this.searchResult = [];
-          window.pybossaNotify('Ownership data Saved.', true, 'success');
+          const data = await res.json();
+          window.pybossaNotify(data['flash'], true, data['status']);
         } else {
           window.pybossaNotify('An error occurred.', true, 'error');
         }

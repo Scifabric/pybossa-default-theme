@@ -76,27 +76,27 @@ export default {
     };
   },
 
-  created () {
-    this.getData()
+  computed: {
+    ...mapGetters(['csrfToken', 'hasRetryFields', 'answerFields'])
   },
 
-  computed: {
-    ...mapGetters(['csrfToken', 'hasRetryFields', 'hasConsensusConfig', 'answerFields'])
+  created () {
+    this.getData();
   },
 
   methods: {
     ...mapMutations(['updateConsensusConfig', 'setData']),
 
-    initialize (data){
-      let config = JSON.parse(data.consensus_config)
-      this.consensusThreshold = config.consensus_threshold
-      this.redundancyConfig = config.redundancy_config
-      this.maxRetries = config.max_retries
+    initialize (data) {
+      let config = JSON.parse(data.consensus_config);
+      this.consensusThreshold = config.consensus_threshold;
+      this.redundancyConfig = config.redundancy_config;
+      this.maxRetries = config.max_retries;
       this.setData({
         csrf: data.csrf,
-        answerFields: JSON.parse(data.answer_fields) ,
+        answerFields: JSON.parse(data.answer_fields),
         consensus: config
-      })
+      });
     },
 
     _isIntegerNumeric: function (_n) {
@@ -104,12 +104,11 @@ export default {
     },
 
     getURL () {
-      let path = window.location.pathname
-      let res = path.split("/");
-      res[res.length-1] = "answerfieldsconfig"
-      return res.join("/")
+      let path = window.location.pathname;
+      let res = path.split('/');
+      res[res.length - 1] = 'answerfieldsconfig';
+      return res.join('/');
     },
-
 
     _write: function (_consensusThreshold, _redundancyConfig, _maxRetries) {
         if (!this._isIntegerNumeric(_consensusThreshold) || _consensusThreshold <= 50 ||
@@ -140,7 +139,7 @@ export default {
           credentials: 'same-origin'
         });
         const data = await res.json();
-        this.initialize(data)
+        this.initialize(data);
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
@@ -160,11 +159,7 @@ export default {
                     'max_retries': _maxRetries,
                     'redundancy_config': _redundancyConfig
                   };
-            this.updateConsensusConfig({
-                    'consensus_threshold': _consensusThreshold,
-                    'max_retries': _maxRetries,
-                    'redundancy_config': _redundancyConfig
-                });
+            this.updateConsensusConfig(data['consensus_config']);
         }
         try {
             const res = await fetch(this.getURL(), {
@@ -177,13 +172,8 @@ export default {
                 body: JSON.stringify(data)
             });
             if (res.ok) {
-                console.log('success')
-                // this.updateConsensusConfig({
-                //     'consensus_threshold': _consensusThreshold,
-                //     'max_retries': _maxRetries,
-                //     'redundancy_config': _redundancyConfig
-                // });
-                window.pybossaNotify('Answer Fields saved', true, 'success');
+                const data = await res.json();
+                window.pybossaNotify(data['flash'], true, data['status']);
             } else {
                 window.pybossaNotify('An error occurred.', true, 'error');
             }
