@@ -194,10 +194,10 @@ export default {
           const data = await res.json();
           window.pybossaNotify(data['flash'], true, data['status']);
         } else {
-          window.pybossaNotify('An error occurred.', true, 'error');
+          window.pybossaNotify('An error occurred configuring ownership config.', true, 'error');
         }
       } catch (error) {
-        window.pybossaNotify('An error occurred.', true, 'error');
+        window.pybossaNotify('An error occurred configuring ownership config.', true, 'error');
       }
     }
   }

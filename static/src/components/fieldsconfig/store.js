@@ -12,7 +12,6 @@ function _addField (state, { name, type, config, retryForConsensus, newField = f
 }
 
 function _updateConsensusConfig (state, config) {
-  // console.log('_updateConsensusConfig')
   if (config) {
     const cf = {
       consensusThreshold: config['consensus_threshold'],
@@ -96,7 +95,6 @@ const storeSpecs = {
     },
 
     updateConsensusConfig (state, config) {
-      console.log('here');
       _updateConsensusConfig(state, config);
     },
 

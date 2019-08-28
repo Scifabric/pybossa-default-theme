@@ -115,7 +115,6 @@ import CategoricalFieldConfig from './categorical_field_config';
 import labelTypes from './labelTypes';
 
 export default {
-
   components: {
     CategoricalFieldConfig,
     FieldConfigBase
@@ -132,10 +131,6 @@ export default {
       message2: 'Consensus configuration must be filled out to enable retry feature'
     };
   },
-
-  // created () {
-  //   this.getData()
-  // },
 
   computed: {
     ...mapGetters(['answerFields', 'csrfToken', 'isNewField', 'hasRetryFields', 'showWarning'])
@@ -164,34 +159,6 @@ export default {
       this.fieldType = labelTypes.default;
       this.retryForConsensus = false;
     }
-
-    // getURL () {
-    //   let path = window.location.pathname
-    //   let res = path.split("/");
-    //   res[res.length-1] = "answerfieldsconfig"
-    //   return res.join("/")
-    // },
-
-    // async getData () {
-    //   try {
-    //     const res = await fetch(this.getURL(), {
-    //       method: 'GET',
-    //       headers: {
-    //         'content-type': 'application/json'
-    //       },
-    //       credentials: 'same-origin'
-    //     });
-    //     const data = await res.json();
-    //     this.setData({
-    //       csrf: data.csrf,
-    //       answerFields: JSON.parse(data.answer_fields) ,
-    //       consensus: JSON.parse(data.consensus_config)
-    //     })
-    //   } catch (error) {
-    //     window.pybossaNotify('An error occurred.', true, 'error');
-    //   }
-    // }
-
   }
 };
 

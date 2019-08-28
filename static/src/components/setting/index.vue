@@ -307,10 +307,10 @@ export default {
             window.pybossaNotify('Configuration updated successfully', true, 'success');
           }
         } else {
-          window.pybossaNotify('An error occurred.', true, 'error');
+          window.pybossaNotify('An error occurred configuring project config.', true, 'error');
         }
       } catch (error) {
-        window.pybossaNotify('An error occurred.', true, 'error');
+        window.pybossaNotify('An error occurred configuring project config.', true, 'error');
       }
     }
   }
