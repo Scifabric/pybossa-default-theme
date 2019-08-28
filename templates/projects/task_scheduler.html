@@ -33,7 +33,7 @@
                 <li><strong>{{_('Gold Task Probability')}}</strong>:
                 {{_('The probability of receiving a gold task when the next task is scheduled.
                 Subject to unanswered gold tasks remaining for the worker.')}}
-                {{ render_field(form.gold_task_probability, placeholder=form.gold_task_probability.description) }}
+                {{ render_field(form.gold_task_probability, label_visible=false, placeholder=form.gold_task_probability.description) }}
                 </li>
             </ul>
         </div>
