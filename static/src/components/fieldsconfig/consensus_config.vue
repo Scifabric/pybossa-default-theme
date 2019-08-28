@@ -66,31 +66,48 @@
 import { mapGetters, mapMutations } from 'vuex';
 
 export default {
-  props: {
-      'consensusConfig': {
-          type: Object,
-          default: () => ({ consensusThreshold: undefined, maxRetries: undefined, redundancyConfig: undefined })
-      }
-  },
   data () {
     return {
-        consensusThreshold: this.consensusConfig['consensus_threshold'],
-        maxRetries: this.consensusConfig['max_retries'],
-        redundancyConfig: this.consensusConfig['redundancy_config'],
+        consensusThreshold: null,
+        maxRetries: null,
+        redundancyConfig: null,
         errorMsg: '',
         capacity: 10000
     };
   },
 
   computed: {
-    ...mapGetters(['csrfToken', 'hasRetryFields', 'hasConsensusConfig', 'answerFields'])
+    ...mapGetters(['csrfToken', 'hasRetryFields', 'answerFields'])
+  },
+
+  created () {
+    this.getData();
   },
 
   methods: {
-    ...mapMutations(['updateConsensusConfig']),
+    ...mapMutations(['updateConsensusConfig', 'setData']),
+
+    initialize (data) {
+      let config = JSON.parse(data.consensus_config);
+      this.consensusThreshold = config.consensus_threshold;
+      this.redundancyConfig = config.redundancy_config;
+      this.maxRetries = config.max_retries;
+      this.setData({
+        csrf: data.csrf,
+        answerFields: JSON.parse(data.answer_fields),
+        consensus: config
+      });
+    },
 
     _isIntegerNumeric: function (_n) {
         return Math.floor(_n) === _n;
+    },
+
+    getURL () {
+      let path = window.location.pathname;
+      let res = path.split('/');
+      res[res.length - 1] = 'answerfieldsconfig';
+      return res.join('/');
     },
 
     _write: function (_consensusThreshold, _redundancyConfig, _maxRetries) {
@@ -112,6 +129,22 @@ export default {
         return true;
     },
 
+    async getData () {
+      try {
+        const res = await fetch(this.getURL(), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        this.initialize(data);
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
+      }
+    },
+
     async save () {
         let data = { answer_fields: this.answerFields };
         if (this.hasRetryFields) {
@@ -126,14 +159,10 @@ export default {
                     'max_retries': _maxRetries,
                     'redundancy_config': _redundancyConfig
                   };
-            this.updateConsensusConfig({
-                    'consensus_threshold': _consensusThreshold,
-                    'max_retries': _maxRetries,
-                    'redundancy_config': _redundancyConfig
-                });
+            this.updateConsensusConfig(data['consensus_config']);
         }
         try {
-            const res = await fetch(window.location.pathname, {
+            const res = await fetch(this.getURL(), {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -143,12 +172,13 @@ export default {
                 body: JSON.stringify(data)
             });
             if (res.ok) {
-                window.pybossaNotify('Answer Fields saved', true, 'success');
+                const data = await res.json();
+                window.pybossaNotify(data['flash'], true, data['status']);
             } else {
-                window.pybossaNotify('An error occurred.', true, 'error');
+                window.pybossaNotify('An error occurred configuring answer field config.', true, 'error');
             }
         } catch (error) {
-            window.pybossaNotify('An error occurred.', true, 'error');
+            window.pybossaNotify('An error occurred configuring answer field config.', true, 'error');
         }
     }
   }

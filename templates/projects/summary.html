@@ -15,36 +15,19 @@
     <div id="setting" class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="project">
             <div class="col-md-12">
-                <setting
-                    csrf-token="{{csrf}}"
-                    :external-config="{{external_config}}"
-                    :external-config-form="{{external_config_form}}"
-                    :assign-users="{{assign_user}}"
-                    :all-users="{{users}}"
-                    :data-access-config="{{data_access}}"
-                    :valid-access-levels="{{valid_access_levels}}">
-                </setting>
+                <!-- <setting> </setting> -->
             </div>
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="ownership">
             <div class="col-md-12 ">
-                <ownership-setting
-                    csrf-token="{{csrf}}"
-                    :owner="{{owner}}"
-                    :co-owners="{{coowners}}">
-                </ownership-setting>
+                <ownership-setting></ownership-setting>
             </div>
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="task">
             <div class="col-md-12">
-                <task-setting
-                    csrf-token="{{csrf}}"
-                    :config="{{sched_config}}"
-                    :task-timeout="{{timeout}}"
-                    :task-redundancy="{{default_task_redundancy}}">
-                </task-setting>
+                <task-setting></task-setting>
             </div>
         </div>
 
@@ -54,7 +37,7 @@
                     <fields-config></fields-config>
                 </div>
                 <div>
-                    <consensus-config :consensus-config="{{consensus_config}}"></consensus-config>
+                    <consensus-config></consensus-config>
                 </div>
             </div>
         </div>
@@ -63,11 +46,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-sm-12">
-                        <quiz-setting
-                            csrf-token="{{csrf}}"
-                            :config="{{quiz_config}}"
-                            :all-user-quiz="{{all_user_quizzes}}">
-                        </quiz-setting>
+                        <quiz-setting></quiz-setting>
                     </div>
                 </div>
             </div>
@@ -75,14 +54,14 @@
     </div>
 </div>
 
-<script src="/static/js/gen/setting.min.05d787b7f7ced6905de5.js"></script>
-<script>
+<script src="/static/js/gen/setting.min.2da7df9d8a37961975e0.js"></script>
+<!-- <script>
 answerFields.setData({
     csrf: '{{csrf}}',
     answerFields: {{answer_fields | safe}},
     consensus: {{consensus_config | safe}}
 });
-</script>
+</script> -->
 
 {% endblock %}
 

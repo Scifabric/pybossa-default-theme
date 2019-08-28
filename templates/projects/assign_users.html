@@ -11,7 +11,7 @@
     <fieldset>
         <div class="multi-container">
             <select multiple="multiple" name="select_users" id="selected_users">
-                {% for user in users %}
+                {% for user in all_users %}
                     {% if user.id in project_users %}
                         <option value="{{user.id}}" selected>{{user.fullname}}</option>
                     {% else %}
