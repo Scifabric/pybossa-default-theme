@@ -28,11 +28,17 @@
                 {{_('The next task is randomly selected from the highest priority tasks
                 provided by the scheduler. When left unchecked, the old available task
                 within the highest priority is returned first.')  }}
+                {{ render_checkbox_field(form.rand_within_priority) }}
+                </li>
+                <li><strong>{{_('Gold Task Probability')}}</strong>:
+                {{_('The probability of receiving a gold task when the next task is scheduled.
+                Subject to unanswered gold tasks remaining for the worker.')}}
+                {{ render_field(form.gold_task_probability, placeholder=form.gold_task_probability.description) }}
+                </li>
             </ul>
-            {{ render_checkbox_field(form.rand_within_priority) }}
         </div>
         <div class="form-actions">
-            <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
+            <input type="submit" class="btn btn-primary" />
         </div>
     </fieldset>
 </form>
