@@ -7,33 +7,44 @@ const localVue = createLocalVue();
 describe('ownershipConfig', () => {
   let fetch;
   let notify;
-  let propsData;
 
   beforeEach(() => {
     fetch = global.fetch = jest.fn();
     notify = window.pybossaNotify = jest.fn();
   });
 
-  it('render fields without other coowners', () => {
-    propsData = {
-      csrfToken: '',
+  it('fetch data', async () => {
+    let response = {
+      coowners_dict: [{ id: 1, fullname: 'user1' }],
       owner: { id: 1, fullname: 'user1' },
-      coOwners: [{ id: 1, fullname: 'user1' }]
+      form: { csrf: '' }
     };
-    const wrapper = shallowMount(ownershipConfig, { propsData });
+    fetch.mockImplementation((arg) => ({
+      ok: true,
+      json: () => Promise.resolve(response)
+    }));
+    const wrapper = shallowMount(ownershipConfig);
+    await localVue.nextTick();
+    expect(fetch.mock.calls).toHaveLength(1);
+    expect(notify.mock.calls).toHaveLength(0);
+    expect(wrapper.vm._data.owner.id).toBe(1);
+    expect(Object.keys(wrapper.vm._data.coowners)).toHaveLength(1);
+  });
+
+  it('render fields - without other coowners', () => {
+    const wrapper = shallowMount(ownershipConfig);
+    wrapper.vm._data.owner = { id: 1, fullname: 'user1' };
+    wrapper.vm._data.coowners = { 1: { id: 1, fullname: 'user1' } };
     const p = wrapper.findAll('p');
-    expect(p).toHaveLength(4);
+    expect(p).toHaveLength(5);
     const button = wrapper.findAll('button');
     expect(button).toHaveLength(2);
   });
 
-  it('render fields with other coowners', () => {
-    propsData = {
-      csrfToken: '',
-      owner: { id: 1, fullname: 'user1' },
-      coOwners: [{ id: 1, fullname: 'user1' }, { id: 2, fullname: 'user2' }]
-    };
-    const wrapper = shallowMount(ownershipConfig, { propsData });
+  it('render fields - with other coowners', () => {
+    const wrapper = shallowMount(ownershipConfig);
+    wrapper.vm._data.owner = { id: 1, fullname: 'user1' };
+    wrapper.vm._data.coowners = { 1: { id: 1, fullname: 'user1' }, 2: { id: 2, fullname: 'user2' } };
     const p = wrapper.findAll('p');
     expect(p).toHaveLength(5);
   });
@@ -43,12 +54,9 @@ describe('ownershipConfig', () => {
       ok: true,
       json: () => Promise.resolve({ found: [{ id: 1111, fullname: 'found' }] })
     }));
-    propsData = {
-      csrfToken: '',
-      owner: { id: 1, fullname: 'user1' },
-      coOwners: [{ id: 1, fullname: 'user1' }, { id: 2, fullname: 'user2' }]
-    };
-    const wrapper = shallowMount(ownershipConfig, { propsData });
+    const wrapper = shallowMount(ownershipConfig);
+    wrapper.vm._data.owner = { id: 1, fullname: 'user1' };
+    wrapper.vm._data.coowners = { 1: { id: 1, fullname: 'user1' }, 2: { id: 2, fullname: 'user2' } };
     expect(wrapper.findAll('p')).toHaveLength(5);
     const searchButton = wrapper.findAll('button').at(0);
     searchButton.trigger('click');
@@ -61,12 +69,10 @@ describe('ownershipConfig', () => {
       ok: true,
       json: () => Promise.resolve({ found: [{ id: 1111, fullname: 'found' }] })
     }));
-    propsData = {
-      csrfToken: '',
-      owner: { id: 1, fullname: 'user1' },
-      coOwners: [{ id: 1, fullname: 'user1' }]
-    };
-    const wrapper = shallowMount(ownershipConfig, { propsData });
+    const wrapper = shallowMount(ownershipConfig);
+    wrapper.vm._data.owner = { id: 1, fullname: 'user1' };
+    wrapper.vm._data.coowners = { 1: { id: 1, fullname: 'user1' } };
+
     expect(wrapper.findAll('i')).toHaveLength(1);
     const searchButton = wrapper.findAll('button').at(0);
     searchButton.trigger('click');
@@ -77,15 +83,14 @@ describe('ownershipConfig', () => {
   });
 
   it('remove coowners', () => {
-    propsData = {
-      csrfToken: '',
-      owner: { id: 1, fullname: 'user1' },
-      coOwners: [{ id: 1, fullname: 'user1' }, { id: 2, fullname: 'user2' }]
-    };
-    const wrapper = shallowMount(ownershipConfig, { propsData });
-    const deleteIcons = wrapper.findAll('i');
-    expect(deleteIcons).toHaveLength(2);
-    deleteIcons.at(0).trigger('click');
+    const wrapper = shallowMount(ownershipConfig);
+    wrapper.vm._data.owner = { id: 1, fullname: 'user1' };
+    wrapper.vm._data.coowners = { 1: { id: 1, fullname: 'user1' }, 2: { id: 2, fullname: 'user2' } };
+
+    expect(wrapper.findAll('i')).toHaveLength(2);
+    const icons = wrapper.findAll('i');
+    expect(icons).toHaveLength(2);
+    icons.at(0).trigger('click');
     expect(wrapper.findAll('i')).toHaveLength(1);
   });
 
@@ -93,33 +98,29 @@ describe('ownershipConfig', () => {
     fetch.mockImplementation((arg) => ({
       ok: true
     }));
-    propsData = {
-      csrfToken: '',
-      owner: { id: 1, fullname: 'user1' },
-      coOwners: []
-    };
-    const wrapper = shallowMount(ownershipConfig, { propsData });
+    const wrapper = shallowMount(ownershipConfig);
+    wrapper.vm._data.owner = { id: 1, fullname: 'user1' };
+    wrapper.vm._data.coowners = { 1: { id: 1, fullname: 'user1' } };
+
     const saveButton = wrapper.findAll('button').at(1);
     saveButton.trigger('click');
     await localVue.nextTick();
-    expect(fetch.mock.calls).toHaveLength(1);
-    expect(notify.mock.calls).toHaveLength(1);
+    expect(fetch.mock.calls).toHaveLength(2);
+    expect(notify.mock.calls).toHaveLength(2);
   });
 
   it('saves config fails', async () => {
     fetch.mockImplementation((arg) => ({
       ok: false
     }));
-    propsData = {
-      csrfToken: '',
-      owner: { id: 1, fullname: 'user1' },
-      coOwners: []
-    };
-    const wrapper = shallowMount(ownershipConfig, { propsData });
+    const wrapper = shallowMount(ownershipConfig);
+    wrapper.vm._data.owner = { id: 1, fullname: 'user1' };
+    wrapper.vm._data.coowners = { 1: { id: 1, fullname: 'user1' } };
+
     const saveButton = wrapper.findAll('button').at(1);
     saveButton.trigger('click');
     await localVue.nextTick();
-    expect(fetch.mock.calls).toHaveLength(1);
-    expect(notify.mock.calls).toHaveLength(1);
+    expect(fetch.mock.calls).toHaveLength(2);
+    expect(notify.mock.calls).toHaveLength(2);
   });
 });

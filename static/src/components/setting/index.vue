@@ -65,7 +65,7 @@
         </div>
       </div>
       <div
-        v-if="allUsers.length"
+        v-if="Object.keys(users).length"
         class="form-group row"
       >
         <div class="col-md-5">
@@ -107,7 +107,7 @@
                       @click="add($event, u)"
                     >
                       <p
-                        v-if="Object.keys(assignee).includes(u.id)"
+                        v-if="assignee.includes(u.id)"
                         style="color:teal"
                       >
                         {{ u.fullname }}
@@ -121,14 +121,14 @@
                 <td>
                   <div class="col-md-12 scroll">
                     <div
-                      v-for="u in assignee"
+                      v-for="id in assignee"
                       id="users"
-                      :key="u.name"
+                      :key="id"
                       class="row"
-                      :value="u.field"
-                      @click="remove($event, u.id)"
+                      :value="id"
+                      @click="remove($event, id)"
                     >
-                      <p> {{ u.fullname }}</p>
+                      <p> {{ users[id].fullname }}</p>
                     </div>
                   </div>
                 </td>
@@ -150,62 +150,23 @@
 </template>
 
 <script>
-import Vue from 'vue';
+
 export default {
-
-  props: {
-    csrfToken: {
-      type: String,
-      default: null
-    },
-    dataAccessConfig: {
-      type: Array,
-      default: function () { return []; }
-    },
-    assignUsers: {
-      type: Array,
-      default: function () { return []; }
-    },
-    allUsers: {
-      type: Array,
-      default: function () { return []; }
-    },
-    externalConfig: {
-      type: Object,
-      default: () => ({})
-    },
-    externalConfigForm: {
-      type: Object,
-      default: () => ({})
-    },
-    validAccessLevels: {
-      type: Array,
-      default: () => ([])
-    }
-  },
-
   data () {
     return {
-      assignee: {},
+      csrfToken: null,
+      assignee: [],
       users: {},
-      L1: false,
-      L2: false,
-      L3: false,
-      L4: false,
       accessLevels: {},
+      validAccessLevels: [],
       search: '',
       searchResult: this.users,
       inputFields: [],
       externalConfigDict: {}
     };
   },
-
-  mounted () {
-    this.assignee = this.getAssignedUsers();
-    this.users = this.getUsers();
-    this.searchResult = this.users;
-    this.inputFields = this.getFieldsFromForm();
-    this.accessLevels = this.getAccessLevels();
+  created () {
+    this.getData();
   },
 
   methods: {
@@ -213,87 +174,92 @@ export default {
       return this.dataAccessConfig.includes(level);
     },
 
-    getAccessLevels () {
+    getAccessLevels (dataAccessConfig) {
       let levels = {};
-      let access = this.dataAccessConfig;
+      let access = dataAccessConfig;
       this.validAccessLevels.forEach(function (level) {
-        levels[level] = access.includes(level);
+        levels[level[0]] = access.includes(level[0]);
       });
       return levels;
     },
 
-    getAssignedUsers () {
+    getAssignedUsers (assignedUsers) {
       let users = {};
-      this.assignUsers.forEach(function (u) {
+      assignedUsers.forEach(function (u) {
         users[u.id] = u;
       });
       return users;
     },
 
-    getUsers () {
+    getUsers (allUsers) {
       let users = {};
-      let assigneeId = Object.keys(this.assignee);
-      this.allUsers.forEach(function (u) {
-        u['assigned'] = assigneeId.includes(u.id);
+      allUsers.forEach(function (u) {
         users[u.id] = u;
       });
       return users;
     },
 
-    // external configuration form is a tree-like distionary structure read from app.config
-    // convert it to flat key-value pair 'externalConfigDict'
-    // update 'externalConfigDict' based on current project configuration
-    getFieldsFromForm () {
-      let inputFields = [];
-      let configFields = {};
-      for (let [key, content] of Object.entries(this.externalConfigForm)) {
-        content = this.externalConfigForm[key];
-        inputFields.push(content);
-        content.fields.forEach(function (f) {
-          configFields[f.name] = null;
-        });
-      }
-      this.externalConfigDict = configFields;
-      this.updateExternalConfigDict();
-      return inputFields;
-    },
-
-    updateExternalConfigDict () {
-      for (let key of Object.keys(this.externalConfig)) {
-        if (typeof this.externalConfig[key] === 'object') {
-          Object.assign(this.externalConfigDict, this.externalConfig[key]);
-          } else this.externalConfigDict[key] = this.externalConfig[key];
-        }
-    },
-
-    constructExternalConfigFromDict () {
-      let config = {};
-      let dict = this.externalConfigDict;
-      for (let [key, content] of Object.entries(this.externalConfigForm)) {
-        let _cf = {};
-        content.fields.forEach(function (f) {
-          _cf[f.name] = dict[f.name];
-        });
-        config[key] = _cf;
-      }
-      return config;
+    getURL (keyword) {
+      let path = window.location.pathname;
+      let res = path.split('/');
+      res[res.length - 1] = keyword;
+      return res.join('/');
     },
 
     add (event, ur) {
-      Vue.set(this.assignee, ur.id, ur);
-      this.assignee[ur.id] = ur;
+      if (!this.assignee.includes(ur.id)) {
+        this.assignee.push(ur.id);
+      }
     },
 
     remove (event, id) {
-      Vue.delete(this.assignee, id);
+      this.assignee = this.assignee.filter(function (uid) {
+        return uid !== id;
+      });
     },
 
     filter () {
+      let userList = Object.values(this.users);
       if (!this.search.length) {
-        this.searchResult = this.allUsers;
+        this.searchResult = userList;
       } else {
-        this.searchResult = this.allUsers.filter(
+        this.searchResult = userList.filter(
           user => user.fullname.toLowerCase().includes(this.search.toLowerCase()));
+      }
+    },
+
+    async getData () {
+      try {
+        const res = await fetch(this.getURL('project-config'), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        this.csrfToken = data.csrf;
+        this.validAccessLevels = data.valid_access_levels;
+        this.inputFields = data.forms;
+        this.externalConfigDict = JSON.parse(data.external_config_dict);
+        this.accessLevels = this.getAccessLevels(data.data_access);
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
+      }
+      try {
+        const res = await fetch(this.getURL('assign-users'), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        this.assignee = data.project_users;
+        this.users = this.getUsers(data.all_users);
+        this.searchResult = Object.values(this.users);
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
       }
     },
 
@@ -304,28 +270,47 @@ export default {
            access.push(key);
          }
        }
-      let assigneeId = Object.keys(this.assignee);
+       let data = {
+            config: this.externalConfigDict,
+            data_access: access,
+            select_users: this.assignee
+      };
       try {
-        const res = await fetch(window.location.pathname, {
+        const projectRes = await fetch(this.getURL('project-config'), {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
             'X-CSRFToken': this.csrfToken
           },
           credentials: 'same-origin',
-          body: JSON.stringify({ 'project': {
-            config: this.constructExternalConfigFromDict(),
-            data_access: access,
-            select_users: assigneeId
-          } })
+          body: JSON.stringify(data)
         });
-        if (res.ok) {
-          window.pybossaNotify('Project data Saved.', true, 'success');
+
+        const assignRes = await fetch(this.getURL('assign-users'), {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            'X-CSRFToken': this.csrfToken
+          },
+          credentials: 'same-origin',
+          body: JSON.stringify(data)
+        });
+
+        if (projectRes.ok && assignRes.ok) {
+          const projectData = await projectRes.json();
+          const assignData = await assignRes.json();
+          if (projectData['status'] !== 'success') {
+            window.pybossaNotify(projectData['flash'], true, projectData['status']);
+          } else if (assignData['status'] !== 'success') {
+            window.pybossaNotify(assignData['flash'], true, assignData['status']);
+          } else {
+            window.pybossaNotify('Configuration updated successfully', true, 'success');
+          }
         } else {
-          window.pybossaNotify('An error occurred.', true, 'error');
+          window.pybossaNotify('An error occurred configuring project config.', true, 'error');
         }
       } catch (error) {
-        window.pybossaNotify('An error occurred.', true, 'error');
+        window.pybossaNotify('An error occurred configuring project config.', true, 'error');
       }
     }
   }
