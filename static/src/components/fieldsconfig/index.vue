@@ -115,7 +115,6 @@ import CategoricalFieldConfig from './categorical_field_config';
 import labelTypes from './labelTypes';
 
 export default {
-
   components: {
     CategoricalFieldConfig,
     FieldConfigBase
@@ -134,7 +133,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['answerFields', 'csrfToken', 'isNewField', 'hasConsensusConfig', 'hasRetryFields', 'showWarning'])
+    ...mapGetters(['answerFields', 'csrfToken', 'isNewField', 'hasRetryFields', 'showWarning'])
   },
 
   methods: {

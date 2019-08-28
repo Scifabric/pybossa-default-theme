@@ -60,10 +60,6 @@ const storeSpecs = {
       return f;
     },
 
-    hasConsensusConfig (state) {
-      return (state.consensusConfig && state.consensusConfig.consensusThreshold > 0);
-    },
-
     hasRetryFields (state) {
       for (const name in state.answerFields) {
         if (state.answerFields[name]['retry_for_consensus']) {
@@ -109,7 +105,7 @@ const storeSpecs = {
     setData (state, { csrf, answerFields, consensus }) {
       state.csrf = csrf;
       const fields = answerFields;
-      for (const name in answerFields) {
+      for (const name in fields) {
         const retryForConsensus = fields[name]['retry_for_consensus'];
         const { type, config } = fields[name];
         _addField(state, { name, type, config, retryForConsensus });

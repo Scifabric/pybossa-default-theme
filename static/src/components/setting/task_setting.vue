@@ -11,11 +11,11 @@
             class="form-control input-sm"
           >
             <option
-              v-for="opt in getOptions()"
-              :key="opt.text"
-              :value="opt.value"
+              v-for="opt in schedVariants"
+              :key="opt[0]"
+              :value="opt[0]"
             >
-              {{ opt.text }}
+              {{ opt[1] }}
             </option>
           </select>
         </div>
@@ -75,7 +75,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-6">
-          <p> Change All Current Task Redundancy To </p>
+          <p> Change All Current Task Redundancy To  (optional)</p>
         </div>
         <div class="col-md-6 pull-right">
           <input
@@ -101,85 +101,151 @@
 <script>
 
 export default {
-  props: {
-    csrfToken: {
-      type: String,
-      default: null
-    },
-    config: {
-      type: Object,
-      default: () => ({ sched: 'default', rand_within_priority: false, sched_variants: [] })
-    },
-    taskTimeout: {
-      type: Number
-    },
-    taskRedundancy: {
-      type: Number,
-      default: 1
-    }
-  },
-
   data () {
     return {
-      sched: this.config.sched,
-      random: this.config.rand_within_priority,
+      csrfToken: '',
+      sched: '',
+      schedVariants: null,
+      random: false,
       timeoutMinute: Math.floor(this.taskTimeout / 60),
       timeoutSecond: this.taskTimeout % 60,
-      defaultRedundancy: this.taskRedundancy,
+      defaultRedundancy: null,
       currentRedundancy: null
     };
   },
 
+  created: function () {
+    this.getData();
+  },
+
   methods: {
-    getOptions () {
-      let options = [];
-      for (let i = 0; i < this.config.sched_variants.length; i++) {
-        let opt = {
-          text: this.config.sched_variants[i][1],
-          value: this.config.sched_variants[i][0]
-        };
-        options.push(opt);
-      }
-      return options;
+
+    getURL (keyword) {
+      let path = window.location.pathname;
+      let res = path.split('/');
+      res[res.length - 1] = keyword;
+      return res.join('/');
     },
 
     _isIntegerNumeric: function (_n) {
         return Math.floor(_n) === _n;
     },
 
-    async save () {
-      const _defaultRedundancy = parseInt(this.defaultRedundancy);
-      const _currentRedundancy = parseInt(this.currentRedundancy);
-      if (!this._isIntegerNumeric(_defaultRedundancy)) {
-        return;
-      }
-      if (this.currentRedundancy && !this._isIntegerNumeric(_currentRedundancy)) {
-        return;
-      }
+    async getData () {
       try {
-        const res = await fetch(window.location.pathname, {
+        const res = await fetch(this.getURL('tasks/redundancy'), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        this.defaultRedundancy = data.default_task_redundancy;
+        this.csrfToken = data.default_form.csrf;
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
+      }
+
+      try {
+        const res = await fetch(this.getURL('tasks/timeout'), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        this.timeoutMinute = data.form.minutes;
+        this.timeoutSecond = data.form.seconds;
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
+      }
+
+      try {
+        const res = await fetch(this.getURL('tasks/scheduler'), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        this.sched = data.form.sched;
+        this.random = data.form.rand_within_priority;
+        this.schedVariants = data.sched_variants;
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
+      }
+    },
+
+    async save () {
+      try {
+        let _defaultRedundancy = parseInt(this.defaultRedundancy);
+        let _currentRedundancy = parseInt(this.currentRedundancy);
+        let _minute = parseInt(this.timeoutMinute);
+        let _second = parseInt(this.timeoutSecond);
+        let data = {
+              sched: this.sched,
+              minutes: _minute,
+              seconds: _second,
+              default_n_answers: _defaultRedundancy,
+              rand_within_priority: this.random
+              };
+        if (this.currentRedundancy !== null) {
+          data['n_answers'] = _currentRedundancy;
+        }
+        if (!this._isIntegerNumeric(_minute) || !this._isIntegerNumeric(_second) ||
+            !this._isIntegerNumeric(_defaultRedundancy) ||
+            (this.currentRedundancy !== null && !this._isIntegerNumeric(_currentRedundancy))) {
+          throw Error('Parameter is not a number!');
+        }
+
+        const timeoutRes = await fetch(this.getURL('tasks/timeout'), {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
             'X-CSRFToken': this.csrfToken
           },
           credentials: 'same-origin',
-          body: JSON.stringify({ task: {
-            sched: this.sched,
-            minutes: this.timeoutMinute,
-            seconds: this.timeoutSecond,
-            default_n_answers: _defaultRedundancy,
-            n_answers: _currentRedundancy,
-            rand_within_priority: this.random
-            } })
+          body: JSON.stringify(data)
         });
-        if (res.ok) {
-          window.pybossaNotify('task data Saved.', true, 'success');
+        const redundancyRes = await fetch(this.getURL('tasks/redundancy'), {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            'X-CSRFToken': this.csrfToken
+          },
+          credentials: 'same-origin',
+          body: JSON.stringify(data)
+        });
+        const schedulerRes = await fetch('tasks/scheduler', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            'X-CSRFToken': this.csrfToken
+          },
+          credentials: 'same-origin',
+          body: JSON.stringify(data)
+        });
+        if (timeoutRes.ok && redundancyRes.ok && schedulerRes.ok) {
+          const timeoutData = await timeoutRes.json();
+          const redundancyData = await redundancyRes.json();
+          const schedulerData = await schedulerRes.json();
+          if (schedulerData['status'] !== 'success') {
+            window.pybossaNotify(schedulerData['flash'], true, schedulerData['status']);
+          } else if (timeoutData['status'] !== 'success') {
+            window.pybossaNotify(timeoutData['flash'], true, timeoutData['status']);
+          } else if (redundancyData['status'] !== 'success') {
+            window.pybossaNotify(redundancyData['flash'], true, redundancyData['status']);
+          } else {
+            window.pybossaNotify('Configuration updated successfully', true, 'success');
+          }
         } else {
-          window.pybossaNotify('An error occurred.', true, 'error');
+          window.pybossaNotify('An error occurred configuring task config.', true, 'error');
         }
       } catch (error) {
-        window.pybossaNotify('An error occurred.', true, 'error');
+        window.pybossaNotify('An error occurred configuring task config.', true, 'error');
       }
     }
   }
