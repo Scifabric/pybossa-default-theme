@@ -207,7 +207,8 @@ export default {
       tags,
       text: { snippet, preview },
       readOnly,
-      entities
+      entities,
+      confidenceThreshold
     } = textTagging;
 
     let output = Mustache.render(
@@ -218,6 +219,7 @@ export default {
         text: snippet,
         readOnly,
         entities: getEntitiesString(),
+        confidenceThreshold,
         // If text snippet and preview are the same then it is static text so no Vue binding.
         // Otherwise it is a variable name so do Vue binding.
         bindText: (snippet === preview) ? '' : ':'
