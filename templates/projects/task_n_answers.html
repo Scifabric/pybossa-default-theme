@@ -20,7 +20,7 @@
 <form id="task_redundancy" method="post" action="{{ url_for('project.task_n_answers', short_name=project.short_name) }}">
     {{ form.hidden_tag() }}
     <fieldset>
-        {{ render_field(form.n_answers, placeholder= _('Change the number of required answers for all currently created tasks')) }}
+        {{ render_field(form.n_answers, placeholder= _('Change the number of required answers for all current tasks')) }}
         <div class="form-actions">
             <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
             <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
