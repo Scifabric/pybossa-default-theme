@@ -98,4 +98,25 @@ describe('Text Tagging setup', () => {
         isNotValid();
     });
   });
+
+  describe('validate confidence threshold', () => {
+    it('validates confidence threshold', () => {
+        const tag1 = localState.tagList[0];
+        tag1.name = 'a';
+        tag1.display = 'b';
+        const entity1 = localState.entities.static[0];
+        entity1.headoffset = 1;
+        mutations[types.MUTATE_TEXT_TAGGING_TEXT](localState, 'task.info.text');
+        mutations[types.MUTATE_TEXT_TAGGING_CONFIDENCE_THRESHOLD](localState, -1);
+        isNotValid();
+        mutations[types.MUTATE_TEXT_TAGGING_CONFIDENCE_THRESHOLD](localState, 0);
+        isValid();
+        mutations[types.MUTATE_TEXT_TAGGING_CONFIDENCE_THRESHOLD](localState, 0.5);
+        isValid();
+        mutations[types.MUTATE_TEXT_TAGGING_CONFIDENCE_THRESHOLD](localState, 1);
+        isValid();
+        mutations[types.MUTATE_TEXT_TAGGING_CONFIDENCE_THRESHOLD](localState, 2);
+        isNotValid();
+    });
+  });
 });

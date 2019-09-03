@@ -18,7 +18,8 @@ export function initialState () {
     entities: {
       static: [],
       variable: ''
-    }
+    },
+    confidenceThreshold: null
   };
 }
 
@@ -125,6 +126,10 @@ function* getErrors (state) {
     else uniqueTagNames.add(name);
   }
 
+  if (state.confidenceThreshold < 0 || state.confidenceThreshold > 1) {
+    yield ['confidenceThreshold', 'Confidence threshold must be between 0 and 1.'];
+  }
+
   if (state.sourceType === 'static') yield * validateStatic(state);
   else { // sourceType === 'variable'
     if (state.useStaticInPreview) {
@@ -197,7 +202,8 @@ export const getters = {
       pybAnswer: state.pybAnswer.trim(),
       readOnly: state.readOnly,
       text: getText(state),
-      entities: getEntities(state)
+      entities: getEntities(state),
+      confidenceThreshold: state.confidenceThreshold
     };
   },
   [types.GET_TEXT_TAGGING_FORM_VALID] (state, getters) {
@@ -249,6 +255,9 @@ export const mutations = {
   },
   [types.MUTATE_TEXT_TAGGING_DELETE_ENTITY] (state, index) {
     state.entities.static.splice(index, 1);
+  },
+  [types.MUTATE_TEXT_TAGGING_CONFIDENCE_THRESHOLD] (state, payload) {
+    state.confidenceThreshold = payload;
   }
 };
 
