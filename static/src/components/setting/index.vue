@@ -158,6 +158,7 @@ export default {
       assignee: [],
       users: {},
       accessLevels: {},
+      dataAccessConfigured: false,
       validAccessLevels: [],
       search: '',
       searchResult: this.users,
@@ -237,81 +238,102 @@ export default {
           },
           credentials: 'same-origin'
         });
-        const data = await res.json();
-        this.csrfToken = data.csrf;
-        this.validAccessLevels = data.valid_access_levels;
-        this.inputFields = data.forms;
-        this.externalConfigDict = JSON.parse(data.external_config_dict);
-        this.accessLevels = this.getAccessLevels(data.data_access);
+        const dataProjConfig = await res.json();
+        this.csrfToken = dataProjConfig.csrf;
+        if (dataProjConfig.valid_access_levels) {
+            this.validAccessLevels = dataProjConfig.valid_access_levels;
+        }
+        this.inputFields = dataProjConfig.forms;
+        this.externalConfigDict = JSON.parse(dataProjConfig.external_config_dict);
+        if (dataProjConfig.data_access.length > 0) {
+            this.dataAccessConfigured = true;
+        }
+        if (this.dataAccessConfigured) {
+            this.accessLevels = this.getAccessLevels(dataProjConfig.data_access);
+            const res = await fetch(this.getURL('assign-users'), {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            },
+            credentials: 'same-origin'
+            });
+            const dataAssignUsers = await res.json();
+            this.assignee = dataAssignUsers.project_users;
+            this.users = this.getUsers(dataAssignUsers.all_users);
+            this.searchResult = Object.values(this.users);
+        }
       } catch (error) {
-        window.pybossaNotify('An error occurred.', true, 'error');
-      }
-      try {
-        const res = await fetch(this.getURL('assign-users'), {
-          method: 'GET',
-          headers: {
-            'content-type': 'application/json'
-          },
-          credentials: 'same-origin'
-        });
-        const data = await res.json();
-        this.assignee = data.project_users;
-        this.users = this.getUsers(data.all_users);
-        this.searchResult = Object.values(this.users);
-      } catch (error) {
-        window.pybossaNotify('An error occurred.', true, 'error');
+        window.pybossaNotify('Error reading project config.', true, 'error');
       }
     },
 
     async save () {
-      let access = [];
-       for (let [key, value] of Object.entries(this.accessLevels)) {
-         if (value) {
-           access.push(key);
-         }
-       }
-       let data = {
-            config: this.externalConfigDict,
-            data_access: access,
-            select_users: this.assignee
-      };
-      try {
-        const projectRes = await fetch(this.getURL('project-config'), {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-            'X-CSRFToken': this.csrfToken
-          },
-          credentials: 'same-origin',
-          body: JSON.stringify(data)
-        });
-
-        const assignRes = await fetch(this.getURL('assign-users'), {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-            'X-CSRFToken': this.csrfToken
-          },
-          credentials: 'same-origin',
-          body: JSON.stringify(data)
-        });
-
-        if (projectRes.ok && assignRes.ok) {
-          const projectData = await projectRes.json();
-          const assignData = await assignRes.json();
-          if (projectData['status'] !== 'success') {
-            window.pybossaNotify(projectData['flash'], true, projectData['status']);
-          } else if (assignData['status'] !== 'success') {
-            window.pybossaNotify(assignData['flash'], true, assignData['status']);
-          } else {
-            window.pybossaNotify('Configuration updated successfully', true, 'success');
-          }
-        } else {
-          window.pybossaNotify('An error occurred configuring project config.', true, 'error');
+        let access = [];
+        for (let [key, value] of Object.entries(this.accessLevels)) {
+            if (value) {
+                access.push(key);
+            }
         }
-      } catch (error) {
-        window.pybossaNotify('An error occurred configuring project config.', true, 'error');
-      }
+
+        let data = {};
+        if (this.dataAccessConfigured) {
+            data = {
+                config: this.externalConfigDict,
+                data_access: access,
+                select_users: this.assignee
+            };
+        } else {
+            data = {
+                config: this.externalConfigDict
+            };
+        }
+        try {
+            let validConfig = true;
+            const projectRes = await fetch(this.getURL('project-config'), {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    'X-CSRFToken': this.csrfToken
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(data)
+            });
+
+            if (projectRes.ok) {
+                const projectData = await projectRes.json();
+                if (projectData['status'] !== 'success') {
+                    validConfig = false;
+                    window.pybossaNotify(projectData['flash'], true, projectData['status']);
+                }
+            }
+
+            if (this.dataAccessConfigured) {
+                const assignRes = await fetch(this.getURL('assign-users'), {
+                    method: 'POST',
+                    headers: {
+                    'content-type': 'application/json',
+                    'X-CSRFToken': this.csrfToken
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(data)
+                });
+                if (assignRes.ok) {
+                    const assignData = await assignRes.json();
+                    if (assignData['status'] !== 'success') {
+                        validConfig = false;
+                        window.pybossaNotify(assignData['flash'], true, assignData['status']);
+                    }
+                }
+            }
+
+            if (validConfig) {
+                window.pybossaNotify('Configuration updated successfully', true, 'success');
+            } else {
+                window.pybossaNotify('An error occurred configuring project config.', true, 'error');
+            }
+        } catch (error) {
+            window.pybossaNotify('An error occurred configuring project config.', true, 'error');
+        }
     }
   }
 };
