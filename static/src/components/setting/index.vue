@@ -245,7 +245,7 @@ export default {
         }
         this.inputFields = dataProjConfig.forms;
         this.externalConfigDict = JSON.parse(dataProjConfig.external_config_dict);
-        if (dataProjConfig.data_access.length > 0) {
+        if (JSON.parse(dataProjConfig.data_access).length > 0) {
             this.dataAccessConfigured = true;
         }
         if (this.dataAccessConfigured) {

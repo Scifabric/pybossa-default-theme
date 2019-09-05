@@ -25,7 +25,7 @@ describe('projectConfig', () => {
         hdfs: { display: 'test2', fields: [{ type: 'SelectField', name: 'cluster', choices: [('c1', 'option1')] }] }
       },
       external_config_dict: JSON.stringify(EXT_CONF),
-      data_access: ['L1']
+      data_access: JSON.stringify(['L1'])
     };
     fetch.mockImplementation((arg) => ({
       ok: true,
@@ -44,7 +44,7 @@ describe('projectConfig', () => {
       all_users: [{ id: 1, fullname: 'user1' }],
       valid_access_levels: VALID_ACCESS_LEVELS,
       external_config_dict: JSON.stringify(EXT_CONF),
-      data_access: ['L1']
+      data_access: JSON.stringify(['L1'])
     };
     fetch.mockImplementation((arg) => ({
       ok: true,
