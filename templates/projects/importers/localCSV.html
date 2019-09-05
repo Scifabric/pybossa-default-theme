@@ -3,7 +3,7 @@
 {% set active_project  = project.short_name %}
 {% set active_link = 'tasks' %}
 {% set section = _('Import tasks') %}
-
+{% from "_formhelpers.html" import render_checkbox_field %}
 
 {% block projectcontent %}
 <h3>{{_('From Local CSV Spreadsheet')}}</h3>
@@ -11,7 +11,7 @@
    <fieldset>
       {{ form.hidden_tag() }}
       <span class="help-inline"> {{ _('Please choose local csv file with data and press Import button.')}} <br/>
-      <p><font color="red">Note: The csv file select should have column names matching to what they're defined in task presenter code.</font></p>
+      <p>{{ render_checkbox_field(form.do_not_validate_tp) }}</p>
       </span>
       <div class="form-actions">
          <input type="file" name="file" accept=".csv"><br/><br/>
