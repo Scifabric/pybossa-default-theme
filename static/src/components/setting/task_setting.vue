@@ -22,7 +22,7 @@
       </div>
       <div class="form-group row">
         <div class="col-md-6">
-          <p> Randomize Order With Same Priority </p>
+          <p> Randomize Within Priority </p>
         </div>
         <div class="col-md-6 pull-right">
           <label class="switch">
@@ -75,17 +75,29 @@
       </div>
       <div class="form-group row">
         <div class="col-md-6">
-          <p> Change All Current Task Redundancy To  (optional)</p>
+          <p> Redundancy</p>
         </div>
         <div class="col-md-6 pull-right">
           <input
             v-model="currentRedundancy"
             type="text"
             class="form-control input-sm"
+            placeholder="Change the number of required answers for all current tasks"
           >
         </div>
       </div>
-
+      <div class="form-group row">
+        <div class="col-md-6">
+          <p> Gold Task Probability </p>
+        </div>
+        <div class="col-md-6 pull-right">
+            <input
+              v-model="goldtaskProbability"
+              type="text"
+              class="form-control input-sm"
+            >
+        </div>
+      </div>
       <div>
         <button
           class="btn btn-sm btn-primary"
@@ -110,7 +122,8 @@ export default {
       timeoutMinute: Math.floor(this.taskTimeout / 60),
       timeoutSecond: this.taskTimeout % 60,
       defaultRedundancy: null,
-      currentRedundancy: null
+      currentRedundancy: null,
+      goldtaskProbability: 0
     };
   },
 
@@ -174,6 +187,7 @@ export default {
         this.sched = data.form.sched;
         this.random = data.form.rand_within_priority;
         this.schedVariants = data.sched_variants;
+        this.goldtaskProbability = data.form.gold_task_probability;
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
@@ -190,7 +204,8 @@ export default {
               minutes: _minute,
               seconds: _second,
               default_n_answers: _defaultRedundancy,
-              rand_within_priority: this.random
+              rand_within_priority: this.random,
+              gold_task_probability: this.goldtaskProbability
               };
         if (this.currentRedundancy !== null) {
           data['n_answers'] = _currentRedundancy;
@@ -233,11 +248,11 @@ export default {
           const redundancyData = await redundancyRes.json();
           const schedulerData = await schedulerRes.json();
           if (schedulerData['status'] !== 'success') {
-            window.pybossaNotify(schedulerData['flash'], true, schedulerData['status']);
+            window.pybossaNotify('scheduler config. ' + schedulerData['flash'], true, schedulerData['status']);
           } else if (timeoutData['status'] !== 'success') {
-            window.pybossaNotify(timeoutData['flash'], true, timeoutData['status']);
+            window.pybossaNotify('timeout config. ' + timeoutData['flash'], true, timeoutData['status']);
           } else if (redundancyData['status'] !== 'success') {
-            window.pybossaNotify(redundancyData['flash'], true, redundancyData['status']);
+            window.pybossaNotify('redundancy config. ' + redundancyData['flash'], true, redundancyData['status']);
           } else {
             window.pybossaNotify('Configuration updated successfully', true, 'success');
           }

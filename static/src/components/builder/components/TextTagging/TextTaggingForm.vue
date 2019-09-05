@@ -123,7 +123,7 @@
             :class="{'danger-validation':getErrors(`tagList[${index}].color`)}"
             type="color"
           >
-          </label>
+        </label>
         <div class="danger-validation-text">
           {{ getErrors(`tagList[${index}].color`) }}
         </div>
@@ -138,6 +138,21 @@
       Add Another Tag
     </button>
     <br>
+    <div class="form-group">
+      <hr>
+      <h4>Confidence Threshold</h4>
+      <input
+        v-model="confidenceThreshold"
+        class="form-control form-control-sm"
+        type="number"
+        min="0"
+        max="1"
+        step="0.01"
+      >
+      <div class="danger-validation-text">
+        {{ getErrors(`confidenceThreshold`) }}
+      </div>
+    </div>
     <div>
       <hr>
       <h4>
@@ -423,6 +438,14 @@ export default {
       },
       set (newValue) {
         this.$store.commit(types.MUTATE_TEXT_TAGGING_READONLY, newValue === 'readOnly');
+      }
+    },
+    confidenceThreshold: {
+      get () {
+        return this.$store.state.textTagging.confidenceThreshold;
+      },
+      set (newValue) {
+        this.$store.commit(types.MUTATE_TEXT_TAGGING_CONFIDENCE_THRESHOLD, newValue);
       }
     },
     pybAnswer: {

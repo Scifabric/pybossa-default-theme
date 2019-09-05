@@ -69,7 +69,7 @@ describe('taskConfig', () => {
   it('render fields', () => {
     const wrapper = shallowMount(taskConfig);
     const p = wrapper.findAll('p');
-    expect(p).toHaveLength(5);
+    expect(p).toHaveLength(6);
     const button = wrapper.findAll('button');
     expect(button).toHaveLength(1);
   });

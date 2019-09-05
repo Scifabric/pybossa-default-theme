@@ -115,7 +115,8 @@ export default {
             pybAnswer: this.form.pybAnswer,
             tags: this.form.tags,
             text: this.form.text.preview,
-            nlpnedEntities: this.form.entities.preview
+            nlpnedEntities: this.form.entities.preview,
+            confidenceThreshold: this.form.confidenceThreshold
           }
         };
       } else if (this.selectedComponent === 'table-creator') {
