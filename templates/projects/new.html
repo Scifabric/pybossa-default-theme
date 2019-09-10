@@ -4,7 +4,7 @@
 {% import "account/_helpers.html" as helper %}
 
 {% block content %}
-{% from "_formhelpers.html" import render_field, render_select2_field%}
+{% from "_formhelpers.html" import render_field, render_select2_field, render_checkbox_field%}
 
 <section class="account profile">
 <div id="app-form" class="container">
@@ -33,6 +33,10 @@
             {{ render_field(form.kpi) }}
             {% if 'data_access' in form %}
                 {{ render_select2_field(form.data_access) }}
+            {% endif %}
+            {% if 'amp_store' in form %}
+                {{ render_checkbox_field(form.amp_store, tooltip=_('Opt in to store annotations on Annotation Management Platform')) }}
+                {{ render_field(form.amp_pvf, placeholder=_('PVF that should be used for annotation store')) }}
             {% endif %}
             <div class="form-actions">
                 <input type="submit" value={{_('Create the project')}} class="btn btn-primary" />
