@@ -1,0 +1,26 @@
+{% extends "projects/base.html" %}
+{% set active_page = "projects" %}
+{% set active_link  = "settings" %}
+{% set section = _('Configure Annotation Parameters') %}
+
+{% import "projects/_helpers.html" as helper %}
+{% from "_formhelpers.html" import render_field, render_checkbox_field, render_select2_field %}
+
+{% block projectcontent %}
+<form method="post" action="{{ url_for('project.annotation_config', short_name=project.short_name) }}">
+    <fieldset>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        {{ render_field(form.dataset_description, class_="input-xlarge", placeholder=_('Describe type of data that will be annotated. (e.g., The data annotated in this project are Chinese BN news articles.)')) }}
+        {{ render_field(form.provider) }}
+        {{ render_field(form.restrictions_and_permissioning, class_="input-xlarge", placeholder=_('A complete list of relevant security-related properties and requirements of the dataset (e.g., Original data is stored in <storage>, under <role>, and encrypted)')) }}
+        {{ render_field(form.sampling_method, placeholder=_('Sampling method of data selection')) }}
+        {{ render_field(form.sampling_script, placeholder=_('Pointer to example script or github repo that shows how data was selected/sampled (link)')) }}
+        {{ render_field(form.label_aggregation_strategy, placeholder=_('Label aggregation strategy that should be used')) }}
+        {{ render_field(form.task_input_schema, placeholder=_('The schema that serves task presenter input data (e.g., task request field schema)')) }}
+        {{ render_field(form.task_output_schema, placeholder=_('The schema produced by task presenter that serves as task output data (e.g., task response field schema)')) }}
+        <div class="form-actions">
+            <button type="submit" name='btn' value="Save the changes" class="btn btn-primary">{{_('Save the changes')}}</button>
+        </div>        
+    </fieldset>
+</form>
+{% endblock %}
