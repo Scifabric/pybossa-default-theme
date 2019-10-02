@@ -1,4 +1,8 @@
 @media (min-width: 980px) {
+    body {
+        padding-top: 20px;
+    }
+
     .navbar-nav > li > a{
         padding-top: 30px;
         padding-bottom: 24px;

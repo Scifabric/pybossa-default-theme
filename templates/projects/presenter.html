@@ -11,42 +11,45 @@
 
 <script>
     {% if mode == 'gold' %}
-    window.pybossa.isGoldMode = true;
-    {% if bulk %}
-    window.pybossa.isBulk = true;
-    {% endif %}
+        window.pybossa.isGoldMode = true;
+        {% if bulk %}
+            window.pybossa.isBulk = true;
+        {% endif %}
     {% endif %}
     Modernizr.load({
         test: window.JSON,
         nope: '{{url_for('static', filename='js/vendor/json2.min.js')}}'
     });
+
 </script>
 <link rel="stylesheet" href="{{url_for('static', filename='css/small-navbar.css')}}"/>
 
 <div class="container" style="min-height:400px;">
-
-    <div class="row">
-        <div class="col-md-12" style="margin-top:-10px;">
-            <h3><a href="{{url_for('project.details', short_name=project.short_name)}}">{{ project.name }}</a>: {{ _('Contribute') }}</h3>
-        </div>
-    </div>
     {% if invite_new_volunteers %}
-    <div class="row">
-        <div class="col-md-12">
-            <p>
-            {{ _("Sorry, you've contributed to all the tasks for this project, but this project still needs more volunteers, so please spread the word!") }}
-            </p>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                {{ _("Sorry, you've contributed to all the tasks for this project, but this project still needs more volunteers, so please spread the word!") }}
+                </p>
+            </div>
         </div>
+    {% endif %}
+
+    <div id="task-presenter-section">
+        <div class="row">
+                <div class="col-md-12" style="margin-top:20px;">
+                    <h3><a href="{{url_for('project.details', short_name=project.short_name)}}">{{ project.name }}</a>: {{ _('Contribute') }}</h3>
+                </div>
+        </div>
+        {% include 'annotation_guidelines_button.html' %}
+        {% include "projects/js/annotation_guidelines_button.js" %}
+        {{ project.info.task_presenter|safe }}
+        {% if "task_guidelines" in project.info and project.info.task_guidelines != '' %}
+            <script type="text/javascript">
+                    $("#annotations-guidelines-content").append({{project.info.task_guidelines|tojson}})
+            </script>
+        {% endif %}
     </div>
-    {% endif %}
-    {% include 'annotation_guidelines_button.html' %}
-    {% include "projects/js/annotation_guidelines_button.js" %}
-    {{ project.info.task_presenter|safe }}
-    {% if "task_guidelines" in project.info and project.info.task_guidelines != '' %}
-        <script type="text/javascript">
-                $("#annotations-guidelines-content").append({{project.info.task_guidelines|tojson}})
-        </script>
-    {% endif %}
 
     <div id='PYBOSSA_USER_LOCALE' hidden>
         {% if current_user.is_anonymous %}
