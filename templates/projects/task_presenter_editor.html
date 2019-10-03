@@ -75,8 +75,8 @@
 <div id="editor-page" role="tabpanel" class="hideAll">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs editors col-md-12" role="tablist" id="tabs">
-        <li id="tab-nav-guidelines" role="presentation"><a href="#content-guidelines" aria-controls="basics" role="tab" data-toggle="tab">Instructions</a></li>
-        <li id="tab-nav-presenter" role="presentation"><a href="#content-presenter" aria-controls="basics" role="tab" data-toggle="tab">Task Presenter</a></li>
+        <li id="tab-nav-guidelines" role="presentation"><a href="#tab-content-guidelines" aria-controls="basics" role="tab" data-toggle="tab">Instructions</a></li>
+        <li id="tab-nav-presenter" role="presentation"><a href="#tab-content-presenter" aria-controls="basics" role="tab" data-toggle="tab">Task Presenter</a></li>
         <a id="help-btn" class="btn btn-info navbar-right " target="_blank" href="http://docs.pybossa.com"><i class="fa fa-book"></i> {{ _('Help') }}</a>
         <li class="tab-nav-collapse-expand navbar-right tab-link show-builder"  aria-controls="basics" id ="component-builder-description">
             <a class="cursor-link"> <i class="fa fa-expand" aria-hidden="true"></i>
@@ -89,7 +89,7 @@
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
-          <div role="tabpanel" id="content-guidelines" class="tab-pane fade in col-md-12">
+          <div role="tabpanel" id="tab-content-guidelines" class="tab-pane fade in col-md-12">
               <div class = "row">
                   <form method="post" action="{{ url_for('project.task_presenter_editor', short_name=project.short_name, template=request.args.get('template')) }}">
                       {{ form.hidden_tag() }}
@@ -107,7 +107,7 @@
                   </form>
               </div>
           </div>
-          <div role="tabpanel" id="content-presenter" class="tab-pane fade in col-md-12" id="presenter">
+          <div role="tabpanel" id="tab-content-presenter" class="tab-pane fade in col-md-12" id="presenter">
 
               <!-- Task Presenter Editor -->
               <div class="row padding-top-tab-content ">
@@ -356,12 +356,12 @@ var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
 //set tabs classes, default tab is guidelines
 if ('{{guidelines_tab_on}}' == 'True' || '{{presenter_tab_on}}' == 'False') {
     $('#tab-nav-guidelines').addClass('active');
-    $('#content-guidelines').addClass('active');
+    $('#tab-content-guidelines').addClass('active');
     window.location.hash = window.location.hash  == '' ? "content-guidelines" : window.location.hash = window.location.hash;
 }
 if ('{{presenter_tab_on}}' == 'True') {
     $('#tab-nav-presenter').addClass('active');
-    $('#content-presenter').addClass('active');
+    $('#tab-content-presenter').addClass('active');
     window.location.hash = "content-presenter";
 }
 
@@ -372,11 +372,6 @@ if ('{{presenter_tab_on}}' == 'True'){
 
 $('#tab-nav-presenter').on('shown.bs.tab', function (e) {
     editor.refresh();
-    scrollTo(0,0);
-})
-
-$('#tab-nav-guidelines').on('shown.bs.tab', function (e) {
-    scrollTo(0,0);
 })
 
 $(".btn-preview").off('click').on('click', function(){
@@ -398,12 +393,13 @@ if ( window.history.replaceState ) {
 // store the currently selected tab in the hash value
 $("ul.nav-tabs.editors > li > a").on("shown.bs.tab", function (e) {
     var id = $(e.target).attr("href").substr(1);
+    id = id.replace(/^tab-/, '');
     window.location.hash = id;
 });
 
 // on load of the page: switch to the currently selected tab
 var hash = window.location.hash;
-$('#tabs a[href="' + hash + '"]').tab('show');
+$('#tabs a[href="' + hash.replace('#', '#tab-') + '"]').tab('show');
 
 var main = function() {
 
@@ -459,8 +455,6 @@ var main = function() {
     if (componentBuilderHideLink) componentBuilderHideLink.style.display = "" ;
     slide.toggle('slow');
  });
- $("html, body").animate({ scrollTop: 0 }, "slow");
-
 }
 $(document).ready(main);
 
