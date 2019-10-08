@@ -1,167 +1,157 @@
+/* eslint-disable vue/no-v-html */
 <template>
-  <div class="stats-config row">
-    <div class="col-md-12">
-      <div class="form-group row">
-        <div class="col-md-6 ">
-          <p> Quiz Status </p>
-        </div>
-        <div class="col-md-6 pull-right">
-          <label class="switch">
-            <input
-              v-model="enabled"
-              type="checkbox"
-            >
-            <span class="slider" />
-          </label>
-        </div>
-      </div>
-      <div
-        v-if="enabled"
-        class="form-group row"
+  <div v-if="dataLoaded">
+    <label>
+      Number of gold tasks: {{ model.n_gold_unexpired }}
+    </label>
+    <p>
+      In order to enable and configure quiz mode, this project must have at least one gold question. Please click
+      <a
+        href="/project/test-public-quiz-vue/make-random-gold"
+      >here</a> to create gold questions.
+    </p>
+    <vue-form-generator
+      ref="formTest"
+      :schema="schema"
+      :model="model"
+      :options="formOptions"
+      @validated="onValidated"
+      @model-updated="onModelUpdate"
+    />
+    <table-quiz
+      :users="users"
+      :model="model"
+      @updateUsers="updateUsers"
+    />
+    <div>
+      <button
+        :disabled="!validForm"
+        class="btn btn-sm btn-primary"
+        @click="save"
       >
-        <div class="col-md-6">
-          <p> Number Of Questions Per Quiz  </p>
-        </div>
-        <div class="col-md-6 pull-right">
-          <input
-            v-model="questions"
-            type="text"
-            class="form-control input-sm"
-          >
-        </div>
-      </div>
-      <div
-        v-if="enabled"
-        class="form-group row"
-      >
-        <div class="col-md-6">
-          <p> Number Of Correct Answers To Pass Quiz  </p>
-        </div>
-        <div class="col-md-6 pull-right">
-          <input
-            v-model="passing"
-            type="text"
-            class="form-control input-sm"
-          >
-        </div>
-      </div>
-      <div
-        v-if="enabled"
-        class="form-group row"
-      >
-        <div class="col-md-6">
-          <p> Quiz Completion Mode </p>
-        </div>
-        <div class="col-md-6">
-          <select
-            v-model="mode"
-            class="form-control input-sm"
-          >
-            <option
-              v-for="opt in mode_choices"
-              :key="opt[0]"
-              :value="opt[0]"
-            >
-              {{ opt[1] }}
-            </option>
-          </select>
-        </div>
-      </div>
-      <br>
-      <table
-        id="quiz_result_table"
-        class="table table-bordered table-striped table-hover"
-      >
-        <thead>
-          <tr>
-            <th>User</th>
-            <th>Enabled</th>
-            <th>Status</th>
-            <th>Right</th>
-            <th>Wrong</th>
-            <th>Questions</th>
-            <th>Passing</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="user in users"
-            :key="user.id"
-            :value="user"
-          >
-            <td>{{ user.fullname }}</td>
-            <td>{{ user.quiz.config.enabled }}</td>
-            <td>{{ user.quiz.status }}</td>
-            <td>{{ user.quiz.result.right }}</td>
-            <td>{{ user.quiz.result.wrong }}</td>
-            <td>{{ user.quiz.config.questions }}</td>
-            <td>{{ user.quiz.config.passing }}</td>
-            <td>
-              <button
-                v-if="!resetUser.includes(user.id)"
-                class="btn btn-sm btn-primary"
-                @click="reset($event, user.id)"
-              >
-                Reset
-              </button>
-              <button
-                v-else
-                class="btn btn-sm btn-primary active"
-              >
-                Reset
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div>
-        <button
-          class="btn btn-sm btn-primary"
-          @click="save"
-        >
-          Save
-        </button>
-      </div>
+        Save
+      </button>
     </div>
   </div>
 </template>
-
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style scoped>
+.test-hide {
+  display: none
+}
+</style>
 <script>
+import './form.css';
+
+import VueFormGenerator from './quiz_form_validators';
+import Vue from 'vue';
+import Multiselect from 'vue-multiselect';
+import TableQuiz from './quiz_result_table.vue';
+
+Vue.component('multiselect', Multiselect);
+Vue.component('table-quiz', TableQuiz);
 
 export default {
+  components: {
+        'vue-form-generator': VueFormGenerator.component },
   data () {
     return {
       csrfToken: null,
-      enabled: false,
-      questions: null,
-      passing: null,
-      mode: null,
-      mode_choices: [],
-      resetUser: [],
-      users: {}
-    };
-  },
+      users: {},
+      dataLoaded: false,
+      validForm: false,
+      model: {
+        n_gold_unexpired: 0,
+        enabled: false,
+        questions: 0,
+        passing: 0,
+        completion_mode: '' },
+        schema: {
+              fields: [
+                {
+                        type: 'switch',
+                        label: 'Make workers have to pass the quizzes to proceed',
+                        model: 'enabled',
+                        multi: true,
+                        default: false,
+                        textOn: 'Quiz On',
+                        textOff: 'Quiz Off',
+                        validator: ['enabledValidation'] },
+                     {
+                        type: 'input',
+                        inputType: 'number',
+                        label: 'Number of questions per quiz',
+                        model: 'questions',
+                        min: 1,
+                        required: true,
+                        validator: ['minQuestions', VueFormGenerator.validators.number] },
+                      {
+                        id: 'passing',
+                        type: 'input',
+                        inputType: 'number',
+                        label: 'Number of correct answers to pass quiz',
+                        model: 'passing',
+                        min: 1,
+                        required: true,
+                        validator: ['maxPassingQuestions', VueFormGenerator.validators.number]
+                      },
+                      {
+                        type: 'select',
+                        label: 'Finish the quiz session when:',
+                        model: 'completion_mode',
+                        required: true,
+                        values: function () {
+                          return [
+                            { id: 'all_questions', name: 'all questions answered' },
+                            { id: 'short_circuit', name: 'pass/fail is identified' }
+                          ];
+                        },
+                        default: 'short_circuit'
+                        }
+            ]
+        },
+        formOptions: {
+                      validateAfterLoad: true,
+                      validateAfterChanged: true,
+                      validationErrorClass: 'quiz-error'
 
+        }
+      };
+  },
   created () {
     this.getData();
   },
 
   methods: {
-
     initialize (data) {
+      this.model.n_gold_unexpired = data.n_gold_unexpired;
       this.csrfToken = data.csrf;
       this.users = this.getQuizUser(data.all_user_quizzes);
-      this.mode_choices = data.quiz_mode_choices;
-      this.enabled = data.form.enabled;
-      this.questions = data.form.questions;
-      this.passing = data.form.passing;
-      this.mode = data.form.completion_mode;
+      this.model.enabled = data.form.enabled;
+      this.model.questions = data.form.questions;
+      this.model.passing = data.form.passing;
+      this.model.completion_mode = data.form.completion_mode;
+      this.dataLoaded = true;
+},
+  onValidated (isValid, errors) {
+    this.validForm = isValid;
+    console.log('Validation result: ', isValid, ', Errors:', errors);
+  },
+  onModelUpdate () {
+    // fix this force update
+        this.$refs.formTest.$children[1].$children[0].validate();
+        this.$refs.formTest.$children[2].$children[0].validate();
+  },
+
+    updateUsers (user) {
+      this.users[user.id] = user;
     },
 
     getQuizUser (allUserQuiz) {
       var users = {};
       for (var i = 0; i < allUserQuiz.length; i++) {
         var u = allUserQuiz[i];
+        u.quiz.config.reset = false;
         users[u.id] = u;
       }
       return users;
@@ -173,15 +163,6 @@ export default {
       res[res.length - 1] = 'quiz-mode';
       return res.join('/');
     },
-
-   reset (event, id) {
-     this.resetUser.push(id);
-   },
-
-    _isIntegerNumeric: function (_n) {
-        return Math.floor(_n) === _n;
-    },
-
     async getData () {
       try {
         const res = await fetch(this.getURL(), {
@@ -197,14 +178,8 @@ export default {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
     },
-
     async save () {
       try {
-        const _questions = parseInt(this.questions);
-        const _passing = parseInt(this.passing);
-        if (this.enabled && (!this._isIntegerNumeric(_questions) || !this._isIntegerNumeric(_passing))) {
-          throw Error('Parameter is not a number!');
-        }
         const res = await fetch(this.getURL(), {
           method: 'POST',
           headers: {
@@ -213,15 +188,16 @@ export default {
           },
           credentials: 'same-origin',
           body: JSON.stringify({
-              enabled: this.enabled,
-              questions: this.questions,
-              passing: this.passing,
-              completion_mode: this.mode,
-              reset: this.resetUser
+              enabled: this.model.enabled,
+              questions: this.model.questions,
+              passing: this.model.passing,
+              completion_mode: this.model.completion_mode,
+              users: Object.values(this.users)
           })
         });
         if (res.ok) {
           const data = await res.json();
+          console.log(data);
           window.pybossaNotify(data['flash'], true, data['status']);
         } else {
           window.pybossaNotify('An error occurred configuring quiz config.', true, 'error');
