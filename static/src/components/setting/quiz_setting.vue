@@ -21,6 +21,7 @@
     <table-quiz
       :users="users"
       :model="model"
+      :quiz-mode-choices="quizModeChoices"
       @updateUsers="updateUsers"
     />
     <div>
@@ -60,6 +61,8 @@ export default {
       users: {},
       dataLoaded: false,
       validForm: false,
+      quizModeChoices: {},
+
       model: {
         n_gold_unexpired: 0,
         enabled: false,
@@ -84,7 +87,7 @@ export default {
                         model: 'questions',
                         min: 1,
                         required: true,
-                        validator: ['minQuestions', VueFormGenerator.validators.number] },
+                        validator: ['minQuestions', 'serverValidation', VueFormGenerator.validators.number] },
                       {
                         id: 'passing',
                         type: 'input',
@@ -93,8 +96,10 @@ export default {
                         model: 'passing',
                         min: 1,
                         required: true,
-                        validator: ['maxPassingQuestions', VueFormGenerator.validators.number]
-                      },
+                        validator: ['maxPassingQuestions', 'serverValidation', VueFormGenerator.validators.number],
+                        onChanged: function (model, newVal, oldVal, field) {
+                          model.errors[field.model] = [];
+                        } },
                       {
                         type: 'select',
                         label: 'Finish the quiz session when:',
@@ -112,8 +117,7 @@ export default {
         },
         formOptions: {
                       validateAfterLoad: true,
-                      validateAfterChanged: true,
-                      validationErrorClass: 'quiz-error'
+                      validateAfterChanged: true
 
         }
       };
@@ -131,7 +135,9 @@ export default {
       this.model.questions = data.form.questions;
       this.model.passing = data.form.passing;
       this.model.completion_mode = data.form.completion_mode;
+      this.model.errors = {};
       this.dataLoaded = true;
+      this.quizModeChoices = Object.fromEntries(data.quiz_mode_choices);
 },
   onValidated (isValid, errors) {
     this.validForm = isValid;
@@ -180,6 +186,7 @@ export default {
     },
     async save () {
       try {
+        this.dataLoaded = false;
         const res = await fetch(this.getURL(), {
           method: 'POST',
           headers: {
@@ -196,14 +203,18 @@ export default {
           })
         });
         if (res.ok) {
+          this.dataLoaded = true;
           const data = await res.json();
-          console.log(data);
+          this.initialize(data);
+          this.model.errors = data.form.errors;
+            this.$refs.formTest.$children[1].$children[0].validate();
+            this.$refs.formTest.$children[2].$children[0].validate();
           window.pybossaNotify(data['flash'], true, data['status']);
         } else {
           window.pybossaNotify('An error occurred configuring quiz config.', true, 'error');
         }
       } catch (error) {
-        window.pybossaNotify('An error occurred configuring quiz config.', true, 'error');
+        window.pybossaNotify('An error occurred on the server.', true, 'error');
       }
      }
   }

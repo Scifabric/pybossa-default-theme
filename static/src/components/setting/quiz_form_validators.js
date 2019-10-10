@@ -15,4 +15,8 @@ VueFormGenerator.validators.minQuestions = function (value, field, model) {
   return [];
 };
 
+VueFormGenerator.validators.serverValidation = function (value, field, model) {
+  return model.errors[field.model] || [];
+};
+
 export default VueFormGenerator;
