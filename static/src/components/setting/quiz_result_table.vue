@@ -72,15 +72,15 @@ export default {
   props: {
     model: {
       type: Object,
-      default: () => {}
+      default () { return {}; }
     },
     users: {
       type: Object,
-      default: () => {}
+      default () { return {}; }
     },
     quizModeChoices: {
       type: Object,
-      default: () => {}
+      default () { return {}; }
     }
   },
   data () {
@@ -97,7 +97,7 @@ export default {
     }
   },
   methods: {
-    getStatus: function (user) {
+    getStatus (user) {
       const statusMapping = {
           'in_progress': 'In Progress',
           'not_started': 'Not Started',
@@ -131,10 +131,10 @@ export default {
     },
 
     enableReset (id) {
-      return (this.users[id].quiz.config.questions !== this.model.questions ||
+      return this.users[id].quiz.config.questions !== this.model.questions ||
       this.users[id].quiz.config.passing !== this.model.passing ||
       this.users[id].quiz.result.right > 0 || this.users[id].quiz.result.wrong > 0 ||
-      this.users[id].quiz.status !== 'not_started') ||
+      this.users[id].quiz.status !== 'not_started' ||
       this.model.completion_mode !== this.users[id].quiz.config.completion_mode;
     }
 
