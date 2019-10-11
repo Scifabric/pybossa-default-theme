@@ -42,7 +42,7 @@
 }
 </style>
 <script>
-import './form.css';
+import './vfg-custom-components.css';
 
 import VueFormGenerator from './quiz_form_validators';
 import Vue from 'vue';
@@ -117,7 +117,8 @@ export default {
         },
         formOptions: {
                       validateAfterLoad: true,
-                      validateAfterChanged: true
+                      validateAfterChanged: true,
+                      validationErrorClass: 'error'
 
         }
       };
