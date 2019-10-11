@@ -132,9 +132,10 @@ export default {
 
     enableReset (id) {
       return (this.users[id].quiz.config.questions !== this.model.questions ||
-      this.users[id].quiz.config.passings !== this.model.passings ||
+      this.users[id].quiz.config.passing !== this.model.passing ||
       this.users[id].quiz.result.right > 0 || this.users[id].quiz.result.wrong > 0 ||
-      this.users[id].quiz.status !== 'not_started');
+      this.users[id].quiz.status !== 'not_started') ||
+      this.model.completion_mode !== this.users[id].quiz.config.completion_mode;
     }
 
   }
