@@ -70,6 +70,5 @@ describe('performancestats', () => {
     const show = wrapper.find('button');
     show.trigger('click');
     await localVue.nextTick();
-    console.log(wrapper.html());
   });
 });

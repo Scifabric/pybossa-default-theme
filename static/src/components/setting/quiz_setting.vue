@@ -36,14 +36,8 @@
   </div>
 </template>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-<style scoped>
-.test-hide {
-  display: none
-}
-</style>
 <script>
 import './vfg-custom-components.css';
-
 import VueFormGenerator from './quiz_form_validators';
 import Vue from 'vue';
 import Multiselect from 'vue-multiselect';
@@ -119,7 +113,6 @@ export default {
                       validateAfterLoad: true,
                       validateAfterChanged: true,
                       validationErrorClass: 'error'
-
         }
       };
   },
@@ -145,9 +138,10 @@ export default {
     console.log('Validation result: ', isValid, ', Errors:', errors);
   },
   onModelUpdate () {
-    // fix this force update
-        this.$refs.formTest.$children[1].$children[0].validate();
-        this.$refs.formTest.$children[2].$children[0].validate();
+      // this force validation messaged update for questions and passing inputs
+      // will update to look for the input by name
+      this.$refs.formTest.$children[1].$children[0].validate();
+      this.$refs.formTest.$children[2].$children[0].validate();
   },
 
     updateUsers (user) {

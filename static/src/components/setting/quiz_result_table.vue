@@ -70,7 +70,20 @@
 <script>
 
 export default {
-  props: ['model', 'users', 'quizModeChoices'],
+  props: {
+    model: {
+      type: Object,
+      default: () => {}
+    },
+    users: {
+      type: Object,
+      default: () => {}
+    },
+    quizModeChoices: {
+      type: Object,
+      default: () => {}
+    }
+  },
   data () {
     return { };
   },
