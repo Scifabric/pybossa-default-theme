@@ -81,7 +81,7 @@ export default {
                         model: 'questions',
                         min: 1,
                         required: true,
-                        validator: ['minQuestions', 'serverValidation', VueFormGenerator.validators.number] },
+                        validator: ['minQuestions', 'serverValidation', VueFormGenerator.validators.integer] },
                       {
                         id: 'passing',
                         type: 'input',
@@ -90,7 +90,7 @@ export default {
                         model: 'passing',
                         min: 1,
                         required: true,
-                        validator: ['maxPassingQuestions', 'serverValidation', VueFormGenerator.validators.number],
+                        validator: ['maxPassingQuestions', 'serverValidation', VueFormGenerator.validators.integer],
                         onChanged: function (model, newVal, oldVal, field) {
                           model.errors[field.model] = [];
                         } },

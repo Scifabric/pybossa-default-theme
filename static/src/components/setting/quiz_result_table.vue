@@ -42,7 +42,6 @@
               @change="checkEnable($event, user.id)"
             >{{ user.quiz.config.enabled ? ' Must pass' : ' No quiz' }}
           </td>
-
           <td>{{ user.fullname }}</td>
           <td :class="{'bg-success': !user.quiz.config.reset && user.quiz.status == 'passed', 'bg-danger': !user.quiz.config.reset && user.quiz.status == 'failed' }">
             {{ getStatus(user) }}
@@ -127,18 +126,15 @@ export default {
     },
 
     reset (event, id) {
-      if (this.users[id].quiz.config.questions !== this.model.questions ||
-      this.users[id].quiz.config.passings !== this.model.passings ||
-      this.users[id].quiz.result.right > 0 || this.users[id].quiz.result.wrong > 0) {
       this.updateUsers(this.users[id]);
       this.users[id].quiz.config.reset = !this.users[id].quiz.config.reset;
-    }
-},
+    },
 
     enableReset (id) {
       return (this.users[id].quiz.config.questions !== this.model.questions ||
       this.users[id].quiz.config.passings !== this.model.passings ||
-      this.users[id].quiz.result.right > 0 || this.users[id].quiz.result.wrong > 0);
+      this.users[id].quiz.result.right > 0 || this.users[id].quiz.result.wrong > 0 ||
+      this.users[id].quiz.status !== 'not_started');
     }
 
   }
