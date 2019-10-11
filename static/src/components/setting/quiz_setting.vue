@@ -139,10 +139,16 @@ export default {
       this.validForm = isValid;
     },
 
+    runValidationOnFields (fields) {
+        this.$refs.quizForm.$children.forEach(function (input) {
+          if (fields.includes(input.field.model)) {
+            input.$children[0].validate();
+        }
+    });
+    },
+
     onModelUpdate () {
-        // this force validation messaged update for questions and passing inputs
-        this.$refs.quizForm.$children[1].$children[0].validate();
-        this.$refs.quizForm.$children[2].$children[0].validate();
+        this.runValidationOnFields(['questions', 'passing']);
     },
 
     updateUsers (user) {
@@ -211,10 +217,8 @@ export default {
           const data = await res.json();
           this.initialize(data);
 
-          // Set errors sent by the server if there are some
           this.model.errors = data.form.errors;
-          this.$refs.quizForm.$children[1].$children[0].validate();
-          this.$refs.quizForm.$children[2].$children[0].validate();
+          this.runValidationOnFields(['questions', 'passing']);
 
           window.pybossaNotify(data['flash'], true, data['status']);
         } else {
