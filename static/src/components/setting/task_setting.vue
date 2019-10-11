@@ -91,11 +91,11 @@
           <p> Gold Task Probability </p>
         </div>
         <div class="col-md-6 pull-right">
-            <input
-              v-model="goldtaskProbability"
-              type="text"
-              class="form-control input-sm"
-            >
+          <input
+            v-model="goldtaskProbability"
+            type="text"
+            class="form-control input-sm"
+          >
         </div>
       </div>
       <div>
