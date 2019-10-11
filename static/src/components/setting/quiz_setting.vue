@@ -11,7 +11,7 @@
       >here</a> to create gold questions.
     </p>
     <vue-form-generator
-      ref="formTest"
+      ref="quizForm"
       :schema="schema"
       :model="model"
       :options="formOptions"
@@ -99,11 +99,12 @@ export default {
                         label: 'Finish the quiz session when:',
                         model: 'completion_mode',
                         required: true,
-                        values: function () {
-                          return [
-                            { id: 'all_questions', name: 'all questions answered' },
-                            { id: 'short_circuit', name: 'pass/fail is identified' }
-                          ];
+                        values: (model) => {
+                          const listOptions = [];
+                          for (const [key, value] of Object.entries(this.quizModeChoices)) {
+                            listOptions.push({ id: key, name: value });
+                          }
+                          return listOptions;
                         },
                         default: 'short_circuit'
                         }
@@ -131,17 +132,17 @@ export default {
       this.model.completion_mode = data.form.completion_mode;
       this.model.errors = {};
       this.dataLoaded = true;
+      this.model.quizModeChoices = Object.fromEntries(data.quiz_mode_choices);
       this.quizModeChoices = Object.fromEntries(data.quiz_mode_choices);
     },
     onValidated (isValid, errors) {
       this.validForm = isValid;
-      console.log('Validation result: ', isValid, ', Errors:', errors);
     },
 
     onModelUpdate () {
         // this force validation messaged update for questions and passing inputs
-        this.$refs.formTest.$children[1].$children[0].validate();
-        this.$refs.formTest.$children[2].$children[0].validate();
+        this.$refs.quizForm.$children[1].$children[0].validate();
+        this.$refs.quizForm.$children[2].$children[0].validate();
     },
 
     updateUsers (user) {
@@ -212,8 +213,8 @@ export default {
 
           // Set errors sent by the server if there are some
           this.model.errors = data.form.errors;
-          this.$refs.formTest.$children[1].$children[0].validate();
-          this.$refs.formTest.$children[2].$children[0].validate();
+          this.$refs.quizForm.$children[1].$children[0].validate();
+          this.$refs.quizForm.$children[2].$children[0].validate();
 
           window.pybossaNotify(data['flash'], true, data['status']);
         } else {
