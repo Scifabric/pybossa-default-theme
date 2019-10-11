@@ -11,7 +11,7 @@ VueFormGenerator.validators.maxPassingQuestions = function (value, field, model)
 };
 
 VueFormGenerator.validators.minQuestions = function (value, field, model) {
-  if (model.questions < model.passing) { return [`The number should not be smaller than  correct answers per quiz! Minimum: ${model.passing} `]; }
+  if (model.questions < model.passing) { return [`The number should not be smaller than correct answers per quiz! Minimum: ${model.passing} `]; }
   return [];
 };
 
