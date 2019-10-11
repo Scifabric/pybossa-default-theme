@@ -7,7 +7,7 @@
     <p>
       In order to enable and configure quiz mode, this project must have at least one gold question. Please click
       <a
-        href="/project/test-public-quiz-vue/make-random-gold"
+        :href="`/project/${getProjectName()}/make-random-gold`"
       >here</a> to create gold questions.
     </p>
     <vue-form-generator
@@ -132,17 +132,17 @@ export default {
       this.model.errors = {};
       this.dataLoaded = true;
       this.quizModeChoices = Object.fromEntries(data.quiz_mode_choices);
-},
-  onValidated (isValid, errors) {
-    this.validForm = isValid;
-    console.log('Validation result: ', isValid, ', Errors:', errors);
-  },
-  onModelUpdate () {
-      // this force validation messaged update for questions and passing inputs
-      // will update to look for the input by name
-      this.$refs.formTest.$children[1].$children[0].validate();
-      this.$refs.formTest.$children[2].$children[0].validate();
-  },
+    },
+    onValidated (isValid, errors) {
+      this.validForm = isValid;
+      console.log('Validation result: ', isValid, ', Errors:', errors);
+    },
+
+    onModelUpdate () {
+        // this force validation messaged update for questions and passing inputs
+        this.$refs.formTest.$children[1].$children[0].validate();
+        this.$refs.formTest.$children[2].$children[0].validate();
+    },
 
     updateUsers (user) {
       this.users[user.id] = user;
@@ -158,12 +158,20 @@ export default {
       return users;
     },
 
-    getURL () {
-      let path = window.location.pathname;
-      let res = path.split('/');
-      res[res.length - 1] = 'quiz-mode';
-      return res.join('/');
+    getProjectName () {
+        const regex = new RegExp('/project/([^/]+)');
+        const match = window.location.href.match(regex);
+        let projectName;
+        if (match) {
+            projectName = match[1];
+        }
+        return projectName;
     },
+
+    getURL () {
+      return `/project/${this.getProjectName()}/quiz-mode`;
+    },
+
     async getData () {
       try {
         const res = await fetch(this.getURL(), {
@@ -201,9 +209,12 @@ export default {
           this.dataLoaded = true;
           const data = await res.json();
           this.initialize(data);
+
+          // Set errors sent by the server if there are some
           this.model.errors = data.form.errors;
-            this.$refs.formTest.$children[1].$children[0].validate();
-            this.$refs.formTest.$children[2].$children[0].validate();
+          this.$refs.formTest.$children[1].$children[0].validate();
+          this.$refs.formTest.$children[2].$children[0].validate();
+
           window.pybossaNotify(data['flash'], true, data['status']);
         } else {
           window.pybossaNotify('An error occurred configuring quiz config.', true, 'error');

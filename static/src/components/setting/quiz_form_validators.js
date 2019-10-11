@@ -1,7 +1,7 @@
 import VueFormGenerator from 'vue-form-generator';
 
 VueFormGenerator.validators.enabledValidation = function (value, field, model) {
-    if ((model.n_gold_unexpired === 0 && model.enabled) || (model.n_gold_unexpired < model.questions && model.enabled)) { return ['With the current settings users won\'t be able to finish the quiz, please add more gold tasks']; }
+    if ((model.n_gold_unexpired === 0 && model.enabled)) { return ['With the current settings users won\'t be able to finish the quiz, please add more gold tasks']; }
     return [];
 };
 
