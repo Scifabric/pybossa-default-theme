@@ -53,6 +53,7 @@
     "inject-loader": "^2.0.1",
     "isparta-loader": "^2.0.0",
     "jest": "^23.6.0",
+    "jest-transform-stub": "~2.0.0",
     "json-loader": "^0.5.4",
     "lolex": "^1.4.0",
     "mini-css-extract-plugin": "^0.5.0",
@@ -115,6 +116,7 @@
     ],
     "transform": {
       ".*\\.(vue)$": "vue-jest",
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
       "^.+\\.(js)$": "babel-jest",
       "^.+\\.html$": "<rootDir>/test/utils/htmlLoader.js"
     },
