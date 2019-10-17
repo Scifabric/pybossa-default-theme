@@ -132,7 +132,6 @@ export default {
       this.model.completion_mode = data.form.completion_mode;
       this.model.errors = {};
       this.dataLoaded = true;
-      this.model.quizModeChoices = Object.fromEntries(data.quiz_mode_choices);
       this.quizModeChoices = Object.fromEntries(data.quiz_mode_choices);
     },
     onValidated (isValid, errors) {
@@ -188,10 +187,14 @@ export default {
           },
           credentials: 'same-origin'
         });
-        const data = await res.json();
-        this.initialize(data);
+        if (res.ok) {
+          const data = await res.json();
+          this.initialize(data);
+        } else {
+          window.pybossaNotify('An error occurred configuring quiz mode.', true, 'error');
+        }
       } catch (error) {
-        window.pybossaNotify('An error occurred.', true, 'error');
+        window.pybossaNotify('An error occurred on the server.', true, 'error');
       }
     },
     async save () {
@@ -216,16 +219,15 @@ export default {
           this.dataLoaded = true;
           const data = await res.json();
           this.initialize(data);
-
           this.model.errors = data.form.errors;
           this.runValidationOnFields(['questions', 'passing']);
 
           window.pybossaNotify(data['flash'], true, data['status']);
         } else {
-          window.pybossaNotify('An error occurred configuring quiz config.', true, 'error');
+          window.pybossaNotify('An error occurred configuring quiz mode.', true, 'error');
         }
       } catch (error) {
-        window.pybossaNotify('An error occurred on the server.', true, 'error');
+         window.pybossaNotify('An error occurred on the server.', true, 'error');
       }
      }
   }
