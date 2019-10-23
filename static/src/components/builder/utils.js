@@ -17,6 +17,8 @@ import radioGroupTemplate from './components/RadioInput/radioGroupTemplate.html'
 import radioInputTemplate from './components/RadioInput/radioInputTemplate.html';
 import textTaggingTemplate from './components/TextTagging/textTaggingTemplate.html';
 import dropdownTemplate from './components/DropdownInput/dropdownTemplate.html';
+import conditionalDisplayTemplate from './components/ConditionalDisplay/conditionalDisplayTemplate.html';
+
 import { flatten, uniq, flow } from 'lodash';
 
 export const templates = {
@@ -25,6 +27,7 @@ export const templates = {
   TABLE: tableTemplate,
   TEXT_INPUT_COLUMN: textInputColumnTemplate,
   CHECKBOX_INPUT_COLUMN: checkboxInputColumnTemplate,
+  CONDITIONAL_DISPLAY: conditionalDisplayTemplate,
   TIMER: timerTemplate,
   TASK_PRESENTER: taskPresenterTemplate,
   CANCEL_BUTTON: cancelButtonTemplate,
@@ -55,6 +58,8 @@ export default {
       return this.getTextTaggingCode(form);
     } else if (component === 'DROPDOWN_INPUT') {
       return this.getDropdownCode(form);
+    } else if (component === 'CONDITIONAL_DISPLAY') {
+      return this.getConditionalDisplayCode(form, component);
     } else {
       return this.getHelperComponentCode(component);
     }
@@ -278,6 +283,12 @@ export default {
     }
     output = this.addBindSymbolIfNeedIt(form, output);
 
+    return output;
+  },
+
+  getConditionalDisplayCode (form, component) {
+    const formForTemplate = this.getValuesForTemplate(form);
+    const output = Mustache.render(templates[component], formForTemplate);
     return output;
   },
 

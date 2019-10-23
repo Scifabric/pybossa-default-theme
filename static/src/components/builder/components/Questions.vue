@@ -9,6 +9,7 @@
       <custom-router-link :component="submitLastButton" />
       <custom-router-link :component="cancelButton" />
       <custom-router-link :component="timer" />
+      <custom-router-link :component="conditionalDisplay" />
       <custom-router-link :component="textInput" />
       <custom-router-link :component="checkboxInput" />
       <custom-router-link :component="radioInput" />
@@ -197,6 +198,13 @@ export default {
         params: {
           componentName: 'DROPDOWN_INPUT',
           header: 'Dropdown Input'
+        }
+      },
+      conditionalDisplay: {
+        name: 'CONDITIONAL_DISPLAY_FORM',
+        params: {
+          componentName: 'CONDITIONAL_DISPLAY',
+          header: 'Conditional Display'
         }
       }
     };

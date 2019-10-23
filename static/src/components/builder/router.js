@@ -8,6 +8,7 @@ import PreviewCommons from './components/PreviewCommons.vue';
 import RadioForm from './components/RadioInput/RadioInputForm.vue';
 import TextTaggingForm from './components/TextTagging/TextTaggingForm.vue';
 import DropdownForm from './components/DropdownInput/DropdownForm.vue';
+import ConditionalDisplayForm from './components/ConditionalDisplay/ConditionalDisplayForm.vue';
 
 export const routes = [
   {
@@ -149,6 +150,31 @@ export const routes = [
       {
         path: 'code',
         name: 'TEXT_TAGGING_CODE',
+        components: { default: PreviewCommons }
+      }
+    ]
+  },
+  {
+    path: '/conditionaldisplay',
+    name: 'CONDITIONAL_DISPLAY',
+    components: {
+      default: Content,
+      header: Header
+    },
+    children: [
+      {
+        path: 'form',
+        name: 'CONDITIONAL_DISPLAY_FORM',
+        components: { default: ConditionalDisplayForm }
+      },
+      {
+        path: 'preview',
+        name: 'CONDITIONAL_DISPLAY_PREVIEW',
+        components: { default: PreviewCommons }
+      },
+      {
+        path: 'code',
+        name: 'CONDITIONAL_DISPLAY_CODE',
         components: { default: PreviewCommons }
       }
     ]

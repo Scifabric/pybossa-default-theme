@@ -4,6 +4,8 @@ import components from '@dtwebservices/task-presenter-components';
 import TableCreator from '../Table/TableCreator.vue';
 import CheckboxCreator from '../CheckboxInput/CheckboxCreator.vue';
 import RadioCreator from '../RadioInput/RadioCreator.vue';
+import ConditionaldisplayCreator from '../ConditionalDisplay/ConditionalDisplayCreator.vue';
+
 import { ClientTable } from 'vue-tables-2';
 import componentStates from './states';
 
@@ -11,7 +13,7 @@ Vue.use(ClientTable, {});
 
 export default {
   name: 'ComponentRender',
-  components: { ...components, TableCreator, CheckboxCreator, RadioCreator },
+  components: { ...components, TableCreator, CheckboxCreator, RadioCreator, ConditionaldisplayCreator },
   props: {
     form: {
       type: Object,
@@ -84,6 +86,10 @@ export default {
           name: 'checkbox-creator',
           attrs: { id: 'test' },
           props: { checkboxList: this.form.checkboxList }
+        };
+      } else if (this.selectedComponent === 'conditional-display-creator') {
+        return {
+          name: 'conditionaldisplay-creator'
         };
       } else if (this.selectedComponent === 'radio-creator') {
         return {

@@ -81,7 +81,9 @@ export default {
         BUTTON_ROW: 'button-row',
         SUBMIT_LAST_BUTTON: 'submit-last-button',
         TEXT_TAGGING: 'text-tagging',
-        DROPDOWN_INPUT: 'dropdown-input'
+        DROPDOWN_INPUT: 'dropdown-input',
+        CONDITIONAL_DISPLAY: 'conditionaldisplay-creator'
+
       }
     };
   },
