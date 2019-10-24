@@ -217,11 +217,11 @@
                 {% if 'task_id' in filter_data.display_columns %}
                 <td>
                     {% if can_know_task_is_gold and t.calibration %}
-                        <a class="label label-warning" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) }}">#{{ t.id }}</a>
+                        <a class="label label-warning" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id, mode='read_only') }}">#{{ t.id }}</a>
                     {% elif can_know_task_is_gold and task_pct >= 100 %}
-                        <a class="label label-success" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) }}">#{{ t.id }}</a>
+                        <a class="label label-success" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id, mode='read_only') }}">#{{ t.id }}</a>
                     {% else %}
-                        <a class="label label-info" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) }}">#{{ t.id }}</a>
+                        <a class="label label-info" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id, mode='read_only') }}">#{{ t.id }}</a>
                     {% endif %}
                     {% if can_know_task_is_gold %}
                       {{ t.n_task_runs|int }} {{_('of')}}
@@ -254,7 +254,7 @@
                         <td style="width: 100%">
                             <!-- Allow project owner, sub-admin co-owners, and admins to update Gold tasks -->
                             {% if (current_user.subadmin and current_user.id in project.owners_ids) or current_user.admin %}
-                                <a class="gold-task label label-warning" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) + '?mode=gold' }}">Update</a>
+                                <a class="gold-task label label-warning" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id, mode='gold') }}">Update</a>
                             {% else %}
                                 <div class="gold-task label label-default" title="Only Project owners can update Gold tasks.">Update</div>
                             {% endif %}
@@ -263,7 +263,7 @@
                     <td style="width: 100%">
                         <!-- Allow project owner, sub-admin co-owners, and admins to make Gold tasks -->
                         {% if (current_user.subadmin and current_user.id in project.owners_ids) or current_user.admin %}
-                            <a class="gold-task label label-info" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) + '?mode=gold' }}">Make Gold</a>
+                            <a class="gold-task label label-info" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id, mode='gold') }}">Make Gold</a>
                         {% else %}
                             <div class="gold-task label label-default" title="Only project owners can make Gold tasks.">Make Gold</div>
                         {% endif %}
