@@ -217,11 +217,11 @@
                 {% if 'task_id' in filter_data.display_columns %}
                 <td>
                     {% if can_know_task_is_gold and t.calibration %}
-                        <a class="label label-warning" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) }}">#{{ t.id }}</a>
+                        <a class="label label-warning" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) + '?mode=read_only'  }}">#{{ t.id }}</a>
                     {% elif can_know_task_is_gold and task_pct >= 100 %}
-                        <a class="label label-success" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) }}">#{{ t.id }}</a>
+                        <a class="label label-success" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) + '?mode=read_only'  }}">#{{ t.id }}</a>
                     {% else %}
-                        <a class="label label-info" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) }}">#{{ t.id }}</a>
+                        <a class="label label-info" target="_blank" href="{{ url_for('project.task_presenter', short_name=project.short_name, task_id=t.id) + '?mode=read_only' }}">#{{ t.id }}</a>
                     {% endif %}
                     {% if can_know_task_is_gold %}
                       {{ t.n_task_runs|int }} {{_('of')}}
