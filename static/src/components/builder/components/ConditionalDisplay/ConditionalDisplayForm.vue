@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <h4>Text Input Settings</h4>
+    <h4>Conditional display Settings</h4>
     <div class="col-md-12">
       <div class="row">
         <form>
@@ -15,10 +15,14 @@
               <input
                 id="condition"
                 :value="condition"
-                class="form-control form-control-sm"
+                :class="{'danger-validation':getErrors('condition')}"
                 type="text"
+                class="form-control form-control-sm"
                 @input="updateCondition($event.target.value)"
               >
+              <div class="danger-validation-text">
+                {{ getErrors('condition') }}
+              </div>
             </div>
           </div>
         </form>
@@ -32,21 +36,31 @@
   font-weight: 400;
   font-size: smaller;
 }
+.danger-validation {
+  border-color: #d9534f;
+}
+.danger-validation-text {
+  color: #d9534f;
+}
 </style>
 <script>
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {
-  name: 'CondditionalDisplayForm',
+  name: 'ConditionaldisplayForm',
   computed: {
     ...mapState({
-      condition: state => state.conditionalDisplay['condition']
+      condition: state => state.conditionalDisplay.condition
     })
   },
   methods: {
     ...mapMutations({
       'updateCondition': types.MUTATE_CONDITIONAL_DISPLAY_CONDITION
-    })
+    }),
+     getErrors (key) {
+       const errors = this.$store.getters[types.GET_CONDITIONAL_DISPLAY_ERRORS];
+      return (errors[key] || []).join('\n');
+    }
   }
 };
 </script>

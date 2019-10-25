@@ -87,14 +87,9 @@ export default {
           attrs: { id: 'test' },
           props: { checkboxList: this.form.checkboxList }
         };
-      } else if (this.selectedComponent === 'conditional-display-creator') {
-        return {
-          name: 'conditionaldisplay-creator'
-        };
       } else if (this.selectedComponent === 'radio-creator') {
         return {
           name: 'radio-creator',
-          attrs: { id: 'test' },
           props: {
             radioList: this.form.radioList,
             pybAnswer: this.form.pybAnswer,
@@ -105,7 +100,6 @@ export default {
       } else if (this.selectedComponent === 'dropdown-input') {
         return {
           name: 'dropdown-input',
-          attrs: { id: 'test' },
           props: {
             pybAnswer: this.form.pybAnswer,
             choices: this.form.choices,
@@ -115,7 +109,6 @@ export default {
       } else if (this.selectedComponent === 'text-tagging') {
         return {
           name: 'text-tagging',
-          attrs: { id: 'test' },
           props: {
             readOnly: this.form.readOnly,
             pybAnswer: this.form.pybAnswer,

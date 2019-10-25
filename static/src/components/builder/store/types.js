@@ -28,6 +28,7 @@ export const GET_DROPDOWN_INPUT_ERRORS = 'dropdownInput/GET_DROPDOWN_INPUT_ERROR
 
 export const GET_CONDITIONAL_DISPLAY_PROPS = 'conditionalDisplay/PROPS';
 export const GET_CONDITIONAL_DISPLAY_FORM_VALID = 'conditionalDisplay/PROPS_VALID';
+export const GET_CONDITIONAL_DISPLAY_ERRORS = 'conditionalDisplay/GET_CONDITIONAL_DISPLAY_ERRORS';
 
 // Mutations
 export const MUTATE_CLEAR_CHECKBOX_INPUT_FORM = 'checkboxInput/MUTATE_CLEAR_CHECKBOX_FORM';
