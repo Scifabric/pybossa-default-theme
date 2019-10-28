@@ -2,7 +2,12 @@
     <div class="navbar-inner" style="min-height:100px;">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ url_for('home.home') }}"><img src="{{url_for('static',filename='img/' + logo)}}" alt="{{brand}}"></a>
+            <a class="navbar-brand" href="{{ url_for('home.home') }}">
+                <img src="{{url_for('static',filename='img/' + logo)}}" alt="{{brand}}">
+                {% if config.DISPLAY_PLATFORM_IDENTIFIER %}
+                    <div id="platform-identifier">{{ config.SERVER_TYPE }}</div>
+                {% endif %}
+            </a>
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                 {{_('Menu')}}
             </button>
