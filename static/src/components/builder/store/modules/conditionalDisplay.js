@@ -12,7 +12,7 @@ const initialState = () => {
 export const state = initialState();
 
 function* getErrors (state) {
-  if (state.condition.includes('"')) yield ['condition', ["Please avoid using [ \" ] and use [ ' ] instead."]];
+  if (state.condition.includes('"')) yield ['condition', "Please avoid using [ \" ] and use [ ' ] instead."];
 }
 export const getters = {
   [types.GET_CONDITIONAL_DISPLAY_PROPS] (state) {
