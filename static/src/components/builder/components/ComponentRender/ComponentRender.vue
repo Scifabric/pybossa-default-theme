@@ -4,6 +4,8 @@ import components from '@dtwebservices/task-presenter-components';
 import TableCreator from '../Table/TableCreator.vue';
 import CheckboxCreator from '../CheckboxInput/CheckboxCreator.vue';
 import RadioCreator from '../RadioInput/RadioCreator.vue';
+import ConditionaldisplayCreator from '../ConditionalDisplay/ConditionalDisplayCreator.vue';
+
 import { ClientTable } from 'vue-tables-2';
 import componentStates from './states';
 
@@ -11,7 +13,7 @@ Vue.use(ClientTable, {});
 
 export default {
   name: 'ComponentRender',
-  components: { ...components, TableCreator, CheckboxCreator, RadioCreator },
+  components: { ...components, TableCreator, CheckboxCreator, RadioCreator, ConditionaldisplayCreator },
   props: {
     form: {
       type: Object,
@@ -88,7 +90,6 @@ export default {
       } else if (this.selectedComponent === 'radio-creator') {
         return {
           name: 'radio-creator',
-          attrs: { id: 'test' },
           props: {
             radioList: this.form.radioList,
             pybAnswer: this.form.pybAnswer,
@@ -99,7 +100,6 @@ export default {
       } else if (this.selectedComponent === 'dropdown-input') {
         return {
           name: 'dropdown-input',
-          attrs: { id: 'test' },
           props: {
             pybAnswer: this.form.pybAnswer,
             choices: this.form.choices,
@@ -109,7 +109,6 @@ export default {
       } else if (this.selectedComponent === 'text-tagging') {
         return {
           name: 'text-tagging',
-          attrs: { id: 'test' },
           props: {
             readOnly: this.form.readOnly,
             pybAnswer: this.form.pybAnswer,
