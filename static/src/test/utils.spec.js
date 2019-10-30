@@ -2,6 +2,7 @@ import utils from '../components/builder/utils';
 import { state as textInput } from '../components/builder/store/modules/textInput';
 import { state as checkboxInput } from '../components/builder/store/modules/checkboxInput';
 import { state as radioInput } from '../components/builder/store/modules/radioInput';
+import { state as conditionalDisplay } from '../components/builder/store/modules/conditionalDisplay';
 
 test('getTextInputCode for TEXT_INPUT', () => {
   textInput['pyb-answer'] = 'answername';
@@ -17,6 +18,19 @@ test('getTextInputCode for TEXT_INPUT', () => {
     componentCode.includes(`pyb-answer="${textInput['pyb-answer']}"`)
   ).toBeTruthy();
   expect(componentCode.includes(`id="${textInput.id}"`)).toBeTruthy();
+});
+
+test('getConditionalDisplayCode', () => {
+  conditionalDisplay.condition = "'a'=='a'";
+
+  const componentCode = utils.getSnippet('CONDITIONAL_DISPLAY', conditionalDisplay);
+
+  expect(componentCode.includes('<conditional-display')).toBeTruthy();
+  expect(componentCode.includes('</conditional-display>')).toBeTruthy();
+  expect(
+    componentCode.includes(`:condition="${conditionalDisplay.condition}"`)
+  ).toBeTruthy();
+  expect(componentCode.includes(`id="${conditionalDisplay.id}"`)).toBeTruthy();
 });
 
 it('getCheckboxInputCode for CHECKBOX_INPUT', () => {
