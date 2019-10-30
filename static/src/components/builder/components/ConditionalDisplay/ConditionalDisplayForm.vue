@@ -10,10 +10,11 @@
                 for="condition"
                 class="col-form-label-sm"
               >
-                Conditional display | <span class="label-tip">The condition that triggers the panel to display, if true.</span>
+                Conditional display | <span class="label-tip">The condition that triggers the panel to display, if true.  (e.g. answer.field === 'yes')</span>
               </label>
               <input
                 id="condition"
+                placeholder="answer.field === 'yes'"
                 :value="condition"
                 :class="{'danger-validation':getErrors('condition')}"
                 type="text"
