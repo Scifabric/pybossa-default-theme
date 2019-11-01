@@ -10,6 +10,7 @@
       <custom-router-link :component="cancelButton" />
       <custom-router-link :component="timer" />
       <custom-router-link :component="conditionalDisplay" />
+      <custom-router-link :component="fileUpload" />
       <custom-router-link :component="textInput" />
       <custom-router-link :component="checkboxInput" />
       <custom-router-link :component="radioInput" />
@@ -205,6 +206,13 @@ export default {
         params: {
           componentName: 'CONDITIONAL_DISPLAY',
           header: 'Conditional Display'
+        }
+      },
+      fileUpload: {
+        name: 'FILE_UPLOAD_FORM',
+        params: {
+          componentName: 'FILE_UPLOAD',
+          header: 'File Upload'
         }
       }
     };

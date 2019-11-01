@@ -3,8 +3,9 @@ import { state as textInput } from '../components/builder/store/modules/textInpu
 import { state as checkboxInput } from '../components/builder/store/modules/checkboxInput';
 import { state as radioInput } from '../components/builder/store/modules/radioInput';
 import { state as conditionalDisplay } from '../components/builder/store/modules/conditionalDisplay';
+import { state as fileUpload } from '../components/builder/store/modules/fileUpload';
 
-test('getTextInputCode for TEXT_INPUT', () => {
+test('getSimpleComponentsCode for TEXT_INPUT', () => {
   textInput['pyb-answer'] = 'answername';
   textInput.label = 'Test label';
   textInput.labelAdded = true;
@@ -31,6 +32,25 @@ test('getConditionalDisplayCode', () => {
     componentCode.includes(`:condition="${conditionalDisplay.condition}"`)
   ).toBeTruthy();
   expect(componentCode.includes(`id="${conditionalDisplay.id}"`)).toBeTruthy();
+});
+
+test('getSimpleComponentsCode for FILE_UPLOAD', () => {
+  fileUpload.pybAnswer = 'answername';
+  fileUpload.label = 'Test label';
+  fileUpload.labelAdded = true;
+  fileUpload.fielName = 'testfileName';
+
+  const componentCode = utils.getSnippet('FILE_UPLOAD', fileUpload);
+
+  expect(componentCode.includes('<file-upload')).toBeTruthy();
+  expect(componentCode.includes('</file-upload>')).toBeTruthy();
+  expect(
+    componentCode.includes(`pyb-answer="${fileUpload.pybanswer}"`)
+  ).toBeTruthy();
+  expect(
+    componentCode.includes(`file-name="${fileUpload.fileName}"`)
+  ).toBeTruthy();
+  expect(componentCode.includes(`id="${fileUpload.id}"`)).toBeTruthy();
 });
 
 it('getCheckboxInputCode for CHECKBOX_INPUT', () => {
