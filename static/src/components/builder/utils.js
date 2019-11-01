@@ -18,6 +18,7 @@ import radioInputTemplate from './components/RadioInput/radioInputTemplate.html'
 import textTaggingTemplate from './components/TextTagging/textTaggingTemplate.html';
 import dropdownTemplate from './components/DropdownInput/dropdownTemplate.html';
 import conditionalDisplayTemplate from './components/ConditionalDisplay/conditionalDisplayTemplate.html';
+import fileUploadTemplate from './components/FileUpload/fileUploadTemplate.html';
 
 import { flatten, uniq, flow } from 'lodash';
 
@@ -28,6 +29,7 @@ export const templates = {
   TEXT_INPUT_COLUMN: textInputColumnTemplate,
   CHECKBOX_INPUT_COLUMN: checkboxInputColumnTemplate,
   CONDITIONAL_DISPLAY: conditionalDisplayTemplate,
+  FILE_UPLOAD: fileUploadTemplate,
   TIMER: timerTemplate,
   TASK_PRESENTER: taskPresenterTemplate,
   CANCEL_BUTTON: cancelButtonTemplate,
@@ -53,7 +55,9 @@ export default {
     } else if (component === 'RADIO_INPUT') {
       return this.getRadioGroupCode(form);
     } else if (component === 'TEXT_INPUT') {
-      return this.getTextInputCode(form, component);
+      return this.getSimpleComponentsCode(form, component);
+    } else if (component === 'FILE_UPLOAD') {
+      return this.getSimpleComponentsCode(form, component);
     } else if (component === 'TEXT_TAGGING') {
       return this.getTextTaggingCode(form);
     } else if (component === 'DROPDOWN_INPUT') {
@@ -269,7 +273,7 @@ export default {
     return output;
   },
 
-  getTextInputCode (form, component) {
+  getSimpleComponentsCode (form, component) {
     const formForTemplate = this.getValuesForTemplate(form);
 
     let output = Mustache.render(templates[component], formForTemplate);

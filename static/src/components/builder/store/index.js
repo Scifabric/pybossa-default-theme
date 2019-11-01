@@ -7,6 +7,7 @@ import radioInput from './modules/radioInput';
 import textTagging from './modules/textTagging';
 import dropdownInput from './modules/dropdownInput';
 import conditionalDisplay from './modules/conditionalDisplay';
+import fileUpload from './modules/fileUpload';
 
 import { getStoreOptions, setNamespace } from '@dtwebservices/task-presenter-components';
 
@@ -30,6 +31,7 @@ export default new Vuex.Store({
     radioInput,
     textTagging,
     dropdownInput,
-    conditionalDisplay
+    conditionalDisplay,
+    fileUpload
   }
 });

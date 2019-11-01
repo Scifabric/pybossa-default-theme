@@ -81,6 +81,12 @@ export default {
           attrs: { id: this.id },
           props: { 'pyb-answer': this.form['pyb-answer'] }
         };
+      } else if (this.selectedComponent === 'file-upload') {
+        return {
+          name: 'file-upload',
+          attrs: { id: this.id },
+          props: { pybanswer: this.form.pybanswer, fileName: this.form.fileName }
+        };
       } else if (this.selectedComponent === 'checkbox-creator') {
         return {
           name: 'checkbox-creator',
