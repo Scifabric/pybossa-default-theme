@@ -53,7 +53,7 @@
                 for="filename"
                 class="col-form-label-sm"
               >
-                File name | <span class="label-tip">The new file name that will overwrite the current file name of the file uploaded.</span>
+                File name | <span class="label-tip">Optional - The new file name that will overwrite the current file name of the file uploaded.</span>
               </label>
               <input
                 id="filename"
