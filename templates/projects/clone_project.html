@@ -5,7 +5,8 @@
 {% set active_link = "clone" %}
 {% block projectcontent %}
 <p>
-    Clone a job will copy all aspects of the current project except tasks. Please set the name and short name for the new job.
-</p>
+        Cloning project will copy all possible settings except tasks,
+        task runs and results from current project to the new/cloned project.
+        Please set a different project name and project short name for the new project.</p>
 {{ render_form(form, action_url=action_url) }}
 {% endblock %}
