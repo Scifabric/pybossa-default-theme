@@ -1,0 +1,12 @@
+{% extends "projects/base.html" %}
+{% from "_formhelpers.html" import render_form %}
+{% set active_page = "projects" %}
+{% set active_project  = "all" %}
+{% set active_link = "clone" %}
+{% block projectcontent %}
+<p>
+        Cloning project will copy all possible settings except tasks,
+        task runs and results from current project to the new/cloned project.
+        Please set a different project name and project short name for the new project.</p>
+{{ render_form(form, action_url=action_url) }}
+{% endblock %}
