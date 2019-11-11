@@ -19,7 +19,7 @@
                 </tr>
                 {% if current_user.admin or current_user.subadmin or current_user.id in project.owners_ids %}
                 <tr>
-                    <td><p>Total number of tasks remaining:</p></td>
+                    <td><p>Number of incpmplete tasks remaining (exclude gold tasks):</p></td>
                     <td><p>{{n_available_tasks}}</p></td>
                 </tr>
                 <tr>
@@ -27,12 +27,12 @@
                     <td><p>{{num_expected_task_runs}}</p></td>
                 </tr>
                 <tr>
-                    <td><p>Total number of task runs remaining:</p></td>
+                    <td><p>Number of incpmplete task runs remaining (exclude gold tasks):</p></td>
                     <td><p>{{num_remaining_task_runs}}</p></td>
                 </tr>
                 {% endif %}
                 <tr>
-                    <td><p>Total number of tasks available for you:</p></td>
+                    <td><p>Tasks available for you:</p></td>
                     <td><p>{{n_available_tasks_for_user}}</p></td>
                 </tr>
                 <tr>
