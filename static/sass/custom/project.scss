@@ -13,12 +13,6 @@
 }
 
 #create-project-form {
-    input:invalid, textarea:invalid, select:invalid {
-        border: 1px solid red;
-        outline: none;
-        transition: border-color .5s ease-out;
-    }
-
     .form-group.password {
       margin-bottom: 0;
     }
