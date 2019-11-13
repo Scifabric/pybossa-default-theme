@@ -14,21 +14,25 @@
                     <td><p>{{project.short_name}}</p></td>
                 </tr>
                 <tr>
-                    <td><p>Total number of tasks:</p></td>
+                    <td><p>Total number of tasks (exclude gold tasks):</p></td>
                     <td><p>{{n_tasks}}</p></td>
                 </tr>
                 {% if current_user.admin or current_user.subadmin or current_user.id in project.owners_ids %}
                 <tr>
-                    <td><p>Number of incomplete tasks remaining (exclude gold tasks):</p></td>
+                    <td><p>Number of incomplete tasks (exclude gold tasks):</p></td>
                     <td><p>{{n_available_tasks}}</p></td>
                 </tr>
                 <tr>
-                    <td><p>Total number of expected task runs (include gold tasks):</p></td>
+                    <td><p>Total number of task runs (exclude gold tasks):</p></td>
                     <td><p>{{num_expected_task_runs}}</p></td>
                 </tr>
                 <tr>
-                    <td><p>Number of incomplete task runs remaining (exclude gold tasks):</p></td>
+                    <td><p>Number of incomplete task runs (exclude gold tasks):</p></td>
                     <td><p>{{num_remaining_task_runs}}</p></td>
+                </tr>
+                <tr>
+                    <td><p>Total number of gold task:</p></td>
+                    <td><p>{{num_gold_tasks}}</p></td>
                 </tr>
                 {% endif %}
                 <tr>
