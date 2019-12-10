@@ -311,7 +311,11 @@
                                {% if show_ownership and current_user.id in f.owners_ids and f.owner_id != current_user.id %}
                                <em>{{ _('Co-owner')}}</em>
                                {% endif %}
-                               <p>{{f.description}}</p>
+                               <p title="{{f.description}}">{{f.description}}</p>
+                               <div class="progress">
+                                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" style="width: {{f.overall_progress}}%;"></div>
+                               </div>
+
                                {% if featured %}
                                {% if f.featured %}
                                <p class="readmore">
