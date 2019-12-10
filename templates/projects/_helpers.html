@@ -313,7 +313,9 @@
                                {% endif %}
                                <p title="{{f.description}}">{{f.description}}</p>
                                <div class="progress">
-                                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" style="width: {{f.overall_progress}}%;"></div>
+                                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" style="width: {{f.overall_progress}}%;">
+                                    <span>{{f.overall_progress}}%</span>
+                                </div>
                                </div>
 
                                {% if featured %}

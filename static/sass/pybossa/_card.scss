@@ -40,7 +40,13 @@
         }
 
         .progress {
+            height: 15px;
             margin-bottom: 12px;
+            border-radius: 2px;
+            span {
+                line-height: 13px;
+                font-size: 13px;
+            }
         }
     }
 
