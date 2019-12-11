@@ -27,7 +27,6 @@
         {% if active_cat.short_name!="search_results"%}
         {% set container_class="col-md-9" %}
             <div class="col-md-3 navigation-element" style="margin-top: 21px">
-                <a class="list-group-item {% if active_cat.short_name=='historical_contributions' %}active{% endif %}" href="{{url_for('project.project_cat_index', category='historical_contributions')}}" rel="nofollow">{{ _('Historical Contributions') }}<i class="fa fa-chevron-right pull-right"></i></a>
                 <div class="list-group">
                 {% for c in categories %}
                     <a class="list-group-item {% if active_cat.short_name==c.short_name%}active{% endif %}" href="{{url_for('project.project_cat_index', category=c.short_name)}}" rel="nofollow">{{ c.name }}<i class="fa fa-chevron-right pull-right"></i></a>
