@@ -14,13 +14,14 @@
     .caption {
         padding-left: 20px;
         padding-right: 20px;
-        padding-bottom: 10px;
+        padding-bottom: 5px;
 
         p {
             display: block;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            font-size: 15px;
         }
 
         br{display: block;}
@@ -35,6 +36,16 @@
                 text-transform: uppercase;
                 font-weight: 600;
                 cursor: pointer;
+            }
+        }
+
+        .progress {
+            height: 15px;
+            margin-bottom: 12px;
+            border-radius: 2px;
+            span {
+                line-height: 13px;
+                font-size: 13px;
             }
         }
     }
@@ -52,19 +63,18 @@
     }
 }
 
-$font-size: 20px;
+$font-size: 15px;
 $line-height: 1.4;
-$lines-to-show: 2;
+$lines-to-show: 3;
 
 .card {
     background-color: $white;
     .caption h3 {
+        margin-top: 0.5em;
         color: $grey;
         font-weight: 600;
-        font-size: 20px;
         display: block;
         display: -webkit-box;
-        min-height: 45px;
         height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
         font-size: $font-size;
         line-height: $line-height;
@@ -128,7 +138,7 @@ $lines-to-show: 2;
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     .post-pic {
-        height: 253px;
+        height: 153px;
     }
 
     .project-tiles {
@@ -204,4 +214,3 @@ $lines-to-show: 2;
         }
     }
 }
-

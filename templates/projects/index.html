@@ -7,76 +7,68 @@
 {% block content %}
 <section class="project categories selector">
     <div class="container">
-        {% if current_user.is_authenticated and (current_user.admin or current_user.subadmin) %}
         <div class="row" style="margin-top:30px;">
-            <form id="project_search_form" method="get" action="{{ url_for('project.search') }}">
+            <form class="form-inline" method="get" action="{{ url_for('project.search') }}">
                 <fieldset>
-                    <div class="form-group">
-                        <label for="search_text" class="control-label">
-                            Search:
-                        </label>
-                        <input type="text" class="form-control" id="search_text"
-                            name="search_text"
-                            placeholder="Phrase to search for"
-                            {% if search_text %}value="{{search_text}}"{% endif %}>
-                    </div>
-                    <div class="form-actions">
-                        <input type="submit" value={{_('Search')}} class="btn btn-primary" />
+                    <div class="col-xs-12 text-center">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="search_text"
+                                name="search_text"
+                                placeholder="Search projects"
+                                {% if search_text %}value="{{search_text}}"{% endif %}>
+                            <input type="submit" value={{_('Search')}} class="btn btn-primary" />
+                        </div>
                     </div>
                 </fieldset>
             </form>
         </div>
-        {% endif %}
+        <div>
+        {% set container_class="col-md-12" %}
         {% if active_cat.short_name!="search_results"%}
-        <div class="row">
-            <div class="text-center" style="margin-top:30px;">
-                <h1>Project Categories</h1>
-                <button id="hide-types" class="btn btn-info btn-sm">Hide</button>
-                <button id="show-types" class="btn btn-info btn-sm hidden">Show</button>
-            </div>
-            <div id="categories">
-                <div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
-                    <div class="nav nav-pills nav-justified categories">
-                        {% for c in categories %}
-                            <a class="floating-box {% if active_cat.short_name==c.short_name%}active{% endif %}" href="{{url_for('project.project_cat_index', category=c.short_name)}}" rel="nofollow">{{ c.name }}<i class="icon-chevron-right"></i></a>
-                        {% endfor %}
-                        {% if current_user.is_authenticated and current_user.admin %}
-                            <a class="floating-box {% if active_cat.short_name=='draft'%}active{% endif %}" href="{{url_for('project.draft')}}" rel="nofollow">{{ _('Draft') }}<i class="icon-chevron-right"></i></a>
-                        {% endif %}
-                    </div>
+        {% set container_class="col-md-9" %}
+            <div class="col-md-3 navigation-element" style="margin-top: 21px">
+                <div class="list-group">
+                {% for c in categories %}
+                    <a class="list-group-item {% if active_cat.short_name==c.short_name%}active{% endif %}" href="{{url_for('project.project_cat_index', category=c.short_name)}}" rel="nofollow">{{ c.name }}<i class="fa fa-chevron-right pull-right"></i></a>
+                {% endfor %}
+                {% if current_user.is_authenticated and current_user.admin %}
+                    <a class="list-group-item {% if active_cat.short_name=='draft'%}active{% endif %}" href="{{url_for('project.draft')}}" rel="nofollow">{{ _('Draft') }}<i class="fa fa-chevron-right pull-right"></i></a>
+                {% endif %}
                 </div>
+            </div>
+        {% endif %}
+            <div class="{{container_class}}">
+            {% if projects %}
+                {% set projects_class="col-xs-12 col-sm-4 col-lg-3" %}
+                {% if active_cat.short_name=="featured" %}
+                    {% set title = _('Featured Projects') %}
+                    {% set subheading =_('A special selection of the most interesting projects') %}
+                {% elif active_cat.short_name=='draft' %}
+                    {% set title = _('Draft Projects') %}
+                    {% set subheading = _('Work in progress projects') %}
+                {% elif active_cat.short_name=="search_results" %}
+                    {% set title = _('Search Results') %}
+                    {% set subheading = active_cat.description %}
+                    {% set projects_class="col-xs-6 col-sm-4 col-md-2" %}
+                {% else %}
+                    {% set title = active_cat.name + ' ' + _('Projects') %}
+                    {% set subheading = active_cat.description %}
+                {% endif %}
+                    {{ helper.render_grid_projects(projects, title, upload_method, current_user, section_class="account category-projects", title_size=3, title_class="col-md-12", projects_class=projects_class, container=False, active_cat = active_cat.short_name, subheading=subheading)}}
+                    {% if pagination.pages > 1 %}
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            {{ helper_account.render_pagination(pagination) }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% elif active_cat.short_name=="search_results" %}
+                <h3>{{_('No projects found.')}}</h3>
+            {% else %}
+                <h3>{{_('Sorry, there are no published projects for this category yet')}}</h3>
+            {% endif %}
             </div>
         </div>
-        {% endif %}
-        {% if projects %}
-            {% if active_cat.short_name=="featured"%}
-                {% set title = _('Featured Projects') %}
-                {% set subheading =_('A special selection of the most interesting projects') %}
-            {% elif active_cat.short_name=='draft' %}
-                {% set title = _('Draft Projects') %}
-                {% set subheading = _('Work in progress projects') %}
-            {% else %}
-                {% set title = active_cat.name + ' ' + _('Projects') %}
-                {% set subheading = active_cat.description %}
-            {% endif %}
-            <div class="row">
-                <div class="col-md-offset-1 col-md-10">
-                    {{ helper.render_grid_projects(projects, title, upload_method, current_user, title_class="col-md-12", container=False, active_cat = active_cat.short_name, subheading=subheading)}}
-                </div>
-            </div>
-            {% if pagination.pages > 1 %}
-            <div class="col-md-offset-2 col-md-8 text-center">
-                {{ helper_account.render_pagination(pagination) }}
-            </div>
-            {% endif %}
-        {% elif active_cat.short_name=="search_results" %}
-            <h3>{{_('No projects found.')}}</h3>
-        {% else %}
-            <h3>{{_('Sorry, there are no published projects for this category yet')}}</h3>
-        {% endif %}
     </div>
 </section>
-{% endblock %}
-{% block extrajs %}
-{% include "projects/js/categories.js" %}
 {% endblock %}
