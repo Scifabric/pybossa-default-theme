@@ -39,3 +39,14 @@
     background-color: #1d618e;
     border-color: #1d618e;
 }
+
+.btn-primary-alt {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-primary-alt:focus, .btn-primary-alt.focus, .btn-primary-alt:active, .btn-primary-alt.active, .btn-primary-alt:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
