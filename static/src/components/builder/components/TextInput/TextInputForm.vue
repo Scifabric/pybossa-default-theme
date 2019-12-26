@@ -24,6 +24,26 @@
                 type="text"
                 @input="updateLabel($event.target.value)"
               >
+              <label
+                class="block-label"
+              >
+                Input Type
+                <select
+                  class="form-control form-control-sm dropdown-item"
+                  :value="inputTypeOptions[inputType]"
+                  @input="updateType($event.target.value)"
+                >
+
+                  <option
+                    v-for="(v, k) in inputTypeOptions"
+                    :key="k"
+                    :value="v"
+                  >
+                    {{ k }}
+                  </option>
+                </select>
+              </label>
+
             </div>
           </div>
           <div class="form-row">
@@ -60,10 +80,24 @@ import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {
   name: 'TextInputForm',
+    data () {
+    return {
+      inputTypeOptions: {
+        Text: 'text',
+        Number: 'number',
+        Date: 'date',
+        Time: 'time',
+        Email: 'email',
+        URL: 'url'
+      },
+      inputType: 'Text'
+    };
+  },
   computed: {
     ...mapState({
       label: state => state.textInput.label,
       labelAdded: state => state.textInput.labelAdded,
+      type: state => state.textInput.type,
       pybanwer: state => state.textInput['pyb-answer']
     })
   },
@@ -71,8 +105,19 @@ export default {
     ...mapMutations({
       'updateLabel': types.MUTATE_TEXT_INPUT_LABEL,
       'updateLabelAdded': types.MUTATE_TEXT_INPUT_LABEL_ADDED,
+      'updateType': types.MUTATE_TEXT_INPUT_TYPE,
       'updatePybanswer': types.MUTATE_TEXT_INPUT_PYB_ANSWER
     })
   }
 };
 </script>
+<style scoped>
+.block-label {
+  color: black;
+  font-size: 16px;
+  display: block;
+}
+.dropdown-item {
+  font-weight: 400;
+}
+</style>
