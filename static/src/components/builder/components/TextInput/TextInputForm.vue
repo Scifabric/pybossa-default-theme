@@ -30,10 +30,9 @@
                 Input Type
                 <select
                   class="form-control form-control-sm dropdown-item"
-                  :value="inputTypeOptions[inputType]"
+                  :value="type"
                   @input="updateType($event.target.value)"
                 >
-
                   <option
                     v-for="(v, k) in inputTypeOptions"
                     :key="k"
@@ -89,8 +88,7 @@ export default {
         Time: 'time',
         Email: 'email',
         URL: 'url'
-      },
-      inputType: 'Text'
+      }
     };
   },
   computed: {

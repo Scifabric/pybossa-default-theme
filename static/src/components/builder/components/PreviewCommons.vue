@@ -15,7 +15,6 @@
           <!-- This line is space sensives it can lose the code format  -->
           <!-- eslint-disable-next-line vue/singleline-html-element-content-newline -->
           <prism language="html">{{ snippet }}</prism>
-          {{snippet}}
         </div>
         <div
           v-if="$route.path.includes('preview')"
@@ -118,6 +117,7 @@ export default {
             isValidForm: this.isValidForm
           };
         }
+        console.log(form)
         return form;
       }
     },
