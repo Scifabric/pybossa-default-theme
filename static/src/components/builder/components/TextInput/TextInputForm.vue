@@ -24,24 +24,26 @@
                 type="text"
                 @input="updateLabel($event.target.value)"
               >
-              <label
-                class="block-label"
-              >
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label class="block-label bold-label">
                 Input Type
-                <select
-                  class="form-control form-control-sm dropdown-item"
-                  :value="type"
-                  @input="updateType($event.target.value)"
+               </label>
+              <select
+                class="form-control form-control-sm"
+                :value="type"
+                @input="updateType($event.target.value)"
+              >
+                <option
+                  v-for="(v, k) in inputTypeOptions"
+                  :key="k"
+                  :value="v"
                 >
-                  <option
-                    v-for="(v, k) in inputTypeOptions"
-                    :key="k"
-                    :value="v"
-                  >
-                    {{ k }}
-                  </option>
-                </select>
-              </label>
+                  {{ k }}
+                </option>
+              </select>
             </div>
           </div>
           <div class="form-row">
@@ -66,14 +68,8 @@
     </div>
   </div>
 </template>
-<style scoped>
-.label-tip {
-  font-style: italic;
-  font-weight: 400;
-  font-size: smaller;
-}
-</style>
 <script>
+import '../../../../../css/component_builder.css'
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {
@@ -108,13 +104,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.block-label {
-  color: black;
-  font-size: 16px;
-  display: block;
-}
-.dropdown-item {
-  font-weight: 400;
-}
-</style>

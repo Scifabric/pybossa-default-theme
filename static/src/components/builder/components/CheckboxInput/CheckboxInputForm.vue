@@ -98,32 +98,8 @@
     </button>
   </div>
 </template>
-<style scoped>
-.block-label {
-  color: black;
-  font-size: 16px;
-  font-weight: 400;
-  display: block;
-}
-.label-tip {
-  font-style: italic;
-  font-weight: 400;
-  font-size: smaller;
-}
-.scroll {
-  overflow-x: hidden;
-  max-height: 600px;
-  overflow-y: scroll;
-  margin-bottom: 20px;
-}
-.btn-times-delete {
-  color: #d9534f;
-}
-.btn-times-delete:hover {
-  color: #d9534f;
-}
-</style>
 <script>
+import '../../../../../css/component_builder.css'
 import { mapState, mapMutations, mapGetters } from 'vuex';
 import * as types from '../../store/types';
 import { cloneDeep } from 'lodash';

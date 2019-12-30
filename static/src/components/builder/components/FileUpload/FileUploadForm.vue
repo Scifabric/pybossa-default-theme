@@ -69,20 +69,8 @@
     </div>
   </div>
 </template>
-<style scoped>
-.label-tip {
-  font-style: italic;
-  font-weight: 400;
-  font-size: smaller;
-}
-.danger-validation {
-  border-color: #d9534f;
-}
-.danger-validation-text {
-  color: #d9534f;
-}
-</style>
 <script>
+import '../../../../../css/component_builder.css'
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {

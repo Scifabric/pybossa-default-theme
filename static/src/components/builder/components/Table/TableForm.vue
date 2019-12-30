@@ -183,46 +183,13 @@
 </template>
 
 <style scoped>
-.col-labels {
-  color: black;
-  font-size: 16px;
-  font-weight: 400;
-}
-.block-label {
-  color: black;
-  font-size: 16px;
-  font-weight: 400;
-  display: block;
-}
-.label-tip {
-  font-style: italic;
-  font-weight: 400;
-  font-size: smaller;
-}
-.btn-times-delete {
-  color: #d9534f;
-}
-.btn-times-delete:hover {
-  color: #d9534f;
-}
-.danger-validation {
-  border-color: #d9534f;
-}
-.danger-validation-text {
-  color: #d9534f;
-}
-.scroll {
-  overflow-x: hidden;
-  max-height: 600px;
-  overflow-y: scroll;
-  margin-bottom: 20px;
-}
 .right-padding-radio {
   padding-right: 10px;
 }
 </style>
 
 <script>
+import '../../../../../css/component_builder.css'
 import Vue from 'vue';
 import { mapState, mapMutations, mapGetters } from 'vuex';
 import StaticData from './StaticData.vue';
