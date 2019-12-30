@@ -33,8 +33,8 @@
       Choices
     </h4>
     <div
-        id="choices"
-        class="scroll"
+      id="choices"
+      class="scroll"
     >
       <div
         v-for="(choice, index) in choiceList"
@@ -115,7 +115,7 @@
 }
 </style>
 <script>
-import '../../../../../css/component_builder.css'
+import '../../../../../css/component_builder.css';
 import { mapMutations, mapState } from 'vuex';
 import * as types from '../../store/types';
 import { cloneDeep, chain } from 'lodash';

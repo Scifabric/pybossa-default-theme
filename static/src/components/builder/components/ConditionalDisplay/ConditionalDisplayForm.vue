@@ -32,7 +32,7 @@
   </div>
 </template>
 <script>
-import '../../../../../css/component_builder.css'
+import '../../../../../css/component_builder.css';
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {

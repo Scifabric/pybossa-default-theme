@@ -332,7 +332,7 @@
   </div>
 </template>
 <script>
-import '../../../../../css/component_builder.css'
+import '../../../../../css/component_builder.css';
 import { mapMutations, mapState } from 'vuex';
 import * as types from '../../store/types';
 import { chain } from 'lodash';

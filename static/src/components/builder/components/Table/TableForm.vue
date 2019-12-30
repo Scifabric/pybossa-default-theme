@@ -189,7 +189,7 @@
 </style>
 
 <script>
-import '../../../../../css/component_builder.css'
+import '../../../../../css/component_builder.css';
 import Vue from 'vue';
 import { mapState, mapMutations, mapGetters } from 'vuex';
 import StaticData from './StaticData.vue';

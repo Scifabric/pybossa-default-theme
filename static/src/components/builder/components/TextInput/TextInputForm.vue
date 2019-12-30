@@ -30,7 +30,7 @@
             <div class="form-group col-md-12">
               <label class="block-label bold-label">
                 Input Type
-               </label>
+              </label>
               <select
                 class="form-control form-control-sm"
                 :value="type"
@@ -69,7 +69,7 @@
   </div>
 </template>
 <script>
-import '../../../../../css/component_builder.css'
+import '../../../../../css/component_builder.css';
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {
