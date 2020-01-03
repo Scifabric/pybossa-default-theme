@@ -28,7 +28,7 @@
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
-              <label class="block-label bold-label">
+              <label class="col-form-label-sm">
                 Input Type
               </label>
               <select
@@ -69,7 +69,6 @@
   </div>
 </template>
 <script>
-import '../../../../../css/component_builder.css';
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {

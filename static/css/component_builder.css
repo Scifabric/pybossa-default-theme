@@ -11,9 +11,6 @@
   font-weight: 400;
   font-size: smaller;
 }
-.bold-label {
-  font-weight: bold !important;
-}
 .block-label {
   color: black;
   font-size: 16px;
