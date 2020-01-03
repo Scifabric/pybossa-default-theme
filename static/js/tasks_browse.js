@@ -540,6 +540,24 @@ $(document).ready(function() {
     });
 });
 
+const sanitizeChars = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+    '/': '&#x2F;',
+    '`': '&#x60;',
+    '=': '&#x3D;'
+};
+const sanitizeRegex = new RegExp('[' + Object.keys(sanitizeChars).join('') + ']', 'g');
+
+function sanitizeHtml(text) {
+    return text.replace(sanitizeRegex, function (c) {
+        return sanitizeChars[c];
+    })
+}
+
 function displayTaskInfo(taskInfo, data) {
     if (data.length < 1) {
         return;
@@ -558,7 +576,7 @@ function displayTaskInfo(taskInfo, data) {
         info += '<tr>';
         for (var j = 0; j < headers.length; j++) {
             var headerName = headers[j];
-            info += '<td>' + JSON.stringify(dataInfo[i].info[headerName]) + '</td>';
+            info += '<td>' + sanitizeHtml(JSON.stringify(dataInfo[i].info[headerName])) + '</td>';
         }
         info += '</tr>';
     }
@@ -571,7 +589,7 @@ function displayTaskInfo(taskInfo, data) {
         info += '<th>Field Value</th></tr></thead><tbody>'
         for (var fieldName in dataGoldAnswers){
             info += '<tr><td>' + fieldName + '</td>'
-            info += '<td>' + dataGoldAnswers[fieldName] + '</td></tr>'
+            info += '<td>' + sanitizeHtml(dataGoldAnswers[fieldName]) + '</td></tr>'
         }
         info += '</tbody></table>';
     }
