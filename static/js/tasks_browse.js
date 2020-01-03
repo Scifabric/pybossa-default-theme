@@ -540,17 +540,17 @@ $(document).ready(function() {
     });
 });
 
-var sanitizeChars = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;',
-        '/': '&#x2F;',
-        '`': '&#x60;',
-        '=': '&#x3D;'
-    },
-    sanitizeRegex = new RegExp('[' + Object.keys(sanitizeChars).join('') + ']', 'g');
+const sanitizeChars = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+    '/': '&#x2F;',
+    '`': '&#x60;',
+    '=': '&#x3D;'
+};
+const sanitizeRegex = new RegExp('[' + Object.keys(sanitizeChars).join('') + ']', 'g');
 
 function sanitizeHtml(text) {
     return text.replace(sanitizeRegex, function (c) {
