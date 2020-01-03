@@ -28,6 +28,26 @@
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
+              <label class="col-form-label-sm">
+                Input Type
+              </label>
+              <select
+                class="form-control form-control-sm"
+                :value="type"
+                @input="updateType($event.target.value)"
+              >
+                <option
+                  v-for="(v, k) in inputTypeOptions"
+                  :key="k"
+                  :value="v"
+                >
+                  {{ k }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
               <label
                 for="pyb-answer"
                 class="col-form-label-sm"
@@ -48,22 +68,28 @@
     </div>
   </div>
 </template>
-<style scoped>
-.label-tip {
-  font-style: italic;
-  font-weight: 400;
-  font-size: smaller;
-}
-</style>
 <script>
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {
   name: 'TextInputForm',
+    data () {
+    return {
+      inputTypeOptions: {
+        Text: 'text',
+        Number: 'number',
+        Date: 'date',
+        Time: 'time',
+        Email: 'email',
+        URL: 'url'
+      }
+    };
+  },
   computed: {
     ...mapState({
       label: state => state.textInput.label,
       labelAdded: state => state.textInput.labelAdded,
+      type: state => state.textInput.type,
       pybanwer: state => state.textInput['pyb-answer']
     })
   },
@@ -71,6 +97,7 @@ export default {
     ...mapMutations({
       'updateLabel': types.MUTATE_TEXT_INPUT_LABEL,
       'updateLabelAdded': types.MUTATE_TEXT_INPUT_LABEL_ADDED,
+      'updateType': types.MUTATE_TEXT_INPUT_TYPE,
       'updatePybanswer': types.MUTATE_TEXT_INPUT_PYB_ANSWER
     })
   }
