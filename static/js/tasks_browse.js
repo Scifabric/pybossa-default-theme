@@ -329,11 +329,14 @@ $(document).ready(function() {
         pybossaNotify('Your request is being executed. Please wait...', true, 'warning')
     });
 
+    var wizardHeight = $('#wizard-container').height() || 0;
+    var navbarHeight = 100;
+
     $('body').on('contextmenu', '#tasksGrid tbody tr', function(e) {
         $('#context-menu').css({
             display: 'block',
             left: e.pageX - $(this).offset().left,
-            top: e.pageY - 100
+            top: e.pageY - navbarHeight - wizardHeight
         });
         selectedTask = $(this).find('td:first').text()
                               .trim().split(' ')[0].substring(1).trim();
