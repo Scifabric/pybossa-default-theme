@@ -329,8 +329,8 @@ $(document).ready(function() {
         pybossaNotify('Your request is being executed. Please wait...', true, 'warning')
     });
 
-    var wizardHeight = $('#wizard-container').height() || 0;
-    var navbarHeight = 100;
+    const wizardHeight = $('#wizard-container').height() || 0;
+    const navbarHeight = 100;
 
     $('body').on('contextmenu', '#tasksGrid tbody tr', function(e) {
         $('#context-menu').css({
