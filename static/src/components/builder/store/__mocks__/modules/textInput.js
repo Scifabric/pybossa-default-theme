@@ -22,6 +22,7 @@ export const getters = {
 export const mutations = {
   [types.MUTATE_TEXT_INPUT_LABEL]: jest.fn(),
   [types.MUTATE_TEXT_INPUT_LABEL_ADDED]: jest.fn(),
+  [types.MUTATE_TEXT_INPUT_TYPE]: jest.fn(),
   [types.MUTATE_TEXT_INPUT_PYB_ANSWER]: jest.fn(),
   [types.MUTATE_CLEAR_TEXT_INPUT_FORM]: jest.fn()
 };

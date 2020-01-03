@@ -7,6 +7,7 @@ const initialState = () => {
     'pyb-answer': '',
     label: '',
     labelAdded: false,
+    type: 'text',
     isValidForm: true
   };
 };
@@ -31,6 +32,9 @@ export const mutations = {
   },
   [types.MUTATE_TEXT_INPUT_LABEL_ADDED] (state, payload) {
     state.labelAdded = payload;
+  },
+  [types.MUTATE_TEXT_INPUT_TYPE] (state, payload) {
+    state.type = payload;
   },
   [types.MUTATE_TEXT_INPUT_PYB_ANSWER] (state, payload) {
     state['pyb-answer'] = payload;
