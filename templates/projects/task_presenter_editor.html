@@ -143,6 +143,12 @@
                                 <td><p>Last Commit:</p></td>
                                 <td class="ref-details"><a href={{ guidelines_github.ref_url }} target="_blank">{{ guidelines_github.ref }}</a></td>
                             </tr>
+                            {% if guidelines_github.error %}
+                            <tr>
+                              <td><p>Error:</p></td>
+                              <td><p>{{ guidelines_github.error }}</p></td>
+                            </tr>
+                            {% endif %}
                           </table>
                       {% else %}
                           <p class="message">Project guidelines were not updated via GitHub.</p>
@@ -209,7 +215,7 @@
                       </a>
                     </div>
                     <div id="panel-taskpresenter-github" class="panel-body collapse {{ 'in' if task_presenter_github_exists else '' }}">
-                      {% if github_data_exists %}
+                      {% if task_presenter_github_exists %}
                           <table class="table table-hover table-condensed" >
                             <tr>
                                 <td ><p>Author:</p></td>
@@ -227,6 +233,12 @@
                                 <td><p>Last Commit:</p></td>
                                 <td class="ref-details"><a href={{ task_presenter_github.ref_url }} target="_blank">{{ task_presenter_github.ref }}</a></td>
                             </tr>
+                            {% if task_presenter_github.error %}
+                            <tr>
+                              <td><p>Error:</p></td>
+                              <td><p>{{ task_presenter_github.error }}</p></td>
+                            </tr>
+                            {% end if %}
                           </table>
                       {% else %}
                           <p class="message">Task presenter code was not updated via GitHub.</p>
