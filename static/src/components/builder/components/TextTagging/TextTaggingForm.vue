@@ -331,43 +331,8 @@
     </template>
   </div>
 </template>
-<style scoped>
-.block-label {
-  color: black;
-  font-size: 16px;
-  font-weight: 400;
-  display: block;
-}
-.col-labels {
-  color: black;
-  font-size: 16px;
-  font-weight: 400;
-}
-.label-tip {
-  font-style: italic;
-  font-weight: 400;
-  font-size: smaller;
-}
-.scroll {
-  overflow-x: hidden;
-  max-height: 600px;
-  overflow-y: scroll;
-  margin-bottom: 20px;
-}
-.danger-validation {
-  border-color: #d9534f;
-}
-.danger-validation-text {
-  color: #d9534f;
-}
-.btn-times-delete {
-  color: #d9534f;
-}
-.btn-times-delete:hover {
-  color: #d9534f;
-}
-</style>
 <script>
+import '../../../../../css/component_builder.css';
 import { mapMutations, mapState } from 'vuex';
 import * as types from '../../store/types';
 import { chain } from 'lodash';

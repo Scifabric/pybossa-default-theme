@@ -78,7 +78,7 @@ export default {
       if (this.selectedComponent === 'text-input') {
         return {
           name: 'text-input',
-          attrs: { id: this.id },
+          attrs: { id: this.id, type: this.form['type'] },
           props: { 'pyb-answer': this.form['pyb-answer'] }
         };
       } else if (this.selectedComponent === 'file-upload') {

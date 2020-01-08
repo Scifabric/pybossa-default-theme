@@ -1,0 +1,36 @@
+{% extends "projects/base.html" %}
+{% set active_page = "projects" %}
+{% set active_link  = "settings" %}
+{% set section =  _('Generate project report')%}
+{% from "_formhelpers.html" import render_field %}
+
+{% block projectcontent %}
+{% from "_formhelpers.html" import render_datefield %}
+<form method="post" action="{{ url_for('project.export_project_report', short_name=project.short_name) }}">
+    <fieldset>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        {{ render_field(form.start_date, onchange="clearErrors()") }}
+        {{ render_field(form.end_date, onchange="clearErrors()") }}
+        <div class="form-actions">
+            <button type="submit" name='btn' value="generate_report" class="btn btn-primary">{{_('Generate Report')}}</button>
+            <a href="{{url_for('project.settings', short_name=project.short_name)}}" class="btn btn-warning">{{ _('Cancel') }}</a>
+        </div>        
+    </fieldset>
+</form>
+
+<script>
+function clearErrors(){
+    // remove red border around field that had error previously
+    var elem = document.getElementsByClassName("form-group");
+    for (var i = 0; i < elem.length; i++){
+        elem[i].classList.remove("has-error");
+    }
+
+    // remove outdated error messages, if any
+    var elem = document.getElementsByClassName("help-block");
+    for (var i = 0; i < elem.length; i++){
+    elem[i].parentNode.removeChild(elem[i]);
+    }
+}
+</script>
+{% endblock %}
