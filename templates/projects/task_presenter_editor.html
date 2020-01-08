@@ -116,16 +116,16 @@
                   <div class="panel panel-info">
                     {% set github = project.info.github %}
                     {% set guidelines_github = github and github.task_guidelines %}
-                    {% set guidelines_github_exists = guidelines_github and (guidelines_github.pusher and guidelines_github.timestamp and guidelines_github.ref_url and guidelines_github.ref or guidelines_github.error) %}
+                    {% set guidelines_github_exists_or_error = guidelines_github and (guidelines_github.pusher and guidelines_github.timestamp and guidelines_github.ref_url and guidelines_github.ref or guidelines_github.error) %}
                     <div class="panel-heading">
-                      <a class="accordion-panel {{ 'collapsed' if not guidelines_github_exists else '' }}" role="button" data-toggle="collapse" data-parent="#guidelines-github-panels" href="#panel-guidelines-github" aria-expanded="true" aria-controls="panel-guidelines-github">
+                      <a class="accordion-panel {{ 'collapsed' if not guidelines_github_exists_or_error else '' }}" role="button" data-toggle="collapse" data-parent="#guidelines-github-panels" href="#panel-guidelines-github" aria-expanded="true" aria-controls="panel-guidelines-github">
                         <i class="fa fa-github-square" style='margin-right: 5px;'></i>
                         <span>Latest GitHub Push Details</span>
                       </a>
                     </div>
 
-                    <div id="panel-guidelines-github" class="panel-body collapse {{ 'in' if guidelines_github_exists else '' }}">
-                      {% if guidelines_github_exists %}
+                    <div id="panel-guidelines-github" class="panel-body collapse {{ 'in' if guidelines_github_exists_or_error else '' }}">
+                      {% if guidelines_github_exists_or_error %}
                           <table class="table table-hover table-condensed" >
                             <tr>
                                 <td ><p>Author:</p></td>
@@ -207,15 +207,15 @@
                 <div class="col-md-6">
                   <div class="panel panel-info">
                     {% set task_presenter_github = github and github.task_presenter or project.info %}
-                    {% set task_presenter_github_exists = task_presenter_github and (task_presenter_github.pusher and task_presenter_github.timestamp and task_presenter_github.ref_url and task_presenter_github.ref or task_presenter_github.error) %}
+                    {% set task_presenter_github_exists_or_error = task_presenter_github and (task_presenter_github.pusher and task_presenter_github.timestamp and task_presenter_github.ref_url and task_presenter_github.ref or task_presenter_github.error) %}
                     <div class="panel-heading">
-                      <a class="accordion-panel {{ 'collapsed' if not task_presenter_github_exists else '' }}" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-taskpresenter-github" aria-expanded="true" aria-controls="panel-taskpresenter-github">
+                      <a class="accordion-panel {{ 'collapsed' if not task_presenter_github_exists_or_error else '' }}" role="button" data-toggle="collapse" data-parent="#sync-panels" href="#panel-taskpresenter-github" aria-expanded="true" aria-controls="panel-taskpresenter-github">
                         <i class="fa fa-github-square" style='margin-right: 5px;'></i>
                         <span>Latest GitHub Push Details</span>
                       </a>
                     </div>
-                    <div id="panel-taskpresenter-github" class="panel-body collapse {{ 'in' if task_presenter_github_exists else '' }}">
-                      {% if task_presenter_github_exists %}
+                    <div id="panel-taskpresenter-github" class="panel-body collapse {{ 'in' if task_presenter_github_exists_or_error else '' }}">
+                      {% if task_presenter_github_exists_or_error %}
                           <table class="table table-hover table-condensed" >
                             <tr>
                                 <td ><p>Author:</p></td>
