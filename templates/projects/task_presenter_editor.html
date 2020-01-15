@@ -385,7 +385,7 @@
      "</div>" +
      "</div>" +
      "<div id='PYBOSSA_USER_LOCALE' hidden>en</div>" +
-     "<script type=\"text/javascript\">pybossa.saveTask=function(id,answer){alert('Task '+id+' saved with answer data: '+answer+'. This is a sandbox environment and the answers will not be saved to the database!');var def=$.Deferred();def.resolve();return def;};</sc" + "ript>" +
+     "<script type=\"text/javascript\">pybossa.saveTask=function(id,answer){alert('Task '+(typeof id === 'object' ? id.id : id)+' saved with answer data: '+JSON.stringify(answer)+'. This is a sandbox environment and the answers will not be saved to the database!');var def=$.Deferred();def.resolve({});return def;};</sc" + "ript>" +
      "</body>\n" +
      "</html>";
 return baseTemplate;
