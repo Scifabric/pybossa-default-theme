@@ -43,10 +43,14 @@
                     @input="updateColumn(col, 'name', $event.target.value)"
                   >
                 </label>
-                <div class="danger-validation-text">
+                <div
+                  class="danger-validation-text"
+                >
                   {{ getErrors(`columns[${index}].name`) }}
                 </div>
-                <label class="block-label">
+                <label
+                  class="block-label"
+                >
                   Column Heading | <span class="label-tip">The heading to display for the column. Uses Column Name if not specified.</span>
                   <input
                     :value="col.header"
@@ -91,25 +95,99 @@
             <hr>
             <h4>Table Settings</h4>
             <div
-              v-if="columnWithComponent"
               class="form-group"
             >
-              <label for="table-answer-name">
-                * Table Answer field Name | <span class="label-tip">The field where the worker's answers for the table are stored. Can be JSON path like a.b.c.</span>
-              </label>
               <input
-                id="table-answer-name"
-                :value="name.value"
-                :class="{
-                  'form-control form-control-sm': true,
-                  'danger-validation': getErrors(`name`)
-                }"
-                type="text"
-                @input="updateName({value: $event.target.value})"
-                @blur="updateName"
+                id="table-enable-editing"
+                :checked="enableEditing"
+                type="checkbox"
+                @input="updateEnableEditing($event.target.checked)"
               >
-              <div class="danger-validation-text">
-                {{ getErrors(`name`) }}
+              <label for="table-enable-editing">
+                Enable editing data.
+              </label>
+            </div>
+            <div v-if="enableEditing">
+              <div
+                class="form-group"
+              >
+                <input
+                  id="table-enable-add"
+                  :checked="enableAddRows.value"
+                  type="checkbox"
+                  @input="updateEnableAddRow({value: $event.target.checked})"
+                >
+                <label for="table-enable-add">
+                  Enable adding and removing rows from the table | <span class="label-tip">**Optional** By default is disable, if its enable the table will add a button for remove/add actions.</span>
+                </label>
+              </div>
+
+              <div
+                class="form-group"
+              >
+                <label for="table-answer-name">
+                  Table Answer field Name | <span class="label-tip">he field where the worker's answers for the table are stored. Can be JSON path like a.b.c.</span>
+                </label>
+                <input
+                  id="table-answer-name"
+                  :value="name.value"
+                  :class="{
+                    'form-control form-control-sm': true,
+                    'danger-validation': getErrors(`name`)
+                  }"
+                  type="text"
+                  @input="updateName({value: $event.target.value})"
+                  @blur="updateName"
+                >
+                <div
+                  class="danger-validation-text"
+                >
+                  {{ getErrors(`name`) }}
+                </div>
+              </div>
+
+              <div
+                class="form-group"
+              >
+                <label for="table-col-id">
+                  Column Id | <span class="label-tip">**Optional** This indicate the name of the unique id used by the table in order to update rows. If not define default value is '__col_id'.</span>
+                </label>
+                <input
+                  id="table-col-id"
+                  :value="columnId.value"
+                  :class="{
+                    'form-control form-control-sm': true
+                  }"
+                  type="text"
+                  @input="updateColumnId({value: $event.target.value})"
+                >
+              </div>
+
+              <div
+                class="form-group"
+              >
+                <input
+                  id="table-add-before"
+                  :checked="addButtonBeforeTable.value"
+                  type="checkbox"
+                  @input="updateAddButtonBefore({value: $event.target.checked})"
+                >
+                <label for="table-add-before">
+                  Display add button at top-right corner | <span class="label-tip">Display add row bottom above the table on the right.</span>
+                </label>
+              </div>
+              <div
+                class="form-group"
+              >
+                <input
+                  id="table-add-after"
+                  :checked="addButtonAfterTable.value"
+                  type="checkbox"
+                  @input="updateAddButtonAfter({value: $event.target.checked})"
+                >
+                <label for="table-add-after">
+                  Display add button at bottom-right corner | <span class="label-tip">Display add row bottom below the table on the right.</span>
+                </label>
               </div>
             </div>
             <div class="row">
@@ -166,13 +244,17 @@
               @blur="updateData"
               @input="updateData({value: $event.target.value, isVariable: data.isVariable})"
             >
-            <div class="danger-validation-text">
+            <div
+              class="danger-validation-text"
+            >
               {{ getErrors(`data.value`) }}
             </div>
             <br>
           </div>
         </div>
-        <div class="col-md-12">
+        <div
+          class="col-md-12"
+        >
           <static-data
             v-if="!data.isVariable"
           />
@@ -203,7 +285,7 @@ export default {
   components: { StaticData },
   data () {
     return {
-      columnsComponent: ['plain-text', 'text-input', 'checkbox-input']
+      columnsComponent: ['plain-text', 'text-input', 'checkbox-input', 'other-input']
     };
   },
   computed: {
@@ -212,7 +294,12 @@ export default {
     }),
     ...mapState({
       name: (state) => state.table.name,
-      data: (state) => state.table.data
+      data: (state) => state.table.data,
+      columnId: (state) => state.table.columnId,
+      enableEditing: (state) => state.table.enableEditing,
+      enableAddRows: (state) => state.table.enableAddRows,
+      addButtonAfterTable: (state) => state.table.addButtonAfterTable,
+      addButtonBeforeTable: (state) => state.table.addButtonBeforeTable
     }),
 
     columnWithComponent: {
@@ -228,6 +315,11 @@ export default {
   },
   methods: {
     ...mapMutations({
+      'updateColumnId': types.MUTATE_TABLE_COLUMN_ID,
+      'updateEnableEditing': types.MUTATE_TABLE_ENABLE_EDITING,
+      'updateEnableAddRow': types.MUTATE_TABLE_ENABLE_ADD_ROW,
+      'updateAddButtonBefore': types.MUTATE_TABLE_ADD_BUTTON_BEFORE,
+      'updateAddButtonAfter': types.MUTATE_TABLE_ADD_BUTTON_AFTER,
       'updateName': types.MUTATE_TABLE_NAME,
       'updateData': types.MUTATE_TABLE_DATA,
       'addColumn': types.MUTATE_TABLE_ADD_COLUMN,

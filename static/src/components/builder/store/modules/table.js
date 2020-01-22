@@ -12,10 +12,6 @@ function* _isAnyColumnNameEmpty (columns) {
 
 export const isAnyColumnNameEmpty = flow(_isAnyColumnNameEmpty, iteratorToBool);
 
-export const isAnyDirtyEmptyColumn = (columns) => {
-  return columns.filter(c => c.name === '' && c.isDirty).length > 0;
-};
-
 export const isAnswerFieldDirty = (state) => {
   return state.name.value === '' && state.name.isDirty;
 };
@@ -61,8 +57,8 @@ function* _isDataNameEmptyAndRequired (state) {
 
 export const isAnswerFieldRequired = flow(_isAnswerFieldRequired, iteratorToBool);
 
-function* _isAnswerFieldRequired (state, anyColumnComponent) {
-  if (anyColumnComponent && state.name.value === '') {
+function* _isAnswerFieldRequired (state) {
+  if ((state.enableEditing) && state.name.value === '') {
     yield ['name', 'Table answer field name is missing.'];
   }
 }
@@ -84,11 +80,16 @@ export const initialState = () => {
     id: utils.uniqueID(),
     name: { value: '', isDirty: false },
     data: { value: '', isVariable: true, isDirty: false },
+    columnId: { value: '', isDirty: false },
+    enableAddRows: { value: false, isDirty: false },
+    addButtonAfterTable: { value: true, isDirty: false },
+    addButtonBeforeTable: { value: false, isDirty: false },
     columnKeys: [firstElement.id],
     columnsListObj,
     dataRowKeys: [],
     dataRowObj: {},
-    colCounter: 1
+    colCounter: 1,
+    enableEditing: false
   };
 };
 
@@ -99,15 +100,12 @@ export const state = {
 function* getErrors (state) {
   const columns = state.columnKeys.map(id => (state.columnsListObj[id]));
   const anyDirtyColumn = isAnyDirtyColumn(columns);
-  const anyColumnComponent = isAnyColumnComponent(columns);
 
   yield * _isDataNameEmptyAndRequired(state);
   yield * _isAnyColumnNameEmpty(columns);
-  if (isAnyDirtyEmptyColumn(columns)) yield ['', 'A dirty column has empty name.'];
-  if (isAnswerFieldDirty(state)) yield ['name', 'Answer field is dirty.'];
   if (isFormUntouched(state, anyDirtyColumn)) yield ['', 'Form is untouched.'];
   yield * _isAnyColumnNameRepeated(columns);
-  yield * _isAnswerFieldRequired(state, anyColumnComponent);
+  yield * _isAnswerFieldRequired(state);
 }
 
 export const getters = {
@@ -131,12 +129,32 @@ export const getters = {
 
     const data = { ...state.data, list };
     const name = state.name.value;
-    return { name, data, options, columns };
+    const columnId = state.columnId.value;
+    const enableAddRows = state.enableAddRows.value;
+    const addButtonAfterTable = state.addButtonAfterTable.value;
+    const addButtonBeforeTable = state.addButtonBeforeTable.value;
+    const rowObject = {};
+    const enableEditing = state.enableEditing;
+    columns.forEach((c) => { rowObject[c.name] = ''; });
+    return {
+              name,
+              data,
+              columnId,
+              enableAddRows,
+              addButtonAfterTable,
+              addButtonBeforeTable,
+              options,
+              columns,
+              rowObject,
+              enableEditing
+            };
   },
   [types.GET_TABLE_COLUMNS_LIST] (state) {
     return state.columnKeys.map(id => (state.columnsListObj[id]));
   },
-
+  [types.GET_TABLE_ENABLE_EDITING] (state) {
+    return state.enableEditing;
+  },
   [types.GET_TABLE_DATA_LIST] (state) {
     return state.dataRowKeys.map(id => (state.dataRowObj[id]));
   },
@@ -156,6 +174,26 @@ export const mutations = {
     name.isDirty = true;
 
     state.name = name;
+  },
+  [types.MUTATE_TABLE_COLUMN_ID] (state, payload) {
+    state.columnId.value = payload.value;
+  },
+  [types.MUTATE_TABLE_ENABLE_EDITING] (state, payload) {
+    if (!payload) {
+      state.columnId = '';
+      state.enableAddRows.value = false;
+      state.name = '';
+    }
+    state.enableEditing = payload;
+  },
+  [types.MUTATE_TABLE_ENABLE_ADD_ROW] (state, payload) {
+    state.enableAddRows.value = payload.value;
+  },
+  [types.MUTATE_TABLE_ADD_BUTTON_BEFORE] (state, payload) {
+    state.addButtonBeforeTable.value = payload.value;
+  },
+  [types.MUTATE_TABLE_ADD_BUTTON_AFTER] (state, payload) {
+    state.addButtonAfterTable.value = payload.value;
   },
   [types.MUTATE_TABLE_DATA] (state, payload) {
     state.data.value = payload.value !== undefined ? payload.value : state.data.value;

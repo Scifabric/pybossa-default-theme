@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { mutations, getters as _getters, getColumnObject, initialState, isAnyDirtyColumn, isAnswerFieldDirty, isAnswerFieldRequired,
-  isAnyColumnComponent, isAnyColumnNameEmpty, isAnyColumnNameRepeated, isAnyDirtyEmptyColumn,
+  isAnyColumnComponent, isAnyColumnNameEmpty, isAnyColumnNameRepeated,
   isDataNameEmptyAndRequired, isFormUntouched } from '../../components/builder/store/modules/table';
 import * as types from '../../components/builder/store/types';
 import { bindGetters } from '../utils/getters';
@@ -27,6 +27,7 @@ describe('Table store', () => {
     expect(localState.columnsListObj).toBeDefined();
     expect(localState.dataRowKeys).toBeDefined();
     expect(localState.colCounter).toBeDefined();
+    expect(localState.enableEditing).toBeDefined();
   });
 
   it('getColumnObject ', () => {
@@ -67,8 +68,6 @@ describe('Table store', () => {
       name: 'testColName'
     }];
     expect(props.columns).toEqual(expectedColumns);
-
-    expect(props.name).toBe('ansTableName');
   });
 
   it('GET_TABLE_COLUMNS_LIST', () => {
@@ -131,17 +130,6 @@ describe('Table store', () => {
     expect(isAnyColumnNameEmpty(columns)).toBeTruthy();
   });
 
-  it('Validation isAnyDirtyEmptyColumn', () => {
-    const columns = [{
-      component: 'plain-text',
-      header: 'Header testColName',
-      id: 'Column 1',
-      isDirty: true,
-      name: ''
-    }];
-    expect(isAnyDirtyEmptyColumn(columns)).toBeTruthy();
-  });
-
   it('Validation isAnyColumnNameRepeated', () => {
     const columns = [{
       component: 'plain-text',
@@ -181,9 +169,10 @@ describe('Table store', () => {
   });
 
   it('Validation isFormUntouched', () => {
-    const state = { name: { value: '', isDirty: true } };
-    expect(isAnswerFieldRequired(state, true)).toBeTruthy();
-    expect(isAnswerFieldRequired(state, false)).toBeFalsy();
+    const state = { enableEditing: true, name: { value: '', isDirty: true } };
+    expect(isAnswerFieldRequired(state)).toBeTruthy();
+    state.enableEditing = false;
+    expect(isAnswerFieldRequired(state)).toBeFalsy();
   });
 
   it('GET_TABLE_FORM_VALID repeatedColName', () => {

@@ -5,6 +5,11 @@
       :columns="columns"
       :name="form.name"
       :options="form.options"
+      :column-id="form.columnId"
+      :row-object="form.rowObject"
+      :enable-add-rows="form.enableAddRows"
+      :add-button-after-table="form.addButtonAfterTable"
+      :add-button-before-table="form.addButtonBeforeTable"
     >
       <template
         v-for="(c, i) in form.columns"
@@ -34,6 +39,7 @@
 </template>
 
 <script>
+
 import components from '@dtwebservices/task-presenter-components';
 import ComponentColumns from './ComponentColumns.vue';
 export default {
