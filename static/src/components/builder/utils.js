@@ -90,6 +90,16 @@ export default {
     return values;
   },
 
+  removePropsFromTableTemplate () {
+    let template = templates.TABLE.replace("name='{{name}}'\n  ", '');
+    template = template.replace("column-id='{{{columnId}}}'\n  ", '');
+    template = template.replace(":row-object='{{{rowObject}}}'\n  ", '');
+    template = template.replace(":enable-add-rows='{{{enableAddRows}}}'\n  ", '');
+    template = template.replace(":add-button-after-table='{{{addButtonAfterTable}}}'\n  ", '');
+    template = template.replace(":add-button-before-table='{{{addButtonBeforeTable}}}'\n  ", '');
+    return template;
+  },
+
   getTableCode (form) {
     const columns = form.columns.map(col => col.name);
 
@@ -101,14 +111,19 @@ export default {
           ? form.data.value
           : '',
       columns: JSON.stringify(columns),
-      options: JSON.stringify(form.options, null, '\t')
+      options: JSON.stringify(form.options, null, '\t'),
+      columnId: form.columnId,
+      rowObject: JSON.stringify(form.rowObject, null, '\t'),
+      enableAddRows: form.enableAddRows,
+      addButtonAfterTable: form.addButtonAfterTable,
+      addButtonBeforeTable: form.addButtonBeforeTable
     };
 
     const slotColumns = form.columns.filter(
       col => col.component !== 'plain-text'
     );
     const slots = [];
-    let isInputTable = false;
+
     slotColumns.forEach(function (col) {
       if (col.component === 'checkbox-input') {
         const columnComponent = Mustache.render(
@@ -121,7 +136,6 @@ export default {
             component: columnComponent
           })
         );
-        isInputTable = true;
       } else if (col.component === 'text-input') {
         const columnComponent = Mustache.render(textInputColumnTemplate, col);
         slots.push(
@@ -130,11 +144,23 @@ export default {
             component: columnComponent
           })
         );
-        isInputTable = true;
+      } else {
+        const columnComponent =
+        `<!--
+            Please enter you custom component in this area.
+            Ensure to add these props :row="props.row" pyb-table-answer="${col.name}"
+         -->\n`;
+
+        slots.push(
+          Mustache.render(slotTemplate, {
+            name: col.name,
+            component: columnComponent
+          })
+        );
       }
     });
-    const tableTemplate = !isInputTable
-      ? templates.TABLE.replace("name='{{name}}'\n  ", '')
+    const tableTemplate = !form.enableEditing
+      ? this.removePropsFromTableTemplate()
       : templates.TABLE;
     const output = Mustache.render(tableTemplate, {
       ...formForTemplate,

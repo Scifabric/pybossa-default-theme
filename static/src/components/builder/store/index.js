@@ -17,7 +17,6 @@ const TASK_PRESENTER = 'TASK_PRESENTER';
 setNamespace(TASK_PRESENTER);
 const taskPresenterStoreOptions = getStoreOptions();
 taskPresenterStoreOptions.namespaced = true;
-
 export default new Vuex.Store({
   state: {},
   getters: {},

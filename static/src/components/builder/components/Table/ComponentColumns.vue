@@ -46,3 +46,10 @@ export default {
   }
 };
 </script>
+
+<style>
+.form-group{
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+}
+</style>

@@ -22,6 +22,7 @@ export const state = {
         isDirty: true
       }
     },
+    enableEditing: true,
     dataRowKeys: ['id1'],
     dataRowObj: { 'id1': { id: 'id1', 'Column 1': 'testCol1Value', 'Column 2': 'testCol2Value' } },
     colCounter: 2
@@ -32,7 +33,9 @@ export const getters = {
   [types.GET_TABLE_COLUMNS_LIST]: jest.fn().mockReturnValue(
     state.table.columnKeys.map(id => (state.table.columnsListObj[id]))
   ),
-
+  [types.GET_TABLE_ENABLE_EDITING]: jest.fn().mockReturnValue(
+    state.table.enableEditing
+  ),
   [types.GET_TABLE_DATA_LIST]: jest.fn().mockReturnValue(
     [{ id: 'id1', 'Column 1': 'testCol1Value', 'Column 2': 'testCol2Value' }]
   ),

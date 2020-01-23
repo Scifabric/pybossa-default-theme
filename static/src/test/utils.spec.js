@@ -134,7 +134,8 @@ it('getTableInputCode for TABLE', () => {
     columns: [{ 'name': 'testColName', 'header': 'Col Name', 'component': 'plain-text', 'id': 'Column 1', 'isDirty': true },
       { 'name': 'testColComponentTextInput', 'header': 'Text Input Header Column', 'component': 'text-input', 'id': 'Column 2', 'isDirty': true },
       { 'name': 'testColComponentCheckboxInput', 'header': 'Checkbox Input Header Column', 'component': 'checkbox-input', 'id': 'Column 3', 'isDirty': true }],
-    'isValidForm': true };
+    isValidForm: true,
+    enableEditing: true };
 
   const componentCode = utils.getSnippet('TABLE', form);
   expect(componentCode.includes('<table-element')).toBeTruthy();

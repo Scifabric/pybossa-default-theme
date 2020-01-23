@@ -135,7 +135,12 @@ export default {
               columns: this.form.columns,
               data,
               options: { ...this.form.options },
-              name: 'TableCreator'
+              name: this.form.name,
+              columnId: this.form.columnId,
+              rowObject: this.form.rowObject,
+              enableAddRows: this.form.enableAddRows,
+              addButtonAfterTable: this.form.addButtonAfterTable,
+              addButtonBeforeTable: this.form.addButtonBeforeTable
             }
           }
         };
