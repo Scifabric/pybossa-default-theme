@@ -90,13 +90,15 @@ export default {
     return values;
   },
 
-  removePropsFromTableTemplate () {
-    let template = templates.TABLE.replace("name='{{name}}'\n  ", '');
-    template = template.replace("column-id='{{{columnId}}}'\n  ", '');
-    template = template.replace(":row-object='{{{rowObject}}}'\n  ", '');
-    template = template.replace(":enable-add-rows='{{{enableAddRows}}}'\n  ", '');
-    template = template.replace(":add-button-after-table='{{{addButtonAfterTable}}}'\n  ", '');
-    template = template.replace(":add-button-before-table='{{{addButtonBeforeTable}}}'\n  ", '');
+  removePropsFromTableTemplate (form) {
+    let template = form.columnId ? tableTemplate : tableTemplate.replace("column-id='{{columnId}}'\n  ", '');
+    if (!form.enableEditing) {
+        template = template.replace("name='{{name}}'\n  ", '');
+        template = template.replace(":row-object='{{{rowObject}}}'\n  ", '');
+        template = template.replace(":enable-add-rows='{{{enableAddRows}}}'\n  ", '');
+        template = template.replace(":add-button-after-table='{{{addButtonAfterTable}}}'\n  ", '');
+        template = template.replace(":add-button-before-table='{{{addButtonBeforeTable}}}'\n  ", '');
+    }
     return template;
   },
 
@@ -159,10 +161,8 @@ export default {
         );
       }
     });
-    const tableTemplate = !form.enableEditing
-      ? this.removePropsFromTableTemplate()
-      : templates.TABLE;
-    const output = Mustache.render(tableTemplate, {
+    const template = this.removePropsFromTableTemplate(form);
+    const output = Mustache.render(template, {
       ...formForTemplate,
       slots
     });
