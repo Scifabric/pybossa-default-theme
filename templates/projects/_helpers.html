@@ -51,8 +51,8 @@
 
     {% if is_admin_or_subadmin_or_owner %}
         <a class="list-group-item {% if active_link=='stats'%}active{% endif %}" href="{{url_for('project.show_stats', short_name=project.short_name)}}">{{_('Statistics')}}<i class="fa fa-chevron-right pull-right"></i></a>
-        <a class="list-group-item {% if active_link=='performancestats'%}active{% endif %}" href="{{url_for('project.show_performance_stats', short_name=project.short_name)}}">{{_('Performance Stats')}}<i class="fa fa-chevron-right pull-right"></i></a>
     {% endif %}
+    <a class="list-group-item {% if active_link=='performancestats'%}active{% endif %}" href="{{url_for('project.show_performance_stats', short_name=project.short_name)}}">{{_('Performance Stats')}}<i class="fa fa-chevron-right pull-right"></i></a>
 
     {% if is_subadmin_and_owner_or_admin %}
         <a class="list-group-item {% if active_link=='auditlog'%}active{% endif %}" href="{{url_for('project.auditlog', short_name=project.short_name)}}">{{_('Audit Logs')}}<i class="fa fa-chevron-right pull-right"></i></a>

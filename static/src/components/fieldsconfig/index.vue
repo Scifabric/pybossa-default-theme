@@ -73,7 +73,6 @@
       </div>
       <div
         v-else
-        class="scroll"
       >
         <div
           v-for="(field, name) in answerFields"
@@ -164,12 +163,6 @@ export default {
 
 </script>
 <style scoped>
-.scroll {
-  overflow-x: hidden;
-  max-height: 350px;
-  overflow-y: scroll;
-  margin-bottom: 20px;
-}
 #answer-field {
   width: 100%
 }
