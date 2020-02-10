@@ -9,6 +9,7 @@ test('getSimpleComponentsCode for TEXT_INPUT', () => {
   textInput['pyb-answer'] = 'answername';
   textInput.label = 'Test label';
   textInput.labelAdded = true;
+  textInput.validations = '["required"]';
 
   const componentCode = utils.getSnippet('TEXT_INPUT', textInput);
   expect(componentCode.includes('Test label')).toBeTruthy();
@@ -16,9 +17,12 @@ test('getSimpleComponentsCode for TEXT_INPUT', () => {
   expect(componentCode.includes('<text-input')).toBeTruthy();
   expect(componentCode.includes('</text-input>')).toBeTruthy();
   expect(
-    componentCode.includes(`pyb-answer="${textInput['pyb-answer']}"`)
+    componentCode.includes(`pyb-answer='${textInput['pyb-answer']}'`)
   ).toBeTruthy();
-  expect(componentCode.includes(`id="${textInput.id}"`)).toBeTruthy();
+  expect(
+    componentCode.includes(`:validations='${textInput.validations}'`)
+  ).toBeTruthy();
+  expect(componentCode.includes(`id='${textInput.id}'`)).toBeTruthy();
 });
 
 test('getConditionalDisplayCode', () => {

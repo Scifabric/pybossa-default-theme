@@ -1,0 +1,32 @@
+@import "../src/node_modules/vue-multiselect/dist/vue-multiselect.min.css";
+
+.multiselect__spinner:after, .multiselect__spinner:before {
+  border-top-color: #3AB0D5;
+}
+
+.multiselect__option--highlight {
+   outline: none;
+   color: #fff;
+   border: 2px;
+}
+
+.multiselect__option--highlight,
+.multiselect__option--highlight:after,
+.multiselect__tag,
+.multiselect__tag > i {
+ background: #3AB0D5 !important;
+}
+.multiselect__tags {
+   background: #3AB0D5;
+   outline: none;
+   min-height: 45px;
+   display: block;
+   padding: 8px 40px 0 8px;
+   border-radius: 5px;
+   border: 2px solid #dce4ec;
+   background: #fff;
+   font-size: 14px;
+}
+.multiselect{
+ border: 2px;
+}

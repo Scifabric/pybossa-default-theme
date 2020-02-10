@@ -18,11 +18,17 @@ describe('Text-Input setup', () => {
     expect(localState['pyb-answer']).toBe('pybanswer');
   });
 
+  it('Update validations', () => {
+    mutations[types.MUTATE_TEXT_INPUT_VALIDATIONS](localState, [{ name: 'required' }]);
+    expect(localState.validations).toEqual([{ name: 'required' }]);
+  });
+
   it('Get Form', () => {
     const props = getters[types.GET_TEXT_INPUT_PROPS](localState);
     expect(props.label).toEqual('testLabel');
     expect(props.labelAdded).toEqual(true);
     expect(props['pyb-answer']).toEqual('pybanswer');
+    expect(props.validations).toBe(JSON.stringify(['required']));
     expect(props.isValidForm).toEqual(true);
   });
 

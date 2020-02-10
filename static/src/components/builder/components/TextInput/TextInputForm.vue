@@ -46,6 +46,38 @@
               </select>
             </div>
           </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <div>
+                <label class="">Validations to be applied before submitting the task.</label>
+                <multiselect
+                  :value="validations"
+                  :options="filteredValidations"
+                  :multiple="true"
+                  :close-on-select="false"
+                  :clear-on-select="false"
+                  :preserve-search="true"
+                  placeholder="Select Validations"
+                  label="name"
+                  track-by="name"
+                  :preselect-first="true"
+                  @input="updateValidations($event)"
+                >
+                  <template
+                    slot="selection"
+                    slot-scope="{ values, search, isOpen }"
+                  >
+                    <span
+                      v-if="values.length &amp;&amp; !isOpen"
+                      class="multiselect__single"
+                    >{{ values.length }} options selected</span>
+                  </template>
+                </multiselect>
+              </div>
+            </div>
+          </div>
+
           <div class="form-row">
             <div class="form-group col-md-12">
               <label
@@ -68,13 +100,18 @@
     </div>
   </div>
 </template>
+
 <script>
+import '../../../../../css/multiselect_overwrite_colors.css';
+import Multiselect from 'vue-multiselect';
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {
   name: 'TextInputForm',
+  components: { Multiselect },
     data () {
     return {
+      validationOptions: ['required', 'email', 'number', 'url'],
       inputTypeOptions: {
         Text: 'text',
         Number: 'number',
@@ -86,11 +123,20 @@ export default {
     };
   },
   computed: {
+    filteredValidations: function () {
+      if (this.type === 'text') {
+        return this.validationOptions.map((e) => { return { name: e }; });
+      } else if (this.validationOptions.includes(this.type)) {
+        return [{ name: this.type }, { name: 'required' }];
+      }
+      return [{ name: 'required' }];
+    },
     ...mapState({
       label: state => state.textInput.label,
       labelAdded: state => state.textInput.labelAdded,
       type: state => state.textInput.type,
-      pybanwer: state => state.textInput['pyb-answer']
+      pybanwer: state => state.textInput['pyb-answer'],
+      validations: state => state.textInput.validations
     })
   },
   methods: {
@@ -98,7 +144,8 @@ export default {
       'updateLabel': types.MUTATE_TEXT_INPUT_LABEL,
       'updateLabelAdded': types.MUTATE_TEXT_INPUT_LABEL_ADDED,
       'updateType': types.MUTATE_TEXT_INPUT_TYPE,
-      'updatePybanswer': types.MUTATE_TEXT_INPUT_PYB_ANSWER
+      'updatePybanswer': types.MUTATE_TEXT_INPUT_PYB_ANSWER,
+      'updateValidations': types.MUTATE_TEXT_INPUT_VALIDATIONS
     })
   }
 };
