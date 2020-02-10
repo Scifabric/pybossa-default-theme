@@ -8,7 +8,8 @@ const initialState = () => {
     label: '',
     labelAdded: false,
     type: 'text',
-    isValidForm: true
+    isValidForm: true,
+    validations: []
   };
 };
 
@@ -18,7 +19,9 @@ export const state = {
 
 export const getters = {
   [types.GET_TEXT_INPUT_PROPS] (state) {
-    return state;
+    const props = { ...state };
+    props.validations = JSON.stringify(state.validations.map((e) => { return e.name; }));
+    return props;
   },
   [types.GET_TEXT_INPUT_FORM_VALID] () {
     return { isValid: state.isValidForm }
@@ -35,6 +38,9 @@ export const mutations = {
   },
   [types.MUTATE_TEXT_INPUT_TYPE] (state, payload) {
     state.type = payload;
+  },
+  [types.MUTATE_TEXT_INPUT_VALIDATIONS] (state, payload) {
+    state.validations = payload;
   },
   [types.MUTATE_TEXT_INPUT_PYB_ANSWER] (state, payload) {
     state['pyb-answer'] = payload;
