@@ -11,6 +11,7 @@
 {% endassets %}
 
 <script>
+    window.pybossa.setUserId({{ user_id }});
     {% if mode == 'read_only' %}
         window.pybossa.isReadOnly = true;
     {% endif %}
@@ -26,6 +27,7 @@
     });
 
 </script>
+
 <link rel="stylesheet" href="{{url_for('static', filename='css/small-navbar.css')}}"/>
 
 <div class="container" style="min-height:400px;">
