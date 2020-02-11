@@ -38,7 +38,7 @@ export const mutations = {
   },
   [types.MUTATE_TEXT_INPUT_TYPE] (state, payload) {
     state.type = payload;
-    state.validations = ['required'];
+    state.validations = [];
   },
   [types.MUTATE_TEXT_INPUT_VALIDATIONS] (state, payload) {
     state.validations = payload;
