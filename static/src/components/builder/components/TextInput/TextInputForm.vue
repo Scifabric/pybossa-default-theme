@@ -47,7 +47,7 @@
             </div>
           </div>
 
-          <div class="form-row">
+          <!-- <div class="form-row">
             <div class="form-group col-md-12">
               <div>
                 <label class="">Validations to be applied before submitting the task.</label>
@@ -76,7 +76,13 @@
                 </multiselect>
               </div>
             </div>
-          </div>
+          </div> -->
+
+          <validator
+            :validations="validations"
+            :validationOptions="filteredValidations"
+            :updateValidations="updateValidations"
+          />
 
           <div class="form-row">
             <div class="form-group col-md-12">
@@ -104,11 +110,12 @@
 <script>
 import '../../../../../css/multiselect_overwrite_colors.css';
 import Multiselect from 'vue-multiselect';
+import Validator from '../validator'
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {
   name: 'TextInputForm',
-  components: { Multiselect },
+  components: { Multiselect, Validator },
     data () {
     return {
       validationOptions: ['required', 'email', 'number', 'url'],
