@@ -47,37 +47,6 @@
             </div>
           </div>
 
-          <!-- <div class="form-row">
-            <div class="form-group col-md-12">
-              <div>
-                <label class="">Validations to be applied before submitting the task.</label>
-                <multiselect
-                  :value="validations"
-                  :options="filteredValidations"
-                  :multiple="true"
-                  :close-on-select="false"
-                  :clear-on-select="false"
-                  :preserve-search="true"
-                  placeholder="Select Validations"
-                  label="name"
-                  track-by="name"
-                  :preselect-first="true"
-                  @input="updateValidations($event)"
-                >
-                  <template
-                    slot="selection"
-                    slot-scope="{ values, search, isOpen }"
-                  >
-                    <span
-                      v-if="values.length &amp;&amp; !isOpen"
-                      class="multiselect__single"
-                    >{{ values.length }} options selected</span>
-                  </template>
-                </multiselect>
-              </div>
-            </div>
-          </div> -->
-
           <validator
             :validations="validations"
             :validationOptions="filteredValidations"
@@ -108,14 +77,12 @@
 </template>
 
 <script>
-import '../../../../../css/multiselect_overwrite_colors.css';
-import Multiselect from 'vue-multiselect';
 import Validator from '../validator'
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {
   name: 'TextInputForm',
-  components: { Multiselect, Validator },
+  components: { Validator },
     data () {
     return {
       validationOptions: ['required', 'email', 'number', 'url'],

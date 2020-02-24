@@ -45,11 +45,6 @@ export default {
     validationOptions: Array,
     updateValidations: Function
   },
-  components: { Multiselect },
-  methods: {
-    // ...mapMutations({
-    //   'updateValidations': this.validate
-    // })
-  }
+  components: { Multiselect }
 }
 </script>
