@@ -3,7 +3,11 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       <div>
-        <label class="">Validations to be applied before submitting the task.</label>
+        <label
+          class="col-labels"
+        >
+          Validations | <span class="label-tip">Validations to be applied before submitting the task.</span>
+        </label>
         <multiselect
           :value="validations"
           :options="validationOptions"
