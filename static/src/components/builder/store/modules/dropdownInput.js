@@ -99,7 +99,7 @@ export const mutations = {
   },
   [types.MUTATE_DROPDOWN_VALIDATIONS] (state, payload) {
     state.validations = payload;
-  },
+  }
 };
 
 export default {

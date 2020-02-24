@@ -22,29 +22,29 @@
     </div>
     <div class="form-row">
       <div class="form-group">
-      <label class="col-labels">
-        Input Type
-      </label>
-      <select
-        class="form-control form-control-sm"
-        :value="type"
-        @input="updateType($event.target.value)"
-      >
-        <option
-          v-for="(v, k) in inputTypeOptions"
-          :key="k"
-          :value="v"
+        <label class="col-labels">
+          Input Type
+        </label>
+        <select
+          class="form-control form-control-sm"
+          :value="type"
+          @input="updateType($event.target.value)"
         >
-          {{ k }}
-        </option>
-      </select>
+          <option
+            v-for="(v, k) in inputTypeOptions"
+            :key="k"
+            :value="v"
+          >
+            {{ k }}
+          </option>
+        </select>
       </div>
     </div>
 
     <validator
       :validations="validations"
-      :validationOptions="filteredValidations"
-      :updateValidations="updateValidations"
+      :validation-options="filteredValidations"
+      :update-validations="updateValidations"
     />
 
     <div class="form-row">
@@ -67,7 +67,7 @@
 
 <script>
 import '../../../../../css/component_builder.css';
-import Validator from '../validator'
+import Validator from '../validator';
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {

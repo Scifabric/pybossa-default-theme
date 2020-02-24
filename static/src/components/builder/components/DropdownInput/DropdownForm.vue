@@ -30,8 +30,8 @@
     </label>
     <validator
       :validations="validations"
-      :validationOptions="filteredValidations"
-      :updateValidations="updateValidations"
+      :validation-options="filteredValidations"
+      :update-validations="updateValidations"
     />
     <hr>
     <h4>
@@ -122,7 +122,7 @@
 <script>
 import '../../../../../css/component_builder.css';
 import { mapMutations, mapState } from 'vuex';
-import Validator from '../validator'
+import Validator from '../validator';
 import * as types from '../../store/types';
 import { cloneDeep, chain } from 'lodash';
 

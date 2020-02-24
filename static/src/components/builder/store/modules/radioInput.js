@@ -90,7 +90,7 @@ export const mutations = {
   },
   [types.MUTATE_RADIO_GROUP_VALIDATIONS] (state, payload) {
     state.validations = payload;
-  },
+  }
 };
 
 export default {
