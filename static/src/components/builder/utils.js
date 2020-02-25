@@ -204,14 +204,13 @@ export default {
     return output;
   },
 
-  getRadioGroupCode ({ radioList, labelAdded, label, pybAnswer, initialValue, name, validations }) {
+  getRadioGroupCode ({ radioList, labelAdded, label, pybAnswer, initialValue, name }) {
     const radioHTMLs = radioList.map(radio => {
       const formForTemplate = {
         ...this.getValuesForTemplate(radio),
         pybAnswer,
         name,
-        initialValue,
-        validations
+        initialValue
       };
       let radioOutput = Mustache.render(
         radioInputTemplate,

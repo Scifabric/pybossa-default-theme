@@ -108,7 +108,6 @@ it('getRadioGroupCode for RADIO_INPUT', () => {
   radioInput.pybAnswer = 'radioanswer';
   radioInput.initialValue = 'A';
   radioInput.name = 'radio group';
-  radioInput.validations = '["required"]';
   radioInput.radioList = [
     {
       label: 'test radio0 label',
@@ -128,7 +127,6 @@ it('getRadioGroupCode for RADIO_INPUT', () => {
     `pyb-answer='${radioInput.pybAnswer}'`)).toBeTruthy();
   expect(componentCode.includes(radioInput.radioList[1].label)).toBeTruthy();
   expect(componentCode.includes(`initial-value='A'`)).toBeTruthy();
-  expect(componentCode.includes(`validations='${radioInput.validations}'`)).toBeTruthy();
   expect(componentCode.includes(`value='${radioInput.radioList[0].value}'`)).toBeTruthy();
   expect(componentCode.includes(`value='${radioInput.radioList[1].value}'`)).toBeTruthy();
   expect(componentCode.includes(`name='${radioInput.name}'`)).toBeTruthy();

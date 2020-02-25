@@ -50,11 +50,6 @@
         {{ getErrors(`name`) }}
       </div>
     </div>
-    <validator
-      :validations="validations"
-      :validation-options="filteredValidations"
-      :update-validations="updateValidations"
-    />
     <div class="form-group">
       <label
         class="col-labels"
@@ -145,23 +140,13 @@
 <script>
 import '../../../../../css/component_builder.css';
 import { mapMutations, mapState } from 'vuex';
-import Validator from '../validator';
 import * as types from '../../store/types';
 import { cloneDeep, chain } from 'lodash';
 
 export default {
   name: 'RadioInputForm',
-  components: { Validator },
-  data () {
-    return {
-      validationOptions: ['required']
-    };
-  },
+  components: {},
   computed: {
-    filteredValidations: function () {
-      // when no filters applied
-      return this.validationOptions.map((e) => { return { name: e }; });
-    },
     values () {
       return chain(this.radioList).map('value').filter().uniq().value();
     },
@@ -206,8 +191,7 @@ export default {
       }
     },
     ...mapState({
-      radioList: state => state.radioInput.radioList,
-      validations: state => state.radioInput.validations
+      radioList: state => state.radioInput.radioList
     })
   },
   updated () {
@@ -216,8 +200,7 @@ export default {
   methods: {
     ...mapMutations({
       'deleteRadioListItem': types.MUTATE_RADIO_GROUP_DELETE_LIST_ITEM,
-      'addRadioListItem': types.MUTATE_RADIO_GROUP_ADD_LIST_ITEM,
-      'updateValidations': types.MUTATE_RADIO_GROUP_VALIDATIONS
+      'addRadioListItem': types.MUTATE_RADIO_GROUP_ADD_LIST_ITEM
     }),
     getErrors (key) {
       return (this.$store.getters[types.GET_RADIO_INPUT_ERRORS][key] || []).join('\n');
