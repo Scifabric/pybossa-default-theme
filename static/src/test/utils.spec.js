@@ -4,6 +4,7 @@ import { state as checkboxInput } from '../components/builder/store/modules/chec
 import { state as radioInput } from '../components/builder/store/modules/radioInput';
 import { state as conditionalDisplay } from '../components/builder/store/modules/conditionalDisplay';
 import { state as fileUpload } from '../components/builder/store/modules/fileUpload';
+import { state as dropdownInput } from '../components/builder/store/modules/dropdownInput';
 
 test('getSimpleComponentsCode for TEXT_INPUT', () => {
   textInput['pyb-answer'] = 'answername';
@@ -123,12 +124,12 @@ it('getRadioGroupCode for RADIO_INPUT', () => {
   expect(componentCode.includes(radioInput.label)).toBeTruthy();
   expect(componentCode.includes(radioInput.radioList[0].label)).toBeTruthy();
   expect(componentCode.includes(
-    `pyb-answer="${radioInput.pybAnswer}"`)).toBeTruthy();
+    `pyb-answer='${radioInput.pybAnswer}'`)).toBeTruthy();
   expect(componentCode.includes(radioInput.radioList[1].label)).toBeTruthy();
-  expect(componentCode.includes(`initial-value="A"`)).toBeTruthy();
-  expect(componentCode.includes(`value="${radioInput.radioList[0].value}"`)).toBeTruthy();
-  expect(componentCode.includes(`value="${radioInput.radioList[1].value}"`)).toBeTruthy();
-  expect(componentCode.includes(`name="${radioInput.name}"`)).toBeTruthy();
+  expect(componentCode.includes(`initial-value='A'`)).toBeTruthy();
+  expect(componentCode.includes(`value='${radioInput.radioList[0].value}'`)).toBeTruthy();
+  expect(componentCode.includes(`value='${radioInput.radioList[1].value}'`)).toBeTruthy();
+  expect(componentCode.includes(`name='${radioInput.name}'`)).toBeTruthy();
 });
 
 it('getTableInputCode for TABLE', () => {
@@ -197,4 +198,22 @@ it('Helper components', () => {
 
   componentCode = utils.getSnippet('SUBMIT_LAST_BUTTON', {});
   expect(componentCode.trim()).toEqual('<submit-last-button></submit-last-button>');
+});
+
+it('getDropdownCode for DROPDOWN', () => {
+  dropdownInput.labelAdded = true;
+  dropdownInput.label = 'Test label';
+  dropdownInput.pybAnswer = 'dropdownInputanswer';
+  dropdownInput.initialValue = 'A';
+  dropdownInput.name = 'dropdownInput';
+  dropdownInput.validations = '["required"]';
+  dropdownInput.choices = { dropdownInput0: 'A', dropdownInput1: 'B' };
+  const componentCode = utils.getSnippet('DROPDOWN_INPUT', dropdownInput);
+  expect(componentCode.includes('<dropdown-input')).toBeTruthy();
+  expect(componentCode.includes('</dropdown-input>')).toBeTruthy();
+  expect(componentCode.includes(dropdownInput.label)).toBeTruthy();
+  expect(componentCode.includes(
+    `pyb-answer='${dropdownInput.pybAnswer}'`)).toBeTruthy();
+  expect(componentCode.includes(`initial-value='A'`)).toBeTruthy();
+  expect(componentCode.includes(`validations='${dropdownInput.validations}'`)).toBeTruthy();
 });

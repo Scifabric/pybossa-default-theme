@@ -1,114 +1,78 @@
 <template>
   <div class="row">
     <h4>Text Input Settings</h4>
-
-    <div class="col-md-12">
-      <div class="row">
-        <form>
-          <div class="form-row">
-            <div class="form-group col-md-12">
-              <input
-                id="add-label"
-                :checked="labelAdded"
-                type="checkbox"
-                @input="updateLabelAdded($event.target.checked)"
-              >
-              <label for="add-label">
-                Add Label
-              </label>
-              <input
-                v-if="labelAdded"
-                id="component-label"
-                :value="label"
-                class="form-control form-control-sm"
-                type="text"
-                @input="updateLabel($event.target.value)"
-              >
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-12">
-              <label class="col-form-label-sm">
-                Input Type
-              </label>
-              <select
-                class="form-control form-control-sm"
-                :value="type"
-                @input="updateType($event.target.value)"
-              >
-                <option
-                  v-for="(v, k) in inputTypeOptions"
-                  :key="k"
-                  :value="v"
-                >
-                  {{ k }}
-                </option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-12">
-              <div>
-                <label class="">Validations to be applied before submitting the task.</label>
-                <multiselect
-                  :value="validations"
-                  :options="filteredValidations"
-                  :multiple="true"
-                  :close-on-select="false"
-                  :clear-on-select="false"
-                  :preserve-search="true"
-                  placeholder="Select Validations"
-                  label="name"
-                  track-by="name"
-                  :preselect-first="true"
-                  @input="updateValidations($event)"
-                >
-                  <template
-                    slot="selection"
-                    slot-scope="{ values, search, isOpen }"
-                  >
-                    <span
-                      v-if="values.length &amp;&amp; !isOpen"
-                      class="multiselect__single"
-                    >{{ values.length }} options selected</span>
-                  </template>
-                </multiselect>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-12">
-              <label
-                for="pyb-answer"
-                class="col-form-label-sm"
-              >
-                Answer field name | <span class="label-tip">The field where the worker's answer is stored. Can be JSON path like a.b.c.</span>
-              </label>
-              <input
-                id="pyb-answer"
-                :value="pybanwer"
-                class="form-control form-control-sm"
-                type="text"
-                @input="updatePybanswer($event.target.value)"
-              >
-            </div>
-          </div>
-        </form>
+    <div class="form-row">
+      <input
+        id="add-label"
+        :checked="labelAdded"
+        type="checkbox"
+        @input="updateLabelAdded($event.target.checked)"
+      >
+      <label for="add-label">
+        Add Label
+      </label>
+      <input
+        v-if="labelAdded"
+        id="component-label"
+        :value="label"
+        class="form-control form-control-sm"
+        type="text"
+        @input="updateLabel($event.target.value)"
+      >
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="col-labels">
+          Input Type
+        </label>
+        <select
+          class="form-control form-control-sm"
+          :value="type"
+          @input="updateType($event.target.value)"
+        >
+          <option
+            v-for="(v, k) in inputTypeOptions"
+            :key="k"
+            :value="v"
+          >
+            {{ k }}
+          </option>
+        </select>
       </div>
+    </div>
+
+    <validator
+      :validations="validations"
+      :validation-options="filteredValidations"
+      :update-validations="updateValidations"
+    />
+
+    <div class="form-row">
+      <label
+        for="pyb-answer"
+        class="col-labels"
+      >
+        Answer field name | <span class="label-tip">The field where the worker's answer is stored. Can be JSON path like a.b.c.</span>
+      </label>
+      <input
+        id="pyb-answer"
+        :value="pybanwer"
+        class="form-control form-control-sm"
+        type="text"
+        @input="updatePybanswer($event.target.value)"
+      >
     </div>
   </div>
 </template>
 
 <script>
-import '../../../../../css/multiselect_overwrite_colors.css';
-import Multiselect from 'vue-multiselect';
+import '../../../../../css/component_builder.css';
+import Validator from '../validator';
 import * as types from '../../store/types';
 import { mapMutations, mapState } from 'vuex';
 export default {
   name: 'TextInputForm',
-  components: { Multiselect },
+  components: { Validator },
     data () {
     return {
       validationOptions: ['required', 'email', 'number', 'url'],

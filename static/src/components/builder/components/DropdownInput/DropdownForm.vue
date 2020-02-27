@@ -28,6 +28,11 @@
         type="text"
       >
     </label>
+    <validator
+      :validations="validations"
+      :validation-options="filteredValidations"
+      :update-validations="updateValidations"
+    />
     <hr>
     <h4>
       Choices
@@ -117,6 +122,7 @@
 <script>
 import '../../../../../css/component_builder.css';
 import { mapMutations, mapState } from 'vuex';
+import Validator from '../validator';
 import * as types from '../../store/types';
 import { cloneDeep, chain } from 'lodash';
 
@@ -130,13 +136,18 @@ function scrollToEnd (selector) {
 
 export default {
   name: 'DropdownInputForm',
-  components: {},
+  components: { Validator },
   data () {
     return {
+      validationOptions: ['required'],
       scrollToEndSelectors: []
     };
   },
   computed: {
+    filteredValidations: function () {
+      // when no filters applied
+      return this.validationOptions.map((e) => { return { name: e }; });
+    },
     values () {
       return chain(this.choiceList).map('value').filter().uniq().value();
     },
@@ -173,7 +184,8 @@ export default {
       }
     },
     ...mapState({
-      choiceList: state => state.dropdownInput.choiceList
+      choiceList: state => state.dropdownInput.choiceList,
+      validations: state => state.dropdownInput.validations
     })
   },
   updated () {
@@ -182,7 +194,8 @@ export default {
   },
   methods: {
     ...mapMutations({
-      'deleteChoice': types.MUTATE_DROPDOWN_DELETE_CHOICE
+      'deleteChoice': types.MUTATE_DROPDOWN_DELETE_CHOICE,
+      'updateValidations': types.MUTATE_DROPDOWN_VALIDATIONS
     }),
     addChoice () {
       this.$store.commit(types.MUTATE_DROPDOWN_ADD_CHOICE);

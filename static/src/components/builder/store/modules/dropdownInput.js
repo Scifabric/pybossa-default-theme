@@ -8,7 +8,8 @@ export function initialState () {
     labelAdded: false,
     choiceList: [firstElement],
     pybAnswer: '',
-    initialValue: ''
+    initialValue: '',
+    validations: []
   };
 }
 
@@ -58,7 +59,8 @@ export const getters = {
       labelAdded: state.labelAdded,
       choices: getChoiceDict(state),
       pybAnswer: state.pybAnswer,
-      initialValue: state.initialValue
+      initialValue: state.initialValue,
+      validations: JSON.stringify(state.validations.map((e) => { return e.name; }))
     };
   },
   [types.GET_DROPDOWN_INPUT_FORM_VALID] (state, getters) {
@@ -94,6 +96,9 @@ export const mutations = {
   [types.MUTATE_DROPDOWN_ADD_CHOICE] (state) {
     const newObj = getChoiceObject();
     state.choiceList.push(newObj);
+  },
+  [types.MUTATE_DROPDOWN_VALIDATIONS] (state, payload) {
+    state.validations = payload;
   }
 };
 

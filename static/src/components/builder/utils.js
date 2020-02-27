@@ -279,13 +279,14 @@ export default {
     }
   },
 
-  getDropdownCode ({ pybAnswer, choices, labelAdded, label, initialValue }) {
+  getDropdownCode ({ pybAnswer, choices, labelAdded, label, initialValue, validations }) {
     let output = Mustache.render(
       dropdownTemplate,
       {
         pybAnswer,
         choices: JSON.stringify(choices),
-        initialValue
+        initialValue,
+        validations
       }
     );
 
