@@ -80,13 +80,13 @@
         <a id="help-btn" class="btn btn-info navbar-right " target="_blank" href="http://docs.pybossa.com"><i class="fa fa-book"></i> {{ _('Help') }}</a>
         <li class="tab-nav-collapse-expand navbar-right tab-link show-builder"  aria-controls="basics" id ="component-builder-description">
             <a class="cursor-link">
-                <i class="fa fa-minus-square-o builder-tab-icon" aria-hidden="true"></i>
+                <i class="fa fa-plus-square-o builder-tab-icon" aria-hidden="true"></i>
                 <span class="builder-tab-text">Expand Screen</span>
             </a>
             </li>
         <li class="tab-nav-collapse-expand navbar-right tab-link hide-builder" id="component-builder-hide" >
             <a class="cursor-link">
-                <i class="fa fa-plus-square-o builder-tab-icon" aria-hidden="true"></i>
+                <i class="fa fa-minus-square-o builder-tab-icon" aria-hidden="true"></i>
                 <span class="builder-tab-text">Collapse Screen</span>
             </a>
             </li>
@@ -527,8 +527,8 @@ function updateExpandButton(e) {
     // Configure the labels and icons for the tabs.
     var showToolkitLabel = isTaskPresenterTab ? 'Build Your Code' : 'Collapse Instructions';
     var hideToolkitLabel = isTaskPresenterTab ? 'Hide Code Builder' : 'Expand Instructions';
-    var showToolkitIcon = isTaskPresenterTab ? 'fa-wrench' : 'fa-minus-square-o';
-    var hideToolkitIcon = isTaskPresenterTab ? 'fa-minus-square-o' : 'fa-plus-square-o';
+    var showToolkitIcon = isTaskPresenterTab ? 'fa-wrench' : 'fa-plus-square-o';
+    var hideToolkitIcon = 'fa-minus-square-o';
 
     // Update the label for the show/hide button, depending on the active tab.
     var showBuilderLabel = isTaskPresenterTab ? showToolkitLabel : hideToolkitLabel;
