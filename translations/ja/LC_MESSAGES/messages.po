@@ -1,22 +1,23 @@
-# Japanese translations for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# Japanese translations for PyBossa.
+# Copyright (C) 2016 Scifabric
+# This file is distributed under the same license as the PyBossa project.
 # Yu Fujimoto <yu.fujimoto@geo-nara.net>, 2015.
-#
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
+"Project-Id-Version: PyBossa VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2016-02-05 18:06+0000\n"
-"PO-Revision-Date: 2015-07-13 10:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Yu Fujimoto <yu.fujimoto@geo-nara.net>\n"
-"Language: ja\n"
-"Language-Team: ja <yu.fujimoto@geo-nara.net>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Team: Japanese (https://www.transifex.com/codeforeurope/teams/86021/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: themes/default/templates/_navbar.html:12
 #: themes/default/templates/account/index.html:14
@@ -211,15 +212,16 @@ msgstr "もうあと１ステップです"
 
 #: themes/default/templates/account/account_validation.html:8
 msgid ""
-"In order to confirm your identity, we've sent an email to the address you"
-" just provided. Please, check it out and click on the link you'll find to"
-" create your account at"
-msgstr "たった今、ユーザーを特定するために、入力して頂いたメールアドレスにメールを送信しました。受信したメールを確認し、新規アカウントを作成するためのリンクをクリックしてください。"
+"In order to confirm your identity, we've sent an email to the address you "
+"just provided. Please, check it out and click on the link you'll find to "
+"create your account at"
+msgstr ""
+"たった今、ユーザーを特定するために、入力して頂いたメールアドレスにメールを送信しました。受信したメールを確認し、新規アカウントを作成するためのリンクをクリックしてください。"
 
 #: themes/default/templates/account/account_validation.html:9
 msgid ""
-"If you are not receiving the email, please check the junk folder. If it's"
-" not there please drop us an email to"
+"If you are not receiving the email, please check the junk folder. If it's "
+"not there please drop us an email to"
 msgstr "もしもメールが受信できていない場合、迷惑メールをチェックしてください。メールが受信できていない場合には次のアドレスにご連絡ください："
 
 #: themes/default/templates/account/account_validation.html:10
@@ -448,17 +450,15 @@ msgid "Upload"
 msgstr "アップロード"
 
 #: themes/default/templates/account/update.html:47
+#: themes/default/templates/account/update.html:64
 #: themes/default/templates/account/update.html:77
+#: themes/default/templates/projects/update.html:47
 msgid "Save the changes"
 msgstr "変更の保存"
 
 #: themes/default/templates/account/update.html:54
 msgid "Change your Password"
 msgstr "パスワード変更"
-
-#: themes/default/templates/account/update.html:64
-msgid "Save the Changes"
-msgstr "変更を保存する"
 
 #: themes/default/templates/account/update.html:85
 msgid "Do you want to reset your personal API Key?"
@@ -469,9 +469,8 @@ msgid "No, do not reset the API key!"
 msgstr "いいえ、APIキーのリセットはしません！"
 
 #: themes/default/templates/account/email/forgot_password.html:4
-#, fuzzy
 msgid "Recover your lost password"
-msgstr "パスワードのリセット"
+msgstr ""
 
 #: themes/default/templates/account/email/forgot_password.html:8
 #: themes/default/templates/account/email/forgot_password_openid.html:8
@@ -505,9 +504,8 @@ msgid "Regards"
 msgstr ""
 
 #: themes/default/templates/account/email/forgot_password_openid.html:4
-#, fuzzy
 msgid "Recover your password"
-msgstr "パスワードのリセット"
+msgstr ""
 
 #: themes/default/templates/account/email/forgot_password_openid.html:19
 msgid "Our records show that you use your"
@@ -520,9 +518,8 @@ msgid ""
 msgstr ""
 
 #: themes/default/templates/account/email/forgot_password_openid.html:19
-#, fuzzy
 msgid "account, please contact"
-msgstr " "
+msgstr ""
 
 #: themes/default/templates/account/email/forgot_password_openid.html:25
 #: themes/default/templates/account/email/validate_account.html:34
@@ -530,24 +527,21 @@ msgid "Team"
 msgstr ""
 
 #: themes/default/templates/account/email/validate_account.html:4
-#, fuzzy
 msgid "Validate your account"
-msgstr "アカウントを作成"
+msgstr ""
 
 #: themes/default/templates/account/email/validate_account.html:13
-#, fuzzy
 msgid "Thank you for creating an account in"
-msgstr "アカウントを作成"
+msgstr ""
 
 #: themes/default/templates/account/email/validate_account.html:16
-#, fuzzy
 msgid "Just one more step!"
-msgstr "もうあと１ステップです"
+msgstr ""
 
 #: themes/default/templates/account/email/validate_account.html:19
 msgid ""
-"To verify that you are the owner of this e-mail address, please visit the"
-" URL below"
+"To verify that you are the owner of this e-mail address, please visit the "
+"URL below"
 msgstr ""
 
 #: themes/default/templates/account/email/validate_account.html:25
@@ -608,46 +602,39 @@ msgstr "過去7日間のダッシュボード"
 
 #: themes/default/templates/admin/dashboard.html:22
 msgid "Refresh"
-msgstr ""
+msgstr "更新"
 
 #: themes/default/templates/admin/dashboard.html:28
 msgid "Active users"
 msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:37
-#, fuzzy
 msgid "Active anonymous users"
-msgstr "匿名ユーザー"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:46
-#, fuzzy
 msgid "Draft projects"
-msgstr "件の起草中のプロジェクト"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:54
-#, fuzzy
 msgid "Published projects"
-msgstr "公開中のプロジェクト"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:62
-#, fuzzy
 msgid "Updated projects"
-msgstr "プロジェクトの更新"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:70
-#, fuzzy
 msgid "New tasks"
-msgstr "タスクの閲覧"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:79
-#, fuzzy
 msgid "New Answers"
-msgstr "寄与された回答"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:88
-#, fuzzy
 msgid "New Users"
-msgstr "上位5名のユーザー"
+msgstr ""
 
 #: themes/default/templates/admin/dashboard.html:97
 msgid "Returning Users"
@@ -694,8 +681,8 @@ msgstr "警告！"
 
 #: themes/default/templates/admin/del_category.html:15
 msgid ""
-"Deleting the category will remove it from all the projects! This "
-"operation cannot be undone!"
+"Deleting the category will remove it from all the projects! This operation "
+"cannot be undone!"
 msgstr "全てのプロジェクトからカテゴリーを削除します！この操作は元に戻せません！"
 
 #: themes/default/templates/admin/del_category.html:21
@@ -780,9 +767,8 @@ msgid "New PyBossa version"
 msgstr ""
 
 #: themes/default/templates/admin/index.html:69
-#, fuzzy
 msgid "New SciFabric Blog Post"
-msgstr "ブログ記事を執筆"
+msgstr ""
 
 #: themes/default/templates/admin/projects.html:13
 msgid "Manage featured projects"
@@ -814,14 +800,14 @@ msgstr "管理者特権を保持している現在のユーザー"
 
 #: themes/default/templates/home/_about.html:5
 msgid ""
-"PyBossa is a free, open-source crowd-sourcing and micro-tasking platform."
-" It enables people to create and run projects that utilise online "
-"assistance in performing tasks that require human cognition such as image"
-" classification, transcription, geocoding and more. PyBossa is there to "
-"help researchers, civic hackers and developers to create projects where "
-"anyone around the world with some time, interest and an internet "
-"connection can contribute."
-msgstr "PyBossaは、無償のオープンソース・クラウド・ソーシングおよびマイクロ・タスキングのプラットフォームです。このシステムは、人による手作業を必要とするような、画像分類、転機、ジオコーディング、あるいは、それ以外の作業において、オンライン支援によるプロジェクトの作成と運用を可能にします。PyBossaは、プロジェクトを通して研究者、一般のIT技術者および開発者を手助けするとともに、時間がある人、興味がある人、そして、インターネット接続が可能な世界中の誰もが参加できる機会を提供します。"
+"PyBossa is a free, open-source crowd-sourcing and micro-tasking platform. It"
+" enables people to create and run projects that utilise online assistance in"
+" performing tasks that require human cognition such as image classification,"
+" transcription, geocoding and more. PyBossa is there to help researchers, "
+"civic hackers and developers to create projects where anyone around the "
+"world with some time, interest and an internet connection can contribute."
+msgstr ""
+"PyBossaは、無償のオープンソース・クラウド・ソーシングおよびマイクロ・タスキングのプラットフォームです。このシステムは、人による手作業を必要とするような、画像分類、転機、ジオコーディング、あるいは、それ以外の作業において、オンライン支援によるプロジェクトの作成と運用を可能にします。PyBossaは、プロジェクトを通して研究者、一般のIT技術者および開発者を手助けするとともに、時間がある人、興味がある人、そして、インターネット接続が可能な世界中の誰もが参加できる機会を提供します。"
 
 #: themes/default/templates/home/_about.html:8
 msgid "PyBossa is different to existing efforts:"
@@ -834,8 +820,8 @@ msgstr "100%、オープンソースです。"
 
 #: themes/default/templates/home/_about.html:11
 msgid ""
-"Unlike, say, “mechanical turk” style projects, PyBossa is not designed to"
-" handle payment or money — it is designed to support volunteer-driven "
+"Unlike, say, “mechanical turk” style projects, PyBossa is not designed to "
+"handle payment or money — it is designed to support volunteer-driven "
 "projects."
 msgstr ""
 "いわゆる、「Mechanical "
@@ -844,17 +830,19 @@ msgstr ""
 #: themes/default/templates/home/_about.html:13
 msgid ""
 "It's designed as a platform and framework for developing deploying crowd-"
-"sourcing and microtasking project rather than being a crowd-sourcing "
-"project itself. Individual crowd-sourcing projects are written as simple "
-"snippets of Javascript and HTML which are then deployed on a PyBossa "
-"instance (such as"
-msgstr "展開されているクラウド・ソーシングあるいはマイクロ・タスキングのプロジェクトを開発するためのプラットフォームあるいはフレームワークとして設計されています。"
+"sourcing and microtasking project rather than being a crowd-sourcing project"
+" itself. Individual crowd-sourcing projects are written as simple snippets "
+"of Javascript and HTML which are then deployed on a PyBossa instance (such "
+"as"
+msgstr ""
+"展開されているクラウド・ソーシングあるいはマイクロ・タスキングのプロジェクトを開発するためのプラットフォームあるいはフレームワークとして設計されています。"
 
 #: themes/default/templates/home/_about.html:13
 msgid ""
 "This way one can easily develop custom projects while using the PyBossa "
 "platform to store your data, manage users, and handle workflow"
-msgstr "この方法によって、データの蓄積、ユーザー管理、ワークフロー通りの処理のためのPyBossaプラットフォームを使うことで、誰もが簡単にカスタム・プロジェクトを開発できます。"
+msgstr ""
+"この方法によって、データの蓄積、ユーザー管理、ワークフロー通りの処理のためのPyBossaプラットフォームを使うことで、誰もが簡単にカスタム・プロジェクトを開発できます。"
 
 #: themes/default/templates/home/_about.html:18
 msgid "You can read more about the architecture in the"
@@ -880,12 +868,13 @@ msgstr "統計"
 
 #: themes/default/templates/home/_about.html:23
 msgid ""
-" PyBossa provides individual statistics for every project in the system, "
-"as well as a"
+" PyBossa provides individual statistics for every project in the system, as "
+"well as a"
 msgstr ""
 
 #: themes/default/templates/home/_about.html:23
-msgid "general overview about the system like total number of users, tasks, etc"
+msgid ""
+"general overview about the system like total number of users, tasks, etc"
 msgstr ""
 
 #: themes/default/templates/home/_about.html:25
@@ -1008,9 +997,8 @@ msgstr "貢献する"
 
 #: themes/default/templates/projects/_helpers.html:38
 #: themes/default/templates/projects/results.html:15
-#, fuzzy
 msgid "Results"
-msgstr "結果を検索する"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:42
 #: themes/default/templates/projects/_helpers.html:89
@@ -1096,9 +1084,8 @@ msgid "Start Contributing Now!"
 msgstr "今すぐ、貢献作業を開始する！"
 
 #: themes/default/templates/projects/_helpers.html:218
-#, fuzzy
 msgid "Thanks for contributing"
-msgstr "貢献作業を開始"
+msgstr ""
 
 #: themes/default/templates/projects/_helpers.html:221
 msgid "Draft project, complete it!"
@@ -1288,9 +1275,10 @@ msgstr "重要！"
 
 #: themes/default/templates/projects/export.html:51
 msgid ""
-"This export option stills in beta mode and may fail in the CKAN server. "
-"If you get an error, please send an e-mail to info@pybossa.com"
-msgstr "この出力オプションはまだベータ版であり、CKANサーバーの形式の場合には失敗する可能性があります。エラーが発生した場合には、info@pybossa.comにメールしてください。"
+"This export option stills in beta mode and may fail in the CKAN server. If "
+"you get an error, please send an e-mail to info@pybossa.com"
+msgstr ""
+"この出力オプションはまだベータ版であり、CKANサーバーの形式の場合には失敗する可能性があります。エラーが発生した場合には、info@pybossa.comにメールしてください。"
 
 #: themes/default/templates/projects/export.html:56
 msgid "You don't have a Datahub.io API key in your"
@@ -1298,14 +1286,15 @@ msgstr "アカウントにDatahub.io API キーがありません。"
 
 #: themes/default/templates/projects/export.html:56
 msgid "account. Please,"
-msgstr " "
+msgstr ""
 
 #: themes/default/templates/projects/export.html:56
 msgid "create an account"
 msgstr "アカウントを作成"
 
 #: themes/default/templates/projects/export.html:56
-msgid "and copy/paste the API key in your profile in order to use this exporter"
+msgid ""
+"and copy/paste the API key in your profile in order to use this exporter"
 msgstr "し、このエクスポート機能を使用するために、APIキーをプロフィールにコピー・アンド・ペーストしてください。"
 
 #: themes/default/templates/projects/index.html:35
@@ -1350,20 +1339,11 @@ msgstr "識別名"
 
 #: themes/default/templates/projects/new.html:19
 msgid ""
-"Explain your project"
-"                                                             \n"
-"                · Why? Why you are creating this project, what you want "
-"to achieve with it"
-"                                                             \n"
-"                · How? Explain how your project works"
-"                                                             \n"
-"                · How you can help: Explain to the volunteers how they "
-"can help and contribute to the goal of your project"
-"                                                             \n"
-"                · Will you help make a difference? Explain to the "
-"volunteers why their contribution is essential and how the result of your"
-" project can help change things!"
-"                                                             \n"
+"Explain your project                                                             \n"
+"                · Why? Why you are creating this project, what you want to achieve with it                                                             \n"
+"                · How? Explain how your project works                                                             \n"
+"                · How you can help: Explain to the volunteers how they can help and contribute to the goal of your project                                                             \n"
+"                · Will you help make a difference? Explain to the volunteers why their contribution is essential and how the result of your project can help change things!                                                             \n"
 "            (you can use Markdown to give format to your description!)"
 msgstr ""
 "プロジェクトの説明\n"
@@ -1411,9 +1391,8 @@ msgid ""
 msgstr "申し訳ございません。このプロジェクトではより多くのボランティアを必要としています。このプロジェクトの事を周知していただけると幸いです。"
 
 #: themes/default/templates/projects/publish.html:12
-#, fuzzy
 msgid "Publish the project"
-msgstr "公開中のプロジェクト"
+msgstr ""
 
 #: themes/default/templates/projects/publish.html:14
 msgid "Please read carefully!"
@@ -1428,31 +1407,29 @@ msgstr ""
 
 #: themes/default/templates/projects/publish.html:16
 msgid ""
-"That means that your project should be working properly, so please make "
-"sure it does. Otherwise you can work on it and publish it once it works "
-"fine."
+"That means that your project should be working properly, so please make sure"
+" it does. Otherwise you can work on it and publish it once it works fine."
 msgstr ""
 
 #: themes/default/templates/projects/publish.html:21
-#, fuzzy
 msgid "Are you sure you want to publish this project?"
-msgstr "プロジェクトを隠しますか？"
+msgstr ""
 
 #: themes/default/templates/projects/publish.html:23
 msgid "Yes, publish it"
 msgstr ""
 
 #: themes/default/templates/projects/publish.html:24
-#, fuzzy
 msgid "No, do not publish it!"
-msgstr "いいえ、消去しません！"
+msgstr ""
 
 #: themes/default/templates/projects/results.html:21
 msgid "No results"
 msgstr ""
 
 #: themes/default/templates/projects/results.html:22
-msgid "The project owner has not created/published/visualized any results yet."
+msgid ""
+"The project owner has not created/published/visualized any results yet."
 msgstr ""
 
 #: themes/default/templates/projects/settings.html:16
@@ -1486,9 +1463,8 @@ msgid "Average contribution time per task"
 msgstr ""
 
 #: themes/default/templates/projects/stats.html:48
-#, fuzzy
 msgid "seconds"
-msgstr "二つ目の数字は"
+msgstr ""
 
 #: themes/default/templates/projects/stats.html:56
 msgid "Distribution of Answers per Hour"
@@ -1673,8 +1649,7 @@ msgstr "優先度"
 #: themes/default/templates/projects/task_priority.html:16
 msgid ""
 "of one or more tasks,\n"
-"                providing a list of task IDs separated by commas. The "
-"lowest\n"
+"                providing a list of task IDs separated by commas. The lowest\n"
 "                priority is"
 msgstr "は、一つあるいは複数のタスクに与えることができ、カンマ区切りのタスクIDのリストによって定義されます。最も低い優先度＝"
 
@@ -1728,8 +1703,7 @@ msgstr "縦型探索"
 #: themes/default/templates/projects/task_scheduler.html:18
 msgid ""
 "returns a task that\n"
-"                    has not been completed (the value of number of "
-"answers has\n"
+"                    has not been completed (the value of number of answers has\n"
 "                    not achieved) excluding the current user"
 msgstr "現在のユーザーを除いた、完了していないタスク（回答数の値は得られません）を検索します。"
 
@@ -1740,8 +1714,7 @@ msgstr "幅優先探索"
 #: themes/default/templates/projects/task_scheduler.html:21
 msgid ""
 "returns a\n"
-"                    task which has the least number of task runs "
-"(answers)\n"
+"                    task which has the least number of task runs (answers)\n"
 "                    excluding the current user"
 msgstr "現在のユーザーを除いた、稼働中のタスクが最も少ないタスクを検索します。"
 
@@ -1752,8 +1725,7 @@ msgstr "ランダム"
 #: themes/default/templates/projects/task_scheduler.html:24
 msgid ""
 "returns a task\n"
-"                    randomly --a user could get the same task twice or "
-"more\n"
+"                    randomly --a user could get the same task twice or more\n"
 "                    times"
 msgstr "ランダムにタスクを検索します。したがって、同じタスクを複数回取得することがあります。"
 
@@ -1879,14 +1851,14 @@ msgstr "この番号は、プロジェクトのタスクを識別するユニー
 
 #: themes/default/templates/projects/tasks_browse.html:19
 msgid ""
-"The first number shows how many answers have been submitted for the task "
-"and the"
+"The first number shows how many answers have been submitted for the task and"
+" the"
 msgstr "最初の数字は、タスクに対して得られた回答数を示し、"
 
 #: themes/default/templates/projects/tasks_browse.html:19
 msgid ""
-"This redundancy method will help to detect errors, typos, data forging, "
-"etc. when the task has been completed"
+"This redundancy method will help to detect errors, typos, data forging, etc."
+" when the task has been completed"
 msgstr "この冗長性メソッドは、タスクが完了した際に、エラー検出、タイプミス、データねつ造等の検出を助けます。"
 
 #: themes/default/templates/projects/tasks_browse.html:19
@@ -1894,16 +1866,16 @@ msgid "second number"
 msgstr "二つ目の数字は"
 
 #: themes/default/templates/projects/tasks_browse.html:19
-#, fuzzy
 msgid "how many need to be obtained to mark the task as"
-msgstr "完了状態に必要な数字を示しています。"
+msgstr ""
 
 #: themes/default/templates/projects/tasks_browse.html:20
 msgid "Progress Bar"
 msgstr "プログレスバー"
 
 #: themes/default/templates/projects/tasks_browse.html:20
-msgid "The progress bar will the percentage that has been completed for the task"
+msgid ""
+"The progress bar will the percentage that has been completed for the task"
 msgstr "プログレスバーは、タスクの完了状況のパーセンテージを表しています"
 
 #: themes/default/templates/projects/tasks_browse.html:48
@@ -1938,10 +1910,6 @@ msgstr "プロジェクトについて説明する（Markdownを使用！）"
 msgid "Check if you want to allow anonymous users contribute to your project"
 msgstr ""
 
-#: themes/default/templates/projects/update.html:47
-msgid "Save the changes"
-msgstr "変更を保存"
-
 #: themes/default/templates/projects/update_blogpost.html:14
 msgid "Edit the blog post"
 msgstr "ブログ投稿を編集"
@@ -1951,19 +1919,16 @@ msgid "Update"
 msgstr "更新"
 
 #: themes/default/templates/projects/webhook.html:20
-#, fuzzy
 msgid "Created"
-msgstr "作成"
+msgstr ""
 
 #: themes/default/templates/projects/webhook.html:21
-#, fuzzy
 msgid "Updated"
-msgstr "更新"
+msgstr ""
 
 #: themes/default/templates/projects/webhook.html:22
-#, fuzzy
 msgid "Payload"
-msgstr "アップロード"
+msgstr ""
 
 #: themes/default/templates/projects/webhook.html:23
 msgid "Response"
@@ -1974,9 +1939,8 @@ msgid "Response Status Code"
 msgstr ""
 
 #: themes/default/templates/projects/webhook.html:25
-#, fuzzy
 msgid "Repeat"
-msgstr "作成"
+msgstr ""
 
 #: themes/default/templates/projects/importers/iiif.html:10
 msgid "From a IIIF manifest"
@@ -1988,8 +1952,8 @@ msgstr "CSVファイルから"
 
 #: themes/default/templates/projects/importers/csv.html:20
 msgid ""
-"Please provide a URL (i.e. DropBox, Box, Ubuntu One, etc. public link) to"
-" a CSV file with data for"
+"Please provide a URL (i.e. DropBox, Box, Ubuntu One, etc. public link) to a "
+"CSV file with data for"
 msgstr "CSVファイルのURL（DropBox, Box, Ubuntu One等のパブリック・リンク）を入力してください："
 
 #: themes/default/templates/projects/importers/csv.html:20
@@ -2055,9 +2019,8 @@ msgid "Revoke access"
 msgstr "アクセスを無効にする"
 
 #: themes/default/templates/projects/importers/flickr.html:20
-#, fuzzy
 msgid "Grant access to your Flickr albums to select one..."
-msgstr "CrowdcraftingがFlickrのアルバムに接続することを許可する"
+msgstr ""
 
 #: themes/default/templates/projects/importers/flickr.html:21
 msgid "Log in Flickr"
@@ -2096,9 +2059,8 @@ msgid "From an Amazon S3 bucket"
 msgstr ""
 
 #: themes/default/templates/projects/importers/s3.html:33
-#, fuzzy
 msgid "Name of the S3 bucket"
-msgstr "プロジェクトの名称"
+msgstr ""
 
 #: themes/default/templates/projects/importers/s3.html:35
 msgid "Search in bucket"
@@ -2118,10 +2080,10 @@ msgstr ""
 
 #: themes/default/templates/projects/importers/twitter.html:20
 msgid ""
-"You can provide your own Twitter credentials and make API requests in "
-"behalf of them, or use the credentials provided by us. (The later only "
-"allows to import the number of tweets returned by a single Twitter API "
-"call, which is 100 for searches and 200 for user timelines.)"
+"You can provide your own Twitter credentials and make API requests in behalf"
+" of them, or use the credentials provided by us. (The later only allows to "
+"import the number of tweets returned by a single Twitter API call, which is "
+"100 for searches and 200 for user timelines.)"
 msgstr ""
 
 #: themes/default/templates/projects/importers/twitter.html:23
@@ -2135,8 +2097,7 @@ msgstr ""
 #: themes/default/templates/projects/importers/twitter.html:32
 msgid ""
 "Please provide the source of your tweets. It can be a \"#hashtag\", a "
-"regular \"word\" for search or a \"@user_account\" from where to import "
-"them"
+"regular \"word\" for search or a \"@user_account\" from where to import them"
 msgstr ""
 
 #: themes/default/templates/projects/importers/twitter.html:37
@@ -2315,8 +2276,8 @@ msgstr "この処理を元に戻すことはできません！"
 
 #: themes/default/templates/projects/tasks/delete.html:20
 msgid ""
-"Are you sure you want to delete ALL the project tasks and associated task"
-" runs?"
+"Are you sure you want to delete ALL the project tasks and associated task "
+"runs?"
 msgstr "全てのプロジェクトタスクと関連する稼働中のタスクを消去しますか？"
 
 #: themes/default/templates/projects/tasks/delete.html:24
@@ -2436,18 +2397,16 @@ msgid "Use files from an Amazon S3 bucket"
 msgstr ""
 
 #: themes/default/templates/projects/tasks/s3.html:5
-#, fuzzy
 msgid "Use the Amazon S3 importer"
-msgstr "Dropboxのインポート"
+msgstr ""
 
 #: themes/default/templates/projects/tasks/twitter.html:3
 msgid "Import tweets from a search or a user account"
 msgstr ""
 
 #: themes/default/templates/projects/tasks/twitter.html:5
-#, fuzzy
 msgid "Use the Twitter importer"
-msgstr "Flickrのインポート"
+msgstr ""
 
 #: themes/default/templates/stats/global.html:38
 msgid "General Statistics"
@@ -2521,379 +2480,3 @@ msgstr "名前"
 #: themes/default/templates/stats/index.html:19
 msgid "Score"
 msgstr "スコア"
-
-#~ msgid "<strong>注意</strong> You will need to upload the tasks using the"
-#~ msgstr ""
-
-#~ msgid ""
-#~ msgstr ""
-
-#~ msgid "The file you uploaded has two headers with the same name."
-#~ msgstr "アップロードされたファイルは、同じ名前のヘッダーが複数含まれているようです。"
-
-#~ msgid "The file you uploaded has an empty header on column %s."
-#~ msgstr "アップロードされたファイルは、%s 列に空白のヘッダーがあります。"
-
-#~ msgid "The file you uploaded has an extra value on row %s."
-#~ msgstr ""
-
-#~ msgid "Oops! That file doesn't look like the right file."
-#~ msgstr "おっと！そのファイルは間違っているようです。"
-
-#~ msgid "It looks like there were no new records to import"
-#~ msgstr "インポートするべき新規レコードがありません"
-
-#~ msgid "new tasks were imported successfully"
-#~ msgstr "複数の新しいタスクが無事にインポートされました"
-
-#~ msgid "new task was imported successfully"
-#~ msgstr "一つの新しいタスクが無事にインポートされました。"
-
-#~ msgid "Name is already taken."
-#~ msgstr "名前は取得済みです。"
-
-#~ msgid "Short Name"
-#~ msgstr "省略名"
-
-#~ msgid "Short Name is already taken."
-#~ msgstr "省略名は取得済みです。"
-
-#~ msgid "Long Description"
-#~ msgstr "長い説明"
-
-#~ msgid "You must provide a description."
-#~ msgstr "説明を書いて下さい。"
-
-#~ msgid "Allow Anonymous Contributors"
-#~ msgstr "匿名の参加者を許可します。"
-
-#~ msgid "Category"
-#~ msgstr "カテゴリ"
-
-#~ msgid "Hide?"
-#~ msgstr "隠しますか？"
-
-#~ msgid "Password (leave blank for no password)"
-#~ msgstr "パスワード（空白の場合はパスワードを設定しません）"
-
-#~ msgid "Webhook"
-#~ msgstr "Webhook"
-
-#~ msgid "Task IDs"
-#~ msgstr "タスクID"
-
-#~ msgid "Title"
-#~ msgstr "タイトル"
-
-#~ msgid "You must enter a title for the post."
-#~ msgstr "投稿するにはタイトルを入力する必要があります。"
-
-#~ msgid "Body"
-#~ msgstr "本文"
-
-#~ msgid "You must enter some text for the post."
-#~ msgstr "投稿するには何らかの文章を入力する必要があります。"
-
-#~ msgid "Password"
-#~ msgstr "パスワード"
-
-#~ msgid "You must enter a password"
-#~ msgstr "パスワードを入力する必要があります。"
-
-#~ msgid "You must provide a URL"
-#~ msgstr "URLを入力する必要があります"
-
-#~ msgid "Oops! That's not a valid URL. You must provide a valid URL"
-#~ msgstr "おっと！URLが有効ではありません。有効なURLを入力してください。"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "You must provide an EpiCollect Plus project name"
-#~ msgstr "EpiCollect Plusのプロジェクト名を入力する必要があります"
-
-#~ msgid "You must provide a Form name for the project"
-#~ msgstr "プロジェクトのフォーム名を入力する必要があります"
-
-#~ msgid "Project Name"
-#~ msgstr "プロジェクト名"
-
-#~ msgid "Form name"
-#~ msgstr "フォーム名"
-
-#~ msgid "You must provide a valid Flickr album ID"
-#~ msgstr "有効なFlickrのアルバムIDを入力する必要があります"
-
-#~ msgid "Album ID"
-#~ msgstr "アルバムID"
-
-#~ msgid "The e-mail is required"
-#~ msgstr "Eメールが必要です"
-
-#~ msgid "You must provide a password"
-#~ msgstr "パスワードが必要です"
-
-#~ msgid "Full name must be between 3 and %s characters long"
-#~ msgstr "フルネームは3〜%s の文字数である必要があります"
-
-#~ msgid "Full name"
-#~ msgstr "氏名"
-
-#~ msgid "User name must be between 3 and %s characters long"
-#~ msgstr "ユーザー名は3〜%s の文字数である必要があります"
-
-#~ msgid "The user name is already taken"
-#~ msgstr "ユーザー名は取得済みです"
-
-#~ msgid "User name"
-#~ msgstr "ユーザー名"
-
-#~ msgid "Email must be between 3 and %s characters long"
-#~ msgstr "Eメールは3〜%sの文字数である必要があります"
-
-#~ msgid "Email is already taken"
-#~ msgstr "Eメールは取得済みです"
-
-#~ msgid "Email Address"
-#~ msgstr "Eメール"
-
-#~ msgid "Password cannot be empty"
-#~ msgstr "パスワードは空白にはできません"
-
-#~ msgid "Passwords must match"
-#~ msgstr "パスワードは一致する必要があります"
-
-#~ msgid "New Password"
-#~ msgstr "新しいパスワード"
-
-#~ msgid "Repeat Password"
-#~ msgstr "パスワード再入力"
-
-#~ msgid "Username"
-#~ msgstr "ユーザー名"
-
-#~ msgid "Get email notifications"
-#~ msgstr "お知らせメールの受信"
-
-#~ msgid "Language"
-#~ msgstr "表示言語"
-
-#~ msgid "CKAN API Key"
-#~ msgstr "CKAN APIキー"
-
-#~ msgid "Privacy Mode"
-#~ msgstr "プライバシー・モード"
-
-#~ msgid "English"
-#~ msgstr "英語"
-
-#~ msgid "Spanish"
-#~ msgstr "スペイン語"
-
-#~ msgid "French"
-#~ msgstr "フランス語"
-
-#~ msgid "German"
-#~ msgstr "ドイツ語"
-
-#~ msgid "Italian"
-#~ msgstr "イタリア語"
-
-#~ msgid "Japanese"
-#~ msgstr "日本語"
-
-#~ msgid "Current password"
-#~ msgstr "現在のパスワード"
-
-#~ msgid "New password"
-#~ msgstr "新規パスワード"
-
-#~ msgid "Repeat password"
-#~ msgstr "パスワード再入力"
-
-#~ msgid "Avatar"
-#~ msgstr "プロフィール画像"
-
-#~ msgid "This item already exists"
-#~ msgstr "この項目は既に存在しています"
-
-#~ msgid "%sand space symbols are forbidden"
-#~ msgstr "%s と空白は禁止されています"
-
-#~ msgid "Only comma separated values are allowed, no spaces"
-#~ msgstr "カンマ区切り（CSVファイル）のみが利用でき、スペース区切りは利用できません"
-
-#~ msgid "Invalid URL"
-#~ msgstr "無効なURL"
-
-#~ msgid "Connection error"
-#~ msgstr "接続エラー"
-
-#~ msgid "This name is used by the system."
-#~ msgstr "この名前はシステムで使われています。"
-
-#~ msgid "Your profile"
-#~ msgstr "プロフィール"
-
-#~ msgid "External Services"
-#~ msgstr "外部サービス"
-
-#~ msgid "Reset"
-#~ msgstr "リセット"
-
-#~ msgid "Refresh"
-#~ msgstr "更新"
-
-#~ msgid "Order by"
-#~ msgstr "並べ替え："
-
-#~ msgid "name"
-#~ msgstr "名前"
-
-#~ msgid "date"
-#~ msgstr "日付"
-
-#~ msgid "activity"
-#~ msgstr "活動"
-
-#~ msgid "progress"
-#~ msgstr "進捗"
-
-#~ msgid "for any of the template projects."
-#~ msgstr "をプロジェクトに適用します。"
-
-#~ msgid "Welcome back"
-#~ msgstr "おかえりなさい"
-
-#~ msgid "Ooops, Incorrect email/password"
-#~ msgstr "おっと！Eメールあるいはパスワードが間違っているようです。"
-
-#~ msgid "Please correct the errors"
-#~ msgstr "エラーを修正してください。"
-
-#~ msgid "You are now signed out"
-#~ msgstr "サインアウトしました"
-
-#~ msgid "Register"
-#~ msgstr "登録"
-
-#~ msgid "Subscribe to our Newsletter"
-#~ msgstr "ニュースレターの購読"
-
-#~ msgid "Thanks for signing-up"
-#~ msgstr "サインアップ頂きありがとうございます。"
-
-#~ msgid "Your email has been validated."
-#~ msgstr "Eメールアドレスが確認されました。"
-
-#~ msgid "Profile"
-#~ msgstr "プロファイル"
-
-#~ msgid "Your profile has been updated!"
-#~ msgstr "プロファイルが更新されました！"
-
-#~ msgid "Yay, you changed your password succesfully!"
-#~ msgstr "確かに、パスワードは変更されました！"
-
-#~ msgid "Your current password doesn't match the one in our records"
-#~ msgstr "パスワードが一致しません"
-
-#~ msgid "You reset your password successfully!"
-#~ msgstr "パスワードは無事にリセットされました！"
-
-#~ msgid "We've send you an email with account recovery instructions!"
-#~ msgstr "アカウントの回復方法についての案内をEメールで送信しました！"
-
-#~ msgid "Something went wrong, please correct the errors on the form"
-#~ msgstr "何か間違いがあるようです。フォームのエラーを修正してください。"
-
-#~ msgid "New API-KEY generated"
-#~ msgstr "新しいAPIキーが生成されました"
-
-#~ msgid "Category added"
-#~ msgstr "カテゴリーが追加されました"
-
-#~ msgid "Category deleted"
-#~ msgstr "カテゴリーは消去されました"
-
-#~ msgid "Category updated"
-#~ msgstr "カテゴリーが更新されました"
-
-#~ msgid "Dashboard jobs enqueued, refresh page in a few minutes"
-#~ msgstr "ダッシュボードのジョブは待機状態です。更新まで数分お待ちください。"
-
-#~ msgid "Project created!"
-#~ msgstr "プロジェクトが作成されました。"
-
-#~ msgid "You can check the "
-#~ msgstr ""
-
-#~ msgid "Guide and Documentation"
-#~ msgstr ""
-
-#~ msgid "for adding tasks, a thumbnail, using PyBossa.JS, etc."
-#~ msgstr ""
-
-#~ msgid "Task presenter added!"
-#~ msgstr "タスク提供者が追加されました！"
-
-#~ msgid "<strong>Note</strong> You will need to upload the tasks using the"
-#~ msgstr ""
-
-#~ msgid "CSV importer"
-#~ msgstr ""
-
-#~ msgid "Project deleted!"
-#~ msgstr "プロジェクトは削除されました"
-
-#~ msgid "Project updated!"
-#~ msgstr "プロジェクトは更新されました"
-
-#~ msgid "You must provide a file to change the avatar"
-#~ msgstr "プロフィール画像を変更するためのファイルが必要です"
-
-#~ msgid "Importing tasks, this may take a while, wait..."
-#~ msgstr "タスクをインポート中です。しばらく時間がかかるかもしれません。お待ちください。"
-
-#~ msgid "Success! Tasks will be imported daily."
-#~ msgstr "成功です！タスクは日毎にインポートされました。"
-
-#~ msgid "Sorry, incorrect password"
-#~ msgstr "申し訳ございませんが、パスワードが間違っているようです。"
-
-#~ msgid "All the tasks and associated task runs have been deleted"
-#~ msgstr "稼働中の全てのタスクおよび関連するタスクは削除されました。"
-
-#~ msgid "Exporting data..., this may take a while"
-#~ msgstr "データをエクスポートしています…。この作業には時間がかかる場合があります。"
-
-#~ msgid "Data exported to "
-#~ msgstr "データは次の場所にエクスポートされました："
-
-#~ msgid "Redundancy of Tasks updated!"
-#~ msgstr "タスクの冗長性が更新されました！"
-
-#~ msgid "Project Task Scheduler updated!"
-#~ msgstr "プロジェクト・タスク・スケジューラーが更新されました！"
-
-#~ msgid "Task priority has been changed"
-#~ msgstr "タスクの優先順位が変更されました"
-
-#~ msgid "Write a new post"
-#~ msgstr "新しい投稿を執筆する"
-
-#~ msgid "Blog post created!"
-#~ msgstr "ブロク投稿が作成されました！"
-
-#~ msgid "Edit a post"
-#~ msgstr "投稿の編集"
-
-#~ msgid "Blog post updated!"
-#~ msgstr "ブログ投稿は更新されました。"
-
-#~ msgid "Hidden"
-#~ msgstr "隠す"
-
-#~ msgid "No"
-#~ msgstr "いいえ"
-

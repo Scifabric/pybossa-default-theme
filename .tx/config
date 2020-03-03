@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[pybossa.messagespot]
+file_filter = translations/<lang>/LC_MESSAGES/messages.po
+source_file = translations/messages.pot
+source_lang = en
+
