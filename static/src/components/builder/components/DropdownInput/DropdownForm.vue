@@ -38,7 +38,7 @@
         class="col-labels"
         for="initial-value"
       >
-        Initial Value | <span class="label-tip">Must be one of the configured radio values.</span>
+        Initial Value | <span class="label-tip">Must be one of the configured dropdown values.</span>
       </label>
       <select
         v-model="initialValue"
