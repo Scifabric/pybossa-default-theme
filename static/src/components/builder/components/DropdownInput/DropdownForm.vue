@@ -33,6 +33,26 @@
       :validation-options="filteredValidations"
       :update-validations="updateValidations"
     />
+    <div class="form-group">
+      <label
+        class="col-labels"
+        for="initial-value"
+      >
+        Initial Value | <span class="label-tip">Must be one of the configured radio values.</span>
+      </label>
+      <select
+        v-model="initialValue"
+        class="form-control form-control-sm"
+      >
+        <option selected />
+        <option
+          v-for="value in values"
+          :key="value"
+        >
+          {{ value }}
+        </option>
+      </select>
+    </div>
     <hr>
     <h4>
       Choices
@@ -85,32 +105,14 @@
         </label>
       </div>
     </div>
+    <div class="col-sm-10 col-md-11" />
     <button
       id="add"
-      class="btn btn-default btn-sm col-sm-2"
+      class="btn btn-default btn-sm col-sm-2 col-md-1"
       @click="addChoice"
     >
-      Add Another Choice
+      Add
     </button>
-    <br>
-    <hr>
-    <label
-      class="block-label"
-    >
-      Initial Value
-      <select
-        v-model="initialValue"
-        class="form-control form-control-sm"
-      >
-        <option selected />
-        <option
-          v-for="value in values"
-          :key="value"
-        >
-          {{ value }}
-        </option>
-      </select>
-    </label>
   </div>
 </template>
 <style scoped>
