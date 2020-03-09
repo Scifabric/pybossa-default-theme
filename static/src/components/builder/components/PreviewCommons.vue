@@ -31,6 +31,7 @@
               <label v-if="form.isValidForm.isValid && form.labelAdded">
                 {{ form.label }}
               </label>
+              {{$route.params.componentName}}
               <ComponentRender
                 :selected-component="
                   componentsNames[$route.params.componentName]
@@ -72,7 +73,7 @@ export default {
       componentsNames: {
         TEXT_INPUT: 'text-input',
         CHECKBOX_INPUT: 'checkbox-creator',
-        RADIO_INPUT: 'radio-creator',
+        RADIO_INPUT: 'radio-input',
         TABLE: 'table-creator',
         TIMER: 'task-timer',
         TASK_PRESENTER: 'task-presenter',

@@ -1,5 +1,6 @@
-<div>
-    {{#radioHTMLs}}
-      {{{.}}}
-    {{/radioHTMLs}} </div>
-  
+<radio-group-input
+  pyb-answer='{{pybAnswer}}'
+  name='{{name}}'
+  :choices='{{choices}}'
+  initial-value='{{initialValue}}'
+></radio-group-input>

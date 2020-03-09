@@ -3,7 +3,7 @@ import Vue from 'vue';
 import components from '@dtwebservices/task-presenter-components';
 import TableCreator from '../Table/TableCreator.vue';
 import CheckboxCreator from '../CheckboxInput/CheckboxCreator.vue';
-import RadioCreator from '../RadioInput/RadioCreator.vue';
+// import RadioCreator from '../RadioInput/RadioCreator.vue';
 import ConditionaldisplayCreator from '../ConditionalDisplay/ConditionalDisplayCreator.vue';
 
 import { ClientTable } from 'vue-tables-2';
@@ -13,7 +13,7 @@ Vue.use(ClientTable, {});
 
 export default {
   name: 'ComponentRender',
-  components: { ...components, TableCreator, CheckboxCreator, RadioCreator, ConditionaldisplayCreator },
+  components: { ...components, TableCreator, CheckboxCreator, ConditionaldisplayCreator },
   props: {
     form: {
       type: Object,
@@ -93,9 +93,10 @@ export default {
           attrs: { id: 'test' },
           props: { checkboxList: this.form.checkboxList }
         };
-      } else if (this.selectedComponent === 'radio-creator') {
+      } else if (this.selectedComponent === 'radio-input') {
+        console.log("we are radio input");
         return {
-          name: 'radio-creator',
+          name: 'radio-input',
           props: {
             radioList: this.form.radioList,
             pybAnswer: this.form.pybAnswer,
@@ -104,6 +105,7 @@ export default {
           }
         };
       } else if (this.selectedComponent === 'dropdown-input') {
+        console.log("we are dropdown input");
         return {
           name: 'dropdown-input',
           props: {
