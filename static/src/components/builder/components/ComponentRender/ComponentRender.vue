@@ -93,12 +93,15 @@ export default {
           attrs: { id: 'test' },
           props: { checkboxList: this.form.checkboxList }
         };
-      } else if (this.selectedComponent === 'radio-input') {
-        console.log("we are radio input");
+      } else if (this.selectedComponent === 'radio-group-input') {
+        let choices = {};
+        this.form.radioList.forEach(radio => {
+          choices[radio.value] = radio.label;
+        })
         return {
           name: 'radio-input',
           props: {
-            radioList: this.form.radioList,
+            choices,
             pybAnswer: this.form.pybAnswer,
             initialValue: this.form.initialValue,
             name: this.form.name

@@ -214,7 +214,8 @@ export default {
       {
         pybAnswer,
         choices: JSON.stringify(choices),
-        initialValue
+        initialValue,
+        name
       }
     );
     if (labelAdded) {
