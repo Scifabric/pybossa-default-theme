@@ -3,7 +3,6 @@ import Vue from 'vue';
 import components from '@dtwebservices/task-presenter-components';
 import TableCreator from '../Table/TableCreator.vue';
 import CheckboxCreator from '../CheckboxInput/CheckboxCreator.vue';
-// import RadioCreator from '../RadioInput/RadioCreator.vue';
 import ConditionaldisplayCreator from '../ConditionalDisplay/ConditionalDisplayCreator.vue';
 
 import { ClientTable } from 'vue-tables-2';
@@ -97,9 +96,9 @@ export default {
         let choices = {};
         this.form.radioList.forEach(radio => {
           choices[radio.value] = radio.label;
-        })
+        });
         return {
-          name: 'radio-input',
+          name: 'radio-group-input',
           props: {
             choices,
             pybAnswer: this.form.pybAnswer,
@@ -108,7 +107,6 @@ export default {
           }
         };
       } else if (this.selectedComponent === 'dropdown-input') {
-        console.log("we are dropdown input");
         return {
           name: 'dropdown-input',
           props: {

@@ -204,10 +204,10 @@ export default {
   },
 
   getRadioGroupCode ({ radioList, labelAdded, label, pybAnswer, initialValue, name }) {
-    let choices = {}
+    let choices = {};
     radioList.forEach(radio => {
       choices[radio.value] = radio.label;
-    })
+    });
 
     let output = Mustache.render(
       radioGroupTemplate,
