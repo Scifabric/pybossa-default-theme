@@ -3,7 +3,6 @@ import Vue from 'vue';
 import components from '@dtwebservices/task-presenter-components';
 import TableCreator from '../Table/TableCreator.vue';
 import CheckboxCreator from '../CheckboxInput/CheckboxCreator.vue';
-import RadioCreator from '../RadioInput/RadioCreator.vue';
 import ConditionaldisplayCreator from '../ConditionalDisplay/ConditionalDisplayCreator.vue';
 
 import { ClientTable } from 'vue-tables-2';
@@ -13,7 +12,7 @@ Vue.use(ClientTable, {});
 
 export default {
   name: 'ComponentRender',
-  components: { ...components, TableCreator, CheckboxCreator, RadioCreator, ConditionaldisplayCreator },
+  components: { ...components, TableCreator, CheckboxCreator, ConditionaldisplayCreator },
   props: {
     form: {
       type: Object,
@@ -93,11 +92,15 @@ export default {
           attrs: { id: 'test' },
           props: { checkboxList: this.form.checkboxList }
         };
-      } else if (this.selectedComponent === 'radio-creator') {
+      } else if (this.selectedComponent === 'radio-group-input') {
+        let choices = {};
+        this.form.radioList.forEach(radio => {
+          choices[radio.value] = radio.label;
+        });
         return {
-          name: 'radio-creator',
+          name: 'radio-group-input',
           props: {
-            radioList: this.form.radioList,
+            choices,
             pybAnswer: this.form.pybAnswer,
             initialValue: this.form.initialValue,
             name: this.form.name
