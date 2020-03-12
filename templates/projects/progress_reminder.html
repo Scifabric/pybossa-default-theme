@@ -1,0 +1,23 @@
+{% extends "projects/base.html" %}
+{% set active_page = "projects" %}
+{% set active_link  = "tasks" %}
+{% set section = _('Progress Reminder') %}
+{% from "_formhelpers.html" import render_field, render_radio_field %}
+
+{% block projectcontent %}
+<h3>Send email notification on the progress of tasks</h3>
+<form id="task_progress_reminder" method="post" action="{{ url_for('project.task_progress_reminder', short_name=project.short_name) }}">
+    {{ form.hidden_tag() }}
+    <fieldset>
+      {{ render_radio_field(form.recipients_group) }}
+      {{ render_field(form.percentage, placeholder= _('50')) }}
+
+        <div class="form-actions">
+            <input type="submit" value={{_('Set reminder')}} class="btn btn-primary" />
+            <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
+        </div>
+    </fieldset>
+</form>
+{% endblock %}
+
+

@@ -26,5 +26,8 @@
     <div id="answer_fields" class="col-md-4">
         {{ render_project_card_option(project, upload_method, title=_('Answer Fields'), explanation=_('Configure Answer Fields'), link=url_for('project.answerfieldsconfig', short_name=project.short_name), link_action_text=_('Answer Fields'), icon='pencil-square-o')}}
     </div>
+    <div id="progress_reminder" class="col-md-4">
+        {{ render_project_card_option(project, upload_method, title=_('Progress Reminder'), explanation=_('Configure reminder on project progress'), link=url_for('project.task_progress_reminder', short_name=project.short_name), link_action_text=_('Progress Reminder'), icon='fa fa-paper-plane-o')}}
+    </div>
 </div>
 {% endblock %}
