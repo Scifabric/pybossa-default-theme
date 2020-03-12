@@ -119,16 +119,14 @@ it('getRadioGroupCode for RADIO_INPUT', () => {
     }
   ];
   const componentCode = utils.getSnippet('RADIO_INPUT', radioInput);
-  expect(componentCode.includes('<radio-input')).toBeTruthy();
-  expect(componentCode.includes('</radio-input>')).toBeTruthy();
+  expect(componentCode.includes('<radio-group-input')).toBeTruthy();
+  expect(componentCode.includes('</radio-group-input>')).toBeTruthy();
   expect(componentCode.includes(radioInput.label)).toBeTruthy();
   expect(componentCode.includes(radioInput.radioList[0].label)).toBeTruthy();
   expect(componentCode.includes(
     `pyb-answer='${radioInput.pybAnswer}'`)).toBeTruthy();
   expect(componentCode.includes(radioInput.radioList[1].label)).toBeTruthy();
   expect(componentCode.includes(`initial-value='A'`)).toBeTruthy();
-  expect(componentCode.includes(`value='${radioInput.radioList[0].value}'`)).toBeTruthy();
-  expect(componentCode.includes(`value='${radioInput.radioList[1].value}'`)).toBeTruthy();
   expect(componentCode.includes(`name='${radioInput.name}'`)).toBeTruthy();
 });
 
