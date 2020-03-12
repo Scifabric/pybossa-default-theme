@@ -45,7 +45,7 @@ export const routes = [
     ]
   },
   {
-    path: '/radioinput',
+    path: '/radiogroupinput',
     name: 'RADIO_INPUT',
     components: { default: Content, header: Header },
     children: [
