@@ -7,14 +7,22 @@
 
 {% block projectcontent %}
 <h3>{{_('From Local CSV Spreadsheet')}}</h3>
+{% if config.DATA_ACCESS_MESSAGE %}
+    <p>{{ config.DATA_ACCESS_MESSAGE|replace('SHORT_NAME', project.short_name)|safe }}</p>
+{% endif %}
 <form method="post" enctype="multipart/form-data" action="{{ url_for(target, short_name=project.short_name) }}">
-   <fieldset>
+   <fieldset class="import">
+      <legend  class="import">
+         <span class="help-inline">{{ _('Please choose a local CSV file with data and press the Import button.')}}</span>
+      </legend>
+
       {{ form.hidden_tag() }}
-      <span class="help-inline"> {{ _('Please choose local csv file with data and press Import button.')}} <br/>
+
       <p>{{ render_checkbox_field(form.do_not_validate_tp) }}</p>
-      </span>
+
       <div class="form-actions">
-         <input type="file" name="file" accept=".csv"><br/><br/>
+         <input type="file" name="file" accept=".csv">
+         <br/><br/>
          <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" >
       </div>
    </fieldset>
@@ -22,9 +30,9 @@
 {% endblock %}
 {% block extrajs %}
 <script>
-    $("#submit").off('click').on('click', function(){
-            var msg = "{{_('Importing data...')}}";
-            pybossaNotify(msg, true, "loading");
-            });
+   $("#submit").off('click').on('click', function() {
+      var msg = "{{_('Importing data...')}}";
+      pybossaNotify(msg, true, "loading");
+   });
 </script>
 {% endblock %}

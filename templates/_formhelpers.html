@@ -32,7 +32,7 @@
     {% endfor %}
 {%- endmacro %}
 
-{% macro render_select2_field(field) -%}
+{% macro render_select2_field(field, tooltip=None) -%}
      <div class="form-group {% if field.errors %}has-error{% endif %} {% if field.flags.required %}required{% endif %} {{ kwargs.pop('class_', '') }}">
         <style>
             .select2-selection {
@@ -45,6 +45,9 @@
             {% for e in field.errors %}
                 <p class="help-block">{{ e }}</p>
             {% endfor %}
+        {% endif %}
+        {% if tooltip %}
+            <div id="password-requirements">{{ tooltip|safe }}</div>
         {% endif %}
         <script>
         $(document).ready(function() {
