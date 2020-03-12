@@ -14,6 +14,7 @@ import submitButtonTemplate from './components/helpers/submitButtonTemplate.html
 import submitLastButtonTemplate from './components/helpers/submitLastButtonTemplate.html';
 import slotTemplate from './components/Table/slotTemplate.html';
 import radioGroupTemplate from './components/RadioInput/radioGroupTemplate.html';
+import radioInputTemplate from './components/RadioInput/radioInputTemplate.html';
 import textTaggingTemplate from './components/TextTagging/textTaggingTemplate.html';
 import dropdownTemplate from './components/DropdownInput/dropdownTemplate.html';
 import conditionalDisplayTemplate from './components/ConditionalDisplay/conditionalDisplayTemplate.html';
@@ -204,20 +205,24 @@ export default {
   },
 
   getRadioGroupCode ({ radioList, labelAdded, label, pybAnswer, initialValue, name }) {
-    let choices = {};
-    radioList.forEach(radio => {
-      choices[radio.value] = radio.label;
+    const radioHTMLs = radioList.map(radio => {
+      const formForTemplate = {
+        ...this.getValuesForTemplate(radio),
+        pybAnswer,
+        name,
+        initialValue
+      };
+      let radioOutput = Mustache.render(
+        radioInputTemplate,
+        formForTemplate
+      ).trim();
+      radioOutput = this.addBindSymbolIfNeedIt(radio, radioOutput);
+      return radioOutput.trim();
     });
 
-    let output = Mustache.render(
-      radioGroupTemplate,
-      {
-        pybAnswer,
-        choices: JSON.stringify(choices),
-        initialValue,
-        name
-      }
-    );
+    let output = Mustache.render(radioGroupTemplate, {
+      radioHTMLs
+    });
     if (labelAdded) {
       const labelArgs = {
         component: output,

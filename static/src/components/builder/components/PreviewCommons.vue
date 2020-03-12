@@ -72,7 +72,7 @@ export default {
       componentsNames: {
         TEXT_INPUT: 'text-input',
         CHECKBOX_INPUT: 'checkbox-creator',
-        RADIO_INPUT: 'radio-group-input',
+        RADIO_INPUT: 'radio-creator',
         TABLE: 'table-creator',
         TIMER: 'task-timer',
         TASK_PRESENTER: 'task-presenter',
