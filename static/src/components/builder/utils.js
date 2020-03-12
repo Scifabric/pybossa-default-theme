@@ -210,7 +210,7 @@ export default {
     });
     let output = Mustache.render(
       radioGroupTemplate,
- 	    {
+      {
         pybAnswer,
         choices: JSON.stringify(choices),
         initialValue,
