@@ -9,15 +9,38 @@
 <form id="task_progress_reminder" method="post" action="{{ url_for('project.task_progress_reminder', short_name=project.short_name) }}">
     {{ form.hidden_tag() }}
     <fieldset>
-      {{ render_radio_field(form.recipients_group) }}
-      {{ render_field(form.percentage, placeholder= _('50')) }}
-
+        <div id="select_recipients">
+            {{ render_radio_field(form.recipients_group) }}
+        </div>
+        <div id="percentage">
+            {{ render_field(form.percentage, placeholder= _('50')) }}
+        </div>
         <div class="form-actions">
             <input type="submit" value={{_('Set reminder')}} class="btn btn-primary" />
             <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
         </div>
     </fieldset>
 </form>
+<script>
+    $(document).ready(function () {
+        if (!notify()) {
+            console.log('do not notify')
+            $('#percentage').hide();
+        }
+
+        $("input[name='recipients_group']").change(function () {
+            if (notify()) {
+                $('#percentage').show();
+            } else {
+                $('#percentage').hide();
+            }
+        });
+    });
+
+    function notify (s) {
+        return $("input[name='recipients_group']:checked"). val() !== 'None';
+    }
+</script>
 {% endblock %}
 
 
