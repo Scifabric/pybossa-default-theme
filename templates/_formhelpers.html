@@ -23,14 +23,10 @@
 {%- endmacro %}
 
 {% macro render_radio_field(field) -%}
-    {% for value, label, select in field.iter_choices() %}
+    {% for value, label, _ in field.iter_choices() %}
         <div class="radio">
             <label>
-                {% if select %}
-                <input title="{{ kwargs.title }}" type="radio" name="{{ field.id }}" id="{{ field.id }}" value="{{ value }}" checked>{{ label }}
-                {% else %}
-                <input title="{{ kwargs.title }}" type="radio" name="{{ field.id }}" id="{{ field.id }}" value="{{ value }}">{{ label }}
-                {% endif %}
+                <input {{ 'disabled' if kwargs.disabled }} title="{{ kwargs.title }}" type="radio" name="{{ field.id }}" id="{{ field.id }}" value="{{ value }}">{{ label }}
             </label>
         </div>
     {% endfor %}
