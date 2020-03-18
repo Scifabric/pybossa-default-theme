@@ -203,7 +203,7 @@ export default {
     return output;
   },
 
-  getRadioGroupCode ({ radioList, labelAdded, label, pybAnswer, initialValue, name }) {
+  getRadioGroupCode ({ radioList, labelAdded, label, pybAnswer, initialValue, name, validations }) {
     let choices = {};
     radioList.forEach(radio => {
       choices[radio.value] = radio.label;
@@ -214,7 +214,8 @@ export default {
         pybAnswer,
         choices: JSON.stringify(choices),
         initialValue,
-        name
+        name,
+        validations
       }
     );
     if (labelAdded) {

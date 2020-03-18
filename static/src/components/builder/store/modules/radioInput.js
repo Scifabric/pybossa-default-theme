@@ -10,7 +10,8 @@ export function initialState () {
     radioList: [firstElement, secondElement],
     pybAnswer: '',
     name: '',
-    initialValue: ''
+    initialValue: '',
+    validations: []
   };
 }
 
@@ -43,7 +44,8 @@ export const getters = {
       radioList: state.radioList,
       pybAnswer: state.pybAnswer,
       name: state.name,
-      initialValue: state.initialValue
+      initialValue: state.initialValue,
+      validations: JSON.stringify(state.validations.map((e) => { return e.name; }))
     };
   },
   [types.GET_RADIO_INPUT_FORM_VALID] (state, getters) {
@@ -85,6 +87,9 @@ export const mutations = {
   [types.MUTATE_RADIO_GROUP_ADD_LIST_ITEM] (state) {
     const newObj = getRadioObject();
     state.radioList.push(newObj);
+  },
+  [types.MUTATE_RADIO_GROUP_VALIDATIONS] (state, payload) {
+    state.validations = payload;
   }
 };
 
