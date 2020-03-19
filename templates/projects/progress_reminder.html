@@ -11,31 +11,10 @@
     <fieldset>
         {{ render_field(form.remaining, placeholder= _('10')) }}
         <div class="form-actions">
-            <input type="submit" value={{_('Set reminder')}} class="btn btn-primary" />
-            <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
+            <input type="submit" value={{_('Save reminder')}} class="btn btn-primary" />
         </div>
     </fieldset>
 </form>
-<!-- <script>
-    $(document).ready(function () {
-        if (!notify()) {
-            console.log('do not notify')
-            $('#percentage').hide();
-        }
-
-        $("input[name='recipients_group']").change(function () {
-            if (notify()) {
-                $('#percentage').show();
-            } else {
-                $('#percentage').hide();
-            }
-        });
-    });
-
-    function notify (s) {
-        return $("input[name='recipients_group']:checked"). val() !== 'None';
-    }
-</script> -->
 {% endblock %}
 
 

@@ -12,8 +12,7 @@
         {{ render_field(default_form.default_n_answers, placeholder= _('Set the default number of answers for newly created tasks')) }}
         <div class="form-actions">
             <p>Current Value: {{default_task_redundancy}}</p>
-            <input type="submit" value={{_('Set default redundancy')}} class="btn btn-primary" />
-            <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
+            <input type="submit" value={{_('Save default redundancy')}} class="btn btn-primary" />
         </div>
     </fieldset>
 </form>
@@ -22,8 +21,7 @@
     <fieldset>
         {{ render_field(form.n_answers, placeholder= _('Change the number of required answers for all current tasks')) }}
         <div class="form-actions">
-            <input type="submit" value={{_('Set redundancy')}} class="btn btn-primary" />
-            <a href="{{url_for('project.tasks', short_name=project.short_name)}}" class="btn btn-default">{{_('Cancel')}}</a>
+            <input type="submit" value={{_('Save redundancy')}} class="btn btn-primary" />
         </div>
     </fieldset>
 </form>
