@@ -149,7 +149,7 @@ export default {
         const columnComponent =
         `<!--
             Please enter you custom component in this area.
-            Ensure to add these props :row="props.row" pyb-table-answer="${col.name}"
+            Ensure to add these props :row="props.row" :initial-value="props.row.${col.name}" pyb-table-answer="${col.name}"
          -->\n`;
 
         slots.push(
