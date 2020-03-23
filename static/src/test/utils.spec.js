@@ -156,9 +156,9 @@ it('getTableInputCode for TABLE', () => {
   expect(componentCode.includes('"testColComponentCheckboxInput": "Checkbox Input Header Column"')).toBeTruthy();
 
   expect(componentCode.includes(`<div slot="testColComponentTextInput" slot-scope="props">`)).toBeTruthy();
-  expect(componentCode.includes(`<text-input :row="props.row" pyb-table-answer="testColComponentTextInput"></text-input>`)).toBeTruthy();
+  expect(componentCode.includes(`<text-input :row="props.row" :initial-value="props.row.testColComponentTextInput" pyb-table-answer="testColComponentTextInput"></text-input>`)).toBeTruthy();
   expect(componentCode.includes(`<div slot="testColComponentCheckboxInput" slot-scope="props">`)).toBeTruthy();
-  expect(componentCode.includes(`<checkbox-input :row="props.row" pyb-table-answer="testColComponentCheckboxInput"></checkbox-input>`)).toBeTruthy();
+  expect(componentCode.includes(`<checkbox-input :row="props.row" :initial-value="props.row.testColComponentCheckboxInput" pyb-table-answer="testColComponentCheckboxInput"></checkbox-input>`)).toBeTruthy();
 });
 
 it('getTableInputCode for TABLE with static data', () => {
