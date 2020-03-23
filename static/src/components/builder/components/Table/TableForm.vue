@@ -126,7 +126,7 @@
                 class="form-group"
               >
                 <label for="table-answer-name">
-                  Table Answer field Name | <span class="label-tip">he field where the worker's answers for the table are stored. Can be JSON path like a.b.c.</span>
+                  Table Answer field Name | <span class="label-tip">The field where the worker's answers for the table are stored. Can be JSON path like a.b.c.</span>
                 </label>
                 <input
                   id="table-answer-name"

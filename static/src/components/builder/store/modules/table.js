@@ -80,7 +80,7 @@ export const initialState = () => {
     id: utils.uniqueID(),
     name: { value: '', isDirty: false },
     data: { value: '', isVariable: true, isDirty: false },
-    columnId: { value: '', isDirty: false },
+    columnId: { value: '__col_id', isDirty: false },
     enableAddRows: { value: false, isDirty: false },
     addButtonAfterTable: { value: true, isDirty: false },
     addButtonBeforeTable: { value: false, isDirty: false },
