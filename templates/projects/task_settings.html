@@ -26,5 +26,8 @@
     <div id="answer_fields" class="col-md-4">
         {{ render_project_card_option(project, upload_method, title=_('Answer Fields'), explanation=_('Configure Answer Fields'), link=url_for('project.answerfieldsconfig', short_name=project.short_name), link_action_text=_('Answer Fields'), icon='pencil-square-o')}}
     </div>
+    <div id="task_notification" class="col-md-4">
+        {{ render_project_card_option(project, upload_method, title=_('Task Notification'), explanation=_('Configure notification on task progress'), link=url_for('project.task_notification', short_name=project.short_name), link_action_text=_('Notification'), icon='fa fa-bell-o ')}}
+    </div>
 </div>
 {% endblock %}

@@ -1,0 +1,20 @@
+{% extends "projects/base.html" %}
+{% set active_page = "projects" %}
+{% set active_link  = "tasks" %}
+{% set section = _('Task Notification') %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block projectcontent %}
+<h3>Send email notification on the progress of tasks</h3>
+<form id="task_notification" method="post" action="{{ url_for('project.task_notification', short_name=project.short_name) }}">
+    {{ form.hidden_tag() }}
+    <fieldset>
+        {{ render_field(form.remaining, placeholder= _('10')) }}
+        <div class="form-actions">
+            <input type="submit" value={{_('Save reminder')}} class="btn btn-primary" />
+        </div>
+    </fieldset>
+</form>
+{% endblock %}
+
+
