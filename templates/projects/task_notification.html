@@ -5,16 +5,66 @@
 {% from "_formhelpers.html" import render_field %}
 
 {% block projectcontent %}
-<h3>Send email notification on the progress of tasks</h3>
+<h3>Send notification on the progress of tasks</h3>
 <form id="task_notification" method="post" action="{{ url_for('project.task_notification', short_name=project.short_name) }}">
     {{ form.hidden_tag() }}
     <fieldset>
         {{ render_field(form.remaining, placeholder= _('10')) }}
+        <div id="notif-options">
+            <p>{{_('The following options are available:')}}</p>
+            <ul>
+                <li><strong>{{_('Send email notification to project owner(s)')}}</strong>:
+                    {{_('The platform will send email when there are less than or equal to target-remaining tasks left')}}
+                </li>
+                <li><strong>{{_('POST To Provided Webhook')}}</strong> (Optional):
+                    {{_('The platform will hit your webhook with data')}}
+                    <a id="show-code">See how do we post data to your webhook</a>
+                    <pre id="code-example" hide><code>
+data=dict(project_id=project_id,
+          project_name=project_name,
+          remianing_tasks=the_number_of_remaining_tasks,
+          target_remaining=the_number_you_entered_above)
+headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+request.post(your_webhook_url, data=json.dumps(data), headers=headers)
+                    </code></pre>
+                    {{ render_field(form.webhook, label_visible=false, placeholder=form.webhook.description)}}
+                </li>
+            </ul>
+        </div>
         <div class="form-actions">
             <input type="submit" value={{_('Save reminder')}} class="btn btn-primary" />
         </div>
     </fieldset>
 </form>
+<script>
+    $(document).ready(function () {
+        $('#code-example').hide();
+
+        if (!notificationEnabled()) {
+            $('#notif-options').hide();
+        }
+
+        $('#remaining').change(function () {
+            if (notificationEnabled()) {
+                $('#notif-options').show();
+            } else {
+                $('#notif-options').hide();
+            }
+        });
+
+        $('#show-code').on('click', function() {
+            if (document.getElementById('code-example').style.display === "none") {
+                $('#code-example').show();
+            }
+            else {
+                $('#code-example').hide();
+            }
+        })
+    });
+
+    function notificationEnabled () {
+        let val = $('#remaining').val();
+        return val !== undefined && val !== null && val !== '';
+    }
+</script>
 {% endblock %}
-
-
