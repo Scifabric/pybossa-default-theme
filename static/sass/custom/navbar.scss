@@ -3,3 +3,39 @@
   color: #f0f0f0;
   margin: -20px 0 0 50px;
 }
+
+.navbar-default .navbar-nav>li>a.no-focus:focus {
+  color: white;
+}
+
+#contact-container {
+  .header {
+    display: flex;
+    margin-bottom: 10px;
+
+    .col-md-1 {
+      min-width: 75px;
+    }
+
+    span.btn-circle {
+      padding-left: 14px;
+      cursor: default;
+    }
+
+    .text {
+      padding-left: 0;
+      padding-top: 10px;
+    }
+  }
+
+  .modal-body {
+      position: relative;
+      padding: 20px;
+  }
+
+  .modal-footer {
+    .text-danger {
+      margin-top: 10px;
+    }
+  }
+}
