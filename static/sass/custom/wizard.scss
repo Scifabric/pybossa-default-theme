@@ -5,3 +5,81 @@
     margin-top: 10px;
   }
 }
+
+.stepwizard-step {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+
+.stepwizard-step.active a {
+  box-shadow: 0 0 0 4px lightblue;
+}
+
+.stepwizard-step.active .stepwizard-label {
+  font-weight: bold;
+  color: #3498db;
+}
+
+.stepwizard-step > .btn-circle {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  padding: 14px 16px;
+  font-size: 1.2em;
+  border-radius: 35px;
+  background-color: white;
+  border-color: #ccc;
+  line-height: 1;
+  z-index: 0;
+  outline: 0;
+}
+
+.stepwizard-step > div {
+    color: #666;
+    text-align: center;
+    width: 100%;
+}
+
+.stepwizard-step > .btn-circle:active:focus {
+  outline: 0;
+}
+.stepwizard-step > .btn-circle.btn-border {
+  border-color: #3498db;
+}
+
+.stepwizard-step >.btn-circle.step-done {
+  background-color: #3498db;
+}
+
+.stepwizard-step > .btn-circle.step-disable {
+  cursor:auto;
+}
+
+.stepwizard-step > .btn-circle > .icon-color::before {
+    color: #546e7b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stepwizard-step > .btn-circle > .icon-white::before {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepwizard-step > .btn-circle > .icon-blue {
+    color: #3498db;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stepwizard-step > .btn-circle > .icon-default{
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -22,6 +22,10 @@
                 <li {% if active_page == 'projects' %} class="active" {% endif %}><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
                 <li {% if active_page == 'about' %} class="active" {% endif %}><a href="{{ url_for('home.about')}}">{{ _('About') }}</a></li>
                 {% endif %}
+                {% if project and ('all' in config.CONTACT_ENABLE or project.short_name in config.CONTACT_ENABLE) %}
+                <li><a id="contact-link" href="#" class="no-focus" data-toggle="modal" data-target="#contact-modal">{{ _('Contact') }}</a></li>
+                {% endif %}
+
             </ul>
             {% include '_gcs_form.html' ignore missing %}
             <ul class="nav navbar-nav navbar-right">

@@ -1,0 +1,134 @@
+{% macro render(owner, current_user, project, n_tasks, num_expected_task_runs, num_remaining_task_runs, n_available_tasks_for_user, n_completed_tasks_by_user) %}
+<div id="contact-container">
+    <!-- Modal -->
+    <div class="modal" id="contact-modal" tabindex="-1" role="dialog" aria-labelledby="contact-modal-label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="contact-modal-label">Contact Us About: {{ project.name }}</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row header">
+                <div class="col col-md-1">
+                    <span class="stepwizard-step">
+                        <span class="btn btn-circle btn-lg btn-border step-done"><i aria-hidden="false" class="fa fa-envelope-o icon-white"></i></span>
+                    </span>
+                </div>
+                <div class="col col-md-11 text">
+                    <div class="open-text">
+                        Please include your message below and we'll contact you shortly. Thank you.
+                    </div>
+                    <div class="close-text hide">
+                        Thank you. Your message has been sent.
+                    </div>
+                </div>
+            </div>
+            <div class="row body">
+                <div class="col col-md-12">
+                <form>
+                    <div class="form-group">
+                        <label for="txtEmail">Email address</label>
+                        <input type="email" class="form-control" id="txtEmail" readonly aria-describedby="emailHelp" placeholder="Enter email" value="{{ current_user.email_addr }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="txtMessage" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="error text-danger pull-left hide">There was a problem sending your message. Please try again.</div>
+            <button type="button" class="btn btn-open btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-open btn-primary">Send</button>
+            <button type="button" class="btn btn-close btn-light hide" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    (function(){
+        $('#contact-container .btn-primary').click(function() {
+            var data = {
+                user_id: '{{ current_user.id }}',
+                user_name: '{{ current_user.name }}',
+                admin: {{ current_user.admin|lower }},
+                subadmin: {{ current_user.subadmin|lower }},
+                projectId: '{{ project.id }}',
+                projectShortName: '{{ project.short_name }}',
+                projectName: '{{ project.name }}',
+                projectOwner: '{{ owner and owner.fullname }}',
+                totalTasks: {{ n_tasks or 0 }},
+                totalTaskRuns: {{ num_expected_task_runs or 0 }},
+                remainingTasksRuns: {{ num_remaining_task_runs or 0 }},
+                tasksAvailableUser: {{ n_available_tasks_for_user or 0 }},
+                tasksCompletedUser: {{ n_completed_tasks_by_user or 0 }},
+                email: $('#txtEmail').val(),
+                message: $('#txtMessage').val()
+            };
+
+            function displayError(text, err) {
+                var container = $('#contact-container');
+
+                var errorDiv = container.find('.modal-footer .error');
+                errorDiv.removeClass('hide');
+                text && errorDiv.text(text);
+
+                err && console.log(err);
+            }
+
+            if (data.message) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/project/{{ project.short_name }}/contact',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    beforeSend: function(xhr) { xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token() }}") },
+                    success: function(response, data) {
+                        if (response.success) {
+                            var container = $('#contact-container');
+                            container.find('.body').hide();
+
+                            var header = container.find('.header');
+                            header.find('.open-text').addClass('hide');
+                            header.find('.close-text').removeClass('hide');
+
+                            var footer = container.find('.modal-footer');
+                            footer.find('.btn-open').addClass('hide');
+                            footer.find('.btn-close').removeClass('hide');
+                            footer.find('.error').addClass('hide');
+                        }
+                        else {
+                            displayError('There was a problem sending your message. Please try again.', response);
+                        }
+                    },
+                    error: function(err, data) {
+                        displayError('There was a problem sending your message. Please try again.', err);
+                    }
+                });
+            }
+            else {
+                displayError('Please provide a message.');
+            }
+        });
+
+        $('#contact-link').click(function() {
+            // Initialize form state and show fields.
+            var container = $('#contact-container');
+            container.find('.body').show();
+            container.find('.header .open-text').removeClass('hide');
+            container.find('.header .close-text').addClass('hide');
+            container.find('.modal-footer .btn-open').removeClass('hide');
+            container.find('.modal-footer .btn-close').addClass('hide');
+            container.find('.modal-footer .error').addClass('hide');
+            $('#txtMessage').val('');
+            $('#txtEmail').val('{{ current_user.email_addr }}');
+        });
+    })();
+</script>
+{% endmacro %}
