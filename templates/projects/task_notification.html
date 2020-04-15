@@ -5,29 +5,33 @@
 {% from "_formhelpers.html" import render_field %}
 
 {% block projectcontent %}
-<h3>Send notification on the progress of tasks</h3>
+<h3>Send email notification on the progress of tasks</h3>
 <form id="task_notification" method="post" action="{{ url_for('project.task_notification', short_name=project.short_name) }}">
     {{ form.hidden_tag() }}
     <fieldset>
         {{ render_field(form.remaining, placeholder= _('10')) }}
         <div id="notif-options">
+            {{ render_field(form.webhook)}}
             <p>{{_('The following options are available:')}}</p>
             <ul>
-                <li><strong>{{_('Send email notification to project owner(s)')}}</strong>:
-                    {{_('The platform will send email when there are less than or equal to target-remaining tasks left')}}
+                <li><strong>{{_('Email Notification')}}</strong> (Default):
+                    {{_('Project owner(s) will receive an email when the number of remaining tasks reaches the threshold.')}}
                 </li>
-                <li><strong>{{_('POST To Provided Webhook')}}</strong> (Optional):
-                    {{_('The platform will hit your webhook with data')}}
-                    <a id="show-code">See how do we post data to your webhook</a>
+                <li><strong>{{_('Webhook URL')}}</strong> (Optional):
+                    {{_('A POST request will be sent to the URL provided with details of the project and number of remaining tasks.')}}
+                    <a id="show-code">See example payload</a>
                     <pre id="code-example" hide><code>
-data=dict(project_id=project_id,
-          project_name=project_name,
-          remianing_tasks=the_number_of_remaining_tasks,
-          target_remaining=the_number_you_entered_above)
-headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-request.post(your_webhook_url, data=json.dumps(data), headers=headers)
+data = {
+    'project_id': __project_id__,
+    'project_name': __project_name__,
+    'remaining_tasks': __the_number_of_remaining_tasks__,
+    'target_remaining': __the_number_you_entered_above__
+}
+headers = {
+    'Content-type': 'application/json',
+    'Accept': 'text/plain'
+}
                     </code></pre>
-                    {{ render_field(form.webhook, label_visible=false, placeholder=form.webhook.description)}}
                 </li>
             </ul>
         </div>
