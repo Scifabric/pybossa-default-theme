@@ -10,11 +10,65 @@
     {{ form.hidden_tag() }}
     <fieldset>
         {{ render_field(form.remaining, placeholder= _('10')) }}
+        <div id="notif-options">
+            {{ render_field(form.webhook)}}
+            <p>{{_('The following options are available:')}}</p>
+            <ul>
+                <li><strong>{{_('Email Notification')}}</strong> (Default):
+                    {{_('Project owner(s) will receive an email when the number of remaining tasks reaches the threshold.')}}
+                </li>
+                <li><strong>{{_('Webhook URL')}}</strong> (Optional):
+                    {{_('A POST request will be sent to the URL provided with details of the project and number of remaining tasks.')}}
+                    <a id="show-code">See example payload</a>
+                    <pre id="code-example" hide><code>
+data = {
+    'project_id': __project_id__,
+    'project_name': __project_name__,
+    'remaining_tasks': __the_number_of_remaining_tasks__,
+    'target_remaining': __the_number_you_entered_above__
+}
+headers = {
+    'Content-type': 'application/json',
+    'Accept': 'text/plain'
+}
+                    </code></pre>
+                </li>
+            </ul>
+        </div>
         <div class="form-actions">
             <input type="submit" value={{_('Save reminder')}} class="btn btn-primary" />
         </div>
     </fieldset>
 </form>
+<script>
+    $(document).ready(function () {
+        $('#code-example').hide();
+
+        if (!notificationEnabled()) {
+            $('#notif-options').hide();
+        }
+
+        $('#remaining').change(function () {
+            if (notificationEnabled()) {
+                $('#notif-options').show();
+            } else {
+                $('#notif-options').hide();
+            }
+        });
+
+        $('#show-code').on('click', function() {
+            if (document.getElementById('code-example').style.display === "none") {
+                $('#code-example').show();
+            }
+            else {
+                $('#code-example').hide();
+            }
+        })
+    });
+
+    function notificationEnabled () {
+        let val = $('#remaining').val();
+        return val !== undefined && val !== null && val !== '';
+    }
+</script>
 {% endblock %}
-
-
