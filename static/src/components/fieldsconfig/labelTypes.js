@@ -2,6 +2,7 @@
 
 const _types = {
   CATEGORICAL: 'categorical',
+  CATEGORICAL_NESTED: 'categorical_nested',
   FREETEXT: 'freetext'
 };
 
@@ -13,7 +14,16 @@ const config = {
       return { labels: [] };
     }
   },
-
+  [_types.CATEGORICAL_NESTED]: {
+    display: 'Categorical Nested',
+    component: 'CategoricalNestedFieldConfig',
+    defaultConfig () {
+      return {
+          kevValues: [],
+          keys: []
+        };
+    }
+  },
   [_types.FREETEXT]: {
     display: 'Free Text',
     component: 'FieldConfigBase',
