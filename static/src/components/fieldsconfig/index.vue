@@ -111,11 +111,13 @@
 import { mapGetters, mapMutations } from 'vuex';
 import FieldConfigBase from './field_config_base';
 import CategoricalFieldConfig from './categorical_field_config';
+import CategoricalNestedFieldConfig from './categorical_nested_field_config';
 import labelTypes from './labelTypes';
 
 export default {
   components: {
     CategoricalFieldConfig,
+    CategoricalNestedFieldConfig,
     FieldConfigBase
   },
 
