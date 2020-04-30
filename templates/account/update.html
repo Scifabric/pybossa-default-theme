@@ -49,17 +49,6 @@
             </section>
             {% endif %}
 
-            <section class="account update external-services">
-                <h2>External Services</h2>
-                <form method="post" action="{{ url_for('account.update_profile', name=current_user.name) }}">
-                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-                    {{ render_field(form.ckan_api) }}
-                    <div class="form-actions">
-                        <button type="submit" name='btn' value="External" class="btn btn-primary" />{{ _('Save the changes') }}</button>
-                    </div>
-                </form>
-            </section>
-
             <section class="account update apikey">
                 <h2>{{ _('Do you want to reset your personal API Key?') }}</h2>
                 <form method="post" action="{{ url_for('account.reset_api_key', name=current_user.name)}}">
