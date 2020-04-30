@@ -52,29 +52,6 @@
     </div>
 </div>
 {% endif %}
-{% if current_user.is_authenticated and (current_user.id in project.owners_ids) %}
-<div id="ckan" class="row">
-    <div class="col-md-12 text-center">
-        {% if ckan_name %}
-        <h3>{{ _('Export to the') }} {{ckan_name}}</h3>
-        {% else %}
-        <h3>{{ _('Export to a CKAN server') }}</h3>
-        {% endif %}
-        <p><span class="label label-warning"><i class="icon-bullhorn"></i> {{ _('IMPORTANT') }}</span> {{ _('This export option stills in beta mode and may fail in the CKAN server. If you get an error, please send an e-mail to info@scifabric.com') }}</p>
-    </div>
-    {% if current_user.ckan_api %}
-    <div class="col-md-6">
-
-        {{ render_project_card_option(project, upload_method, title=_('Task'), explanation=_('Export tasks into a CKAN server '), link=url_for('project.export_to', short_name=project.short_name, type='task', format='ckan'), link_action_text=_('Export'), nofollow=True, id="ckan_task")}}
-    </div>
-    <div class="col-md-6">
-        {{ render_project_card_option(project, upload_method, title=_('Task Runs'), explanation=_('Export task runs into a CKAN server'), link=url_for('project.export_to', short_name=project.short_name, type='task_run', format='ckan'), link_action_text=_('Export'), nofollow=True, id="ckan_task_run")}}
-        {% else %}
-        <p id="ckan_warning">{{ _("You don't have a Datahub.io API key in your") }} {{BRAND}} {{ _('account. Please,') }} <a href="http://datahub.io/user/register">{{ _('create an account') }}</a> {{ _('and copy/paste the API key in your profile in order to use this exporter') }}.</p>
-        {% endif %}
-    </div>
-    {% endif %}
-</div>
 {% endblock %}
 {% block extrajs %}
 <script>
