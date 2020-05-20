@@ -69,14 +69,6 @@ it('load empty data', () => {
   expect(wrapper.vm._data.users).toEqual({});
 });
 
-  it('show data access config', () => {
-    const wrapper = shallowMount(projectConfig);
-    wrapper.vm._data.validAccessLevels = [ [ 'L1', 'L1' ], [ 'L2', 'L2' ], [ 'L3', 'L3' ], [ 'L4', 'L4' ] ];
-    wrapper.vm._data.accessLevels = { 'L1': true, 'L2': false, 'L3': false, 'L4': true };
-    const p = wrapper.findAll('p');
-    expect(p).toHaveLength(5);
-  });
-
   it('show external config', () => {
     const wrapper = shallowMount(projectConfig, { propsData });
     wrapper.vm._data.externalConfigDict = { target_bucket: 'bucket', cluster: 'c1' };
