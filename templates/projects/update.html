@@ -34,6 +34,8 @@
         {{ render_field(form.product) }}
         {{ render_field(form.subproduct) }}
         {{ render_field(form.kpi) }}
+        {{ render_field(form.input_data_class) }}
+        {{ render_field(form.output_data_class) }}
         {% if 'amp_store' in form %}
             {{ render_checkbox_field(form.amp_store, tooltip=_('Opt in to store annotations on Annotation Management Platform')) }}
             {{ render_field(form.amp_pvf, placeholder=_('PVF that should be used for annotation store')) }}

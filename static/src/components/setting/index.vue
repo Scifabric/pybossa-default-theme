@@ -37,34 +37,6 @@
         </div>
       </div>
       <div
-        v-if="validAccessLevels.length"
-        class="form-group row"
-      >
-        <div class="col-md-5">
-          <p> Access Levels</p>
-        </div>
-        <div class="col-md-7 pull-right">
-          <div class="form-check">
-            <span
-              v-for="(lvalue, level) in accessLevels"
-              :key="level"
-              :value="lvalue"
-            >
-              <input
-                v-model="accessLevels[level]"
-                class="form-check-input"
-                type="checkbox"
-              >
-              <label
-                class="form-check-label"
-              >
-                <p> {{ level }} &nbsp;</p>
-              </label>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
         v-if="Object.keys(users).length"
         class="form-group row"
       >
