@@ -62,7 +62,7 @@
                 </tr>
                     {% if config.ENABLE_ACCESS_CONTROL %}
                     <tr>
-                        <td><p>Data Classification Levels</p></td>
+                        <td><p>Data Classification Level</p></td>
                         <td><p>{{', '.join(project.info.data_access or ['None'])}}</p></td>
                     </tr>
                     {% endif %}
