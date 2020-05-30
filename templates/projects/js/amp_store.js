@@ -1,14 +1,15 @@
 <script type="text/javascript">
-$(document).ready(function () {
-  $('#input_data_class').change(function () {
-      if ($('#input_data_class').val().includes('L1')){
-          optOutAmpStore();
-      }
+$(function() {
+  let dataClassification = 'L1';
+  $('#input_data_class').change(function (e) {
+    if ($(e.target).val().includes(dataClassification)) {
+      optOutAmpStore();
+    }
   });
-  $('#output_data_class').change(function () {
-      if ($('#output_data_class').val().includes('L1')){
-          optOutAmpStore();
-      }
+  $('#output_data_class').change(function (e) {
+    if ($(e.target).val().includes(dataClassification)) {
+      optOutAmpStore();
+    }
   });
 });
 
