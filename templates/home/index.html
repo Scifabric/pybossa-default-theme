@@ -47,7 +47,7 @@
                 <p><b>About:</b></p>
               </div>
              <div class="col-md-11">
-                <p>{{brand}} {{ _('is a crowdsourcing platform where annotation tasks can easily be hosted, completed, and reviewed/analyzed for quality. This makes it possible to quickly create new datasets with information that requires human cognition, knowledge, or intelligence to complete — such as text annotation, language translation, data collection/capture, and more! <br></br> GIGwork also makes it easy for your tasks to leverage some of the most advanced annotation tools on the market to make the most of contributions from both human and machine intelligence. <br></br> Anyone with an authorized account can create a task. Anyone you want from around the world with can contribute. Both tasks and workforces can be configured in the way that best suits your task.') }}</p>
+                <p>{{brand}} {{ _('is a crowdsourcing platform where annotation tasks can easily be hosted, completed, and reviewed/analyzed for quality. This makes it possible to quickly create new datasets with information that requires human cognition, knowledge, or intelligence to complete — such as text annotation, language translation, data collection/capture, and more! <br></br> %(brand)s  also makes it easy for your tasks to leverage some of the most advanced annotation tools on the market to make the most of contributions from both human and machine intelligence. <br></br> Anyone with an authorized account can create a task. Anyone you want from around the world with can contribute. Both tasks and workforces can be configured in the way that best suits your task.', brand=brand) }}</p>
              </div>
             </div>
             <div class="row">
@@ -76,7 +76,7 @@
                 </br>
                 {{ _('. . . for requesters') }}
                 <ul>
-                  <li>{{ _('Requesters can post tasks they created on their own, or using GIGwork’s Task Wizard') }}</li>
+                  <li>{{ _('Requesters can post tasks they created on their own, or using %(brand)s’s Task Wizard', brand=brand) }}</li>
                   <li>{{ _('Requesters recruit qualified workers and share task credentials with them') }}</li>
                   <li>{{ _('Requesters can define how many tasks need to be completed, and by whom') }}</li>
                   <li>{{ _('Requesters can specify redundancy, quality control checks, and task order can be specified as needed') }}</li>
