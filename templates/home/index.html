@@ -37,16 +37,11 @@
     <div>
         <div class="container text-left firstfold">
             <div class="row">
-              <div class="col-md-12"><p>{{brand}} {{_("offers online assistance in performing tasks that require human cognition, knowledge or intelligence such as text annotation, translations, data capture and more!")}}</p></div></div>
-            <br />
-            <div class="row">
-              <div class="col-md-1">
-                <p><b>About:</b></p>
-              </div>
              <div class="col-md-11">
-                <p>{{brand}} {{ _('is a crowdsourcing platform where annotation tasks can easily be hosted, completed, and reviewed/analyzed for quality. This makes it possible to quickly create new datasets with information that requires human cognition, knowledge, or intelligence to complete — such as text annotation, language translation, data collection/capture, and more! <br></br> %(brand)s  also makes it easy for your tasks to leverage some of the most advanced annotation tools on the market to make the most of contributions from both human and machine intelligence. <br></br> Anyone with an authorized account can create a task. Anyone you want from around the world with can contribute. Both tasks and workforces can be configured in the way that best suits your task.', brand=brand) }}</p>
+                <p style="margin-left: 110px">{{brand}} {{ _('is a crowdsourcing platform where annotation tasks can easily be hosted, completed, and reviewed/analyzed for quality. This makes it possible to quickly create new datasets with information that requires human cognition, knowledge, or intelligence to complete — such as text annotation, language translation, data collection/capture, and more!') }}</p>
              </div>
             </div>
+          </br>
             <div class="row">
               <div class="col-md-offset-3 col-md-3 text-center pagination-centered">
                 <p><img src="{{ url_for('static', filename='img/unlocked.svg') }}" height="120"></p>
@@ -64,6 +59,7 @@
                 <p class="">{{ _('Things computers<br />can\'t do') }}</p>
               </div>
             </div>
+            <p style="margin-left: 110px">{{brand}} {{ _('also makes it easy for your tasks to leverage some of the most advanced annotation tools on the market to make the most of contributions from both human and machine intelligence. <br></br> Anyone with an authorized account can create a task. Anyone you want from around the world with can contribute. Both tasks and workforces can be configured in the way that best suits your task.', brand=brand) }}</p>
             <br />
             <div class="row">
               <div class="col-md-12">
