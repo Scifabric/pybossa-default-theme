@@ -38,24 +38,24 @@
     {{ render_project_thumbnail(project, upload_method, class="img-responsive thumbnail card") }}
 </ul>
 <ul class="list-group" style="margin-top: 21px;">
-    <a href="{{url_for('project.details', short_name=project.short_name)}}"><li class="list-group-item {% if active_link=="info"%}active{% endif %}">{{_('Info')}}<i class="fa fa-chevron-right pull-right"></i></li></a>
-    <a href="{{url_for('project.results', short_name=project.short_name)}}"><li class="list-group-item {% if active_link=="results"%}active{% endif %}">{{_('Results')}}<i class="fa fa-chevron-right pull-right"></i></li></a>
+    <li class="list-group-item {% if active_link=="info"%}active{% endif %}"><a href="{{url_for('project.details', short_name=project.short_name)}}">{{_('Info')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
+    <li class="list-group-item {% if active_link=="results"%}active{% endif %}"><a href="{{url_for('project.results', short_name=project.short_name)}}">{{_('Results')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
     <li class="list-group-item {% if active_link=="tasks"%}active{% endif %}"><a href="{{url_for('project.tasks', short_name=project.short_name)}}">{{_('Tasks')}} {{daniel}}</a>{% if task_subsection_1_text %}<a href="{{task_subsection_1}}">{{task_subsection_1_text}}</a>{% endif %}<i class="fa fa-chevron-right pull-right"></i></li>
-    <a href="{{url_for('project.show_stats', short_name=project.short_name)}}"><li class="list-group-item {% if active_link=="stats"%}active{% endif %}">{{_('Statistics')}}<i class="fa fa-chevron-right pull-right"></i></li></a>
+    <li class="list-group-item {% if active_link=="stats"%}active{% endif %}"><a href="{{url_for('project.show_stats', short_name=project.short_name)}}">{{_('Statistics')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
     {% if ( current_user.is_authenticated and current_user.id in project.owners_ids) or current_user.admin %}
-    <a href="{{url_for('project.settings', short_name=project.short_name)}}"><li class="list-group-item {% if active_link=="settings"%}active{% endif %}">{{_('Settings')}}<i class="fa fa-chevron-right pull-right"></i></li></a>
+    <li class="list-group-item {% if active_link=="settings"%}active{% endif %}"><a href="{{url_for('project.settings', short_name=project.short_name)}}">{{_('Settings')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
     {% endif %}
     {% if ( current_user.is_authenticated and current_user.id in project.owners_ids
     and current_user.pro) or current_user.admin %}
         {% if pro_features.get('auditlog_enabled') %}
-        <a href="{{url_for('project.auditlog', short_name=project.short_name)}}"><li class="list-group-item {% if active_link=="auditlog"%}active{% endif %}">{{_('Audit Logs')}}<i class="fa fa-chevron-right pull-right"></i></li></a>
+        <li class="list-group-item {% if active_link=="auditlog"%}active{% endif %}"><a href="{{url_for('project.auditlog', short_name=project.short_name)}}">{{_('Audit Logs')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
         {% endif %}
         {% if pro_features.get('webhooks_enabled') %}
-        <a href="{{url_for('project.webhook_handler', short_name=project.short_name)}}"><li class="list-group-item {% if active_link=="webhook"%}active{% endif %}">{{_('Webhooks')}}<i class="fa fa-chevron-right pull-right"></i></li></a>
+        <li class="list-group-item {% if active_link=="webhook"%}active{% endif %}"><a href="{{url_for('project.webhook_handler', short_name=project.short_name)}}">{{_('Webhooks')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
         {% endif %}
     {% endif %}
-    <a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}"><li class="list-group-item {% if active_link=="blog"%}active{% endif %}">{{_('Blog')}}<i class="fa fa-chevron-right pull-right"></i></li></a>
-    <a href="{{url_for('project.presenter', short_name=project.short_name)}}"><li class="list-group-item {% if active_link=="contribute"%}active{% endif %}">{{_('Contribute')}}<i class="fa fa-chevron-right pull-right"></i></li></a>
+    <li class="list-group-item {% if active_link=="blog"%}active{% endif %}"><a href="{{url_for('project.show_blogposts', short_name=project.short_name)}}">{{_('Blog')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
+    <li class="list-group-item {% if active_link=="contribute"%}active{% endif %}"><a href="{{url_for('project.presenter', short_name=project.short_name)}}">{{_('Contribute')}}</a><i class="fa fa-chevron-right pull-right"></i></li>
 </ul>
 {% endmacro %}
 
@@ -238,8 +238,7 @@
                 </div>
                {% for f in projects %}
                <div class="{{projects_class}}">
-                    <a href="{{ url_for('project.presenter', short_name=project.short_name)}}">
-                    <div class="thumbnail card">
+                   <div class="thumbnail card">
                        <div class="post-pic" style="background: rgb(0, 151, 167) url({{render_url_thumbnail(f, upload_method)}}) no-repeat center top; background-size: cover;"></div>
                        <div class="caption">
                            <h3>{{f.name}}</h3>
@@ -261,7 +260,6 @@
                            {% endif %}
                        </div>
                    </div>
-                    </a>
                </div>
                {% endfor %}
            </div>
