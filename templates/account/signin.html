@@ -5,15 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-4 col-md-4" style="margin-top:10px;">
-                <h1>{{_('Sign in')}}</h1>
-                {% from "_formhelpers.html" import render_field, render_form %}
-                {{ render_form(form, form_id="signin", action_text=_('Sign in'), btn_class="btn btn-primary btn-block")}}
-                <p class="text-sm text-center" style="margin-top: 5px;">
-                <a href="{{ url_for('account.forgot_password') }}">{{ _('Forgot Password') }}</a>
-                </p>
-                <p class="text-center">{{_('Not registered?')}} <a href="{{ url_for('account.register') }}">{{_('Sign up for free now')}}</a></p>
-
-                <div id="ssnn" style="display: none;">
+                <div id="ssnn">
                     {% if next is not none %}
                     {% if auth.twitter %}
                     <a href="{{ url_for('twitter.login', next=next) }}" class="btn btn-info btn-ssnn"><i class="fa-twitter"></i> {{ _('Twitter') }}</a>
