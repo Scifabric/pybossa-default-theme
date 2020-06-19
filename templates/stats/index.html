@@ -12,6 +12,7 @@
                 {% if enforce_privacy and (current_user.is_anonymous or (current_user.is_authenticated and not current_user.admin)) %}
                 {{ privacy.render_lock_page() }}
                 {% else %}
+                <a class="pull-right btn btn-sm btn-info" href="/leaderboard/?info=country_USA"><i class="fa fa-trophy" style="color:white"></i> {{ _('of USA') }}</a></h1>
                 <h1><i class="icon-trophy"></i> <strong>{{_('Community Leaderboard')}}</strong></h1>
                 <table class="table table-striped table-hover table-condensed">
                     <thead>
