@@ -36,7 +36,7 @@
             {{ render_field(form.input_data_class) }}
             {{ render_field(form.output_data_class) }}
             {% if 'amp_store' in form %}
-                {{ render_checkbox_field(form.amp_store, tooltip=_('Opt in to store annotations on Annotation Management Platform')) }}
+                {{ render_checkbox_field(form.amp_store, checked=form.amp_store.data, tooltip=_('Opt in to store annotations on Annotation Management Platform')) }}
                 {{ render_field(form.amp_pvf, placeholder=_('PVF that should be used for annotation store')) }}
             {% endif %}
             <div class="form-actions">
