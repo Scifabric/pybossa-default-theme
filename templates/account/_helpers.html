@@ -32,9 +32,18 @@
 <script type="text/javascript">gapi.plusone.go();</script>
 {% endmacro %}
 
+{% macro render_user_rank(user, upload_method, settings) %}
+<p>rnakidpresningti</p>
+{% if user.rank %}
+<p><strong><i class="fa fa-trophy"></i> {{ _('Rank')}}: </strong>
+        <a href="{{url_for('leaderboard.index')}}">
+        {{ user.rank }}
+{% endif %}
+{% endmacro %}
+
 
 {% macro render_user_profile(user, upload_method, settings, private=True) %}
-<p><strong><i class="fa fa-user"></i> {{ _('Nick')}}:</strong> {{ user.name }}</p>
+<!-- <p><strong><i class="fa fa-user"></i> {{ _('Nick')}}:</strong> {{ user.name }}</p> -->
 {% if private %}
 <p><strong><i class="fa fa-envelope"></i> {{_('E-mail')}}:</strong> {{user.email_addr }} 
     {% if (user.valid_email == False) %}

@@ -7,9 +7,6 @@
             <div class="col-md-offset-4 col-md-4" style="margin-top:10px;">
                 <h1>{{_('Sign in')}}</h1>
                 
-                <div id="ssnn">
-                    <div class="btn btn-warning btn-ssnn">{{ _('Sign In') }}</div>
-                </div>
 
                 <div id="ssnn">
                     {% if next is not none %}
@@ -22,6 +19,9 @@
                     {% if auth.google %}
                     <a href="{{ url_for('google.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('Google') }}</a>
                     {% endif %}
+                    {% if auth.mkplay %}
+                    <a href="{{ url_for('mkplay.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('myKaarma') }}</a>
+                    {% endif %}
                     {% else %}
                     {% if auth.twitter %}
                     <a href="{{ url_for('twitter.login') }}" class="btn btn-info btn-ssnn"><i class="fa fa-twitter"></i> {{ _('Twitter') }}</a>
@@ -31,6 +31,9 @@
                     {% endif %}
                     {% if auth.google %}
                     <a href="{{ url_for('google.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('Google') }}</a>
+                    {% endif %}
+                    {% if auth.mkplay %}
+                    <a href="{{ url_for('mkplay.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('myKaarma') }}</a>
                     {% endif %}
                     {% endif %}
                 </div>
