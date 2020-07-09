@@ -19,8 +19,8 @@
                     {% if auth.google %}
                     <a href="{{ url_for('google.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('Google') }}</a>
                     {% endif %}
-                    {% if auth.mkplay %}
-                    <a href="{{ url_for('mkplay.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('myKaarma') }}</a>
+                    {% if auth.mykaarma %}
+                    <a href="{{ url_for('mykaarma.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('myKaarma') }}</a>
                     {% endif %}
                     {% else %}
                     {% if auth.twitter %}
@@ -32,8 +32,8 @@
                     {% if auth.google %}
                     <a href="{{ url_for('google.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('Google') }}</a>
                     {% endif %}
-                    {% if auth.mkplay %}
-                    <a href="{{ url_for('mkplay.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('myKaarma') }}</a>
+                    {% if auth.mykaarma %}
+                    <a href="{{ url_for('mykaarma.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('myKaarma') }}</a>
                     {% endif %}
                     {% endif %}
                 </div>
