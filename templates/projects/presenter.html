@@ -20,10 +20,94 @@
 });
 </script>
 
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .breadcrumb { 
+        list-style: none; 
+        overflow: hidden; 
+        font: 18px Helvetica, Arial, Sans-Serif;
+        margin: 40px;
+        padding: 0;
+        }
+        .breadcrumb li { 
+        float: left; 
+        }
+        .breadcrumb li a {
+        color: black;
+        text-decoration: none; 
+        padding: 10px 0 10px 55px;
+        /* background: brown; fallback color */
+        /* background: hsla(34,85%,35%,1);  */
+        background: lightgrey;
+        position: relative; 
+        display: block;
+        float: left;
+        }
+        .breadcrumb li a:after { 
+        content: " "; 
+        display: block; 
+        width: 0; 
+        height: 0;
+        border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+        border-bottom: 50px solid transparent;
+        /* border-left: 30px solid hsla(34,85%,35%,1); */
+        border-left: 30px solid lightgrey;
+        position: absolute;
+        top: 50%;
+        margin-top: -50px; 
+        left: 100%;
+        z-index: 2; 
+        }	
+        .breadcrumb li a:before { 
+        content: " "; 
+        display: block; 
+        width: 0; 
+        height: 0;
+        border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+        border-bottom: 50px solid transparent;
+        border-left: 30px solid white;
+        position: absolute;
+        top: 50%;
+        margin-top: -50px; 
+        margin-left: 1px;
+        left: 100%;
+        z-index: 1; 
+        }	
+        .breadcrumb li:first-child a {
+        padding-left: 10px;
+        }
+        .breadcrumb li:nth-child(3) a       { background:        rgb(23, 109, 183); color: white; }
+        .breadcrumb li:nth-child(3) a:after { border-left-color: rgb(23, 109, 183);  color: white;} 
+        /*.breadcrumb li:nth-child(3) a       { background:        hsla(34,85%,55%,1); }
+        .breadcrumb li:nth-child(3) a:after { border-left-color: hsla(34,85%,55%,1); }
+        .breadcrumb li:nth-child(4) a       { background:        hsla(34,85%,65%,1); }
+        .breadcrumb li:nth-child(4) a:after { border-left-color: hsla(34,85%,65%,1); }
+        .breadcrumb li:nth-child(5) a       { background:        hsla(34,85%,75%,1); }
+        .breadcrumb li:nth-child(5) a:after { border-left-color: hsla(34,85%,75%,1); } */
+        .breadcrumb li:last-child a {
+        background: transparent !important;
+        color: black;
+        pointer-events: none;
+        cursor: default;
+        }
+        .breadcrumb li:last-child a:after { border: 0; }
+</style>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1><a href="{{url_for('project.details', short_name=project.short_name)}}">{{ project.name }}</a>: {{ _('Contribute') }}</h1>
+           
+            <ul class="breadcrumb">
+                <li><a href="https://play.mykaarma.dev/project/category/featured/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                <li ><a  href="{{url_for('project.details', short_name=project.short_name)}}" style="text-decoration:underline;">{{ project.name }}</a></li>
+                <li><a>Contribute</a></li>
+                <li><a></a></li>
+              </ul>
+            
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         </div>
     </div>
     {% if invite_new_volunteers %}

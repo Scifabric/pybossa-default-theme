@@ -229,36 +229,18 @@
     <div class="container">
     {% endif %}
         <div class="row">
-            <div class="{{title_class}}">
-                <div class="text-center">
-                    <h{{title_size}}>{{title}}</h{{title_size}}>
-                    {% if subheading %}
-                    <p>{{subheading}}</p>
-                    {% endif %}
-                </div>
+            <div>
+            
                {% for f in projects %}
                <div class="{{projects_class}}">
                    <div class="thumbnail card">
+                       <a href="{{ url_for('project.presenter', short_name=f.short_name)}}">
                        <div class="post-pic" style="background: rgb(0, 151, 167) url({{render_url_thumbnail(f, upload_method)}}) no-repeat center top; background-size: cover;"></div>
                        <div class="caption">
                            <h3>{{f.name}}</h3>
-                           <p>{{f.description}}</p>
-                           {% if featured %}
-                            {% if f.featured %}
-                            <p class="readmore">
-                            <a id="projectBtnDel{{f.id}}" onclick="del({{f.id}})">{{ _('Remove from Featured') }}</a>
-                            <a id="projectBtnAdd{{f.id}}" onclick="add({{f.id}})" style="display:none">{{ _('Add to Featured') }}</a>
-                            </p>
-                            {% else %}
-                            <p class="readmore">
-                            <a id="projectBtnAdd{{f.id}}" onclick="add({{f.id}})" >{{ _('Add to Featured') }}</a>
-                            <a id="projectBtnDel{{f.id}}" onclick="del({{f.id}})" style="display:none">{{ _('Remove from Featured') }}</a>
-                            </p>
-                            {% endif %}
-                           {% else %}
-                           <p class="readmore"><a href="{{ url_for('project.details', short_name=f.short_name)}}">{{_(readmore_text or 'More info')}}</a></p>
-                           {% endif %}
+                           
                        </div>
+                       </a>
                    </div>
                </div>
                {% endfor %}
