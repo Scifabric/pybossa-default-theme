@@ -1,0 +1,140 @@
+.r6o-editor {
+  top:0;
+  left:0;
+}
+
+.a9s-annotationlayer {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+
+  .a9s-annotation, .a9s-selection {
+  
+    rect {
+      fill:transparent;
+      cursor:pointer;
+      vector-effect:non-scaling-stroke;
+    }
+
+    rect.inner {
+      stroke:#fff;
+      stroke-width:1px;
+    }
+
+    rect.inner:hover {
+      stroke:#fff000;
+    }
+
+    rect.outer {
+      stroke:rgba(0, 0, 0, 0.7);
+      stroke-width:3px;
+    }
+  
+  }
+
+  .a9s-selection rect.inner {
+    stroke:#fff000;
+  } 
+
+  .a9s-annotation.editable {
+
+    rect.inner {
+      stroke:#fff000;
+      cursor:move;
+    }
+
+    rect.inner:hover {
+      fill:rgba(255, 240, 0, 0.1);
+    }
+
+  }
+
+  .resize-handle {
+
+    rect {
+      fill:transparent;
+      shape-rendering:crispEdges;
+      stroke-linecap:round;
+    }
+
+    rect.handle-inner {
+      stroke:#fff;
+    }
+
+    rect.handle-outer {
+      stroke:#000;
+    }
+
+  }
+
+  .resize-handle:hover rect.handle-inner {
+    stroke:#fff000;
+  }
+
+  .resize-handle.topleft {
+
+    rect {
+      cursor:nw-resize;
+    }
+
+    .handle-outer {
+      stroke-dasharray:13 26 13;
+    }
+
+    .handle-inner {
+      stroke-dasharray:11 22 12;
+    }
+
+  }
+
+  .resize-handle.topright {
+
+    rect {
+      cursor:ne-resize;
+    }
+
+    .handle-outer {
+      stroke-dasharray:26 26;
+    }
+
+    .handle-inner {
+      stroke-dasharray:22 22;
+    }
+
+  }
+
+  .resize-handle.bottomright {
+  
+    rect {
+      cursor:se-resize;
+    }
+
+    .handle-outer {
+      stroke-dasharray:0 13 26 13;
+    }
+
+    .handle-inner {
+      stroke-dasharray:0 11 22 11;
+    }
+  
+  }
+
+  .resize-handle.bottomleft {
+    
+    rect {
+      cursor:sw-resize;
+    }
+
+    .handle-outer {
+      stroke-dasharray:0 26 26;
+    }
+
+    .handle-inner {
+      stroke-dasharray:0 22 22;
+    }
+
+  }
+
+}
