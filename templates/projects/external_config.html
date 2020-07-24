@@ -17,7 +17,9 @@
     <li>You have spelled the bucket and/or directory name correctly</li>
 </ul>
 
+{% if config.EXT_CONFIG_DOCS %}
 <p>For more information on these settings, please consult the <a href={{config.EXT_CONFIG_DOCS}}>External Configurations documentation</a>.</p>
+{% endif %}
 
 {% for (form_name, display, form) in forms %}
     <h3>{{display}}</h3>
