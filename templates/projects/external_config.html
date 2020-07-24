@@ -3,6 +3,7 @@
 {% set active_link  = "settings" %}
 {% set section = _('External Configurations') %}
 {% from "_formhelpers.html" import render_form %}
+{}
 
 {% block projectcontent %}
 {% if not forms %}
@@ -10,13 +11,14 @@
 {% else %}
 
 <p style="color:#FF0000";>{{_('WARNING: INVALID FILE LOCATION OR PERMISSIONS MAY RESULT IN <b>LOSS OF DATA</b>.')}}</p>
-<p>{{_('Before starting your job please confirm the following:')}}</p>
+<p>{{_('Before starting your project please confirm the following:')}}</p>
 <ul>
-    <li>The bucket and/or directory you plan to access already exists (Gigwork will not create this for you)</li>
+    <li>The bucket and/or directory you plan to access already exists ({{brand}} will not create this for you)</li>
     <li>You have permission to access the directories and/or buckets you plan to use</li>
     <li>You have spelled the bucket and/or directory name correctly</li>
 </ul>
-<p>For more information on these settings, please consult the <a href="https://bbgithub.dev.bloomberg.com/pages/GIGwork/private-gigwork-cheat-sheet.html#important-settings-external-configurations">External Configurations documentation</a>.</p>
+
+<p>For more information on these settings, please consult the <a href={{config.EXT_CONFIG_DOCS}}>External Configurations documentation</a>.</p>
 
 {% for (form_name, display, form) in forms %}
     <h3>{{display}}</h3>
