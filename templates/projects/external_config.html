@@ -9,6 +9,18 @@
 <h3>{{_('No external services have been configured')}}</h3>
 {% else %}
 
+<p style="color:#FF0000";>{{_('WARNING: INVALID FILE LOCATION OR PERMISSIONS MAY RESULT IN <b>LOSS OF DATA</b>.')}}</p>
+<p>{{_('Before starting your project please confirm the following:')}}</p>
+<ul>
+    <li>The bucket and/or directory you plan to access already exists ({{brand}} will not create this for you)</li>
+    <li>You have permission to access the directories and/or buckets you plan to use</li>
+    <li>You have spelled the bucket and/or directory name correctly</li>
+</ul>
+
+{% if config.EXT_CONFIG_DOCS %}
+<p>For more information on these settings, please consult the <a href={{config.EXT_CONFIG_DOCS}}>External Configurations documentation</a>.</p>
+{% endif %}
+
 {% for (form_name, display, form) in forms %}
     <h3>{{display}}</h3>
     {{render_form(form, form_id=form_name, action_url=url_for('project.ext_config', short_name=project.short_name), action_text='Submit', class_='', btn_name=form_name, btn_class='btn btn-default', btn_value=None)}}
