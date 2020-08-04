@@ -12,13 +12,29 @@
                 {% if enforce_privacy and (current_user.is_anonymous or (current_user.is_authenticated and not current_user.admin)) %}
                 {{ privacy.render_lock_page() }}
                 {% else %}
-                <a class="pull-right btn btn-sm btn-info" href="/leaderboard/?info=country_us"><i class="fa fa-trophy" style="color:white"></i> {{ _('USA Team') }}</a></h1>
-                <a class="pull-right btn btn-sm btn-info" href="/leaderboard/?info=country_india"><i class="fa fa-trophy" style="color:white"></i> {{ _('India Team') }}</a></h1>
-                <a class="pull-right btn btn-sm btn-info" href="/leaderboard/?info=team_engg"><i class="fa fa-trophy" style="color:white"></i> {{ _('Engineering Team') }}</a></h1>
-                <a class="pull-right btn btn-sm btn-info" href="/leaderboard/?info=team_marketing"><i class="fa fa-trophy" style="color:white"></i> {{ _('Marketing Team') }}</a></h1>
-                <a class="pull-right btn btn-sm btn-info" href="/leaderboard/?info=team_product"><i class="fa fa-trophy" style="color:white"></i> {{ _('Product Team') }}</a></h1>
 
-	         <h1><i class="icon-trophy"></i> <strong>{{_('Community Leaderboard')}}</strong></h1>
+                {% if current_user.is_authenticated and current_user.info.container.country=='us' %} 
+                <a class="pull-right btn btn-sm btn-info" href="/leaderboard/?info=country_us" style="margin: 10px;"><i class="fa fa-trophy" style="color:white"></i> {{ _('USA Team') }}</a>
+                {% endif %}
+
+                {% if current_user.is_authenticated and current_user.info.container.country=='india' %}
+                <a class="pull-right btn btn-sm btn-info" href="/leaderboard/?info=country_india" style="margin: 10px;"><i class="fa fa-trophy" style="color:white"></i> {{ _('India Team') }}</a>
+                {% endif %}
+
+                {% if current_user.is_authenticated and current_user.info.container.team=='engg' %}
+                <a class="pull-right btn btn-sm btn-info" href="/leaderboard/?info=team_engg" style="margin: 10px;"><i class="fa fa-trophy" style="color:white"></i> {{ _('Engineering Team') }}</a>
+                {% endif %}
+
+                {% if current_user.is_authenticated and current_user.info.container.team=='marketing' %}
+                <a class="pull-right btn btn-sm btn-info" href="/leaderboard/?info=team_marketing" style="margin: 10px;"><i class="fa fa-trophy" style="color:white"></i> {{ _('Marketing Team') }}</a>
+                {% endif %}
+
+                {% if current_user.is_authenticated and current_user.info.container.team=='product' %}
+                <a class="pull-right btn btn-sm btn-info" href="/leaderboard/?info=team_product" style="margin: 10px;"><i class="fa fa-trophy" style="color:white"></i> {{ _('Product Team') }}</a>
+                {% endif %}
+
+             <h1><i class="icon-trophy"></i> <strong>{{_('Community Leaderboard')}}</strong></h1>
+            
                 <table class="table table-striped table-hover table-condensed">
                     <thead>
                         <tr>
