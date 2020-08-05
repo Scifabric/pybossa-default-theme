@@ -34,7 +34,7 @@
 
 {% macro render_user_rank(user, upload_method, settings, private=True) %}
 {% if private %}
-<p><a href="{{url_for('leaderboard.index')}}">{{ user.rank }}</a></p>
+<p>{{ user.rank }}</a></p>
 {% endif %}
 {% endmacro %}
 
