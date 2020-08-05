@@ -10,9 +10,9 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1 hidden-xs hidden-sm">
                 <ul class="nav nav-pills nav-justified categories">
-                    {% for c in categories %}
-                    <li {% if active_cat.short_name==c.short_name%}class="active"{% endif %}><a href="{{url_for('project.project_cat_index', category=c.short_name)}}" rel="nofollow"><i class="icon-chevron-right"></i> {{ c.name }}</a></li>
-                    {% endfor %}
+                    <!-- {% for c in categories %}
+                    <li><a href="{{url_for('project.project_cat_index', category=c.short_name)}}" rel="nofollow"><i class="icon-chevron-right"></i> </a></li>
+                    {% endfor %} -->
                     {% if current_user.is_authenticated and current_user.admin %}
                     <li {% if active_cat.short_name=="draft"%}class="active"{% endif %}><a href="{{url_for('project.draft')}}" rel="nofollow"><i class="icon-chevron-right"></i> {{ _('Draft') }}</a></li>
                     {% endif %}
