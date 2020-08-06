@@ -4,3 +4,6 @@
 [submodule "static/js/pybossa-player"]
 	path = static/js/pybossa-player
 	url = https://github.com/PyBossa/pybossa-player.js.git
+[submodule "static/js/pybossa.js"]
+	path = static/js/pybossa.js
+	url = https://github.com/mykaarma/pybossa.js.git
