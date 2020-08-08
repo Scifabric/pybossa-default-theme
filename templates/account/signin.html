@@ -17,10 +17,10 @@
                     <a href="{{ url_for('facebook.login') }}" class="btn btn-primary btn-ssnn"><i class="fa fa-facebook"></i> {{ _('Facebook') }}</a>
                     {% endif %}
                     {% if auth.google %}
-                    <a href="{{ url_for('google.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('Google') }}</a>
+                    <a  style="padding: 15px;" href="{{ url_for('google.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('myKaarma Google ID') }}</a>
                     {% endif %}
                     {% if auth.mykaarma %}
-                    <a href="{{ url_for('mykaarma.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('myKaarma') }}</a>
+                    <a  style="padding: 15px;" href="{{ url_for('mykaarma.login') }}" class="btn btn-warning btn-ssnn">{{ _('myKaarma Internal') }}</a>
                     {% endif %}
                     {% else %}
                     {% if auth.twitter %}
@@ -30,10 +30,10 @@
                     <a href="{{ url_for('facebook.login') }}" class="btn btn-primary btn-ssnn"><i class="fa fa-facebook"></i> {{ _('Facebook') }}</a>
                     {% endif %}
                     {% if auth.google %}
-                    <a href="{{ url_for('google.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('Google') }}</a>
+                    <a  style="padding: 15px;" href="{{ url_for('google.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('myKaarma Google ID') }}</a>
                     {% endif %}
                     {% if auth.mykaarma %}
-                    <a href="{{ url_for('mykaarma.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('myKaarma') }}</a>
+                    <a  style="padding: 15px;" href="{{ url_for('mykaarma.login') }}" class="btn btn-warning btn-ssnn"> {{ _('myKaarma Internal') }}</a>
                     {% endif %}
                     {% endif %}
                 </div>
