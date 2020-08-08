@@ -32,9 +32,9 @@
                 {% if current_user.is_authenticated and current_user.info!=None and current_user.info.container!=None and current_user.info.container.team=='product' %}
                 <a class="pull-right btn btn-sm btn-info" href="/leaderboard/?info=team_product" style="margin: 10px;"><i class="fa fa-trophy" style="color:white"></i> {{ _('Product Team') }}</a>
                 {% endif %}
-             <h1><i class="icon-trophy"></i> <strong>{{_('Community Leaderboard')}}</strong></h1>
+             <h1 style="color:black;"><i class="icon-trophy"></i> <strong>{{_('Community Leaderboard')}}</strong></h1>
             
-                <table class="table table-striped table-hover table-condensed">
+                <table style="color:black;" class="table table-striped table-hover table-condensed">
                     <thead>
                         <tr>
                             <th>{{ _('Rank') }}</th>

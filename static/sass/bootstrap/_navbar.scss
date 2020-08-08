@@ -271,7 +271,7 @@
       float: left;
       > a {
         padding-top:    $navbar-padding-vertical;
-        padding-bottom: $navbar-padding-vertical;
+        // padding-bottom: $navbar-padding-vertical;
       }
     }
   }
@@ -426,7 +426,8 @@
       &:hover,
       &:focus {
         color: $navbar-default-link-active-color;
-        background-color: $navbar-default-link-active-bg;
+        border-bottom: 1px solid black;
+        // background-color: $navbar-default-link-active-bg;
       }
     }
     > .disabled > a {
