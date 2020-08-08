@@ -11,7 +11,7 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav navbar-right">
-                <li {% if active_page == 'leaderboard' %} class="active" {% endif %}><a href="{{url_for('leaderboard.index')}}"><i style="color:gold;font-size:25px" class="fa fa-trophy"></i></a></li>
+                <li><a href="{{url_for('leaderboard.index')}}"><i style="color:gold;font-size:25px" class="fa fa-trophy"></i></a></li>
                 
                 {% if current_user.is_authenticated %}
                 <li {% if active_page == 'leaderboard' %} class="active" {% endif %}><a href="{{ url_for('leaderboard.index') }}">{{ 'Rank:' }}</a></li>
