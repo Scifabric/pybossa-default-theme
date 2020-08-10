@@ -20,7 +20,7 @@
                     <a  style="padding: 15px;" href="{{ url_for('google.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('myKaarma Google ID') }}</a>
                     {% endif %}
                     {% if auth.mykaarma %}
-                    <a  style="padding: 15px;" href="{{ url_for('mykaarma.login') }}" class="btn btn-warning btn-ssnn">{{ _('myKaarma Internal') }}</a>
+                    <a  style="padding: 15px;" href="{{ url_for('mykaarma.login') }}" class="btn btn-warning btn-ssnn">{{ _('myKaarma App Login') }}</a>
                     {% endif %}
                     {% else %}
                     {% if auth.twitter %}
@@ -33,7 +33,7 @@
                     <a  style="padding: 15px;" href="{{ url_for('google.login') }}" class="btn btn-warning btn-ssnn"><i class="fa fa-google-plus"></i> {{ _('myKaarma Google ID') }}</a>
                     {% endif %}
                     {% if auth.mykaarma %}
-                    <a  style="padding: 15px;" href="{{ url_for('mykaarma.login') }}" class="btn btn-warning btn-ssnn"> {{ _('myKaarma Internal') }}</a>
+                    <a  style="padding: 15px;" href="{{ url_for('mykaarma.login') }}" class="btn btn-warning btn-ssnn"> {{ _('myKaarma App Login') }}</a>
                     {% endif %}
                     {% endif %}
                 </div>
