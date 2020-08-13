@@ -20,91 +20,156 @@
 });
 </script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
 <style>
-    .breadcrumb { 
-        list-style: none; 
-        overflow: hidden; 
-        font: 18px Helvetica, Arial, Sans-Serif;
-        margin: 40px;
-        padding: 0;
+            .flex {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto
         }
-        .breadcrumb li { 
-        float: left; 
+
+        @media (max-width:991.98px) {
+            .padding {
+                padding: 1.5rem
+            }
         }
-        .breadcrumb li a {
-        color: black;
-        text-decoration: none; 
-        padding: 10px 0 10px 55px;
-        /* background: brown; fallback color */
-        /* background: hsla(34,85%,35%,1);  */
-        background: lightgrey;
-        position: relative; 
-        display: block;
-        float: left;
+
+        @media (max-width:767.98px) {
+            .padding {
+                padding: 1rem
+            }
         }
-        .breadcrumb li a:after { 
-        content: " "; 
-        display: block; 
-        width: 0; 
-        height: 0;
-        border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
-        border-bottom: 50px solid transparent;
-        /* border-left: 30px solid hsla(34,85%,35%,1); */
-        border-left: 30px solid lightgrey;
-        position: absolute;
-        top: 50%;
-        margin-top: -50px; 
-        left: 100%;
-        z-index: 2; 
-        }	
-        .breadcrumb li a:before { 
-        content: " "; 
-        display: block; 
-        width: 0; 
-        height: 0;
-        border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
-        border-bottom: 50px solid transparent;
-        border-left: 30px solid white;
-        position: absolute;
-        top: 50%;
-        margin-top: -50px; 
-        margin-left: 1px;
-        left: 100%;
-        z-index: 1; 
-        }	
-        .breadcrumb li:first-child a {
-        padding-left: 10px;
+
+        .padding {
+            padding: 5rem
         }
-        .breadcrumb li:nth-child(3) a       { background:        rgb(23, 109, 183); color: white; }
-        .breadcrumb li:nth-child(3) a:after { border-left-color: rgb(23, 109, 183);  color: white;} 
-        /*.breadcrumb li:nth-child(3) a       { background:        hsla(34,85%,55%,1); }
-        .breadcrumb li:nth-child(3) a:after { border-left-color: hsla(34,85%,55%,1); }
-        .breadcrumb li:nth-child(4) a       { background:        hsla(34,85%,65%,1); }
-        .breadcrumb li:nth-child(4) a:after { border-left-color: hsla(34,85%,65%,1); }
-        .breadcrumb li:nth-child(5) a       { background:        hsla(34,85%,75%,1); }
-        .breadcrumb li:nth-child(5) a:after { border-left-color: hsla(34,85%,75%,1); } */
-        .breadcrumb li:last-child a {
-        background: transparent !important;
-        color: black;
-        pointer-events: none;
-        cursor: default;
+
+        .card .card-title {
+            color: #000000;
+            margin-bottom: 0.625rem;
+            text-transform: capitalize;
+            font-size: 0.875rem;
+            font-weight: 500
         }
-        .breadcrumb li:last-child a:after { border: 0; }
+
+        .card .card-description {
+            margin-bottom: .875rem;
+            font-weight: 400;
+            color: #76838f
+        }
+
+        .breadcrumb.breadcrumb-custom {
+            padding: 0 0;
+            border-color: #dbe3e6
+        }
+
+        /* .breadcrumb {
+            border: 1px solid #f3f3f3
+        } */
+
+        .breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0.56rem 1.13rem;
+            margin-bottom: 1rem;
+            list-style: none;
+            background-color: transparent;
+            border-radius: 0.25rem
+        }
+
+        nav {
+            display: block
+        }
+
+        .breadcrumb.breadcrumb-custom .breadcrumb-item {
+            font-size: 0.875rem;
+            background: #dbe3e6;
+            padding: 0.56rem 10px;
+            color: #000;
+            display: inline-block;
+            vertical-align: top
+        }
+
+        .breadcrumb.breadcrumb-custom .breadcrumb-item:before {
+            content: ""
+        }
+
+        .breadcrumb.breadcrumb-custom .breadcrumb-item a {
+            position: relative;
+            color: inherit;
+            /* border: 1px solid #dbe3e6; */
+            display: inline-block;
+            vertical-align: top
+        }
+
+        .breadcrumb.breadcrumb-custom .breadcrumb-item a:before {
+            right: -22px;
+            z-index: 3;
+            border-left-color: #dbe3e6;
+            border-left-style: solid;
+            border-left-width: 12px
+        }
+
+        .breadcrumb.breadcrumb-custom .breadcrumb-item a:after {
+            border-top: 21px solid transparent;
+            border-bottom: 22px solid transparent;
+            border-left: 12px solid #ffffff;
+            top: -9px;
+            right: -23px
+        }
+
+        .breadcrumb.breadcrumb-custom .breadcrumb-item:last-child {
+            /* background:        rgb(23, 109, 183); color: white; */
+            background: transparent
+        }
+
+        .breadcrumb.breadcrumb-custom .breadcrumb-item:before {
+            content: ""
+        }
+
+        .breadcrumb.breadcrumb-custom .breadcrumb-item a:before,
+        .breadcrumb.breadcrumb-custom .breadcrumb-item a:after {
+            position: absolute;
+            top: -12px;
+            width: 0;
+            height: 0;
+            content: "";
+            border-top: 21px solid transparent;
+            border-bottom: 21px solid transparent
+        }
+
+        
+
+        a:link {
+            text-decoration: none
+        }
+
+        .breadcrumb-item+.breadcrumb-item::before {
+            display: inline-block;
+            padding-right: 0.5rem;
+            color: #6c757d;
+            content: "/"
+        }
+        .breadcrumb.breadcrumb-custom .breadcrumb-item:nth-child(3) a:before {
+            border-left-color: rgb(23, 109, 183); 
+
+        }
 </style>
 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
            
-            <ul class="breadcrumb">
-                <li><a href="/project/category/featured/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                <li ><a  href="{{url_for('project.details', short_name=project.short_name)}}" style="text-decoration:underline;">{{ project.name }}</a></li>
-                <li><a>Contribute</a></li>
-                <li><a></a></li>
-              </ul>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-custom">
+                    <li class="breadcrumb-item"><a href="/project/category/featured/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                    <li class="breadcrumb-item"><a  href="{{url_for('project.details', short_name=project.short_name)}}" style="text-decoration:underline;">waiting for response predictor</a></li>
+                    <li style="background:rgb(23, 109, 183); color: white;" class="breadcrumb-item"><a>Contribute</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"></li>
+                </ol>
+            </nav>
+                        
             
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
