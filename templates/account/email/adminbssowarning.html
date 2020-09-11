@@ -1,0 +1,9 @@
+{% block page_content %}
+    <h1>BSSO access on {{ config.BRAND }}</h1>
+    <p>Hello, </p>
+    <p>A {{ config.BRAND }} account for {{username}} with firm id {{firm_id}} has been auto-generated using information from BSSO. 
+       This firm id is not on the list of recognized firms. Please ensure this is a valid user of {{ config.BRAND }}
+    {% if is_qa %}
+    (QA Version)
+    {% endif %} at <a href={{server_url}}>{{server_url}}</a>.</p>
+{% endblock %}

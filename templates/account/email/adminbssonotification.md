@@ -1,4 +1,4 @@
-# {{access_type}} access on {{ config.BRAND }}
+# BSSO access on {{ config.BRAND }}
 
 Hello,
 
