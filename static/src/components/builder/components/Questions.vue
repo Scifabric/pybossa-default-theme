@@ -201,6 +201,13 @@ export default {
           header: 'Dropdown Input'
         }
       },
+      multiselectInput: {
+        name: 'MULTISELECT_INPUT_FORM',
+        params: {
+          componentName: 'MULTISELECT_INPUT',
+          header: 'Multiselect Input'
+        }
+      },
       conditionalDisplay: {
         name: 'CONDITIONAL_DISPLAY_FORM',
         params: {

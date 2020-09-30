@@ -89,6 +89,28 @@ export const routes = [
     ]
   },
   {
+    path: '/multiselectinput',
+    name: 'MULTISELECT_INPUT',
+    components: { default: Content, header: Header },
+    children: [
+      {
+        path: 'form',
+        name: 'MULTISELECT_INPUT_FORM',
+        components: { default: DropdownForm }
+      },
+      {
+        path: 'preview',
+        name: 'MULTISELECT_INPUT_PREVIEW',
+        components: { default: PreviewCommons }
+      },
+      {
+        path: 'code',
+        name: 'MULTISELECT_INPUT_CODE',
+        components: { default: PreviewCommons }
+      }
+    ]
+  },
+  {
     path: '/checkboxinput',
     name: 'CHECKBOX_INPUT',
     components: { default: Content, header: Header },
