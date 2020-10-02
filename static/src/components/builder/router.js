@@ -8,6 +8,7 @@ import PreviewCommons from './components/PreviewCommons.vue';
 import RadioForm from './components/RadioInput/RadioInputForm.vue';
 import TextTaggingForm from './components/TextTagging/TextTaggingForm.vue';
 import DropdownForm from './components/DropdownInput/DropdownForm.vue';
+import MultiselectForm from './components/MultiselectInput/MultiselectForm.vue';
 import ConditionalDisplayForm from './components/ConditionalDisplay/ConditionalDisplayForm.vue';
 import FileUploadForm from './components/FileUpload/FileUploadForm.vue';
 export const routes = [
@@ -96,7 +97,7 @@ export const routes = [
       {
         path: 'form',
         name: 'MULTISELECT_INPUT_FORM',
-        components: { default: DropdownForm }
+        components: { default: MultiselectForm }
       },
       {
         path: 'preview',
