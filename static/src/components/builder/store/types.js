@@ -32,7 +32,7 @@ export const GET_DROPDOWN_INPUT_ERRORS = 'dropdownInput/GET_DROPDOWN_INPUT_ERROR
 
 export const GET_MULTISELECT_INPUT_PROPS = 'multiselectInput/PROPS';
 export const GET_MULTISELECT_INPUT_FORM_VALID = 'multiselectInput/FORM_VALID';
-export const GET_MULTISELECT_INPUT_ERRORS = 'multiselect/GET_DROPDOWN_INPUT_ERRORS';
+export const GET_MULTISELECT_INPUT_ERRORS = 'multiselect/GET_MULTISELECT_INPUT_ERRORS';
 
 export const GET_CONDITIONAL_DISPLAY_PROPS = 'conditionalDisplay/PROPS';
 export const GET_CONDITIONAL_DISPLAY_FORM_VALID = 'conditionalDisplay/PROPS_VALID';
