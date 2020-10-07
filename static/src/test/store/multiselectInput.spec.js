@@ -1,4 +1,4 @@
-import { mutations, getters as _getters, state } from '../../components/builder/store/modules/MULTISELECTInput';
+import { mutations, getters as _getters, state } from '../../components/builder/store/modules/multiselectInput';
 import * as types from '../../components/builder/store/types';
 import { bindGetters } from '../utils/getters';
 

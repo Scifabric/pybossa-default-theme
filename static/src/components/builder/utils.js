@@ -16,6 +16,7 @@ import slotTemplate from './components/Table/slotTemplate.html';
 import radioGroupTemplate from './components/RadioInput/radioGroupTemplate.html';
 import textTaggingTemplate from './components/TextTagging/textTaggingTemplate.html';
 import dropdownTemplate from './components/DropdownInput/dropdownTemplate.html';
+import multiselectTemplate from './components/MultiselectInput/multiselectTemplate.html';
 import conditionalDisplayTemplate from './components/ConditionalDisplay/conditionalDisplayTemplate.html';
 import fileUploadTemplate from './components/FileUpload/fileUploadTemplate.html';
 
@@ -297,7 +298,7 @@ export default {
 
   getMultiselectCode ({ pybAnswer, choices, labelAdded, label, initialValue, validations }) {
     let output = Mustache.render(
-      dropdownTemplate,
+      multiselectTemplate,
       {
         pybAnswer,
         choices: JSON.stringify(choices),
