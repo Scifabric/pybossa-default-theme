@@ -295,6 +295,27 @@ export default {
     return output;
   },
 
+  getMultiselectCode ({ pybAnswer, choices, labelAdded, label, initialValue, validations }) {
+    let output = Mustache.render(
+      dropdownTemplate,
+      {
+        pybAnswer,
+        choices: JSON.stringify(choices),
+        initialValue,
+        validations
+      }
+    );
+
+    if (labelAdded) {
+      const labelArgs = {
+        component: output,
+        label
+      };
+      output = Mustache.render(labelTemplate, labelArgs);
+    }
+    return output;
+  },
+
   getSimpleComponentsCode (form, component) {
     const formForTemplate = this.getValuesForTemplate(form);
 
