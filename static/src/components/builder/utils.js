@@ -35,7 +35,8 @@ export const templates = {
   CANCEL_BUTTON: cancelButtonTemplate,
   BUTTON_ROW: buttonRowTemplate,
   SUBMIT_BUTTON: submitButtonTemplate,
-  SUBMIT_LAST_BUTTON: submitLastButtonTemplate
+  SUBMIT_LAST_BUTTON: submitLastButtonTemplate,
+  MULTISELECT_INPUT: multiselectTemplate
 };
 export default {
   uniqueID () {
