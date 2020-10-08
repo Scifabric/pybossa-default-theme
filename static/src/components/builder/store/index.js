@@ -6,6 +6,7 @@ import table from './modules/table';
 import radioInput from './modules/radioInput';
 import textTagging from './modules/textTagging';
 import dropdownInput from './modules/dropdownInput';
+import multiselectInput from './modules/multiselectInput';
 import conditionalDisplay from './modules/conditionalDisplay';
 import fileUpload from './modules/fileUpload';
 
@@ -30,6 +31,7 @@ export default new Vuex.Store({
     radioInput,
     textTagging,
     dropdownInput,
+    multiselectInput,
     conditionalDisplay,
     fileUpload
   }
