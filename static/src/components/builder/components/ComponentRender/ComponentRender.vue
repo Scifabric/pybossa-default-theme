@@ -115,6 +115,15 @@ export default {
             initialValue: this.form.initialValue
           }
         };
+      } else if (this.selectedComponent === 'multiselect-input') {
+        return {
+          name: 'multiselect-input',
+          props: {
+            pybAnswer: this.form.pybAnswer,
+            choices: this.form.choices,
+            initialValue: this.form.initialValue
+          }
+        };
       } else if (this.selectedComponent === 'text-tagging') {
         return {
           name: 'text-tagging',
