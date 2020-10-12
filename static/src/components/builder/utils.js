@@ -63,6 +63,8 @@ export default {
       return this.getTextTaggingCode(form);
     } else if (component === 'DROPDOWN_INPUT') {
       return this.getDropdownCode(form);
+    } else if (component === 'MULTISELECT_INPUT') {
+      return this.getMultiselectCode(form);
     } else if (component === 'CONDITIONAL_DISPLAY') {
       return this.getConditionalDisplayCode(form, component);
     } else {

@@ -8,7 +8,7 @@ export function initialState () {
     labelAdded: false,
     choiceList: [firstElement],
     pybAnswer: '',
-    initialValue: '',
+    initialValue: [''],
     validations: []
   };
 }

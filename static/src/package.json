@@ -12,10 +12,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@dtwebservices/task-presenter-components": "0.8.0",
+    "@dtwebservices/task-presenter-components": "0.10.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
-    "axios": "^0.16.2",
+    "axios": "^0.20.0",
     "babel-core": "^6.0.0",
     "babel-eslint": "^8.2.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
