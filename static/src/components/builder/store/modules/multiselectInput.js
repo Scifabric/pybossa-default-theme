@@ -59,7 +59,7 @@ export const getters = {
       labelAdded: state.labelAdded,
       choices: getChoiceDict(state),
       pybAnswer: state.pybAnswer,
-      initialValue: state.initialValue,
+      initialValue: JSON.stringify([state.initialValue]),
       validations: JSON.stringify(state.validations.map((e) => { return e.name; }))
     };
   },

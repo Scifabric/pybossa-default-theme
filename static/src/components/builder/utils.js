@@ -306,14 +306,12 @@ export default {
       choiceList.push(choice);
     }
 
-    console.log(JSON.stringify(choiceList))
-
     let output = Mustache.render(
       multiselectTemplate,
       {
         pybAnswer,
         choices: JSON.stringify(choiceList),
-        initialValue,
+        initialValue: initialValue,
         validations
       }
     );
