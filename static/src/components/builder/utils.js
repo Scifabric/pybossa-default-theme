@@ -306,6 +306,8 @@ export default {
       choiceList.push(choice);
     }
 
+    console.log(JSON.stringify(choiceList))
+
     let output = Mustache.render(
       multiselectTemplate,
       {

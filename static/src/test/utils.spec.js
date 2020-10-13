@@ -228,7 +228,7 @@ it('getMultiselectCode for MULTISELECT', () => {
   multiselectInput.validations = '["required"]';
   multiselectInput.choices = [ 'A', 'B' ];
   const componentCode = utils.getSnippet('MULTISELECT_INPUT', multiselectInput);
-  expect(componentCode.includes('<multiselect-input')).toBeTruthy();
+  expect(componentCode.includes('<multiselect-input>')).toBeTruthy();
   expect(componentCode.includes('</multiselect-input>')).toBeTruthy();
   expect(componentCode.includes(multiselectInput.label)).toBeTruthy();
   expect(componentCode.includes(
