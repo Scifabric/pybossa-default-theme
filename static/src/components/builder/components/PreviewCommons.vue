@@ -82,6 +82,7 @@ export default {
         SUBMIT_LAST_BUTTON: 'submit-last-button',
         TEXT_TAGGING: 'text-tagging',
         DROPDOWN_INPUT: 'dropdown-input',
+        MULTISELECT_INPUT: 'multi-select-input',
         CONDITIONAL_DISPLAY: 'conditionaldisplay-creator',
         FILE_UPLOAD: 'file-upload'
 

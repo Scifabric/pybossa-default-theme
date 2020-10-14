@@ -15,6 +15,7 @@
       <custom-router-link :component="checkboxInput" />
       <custom-router-link :component="radioInput" />
       <custom-router-link :component="dropdownInput" />
+      <custom-router-link :component="multiselectInput" />
       <custom-router-link :component="table" />
       <custom-router-link :component="textTagging" />
     </div>
@@ -199,6 +200,13 @@ export default {
         params: {
           componentName: 'DROPDOWN_INPUT',
           header: 'Dropdown Input'
+        }
+      },
+      multiselectInput: {
+        name: 'MULTISELECT_INPUT_FORM',
+        params: {
+          componentName: 'MULTISELECT_INPUT',
+          header: 'Multiselect Input'
         }
       },
       conditionalDisplay: {

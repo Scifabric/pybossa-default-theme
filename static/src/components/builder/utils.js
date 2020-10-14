@@ -16,6 +16,7 @@ import slotTemplate from './components/Table/slotTemplate.html';
 import radioGroupTemplate from './components/RadioInput/radioGroupTemplate.html';
 import textTaggingTemplate from './components/TextTagging/textTaggingTemplate.html';
 import dropdownTemplate from './components/DropdownInput/dropdownTemplate.html';
+import multiselectTemplate from './components/MultiselectInput/multiselectTemplate.html';
 import conditionalDisplayTemplate from './components/ConditionalDisplay/conditionalDisplayTemplate.html';
 import fileUploadTemplate from './components/FileUpload/fileUploadTemplate.html';
 
@@ -34,7 +35,8 @@ export const templates = {
   CANCEL_BUTTON: cancelButtonTemplate,
   BUTTON_ROW: buttonRowTemplate,
   SUBMIT_BUTTON: submitButtonTemplate,
-  SUBMIT_LAST_BUTTON: submitLastButtonTemplate
+  SUBMIT_LAST_BUTTON: submitLastButtonTemplate,
+  MULTISELECT_INPUT: multiselectTemplate
 };
 export default {
   uniqueID () {
@@ -61,6 +63,8 @@ export default {
       return this.getTextTaggingCode(form);
     } else if (component === 'DROPDOWN_INPUT') {
       return this.getDropdownCode(form);
+    } else if (component === 'MULTISELECT_INPUT') {
+      return this.getMultiselectCode(form);
     } else if (component === 'CONDITIONAL_DISPLAY') {
       return this.getConditionalDisplayCode(form, component);
     } else {
@@ -281,6 +285,32 @@ export default {
         pybAnswer,
         choices: JSON.stringify(choices),
         initialValue,
+        validations
+      }
+    );
+
+    if (labelAdded) {
+      const labelArgs = {
+        component: output,
+        label
+      };
+      output = Mustache.render(labelTemplate, labelArgs);
+    }
+    return output;
+  },
+
+  getMultiselectCode ({ pybAnswer, choices, labelAdded, label, initialValue, validations }) {
+    const choiceList = [];
+    for (const choice in choices) {
+      choiceList.push(choice);
+    }
+
+    let output = Mustache.render(
+      multiselectTemplate,
+      {
+        pybAnswer,
+        choices: JSON.stringify(choices),
+        initialValue: JSON.stringify([initialValue]),
         validations
       }
     );

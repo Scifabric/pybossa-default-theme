@@ -8,6 +8,7 @@ import PreviewCommons from './components/PreviewCommons.vue';
 import RadioForm from './components/RadioInput/RadioInputForm.vue';
 import TextTaggingForm from './components/TextTagging/TextTaggingForm.vue';
 import DropdownForm from './components/DropdownInput/DropdownForm.vue';
+import MultiselectForm from './components/MultiselectInput/MultiselectForm.vue';
 import ConditionalDisplayForm from './components/ConditionalDisplay/ConditionalDisplayForm.vue';
 import FileUploadForm from './components/FileUpload/FileUploadForm.vue';
 export const routes = [
@@ -84,6 +85,28 @@ export const routes = [
       {
         path: 'code',
         name: 'DROPDOWN_INPUT_CODE',
+        components: { default: PreviewCommons }
+      }
+    ]
+  },
+  {
+    path: '/multiselectinput',
+    name: 'MULTISELECT_INPUT',
+    components: { default: Content, header: Header },
+    children: [
+      {
+        path: 'form',
+        name: 'MULTISELECT_INPUT_FORM',
+        components: { default: MultiselectForm }
+      },
+      {
+        path: 'preview',
+        name: 'MULTISELECT_INPUT_PREVIEW',
+        components: { default: PreviewCommons }
+      },
+      {
+        path: 'code',
+        name: 'MULTISELECT_INPUT_CODE',
         components: { default: PreviewCommons }
       }
     ]

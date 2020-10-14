@@ -5,6 +5,7 @@ import { state as radioInput } from '../components/builder/store/modules/radioIn
 import { state as conditionalDisplay } from '../components/builder/store/modules/conditionalDisplay';
 import { state as fileUpload } from '../components/builder/store/modules/fileUpload';
 import { state as dropdownInput } from '../components/builder/store/modules/dropdownInput';
+import { state as multiselectInput } from '../components/builder/store/modules/multiselectInput';
 
 test('getSimpleComponentsCode for TEXT_INPUT', () => {
   textInput['pyb-answer'] = 'answername';
@@ -216,4 +217,23 @@ it('getDropdownCode for DROPDOWN', () => {
     `pyb-answer='${dropdownInput.pybAnswer}'`)).toBeTruthy();
   expect(componentCode.includes(`initial-value='A'`)).toBeTruthy();
   expect(componentCode.includes(`validations='${dropdownInput.validations}'`)).toBeTruthy();
+});
+
+it('getMultiselectCode for MULTISELECT', () => {
+  multiselectInput.labelAdded = true;
+  multiselectInput.label = 'Test label';
+  multiselectInput.pybAnswer = 'multiselectInputanswer';
+  multiselectInput.initialValue = 'A';
+  multiselectInput.name = 'multiselectInput';
+  multiselectInput.validations = '["required"]';
+  multiselectInput.choices = { A: 'dropdownInput0', B: 'dropdownInput0' };
+  const componentCode = utils.getSnippet('MULTISELECT_INPUT', multiselectInput);
+  expect(componentCode.includes('<multi-select-input')).toBeTruthy();
+  expect(componentCode.includes('</multi-select-input>')).toBeTruthy();
+  expect(componentCode.includes('<label for="">Test label</label>')).toBeTruthy();
+  expect(componentCode.includes(multiselectInput.label)).toBeTruthy();
+  expect(componentCode.includes(
+    `pyb-answer='${multiselectInput.pybAnswer}'`)).toBeTruthy();
+  expect(componentCode.includes(`initial-value='[&quot;A&quot;]'`)).toBeTruthy();
+  expect(componentCode.includes(`validations='${multiselectInput.validations}'`)).toBeTruthy();
 });
