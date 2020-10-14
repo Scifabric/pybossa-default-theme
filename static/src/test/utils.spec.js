@@ -228,9 +228,9 @@ it('getMultiselectCode for MULTISELECT', () => {
   multiselectInput.validations = '["required"]';
   multiselectInput.choices = { A: 'dropdownInput0', B: 'dropdownInput0' };
   const componentCode = utils.getSnippet('MULTISELECT_INPUT', multiselectInput);
-  console.log(componentCode);
   expect(componentCode.includes('<multi-select-input')).toBeTruthy();
   expect(componentCode.includes('</multi-select-input>')).toBeTruthy();
+  expect(componentCode.includes('<label for="">Test label</label>')).toBeTruthy();
   expect(componentCode.includes(multiselectInput.label)).toBeTruthy();
   expect(componentCode.includes(
     `pyb-answer='${multiselectInput.pybAnswer}'`)).toBeTruthy();

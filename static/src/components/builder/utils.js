@@ -300,7 +300,6 @@ export default {
   },
 
   getMultiselectCode ({ pybAnswer, choices, labelAdded, label, initialValue, validations }) {
-
     const choiceList = [];
     for (const choice in choices) {
       choiceList.push(choice);
@@ -310,7 +309,7 @@ export default {
       multiselectTemplate,
       {
         pybAnswer,
-        choices: JSON.stringify(choiceList),
+        choices: JSON.stringify(choices),
         initialValue: JSON.stringify([initialValue]),
         validations
       }

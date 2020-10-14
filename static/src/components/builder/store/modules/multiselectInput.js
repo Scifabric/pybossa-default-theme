@@ -20,23 +20,6 @@ export function getChoiceObject () {
   };
 }
 
-function getTrimmedChoices (choiceList) {
-  return choiceList.map(trimChoice);
-
-  function trimChoice ({ value, display }) {
-    return { value: value.trim(), display: display.trim() };
-  }
-}
-
-function getChoiceDict (state) {
-  return getTrimmedChoices(state.choiceList).reduce(reducer, {});
-
-  function reducer (result, choice) {
-    result[choice.value] = choice.display || choice.value;
-    return result;
-  }
-}
-
 export const state = {
   ...initialState()
 };
@@ -57,7 +40,7 @@ export const getters = {
     return {
       label: state.label,
       labelAdded: state.labelAdded,
-      choices: getChoiceDict(state),
+      choices: state.choiceList.map((choice) => { return choice.value.trim(); }),
       pybAnswer: state.pybAnswer,
       initialValue: state.initialValue,
       validations: JSON.stringify(state.validations.map((e) => { return e.name; }))
