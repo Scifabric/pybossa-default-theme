@@ -40,7 +40,7 @@ export const getters = {
     return {
       label: state.label,
       labelAdded: state.labelAdded,
-      choices: state.choiceList.map((choice) => { return choice.value.trim(); }),
+      choices: state.choiceList.map(choice => choice.value.trim()),
       pybAnswer: state.pybAnswer,
       initialValue: state.initialValue,
       validations: JSON.stringify(state.validations.map((e) => { return e.name; }))

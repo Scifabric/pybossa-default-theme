@@ -112,7 +112,7 @@ export default {
           props: {
             pybAnswer: this.form.pybAnswer,
             choices: this.form.choices,
-            initialValue: this.form.initialValue[0]
+            initialValue: this.form.initialValue
           }
         };
       } else if (this.selectedComponent === 'multi-select-input') {
@@ -120,7 +120,7 @@ export default {
           name: 'multi-select-input',
           props: {
             pybAnswer: this.form.pybAnswer,
-            choices: Object.keys(this.form.choices).map(key => this.form.choices[key]),
+            choices: Object.values(this.form.choices),
             initialValue: this.form.initialValue
           }
         };
