@@ -92,17 +92,6 @@
         <div class="danger-validation-text">
           {{ getErrors(`choiceList[${index}].value`) }}
         </div>
-        <label
-          class="block-label"
-        >
-          Display | <span class="label-tip">Text to display for the choice. Uses value if not specified.</span>
-          <input
-            :value="choice.display"
-            class="form-control form-control-sm"
-            type="text"
-            @input="updateChoice(choice, index, 'display', $event.target.value)"
-          >
-        </label>
       </div>
     </div>
     <div class="col-sm-10 col-md-11" />

@@ -311,7 +311,7 @@ export default {
       {
         pybAnswer,
         choices: JSON.stringify(choiceList),
-        initialValue: initialValue,
+        initialValue: JSON.stringify([initialValue]),
         validations
       }
     );

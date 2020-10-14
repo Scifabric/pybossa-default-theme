@@ -112,15 +112,15 @@ export default {
           props: {
             pybAnswer: this.form.pybAnswer,
             choices: this.form.choices,
-            initialValue: this.form.initialValue
+            initialValue: this.form.initialValue[0]
           }
         };
-      } else if (this.selectedComponent === 'multiselect-input') {
+      } else if (this.selectedComponent === 'multi-select-input') {
         return {
-          name: 'multiselect-input',
+          name: 'multi-select-input',
           props: {
             pybAnswer: this.form.pybAnswer,
-            choices: this.form.choices,
+            choices: Object.keys(this.form.choices).map(key => this.form.choices[key]),
             initialValue: this.form.initialValue
           }
         };
