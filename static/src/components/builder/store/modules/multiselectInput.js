@@ -8,7 +8,7 @@ export function initialState () {
     labelAdded: false,
     choiceList: [firstElement],
     pybAnswer: '',
-    initialValue: '',
+    initialValue: [],
     validations: []
   };
 }
@@ -37,12 +37,14 @@ function* getErrors (state) {
 
 export const getters = {
   [types.GET_MULTISELECT_INPUT_PROPS] (state) {
+    console.log(state.initialValue);
+
     return {
       label: state.label,
       labelAdded: state.labelAdded,
       choices: state.choiceList.map(choice => choice.value.trim()),
       pybAnswer: state.pybAnswer,
-      initialValue: state.initialValue,
+      initialValue: (state.initialValue.length > 0) ? [state.initialValue] : null,
       validations: JSON.stringify(state.validations.map((e) => { return e.name; }))
     };
   },

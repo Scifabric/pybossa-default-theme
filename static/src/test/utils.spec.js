@@ -228,12 +228,33 @@ it('getMultiselectCode for MULTISELECT', () => {
   multiselectInput.validations = '["required"]';
   multiselectInput.choices = { A: 'dropdownInput0', B: 'dropdownInput0' };
   const componentCode = utils.getSnippet('MULTISELECT_INPUT', multiselectInput);
+  console.log(componentCode);
   expect(componentCode.includes('<multi-select-input')).toBeTruthy();
   expect(componentCode.includes('</multi-select-input>')).toBeTruthy();
   expect(componentCode.includes('<label for="">Test label</label>')).toBeTruthy();
   expect(componentCode.includes(multiselectInput.label)).toBeTruthy();
   expect(componentCode.includes(
     `pyb-answer='${multiselectInput.pybAnswer}'`)).toBeTruthy();
-  expect(componentCode.includes(`initial-value='[&quot;A&quot;]'`)).toBeTruthy();
+  expect(componentCode.includes(`initial-value='&quot;A&quot;'`)).toBeTruthy();
+  expect(componentCode.includes(`validations='${multiselectInput.validations}'`)).toBeTruthy();
+});
+
+it('getMultiselectCode for MULTISELECT', () => {
+  multiselectInput.labelAdded = true;
+  multiselectInput.label = 'Test label';
+  multiselectInput.pybAnswer = 'multiselectInputanswer';
+  multiselectInput.initialValue = '';
+  multiselectInput.name = 'multiselectInput';
+  multiselectInput.validations = '["required"]';
+  multiselectInput.choices = { A: 'dropdownInput0', B: 'dropdownInput0' };
+  const componentCode = utils.getSnippet('MULTISELECT_INPUT', multiselectInput);
+  console.log(componentCode);
+  expect(componentCode.includes('<multi-select-input')).toBeTruthy();
+  expect(componentCode.includes('</multi-select-input>')).toBeTruthy();
+  expect(componentCode.includes('<label for="">Test label</label>')).toBeTruthy();
+  expect(componentCode.includes(multiselectInput.label)).toBeTruthy();
+  expect(componentCode.includes(
+    `pyb-answer='${multiselectInput.pybAnswer}'`)).toBeTruthy();
+  expect(componentCode.includes(`initial-value='[]'`)).toBeTruthy();
   expect(componentCode.includes(`validations='${multiselectInput.validations}'`)).toBeTruthy();
 });
