@@ -37,8 +37,6 @@ function* getErrors (state) {
 
 export const getters = {
   [types.GET_MULTISELECT_INPUT_PROPS] (state) {
-    console.log(state.initialValue);
-
     return {
       label: state.label,
       labelAdded: state.labelAdded,
