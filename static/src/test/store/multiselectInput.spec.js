@@ -6,6 +6,11 @@ describe('Multiselect setup', () => {
   const localState = { ...state };
   const getters = bindGetters(_getters, localState);
 
+  it('Update intialValue', () => {
+    mutations[types.MUTATE_MULTISELECT_INITIAL_VALUE](localState, '');
+    expect(localState.initalValue).toBe(undefined);
+  });
+
   it('Update Label', () => {
     mutations[types.MUTATE_MULTISELECT_LABEL](localState, 'testLabel');
     expect(localState.label).toBe('testLabel');

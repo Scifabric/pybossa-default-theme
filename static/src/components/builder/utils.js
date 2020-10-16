@@ -300,17 +300,14 @@ export default {
   },
 
   getMultiselectCode ({ pybAnswer, choices, labelAdded, label, initialValue, validations }) {
-    const choiceList = [];
-    for (const choice in choices) {
-      choiceList.push(choice);
-    }
+    const initVal = initialValue ? [initialValue] : [];
 
     let output = Mustache.render(
       multiselectTemplate,
       {
         pybAnswer,
         choices: JSON.stringify(choices),
-        initialValue: JSON.stringify([initialValue]),
+        initialValue: JSON.stringify(initVal),
         validations
       }
     );
