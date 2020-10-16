@@ -8,7 +8,7 @@ export function initialState () {
     labelAdded: false,
     choiceList: [firstElement],
     pybAnswer: '',
-    initialValue: [],
+    initialValue: '',
     validations: []
   };
 }
@@ -42,7 +42,7 @@ export const getters = {
       labelAdded: state.labelAdded,
       choices: state.choiceList.map(choice => choice.value.trim()),
       pybAnswer: state.pybAnswer,
-      initialValue: (state.initialValue.length > 0) ? [state.initialValue] : null,
+      initialValue: state.initialValue,
       validations: JSON.stringify(state.validations.map((e) => { return e.name; }))
     };
   },

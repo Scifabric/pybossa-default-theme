@@ -242,7 +242,7 @@ it('getMultiselectCode for MULTISELECT', () => {
 it('getMultiselectCode for MULTISELECT', () => {
   multiselectInput.labelAdded = false;
   multiselectInput.pybAnswer = 'multiselectInputanswer';
-  multiselectInput.initialValue = '';
+  multiselectInput.initialValue = '[]';
   multiselectInput.name = 'multiselectInput';
   multiselectInput.validations = '["required"]';
   multiselectInput.choices = [ 'dropdownInput0' ];
@@ -253,6 +253,6 @@ it('getMultiselectCode for MULTISELECT', () => {
   expect(componentCode.includes(
     `pyb-answer='${multiselectInput.pybAnswer}'`)).toBeTruthy();
   expect(componentCode.includes(`choices='[&quot;dropdownInput0&quot;]`));
-  expect(componentCode.includes(`initial-value='[]'`)).toBeTruthy();
+  expect(componentCode.includes(`initial-value='&quot;[]&quot;'`)).toBeTruthy();
   expect(componentCode.includes(`validations='${multiselectInput.validations}'`)).toBeTruthy();
 });
