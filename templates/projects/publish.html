@@ -26,7 +26,33 @@
         <form class="form-horizontal" method="post" action="{{ url_for('project.publish', short_name=project.short_name) }}">
             <div class="form-actions">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-                <input type="submit" class="btn btn-md btn-primary" value="{{ _('Unpublish') }}"/>
+                
+
+                <button id="btn-unpublish" class="btn btn-md btn-primary" type="button" data-target="#unpublish-project-modal" data-toggle="modal" title="Unpublish Project">{{ _('Unpublish') }}</button>
+                
+                <!-- Unpublish Project -->
+                <div class="modal fade" id="unpublish-project-modal" tabindex="-1" role="dialog" aria-labelledby="unpublish-project-modal-label">
+                    <div class="modal-dialog">
+                    
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Unpublish Project</h4>
+                        </div>
+                        <div class="modal-body">
+                        <p><strong>Are you sure that you would like to unpublish your project?</strong></p>
+                        </div>
+                        <div class="modal-footer">
+                        <input type="submit" class="btn btn-danger" value="{{ _('Yes, Unpublish') }}"/>
+                        <button type="button" class="btn btn-default cancel-delete" data-dismiss="modal">Close</button>
+                
+                        </div>
+
+                    </div>
+                    
+                    </div>
+                </div>
             </div>
         </form>
 
