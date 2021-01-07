@@ -19,17 +19,15 @@
 {% endif %}
 <section class="grey get-started">
     <div class="row text-center">
-        </br></br></br>
         <div>
             <h2><i class="icon-play-circle"></i> {{ _('Get Started!') }}</h2>
             <p>{{ _('It\'s really simple to start using GIGwork') }}</p>
-            <a href="{{ url_for('home.about') }}">{{ _('Read more about GIGwork') }}</a></br></br>
         </div>
         <div>
             <a href="{{url_for('project.index')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a>
             {% if current_user.admin %}
             <a href="{{url_for('project.new')}}" class="btn btn-primary btn-large"><i class="icon-plus-sign"></i> {{ _('Create a Project') }}</a>
-            <a href="{{ url_for('account.register') }}" class="btn btn-success btn-large"><i class="icon icon-white icon-user"></i>{{ _(' Create a new account!') }}</a></br></br></br></br></br>
+            <a href="{{ url_for('account.register') }}" class="btn btn-success btn-large"><i class="icon icon-white icon-user"></i>{{ _(' Create a new account!') }}</a></br>
             {% endif %}
         </div>
     </div>
@@ -37,5 +35,34 @@
     <br/>
 </section>
 {% endif %}
-
+<section class="about">
+    <div>
+        <div class="container text-left firstfold">
+            <div class="row">
+             <div class="col-md-12">
+                <p style="text-align:center; margin-left: 130px; margin-right: 130px">{{brand}} {{ _('is a crowdsourcing platform based on <a href="https://pybossa.com">Pybossa</a>, an open source crowdsourcing platform developed by <a href="https://scifabric.com">Scifabric.</a>  GIGwork makes it easy to host, run, monitor and review/analyze quality for annotation projects. This makes it possible to quickly create new datasets with information that requires human cognition, knowledge, or intelligence to complete — such as text annotation, language translation, data collection/capture, and more!') }}</p>
+                <p style="text-align:center"><a href="{{ url_for('home.about') }}">{{ _('Read more about GIGwork') }}</a></p>
+            </div>
+            </div>
+          </br>
+            <div class="row">
+              <div class="col-md-offset-3 col-md-3 text-center pagination-centered">
+                <p><img src="{{ url_for('static', filename='img/unlocked.svg') }}" height="120"></p>
+              </div>
+              <div class="col-md-3 text-center pagination-centered">
+                <p><img src="{{ url_for('static', filename='img/wink.svg') }}" height="120"></p>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-md-offset-3 col-md-3 text-center">
+                <p class="">{{ _('Unlocks the power<br />of global freelancers') }}</p>
+              </div>
+              <div class="col-md-3 text-center">
+                <p class="">{{ _('Things computers<br />can\'t do') }}</p>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
