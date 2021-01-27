@@ -1,37 +1,42 @@
 /* eslint-disable vue/no-v-html */
 <template>
-  <div v-if="dataLoaded">
-    <label>
-      Number of gold tasks: {{ model.n_gold_unexpired }}
-    </label>
-    <p>
-      In order to enable and configure quiz mode, this project must have at least one gold question. Please click
-      <a
-        :href="`/project/${getProjectName()}/make-random-gold`"
-      >here</a> to create gold questions.
-    </p>
-    <vue-form-generator
-      ref="quizForm"
-      :schema="schema"
-      :model="model"
-      :options="formOptions"
-      @validated="onValidated"
-      @model-updated="onModelUpdate"
-    />
-    <table-quiz
-      :users="users"
-      :model="model"
-      :quiz-mode-choices="quizModeChoices"
-      @updateUsers="updateUsers"
-    />
-    <div>
-      <button
-        :disabled="!validForm"
-        class="btn btn-sm btn-primary"
-        @click="save"
-      >
-        Save
-      </button>
+  <div>
+    <GigSpinner v-if="waiting" />
+    <div
+      :style="waiting && 'opacity: 0.5'"
+    >
+      <label>
+        Number of gold tasks: {{ model.n_gold_unexpired }}
+      </label>
+      <p>
+        In order to enable and configure quiz mode, this project must have at least one gold question. Please click
+        <a
+          :href="`/project/${getProjectName()}/make-random-gold`"
+        >here</a> to create gold questions.
+      </p>
+      <vue-form-generator
+        ref="quizForm"
+        :schema="schema"
+        :model="model"
+        :options="formOptions"
+        @validated="onValidated"
+        @model-updated="onModelUpdate"
+      />
+      <table-quiz
+        :users="users"
+        :model="model"
+        :quiz-mode-choices="quizModeChoices"
+        @updateUsers="updateUsers"
+      />
+      <div>
+        <button
+          :disabled="!validForm"
+          class="btn btn-sm btn-primary"
+          @click="save"
+        >
+          Save
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -42,18 +47,23 @@ import VueFormGenerator from './quiz_form_validators';
 import Vue from 'vue';
 import Multiselect from 'vue-multiselect';
 import TableQuiz from './quiz_result_table.vue';
+import GigSpinner from '../common/gig_spinner.vue';
 
 Vue.component('multiselect', Multiselect);
 Vue.component('table-quiz', TableQuiz);
 
 export default {
   components: {
-        'vue-form-generator': VueFormGenerator.component },
+    'vue-form-generator': VueFormGenerator.component,
+    GigSpinner
+  },
+
   data () {
     return {
       csrfToken: null,
       users: {},
       dataLoaded: false,
+      waiting: false,
       validForm: false,
       quizModeChoices: {},
 
@@ -181,6 +191,7 @@ export default {
 
     async getData () {
       try {
+        this.waiting = true;
         const res = await fetch(this.getURL(), {
           method: 'GET',
           headers: {
@@ -196,11 +207,14 @@ export default {
         }
       } catch (error) {
         window.pybossaNotify('An error occurred on the server.', true, 'error');
+      } finally {
+        this.waiting = false;
       }
     },
     async save () {
       try {
         this.dataLoaded = false;
+        this.waiting = true;
         const res = await fetch(this.getURL(), {
           method: 'POST',
           headers: {
@@ -229,6 +243,8 @@ export default {
         }
       } catch (error) {
          window.pybossaNotify('An error occurred on the server.', true, 'error');
+      } finally {
+        this.waiting = false;
       }
      }
   }

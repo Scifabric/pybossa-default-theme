@@ -1,6 +1,10 @@
 <template>
   <div class="stats-config row">
-    <div class="col-md-12">
+    <GigSpinner v-if="waiting" />
+    <div
+      class="col-md-12"
+      :style="waiting && 'opacity: 0.5'"
+    >
       <div class="form-group row">
         <div class="col-md-4">
           <p> Project Owner </p>
@@ -90,15 +94,20 @@
 
 <script>
 import Vue from 'vue';
+import GigSpinner from '../common/gig_spinner.vue';
 
 export default {
+  components: {
+    GigSpinner
+  },
+
   data () {
     return {
       owner: {},
       coowners: {},
       searchResult: [],
-      search: ''
-
+      search: '',
+      waiting: false
     };
   },
 
@@ -161,6 +170,7 @@ export default {
 
     async getData () {
       try {
+        this.waiting = true;
         const res = await fetch(this.getURL(), {
           method: 'GET',
           headers: {
@@ -172,12 +182,15 @@ export default {
         this.initialize(data);
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
+      } finally {
+        this.waiting = false;
       }
     },
 
     async save () {
       let coownerId = Object.keys(this.coowners);
       try {
+        this.waiting = true;
         const res = await fetch(this.getURL(), {
           method: 'POST',
           headers: {
@@ -198,6 +211,8 @@ export default {
         }
       } catch (error) {
         window.pybossaNotify('An error occurred configuring ownership config.', true, 'error');
+      } finally {
+        this.waiting = false;
       }
     }
   }

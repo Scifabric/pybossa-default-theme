@@ -1,6 +1,10 @@
 <template>
   <div class="stats-config row">
-    <div class="col-md-12">
+    <GigSpinner v-if="waiting" />
+    <div
+      class="col-md-12"
+      :style="waiting && 'opacity: 0.5'"
+    >
       <div class="form-group row">
         <div class="col-md-6">
           <p> Task Scheduler </p>
@@ -98,6 +102,32 @@
           >
         </div>
       </div>
+      <div class="form-group row">
+        <div class="col-md-6">
+          <p> Task Notification Threshold</p>
+        </div>
+        <div class="col-md-6 pull-right">
+          <input
+            v-model="remaining"
+            type="text"
+            class="form-control input-sm"
+            placeholder="Notify when the number of remaining tasks is less than or equal to"
+          >
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-6">
+          <p> Task Notification Webhook URL</p>
+        </div>
+        <div class="col-md-6 pull-right">
+          <input
+            v-model="webhook"
+            type="text"
+            class="form-control input-sm"
+            placeholder="Notification webhook URL"
+          >
+        </div>
+      </div>
       <div>
         <button
           class="btn btn-sm btn-primary"
@@ -111,10 +141,16 @@
 </template>
 
 <script>
+import GigSpinner from '../common/gig_spinner.vue';
 
 export default {
+  components: {
+    GigSpinner
+  },
+
   data () {
     return {
+      waiting: false,
       csrfToken: '',
       sched: '',
       schedVariants: null,
@@ -123,7 +159,9 @@ export default {
       timeoutSecond: this.taskTimeout % 60,
       defaultRedundancy: null,
       currentRedundancy: null,
-      goldtaskProbability: 0
+      goldtaskProbability: 0,
+      remaining: 0,
+      webhook: null
     };
   },
 
@@ -145,6 +183,8 @@ export default {
     },
 
     async getData () {
+      this.waiting = true;
+
       try {
         const res = await fetch(this.getURL('tasks/redundancy'), {
           method: 'GET',
@@ -191,10 +231,29 @@ export default {
       } catch (error) {
         window.pybossaNotify('An error occurred.', true, 'error');
       }
+
+      try {
+        const res = await fetch(this.getURL('tasks/task_notification'), {
+          method: 'GET',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'same-origin'
+        });
+        const data = await res.json();
+        this.remaining = data.form.remaining;
+        this.webhook = data.form.webhook;
+      } catch (error) {
+        window.pybossaNotify('An error occurred.', true, 'error');
+      }
+
+      this.waiting = false;
     },
 
     async save () {
       try {
+        this.waiting = true;
+
         let _defaultRedundancy = parseInt(this.defaultRedundancy);
         let _currentRedundancy = parseInt(this.currentRedundancy);
         let _minute = parseInt(this.timeoutMinute);
@@ -207,6 +266,10 @@ export default {
               rand_within_priority: this.random,
               gold_task_probability: this.goldtaskProbability
               };
+        const notificationData = {
+          remaining: this.remaining,
+          webhook: this.webhook
+        };
         if (this.currentRedundancy !== null) {
           data['n_answers'] = _currentRedundancy;
         }
@@ -243,16 +306,28 @@ export default {
           credentials: 'same-origin',
           body: JSON.stringify(data)
         });
-        if (timeoutRes.ok && redundancyRes.ok && schedulerRes.ok) {
+        const taskNotificationRes = await fetch('tasks/task_notification', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            'X-CSRFToken': this.csrfToken
+          },
+          credentials: 'same-origin',
+          body: JSON.stringify(notificationData)
+        });
+        if (timeoutRes.ok && redundancyRes.ok && schedulerRes.ok && taskNotificationRes.ok) {
           const timeoutData = await timeoutRes.json();
           const redundancyData = await redundancyRes.json();
           const schedulerData = await schedulerRes.json();
+          const taskNotificationData = await taskNotificationRes.json();
           if (schedulerData['status'] !== 'success') {
             window.pybossaNotify('scheduler config. ' + schedulerData['flash'], true, schedulerData['status']);
           } else if (timeoutData['status'] !== 'success') {
             window.pybossaNotify('timeout config. ' + timeoutData['flash'], true, timeoutData['status']);
           } else if (redundancyData['status'] !== 'success') {
             window.pybossaNotify('redundancy config. ' + redundancyData['flash'], true, redundancyData['status']);
+          } else if (taskNotificationData['status'] !== 'success') {
+            window.pybossaNotify('task notification config. ' + taskNotificationData['flash'], true, taskNotificationData['status']);
           } else {
             window.pybossaNotify('Configuration updated successfully', true, 'success');
           }
@@ -261,6 +336,8 @@ export default {
         }
       } catch (error) {
         window.pybossaNotify('An error occurred configuring task config.', true, 'error');
+      } finally {
+        this.waiting = false;
       }
     }
   }
