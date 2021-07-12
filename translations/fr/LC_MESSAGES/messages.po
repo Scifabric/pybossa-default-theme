@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-02-05 18:06+0000\n"
+"POT-Creation-Date: 2019-01-30 14:20+0100\n"
 "PO-Revision-Date: 2013-08-07 15:01+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -16,2149 +16,2206 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.1.1\n"
+"Generated-By: Babel 2.6.0\n"
 
-#: themes/default/templates/_navbar.html:12
-#: themes/default/templates/account/index.html:14
+#: themes/pybossa-default-theme/static/templates/projects/new_blogpost.html:5
+#: themes/pybossa-default-theme/templates/projects/new_blogpost.html:5
+#: themes/pybossa-default-theme/templates/projects/update_blogpost.html:5
+msgid "Write a new blog post"
+msgstr ""
+
+#: themes/pybossa-default-theme/static/templates/projects/new_blogpost.html:14
+msgid "The title of your post"
+msgstr ""
+
+#: themes/pybossa-default-theme/static/templates/projects/new_blogpost.html:15
+msgid "Write your post here. You can use Markdown!"
+msgstr ""
+
+#: themes/pybossa-default-theme/static/templates/projects/new_blogpost.html:17
+msgid "Publish"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/_footer.html:11
+msgid "Resources"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/_footer.html:12
+msgid "Docs"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/_footer.html:14
+msgid "Terms of Use"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/_footer.html:15
+msgid "Cookies Policy"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/_footer.html:16
+msgid "Privacy Policy"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/_footer.html:17
+#: themes/pybossa-default-theme/templates/_navbar.html:11
+#: themes/pybossa-default-theme/templates/account/index.html:15
 msgid "Community"
 msgstr ""
 
-#: themes/default/templates/_navbar.html:13
-#: themes/default/templates/base.html:78
-#: themes/default/templates/account/projects.html:13
-#: themes/default/templates/stats/global.html:89
+#: themes/pybossa-default-theme/templates/_footer.html:18
+msgid "Stats"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/_footer.html:24
+msgid "Licenses"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/_footer.html:25
+msgid "Overview"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/_footer.html:26
+#: themes/pybossa-default-theme/templates/_navbar.html:12
+#: themes/pybossa-default-theme/templates/projects/index.html:30
+#: themes/pybossa-default-theme/templates/stats/global.html:81
 #, fuzzy
 msgid "Projects"
 msgstr "Nom du Projet"
 
-#: themes/default/templates/_navbar.html:14
-#: themes/default/templates/projects/new_blogpost.html:21
-msgid "Create"
-msgstr ""
-
-#: themes/default/templates/_navbar.html:15
-#: themes/default/templates/home/_about.html:3
-msgid "About"
-msgstr ""
-
-#: themes/default/templates/_navbar.html:22
-#: themes/default/templates/account/_helpers.html:3
-#, fuzzy
-msgid "My Profile"
-msgstr "Profil"
-
-#: themes/default/templates/_navbar.html:23
-#: themes/default/templates/account/_helpers.html:4
-#, fuzzy
-msgid "My Projects"
-msgstr "Nom du Projet"
-
-#: themes/default/templates/_navbar.html:24
-#: themes/default/templates/account/_helpers.html:8
-msgid "My Settings"
-msgstr ""
-
-#: themes/default/templates/_navbar.html:27
-#: themes/default/templates/account/_helpers.html:6
-#: themes/default/templates/admin/categories.html:13
-#: themes/default/templates/admin/del_category.html:13
-#: themes/default/templates/admin/index.html:12
-#: themes/default/templates/admin/projects.html:13
-#: themes/default/templates/admin/update_category.html:13
-#: themes/default/templates/admin/users.html:14
-msgid "Admin Site"
-msgstr ""
-
-#: themes/default/templates/_navbar.html:30
-msgid "Sign Out"
-msgstr ""
-
-#: themes/default/templates/_navbar.html:38
-#: themes/default/templates/account/signin.html:45
-msgid "Sign in"
-msgstr ""
-
-#: themes/default/templates/base.html:66
-msgid "Resources"
-msgstr ""
-
-#: themes/default/templates/base.html:67
-msgid "Docs"
-msgstr ""
-
-#: themes/default/templates/base.html:69
-msgid "Terms of Use"
-msgstr ""
-
-#: themes/default/templates/base.html:70
-msgid "Cookies Policy"
-msgstr ""
-
-#: themes/default/templates/base.html:71
-msgid "Stats"
-msgstr ""
-
-#: themes/default/templates/base.html:76
-msgid "Licenses"
-msgstr ""
-
-#: themes/default/templates/base.html:77
-msgid "Overview"
-msgstr ""
-
-#: themes/default/templates/base.html:79
+#: themes/pybossa-default-theme/templates/_footer.html:27
 #, fuzzy
 msgid "Data"
 msgstr "données"
 
-#: themes/default/templates/base.html:80
+#: themes/pybossa-default-theme/templates/_footer.html:28
 msgid "Content"
 msgstr ""
 
-#: themes/default/templates/base.html:85
-msgid "Technologies"
+#: themes/pybossa-default-theme/templates/_footer.html:33
+msgid "Social"
 msgstr ""
 
-#: themes/default/templates/base.html:86
-msgid "CKAN"
+#: themes/pybossa-default-theme/templates/_navbar.html:6
+msgid "Menu"
 msgstr ""
 
-#: themes/default/templates/base.html:87
-msgid "EpiCollect"
+#: themes/pybossa-default-theme/templates/_navbar.html:13
+msgid "Create"
 msgstr ""
 
-#: themes/default/templates/base.html:92
-msgid "Contact"
+#: themes/pybossa-default-theme/templates/_navbar.html:14
+#: themes/pybossa-default-theme/templates/home/_about.html:5
+msgid "About"
 msgstr ""
 
-#: themes/default/templates/base.html:93
+#: themes/pybossa-default-theme/templates/_navbar.html:21
 #, fuzzy
-msgid "Email"
-msgstr "Email "
+msgid "My Profile"
+msgstr "Profil"
 
-#: themes/default/templates/base.html:94
-msgid "Twitter"
+#: themes/pybossa-default-theme/templates/_navbar.html:22
+#: themes/pybossa-default-theme/templates/account/_helpers.html:7
+#, fuzzy
+msgid "My Projects"
+msgstr "Nom du Projet"
+
+#: themes/pybossa-default-theme/templates/_navbar.html:23
+#: themes/pybossa-default-theme/templates/account/_helpers.html:11
+msgid "My Settings"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:14
+#: themes/pybossa-default-theme/templates/_navbar.html:26
+#: themes/pybossa-default-theme/templates/account/_helpers.html:9
+#: themes/pybossa-default-theme/templates/admin/categories.html:9
+#: themes/pybossa-default-theme/templates/admin/del_category.html:5
+#: themes/pybossa-default-theme/templates/admin/index.html:5
+#: themes/pybossa-default-theme/templates/admin/projects.html:5
+#: themes/pybossa-default-theme/templates/admin/update_category.html:5
+#: themes/pybossa-default-theme/templates/admin/users.html:6
+msgid "Admin Site"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/_navbar.html:29
+msgid "Sign Out"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/_navbar.html:33
+#: themes/pybossa-default-theme/templates/account/signin.html:8
+#: themes/pybossa-default-theme/templates/account/signin.html:10
+msgid "Sign in"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/_helpers.html:6
+msgid "My Account"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/_helpers.html:17
 msgid "I've done"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:14
+#: themes/pybossa-default-theme/templates/account/_helpers.html:17
 msgid "tasks for the @PyBossa project:"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:14
+#: themes/pybossa-default-theme/templates/account/_helpers.html:17
 msgid "Do you want to help?"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:15
+#: themes/pybossa-default-theme/templates/account/_helpers.html:18
 msgid "Tweet"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:39
+#: themes/pybossa-default-theme/templates/account/_helpers.html:37
 msgid "Nick"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:41
+#: themes/pybossa-default-theme/templates/account/_helpers.html:39
 msgid "E-mail"
 msgstr "Email "
 
-#: themes/default/templates/account/_helpers.html:54
-#: themes/default/templates/account/_helpers.html:67
-#: themes/default/templates/stats/index.html:17
+#: themes/pybossa-default-theme/templates/account/_helpers.html:51
+#: themes/pybossa-default-theme/templates/account/_helpers.html:62
+#: themes/pybossa-default-theme/templates/account/public_profile.html:22
+#: themes/pybossa-default-theme/templates/stats/index.html:19
 msgid "Rank"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:59
-#: themes/default/templates/projects/tasks_browse.html:33
+#: themes/pybossa-default-theme/templates/account/_helpers.html:56
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:29
 msgid "of"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:59
+#: themes/pybossa-default-theme/templates/account/_helpers.html:56
 msgid "with a Score of"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:59
+#: themes/pybossa-default-theme/templates/account/_helpers.html:56
 msgid "contributed tasks"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:67
+#: themes/pybossa-default-theme/templates/account/_helpers.html:62
 msgid "The user has not contributed to any tasks yet"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:70
-#: themes/default/templates/home/index.html:78
+#: themes/pybossa-default-theme/templates/account/_helpers.html:66
 msgid "Joined"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:73
+#: themes/pybossa-default-theme/templates/account/_helpers.html:70
 msgid "API key"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:76
+#: themes/pybossa-default-theme/templates/account/_helpers.html:74
 msgid "Edit your profile"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:100
-#: themes/default/templates/projects/_helpers.html:7
+#: themes/pybossa-default-theme/templates/account/_helpers.html:106
+#: themes/pybossa-default-theme/templates/account/_helpers.html:108
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:7
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:9
 msgid "Prev"
 msgstr ""
 
-#: themes/default/templates/account/_helpers.html:120
-#: themes/default/templates/projects/_helpers.html:27
+#: themes/pybossa-default-theme/templates/account/_helpers.html:127
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:28
 msgid "Next"
 msgstr ""
 
-#: themes/default/templates/account/account_validation.html:7
+#: themes/pybossa-default-theme/templates/account/account_validation.html:8
 msgid "Just one more step, please"
 msgstr ""
 
-#: themes/default/templates/account/account_validation.html:8
+#: themes/pybossa-default-theme/templates/account/account_validation.html:9
 msgid ""
 "In order to confirm your identity, we've sent an email to the address you"
 " just provided. Please, check it out and click on the link you'll find to"
 " create your account at"
 msgstr ""
 
-#: themes/default/templates/account/account_validation.html:9
+#: themes/pybossa-default-theme/templates/account/account_validation.html:10
 msgid ""
 "If you are not receiving the email, please check the junk folder. If it's"
 " not there please drop us an email to"
 msgstr ""
 
-#: themes/default/templates/account/account_validation.html:10
+#: themes/pybossa-default-theme/templates/account/account_validation.html:11
 msgid "In the meantime, you can check some of the amazing"
 msgstr ""
 
-#: themes/default/templates/account/account_validation.html:10
+#: themes/pybossa-default-theme/templates/account/account_validation.html:11
 #, fuzzy
 msgid "projects"
 msgstr "Nom du Projet"
 
-#: themes/default/templates/account/account_validation.html:10
+#: themes/pybossa-default-theme/templates/account/account_validation.html:11
 msgid "and contribute to them as anonymous"
 msgstr ""
 
-#: themes/default/templates/account/index.html:14
+#: themes/pybossa-default-theme/templates/account/index.html:15
 msgid "registered users"
 msgstr ""
 
-#: themes/default/templates/account/index.html:14
-#: themes/default/templates/stats/global.html:49
+#: themes/pybossa-default-theme/templates/account/index.html:15
+#: themes/pybossa-default-theme/templates/stats/global.html:42
 msgid "Leaderboard"
 msgstr ""
 
-#: themes/default/templates/account/newsletter.html:10
+#: themes/pybossa-default-theme/templates/account/newsletter.html:8
 msgid "Newsletter"
 msgstr ""
 
-#: themes/default/templates/account/newsletter.html:11
+#: themes/pybossa-default-theme/templates/account/newsletter.html:9
 msgid ""
 "If you want to be updated with our new features, projects, and\n"
-"        scientific projects, subscribe to our newsletter."
+"                scientific projects, subscribe to our newsletter."
 msgstr ""
 
-#: themes/default/templates/account/newsletter.html:15
+#: themes/pybossa-default-theme/templates/account/newsletter.html:13
 msgid "Sign me up!"
 msgstr ""
 
-#: themes/default/templates/account/newsletter.html:18
+#: themes/pybossa-default-theme/templates/account/newsletter.html:16
 msgid "Not interested"
 msgstr ""
 
-#: themes/default/templates/account/password_forgot.html:6
-#: themes/default/templates/account/password_reset.html:6
+#: themes/pybossa-default-theme/templates/account/otpvalidation.html:15
+msgid "Verify OTP"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/otpvalidation.html:16
+#: themes/pybossa-default-theme/templates/account/password_forgot.html:13
+#: themes/pybossa-default-theme/templates/account/password_reset.html:14
+#: themes/pybossa-default-theme/templates/account/user_pref_metadata.html:41
+#: themes/pybossa-default-theme/templates/projects/importers/epicollect.html:19
+#: themes/pybossa-default-theme/templates/projects/importers/localCSV.html:19
+#: themes/pybossa-default-theme/templates/projects/new.html:30
+#: themes/pybossa-default-theme/templates/projects/password.html:20
+#: themes/pybossa-default-theme/templates/projects/task_n_answers.html:14
+msgid "Cancel"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/password_forgot.html:6
+#: themes/pybossa-default-theme/templates/account/password_reset.html:6
 #, fuzzy
 msgid "Reset your Password"
 msgstr "Retapez votre Mot de Passe"
 
-#: themes/default/templates/account/password_forgot.html:10
+#: themes/pybossa-default-theme/templates/account/password_forgot.html:10
 #, fuzzy
 msgid "my e-mail"
 msgstr "Email "
 
-#: themes/default/templates/account/password_forgot.html:12
+#: themes/pybossa-default-theme/templates/account/password_forgot.html:12
 #, fuzzy
 msgid "Reset my Password"
 msgstr "Retapez votre Mot de Passe"
 
-#: themes/default/templates/account/password_forgot.html:13
-#: themes/default/templates/account/password_reset.html:14
-#: themes/default/templates/account/register.html:25
-#: themes/default/templates/account/signin.html:46
-#: themes/default/templates/account/update.html:48
-#: themes/default/templates/account/update.html:65
-#: themes/default/templates/account/update.html:78
-#: themes/default/templates/admin/update_category.html:23
-#: themes/default/templates/projects/new.html:27
-#: themes/default/templates/projects/new_blogpost.html:22
-#: themes/default/templates/projects/password.html:20
-#: themes/default/templates/projects/task_n_answers.html:21
-#: themes/default/templates/projects/task_presenter_editor.html:36
-#: themes/default/templates/projects/task_priority.html:31
-#: themes/default/templates/projects/task_scheduler.html:36
-#: themes/default/templates/projects/update.html:48
-#: themes/default/templates/projects/update_blogpost.html:24
-#: themes/default/templates/projects/importers/csv.html:24
-#: themes/default/templates/projects/importers/dropbox.html:31
-#: themes/default/templates/projects/importers/epicollect.html:26
-#: themes/default/templates/projects/importers/flickr.html:35
-#: themes/default/templates/projects/importers/gdocs.html:24
-#: themes/default/templates/projects/importers/s3.html:37
-#: themes/default/templates/projects/importers/twitter.html:44
-msgid "Cancel"
-msgstr ""
-
-#: themes/default/templates/account/password_reset.html:10
+#: themes/pybossa-default-theme/templates/account/password_reset.html:10
 #, fuzzy
 msgid "my new password"
 msgstr "mon nouveau mot de passe"
 
-#: themes/default/templates/account/password_reset.html:11
+#: themes/pybossa-default-theme/templates/account/password_reset.html:11
 #, fuzzy
 msgid "my new password again"
 msgstr "mon nouveau mot de passe"
 
-#: themes/default/templates/account/profile.html:15
-#, fuzzy
-msgid "Your Profile"
-msgstr "Profil"
+#: themes/pybossa-default-theme/templates/account/profile.html:16
+msgid "Your Account"
+msgstr ""
 
-#: themes/default/templates/account/profile.html:18
+#: themes/pybossa-default-theme/templates/account/profile.html:24
 #, fuzzy
 msgid "Your Contributions"
 msgstr "Autoriser les Contributeurs Anonymes"
 
-#: themes/default/templates/account/profile.html:26
-msgid "Contribute!"
+#: themes/pybossa-default-theme/templates/account/projects.html:16
+#: themes/pybossa-default-theme/templates/stats/global.html:84
+msgid "Published Projects"
 msgstr ""
 
-#: themes/default/templates/account/projects.html:16
-msgid "Published"
-msgstr ""
+#: themes/pybossa-default-theme/templates/account/projects.html:19
+#: themes/pybossa-default-theme/templates/projects/index.html:27
+#: themes/pybossa-default-theme/templates/stats/global.html:86
+#, fuzzy
+msgid "Draft Projects"
+msgstr "Créez une App"
 
-#: themes/default/templates/account/projects.html:22
-#: themes/default/templates/projects/index.html:15
-msgid "Draft"
-msgstr ""
-
-#: themes/default/templates/account/projects.html:28
+#: themes/pybossa-default-theme/templates/account/projects.html:22
 #, fuzzy
 msgid "You have not created a project"
 msgstr "Créez une App"
 
-#: themes/default/templates/account/projects.html:29
-#: themes/default/templates/home/index.html:37
-msgid "Create a Project"
-msgstr "Créez une App"
-
-#: themes/default/templates/account/register.html:6
-#: themes/default/templates/account/signin.html:6
-msgid "Note"
+#: themes/pybossa-default-theme/templates/account/projects.html:23
+msgid "Let's do it!"
 msgstr ""
 
-#: themes/default/templates/account/register.html:7
-#: themes/default/templates/account/signin.html:7
-msgid "By click the"
-msgstr ""
-
-#: themes/default/templates/account/register.html:8
-msgid "Create account button"
-msgstr ""
-
-#: themes/default/templates/account/register.html:9
-msgid "below you are agreeing to the"
-msgstr ""
-
-#: themes/default/templates/account/register.html:10
-#: themes/default/templates/account/signin.html:8
-msgid "terms of use"
-msgstr ""
-
-#: themes/default/templates/account/register.html:10
-#: themes/default/templates/account/signin.html:8
-#, fuzzy
-msgid "and"
-msgstr "Aléatoire"
-
-#: themes/default/templates/account/register.html:11
-#: themes/default/templates/account/signin.html:9
-#, fuzzy
-msgid "data"
-msgstr "données"
-
-#: themes/default/templates/account/register.html:14
-#: themes/default/templates/account/register.html:24
+#: themes/pybossa-default-theme/templates/account/register.html:9
 #, fuzzy
 msgid "Create an account"
 msgstr "Créez une App"
 
-#: themes/default/templates/account/register.html:18
-#: themes/default/templates/account/update.html:40
-#, fuzzy
-msgid "my full name"
-msgstr "Nom complet"
-
-#: themes/default/templates/account/register.html:19
-#: themes/default/templates/account/update.html:41
-#, fuzzy
-msgid "myusername"
-msgstr "nom d'utilisateur"
-
-#: themes/default/templates/account/register.html:20
-#: themes/default/templates/account/update.html:42
-msgid "hello@mywebsite.org"
-msgstr ""
-
-#: themes/default/templates/account/register.html:21
-#: themes/default/templates/account/register.html:22
-#, fuzzy
-msgid "my secret password"
-msgstr "Retapez votre Mot de Passe"
-
-#: themes/default/templates/account/signin.html:7
-msgid "Sign in button"
-msgstr ""
-
-#: themes/default/templates/account/signin.html:7
+#: themes/pybossa-default-theme/templates/account/register.html:13
 msgid ""
-"below you are agreeing to\n"
-"    the"
+"To create an account you must be 16+ years old. Please enter your date of"
+" birth"
 msgstr ""
 
-#: themes/default/templates/account/signin.html:13
-#: themes/default/templates/account/signin.html:23
-msgid "Sign in with Twitter"
+#: themes/pybossa-default-theme/templates/account/register.html:24
+#: themes/pybossa-default-theme/templates/account/signin.html:41
+msgid "Note"
 msgstr ""
 
-#: themes/default/templates/account/signin.html:16
-#: themes/default/templates/account/signin.html:26
-msgid "Sign in with Facebook"
+#: themes/pybossa-default-theme/templates/account/register.html:25
+#: themes/pybossa-default-theme/templates/account/signin.html:42
+msgid "By click the"
 msgstr ""
 
-#: themes/default/templates/account/signin.html:19
-#: themes/default/templates/account/signin.html:29
-msgid "Sign in with Google"
+#: themes/pybossa-default-theme/templates/account/register.html:26
+msgid "Create account button"
 msgstr ""
 
-#: themes/default/templates/account/signin.html:38
-msgid "Or Sign in with your PyBossa account"
+#: themes/pybossa-default-theme/templates/account/register.html:27
+msgid "below you are agreeing to the"
 msgstr ""
 
-#: themes/default/templates/account/signin.html:40
-msgid "Sign in with your PyBossa account"
+#: themes/pybossa-default-theme/templates/account/register.html:28
+#: themes/pybossa-default-theme/templates/account/signin.html:43
+msgid "terms of use"
 msgstr ""
 
-#: themes/default/templates/account/signin.html:52
+#: themes/pybossa-default-theme/templates/account/register.html:28
+#: themes/pybossa-default-theme/templates/account/signin.html:43
 #, fuzzy
-msgid " Create a new account!"
-msgstr " Créer un nouveau compte !"
+msgid "and"
+msgstr "Aléatoire"
 
-#: themes/default/templates/account/signin.html:53
+#: themes/pybossa-default-theme/templates/account/register.html:29
+#: themes/pybossa-default-theme/templates/account/signin.html:44
+#, fuzzy
+msgid "data"
+msgstr "données"
+
+#: themes/pybossa-default-theme/templates/account/signin.html:12
 #, fuzzy
 msgid "Forgot Password"
 msgstr "mon mot de passe actuel"
 
-#: themes/default/templates/account/update.html:17
+#: themes/pybossa-default-theme/templates/account/signin.html:14
+msgid "Not registered?"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/signin.html:14
+msgid "Sign up for free now"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/signin.html:19
+#: themes/pybossa-default-theme/templates/account/signin.html:29
+#: themes/pybossa-default-theme/templates/projects/tasks/twitter.html:2
+msgid "Twitter"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/signin.html:22
+#: themes/pybossa-default-theme/templates/account/signin.html:32
+msgid "Facebook"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/signin.html:25
+#: themes/pybossa-default-theme/templates/account/signin.html:35
+msgid "Google"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/signin.html:42
+msgid "Sign in button"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/signin.html:42
+msgid ""
+"below you are agreeing to\n"
+"                the"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/update.html:16
 msgid "Update your profile"
 msgstr ""
 
-#: themes/default/templates/account/update.html:31
-#: themes/default/templates/projects/update.html:28
-msgid "Upload"
-msgstr ""
-
-#: themes/default/templates/account/update.html:47
-#: themes/default/templates/account/update.html:77
+#: themes/pybossa-default-theme/templates/account/update.html:18
+#: themes/pybossa-default-theme/templates/account/update.html:46
+#: themes/pybossa-default-theme/templates/account/update.html:56
+#: themes/pybossa-default-theme/templates/projects/update.html:42
 msgid "Save the changes"
 msgstr ""
 
-#: themes/default/templates/account/update.html:54
+#: themes/pybossa-default-theme/templates/account/update.html:22
+msgid "Update your avatar"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/update.html:37
+#: themes/pybossa-default-theme/templates/projects/update.html:21
+msgid "Upload"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/update.html:44
 #, fuzzy
 msgid "Change your Password"
 msgstr "Yay, vous avez changé votre mot de passe avec succès"
 
-#: themes/default/templates/account/update.html:64
-msgid "Save the Changes"
-msgstr ""
-
-#: themes/default/templates/account/update.html:85
+#: themes/pybossa-default-theme/templates/account/update.html:62
 msgid "Do you want to reset your personal API Key?"
 msgstr ""
 
-#: themes/default/templates/account/update.html:89
-msgid "No, do not reset the API key!"
+#: themes/pybossa-default-theme/templates/account/update.html:66
+#: themes/pybossa-default-theme/templates/projects/tasks/delete.html:19
+msgid "Yes"
+msgstr "Oui"
+
+#: themes/pybossa-default-theme/templates/account/update.html:71
+#: themes/pybossa-default-theme/templates/account/update.html:76
+msgid "Export your data"
 msgstr ""
 
-#: themes/default/templates/account/email/forgot_password.html:4
+#: themes/pybossa-default-theme/templates/account/update.html:73
+msgid ""
+"We will get an email when the data is available to download. You will get"
+" access to your personal data, your contributions and the projects you "
+"have created"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/update.html:80
+msgid "Delete your account"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/update.html:82
+#: themes/pybossa-default-theme/templates/admin/del_category.html:7
+#: themes/pybossa-default-theme/templates/projects/delete.html:14
+#: themes/pybossa-default-theme/templates/projects/tasks/delete.html:9
+#: themes/pybossa-default-theme/templates/projects/transferownership.html:12
+msgid "Danger Zone!"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/update.html:82
+msgid ""
+"By deleting your account, all your personal data will be removed from the"
+" server and third party services. Your contributions will be anonymized. "
+"This operation cannot be undone!"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/update.html:86
+#: themes/pybossa-default-theme/templates/admin/announcement.html:34
+#: themes/pybossa-default-theme/templates/projects/blog_post.html:28
+#: themes/pybossa-default-theme/templates/projects/settings.html:18
+#: themes/pybossa-default-theme/templates/projects/task_autoimporter.html:40
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:20
+msgid "Delete"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:4
 #, fuzzy
 msgid "Recover your lost password"
 msgstr "Retapez votre Mot de Passe"
 
-#: themes/default/templates/account/email/forgot_password.html:8
-#: themes/default/templates/account/email/forgot_password_openid.html:8
-#: themes/default/templates/account/email/validate_account.html:8
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:8
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:8
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:8
 msgid "Hello"
 msgstr ""
 
-#: themes/default/templates/account/email/forgot_password.html:14
-#: themes/default/templates/account/email/forgot_password_openid.html:13
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:14
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:13
 msgid "We received a request to recover your password for"
 msgstr ""
 
-#: themes/default/templates/account/email/forgot_password.html:17
-#: themes/default/templates/account/email/forgot_password_openid.html:16
-#: themes/default/templates/account/email/validate_account.html:22
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:17
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:16
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:22
 msgid "If you did not request this, please ignore this email"
 msgstr ""
 
-#: themes/default/templates/account/email/forgot_password.html:20
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:20
 msgid "To recover your password, please visit the URL below"
 msgstr ""
 
-#: themes/default/templates/account/email/forgot_password.html:23
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:23
 msgid "Click here to recover your account"
 msgstr ""
 
-#: themes/default/templates/account/email/forgot_password.html:26
-#: themes/default/templates/account/email/forgot_password_openid.html:22
-#: themes/default/templates/account/email/validate_account.html:31
+#: themes/pybossa-default-theme/templates/account/email/forgot_password.html:26
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:22
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:31
 msgid "Regards"
 msgstr ""
 
-#: themes/default/templates/account/email/forgot_password_openid.html:4
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:4
 #, fuzzy
 msgid "Recover your password"
 msgstr "Retapez votre Mot de Passe"
 
-#: themes/default/templates/account/email/forgot_password_openid.html:19
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:19
 msgid "Our records show that you use your"
 msgstr ""
 
-#: themes/default/templates/account/email/forgot_password_openid.html:19
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:19
 msgid ""
 "account to sign in. Please use the same account to sign-in again. If you "
 "forgot the password to your"
 msgstr ""
 
-#: themes/default/templates/account/email/forgot_password_openid.html:19
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:19
 msgid "account, please contact"
 msgstr ""
 
-#: themes/default/templates/account/email/forgot_password_openid.html:25
-#: themes/default/templates/account/email/validate_account.html:34
+#: themes/pybossa-default-theme/templates/account/email/forgot_password_openid.html:25
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:34
 msgid "Team"
 msgstr ""
 
-#: themes/default/templates/account/email/validate_account.html:4
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:4
 #, fuzzy
 msgid "Validate your account"
 msgstr "Créez une App"
 
-#: themes/default/templates/account/email/validate_account.html:13
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:13
 #, fuzzy
 msgid "Thank you for creating an account in"
 msgstr "Créez une App"
 
-#: themes/default/templates/account/email/validate_account.html:16
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:16
 msgid "Just one more step!"
 msgstr ""
 
-#: themes/default/templates/account/email/validate_account.html:19
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:19
 msgid ""
 "To verify that you are the owner of this e-mail address, please visit the"
 " URL below"
 msgstr ""
 
-#: themes/default/templates/account/email/validate_account.html:25
+#: themes/pybossa-default-theme/templates/account/email/validate_account.html:25
 msgid "Click here to confirm your e-mail address and create your account"
 msgstr ""
 
-#: themes/default/templates/admin/_helpers.html:9
+#: themes/pybossa-default-theme/templates/admin/_helpers.html:10
 msgid "nick"
 msgstr ""
 
-#: themes/default/templates/admin/_helpers.html:10
+#: themes/pybossa-default-theme/templates/admin/_helpers.html:11
 msgid "Member since"
 msgstr ""
 
-#: themes/default/templates/admin/_helpers.html:14
+#: themes/pybossa-default-theme/templates/admin/_helpers.html:15
+#: themes/pybossa-default-theme/templates/admin/_helpers.html:50
 msgid "Remove from admin group"
 msgstr ""
 
-#: themes/default/templates/admin/_helpers.html:18
+#: themes/pybossa-default-theme/templates/admin/_helpers.html:19
+#: themes/pybossa-default-theme/templates/admin/_helpers.html:55
 msgid "Add to admin group"
 msgstr ""
 
-#: themes/default/templates/admin/categories.html:13
+#: themes/pybossa-default-theme/templates/admin/announcement.html:46
+#: themes/pybossa-default-theme/templates/projects/blog.html:20
+msgid "Sorry! No posts so far."
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/admin/categories.html:9
 msgid "Manage Categories"
 msgstr ""
 
-#: themes/default/templates/admin/categories.html:20
-#: themes/default/templates/admin/update_category.html:19
+#: themes/pybossa-default-theme/templates/admin/categories.html:15
+#: themes/pybossa-default-theme/templates/admin/update_category.html:10
 #, fuzzy
 msgid "Category name"
 msgstr "Application mise à jour !"
 
-#: themes/default/templates/admin/categories.html:21
-#: themes/default/templates/admin/update_category.html:20
+#: themes/pybossa-default-theme/templates/admin/categories.html:16
+#: themes/pybossa-default-theme/templates/admin/update_category.html:11
 #, fuzzy
 msgid "Category description"
 msgstr "Longue Description"
 
-#: themes/default/templates/admin/categories.html:23
+#: themes/pybossa-default-theme/templates/admin/categories.html:18
 msgid "Add Category"
 msgstr ""
 
-#: themes/default/templates/admin/categories.html:30
+#: themes/pybossa-default-theme/templates/admin/categories.html:25
 msgid "List of Available Categories"
 msgstr ""
 
-#: themes/default/templates/admin/categories.html:39
+#: themes/pybossa-default-theme/templates/admin/categories.html:34
 msgid "Edit Category Name"
 msgstr ""
 
-#: themes/default/templates/admin/categories.html:41
-#: themes/default/templates/admin/categories.html:43
-#: themes/default/templates/admin/del_category.html:17
+#: themes/pybossa-default-theme/templates/admin/categories.html:36
+#: themes/pybossa-default-theme/templates/admin/categories.html:38
+#: themes/pybossa-default-theme/templates/admin/del_category.html:9
 msgid "Delete Category"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:19
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:19
 msgid "Dashboard last 7 days"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:22
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:22
 msgid "Refresh"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:28
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:28
 msgid "Active users"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:37
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:37
 msgid "Active anonymous users"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:46
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:46
 #, fuzzy
 msgid "Draft projects"
 msgstr "Créez une App"
 
-#: themes/default/templates/admin/dashboard.html:54
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:54
 #, fuzzy
 msgid "Published projects"
 msgstr "Créez une App"
 
-#: themes/default/templates/admin/dashboard.html:62
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:62
 #, fuzzy
 msgid "Updated projects"
 msgstr "Créez une App"
 
-#: themes/default/templates/admin/dashboard.html:70
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:70
 msgid "New tasks"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:79
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:79
 #, fuzzy
 msgid "New Answers"
 msgstr "mon nouveau mot de passe"
 
-#: themes/default/templates/admin/dashboard.html:88
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:88
 msgid "New Users"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:97
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:97
 msgid "Returning Users"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:108
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:109
 msgid "Recent activity"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:115
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:116
 #, fuzzy
 msgid "new project created"
 msgstr "L'application a été crée !"
 
-#: themes/default/templates/admin/dashboard.html:119
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:120
 #, fuzzy
 msgid "has published a blog post"
 msgstr " Créer un nouveau compte !"
 
-#: themes/default/templates/admin/dashboard.html:123
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:124
 msgid "has added new tasks"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:127
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:128
 msgid "has completed a task"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:131
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:132
 msgid "has contributed to"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:139
-#: themes/default/templates/admin/dashboard.html:149
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:140
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:150
 msgid "has joined"
 msgstr ""
 
-#: themes/default/templates/admin/dashboard.html:159
+#: themes/pybossa-default-theme/templates/admin/dashboard.html:161
 msgid "No data available yet. You'll need to wait 24 hours."
 msgstr ""
 
-#: themes/default/templates/admin/del_category.html:15
-#: themes/default/templates/projects/delete.html:14
-#: themes/default/templates/projects/tasks/delete.html:14
-msgid "Danger Zone!"
-msgstr ""
-
-#: themes/default/templates/admin/del_category.html:15
+#: themes/pybossa-default-theme/templates/admin/del_category.html:7
 msgid ""
 "Deleting the category will remove it from all the projects! This "
 "operation cannot be undone!"
 msgstr ""
 
-#: themes/default/templates/admin/del_category.html:21
+#: themes/pybossa-default-theme/templates/admin/del_category.html:13
 msgid "No, do not delete it"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:15
+#: themes/pybossa-default-theme/templates/admin/index.html:8
 msgid "Dashboard"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:16
-msgid "Internal Statistics"
+#: themes/pybossa-default-theme/templates/admin/index.html:8
+msgid "Internal statistics"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:18
+#: themes/pybossa-default-theme/templates/admin/index.html:8
+#: themes/pybossa-default-theme/templates/projects/presenters/basic.html:2
+#: themes/pybossa-default-theme/templates/projects/presenters/image.html:2
+#: themes/pybossa-default-theme/templates/projects/presenters/map.html:2
+#: themes/pybossa-default-theme/templates/projects/presenters/pdf.html:2
+#: themes/pybossa-default-theme/templates/projects/presenters/sound.html:2
+#: themes/pybossa-default-theme/templates/projects/presenters/video.html:2
 msgid "Go"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:22
+#: themes/pybossa-default-theme/templates/admin/index.html:11
 msgid "Background Jobs"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:23
-msgid "Monitor the background jobs"
+#: themes/pybossa-default-theme/templates/admin/index.html:11
+msgid "Monitor background jobs"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:25
-#: themes/default/templates/admin/index.html:34
-#: themes/default/templates/admin/index.html:41
-#: themes/default/templates/admin/index.html:50
-#, fuzzy
-msgid "Manage"
-msgstr "Langue par Défaut"
+#: themes/pybossa-default-theme/templates/admin/index.html:11
+msgid "Monitor"
+msgstr ""
 
-#: themes/default/templates/admin/index.html:31
-#: themes/default/templates/projects/index.html:33
+#: themes/pybossa-default-theme/templates/admin/index.html:16
+#: themes/pybossa-default-theme/templates/projects/index.html:24
 #, fuzzy
 msgid "Featured Projects"
 msgstr "Créez une App"
 
-#: themes/default/templates/admin/index.html:32
+#: themes/pybossa-default-theme/templates/admin/index.html:16
 msgid "Show projects on the front page"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:38
+#: themes/pybossa-default-theme/templates/admin/index.html:16
+#: themes/pybossa-default-theme/templates/admin/index.html:19
+#: themes/pybossa-default-theme/templates/admin/index.html:24
+#: themes/pybossa-default-theme/templates/admin/index.html:32
+#, fuzzy
+msgid "Manage"
+msgstr "Langue par Défaut"
+
+#: themes/pybossa-default-theme/templates/admin/index.html:19
 msgid "Categories"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:39
+#: themes/pybossa-default-theme/templates/admin/index.html:19
 msgid "Manage project categories"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:47
+#: themes/pybossa-default-theme/templates/admin/index.html:24
 msgid "Administrators"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:48
+#: themes/pybossa-default-theme/templates/admin/index.html:24
 #, fuzzy
 msgid "Manage administrators"
 msgstr "Gérer les Utilisateurs Admin"
 
-#: themes/default/templates/admin/index.html:54
-#: themes/default/templates/projects/stats.html:235
+#: themes/pybossa-default-theme/templates/admin/index.html:27
+#: themes/pybossa-default-theme/templates/projects/coowners.html:26
+#: themes/pybossa-default-theme/templates/projects/stats.html:228
 #, fuzzy
 msgid "Users"
 msgstr "Utilisateur"
 
-#: themes/default/templates/admin/index.html:55
+#: themes/pybossa-default-theme/templates/admin/index.html:27
 msgid "Export a list of users"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:57
-msgid "JSON"
-msgstr ""
-
-#: themes/default/templates/admin/index.html:60
+#: themes/pybossa-default-theme/templates/admin/index.html:27
+#: themes/pybossa-default-theme/templates/projects/settings.html:31
+#: themes/pybossa-default-theme/templates/projects/tasks/csv.html:2
 msgid "CSV"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:66
+#: themes/pybossa-default-theme/templates/admin/index.html:27
+msgid "JSON"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/admin/index.html:32
+msgid "Announcement"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/admin/index.html:32
+msgid "Write new announcement"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/admin/index.html:37
 msgid "Latest news from PyBossa"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:69
+#: themes/pybossa-default-theme/templates/admin/index.html:40
 msgid "New PyBossa version"
 msgstr ""
 
-#: themes/default/templates/admin/index.html:69
+#: themes/pybossa-default-theme/templates/admin/index.html:40
 #, fuzzy
 msgid "New SciFabric Blog Post"
 msgstr " Créer un nouveau compte !"
 
-#: themes/default/templates/admin/projects.html:13
+#: themes/pybossa-default-theme/templates/admin/projects.html:5
 msgid "Manage featured projects"
 msgstr ""
 
-#: themes/default/templates/admin/update_category.html:22
+#: themes/pybossa-default-theme/templates/admin/update_category.html:13
 msgid "Update Category"
 msgstr ""
 
-#: themes/default/templates/admin/users.html:14
+#: themes/pybossa-default-theme/templates/admin/users.html:6
 msgid "Manage Admin Users"
 msgstr "Gérer les Utilisateurs Admin"
 
-#: themes/default/templates/admin/users.html:19
+#: themes/pybossa-default-theme/templates/admin/users.html:14
 msgid "Try with the full name or nick"
 msgstr ""
 
-#: themes/default/templates/admin/users.html:20
+#: themes/pybossa-default-theme/templates/admin/users.html:16
+#: themes/pybossa-default-theme/templates/projects/coowners.html:19
 #, fuzzy
 msgid "Search"
 msgstr "Utilisateur"
 
-#: themes/default/templates/admin/users.html:24
+#: themes/pybossa-default-theme/templates/admin/users.html:24
 msgid "Found Users"
 msgstr ""
 
-#: themes/default/templates/admin/users.html:31
+#: themes/pybossa-default-theme/templates/admin/users.html:35
 msgid "Current Users with Admin privileges"
 msgstr ""
 
-#: themes/default/templates/home/_about.html:5
+#: themes/pybossa-default-theme/templates/home/_about.html:6
 msgid ""
-"PyBossa is a free, open-source crowd-sourcing and micro-tasking platform."
-" It enables people to create and run projects that utilise online "
-"assistance in performing tasks that require human cognition such as image"
-" classification, transcription, geocoding and more. PyBossa is there to "
+"PYBOSSA is the ultimate crowdsourcing framework to analyze or enrich data"
+"\n"
+"that can't be processed by machines alone."
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/home/_about.html:9
+msgid ""
+"PYBOSSA is a free, open-source crowdsourcing and micro-tasking platform "
+"developed by <a href=\"http://scifabric.com\">Scifabric</a>. It enables "
+"people to create and run projects that utilise online assistance in "
+"performing tasks that require human cognition such as image "
+"classification, transcription, geocoding and more. PYBOSSA is there to "
 "help researchers, civic hackers and developers to create projects where "
 "anyone around the world with some time, interest and an internet "
 "connection can contribute."
 msgstr ""
 
-#: themes/default/templates/home/_about.html:8
-msgid "PyBossa is different to existing efforts:"
+#: themes/pybossa-default-theme/templates/home/_about.html:12
+msgid "PYBOSSA is different to existing efforts:"
 msgstr ""
 
-#: themes/default/templates/home/_about.html:10
+#: themes/pybossa-default-theme/templates/home/_about.html:14
 #, python-format
 msgid "It's a 100%% open-source"
 msgstr ""
 
-#: themes/default/templates/home/_about.html:11
+#: themes/pybossa-default-theme/templates/home/_about.html:15
 msgid ""
-"Unlike, say, “mechanical turk” style projects, PyBossa is not designed to"
+"Unlike, say, “mechanical turk” style projects, PYBOSSA is not designed to"
 " handle payment or money — it is designed to support volunteer-driven "
 "projects."
 msgstr ""
 
-#: themes/default/templates/home/_about.html:13
+#: themes/pybossa-default-theme/templates/home/_about.html:17
 msgid ""
 "It's designed as a platform and framework for developing deploying crowd-"
 "sourcing and microtasking project rather than being a crowd-sourcing "
 "project itself. Individual crowd-sourcing projects are written as simple "
-"snippets of Javascript and HTML which are then deployed on a PyBossa "
+"snippets of Javascript and HTML which are then deployed on a PYBOSSA "
 "instance (such as"
 msgstr ""
 
-#: themes/default/templates/home/_about.html:13
+#: themes/pybossa-default-theme/templates/home/_about.html:17
 msgid ""
-"This way one can easily develop custom projects while using the PyBossa "
+"This way one can easily develop custom projects while using the PYBOSSA "
 "platform to store your data, manage users, and handle workflow"
 msgstr ""
 
-#: themes/default/templates/home/_about.html:18
+#: themes/pybossa-default-theme/templates/home/_about.html:22
 msgid "You can read more about the architecture in the"
 msgstr ""
 
-#: themes/default/templates/home/_about.html:18
-msgid "PyBossa Documentation"
+#: themes/pybossa-default-theme/templates/home/_about.html:22
+msgid "PYBOSSA Documentation"
 msgstr ""
 
-#: themes/default/templates/home/_about.html:18
+#: themes/pybossa-default-theme/templates/home/_about.html:22
 msgid "and follow the"
 msgstr ""
 
-#: themes/default/templates/home/_about.html:18
+#: themes/pybossa-default-theme/templates/home/_about.html:22
 msgid "step-by-step tutorial to create your own projects"
 msgstr ""
 
-#: themes/default/templates/home/_about.html:21
-#: themes/default/templates/projects/_helpers.html:40
-#: themes/default/templates/projects/stats.html:32
-msgid "Statistics"
-msgstr ""
-
-#: themes/default/templates/home/_about.html:23
-msgid ""
-" PyBossa provides individual statistics for every project in the system, "
-"as well as a"
-msgstr ""
-
-#: themes/default/templates/home/_about.html:23
-msgid "general overview about the system like total number of users, tasks, etc"
-msgstr ""
-
-#: themes/default/templates/home/_about.html:25
-msgid "Check the global statistics"
-msgstr ""
-
-#: themes/default/templates/home/_about.html:27
-msgid "Contact information"
-msgstr ""
-
-#: themes/default/templates/home/_about.html:29
-msgid "For more info, send us an e-mail to: "
-msgstr ""
-
-#: themes/default/templates/home/_about.html:29
-msgid "Follow us on Twitter!"
-msgstr ""
-
-#: themes/default/templates/home/_about.html:30
-msgid "E-mail list: "
-msgstr ""
-
-#: themes/default/templates/home/_about.html:31
-msgid "Report any bug, issue or improvement:"
-msgstr ""
-
-#: themes/default/templates/home/_about.html:33
-msgid "Github Issues"
-msgstr ""
-
-#: themes/default/templates/home/_pybossa_text.html:1
+#: themes/pybossa-default-theme/templates/home/_pybossa_text.html:1
 msgid ""
 "Online assistance in performing tasks that require human cognition, "
 "knowledge or intelligence such as image classification, transcription, "
 "geocoding and more!"
 msgstr ""
 
-#: themes/default/templates/home/_pybossa_text.html:3
+#: themes/pybossa-default-theme/templates/home/_pybossa_text.html:3
 msgid "Help advance research"
 msgstr ""
 
-#: themes/default/templates/home/_pybossa_text.html:4
+#: themes/pybossa-default-theme/templates/home/_pybossa_text.html:4
 msgid "Everything is open and freely usable"
 msgstr ""
 
-#: themes/default/templates/home/_pybossa_text.html:5
+#: themes/pybossa-default-theme/templates/home/_pybossa_text.html:5
 msgid "Things computers can't do"
 msgstr ""
 
-#: themes/default/templates/home/index.html:18
-#: themes/default/templates/projects/_helpers.html:36
-#: themes/default/templates/projects/_helpers.html:240
+#: themes/pybossa-default-theme/templates/home/index.html:12
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:58
+msgid "Contribute"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/home/index.html:14
+msgid "Welcome to "
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/home/index.html:15
+msgid ""
+"The ultimate crowdsourcing framework to analyze or enrich data that can't"
+" be processed by machines alone."
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/home/search.html:8
+msgid "Search Results"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:41
 msgid "Info"
 msgstr ""
 
-#: themes/default/templates/home/index.html:33
-msgid "Get Started"
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:42
+#: themes/pybossa-default-theme/templates/projects/export.html:22
+#: themes/pybossa-default-theme/templates/projects/export.html:36
+#: themes/pybossa-default-theme/templates/projects/results.html:4
+msgid "Results"
 msgstr ""
 
-#: themes/default/templates/home/index.html:34
-msgid "It's really simple to start contributing."
-msgstr ""
-
-#: themes/default/templates/home/index.html:37
-msgid " Start Contributing"
-msgstr ""
-
-#: themes/default/templates/home/index.html:42
-msgid "Most Active Projects"
-msgstr ""
-
-#: themes/default/templates/home/index.html:54
-msgid "Start"
-msgstr ""
-
-#: themes/default/templates/home/index.html:62
-#, fuzzy
-msgid "Your project"
-msgstr "Nom du Projet"
-
-#: themes/default/templates/home/index.html:63
-msgid "could be here!"
-msgstr ""
-
-#: themes/default/templates/home/index.html:64
-#, fuzzy
-msgid "Create a project"
-msgstr "Créez une App"
-
-#: themes/default/templates/home/index.html:73
-msgid "Most Active Volunteers"
-msgstr ""
-
-#: themes/default/templates/home/index.html:80
-msgid "Submitted Tasks"
-msgstr ""
-
-#: themes/default/templates/home/index.html:84
-#: themes/default/templates/projects/_helpers.html:39
-#: themes/default/templates/projects/_helpers.html:75
-#: themes/default/templates/projects/_helpers.html:203
-#: themes/default/templates/projects/export.html:19
-#: themes/default/templates/projects/export.html:21
-#: themes/default/templates/projects/export.html:32
-#: themes/default/templates/projects/export.html:34
-#: themes/default/templates/projects/export.html:53
-#: themes/default/templates/projects/stats.html:287
-#: themes/default/templates/projects/stats.html:377
-#: themes/default/templates/projects/tasks.html:13
-#: themes/default/templates/projects/tasks_browse.html:62
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:43
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:73
+#: themes/pybossa-default-theme/templates/projects/export.html:16
+#: themes/pybossa-default-theme/templates/projects/export.html:30
+#: themes/pybossa-default-theme/templates/projects/stats.html:280
+#: themes/pybossa-default-theme/templates/projects/stats.html:370
 #, fuzzy
 msgid "Tasks"
 msgstr "tâches"
 
-#: themes/default/templates/home/search.html:7
-msgid "Search Results"
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:44
+msgid "Statistics"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:37
-#: themes/default/templates/projects/presenter.html:15
-msgid "Contribute"
-msgstr ""
-
-#: themes/default/templates/projects/_helpers.html:38
-#: themes/default/templates/projects/results.html:15
-msgid "Results"
-msgstr ""
-
-#: themes/default/templates/projects/_helpers.html:42
-#: themes/default/templates/projects/_helpers.html:89
-#: themes/default/templates/projects/_helpers.html:102
-#: themes/default/templates/projects/settings.html:14
-#: themes/default/templates/projects/tasks.html:37
-#: themes/default/templates/projects/tasks.html:41
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:46
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:87
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:100
+#: themes/pybossa-default-theme/templates/projects/settings.html:12
+#: themes/pybossa-default-theme/templates/projects/tasks.html:19
 msgid "Settings"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:49
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:51
+#: themes/pybossa-default-theme/templates/projects/auditlog.html:4
 msgid "Audit Logs"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:54
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:54
+#: themes/pybossa-default-theme/templates/projects/webhook.html:4
 msgid "Webhooks"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:57
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:57
+#: themes/pybossa-default-theme/templates/projects/settings.html:21
 msgid "Blog"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:69
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:67
 msgid "ID"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:71
-#: themes/default/templates/projects/_helpers.html:131
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:69
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:130
 msgid "Description"
 msgstr "Description "
 
-#: themes/default/templates/projects/_helpers.html:72
-#: themes/default/templates/projects/_helpers.html:132
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:70
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:131
 msgid "Creation Date"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:73
-#: themes/default/templates/projects/_helpers.html:134
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:71
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:133
 msgid "Last Activity"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:74
-#: themes/default/templates/projects/_helpers.html:137
-#: themes/default/templates/projects/_helpers.html:199
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:72
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:136
 msgid "Overall progress"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:74
-#: themes/default/templates/projects/_helpers.html:199
-#: themes/default/templates/projects/tasks_browse.html:19
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:72
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:198
+#: themes/pybossa-default-theme/templates/projects/base.html:27
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:14
 msgid "completed"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:105
-#: themes/default/templates/projects/_helpers.html:115
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:103
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:113
 msgid "Remove from Featured!"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:108
-#: themes/default/templates/projects/_helpers.html:112
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:106
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:110
 msgid "Add to Featured!"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:139
-#: themes/default/templates/projects/_helpers.html:141
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:138
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:140
 msgid "Created by"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:139
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:138
 #, fuzzy
 msgid "Me"
 msgstr "Nom"
 
-#: themes/default/templates/projects/_helpers.html:144
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:143
 msgid "Try it!"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:212
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:203
 msgid "Done! View results"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:215
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:206
 msgid "Start Contributing Now!"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:218
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:209
 #, fuzzy
 msgid "Thanks for contributing"
 msgstr "Merci de vous être enregistré"
 
-#: themes/default/templates/projects/_helpers.html:221
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:212
 msgid "Draft project, complete it!"
 msgstr ""
 
-#: themes/default/templates/projects/_helpers.html:224
-msgid "You can now publish it!"
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:216
+msgid "Test it!"
 msgstr ""
 
-#: themes/default/templates/projects/actions.html:9
-#: themes/default/templates/projects/settings.html:18
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:217
+msgid "Publish it"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:249
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:255
+msgid "Remove from Featured"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:250
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:254
+msgid "Add to Featured"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:382
+msgid "Remove Co-owner"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/_helpers.html:388
+msgid "Add Co-owner"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/actions.html:9
 msgid "Edit the project details"
 msgstr ""
 
-#: themes/default/templates/projects/actions.html:10
-#: themes/default/templates/projects/tasks.html:33
+#: themes/pybossa-default-theme/templates/projects/actions.html:10
+#: themes/pybossa-default-theme/templates/projects/tasks.html:16
 msgid "Edit the task presenter"
 msgstr ""
 
-#: themes/default/templates/projects/actions.html:11
-#: themes/default/templates/projects/importers/csv.html:14
-#: themes/default/templates/projects/importers/dropbox.html:17
-#: themes/default/templates/projects/importers/epicollect.html:14
-#: themes/default/templates/projects/importers/flickr.html:15
-#: themes/default/templates/projects/importers/gdocs.html:14
-#: themes/default/templates/projects/importers/s3.html:20
-#: themes/default/templates/projects/importers/twitter.html:14
-#: themes/default/templates/projects/importers/iiif.html:5
+#: themes/pybossa-default-theme/templates/projects/actions.html:11
+#: themes/pybossa-default-theme/templates/projects/importers/csv.html:5
+#: themes/pybossa-default-theme/templates/projects/importers/dropbox.html:5
+#: themes/pybossa-default-theme/templates/projects/importers/epicollect.html:5
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:6
+#: themes/pybossa-default-theme/templates/projects/importers/gdocs.html:5
+#: themes/pybossa-default-theme/templates/projects/importers/iiif.html:5
+#: themes/pybossa-default-theme/templates/projects/importers/localCSV.html:5
+#: themes/pybossa-default-theme/templates/projects/importers/s3.html:5
+#: themes/pybossa-default-theme/templates/projects/importers/twitter.html:5
+#: themes/pybossa-default-theme/templates/projects/importers/youtube.html:6
 msgid "Import tasks"
 msgstr ""
 
-#: themes/default/templates/projects/actions.html:12
-#: themes/default/templates/projects/settings.html:20
+#: themes/pybossa-default-theme/templates/projects/actions.html:12
+#: themes/pybossa-default-theme/templates/projects/settings.html:18
 #, fuzzy
 msgid "Delete the project"
 msgstr "Créez une App"
 
-#: themes/default/templates/projects/auditlog.html:17
+#: themes/pybossa-default-theme/templates/projects/auditlog.html:10
 msgid "When"
 msgstr ""
 
-#: themes/default/templates/projects/auditlog.html:18
+#: themes/pybossa-default-theme/templates/projects/auditlog.html:11
 msgid "Who"
 msgstr ""
 
-#: themes/default/templates/projects/auditlog.html:19
+#: themes/pybossa-default-theme/templates/projects/auditlog.html:12
 msgid "Source"
 msgstr ""
 
-#: themes/default/templates/projects/auditlog.html:20
+#: themes/pybossa-default-theme/templates/projects/auditlog.html:13
 msgid "Action"
 msgstr ""
 
-#: themes/default/templates/projects/auditlog.html:21
+#: themes/pybossa-default-theme/templates/projects/auditlog.html:14
 msgid "Attribute"
 msgstr ""
 
-#: themes/default/templates/projects/auditlog.html:22
+#: themes/pybossa-default-theme/templates/projects/auditlog.html:15
 msgid "Old Value"
 msgstr ""
 
-#: themes/default/templates/projects/auditlog.html:23
+#: themes/pybossa-default-theme/templates/projects/auditlog.html:16
 msgid "New Value"
 msgstr ""
 
-#: themes/default/templates/projects/auditlog.html:28
+#: themes/pybossa-default-theme/templates/projects/auditlog.html:21
 msgid "You"
 msgstr ""
 
-#: themes/default/templates/projects/auditlog.html:39
+#: themes/pybossa-default-theme/templates/projects/auditlog.html:32
 msgid "Sorry! No logs so far."
 msgstr ""
 
-#: themes/default/templates/projects/auditlog.html:45
-#: themes/default/templates/projects/blog.html:33
-#: themes/default/templates/projects/delete.html:29
-#: themes/default/templates/projects/project.html:31
-#: themes/default/templates/projects/publish.html:30
-#: themes/default/templates/projects/settings.html:26
-#: themes/default/templates/projects/task_n_answers.html:29
-#: themes/default/templates/projects/task_priority.html:39
-#: themes/default/templates/projects/task_scheduler.html:44
-#: themes/default/templates/projects/task_settings.html:43
-#: themes/default/templates/projects/tasks.html:78
-#: themes/default/templates/projects/tasks_browse.html:65
+#: themes/pybossa-default-theme/templates/projects/base.html:39
+#: themes/pybossa-default-theme/templates/projects/delete.html:29
+#: themes/pybossa-default-theme/templates/projects/publish.html:30
 msgid "Sorry! This project does not exist."
 msgstr ""
 
-#: themes/default/templates/projects/blog.html:27
-msgid "Sorry! No posts so far."
+#: themes/pybossa-default-theme/templates/projects/blog.html:15
+msgid "Read more"
 msgstr ""
 
-#: themes/default/templates/projects/blog_post.html:15
+#: themes/pybossa-default-theme/templates/projects/blog_post.html:13
 msgid "Author: "
 msgstr ""
 
-#: themes/default/templates/projects/blog_post.html:17
+#: themes/pybossa-default-theme/templates/projects/blog_post.html:15
 msgid "Written: "
 msgstr ""
 
-#: themes/default/templates/projects/blog_post.html:31
-#: themes/default/templates/projects/task_autoimporter.html:40
-#: themes/default/templates/projects/task_settings.html:31
-msgid "Delete"
-msgstr ""
-
-#: themes/default/templates/projects/blog_post.html:32
-msgid "Edit"
-msgstr ""
-
-#: themes/default/templates/projects/blog_post.html:36
-#: themes/default/templates/projects/blog_post.html:41
-#: themes/default/templates/projects/task_autoimporter.html:41
+#: themes/pybossa-default-theme/templates/projects/blog_post.html:18
+#: themes/pybossa-default-theme/templates/projects/task_autoimporter.html:41
 msgid "Back"
 msgstr ""
 
-#: themes/default/templates/projects/blog_post.html:40
-msgid "Sorry! This blogpost does not exist."
+#: themes/pybossa-default-theme/templates/projects/blog_post.html:29
+#: themes/pybossa-default-theme/templates/projects/settings.html:9
+msgid "Edit"
 msgstr ""
 
-#: themes/default/templates/projects/delete.html:12
+#: themes/pybossa-default-theme/templates/projects/coowners.html:9
+#: themes/pybossa-default-theme/templates/projects/settings.html:28
+msgid "Manage Co-owners"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/coowners.html:27
+msgid "Users that can be added as co-owners to the project"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/coowners.html:37
+msgid "Current Co-owners"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/delete.html:12
 #, fuzzy
 msgid "Delete project"
 msgstr "Créez une App"
 
-#: themes/default/templates/projects/delete.html:14
+#: themes/pybossa-default-theme/templates/projects/delete.html:14
 msgid "If you delete the project and its tasks, it will be gone forever!"
 msgstr ""
 
-#: themes/default/templates/projects/delete.html:20
+#: themes/pybossa-default-theme/templates/projects/delete.html:20
 msgid ""
 "Are you sure you want to delete this project and all its tasks and "
 "associated task runs?"
 msgstr ""
 
-#: themes/default/templates/projects/delete.html:22
+#: themes/pybossa-default-theme/templates/projects/delete.html:22
 msgid "Yes, delete it"
 msgstr ""
 
-#: themes/default/templates/projects/delete.html:23
+#: themes/pybossa-default-theme/templates/projects/delete.html:23
 msgid "No, do not delete it!"
 msgstr ""
 
-#: themes/default/templates/projects/export.html:13
+#: themes/pybossa-default-theme/templates/projects/export.html:5
 msgid "Export All Tasks and Task Runs"
 msgstr ""
 
-#: themes/default/templates/projects/export.html:14
+#: themes/pybossa-default-theme/templates/projects/export.html:10
 msgid "You can export and download"
 msgstr ""
 
-#: themes/default/templates/projects/export.html:14
+#: themes/pybossa-default-theme/templates/projects/export.html:10
 msgid "all the available"
 msgstr ""
 
-#: themes/default/templates/projects/export.html:14
+#: themes/pybossa-default-theme/templates/projects/export.html:10
 msgid ""
 "Tasks and Task Runs (the submitted answers by the users) in CSV or JSON "
 "formats."
 msgstr ""
 
-#: themes/default/templates/projects/export.html:17
+#: themes/pybossa-default-theme/templates/projects/export.html:13
 msgid "Export in CSV format"
 msgstr ""
 
-#: themes/default/templates/projects/export.html:24
-#: themes/default/templates/projects/export.html:26
-#: themes/default/templates/projects/export.html:37
-#: themes/default/templates/projects/export.html:39
-#: themes/default/templates/projects/export.html:54
+#: themes/pybossa-default-theme/templates/projects/export.html:16
+msgid "Export tasks in CSV format"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/export.html:16
+#: themes/pybossa-default-theme/templates/projects/export.html:19
+#: themes/pybossa-default-theme/templates/projects/export.html:22
+#: themes/pybossa-default-theme/templates/projects/export.html:30
+#: themes/pybossa-default-theme/templates/projects/export.html:33
+#: themes/pybossa-default-theme/templates/projects/export.html:36
+#: themes/pybossa-default-theme/templates/projects/export.html:53
+#: themes/pybossa-default-theme/templates/projects/export.html:56
+#: themes/pybossa-default-theme/templates/projects/tasks.html:11
+#: themes/pybossa-default-theme/templates/projects/tasks.html:38
+#, fuzzy
+msgid "Export"
+msgstr "Importer"
+
+#: themes/pybossa-default-theme/templates/projects/export.html:19
+#: themes/pybossa-default-theme/templates/projects/export.html:33
+#: themes/pybossa-default-theme/templates/projects/export.html:56
 msgid "Task Runs"
 msgstr ""
 
-#: themes/default/templates/projects/export.html:30
+#: themes/pybossa-default-theme/templates/projects/export.html:19
+msgid "Export task runs in CSV format"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/export.html:22
+msgid "Export results in CSV format"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/export.html:27
 msgid "Export in JSON format"
 msgstr ""
 
-#: themes/default/templates/projects/export.html:47
+#: themes/pybossa-default-theme/templates/projects/export.html:30
+msgid "Export tasks in JSON format"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/export.html:33
+msgid "Export task runs in JSON format"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/export.html:36
+msgid "Export results in JSON format"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/export.html:44
 msgid "Export to the"
 msgstr ""
 
-#: themes/default/templates/projects/export.html:49
+#: themes/pybossa-default-theme/templates/projects/export.html:46
 msgid "Export to a CKAN server"
 msgstr ""
 
-#: themes/default/templates/projects/export.html:51
+#: themes/pybossa-default-theme/templates/projects/export.html:48
 #, fuzzy
 msgid "IMPORTANT"
 msgstr "Importer"
 
-#: themes/default/templates/projects/export.html:51
+#: themes/pybossa-default-theme/templates/projects/export.html:48
 msgid ""
 "This export option stills in beta mode and may fail in the CKAN server. "
-"If you get an error, please send an e-mail to info@pybossa.com"
+"If you get an error, please send an e-mail to info@scifabric.com"
 msgstr ""
 
-#: themes/default/templates/projects/export.html:56
+#: themes/pybossa-default-theme/templates/projects/export.html:53
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:13
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:25
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:27
+msgid "Task"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/export.html:53
+msgid "Export tasks into a CKAN server "
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/export.html:56
+msgid "Export task runs into a CKAN server"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/export.html:58
 msgid "You don't have a Datahub.io API key in your"
 msgstr ""
 
-#: themes/default/templates/projects/export.html:56
+#: themes/pybossa-default-theme/templates/projects/export.html:58
 msgid "account. Please,"
 msgstr ""
 
-#: themes/default/templates/projects/export.html:56
+#: themes/pybossa-default-theme/templates/projects/export.html:58
 #, fuzzy
 msgid "create an account"
 msgstr "Créez une App"
 
-#: themes/default/templates/projects/export.html:56
+#: themes/pybossa-default-theme/templates/projects/export.html:58
 msgid "and copy/paste the API key in your profile in order to use this exporter"
 msgstr ""
 
-#: themes/default/templates/projects/index.html:35
+#: themes/pybossa-default-theme/templates/projects/export.html:67
+msgid "Exporting data..."
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/index.html:17
+msgid "Draft"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/index.html:25
 msgid "A special selection of the most interesting projects"
 msgstr ""
 
-#: themes/default/templates/projects/index.html:38
-#: themes/default/templates/stats/global.html:93
-#, fuzzy
-msgid "Draft Projects"
-msgstr "Créez une App"
-
-#: themes/default/templates/projects/index.html:39
+#: themes/pybossa-default-theme/templates/projects/index.html:28
 msgid "Work in progress projects"
 msgstr ""
 
-#: themes/default/templates/projects/index.html:58
+#: themes/pybossa-default-theme/templates/projects/index.html:44
 msgid "Sorry, there are no published projects for this category yet"
 msgstr ""
 
-#: themes/default/templates/projects/new.html:13
+#: themes/pybossa-default-theme/templates/projects/new.html:15
 #, fuzzy
 msgid "Project"
 msgstr "Nom du Projet"
 
-#: themes/default/templates/projects/new.html:13
+#: themes/pybossa-default-theme/templates/projects/new.html:15
 #, fuzzy
 msgid "Create a new project"
 msgstr "Créez une App"
 
-#: themes/default/templates/projects/new.html:17
-#: themes/default/templates/projects/update.html:37
+#: themes/pybossa-default-theme/templates/projects/new.html:19
+#: themes/pybossa-default-theme/templates/projects/update.html:31
 #, fuzzy
 msgid "The name of the project"
 msgstr "Vous devez fournir un nom de Formulaire pour le projet"
 
-#: themes/default/templates/projects/new.html:18
-#: themes/default/templates/projects/update.html:38
+#: themes/pybossa-default-theme/templates/projects/new.html:20
+#: themes/pybossa-default-theme/templates/projects/update.html:32
 #, fuzzy
 msgid "Short name or slug for the project"
 msgstr "Vous devez fournir un nom de Formulaire pour le projet"
 
-#: themes/default/templates/projects/new.html:18
-#: themes/default/templates/projects/update.html:38
+#: themes/pybossa-default-theme/templates/projects/new.html:20
+#: themes/pybossa-default-theme/templates/projects/update.html:32
 #, fuzzy
 msgid "Project slug:"
 msgstr "Nom du Projet"
 
-#: themes/default/templates/projects/new.html:19
+#: themes/pybossa-default-theme/templates/projects/new.html:21
 msgid ""
-"Explain your project"
-"                                                             \n"
-"                · Why? Why you are creating this project, what you want "
-"to achieve with it"
-"                                                             \n"
-"                · How? Explain how your project works"
-"                                                             \n"
-"                · How you can help: Explain to the volunteers how they "
-"can help and contribute to the goal of your project"
-"                                                             \n"
-"                · Will you help make a difference? Explain to the "
-"volunteers why their contribution is essential and how the result of your"
-" project can help change things!"
-"                                                             \n"
-"            (you can use Markdown to give format to your description!)"
+"Explain your project\n"
+"· Why? Why you are creating this project, what you want to achieve with "
+"it\n"
+"· How? Explain how your project works\n"
+"· How you can help: Explain to the volunteers how they can help and "
+"contribute to the goal of your project\n"
+"· Will you help make a difference? Explain to the volunteers why their "
+"contribution is essential and how the result of your project can help "
+"change things!\n"
+"\n"
+"(you can use Markdown to give format to your description!)"
 msgstr ""
 
-#: themes/default/templates/projects/new.html:26
+#: themes/pybossa-default-theme/templates/projects/new.html:29
 #, fuzzy
 msgid "Create the project"
 msgstr "Créez une App"
 
-#: themes/default/templates/projects/new_blogpost.html:14
-#, fuzzy
-msgid "Write a new blog post for ad"
-msgstr " Créer un nouveau compte !"
-
-#: themes/default/templates/projects/new_blogpost.html:18
-#: themes/default/templates/projects/update_blogpost.html:20
-msgid "The title of your post"
-msgstr ""
-
-#: themes/default/templates/projects/new_blogpost.html:19
-#: themes/default/templates/projects/update_blogpost.html:21
-msgid "Write your post here. You can use Markdown!"
-msgstr ""
-
-#: themes/default/templates/projects/password.html:14
+#: themes/pybossa-default-theme/templates/projects/password.html:14
 msgid "Enter the password to contribute to this project:"
 msgstr ""
 
-#: themes/default/templates/projects/password.html:18
+#: themes/pybossa-default-theme/templates/projects/password.html:18
 #, fuzzy
 msgid "Project password"
 msgstr "mon mot de passe actuel"
 
-#: themes/default/templates/projects/password.html:21
+#: themes/pybossa-default-theme/templates/projects/password.html:21
 msgid "Submit"
 msgstr ""
 
-#: themes/default/templates/projects/presenter.html:22
-msgid ""
-"Sorry, you've contributed to all the tasks for this project, but this "
-"project still needs more volunteers, so please spread the word!"
-msgstr ""
-
-#: themes/default/templates/projects/publish.html:12
+#: themes/pybossa-default-theme/templates/projects/publish.html:12
 #, fuzzy
 msgid "Publish the project"
 msgstr "Créez une App"
 
-#: themes/default/templates/projects/publish.html:14
+#: themes/pybossa-default-theme/templates/projects/publish.html:14
 msgid "Please read carefully!"
 msgstr ""
 
-#: themes/default/templates/projects/publish.html:15
+#: themes/pybossa-default-theme/templates/projects/publish.html:15
 msgid ""
 "You are about to publish your project. This CANNOT be undone! Once your "
-"project has been published, people will be able to contribute to it and "
-"answers will begin to be stored."
+"project has been published, people will be able to contribute to it. All "
+"the taskruns (answers) that may have been created during the test phase "
+"will be flushed and your project will start fresh."
 msgstr ""
 
-#: themes/default/templates/projects/publish.html:16
+#: themes/pybossa-default-theme/templates/projects/publish.html:16
 msgid ""
 "That means that your project should be working properly, so please make "
 "sure it does. Otherwise you can work on it and publish it once it works "
 "fine."
 msgstr ""
 
-#: themes/default/templates/projects/publish.html:21
+#: themes/pybossa-default-theme/templates/projects/publish.html:21
 msgid "Are you sure you want to publish this project?"
 msgstr ""
 
-#: themes/default/templates/projects/publish.html:23
+#: themes/pybossa-default-theme/templates/projects/publish.html:23
 msgid "Yes, publish it"
 msgstr ""
 
-#: themes/default/templates/projects/publish.html:24
+#: themes/pybossa-default-theme/templates/projects/publish.html:24
 msgid "No, do not publish it!"
 msgstr ""
 
-#: themes/default/templates/projects/results.html:21
-msgid "No results"
-msgstr ""
-
-#: themes/default/templates/projects/results.html:22
+#: themes/pybossa-default-theme/templates/projects/results.html:18
 msgid "The project owner has not created/published/visualized any results yet."
 msgstr ""
 
-#: themes/default/templates/projects/settings.html:16
+#: themes/pybossa-default-theme/templates/projects/settings.html:3
 msgid "Project Settings"
 msgstr ""
 
-#: themes/default/templates/projects/settings.html:19
-#: themes/default/templates/projects/task_settings.html:13
+#: themes/pybossa-default-theme/templates/projects/settings.html:9
+msgid "Project details"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/settings.html:9
+msgid "Edit the name, description, etc."
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/settings.html:12
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:4
 msgid "Task Settings"
 msgstr ""
 
-#: themes/default/templates/projects/settings.html:21
-#, fuzzy
-msgid "Write a blog post"
-msgstr " Créer un nouveau compte !"
+#: themes/pybossa-default-theme/templates/projects/settings.html:12
+msgid "Change the task settings: redundancy, priority, etc."
+msgstr ""
 
-#: themes/default/templates/projects/stats.html:39
-#: themes/default/templates/projects/task_priority.html:21
+#: themes/pybossa-default-theme/templates/projects/settings.html:18
+msgid "Delete the project, tasks, task runs and answers."
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/settings.html:21
+msgid "Write a blog post about your project."
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/settings.html:21
+msgid "Write"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/settings.html:28
+msgid "Add/Remove Co-owners."
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/settings.html:28
+msgid "Co-owners"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/settings.html:31
+msgid "Export Project Report"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/settings.html:31
+msgid "Export project report"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/stats.html:30
+#: themes/pybossa-default-theme/templates/projects/task_priority.html:14
 msgid "Important"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:39
+#: themes/pybossa-default-theme/templates/projects/stats.html:30
 msgid "Data have been"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:39
+#: themes/pybossa-default-theme/templates/projects/stats.html:30
 msgid "anonymized"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:47
+#: themes/pybossa-default-theme/templates/projects/stats.html:38
 msgid "Average contribution time per task"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:48
+#: themes/pybossa-default-theme/templates/projects/stats.html:39
 msgid "seconds"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:56
+#: themes/pybossa-default-theme/templates/projects/stats.html:47
 msgid "Distribution of Answers per Hour"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:86
+#: themes/pybossa-default-theme/templates/projects/stats.html:77
 msgid "Completed Tasks in the last 15 days"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:86
-#: themes/default/templates/projects/stats.html:157
+#: themes/pybossa-default-theme/templates/projects/stats.html:78
+#: themes/pybossa-default-theme/templates/projects/stats.html:150
 msgid "select an area to zoom, click to reset the chart"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:157
+#: themes/pybossa-default-theme/templates/projects/stats.html:149
 msgid "Answers per day"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:169
+#: themes/pybossa-default-theme/templates/projects/stats.html:162
 msgid "answers were submitted this day"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:228
+#: themes/pybossa-default-theme/templates/projects/stats.html:221
 msgid "Distribution of Answers"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:234
+#: themes/pybossa-default-theme/templates/projects/stats.html:227
 msgid "Type"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:236
+#: themes/pybossa-default-theme/templates/projects/stats.html:229
 msgid "Percentage"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:275
+#: themes/pybossa-default-theme/templates/projects/stats.html:268
 msgid "Details about Anonymous Users"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:278
+#: themes/pybossa-default-theme/templates/projects/stats.html:271
 msgid "anonymous users have"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:278
-#: themes/default/templates/projects/stats.html:369
+#: themes/pybossa-default-theme/templates/projects/stats.html:271
+#: themes/pybossa-default-theme/templates/projects/stats.html:362
 msgid "participated"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:285
+#: themes/pybossa-default-theme/templates/projects/stats.html:278
 msgid "Country"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:286
+#: themes/pybossa-default-theme/templates/projects/stats.html:279
 msgid "City"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:307
-#: themes/default/templates/projects/stats.html:308
-#: themes/default/templates/projects/stats.html:309
-#: themes/default/templates/projects/stats.html:310
-#: themes/default/templates/projects/stats.html:311
-#: themes/default/templates/projects/stats.html:376
+#: themes/pybossa-default-theme/templates/projects/stats.html:300
+#: themes/pybossa-default-theme/templates/projects/stats.html:301
+#: themes/pybossa-default-theme/templates/projects/stats.html:302
+#: themes/pybossa-default-theme/templates/projects/stats.html:303
+#: themes/pybossa-default-theme/templates/projects/stats.html:304
+#: themes/pybossa-default-theme/templates/projects/stats.html:369
 msgid "User"
 msgstr "Utilisateur"
 
-#: themes/default/templates/projects/stats.html:327
-#: themes/default/templates/stats/global.html:169
+#: themes/pybossa-default-theme/templates/projects/stats.html:320
+#: themes/pybossa-default-theme/templates/stats/global.html:166
 msgid "This page includes GeoLite data created by MaxMind, available from"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:366
+#: themes/pybossa-default-theme/templates/projects/stats.html:359
 msgid "Details about Authenticated Users"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:369
+#: themes/pybossa-default-theme/templates/projects/stats.html:362
 msgid "authenticated users have"
 msgstr ""
 
-#: themes/default/templates/projects/stats.html:371
+#: themes/pybossa-default-theme/templates/projects/stats.html:364
 msgid "Top 5 users"
 msgstr ""
 
-#: themes/default/templates/projects/task_autoimport_options.html:13
+#: themes/pybossa-default-theme/templates/projects/task_autoimport_options.html:13
 msgid "Setup task autoimporter"
 msgstr ""
 
-#: themes/default/templates/projects/task_autoimport_options.html:16
-#: themes/default/templates/projects/task_import_options.html:16
-#: themes/default/templates/projects/snippets/options.html:4
+#: themes/pybossa-default-theme/templates/projects/snippets/options.html:4
+#: themes/pybossa-default-theme/templates/projects/task_autoimport_options.html:16
+#: themes/pybossa-default-theme/templates/projects/task_import_options.html:8
 msgid "Use one of the following available"
 msgstr ""
 
-#: themes/default/templates/projects/task_autoimport_options.html:17
-#: themes/default/templates/projects/task_import_options.html:17
+#: themes/pybossa-default-theme/templates/projects/task_autoimport_options.html:17
+#: themes/pybossa-default-theme/templates/projects/task_import_options.html:9
 #, fuzzy
 msgid "importers"
 msgstr "importateur CSV"
 
-#: themes/default/templates/projects/task_autoimport_options.html:17
+#: themes/pybossa-default-theme/templates/projects/task_autoimport_options.html:17
 msgid "to setup as the autoimporter"
 msgstr ""
 
-#: themes/default/templates/projects/task_autoimporter.html:14
+#: themes/pybossa-default-theme/templates/projects/task_autoimporter.html:14
 msgid "Currently configured autoimport"
 msgstr ""
 
-#: themes/default/templates/projects/task_autoimporter.html:15
+#: themes/pybossa-default-theme/templates/projects/task_autoimporter.html:15
 msgid "You currently have the following autoimporter configured"
 msgstr ""
 
-#: themes/default/templates/projects/task_import_options.html:13
-#: themes/default/templates/projects/tasks.html:20
+#: themes/pybossa-default-theme/templates/projects/task_import_options.html:5
+#: themes/pybossa-default-theme/templates/projects/tasks.html:8
 msgid "Import Tasks"
 msgstr ""
 
-#: themes/default/templates/projects/task_import_options.html:17
+#: themes/pybossa-default-theme/templates/projects/task_import_options.html:9
 msgid "to import tasks..."
 msgstr ""
 
-#: themes/default/templates/projects/task_import_options.html:31
+#: themes/pybossa-default-theme/templates/projects/task_import_options.html:21
 msgid "... or import a set of"
 msgstr ""
 
-#: themes/default/templates/projects/task_import_options.html:31
+#: themes/pybossa-default-theme/templates/projects/task_import_options.html:21
 msgid "template tasks"
 msgstr ""
 
-#: themes/default/templates/projects/task_n_answers.html:14
-#: themes/default/templates/projects/task_settings.html:34
+#: themes/pybossa-default-theme/templates/projects/task_n_answers.html:4
 msgid "Task Redundancy"
 msgstr ""
 
-#: themes/default/templates/projects/task_n_answers.html:18
+#: themes/pybossa-default-theme/templates/projects/task_n_answers.html:11
 msgid "The number of answers per tasks that you want for the project"
 msgstr ""
 
-#: themes/default/templates/projects/task_n_answers.html:20
-#: themes/default/templates/projects/task_scheduler.html:35
+#: themes/pybossa-default-theme/templates/projects/task_n_answers.html:13
+#: themes/pybossa-default-theme/templates/projects/task_scheduler.html:28
 msgid "Set redundancy"
 msgstr ""
 
-#: themes/default/templates/projects/task_presenter_editor.html:28
-#: themes/default/templates/projects/snippets/options.html:3
-#, fuzzy
-msgid "Task Presenter Editor"
-msgstr "Présentateur de tâches ajouté !"
-
-#: themes/default/templates/projects/task_presenter_editor.html:28
-msgid "Help"
-msgstr ""
-
-#: themes/default/templates/projects/task_presenter_editor.html:34
-msgid "Update the project task presenter"
-msgstr ""
-
-#: themes/default/templates/projects/task_presenter_editor.html:35
-msgid "Preview the task presenter"
-msgstr ""
-
-#: themes/default/templates/projects/task_presenter_editor.html:45
-msgid "&times;"
-msgstr ""
-
-#: themes/default/templates/projects/task_presenter_editor.html:46
-#, fuzzy
-msgid "Task Presenter Preview"
-msgstr "Présentateur de tâches ajouté !"
-
-#: themes/default/templates/projects/task_presenter_editor.html:54
-msgid "Close"
-msgstr ""
-
-#: themes/default/templates/projects/task_priority.html:14
-#: themes/default/templates/projects/task_settings.html:22
+#: themes/pybossa-default-theme/templates/projects/task_priority.html:4
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:15
 msgid "Task Priority"
 msgstr ""
 
-#: themes/default/templates/projects/task_priority.html:15
+#: themes/pybossa-default-theme/templates/projects/task_priority.html:8
 #, fuzzy
 msgid "You can change the"
 msgstr "Vous pouvez consulter les "
 
-#: themes/default/templates/projects/task_priority.html:16
+#: themes/pybossa-default-theme/templates/projects/task_priority.html:9
 msgid "priority"
 msgstr ""
 
-#: themes/default/templates/projects/task_priority.html:16
+#: themes/pybossa-default-theme/templates/projects/task_priority.html:9
 msgid ""
 "of one or more tasks,\n"
-"                providing a list of task IDs separated by commas. The "
-"lowest\n"
-"                priority is"
+"providing a list of task IDs separated by commas. The lowest\n"
+"priority is"
 msgstr ""
 
-#: themes/default/templates/projects/task_priority.html:19
+#: themes/pybossa-default-theme/templates/projects/task_priority.html:12
 msgid "and the highest priority is"
 msgstr ""
 
-#: themes/default/templates/projects/task_priority.html:21
+#: themes/pybossa-default-theme/templates/projects/task_priority.html:14
 msgid ""
 "The priority value is only\n"
-"                respected by the"
+"respected by the"
 msgstr ""
 
-#: themes/default/templates/projects/task_priority.html:22
+#: themes/pybossa-default-theme/templates/projects/task_priority.html:15
 #, fuzzy
 msgid "default scheduler"
 msgstr "Planificateur de Tâches"
 
-#: themes/default/templates/projects/task_priority.html:27
+#: themes/pybossa-default-theme/templates/projects/task_priority.html:20
 msgid "Comma separated Task.IDs i.e.: 3, 532, 100"
 msgstr ""
 
-#: themes/default/templates/projects/task_priority.html:28
+#: themes/pybossa-default-theme/templates/projects/task_priority.html:21
 msgid "Priority value between 0.0 and 1.0"
 msgstr ""
 
-#: themes/default/templates/projects/task_priority.html:30
+#: themes/pybossa-default-theme/templates/projects/task_priority.html:23
 msgid "Change Priority"
 msgstr ""
 
-#: themes/default/templates/projects/task_scheduler.html:14
-#: themes/default/templates/projects/task_settings.html:17
+#: themes/pybossa-default-theme/templates/projects/task_scheduler.html:4
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:12
 msgid "Task Scheduler"
 msgstr "Planificateur de Tâches"
 
-#: themes/default/templates/projects/task_scheduler.html:15
+#: themes/pybossa-default-theme/templates/projects/task_scheduler.html:8
 msgid "You can choose from the following schedulers"
 msgstr ""
 
-#: themes/default/templates/projects/task_scheduler.html:17
+#: themes/pybossa-default-theme/templates/projects/task_scheduler.html:10
 msgid "Default"
 msgstr "Par défault"
 
-#: themes/default/templates/projects/task_scheduler.html:17
+#: themes/pybossa-default-theme/templates/projects/task_scheduler.html:10
 msgid "or"
 msgstr ""
 
-#: themes/default/templates/projects/task_scheduler.html:18
+#: themes/pybossa-default-theme/templates/projects/task_scheduler.html:11
 msgid "Depth First"
 msgstr "Parcours en Profondeur"
 
-#: themes/default/templates/projects/task_scheduler.html:18
+#: themes/pybossa-default-theme/templates/projects/task_scheduler.html:11
 msgid ""
 "returns a task that\n"
-"                    has not been completed (the value of number of "
-"answers has\n"
-"                    not achieved) excluding the current user"
+"    has not been completed (the value of number of answers has\n"
+"    not achieved) excluding the current user"
 msgstr ""
 
-#: themes/default/templates/projects/task_scheduler.html:21
+#: themes/pybossa-default-theme/templates/projects/task_scheduler.html:14
 msgid "Breadth First"
 msgstr "Parcours en Largeur"
 
-#: themes/default/templates/projects/task_scheduler.html:21
+#: themes/pybossa-default-theme/templates/projects/task_scheduler.html:14
 msgid ""
 "returns a\n"
-"                    task which has the least number of task runs "
-"(answers)\n"
-"                    excluding the current user"
+"    task which has the least number of task runs (answers)\n"
+"    excluding the current user"
 msgstr ""
 
-#: themes/default/templates/projects/task_scheduler.html:24
-msgid "Random"
-msgstr "Aléatoire"
+#: themes/pybossa-default-theme/templates/projects/task_scheduler.html:17
+msgid "Depth First All"
+msgstr ""
 
-#: themes/default/templates/projects/task_scheduler.html:24
+#: themes/pybossa-default-theme/templates/projects/task_scheduler.html:17
 msgid ""
-"returns a task\n"
-"                    randomly --a user could get the same task twice or "
-"more\n"
-"                    times"
+"returns a\n"
+"    task where the current user has not participated. It does not take "
+"into\n"
+"    account the task.state"
 msgstr ""
 
-#: themes/default/templates/projects/task_settings.html:18
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:12
 msgid "Change how the tasks are delivered to volunteers"
 msgstr ""
 
-#: themes/default/templates/projects/task_settings.html:19
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:12
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:15
 #, fuzzy
 msgid "Scheduler"
 msgstr "Planificateur de Tâches"
 
-#: themes/default/templates/projects/task_settings.html:23
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:15
 msgid "Change the priority of the tasks"
 msgstr ""
 
-#: themes/default/templates/projects/task_settings.html:24
-msgid "Priority"
-msgstr ""
-
-#: themes/default/templates/projects/task_settings.html:29
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:20
 msgid "Delete Tasks"
 msgstr ""
 
-#: themes/default/templates/projects/task_settings.html:30
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:20
 msgid "Delete all the tasks and associated answers"
 msgstr ""
 
-#: themes/default/templates/projects/task_settings.html:35
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:23
+msgid "Tasks Redundancy"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:23
 msgid "Change the redundancy level for the tasks"
 msgstr ""
 
-#: themes/default/templates/projects/task_settings.html:36
+#: themes/pybossa-default-theme/templates/projects/task_settings.html:23
 msgid "Redundancy"
 msgstr ""
 
-#: themes/default/templates/projects/tasks.html:21
+#: themes/pybossa-default-theme/templates/projects/tasks.html:8
 msgid "Import tasks from templates, GDrive, or CSV"
 msgstr ""
 
-#: themes/default/templates/projects/tasks.html:22
-#: themes/default/templates/projects/importers/csv.html:23
-#: themes/default/templates/projects/importers/dropbox.html:30
-#: themes/default/templates/projects/importers/epicollect.html:25
-#: themes/default/templates/projects/importers/flickr.html:34
-#: themes/default/templates/projects/importers/gdocs.html:23
-#: themes/default/templates/projects/importers/s3.html:36
-#: themes/default/templates/projects/importers/twitter.html:43
+#: themes/pybossa-default-theme/templates/projects/importers/csv.html:11
+#: themes/pybossa-default-theme/templates/projects/importers/dropbox.html:22
+#: themes/pybossa-default-theme/templates/projects/importers/epicollect.html:18
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:33
+#: themes/pybossa-default-theme/templates/projects/importers/gdocs.html:17
+#: themes/pybossa-default-theme/templates/projects/importers/iiif.html:12
+#: themes/pybossa-default-theme/templates/projects/importers/localCSV.html:18
+#: themes/pybossa-default-theme/templates/projects/importers/s3.html:29
+#: themes/pybossa-default-theme/templates/projects/importers/twitter.html:37
+#: themes/pybossa-default-theme/templates/projects/importers/youtube.html:29
+#: themes/pybossa-default-theme/templates/projects/tasks.html:8
 #, fuzzy
 msgid "Import"
 msgstr "Importer"
 
-#: themes/default/templates/projects/tasks.html:25
-#: themes/default/templates/projects/tasks.html:68
+#: themes/pybossa-default-theme/templates/projects/tasks.html:11
+#: themes/pybossa-default-theme/templates/projects/tasks.html:38
 msgid "Export Tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks.html:26
-#: themes/default/templates/projects/tasks.html:69
+#: themes/pybossa-default-theme/templates/projects/tasks.html:11
+#: themes/pybossa-default-theme/templates/projects/tasks.html:38
 msgid "Export tasks to JSON, CSV or a CKAN server"
 msgstr ""
 
-#: themes/default/templates/projects/tasks.html:27
-#: themes/default/templates/projects/tasks.html:70
-#, fuzzy
-msgid "Export"
-msgstr "Importer"
-
-#: themes/default/templates/projects/tasks.html:32
+#: themes/pybossa-default-theme/templates/projects/tasks.html:16
 #, fuzzy
 msgid "Task Presenter"
 msgstr "Présentateur de tâches ajouté !"
 
-#: themes/default/templates/projects/tasks.html:34
+#: themes/pybossa-default-theme/templates/projects/tasks.html:16
 msgid "Editor"
 msgstr ""
 
-#: themes/default/templates/projects/tasks.html:38
+#: themes/pybossa-default-theme/templates/projects/tasks.html:19
 msgid "Configure the task scheduler, redundancy, etc."
 msgstr ""
 
-#: themes/default/templates/projects/tasks.html:46
-#: themes/default/templates/projects/tasks.html:49
-#: themes/default/templates/projects/tasks.html:62
-#: themes/default/templates/projects/tasks.html:65
+#: themes/pybossa-default-theme/templates/projects/tasks.html:24
+#: themes/pybossa-default-theme/templates/projects/tasks.html:35
 msgid "Browse"
 msgstr ""
 
-#: themes/default/templates/projects/tasks.html:47
-#: themes/default/templates/projects/tasks.html:63
+#: themes/pybossa-default-theme/templates/projects/tasks.html:24
+#: themes/pybossa-default-theme/templates/projects/tasks.html:35
 msgid "Check the status of the tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks.html:53
+#: themes/pybossa-default-theme/templates/projects/tasks.html:28
 msgid "Auto-import Tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks.html:54
+#: themes/pybossa-default-theme/templates/projects/tasks.html:28
 msgid "Import tasks regularly and automatically"
 msgstr ""
 
-#: themes/default/templates/projects/tasks.html:55
+#: themes/pybossa-default-theme/templates/projects/tasks.html:28
 msgid "Setup"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:13
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:5
 msgid "Browse tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:15
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:10
 msgid "This page shows all the available tasks for this project"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:16
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:11
 msgid "For each task, you can find the following information"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:18
-#: themes/default/templates/projects/tasks_browse.html:29
-#: themes/default/templates/projects/tasks_browse.html:31
-msgid "Task"
-msgstr ""
-
-#: themes/default/templates/projects/tasks_browse.html:18
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:13
 msgid "This number identifies the task for the project and it is unique"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:19
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:14
 msgid ""
 "The first number shows how many answers have been submitted for the task "
 "and the"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:19
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:14
 msgid ""
 "This redundancy method will help to detect errors, typos, data forging, "
 "etc. when the task has been completed"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:19
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:14
 msgid "second number"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:19
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:14
 msgid "how many need to be obtained to mark the task as"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:20
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:15
 msgid "Progress Bar"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:20
-msgid "The progress bar will the percentage that has been completed for the task"
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:15
+msgid ""
+"The progress progress-bar will the percentage that has been completed for"
+" the task"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:48
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:41
 msgid "Download Task Results"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:52
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:45
 msgid "Download Partial results"
 msgstr ""
 
-#: themes/default/templates/projects/tasks_browse.html:55
+#: themes/pybossa-default-theme/templates/projects/tasks_browse.html:48
 msgid "Nothing to download yet"
 msgstr ""
 
-#: themes/default/templates/projects/tutorial.html:14
+#: themes/pybossa-default-theme/templates/projects/transferownership.html:5
+msgid "settings"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/transferownership.html:10
+#: themes/pybossa-default-theme/templates/projects/update.html:66
+msgid "Transfer project ownership"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/transferownership.html:12
+msgid ""
+"If you change the ownership of the project you will not be able to modify"
+" it anymore. This cannot be undone!"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/transferownership.html:14
+msgid "Trasfer ownership"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/tutorial.html:14
 msgid "Start contributing"
 msgstr ""
 
-#: themes/default/templates/projects/update.html:14
-#, fuzzy
-msgid "Update the project"
-msgstr "Créez une App"
+#: themes/pybossa-default-theme/templates/projects/update.html:8
+msgid "Update the avatar"
+msgstr ""
 
-#: themes/default/templates/projects/update.html:39
+#: themes/pybossa-default-theme/templates/projects/update.html:27
+msgid "Update project details"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/update.html:33
 msgid "Give some details about the project"
 msgstr ""
 
-#: themes/default/templates/projects/update.html:40
+#: themes/pybossa-default-theme/templates/projects/update.html:34
 msgid "Explain the project (use Markdown!)"
 msgstr ""
 
-#: themes/default/templates/projects/update.html:42
+#: themes/pybossa-default-theme/templates/projects/update.html:36
 msgid "Check if you want to allow anonymous users contribute to your project"
 msgstr ""
 
-#: themes/default/templates/projects/update.html:47
-msgid "Save the changes"
+#: themes/pybossa-default-theme/templates/projects/update.html:37
+msgid "Check if you want to disable anonymous users to download project's data"
 msgstr ""
 
-#: themes/default/templates/projects/update_blogpost.html:14
-msgid "Edit the blog post"
+#: themes/pybossa-default-theme/templates/projects/update.html:46
+msgid "Project secret key"
 msgstr ""
 
-#: themes/default/templates/projects/update_blogpost.html:23
-msgid "Update"
+#: themes/pybossa-default-theme/templates/projects/update.html:55
+msgid "Reset secret key"
 msgstr ""
 
-#: themes/default/templates/projects/webhook.html:20
+#: themes/pybossa-default-theme/templates/projects/update.html:58
+msgid "Webpush notifications"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/update.html:59
+msgid "Warning"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/update.html:59
+msgid "Once you enable the notifications, you cannot disable them."
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/update.html:61
+msgid "Activate"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/update.html:63
+msgid "Enabled"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/webhook.html:19
 msgid "Created"
 msgstr ""
 
-#: themes/default/templates/projects/webhook.html:21
+#: themes/pybossa-default-theme/templates/projects/webhook.html:20
 msgid "Updated"
 msgstr ""
 
-#: themes/default/templates/projects/webhook.html:22
+#: themes/pybossa-default-theme/templates/projects/webhook.html:21
 msgid "Payload"
 msgstr ""
 
-#: themes/default/templates/projects/webhook.html:23
+#: themes/pybossa-default-theme/templates/projects/webhook.html:22
 msgid "Response"
 msgstr ""
 
-#: themes/default/templates/projects/webhook.html:24
+#: themes/pybossa-default-theme/templates/projects/webhook.html:23
 msgid "Response Status Code"
 msgstr ""
 
-#: themes/default/templates/projects/webhook.html:25
+#: themes/pybossa-default-theme/templates/projects/webhook.html:24
 msgid "Repeat"
 msgstr ""
 
-#: themes/default/templates/projects/importers/iiif.html:10
-msgid "From a IIIF manifest"
-msgstr "D'un manifeste IIIF"
-
-#: themes/default/templates/projects/importers/csv.html:16
+#: themes/pybossa-default-theme/templates/projects/importers/csv.html:10
 msgid "From a CSV file"
 msgstr ""
 
-#: themes/default/templates/projects/importers/csv.html:20
-msgid ""
-"Please provide a URL (i.e. DropBox, Box, Ubuntu One, etc. public link) to"
-" a CSV file with data for"
+#: themes/pybossa-default-theme/templates/projects/importers/csv.html:17
+#: themes/pybossa-default-theme/templates/projects/importers/dropbox.html:34
+#: themes/pybossa-default-theme/templates/projects/importers/epicollect.html:31
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:44
+#: themes/pybossa-default-theme/templates/projects/importers/gdocs.html:25
+#: themes/pybossa-default-theme/templates/projects/importers/iiif.html:18
+#: themes/pybossa-default-theme/templates/projects/importers/localCSV.html:27
+#: themes/pybossa-default-theme/templates/projects/importers/s3.html:37
+#: themes/pybossa-default-theme/templates/projects/importers/twitter.html:45
+#: themes/pybossa-default-theme/templates/projects/importers/youtube.html:35
+msgid "Importing data..."
 msgstr ""
 
-#: themes/default/templates/projects/importers/csv.html:20
-#: themes/default/templates/projects/importers/dropbox.html:26
-#: themes/default/templates/projects/importers/epicollect.html:20
-#: themes/default/templates/projects/importers/flickr.html:31
-#: themes/default/templates/projects/importers/gdocs.html:20
-#: themes/default/templates/projects/importers/s3.html:23
-#: themes/default/templates/projects/importers/twitter.html:34
-#: themes/default/templates/projects/importers/iiif.html:16
+#: themes/pybossa-default-theme/templates/projects/importers/dropbox.html:9
+msgid "From your Dropbox account"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/importers/dropbox.html:18
+#: themes/pybossa-default-theme/templates/projects/importers/epicollect.html:14
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:30
+#: themes/pybossa-default-theme/templates/projects/importers/gdocs.html:14
+#: themes/pybossa-default-theme/templates/projects/importers/iiif.html:11
+#: themes/pybossa-default-theme/templates/projects/importers/s3.html:16
+#: themes/pybossa-default-theme/templates/projects/importers/twitter.html:28
 msgid "For more information, please look at"
 msgstr ""
 
-#: themes/default/templates/projects/importers/csv.html:20
-#: themes/default/templates/projects/importers/dropbox.html:26
-#: themes/default/templates/projects/importers/epicollect.html:20
-#: themes/default/templates/projects/importers/flickr.html:31
-#: themes/default/templates/projects/importers/gdocs.html:20
-#: themes/default/templates/projects/importers/s3.html:23
-#: themes/default/templates/projects/importers/twitter.html:35
-#: themes/default/templates/projects/importers/iiif.html:16
+#: themes/pybossa-default-theme/templates/projects/importers/dropbox.html:18
+#: themes/pybossa-default-theme/templates/projects/importers/epicollect.html:14
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:30
+#: themes/pybossa-default-theme/templates/projects/importers/gdocs.html:14
+#: themes/pybossa-default-theme/templates/projects/importers/iiif.html:11
+#: themes/pybossa-default-theme/templates/projects/importers/s3.html:16
+#: themes/pybossa-default-theme/templates/projects/importers/twitter.html:29
 #, fuzzy
 msgid "the documentation"
 msgstr "Guides et la Documentation"
 
-#: themes/default/templates/projects/importers/csv.html:21
-msgid "The URL of the CSV file"
-msgstr ""
-
-#: themes/default/templates/projects/importers/dropbox.html:18
-msgid "From your Dropbox account"
-msgstr ""
-
-#: themes/default/templates/projects/importers/dropbox.html:27
+#: themes/pybossa-default-theme/templates/projects/importers/dropbox.html:19
 msgid "You are about to import"
 msgstr ""
 
-#: themes/default/templates/projects/importers/dropbox.html:27
+#: themes/pybossa-default-theme/templates/projects/importers/dropbox.html:19
 #, fuzzy
 msgid "files"
 msgstr "Profil"
 
-#: themes/default/templates/projects/importers/epicollect.html:16
+#: themes/pybossa-default-theme/templates/projects/importers/epicollect.html:10
 #, fuzzy
 msgid "From an EpiCollect Plus project"
 msgstr "Vous devez fournir un nom de projet EpiCollect Plus."
 
-#: themes/default/templates/projects/importers/epicollect.html:20
+#: themes/pybossa-default-theme/templates/projects/importers/epicollect.html:14
 #, fuzzy
 msgid "Please provide an EpiCollect Plus project name to import its data for"
 msgstr "Vous devez fournir un nom de projet EpiCollect Plus."
 
-#: themes/default/templates/projects/importers/epicollect.html:22
+#: themes/pybossa-default-theme/templates/projects/importers/epicollect.html:15
 #, fuzzy
 msgid "The name of the public EpiCollect Plus project"
 msgstr "Vous devez fournir un nom de Formulaire pour le projet"
 
-#: themes/default/templates/projects/importers/epicollect.html:23
+#: themes/pybossa-default-theme/templates/projects/importers/epicollect.html:16
 #, fuzzy
 msgid "The name of the project's form"
 msgstr "Vous devez fournir un nom de Formulaire pour le projet"
 
-#: themes/default/templates/projects/importers/flickr.html:16
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:13
 msgid "From a Flickr Album"
 msgstr ""
 
-#: themes/default/templates/projects/importers/flickr.html:17
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:14
 msgid "Revoke access"
 msgstr ""
 
-#: themes/default/templates/projects/importers/flickr.html:20
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:17
 msgid "Grant access to your Flickr albums to select one..."
 msgstr ""
 
-#: themes/default/templates/projects/importers/flickr.html:21
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:18
 msgid "Log in Flickr"
 msgstr ""
 
-#: themes/default/templates/projects/importers/flickr.html:31
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:30
 msgid "Or manually provide the ID of a Flickr set with images for"
 msgstr ""
 
-#: themes/default/templates/projects/importers/flickr.html:53
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:54
 msgid "Select one of your albums:"
 msgstr ""
 
-#: themes/default/templates/projects/importers/flickr.html:55
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:56
 msgid "photos"
 msgstr ""
 
-#: themes/default/templates/projects/importers/flickr.html:55
+#: themes/pybossa-default-theme/templates/projects/importers/flickr.html:56
 msgid "Select"
 msgstr ""
 
-#: themes/default/templates/projects/importers/gdocs.html:16
+#: themes/pybossa-default-theme/templates/projects/importers/gdocs.html:10
 msgid "From a Google Docs Spreadsheet"
 msgstr ""
 
-#: themes/default/templates/projects/importers/gdocs.html:20
+#: themes/pybossa-default-theme/templates/projects/importers/gdocs.html:14
 msgid "Please provide a URL to a Google Drive Spreadsheet with data for"
 msgstr ""
 
-#: themes/default/templates/projects/importers/gdocs.html:21
+#: themes/pybossa-default-theme/templates/projects/importers/gdocs.html:15
 msgid "The URL of the Google Docs Spreadsheet"
 msgstr ""
 
-#: themes/default/templates/projects/importers/s3.html:21
+#: themes/pybossa-default-theme/templates/projects/importers/iiif.html:10
+msgid "From a IIIF manifest"
+msgstr "D'un manifeste IIIF"
+
+#: themes/pybossa-default-theme/templates/projects/importers/localCSV.html:9
+msgid "From Local CSV Spreadsheet"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/importers/localCSV.html:13
+msgid "Please choose local csv file with data and press Import button."
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/importers/s3.html:15
 msgid "From an Amazon S3 bucket"
 msgstr ""
 
-#: themes/default/templates/projects/importers/s3.html:33
+#: themes/pybossa-default-theme/templates/projects/importers/s3.html:26
 #, fuzzy
 msgid "Name of the S3 bucket"
 msgstr "Vous devez fournir un nom de Formulaire pour le projet"
 
-#: themes/default/templates/projects/importers/s3.html:35
+#: themes/pybossa-default-theme/templates/projects/importers/s3.html:28
 msgid "Search in bucket"
 msgstr ""
 
-#: themes/default/templates/projects/importers/s3.html:86
+#: themes/pybossa-default-theme/templates/projects/importers/s3.html:84
 msgid "Oops... it seems that bucket is private."
 msgstr ""
 
-#: themes/default/templates/projects/importers/s3.html:87
+#: themes/pybossa-default-theme/templates/projects/importers/s3.html:85
 msgid "Oops... we could not find that bucket."
 msgstr ""
 
-#: themes/default/templates/projects/importers/twitter.html:16
+#: themes/pybossa-default-theme/templates/projects/importers/twitter.html:10
 msgid "From a Twitter hashtag or account"
 msgstr ""
 
-#: themes/default/templates/projects/importers/twitter.html:20
+#: themes/pybossa-default-theme/templates/projects/importers/twitter.html:14
 msgid ""
 "You can provide your own Twitter credentials and make API requests in "
 "behalf of them, or use the credentials provided by us. (The later only "
@@ -2166,396 +2223,335 @@ msgid ""
 "call, which is 100 for searches and 200 for user timelines.)"
 msgstr ""
 
-#: themes/default/templates/projects/importers/twitter.html:23
+#: themes/pybossa-default-theme/templates/projects/importers/twitter.html:17
 msgid "I'll use my credentials"
 msgstr ""
 
-#: themes/default/templates/projects/importers/twitter.html:24
+#: themes/pybossa-default-theme/templates/projects/importers/twitter.html:18
 msgid "I'll use credentials provided by the platform"
 msgstr ""
 
-#: themes/default/templates/projects/importers/twitter.html:32
+#: themes/pybossa-default-theme/templates/projects/importers/twitter.html:26
 msgid ""
 "Please provide the source of your tweets. It can be a \"#hashtag\", a "
 "regular \"word\" for search or a \"@user_account\" from where to import "
 "them"
 msgstr ""
 
-#: themes/default/templates/projects/importers/twitter.html:37
+#: themes/pybossa-default-theme/templates/projects/importers/twitter.html:31
 msgid "#hashtag or @user or something else"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/basic.html:2
+#: themes/pybossa-default-theme/templates/projects/importers/youtube.html:16
+msgid "From Youtube"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/importers/youtube.html:18
+msgid "Please provide a URL to a Youtube playlist with videos for"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/importers/youtube.html:27
+msgid "URL of a Youtube Playlist"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/presenters/basic.html:2
 msgid "Basic"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/basic.html:3
+#: themes/pybossa-default-theme/templates/projects/presenters/basic.html:2
 msgid "The most basic template"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/basic.html:4
-#: themes/default/templates/projects/presenters/image.html:4
-#: themes/default/templates/projects/presenters/map.html:4
-#: themes/default/templates/projects/presenters/pdf.html:4
-#: themes/default/templates/projects/presenters/sound.html:4
-#: themes/default/templates/projects/presenters/video.html:4
-msgid "Complexity"
-msgstr ""
-
-#: themes/default/templates/projects/presenters/basic.html:5
-#: themes/default/templates/projects/presenters/image.html:5
-#: themes/default/templates/projects/presenters/map.html:5
-#: themes/default/templates/projects/presenters/pdf.html:5
-#: themes/default/templates/projects/presenters/sound.html:5
-#: themes/default/templates/projects/presenters/video.html:5
-msgid "Skills"
-msgstr ""
-
-#: themes/default/templates/projects/presenters/basic.html:5
-#: themes/default/templates/projects/presenters/image.html:5
-#: themes/default/templates/projects/presenters/sound.html:5
-#: themes/default/templates/projects/presenters/video.html:5
-msgid "HTML and JavaScript"
-msgstr ""
-
-#: themes/default/templates/projects/presenters/basic.html:6
-msgid "Use the Basic template"
-msgstr ""
-
-#: themes/default/templates/projects/presenters/image.html:2
-#: themes/default/templates/projects/tasks/gdocs-image.html:2
+#: themes/pybossa-default-theme/templates/projects/presenters/image.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-image.html:2
 msgid "Image Pattern Recognition"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/image.html:3
-msgid "Re-use the Flickr Person Finder template"
+#: themes/pybossa-default-theme/templates/projects/presenters/image.html:2
+msgid "Analayze images using this template"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/image.html:6
-msgid "Use the Image template"
-msgstr ""
-
-#: themes/default/templates/projects/presenters/image.html:7
-#: themes/default/templates/projects/presenters/map.html:7
-#: themes/default/templates/projects/presenters/pdf.html:7
-#: themes/default/templates/projects/presenters/sound.html:7
-#: themes/default/templates/projects/presenters/video.html:7
-msgid "Download the template and work locally"
-msgstr ""
-
-#: themes/default/templates/projects/presenters/map.html:2
-#: themes/default/templates/projects/tasks/gdocs-map.html:2
+#: themes/pybossa-default-theme/templates/projects/presenters/map.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-map.html:2
 msgid "Geo-coding"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/map.html:3
-msgid "Re-use the Urban Park template"
+#: themes/pybossa-default-theme/templates/projects/presenters/map.html:2
+msgid "Analayze web maps with this template"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/map.html:5
-msgid "HTML, JavaScript and Geo expertise"
-msgstr ""
-
-#: themes/default/templates/projects/presenters/map.html:6
-msgid "Use the Maps project template"
-msgstr ""
-
-#: themes/default/templates/projects/presenters/pdf.html:2
-#: themes/default/templates/projects/tasks/gdocs-pdf.html:2
+#: themes/pybossa-default-theme/templates/projects/presenters/pdf.html:2
 msgid "Transcribing documents"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/pdf.html:3
+#: themes/pybossa-default-theme/templates/projects/presenters/pdf.html:2
 msgid "Re-use the PDF transcription template"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/pdf.html:5
-msgid "HTML, JavaScript and Server side"
-msgstr ""
-
-#: themes/default/templates/projects/presenters/pdf.html:6
-msgid "Use the Transcription template"
-msgstr ""
-
-#: themes/default/templates/projects/presenters/sound.html:2
-#: themes/default/templates/projects/tasks/gdocs-sound.html:2
+#: themes/pybossa-default-theme/templates/projects/presenters/sound.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-sound.html:2
 msgid "Sound Pattern Recognition"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/sound.html:3
-msgid "Re-use the SoundCloud template"
+#: themes/pybossa-default-theme/templates/projects/presenters/sound.html:2
+msgid "Re-use the sound template"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/sound.html:6
-msgid "Use the Sound template"
-msgstr ""
-
-#: themes/default/templates/projects/presenters/video.html:2
-#: themes/default/templates/projects/tasks/gdocs-video.html:2
+#: themes/pybossa-default-theme/templates/projects/presenters/video.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-video.html:2
 msgid "Video Pattern Recognition"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/video.html:3
-msgid "Re-use the Vimeo template"
+#: themes/pybossa-default-theme/templates/projects/presenters/video.html:2
+msgid "Re-use the video template"
 msgstr ""
 
-#: themes/default/templates/projects/presenters/video.html:6
-msgid "Use the Video template"
-msgstr ""
+#: themes/pybossa-default-theme/templates/projects/snippets/options.html:3
+#, fuzzy
+msgid "Task Presenter Editor"
+msgstr "Présentateur de tâches ajouté !"
 
-#: themes/default/templates/projects/snippets/options.html:5
+#: themes/pybossa-default-theme/templates/projects/snippets/options.html:5
 msgid "templates"
 msgstr ""
 
-#: themes/default/templates/projects/snippets/options.html:5
+#: themes/pybossa-default-theme/templates/projects/snippets/options.html:5
 #, fuzzy
 msgid "for your project"
 msgstr "Nom du Projet"
 
-#: themes/default/templates/projects/task/wrong.html:8
+#: themes/pybossa-default-theme/templates/projects/task/wrong.html:8
 msgid "Error!"
 msgstr ""
 
-#: themes/default/templates/projects/task/wrong.html:8
+#: themes/pybossa-default-theme/templates/projects/task/wrong.html:8
 msgid "This task does not belong to"
 msgstr ""
 
-#: themes/default/templates/projects/task/wrong.html:9
+#: themes/pybossa-default-theme/templates/projects/task/wrong.html:9
 msgid "Try with another one"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/iiif.html:2
-msgid "Import from a IIIF manifest"
-msgstr "Importation à partir d'un manifeste IIIF"
-
-#: themes/default/templates/projects/tasks/csv.html:3
+#: themes/pybossa-default-theme/templates/projects/tasks/csv.html:2
 msgid "Provide a public link to your own CSV file"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/csv.html:5
-msgid ""
-"Use the CSV URL\n"
-"      importer"
+#: themes/pybossa-default-theme/templates/projects/tasks/csv.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/dropbox.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/epicollect.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/flickr.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/iiif.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/localCSV.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/s3.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/twitter.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/youtube.html:2
+msgid "Import data"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/delete.html:12
+#: themes/pybossa-default-theme/templates/projects/tasks/delete.html:4
 msgid "Delete all Tasks and Task Runs"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/delete.html:14
+#: themes/pybossa-default-theme/templates/projects/tasks/delete.html:9
 msgid ""
 "If you delete all the\n"
-"            tasks and task runs they will be gone\n"
-"            forever!"
+"    tasks and task runs they will be gone\n"
+"    forever!"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/delete.html:16
+#: themes/pybossa-default-theme/templates/projects/tasks/delete.html:11
 msgid "You cannot undo this action!"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/delete.html:20
+#: themes/pybossa-default-theme/templates/projects/tasks/delete.html:15
 msgid ""
 "Are you sure you want to delete ALL the project tasks and associated task"
 " runs?"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/delete.html:24
-msgid "Yes"
-msgstr "Oui"
-
-#: themes/default/templates/projects/tasks/delete.html:26
+#: themes/pybossa-default-theme/templates/projects/tasks/delete.html:21
 msgid ""
 "No, do not delete\n"
-"              anything!"
+"            anything!"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/dropbox.html:3
+#: themes/pybossa-default-theme/templates/projects/tasks/dropbox.html:2
+msgid "Dropbox"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/tasks/dropbox.html:2
 msgid "Use files from your Dropbox account"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/dropbox.html:5
-msgid "Use the Dropbox importer"
-msgstr ""
-
-#: themes/default/templates/projects/tasks/epicollect.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/epicollect.html:2
 #, fuzzy
 msgid "EpiCollect Plus Project"
 msgstr "Vous devez fournir un nom de projet EpiCollect Plus."
 
-#: themes/default/templates/projects/tasks/epicollect.html:3
+#: themes/pybossa-default-theme/templates/projects/tasks/epicollect.html:2
 #, fuzzy
 msgid "Use an EpiCollect Plus project"
 msgstr "Vous devez fournir un nom de projet EpiCollect Plus."
 
-#: themes/default/templates/projects/tasks/epicollect.html:5
-#, fuzzy
-msgid ""
-"Use the EpiCollect\n"
-"      Plus importer"
-msgstr "Vous devez fournir un nom de projet EpiCollect Plus."
+#: themes/pybossa-default-theme/templates/projects/tasks/flickr.html:2
+msgid "Flickr"
+msgstr ""
 
-#: themes/default/templates/projects/tasks/flickr.html:3
+#: themes/pybossa-default-theme/templates/projects/tasks/flickr.html:2
 msgid "Use images from a Flickr set"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/flickr.html:5
-msgid "Use the Flickr importer"
-msgstr ""
-
-#: themes/default/templates/projects/tasks/gdocs-image.html:3
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-image.html:2
 msgid "Re-use the Flickr Person Finder tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/gdocs-image.html:5
-msgid ""
-"Use the\n"
-"      Image tasks"
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-image.html:2
+msgid "Use the Image tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/gdocs-map.html:3
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-map.html:2
 msgid "Re-use the Urban Park tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/gdocs-map.html:5
-msgid ""
-"Use the\n"
-"      Mapping tasks"
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-map.html:2
+msgid "Use the Mapping tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/gdocs-pdf.html:3
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-pdf.html:2
+msgid "Trascribing documents"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-pdf.html:2
 msgid "Re-use the PDF transcription tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/gdocs-pdf.html:5
-msgid ""
-"Use the\n"
-"      Transcription tasks"
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-pdf.html:2
+msgid "Use the Transcription tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/gdocs-sound.html:3
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-sound.html:2
 msgid "Re-use the SoundCloud tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/gdocs-sound.html:5
-msgid ""
-"Use the\n"
-"      Sound tasks"
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-sound.html:2
+msgid "Use the Sound tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/gdocs-video.html:3
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-video.html:2
 msgid "Re-use the Vimeo tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/gdocs-video.html:5
-msgid ""
-"Use the\n"
-"      Video tasks"
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs-video.html:2
+msgid "Use the Video tasks"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/gdocs.html:2
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs.html:2
 msgid "Google Drive Spreadsheet"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/gdocs.html:3
+#: themes/pybossa-default-theme/templates/projects/tasks/gdocs.html:2
 msgid "Import a Google Drive Spreadsheet"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/gdocs.html:5
-msgid ""
-"Use the Google Drive\n"
-"      importer"
+#: themes/pybossa-default-theme/templates/projects/tasks/iiif.html:2
+msgid "IIIF"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/s3.html:2
-msgid "S3"
+#: themes/pybossa-default-theme/templates/projects/tasks/iiif.html:2
+msgid "Import from a IIIF manifest"
+msgstr "Importation à partir d'un manifeste IIIF"
+
+#: themes/pybossa-default-theme/templates/projects/tasks/localCSV.html:2
+msgid "Local Drive CSV Spreadsheet"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/s3.html:3
+#: themes/pybossa-default-theme/templates/projects/tasks/localCSV.html:2
+msgid "Import a Local Drive CSV Spreadsheet"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/tasks/s3.html:2
+msgid "Amazon S3"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/projects/tasks/s3.html:2
 msgid "Use files from an Amazon S3 bucket"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/s3.html:5
-msgid "Use the Amazon S3 importer"
-msgstr ""
-
-#: themes/default/templates/projects/tasks/twitter.html:3
+#: themes/pybossa-default-theme/templates/projects/tasks/twitter.html:2
 msgid "Import tweets from a search or a user account"
 msgstr ""
 
-#: themes/default/templates/projects/tasks/twitter.html:5
-msgid "Use the Twitter importer"
+#: themes/pybossa-default-theme/templates/projects/tasks/youtube.html:2
+msgid "Youtube"
 msgstr ""
 
-#: themes/default/templates/stats/global.html:38
+#: themes/pybossa-default-theme/templates/projects/tasks/youtube.html:2
+msgid "Import Youtube Videos"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/stats/global.html:29
 msgid "General Statistics"
 msgstr ""
 
-#: themes/default/templates/stats/global.html:46
-msgid "Anonymous users"
+#: themes/pybossa-default-theme/templates/stats/global.html:33
+msgid "Number of Users"
 msgstr ""
 
-#: themes/default/templates/stats/global.html:47
-msgid "Authenticated users"
+#: themes/pybossa-default-theme/templates/stats/global.html:36
+msgid "Anonymous"
 msgstr ""
 
-#: themes/default/templates/stats/global.html:48
-#: themes/default/templates/stats/global.html:94
+#: themes/pybossa-default-theme/templates/stats/global.html:38
+msgid "Authenticated"
+msgstr ""
+
+#: themes/pybossa-default-theme/templates/stats/global.html:40
+#: themes/pybossa-default-theme/templates/stats/global.html:88
 msgid "Total"
 msgstr ""
 
-#: themes/default/templates/stats/global.html:52
+#: themes/pybossa-default-theme/templates/stats/global.html:66
 msgid "Top 5 Users in the last 24 hours"
 msgstr ""
 
-#: themes/default/templates/stats/global.html:55
+#: themes/pybossa-default-theme/templates/stats/global.html:69
 msgid "with"
 msgstr ""
 
-#: themes/default/templates/stats/global.html:55
+#: themes/pybossa-default-theme/templates/stats/global.html:69
 msgid "contributed answers"
 msgstr ""
 
-#: themes/default/templates/stats/global.html:60
-msgid "No active users in the last 24 hours"
-msgstr ""
-
-#: themes/default/templates/stats/global.html:92
-msgid "Published Projects"
-msgstr ""
-
-#: themes/default/templates/stats/global.html:97
+#: themes/pybossa-default-theme/templates/stats/global.html:114
 msgid "Top 5 projects in the last 24 hours"
 msgstr ""
 
-#: themes/default/templates/stats/global.html:105
-msgid "No active projects in the last 24 hours"
-msgstr ""
-
-#: themes/default/templates/stats/global.html:135
+#: themes/pybossa-default-theme/templates/stats/global.html:130
 msgid "Tasks and Answers"
 msgstr ""
 
-#: themes/default/templates/stats/global.html:138
+#: themes/pybossa-default-theme/templates/stats/global.html:133
 msgid "Number of Tasks"
 msgstr ""
 
-#: themes/default/templates/stats/global.html:139
+#: themes/pybossa-default-theme/templates/stats/global.html:135
 msgid "Number of Task Runs"
 msgstr ""
 
-#: themes/default/templates/stats/global.html:167
+#: themes/pybossa-default-theme/templates/stats/global.html:164
 msgid "Anonymous Volunteers"
 msgstr ""
 
-#: themes/default/templates/stats/index.html:13
+#: themes/pybossa-default-theme/templates/stats/index.html:15
 msgid "Community Leaderboard"
 msgstr ""
 
-#: themes/default/templates/stats/index.html:18
+#: themes/pybossa-default-theme/templates/stats/index.html:20
 msgid "Name"
 msgstr "Nom"
 
-#: themes/default/templates/stats/index.html:19
+#: themes/pybossa-default-theme/templates/stats/index.html:21
 msgid "Score"
 msgstr ""
 
@@ -2773,7 +2769,7 @@ msgstr ""
 #~ msgstr "Suivant"
 
 #~ msgid "Published"
-#~ msgstr "Publié"
+#~ msgstr ""
 
 #~ msgid "Draft"
 #~ msgstr "Brouillon"
@@ -2800,7 +2796,7 @@ msgstr ""
 #~ msgstr "encore mon nouveau mot de passe"
 
 #~ msgid "Save the Changes"
-#~ msgstr "Sauvegarder les changements"
+#~ msgstr ""
 
 #~ msgid "Cancel"
 #~ msgstr "Annuler"
@@ -2815,13 +2811,13 @@ msgstr ""
 #~ msgstr "Réinitialiser votre Mot de Passe"
 
 #~ msgid "Your Profile"
-#~ msgstr "Votre Profil"
+#~ msgstr "Profil"
 
 #~ msgid "Your Contributions"
 #~ msgstr "Vos Contributions"
 
 #~ msgid "Contribute!"
-#~ msgstr "Contribuez!"
+#~ msgstr ""
 
 #~ msgid "Note"
 #~ msgstr "Note"
@@ -2848,16 +2844,16 @@ msgstr ""
 #~ msgstr "Créer un compte"
 
 #~ msgid "my full name"
-#~ msgstr "mon nom complet"
+#~ msgstr "Nom complet"
 
 #~ msgid "myusername"
-#~ msgstr "monidentifiant"
+#~ msgstr "nom d'utilisateur"
 
 #~ msgid "hello@mywebsite.org"
-#~ msgstr "bonjour@monsite.org"
+#~ msgstr ""
 
 #~ msgid "my secret password"
-#~ msgstr "mon mot de passe secret"
+#~ msgstr "Retapez votre Mot de Passe"
 
 #~ msgid " Reset API Key"
 #~ msgstr ""
@@ -2866,7 +2862,7 @@ msgstr ""
 #~ msgstr "Voulez vous réinitialiser votre clef d'API personnelle ?"
 
 #~ msgid "No, do not reset the API key!"
-#~ msgstr "Non, ne réinitialisez pas la clef d'API !"
+#~ msgstr ""
 
 #~ msgid "Update your profile"
 #~ msgstr "Mettre à jour votre profil"
@@ -2881,19 +2877,19 @@ msgstr ""
 #~ msgstr "Boutton de connection"
 
 #~ msgid "Sign in with Twitter"
-#~ msgstr "Connectez-vous avec Twitter"
+#~ msgstr ""
 
 #~ msgid "Sign in with Facebook"
-#~ msgstr "Connectez-vous avec Facebook"
+#~ msgstr ""
 
 #~ msgid "Sign in with Google"
-#~ msgstr "Connectez-vous avec Google"
+#~ msgstr ""
 
 #~ msgid "Or Sign in with your PyBossa account"
-#~ msgstr "Ou Connectez-vous avec votre compte Pybossa"
+#~ msgstr ""
 
 #~ msgid "Sign in with your PyBossa account"
-#~ msgstr "Connectez-vous avec votre compte PyBossa"
+#~ msgstr ""
 
 #~ msgid " Create a new account!"
 #~ msgstr " Créer un nouveau compte !"
@@ -3064,7 +3060,7 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Sorry! This blogpost does not exist."
-#~ msgstr "Désolé ! Cette app n'existe pas."
+#~ msgstr ""
 
 #~ msgid "If you delete the project and its tasks, it will be gone forever!"
 #~ msgstr ""
@@ -3118,7 +3114,7 @@ msgstr ""
 #~ msgstr "Créez une application"
 
 #~ msgid "Write a new blog post for ad"
-#~ msgstr ""
+#~ msgstr " Créer un nouveau compte !"
 
 #~ msgid "The title of your post"
 #~ msgstr ""
@@ -3142,7 +3138,7 @@ msgstr ""
 #~ msgstr "Réglages des Tâches"
 
 #~ msgid "Write a blog post"
-#~ msgstr ""
+#~ msgstr " Créer un nouveau compte !"
 
 #~ msgid "Important"
 #~ msgstr "Important"
@@ -3217,22 +3213,22 @@ msgstr ""
 #~ msgstr "Éditeur du Présentateur de Tâches"
 
 #~ msgid "Help"
-#~ msgstr "Aide"
+#~ msgstr ""
 
 #~ msgid "Update the project task presenter"
-#~ msgstr "Mettre à jour le présentateur de tâches de l'application"
+#~ msgstr ""
 
 #~ msgid "Preview the task presenter"
-#~ msgstr "Aperçu du présentateur de tâches"
+#~ msgstr ""
 
 #~ msgid "&times;"
-#~ msgstr "&times;"
+#~ msgstr ""
 
 #~ msgid "Task Presenter Preview"
-#~ msgstr "Aperçu du présentateur de tâches"
+#~ msgstr "Présentateur de tâches ajouté !"
 
 #~ msgid "Close"
-#~ msgstr "Fermer"
+#~ msgstr ""
 
 #~ msgid "Change Priority"
 #~ msgstr ""
@@ -3328,7 +3324,7 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Update"
-#~ msgstr "données"
+#~ msgstr ""
 
 #~ msgid "From a CSV file"
 #~ msgstr ""
@@ -3352,7 +3348,7 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "PyBossa is different to existing efforts:"
-#~ msgstr "Pybossa est différent des solutions existantes : "
+#~ msgstr ""
 
 #~ msgid "It's a 100%% open-source"
 #~ msgstr "Il est 100%% open-source"
@@ -3361,7 +3357,7 @@ msgstr ""
 #~ msgstr "Vous pouvez en lire plus à propos de l'architecture dans la"
 
 #~ msgid "PyBossa Documentation"
-#~ msgstr "Documentation PyBossa"
+#~ msgstr ""
 
 #~ msgid "and follow the"
 #~ msgstr "and suivez le"
@@ -3370,25 +3366,25 @@ msgstr ""
 #~ msgstr "tutoriel étape par étape pour créer vos propres apps"
 
 #~ msgid "Check the global statistics"
-#~ msgstr "Consulter les statistiques globales"
+#~ msgstr ""
 
 #~ msgid "Contact information"
-#~ msgstr "Informations de contact"
+#~ msgstr ""
 
 #~ msgid "For more info, send us an e-mail to: "
-#~ msgstr "Pour plus d'info, envoyez-nous un email à : "
+#~ msgstr ""
 
 #~ msgid "Follow us on Twitter!"
-#~ msgstr "Suivez nous sur Twitter ! "
+#~ msgstr ""
 
 #~ msgid "E-mail list: "
-#~ msgstr "Liste de diffusion : "
+#~ msgstr ""
 
 #~ msgid "Report any bug, issue or improvement:"
-#~ msgstr "Signalez n'importe quel bug, problème, ou amélioration"
+#~ msgstr ""
 
 #~ msgid "Github Issues"
-#~ msgstr "Github Issues"
+#~ msgstr ""
 
 #~ msgid "Help advance research"
 #~ msgstr ""
@@ -3400,34 +3396,34 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Get Started"
-#~ msgstr "Commencer"
+#~ msgstr ""
 
 #~ msgid "It's really simple to start contributing."
-#~ msgstr "C'est très simple de commencer à contribuer"
+#~ msgstr ""
 
 #~ msgid " Start Contributing"
-#~ msgstr " Commencez à contribuer"
+#~ msgstr ""
 
 #~ msgid "Most Active Projects"
-#~ msgstr "Applications les plus actives"
+#~ msgstr ""
 
 #~ msgid "Start"
-#~ msgstr "Contribuez"
+#~ msgstr ""
 
 #~ msgid "Your project"
-#~ msgstr "Créez une application"
+#~ msgstr "Nom du Projet"
 
 #~ msgid "could be here!"
-#~ msgstr "pourrait être ici ! "
+#~ msgstr ""
 
 #~ msgid "Create a project"
-#~ msgstr "Créez une application"
+#~ msgstr "Créez une App"
 
 #~ msgid "Most Active Volunteers"
-#~ msgstr "Volontaires les plus actifs"
+#~ msgstr ""
 
 #~ msgid "Submitted Tasks"
-#~ msgstr "Tâches Accomplies "
+#~ msgstr ""
 
 #~ msgid "Search Results"
 #~ msgstr "Résultats de Recherche"
@@ -3436,10 +3432,10 @@ msgstr ""
 #~ msgstr "Consulter les statistiques globales"
 
 #~ msgid "Anonymous users"
-#~ msgstr "utilisateurs anonymes ont"
+#~ msgstr ""
 
 #~ msgid "Authenticated users"
-#~ msgstr "utilisateurs authentifiés ont"
+#~ msgstr ""
 
 #~ msgid "Total"
 #~ msgstr ""
@@ -3832,5 +3828,310 @@ msgstr ""
 #~ msgstr "Non"
 
 #~ msgid "Grant Crowdcrafting access to your Flickr albums to select one..."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If you want to be updated with our new features, projects, and\n"
+#~ "        scientific projects, subscribe to our newsletter."
+#~ msgstr ""
+
+#~ msgid "Create a Project"
+#~ msgstr "Créez une App"
+
+#~ msgid ""
+#~ "below you are agreeing to\n"
+#~ "    the"
+#~ msgstr ""
+
+#~ msgid "Internal Statistics"
+#~ msgstr ""
+
+#~ msgid "Monitor the background jobs"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "PyBossa is a free, open-source "
+#~ "crowd-sourcing and micro-tasking platform."
+#~ " It enables people to create and "
+#~ "run projects that utilise online "
+#~ "assistance in performing tasks that "
+#~ "require human cognition such as image"
+#~ " classification, transcription, geocoding and "
+#~ "more. PyBossa is there to help "
+#~ "researchers, civic hackers and developers "
+#~ "to create projects where anyone around"
+#~ " the world with some time, interest"
+#~ " and an internet connection can "
+#~ "contribute."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Unlike, say, “mechanical turk” style "
+#~ "projects, PyBossa is not designed to "
+#~ "handle payment or money — it is"
+#~ " designed to support volunteer-driven "
+#~ "projects."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It's designed as a platform and "
+#~ "framework for developing deploying crowd-"
+#~ "sourcing and microtasking project rather "
+#~ "than being a crowd-sourcing project "
+#~ "itself. Individual crowd-sourcing projects "
+#~ "are written as simple snippets of "
+#~ "Javascript and HTML which are then "
+#~ "deployed on a PyBossa instance (such "
+#~ "as"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This way one can easily develop "
+#~ "custom projects while using the PyBossa"
+#~ " platform to store your data, manage"
+#~ " users, and handle workflow"
+#~ msgstr ""
+
+#~ msgid ""
+#~ " PyBossa provides individual statistics "
+#~ "for every project in the system, "
+#~ "as well as a"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "general overview about the system like"
+#~ " total number of users, tasks, etc"
+#~ msgstr ""
+
+#~ msgid "You can now publish it!"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This export option stills in beta "
+#~ "mode and may fail in the CKAN "
+#~ "server. If you get an error, "
+#~ "please send an e-mail to "
+#~ "info@pybossa.com"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Explain your project"
+#~ "                                                             \n"
+#~ "                · Why? Why you are "
+#~ "creating this project, what you want "
+#~ "to achieve with it"
+#~ "                                                             \n"
+#~ "                · How? Explain how your"
+#~ " project works"
+#~ "                                                             \n"
+#~ "                · How you can help: "
+#~ "Explain to the volunteers how they "
+#~ "can help and contribute to the "
+#~ "goal of your project"
+#~ "                                                             \n"
+#~ "                · Will you help make "
+#~ "a difference? Explain to the volunteers"
+#~ " why their contribution is essential "
+#~ "and how the result of your project"
+#~ " can help change things!"
+#~ "                                                             \n"
+#~ "            (you can use Markdown to give format to your description!)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sorry, you've contributed to all the "
+#~ "tasks for this project, but this "
+#~ "project still needs more volunteers, so"
+#~ " please spread the word!"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You are about to publish your "
+#~ "project. This CANNOT be undone! Once "
+#~ "your project has been published, people"
+#~ " will be able to contribute to "
+#~ "it and answers will begin to be"
+#~ " stored."
+#~ msgstr ""
+
+#~ msgid "No results"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "of one or more tasks,\n"
+#~ "                providing a list of task"
+#~ " IDs separated by commas. The lowest"
+#~ "\n"
+#~ "                priority is"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The priority value is only\n"
+#~ "                respected by the"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "returns a task that\n"
+#~ "                    has not been completed "
+#~ "(the value of number of answers "
+#~ "has\n"
+#~ "                    not achieved) excluding the current user"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "returns a\n"
+#~ "                    task which has the "
+#~ "least number of task runs (answers)\n"
+#~ ""
+#~ "                    excluding the current user"
+#~ msgstr ""
+
+#~ msgid "Random"
+#~ msgstr "Aléatoire"
+
+#~ msgid ""
+#~ "returns a task\n"
+#~ "                    randomly --a user could"
+#~ " get the same task twice or "
+#~ "more\n"
+#~ "                    times"
+#~ msgstr ""
+
+#~ msgid "Priority"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The progress bar will the percentage "
+#~ "that has been completed for the "
+#~ "task"
+#~ msgstr ""
+
+#~ msgid "Update the project"
+#~ msgstr "Créez une App"
+
+#~ msgid ""
+#~ "Please provide a URL (i.e. DropBox, "
+#~ "Box, Ubuntu One, etc. public link) "
+#~ "to a CSV file with data for"
+#~ msgstr ""
+
+#~ msgid "The URL of the CSV file"
+#~ msgstr ""
+
+#~ msgid "Complexity"
+#~ msgstr ""
+
+#~ msgid "Skills"
+#~ msgstr ""
+
+#~ msgid "HTML and JavaScript"
+#~ msgstr ""
+
+#~ msgid "Use the Basic template"
+#~ msgstr ""
+
+#~ msgid "Re-use the Flickr Person Finder template"
+#~ msgstr ""
+
+#~ msgid "Use the Image template"
+#~ msgstr ""
+
+#~ msgid "Download the template and work locally"
+#~ msgstr ""
+
+#~ msgid "Re-use the Urban Park template"
+#~ msgstr ""
+
+#~ msgid "HTML, JavaScript and Geo expertise"
+#~ msgstr ""
+
+#~ msgid "Use the Maps project template"
+#~ msgstr ""
+
+#~ msgid "HTML, JavaScript and Server side"
+#~ msgstr ""
+
+#~ msgid "Use the Transcription template"
+#~ msgstr ""
+
+#~ msgid "Re-use the SoundCloud template"
+#~ msgstr ""
+
+#~ msgid "Use the Sound template"
+#~ msgstr ""
+
+#~ msgid "Re-use the Vimeo template"
+#~ msgstr ""
+
+#~ msgid "Use the Video template"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use the CSV URL\n"
+#~ "      importer"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If you delete all the\n"
+#~ "            tasks and task runs they will be gone\n"
+#~ "            forever!"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "No, do not delete\n"
+#~ "              anything!"
+#~ msgstr ""
+
+#~ msgid "Use the Dropbox importer"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use the EpiCollect\n"
+#~ "      Plus importer"
+#~ msgstr "Vous devez fournir un nom de projet EpiCollect Plus."
+
+#~ msgid "Use the Flickr importer"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use the\n"
+#~ "      Image tasks"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use the\n"
+#~ "      Mapping tasks"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use the\n"
+#~ "      Transcription tasks"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use the\n"
+#~ "      Sound tasks"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use the\n"
+#~ "      Video tasks"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Use the Google Drive\n"
+#~ "      importer"
+#~ msgstr ""
+
+#~ msgid "S3"
+#~ msgstr ""
+
+#~ msgid "Use the Amazon S3 importer"
+#~ msgstr ""
+
+#~ msgid "Use the Twitter importer"
+#~ msgstr ""
+
+#~ msgid "No active projects in the last 24 hours"
 #~ msgstr ""
 
