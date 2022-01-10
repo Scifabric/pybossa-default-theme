@@ -28,8 +28,7 @@
         </div>
       </div>
     </div>
-    <p>
-    </p>
+    <p/>
   </div>
 </template>
 
@@ -103,8 +102,23 @@ export default {
     },
 
     async save () {
+      let requestData = {
+        taskId: this.getSelectedTask(),
+        filters: JSON.stringify(this.getFilters()),
+        add: this.addUserValues,
+        remove: this.removeUserValues
+      };
       try {
         this.waiting = true;
+        await fetch(this.getURL(), {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            'X-CSRFToken': this.getCsrfToken()
+          },
+          credentials: 'same-origin',
+          body: JSON.stringify(requestData)
+        });
         } catch (error) {
           window.pybossaNotify('An error occurred.', true, 'error');
         } finally {
