@@ -90,5 +90,15 @@
     function selectSchedulerNeedsCustomizedColumns() {
         return selectedScheduler() === 'task_queue_scheduler';
     }
+
+    $("#show-customized").on("select2:select", function(evt){
+        var element = evt.params.data.element;
+        var $element = $(element);
+        var parentElement = element.parentElement;
+
+        $element.detach();
+        $(parentElement).append($element);
+        $(parentElement).trigger("change");
+    });
 </script>
 {% endblock %}
