@@ -21,6 +21,9 @@
     <fieldset>
         {{ render_field(form.sched, class_="span4",
         placeholder="Task scheduler for your project")}}
+        <div id="show-reserve-category-cols">
+            {{ render_select2_field(form.reserve_category_columns) }}
+        </div>
         <div id="show-customized">
             {{ render_select2_field(form.customized_columns) }}
         </div>
@@ -57,6 +60,10 @@
             $('#show-customized').hide();
         }
 
+        if (!reserveTaskCategorySupported() ) {
+            $('#show-reserve-category-cols').hide();
+        }
+
         $('#sched').change(function () {
             $('#rand_within_priority').prop('checked', false);
 
@@ -70,6 +77,11 @@
                 $('#show-customized').show();
             } else {
                 $('#show-customized').hide();
+            }
+            if (reserveTaskCategorySupported() ) {
+                $('#show-reserve-category-cols').show();
+            } else {
+                $('#show-reserve-category-cols').hide();
             }
         });
 
@@ -91,7 +103,11 @@
         return selectedScheduler() === 'task_queue_scheduler';
     }
 
-    $("#show-customized").on("select2:select", function(evt){
+    function reserveTaskCategorySupported() {
+        return selectedScheduler() === 'task_queue_scheduler';
+    }
+
+    function orderSelect2Items(evt){
         var element = evt.params.data.element;
         var $element = $(element);
         var parentElement = element.parentElement;
@@ -99,6 +115,14 @@
         $element.detach();
         $(parentElement).append($element);
         $(parentElement).trigger("change");
+    }
+
+    $("#show-customized").on("select2:select", function(evt){
+        orderSelect2Items(evt)
+    });
+
+    $("#show-reserve-category-cols").on("select2:select", function(evt){
+        orderSelect2Items(evt)
     });
 </script>
 {% endblock %}
