@@ -1,3 +1,4 @@
+<script>
 const taskTimeout = {
     intervalId: null,
     taskId: null,
@@ -60,7 +61,7 @@ pybossa.taskLoaded(function(task, deferred) {
         taskTimeout.taskId = task.id;
 
         console.log(`Task #${taskTimeout.taskId}, timeout interval #${taskTimeout.intervalId}, ${Math.round(taskTimeout.remaining)}/${taskTimeout.total} seconds remaining.`);
-
-        deferred.resolve(task);
     }
+    deferred.resolve(task);
 });
+</script>
