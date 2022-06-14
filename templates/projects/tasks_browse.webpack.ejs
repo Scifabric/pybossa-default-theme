@@ -654,7 +654,7 @@
 </div>
 
 <!-- Project owner, subadmin that are project co-owners and admins can edit/delete task properties -->
-{% if current_user.admin or current_user.id in project.owners_ids %}
+{% if (current_user.admin or current_user.id in project.owners_ids) and request.args['view'] != 'tasklist' %}
 <div id="context-menu" class="dropdown clearfix">
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-menu" style="display:block;position:absolute;">
         <li><a href="#" id="edit-pri" data-value="task-priority">Edit Priority</a></li>
