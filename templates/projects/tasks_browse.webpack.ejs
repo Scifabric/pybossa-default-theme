@@ -104,8 +104,8 @@
               </button>
           </li>
         {% endif %}
-        <!-- Project owner, subadmin that are project co-owners and admins can edit/delete task properties -->
-        {% if ((current_user.subadmin and current_user.id in project.owners_ids) or current_user.admin) and request.args['view'] != 'tasklist' %}
+        <!-- Project owner, subadmin that are project co-owners and admins can delete task properties. All project owners, admins can edit tasks -->
+        {% if (current_user.admin or current_user.id in project.owners_ids) and request.args['view'] != 'tasklist' %}
         <li class="dropdown" id="edit-tasks">
             <button class="dropdown-toggle btn btn-sm" type="button" id="btn-edit-tasks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Edit priority/redundancy"><span class="fa fa-edit"><span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="btn-edit-tasks">
@@ -116,6 +116,8 @@
                 {% endif %}
             </ul>
         </li>
+        {% endif %}
+        {% if (current_user.admin or (current_user.subadmin and current_user.id in project.owners_ids)) and request.args['view'] != 'tasklist' %}
         <li>
             <button id="btn-delete-tasks" class="btn btn-sm" type="button" data-target="#delete-tasks-modal" data-toggle="modal" title="Delete tasks">
                 <i class="fa fa-trash" aria-hidden="true"></i>
@@ -651,8 +653,8 @@
     <filters-modal></filters-modal>
 </div>
 
-<!-- Project owner, subadmin that are project co-owners and admins can edit/delete task properties -->
-{% if (current_user.subadmin and current_user.id in project.owners_ids) or current_user.admin %}
+<!-- Project owner, subadmin that are project co-owners and admins can delete task properties. All project owners, admins can edit tasks -->
+{% if (current_user.admin or current_user.id in project.owners_ids) and request.args['view'] != 'tasklist' %}
 <div id="context-menu" class="dropdown clearfix">
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-menu" style="display:block;position:absolute;">
         <li><a href="#" id="edit-pri" data-value="task-priority">Edit Priority</a></li>
@@ -660,7 +662,9 @@
         {% if project.info.sched == 'task_queue_scheduler' or project.info.sched == 'user_pref_scheduler'  %}
         <li><a href="#" id="edit-user" data-value="assign-worker" @click="$refs.assignworker.getData()">Assign Worker </a></li>
         {% endif %}
+        {% if current_user.admin or (current_user.subadmin and current_user.id in project.owners_ids) %}
         <li><a href="#" id="del-task" data-target="#delete-tasks-modal" data-toggle="modal">Delete Task</a></li>
+        {% endif %}
     </ul>
 </div>
 {% endif %}
