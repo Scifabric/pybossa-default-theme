@@ -212,7 +212,16 @@ export default {
       return res.join('/');
     },
 
-    async search (user) {
+    async search (user, contact) {
+      // Reset and hide drop-downs with search results.
+      this.coownerResult = [];
+      this.contactResult = [];
+      if (contact) {
+        this.coownerQuery = null;
+      } else {
+        this.contactQuery = null;
+      }
+
       const res = await fetch(this.getURL(), {
         method: 'POST',
         headers: {
@@ -220,7 +229,7 @@ export default {
           'X-CSRFToken': this.csrfToken
         },
         credentials: 'same-origin',
-        body: JSON.stringify({ user })
+        body: JSON.stringify({ user, contact })
       });
       const data = await res.json();
       if (data['flash']) {
@@ -269,7 +278,11 @@ export default {
 
     async searchCoowners () {
       try {
-        this.coownerResult = await this.search(this.coownerQuery);
+        if (this.coownerQuery) {
+          this.coownerResult = await this.search(this.coownerQuery);
+        } else {
+          window.pybossaNotify('Please enter a search query.', true, 'error');
+        }
       } catch (error) {
         window.pybossaNotify('An error occurred while searching for co-owners: ' + error, true, 'error');
       }
@@ -277,7 +290,11 @@ export default {
 
     async searchContacts () {
       try {
-        this.contactResult = await this.search(this.contactQuery);
+        if (this.contactQuery) {
+          this.contactResult = await this.search(this.contactQuery, true);
+        } else {
+          window.pybossaNotify('Please enter a search query.', true, 'error');
+        }
       } catch (error) {
         window.pybossaNotify('An error occurred while searching for contacts: ' + error, true, 'error');
       }
@@ -288,6 +305,11 @@ export default {
       const contacts = Object.keys(this.contacts);
       try {
         this.waiting = true;
+        // Reset and hide drop-downs with search results.
+        this.coownerResult = [];
+        this.contactResult = [];
+        this.coownerQuery = null;
+        this.contactQuery = null;
         const res = await fetch(this.getURL(), {
           method: 'POST',
           headers: {
@@ -303,6 +325,7 @@ export default {
         if (res.ok) {
           this.searchResult = [];
           const data = await res.json();
+          this.initialize(data);
           window.pybossaNotify(data['flash'], true, data['status']);
         } else {
           window.pybossaNotify('An error occurred configuring ownership config.', true, 'error');
