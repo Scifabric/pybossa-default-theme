@@ -291,8 +291,14 @@ $(document).ready(function() {
         showAssignWorkerModal()
     });
 
-    $('#delete-tasks-modal .cancel-delete').on('click', function() {
+    // reset the local variable as well as the state
+    function resetSelectedTask() {
         selectedTask = undefined;
+        taskBrowse.setSelectedTask(selectedTask);
+    }
+
+    $('#delete-tasks-modal .cancel-delete').on('click', function() {
+        resetSelectedTask();
     });
 
     var projNameEntry = $('#delete-task-project-name'),
@@ -581,6 +587,16 @@ $(document).ready(function() {
 
     $('#upref-filter-modal-search-button').click(function() {
         filterTasksByUserPreference();
+    });
+
+    // When clicking bulk update dropdown button, reset selectedTask
+    $('#btn-edit-tasks').click(function() {
+        resetSelectedTask();
+    });
+
+    // When clicking bulk delete button, reset selectedTask
+    $('#btn-delete-tasks').click(function() {
+        resetSelectedTask();
     });
 });
 
