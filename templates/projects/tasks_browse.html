@@ -34,6 +34,7 @@
               <li><strong>{{_('Actions')}}</strong>: {{_('Three current actions: download, view, or get user info for task results')}}.</li>
               <li><strong>{{_('Active Users')}}</strong>: {{_('List users working on the task')}}.</li>
               <li><strong>{{_('Completed By')}}</strong>: {{_('List users that completed the task')}}.</li>
+              <li><strong>{{_('Assigned Users')}}</strong>: {{_('List users that are assigned to the task')}}.</li>
           </ul>
           </p>
         {% endif %}
@@ -86,6 +87,9 @@
                   <li><a href="#" class="columns_settings" data-value="actions" tabIndex="-1"><input type="checkbox" {{ "checked" if "actions" in filter_data.display_columns }}/>&nbsp;Actions</a></li>
                   <li><a href="#" class="columns_settings" data-value="lock_status" tabIndex="-1"><input type="checkbox" {{ "checked" if "lock_status" in filter_data.display_columns }}/>&nbsp;Active Users</a></li>
                   <li><a href="#" class="columns_settings" data-value="completed_by" tabIndex="-1"><input type="checkbox" {{ "checked" if "completed_by" in filter_data.display_columns }}/>&nbsp;Completed By</a></li>
+                  {% if project.info.sched == 'task_queue_scheduler' or project.info.sched == 'user_pref_scheduler' %}
+                  <li><a href="#" class="columns_settings" data-value="assigned_users" tabIndex="-1"><input type="checkbox" {{ "checked" if "assigned_users" in filter_data.display_columns }}/>&nbsp;Assigned Users</a></li>
+                  {% endif %}
               </ul>
           </li>
         {% endif %}
@@ -106,8 +110,8 @@
               </button>
           </li>
         {% endif %}
-        <!-- Project owner, subadmin that are project co-owners and admins can edit/delete task properties -->
-        {% if ((current_user.subadmin and current_user.id in project.owners_ids) or current_user.admin) and request.args['view'] != 'tasklist' %}
+        <!-- Project owner, subadmin that are project co-owners and admins can delete task properties. All project owners, admins can edit tasks -->
+        {% if (current_user.admin or current_user.id in project.owners_ids) and request.args['view'] != 'tasklist' %}
         <li class="dropdown" id="edit-tasks">
             <button class="dropdown-toggle btn btn-sm" type="button" id="btn-edit-tasks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Edit priority/redundancy"><span class="fa fa-edit"><span class="caret"></span></button>
             <ul class="dropdown-menu" aria-labelledby="btn-edit-tasks">
@@ -118,6 +122,8 @@
                 {% endif %}
             </ul>
         </li>
+        {% endif %}
+        {% if (current_user.admin or (current_user.subadmin and current_user.id in project.owners_ids)) and request.args['view'] != 'tasklist' %}
         <li>
             <button id="btn-delete-tasks" class="btn btn-sm" type="button" data-target="#delete-tasks-modal" data-toggle="modal" title="Delete tasks">
                 <i class="fa fa-trash" aria-hidden="true"></i>
@@ -185,7 +191,10 @@
                 <th class="{{'sort-asc' if filter_data.order_by['lock_status'] == 'asc'}} {{'sort-desc' if filter_data.order_by['lock_status'] == 'desc'}} sortable" data-sort="lock_status">Active Users</th>
                 {% endif %}
                 {% if 'completed_by' in filter_data.display_columns %}
-                <th class="{{'sort-asc' if filter_data.order_by['completed_by'] == 'asc'}} {{'sort-desc' if filter_data.order_by['completed_by'] == 'desc'}} sortable" data-sort="completed_by">Completed By</th>
+                <th>Completed By</th>
+                {% endif %}
+                {% if 'assigned_users' in filter_data.display_columns %}
+                <th class="{{'sort-asc' if filter_data.order_by['assigned_users'] == 'asc'}} {{'sort-desc' if filter_data.order_by['assigned_users'] == 'desc'}} sortable" data-sort="assigned_users">Assigned Users</th>
                 {% endif %}
             </tr>
             <tr>
@@ -245,6 +254,9 @@
                 <th>&nbsp;</th>
                 {% endif %}
                 {% if 'completed_by' in filter_data.display_columns %}
+                <th>&nbsp;</th>
+                {% endif %}
+                {% if 'assigned_users' in filter_data.display_columns %}
                 <th>&nbsp;</th>
                 {% endif %}
             </tr>
@@ -366,6 +378,11 @@
                 {% if 'completed_by' in filter_data.display_columns %}
                 <td>
                   {{ t.completed_users }}
+                </td>
+                {% endif %}
+                {% if 'assigned_users' in filter_data.display_columns %}
+                <td>
+                  {{ t.assigned_users }}
                 </td>
                 {% endif %}
             </tr>
@@ -664,8 +681,8 @@
     <filters-modal></filters-modal>
 </div>
 
-<!-- Project owner, subadmin that are project co-owners and admins can edit/delete task properties -->
-{% if (current_user.subadmin and current_user.id in project.owners_ids) or current_user.admin %}
+<!-- Project owner, subadmin that are project co-owners and admins can delete task properties. All project owners, admins can edit tasks -->
+{% if (current_user.admin or current_user.id in project.owners_ids) and request.args['view'] != 'tasklist' %}
 <div id="context-menu" class="dropdown clearfix">
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-menu" style="display:block;position:absolute;">
         <li><a href="#" id="edit-pri" data-value="task-priority">Edit Priority</a></li>
@@ -673,7 +690,9 @@
         {% if project.info.sched == 'task_queue_scheduler' or project.info.sched == 'user_pref_scheduler'  %}
         <li><a href="#" id="edit-user" data-value="assign-worker" @click="$refs.assignworker.getData()">Assign Worker </a></li>
         {% endif %}
+        {% if current_user.admin or (current_user.subadmin and current_user.id in project.owners_ids) %}
         <li><a href="#" id="del-task" data-target="#delete-tasks-modal" data-toggle="modal">Delete Task</a></li>
+        {% endif %}
     </ul>
 </div>
 {% endif %}
@@ -685,7 +704,7 @@
 </div>
 </div>
 
-<script src="/static/js/gen/task_browse.min.fe3692ae5ca8a1a3bf0f.js"></script>
+<script src="/static/js/gen/task_browse.min.efb7131319aa21ce030f.js"></script>
 <script type="text/javascript">
     function autoRefresh() {
       window.location.reload();

@@ -34,6 +34,7 @@
               <li><strong>{{_('Actions')}}</strong>: {{_('Three current actions: download, view, or get user info for task results')}}.</li>
               <li><strong>{{_('Active Users')}}</strong>: {{_('List users working on the task')}}.</li>
               <li><strong>{{_('Completed By')}}</strong>: {{_('List users that completed the task')}}.</li>
+              <li><strong>{{_('Assigned Users')}}</strong>: {{_('List users that are assigned to the task')}}.</li>
           </ul>
           </p>
         {% endif %}
@@ -86,6 +87,9 @@
                   <li><a href="#" class="columns_settings" data-value="actions" tabIndex="-1"><input type="checkbox" {{ "checked" if "actions" in filter_data.display_columns }}/>&nbsp;Actions</a></li>
                   <li><a href="#" class="columns_settings" data-value="lock_status" tabIndex="-1"><input type="checkbox" {{ "checked" if "lock_status" in filter_data.display_columns }}/>&nbsp;Active Users</a></li>
                   <li><a href="#" class="columns_settings" data-value="completed_by" tabIndex="-1"><input type="checkbox" {{ "checked" if "completed_by" in filter_data.display_columns }}/>&nbsp;Completed By</a></li>
+                  {% if project.info.sched == 'task_queue_scheduler' or project.info.sched == 'user_pref_scheduler' %}
+                  <li><a href="#" class="columns_settings" data-value="assigned_users" tabIndex="-1"><input type="checkbox" {{ "checked" if "assigned_users" in filter_data.display_columns }}/>&nbsp;Assigned Users</a></li>
+                  {% endif %}
               </ul>
           </li>
         {% endif %}
@@ -189,6 +193,9 @@
                 {% if 'completed_by' in filter_data.display_columns %}
                 <th>Completed By</th>
                 {% endif %}
+                {% if 'assigned_users' in filter_data.display_columns %}
+                <th class="{{'sort-asc' if filter_data.order_by['assigned_users'] == 'asc'}} {{'sort-desc' if filter_data.order_by['assigned_users'] == 'desc'}} sortable" data-sort="assigned_users">Assigned Users</th>
+                {% endif %}
             </tr>
             <tr>
                 {% if 'task_id' in filter_data.display_columns %}
@@ -247,6 +254,9 @@
                 <th>&nbsp;</th>
                 {% endif %}
                 {% if 'completed_by' in filter_data.display_columns %}
+                <th>&nbsp;</th>
+                {% endif %}
+                {% if 'assigned_users' in filter_data.display_columns %}
                 <th>&nbsp;</th>
                 {% endif %}
             </tr>
@@ -368,6 +378,11 @@
                 {% if 'completed_by' in filter_data.display_columns %}
                 <td>
                   {{ t.completed_users }}
+                </td>
+                {% endif %}
+                {% if 'assigned_users' in filter_data.display_columns %}
+                <td>
+                  {{ t.assigned_users }}
                 </td>
                 {% endif %}
             </tr>
