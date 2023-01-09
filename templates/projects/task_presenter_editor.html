@@ -332,6 +332,7 @@
     {% endassets %}
 
     <script type="text/javascript" src="{{url_for('static', filename='js/task-presenter-tabs.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/image_upload.js')}}"></script>
 
 <script type="text/javascript">
 (function() {
@@ -419,6 +420,7 @@ var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   }
 });
 
+TaskPresenterImageUploader.initialize($("#guidelines"));
 // Initialize the module for saving both tabs when clicking Update.
 TaskPresenterTabManager.initialize(editor);
 
