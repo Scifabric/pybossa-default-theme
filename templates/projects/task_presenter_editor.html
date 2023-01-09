@@ -420,7 +420,6 @@ var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   }
 });
 
-TaskPresenterImageUploader.initialize($("#guidelines"));
 // Initialize the module for saving both tabs when clicking Update.
 TaskPresenterTabManager.initialize(editor);
 
@@ -466,10 +465,15 @@ $('#tabs a[href="' + hash.replace('#', '#tab-') + '"]').tab('show');
 var main = function() {
 
  // Create markup
- $('#guidelines').summernote(
-      { height: 554}
- );
-
+ $('#guidelines').summernote({
+    height: 554,
+    callbacks: {
+        onImageUpload: function(files) {
+          TaskPresenterImageUploader.uploadImages(files, $('#guidelines'));
+        }
+    }
+});
+TaskPresenterImageUploader.initialize($("#guidelines"));
  // Initialize HTML code formatting for guidelines.
  TaskPresenterTabManager.autoFormat('#guidelines');
 
