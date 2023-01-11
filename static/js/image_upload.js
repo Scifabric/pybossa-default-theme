@@ -2,15 +2,13 @@
 
 const TaskPresenterImageUploader = {
 
-    uploadImages: (files, editor) => {
-        let URL = '/project/'
-        let short_name = "testproject"
-        let data = {"files": files, "test": "hello"}
+    uploadImages: (files, short_name) => {
+        let data = {"files": files}
         console.log("uploadImages request", data)
 
         res = $.ajax({
             type: 'POST',
-            url: URL + short_name + "/tasks/taskpresenterimageupload",
+            url: '/project/' + short_name + "/tasks/taskpresenterimageupload",
             contentType: "application/json",
             dataType: 'json',
             data: JSON.stringify(data)

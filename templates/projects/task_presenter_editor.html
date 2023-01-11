@@ -469,7 +469,7 @@ var main = function() {
     height: 554,
     callbacks: {
         onImageUpload: function(files) {
-          TaskPresenterImageUploader.uploadImages(files, $('#guidelines'));
+          TaskPresenterImageUploader.uploadImages(files, '{{project.short_name}}');
         }
     }
 });
