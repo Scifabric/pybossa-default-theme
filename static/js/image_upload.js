@@ -27,7 +27,7 @@ const TaskPresenterImageUploader = {
                 summernote.summernote("insertNode", image[0]);
             })
         }).fail(response => {
-            console.log("upload image failed. response:", response)
+            console.error("upload image failed. response:", response)
         })
     }
 }
