@@ -9,7 +9,7 @@ const TaskPresenterImageUploader = {
                 fd.append("image", file);
             }
             else {
-                alert("Images must be less than " + TaskPresenterImageUploader.MAX_FILE_SIZE_MB + " mb.")
+                alert("Images must be less than " + TaskPresenterImageUploader.MAX_FILE_SIZE_MB + " MB.")
             }
         });
 
@@ -22,7 +22,7 @@ const TaskPresenterImageUploader = {
         }).done(response => {
             response.imgurls.forEach(imgurl => {
                 let image = $('<img>').attr('src', imgurl).on('load', () => {
-                    image.css('width', Math.min(summernote.width(), this.width))
+                    image.css('width', Math.min(summernote.width(), image.width()))
                 });
                 summernote.summernote("insertNode", image[0]);
             })
