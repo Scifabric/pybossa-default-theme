@@ -133,6 +133,20 @@
           </select>
         </div>
       </div>
+      <div class="form-group row">
+        <div class="col-md-6">
+          <p> Allow Editing of Task Submissions </p>
+        </div>
+        <div class="col-md-6 pull-right">
+          <label class="switch">
+            <input
+              v-model="allow_taskrun_edit"
+              type="checkbox"
+            >
+            <span class="slider" />
+          </label>
+        </div>
+      </div>
       <div>
         <button
           class="btn btn-sm btn-primary"
@@ -165,7 +179,8 @@ export default {
       inputFields: [],
       externalConfigDict: {},
       waiting: false,
-      completed_tasks_cleanup_days: null
+      completed_tasks_cleanup_days: null,
+      allow_taskrun_edit: false
     };
   },
   created () {
@@ -256,6 +271,7 @@ export default {
             this.searchResult = Object.values(this.users);
         }
         this.completed_tasks_cleanup_days = dataProjConfig.completed_tasks_cleanup_days || null;
+        this.allow_taskrun_edit = dataProjConfig.allow_taskrun_edit || false;
       } catch (error) {
         window.pybossaNotify('Error reading project config.', true, 'error');
       } finally {
@@ -269,12 +285,14 @@ export default {
             data = {
                 config: this.externalConfigDict,
                 select_users: this.assignee,
-                completed_tasks_cleanup_days: this.completed_tasks_cleanup_days
+                completed_tasks_cleanup_days: this.completed_tasks_cleanup_days,
+                allow_taskrun_edit: this.allow_taskrun_edit
             };
         } else {
             data = {
                 config: this.externalConfigDict,
-                completed_tasks_cleanup_days: this.completed_tasks_cleanup_days
+                completed_tasks_cleanup_days: this.completed_tasks_cleanup_days,
+                allow_taskrun_edit: this.allow_taskrun_edit
             };
         }
         try {
