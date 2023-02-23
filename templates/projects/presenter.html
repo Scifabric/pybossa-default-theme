@@ -17,6 +17,11 @@
     {% if mode == 'cherry_pick' %}
         window.pybossa.isCherryPick = true;
     {% endif %}
+    {% if mode == 'edit_submission' %}
+        window.pybossa.editSubmission = true;
+        window.pybossa.taskrunId = {{ taskrun_id }};
+        window.pybossa.taskrunUserId = {{ taskrun_user_id }};
+    {% endif %}
     {% if mode == 'gold' %}
         window.pybossa.isGoldMode = true;
         {% if bulk %}
