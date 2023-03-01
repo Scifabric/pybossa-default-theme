@@ -1,4 +1,4 @@
-function pybossaNotify(msg, showNotification, type, keepPreviousNotification){
+function pybossaNotify(msg, showNotification, type, keepPreviousNotification, sticky=false){
     if (!keepPreviousNotification)
         $("#pybossa-notification").remove();
     var div = $("<div/>");
@@ -35,7 +35,6 @@ function pybossaNotify(msg, showNotification, type, keepPreviousNotification){
     }
 
 
-
     var text = $("<span/>");
     text.html(msg);
     if (type === 'error') {
@@ -52,6 +51,21 @@ function pybossaNotify(msg, showNotification, type, keepPreviousNotification){
     else {
         $("#pybossa-notification").addClass("hide-notification");
         hidePybossaNotification();
+    }
+
+    window.onscroll = function() {
+        if (sticky) {
+            let banner = $("#pybossa-notification");
+            const headerHeight = 60;
+            const bannerHeight = 40;
+            const pageYOffset = window.pageYOffset
+            if (pageYOffset < headerHeight + bannerHeight) {
+                let pos = Math.max(0, (pageYOffset - headerHeight));
+                banner.css({position: "relative", top: pos});
+            } else {
+                banner.css({position: "sticky", top: -bannerHeight});
+            }
+        }
     }
 }
 
