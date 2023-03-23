@@ -2,10 +2,9 @@
 {% set active_page = "projects" %}
 {% set active_project  = "all" %}
 {% set active_link = "tasks" %}
-{% import "projects/_helpers.html" as project_helper %}
-
 {% set is_task_list = request.args['view'] == 'tasklist' %}
-{% set section = _('Task List') if is_task_list else 'Browse Tasks' %}
+{% set section = _('Task List') if is_task_list else _('Browse Tasks') %}
+{% import "projects/_helpers.html" as project_helper %}
 
 {% block projectcontent %}
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
