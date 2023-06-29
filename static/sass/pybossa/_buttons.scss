@@ -2,7 +2,14 @@
     min-width: 32.5%;
 }
 
-.btn-contribute,
+.btn-group.btn-contribute {
+    min-height: 75px;
+}
+
+.btn-view-results {
+    margin-bottom: 10px;
+}
+
 .btn-admin-categories{
     margin: 21px 0;
 }
