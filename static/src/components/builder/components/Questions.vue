@@ -18,6 +18,10 @@
       <custom-router-link :component="multiselectInput" />
       <custom-router-link :component="table" />
       <custom-router-link :component="textTagging" />
+      <custom-router-link
+        :component="assistantLLM"
+        :style="!isPrivate ? 'display:none' : ''"
+      />
       <custom-router-link :component="inputTextArea" />
     </div>
     <div class="col-md-8">
@@ -93,7 +97,7 @@
 
 import Vue from 'vue';
 import Prism from 'vue-prism-component';
-Vue.component('custom-router-link', {
+Vue.component('CustomRouterLink', {
   props: {
     component: {
       type: Object,
@@ -116,6 +120,7 @@ export default {
   components: { Prism },
   data () {
     return {
+      isPrivate: window.location.hostname.includes('gigwork.net'),
       loading: false,
       error: false,
       snippet: '',
@@ -194,6 +199,13 @@ export default {
         params: {
           componentName: 'TEXT_TAGGING',
           header: 'NLP Enrichment'
+        }
+      },
+      assistantLLM: {
+        name: 'ASSISTANT_LLM_FORM',
+        params: {
+          componentName: 'ASSISTANT_LLM',
+          header: 'Assistant LLM'
         }
       },
       dropdownInput: {
