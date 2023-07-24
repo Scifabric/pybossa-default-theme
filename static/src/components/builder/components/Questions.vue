@@ -20,7 +20,7 @@
       <custom-router-link :component="textTagging" />
       <custom-router-link
         :component="assistantLLM"
-        :style="!isPrivate ? 'display:none' : ''"
+        :style="isPublic ? 'display:none' : ''"
       />
       <custom-router-link :component="inputTextArea" />
     </div>
@@ -120,7 +120,7 @@ export default {
   components: { Prism },
   data () {
     return {
-      isPrivate: window.location.hostname.includes('gigwork.net'),
+      isPublic: window.location.hostname.includes('gigwork.net'),
       loading: false,
       error: false,
       snippet: '',
